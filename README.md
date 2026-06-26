@@ -2229,6 +2229,22 @@ Each run in the benchmark is:
 3. Automatically cleaned up from GPU VRAM cache between runs.
 4. Aggregated and charted using `plot_results.py` once all runs finish, generating plots (`ap_metrics_comparison.png`, `ap_scale_comparison.png`, `ar_metrics_comparison.png`, `ap_seed_distribution.png`) and the summary table `benchmark_summary.md` inside your results directory.
 
+#### 🌍 DINOv3 Satellite Model Integration & Recommendation Details
+
+* **How It Is Integrated:**
+  * Supported natively via the `vitl16_sat493m` variant choice (alias to `dinov3_vitl16_sat493m`).
+  * Mapped in [DINO3Backbone](file:///C:/Users/emilb/_trainer_DINOV3-YOLOV12/ultralytics/nn/modules/block.py#L1647) and [DINO3Preprocessor](file:///C:/Users/emilb/_trainer_DINOV3-YOLOV12/ultralytics/nn/modules/block.py#L2339) to dynamically fetch and cache Meta's official pre-trained weights from Hugging Face: `facebook/dinov3-vitl16-pretrain-sat493m` (trained on Meta's SAT-493M satellite dataset).
+  * Automatically configures `embed_dim=1024` and `patch_size=16` when matching this variant.
+
+* **Recommended Configurations for Satellite/Remote Sensing Datasets:**
+  * **Integration Strategy (`--integration`):**
+    * We highly recommend using **`--integration single`** (injecting DINOv3 embeddings at input level P0) or **`--integration dualp0p3`** (injecting at input level P0 and backbone level P3).
+    * *Rationale:* Remote sensing/geospatial datasets (like DOTA) contain tiny targets (e.g. small vehicles) whose details fade quickly at deep network layers. Early input injection (P0) enhances detail preservation, while dual P0+P3 integration targets both micro-objects and large geographic structures (e.g. harbors) with balanced memory usage.
+  * **Frozen Backbone (`--freeze-backbone`):**
+    * Keep `True` (default) since the weights are already specialized on massive Earth Observation datasets. Freezing the backbone stabilizes self-supervised features and reduces memory consumption.
+  * **Image Size (`--imgsz`):**
+    * Use at least `640`. However, for satellite tiles (e.g. `800` or `1024`), increasing `imgsz` allows DINOv3 to extract richer spatial context.
+
 ---
 
 ## Acknowledgement
