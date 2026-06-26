@@ -1,0 +1,44 @@
+---
+source_url: https://docs.wandb.ai/models/runs/stop-runs
+---
+
+[Guides](/models/track)
+
+[Experiments](/models/track)
+
+[What are runs?](/models/runs)
+
+# Stop runs
+
+Stop runs programmatically using the W&B Python SDK or manually from the W&B App.
+
+Stop a run programmatically with the W&B Python SDK or interactively in the W&B App.
+
+  * Python SDK
+
+  * W&B App
+
+
+
+
+  1. Navigate to the terminal or code editor where you initialized the run.
+  2. Press `Ctrl+D` to stop the run.
+
+
+
+  1. Navigate to the project that your run is logging to.
+  2. Select the run you want to stop within the run selector.
+  3. Choose the **Overview** tab.
+  4. Select the stop button next to the **State** field.
+
+Next to the **State** field, the run’s state changes from `running` to `Killed`.
+
+See [State fields](/models/runs/run-states) for a full list of possible run states.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/runs/stop-runs.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/runs/stop-runs)
+
+[Search runsPrevious](/models/runs/search-runs)[Delete runsNext](/models/runs/delete-runs)
+
+⌘I

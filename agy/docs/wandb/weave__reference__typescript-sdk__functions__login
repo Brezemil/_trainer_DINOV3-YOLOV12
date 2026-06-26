@@ -1,0 +1,58 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/login
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# login
+
+TypeScript SDK reference
+
+# 
+
+​
+
+login
+
+▸ **login**(`apiKey`, `host?`): `Promise`<`void`> Log in to Weights & Biases (W&B) using the provided API key. This function attempts to save the credentials to your netrc file for future use, but will continue even if it cannot write to the file system.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type| Description  
+---|---|---  
+`apiKey`| `string`| Your W&B API key.  
+`host?`| `string`| (Optional) The host name (usually only needed if you’re using a custom W&B server).  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`void`> `Throws` If the API key is not specified or if the connection to the weave trace server cannot be verified.
+
+#### 
+
+​
+
+Defined in
+
+[clientApi.ts:30](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/clientApi.ts#L30)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/login.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/login)
+
+[instrumentOpenAIAgentsPrevious](/weave/reference/typescript-sdk/functions/instrumentopenaiagents)[opNext](/weave/reference/typescript-sdk/functions/op)
+
+⌘I

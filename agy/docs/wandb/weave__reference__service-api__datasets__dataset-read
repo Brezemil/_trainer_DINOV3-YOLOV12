@@ -1,0 +1,209 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/datasets/dataset-read
+---
+
+Dataset Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/datasets/{object_id}/versions/{digest} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "object_id": "<string>",
+      "digest": "<string>",
+      "version_index": 123,
+      "created_at": "2023-11-07T05:31:56Z",
+      "name": "<string>",
+      "rows": "<string>",
+      "description": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Datasets](/weave/reference/service-api/datasets/dataset-list)
+
+# Dataset Read
+
+Get a dataset object.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+datasets
+
+/
+
+{object_id}
+
+/
+
+versions
+
+/
+
+{digest}
+
+Dataset Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/datasets/{object_id}/versions/{digest} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "object_id": "<string>",
+      "digest": "<string>",
+      "version_index": 123,
+      "created_at": "2023-11-07T05:31:56Z",
+      "name": "<string>",
+      "rows": "<string>",
+      "description": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+object_id
+
+string
+
+required
+
+​
+
+digest
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+object_id
+
+string
+
+required
+
+The dataset ID
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the dataset object
+
+​
+
+version_index
+
+integer
+
+required
+
+The version index of the object
+
+​
+
+created_at
+
+string<date-time>
+
+required
+
+When the object was created
+
+​
+
+name
+
+string
+
+required
+
+The name of the dataset
+
+​
+
+rows
+
+string
+
+required
+
+Reference to the dataset rows data
+
+​
+
+description
+
+string | null
+
+Description of the dataset
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/datasets/dataset-read.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/datasets/dataset-read)
+
+[Dataset CreatePrevious](/weave/reference/service-api/datasets/dataset-create)[Dataset DeleteNext](/weave/reference/service-api/datasets/dataset-delete)
+
+⌘I

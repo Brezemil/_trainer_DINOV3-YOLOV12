@@ -1,0 +1,43 @@
+---
+source_url: https://docs.wandb.ai/models/integrations
+---
+
+[Integrations](/models/integrations)
+
+# Integrations overview
+
+Explore W&B integrations with ML frameworks, cloud platforms, and workflow orchestration tools
+
+W&B integrates with popular machine learning frameworks, cloud platforms, and workflow orchestration tools to help you track experiments, log metrics, and manage models seamlessly.
+
+## 
+
+​
+
+Popular ML integrations:
+
+## PyTorch Lightning
+
+Integrate W&B with your PyTorch Lightning code to add experiment tracking to your pipeline.
+
+## HuggingFace Transformers
+
+Optimize HuggingFace Transformer models with W&B for experiment tracking and model management.
+
+## Keras
+
+Use W&B and Keras for machine learning experiment tracking, dataset versioning, and project collaboration.
+
+## YOLOv5
+
+Use the “You Only Look Once” (aka YOLOv5) real-time object detection framework and W&B to track model metrics, inspect model outputs, and restart interrupted runs.
+
+If the library you use is not supported natively, you can still integrate W&B using the W&B [Python SDK](/models/ref/python). See [Add W&B to any library](/models/integrations/add-wandb-to-any-library) for best practices and implementation guidance.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/integrations.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/integrations)
+
+[Keyboard shortcutsPrevious](/models/app/keyboard-shortcuts)[Add W&B to a Python libraryNext](/models/integrations/add-wandb-to-any-library)
+
+⌘I

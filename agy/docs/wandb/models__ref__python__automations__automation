@@ -1,0 +1,63 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/automations/automation
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Automations](/models/ref/python/automations)
+
+# Automation
+
+## 
+
+​
+
+`class` `Automation`
+
+A local instance of a saved W&B automation that supports editing.
+
+### 
+
+​
+
+`method` `Automation.__init__`
+    
+    
+    __init__(
+        typename__: 'Literal['Trigger']' = 'Trigger',
+        id: 'str',
+        created_at: 'datetime',
+        updated_at: 'datetime.datetime | None' = None,
+        name: 'str',
+        description: 'str | None',
+        enabled: 'bool',
+        scope: 'wandb.automations.scopes._ArtifactSequenceScope | wandb.automations.scopes._ArtifactPortfolioScope | wandb.automations.scopes.ProjectScope',
+        event: 'SavedEvent',
+        action: 'wandb.automations.actions.SavedLaunchJobAction | wandb.automations.actions.SavedNotificationAction | wandb.automations.actions.SavedWebhookAction | wandb.automations.actions.SavedNoOpAction'
+    ) → None
+    
+
+**Args:**
+
+  * `typename__` (Literal[‘Trigger’]):
+  * `id` (str):
+  * `created_at` (datetime): The date and time when this automation was created.
+  * `updated_at` (datetime.datetime | None): The date and time when this automation was last updated, if applicable.
+  * `name` (str): The name of this automation.
+  * `description` (str | None): An optional description of this automation.
+  * `enabled` (bool): Whether this automation is enabled. Only enabled automations will trigger.
+  * `scope` (wandb.automations.scopes._ArtifactSequenceScope | wandb.automations.scopes._ArtifactPortfolioScope | wandb.automations.scopes.ProjectScope): The scope in which the triggering event must occur.
+  * `event` (SavedEvent): The event that will trigger this automation.
+  * `action` (wandb.automations.actions.SavedLaunchJobAction | wandb.automations.actions.SavedNotificationAction | wandb.automations.actions.SavedWebhookAction | wandb.automations.actions.SavedNoOpAction): The action that will execute when this automation is triggered.
+
+**Returns:** An `Automation` object.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/automations/automation.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/automations/automation)
+
+[Automations overviewPrevious](/models/ref/python/automations)[DoNothingNext](/models/ref/python/automations/donothing)
+
+⌘I

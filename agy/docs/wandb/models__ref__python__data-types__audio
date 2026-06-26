@@ -1,0 +1,81 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/data-types/audio
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Data Types](/models/ref/python/data-types)
+
+# Audio
+
+[GitHub source](https://github.com/wandb/wandb/blob/main/wandb/sdk/data_types/audio.py)
+
+## 
+
+​
+
+`class` `Audio`
+
+W&B class for audio clips.
+
+### 
+
+​
+
+`method` `Audio.__init__`
+    
+    
+    __init__(
+        data_or_path: 'str | pathlib.Path | list | np.ndarray',
+        sample_rate: 'int | None' = None,
+        caption: 'str | None' = None
+    )
+    
+
+Accept a path to an audio file or a numpy array of audio data. **Args:**
+
+  * `data_or_path`: A path to an audio file or a NumPy array of audio data.
+  * `sample_rate`: Sample rate, required when passing in raw NumPy array of audio data.
+  * `caption`: Caption to display with audio.
+
+
+
+* * *
+
+### 
+
+​
+
+`classmethod` `Audio.durations`
+    
+    
+    durations(audio_list)
+    
+
+Calculate the duration of the audio files.
+
+* * *
+
+### 
+
+​
+
+`classmethod` `Audio.sample_rates`
+    
+    
+    sample_rates(audio_list)
+    
+
+Get sample rates of the audio files.
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/data-types/audio.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/data-types/audio)
+
+[Data Types overviewPrevious](/models/ref/python/data-types)[box3d()Next](/models/ref/python/data-types/box3d)
+
+⌘I

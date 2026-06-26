@@ -1,0 +1,61 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/integrations/local_models
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Integrate with your LLM provider and frameworks](/weave/guides/integrations)
+
+# Local Models
+
+Run open source models locally with Ollama, LMStudio, or GPT4All and trace them with Weave using OpenAI SDK compatibility.
+
+Many developers run open source models like Llama 3, Mixtral, Gemma, and Phi on their own hardware. Weave supports several local model runners by default, as long as they offer OpenAI SDK compatibility. This guide shows you how to trace calls to locally hosted models with Weave so you can capture inputs, outputs, and metadata in the same way you would for hosted LLM providers. It’s intended for developers who run open source models on their own machine and want observability for those calls.
+
+## 
+
+​
+
+Wrap local model functions with `@weave.op()`
+
+If your local model isn’t accessed through an OpenAI-compatible runner, you can still capture traces by wrapping your own model-calling functions. Integrate Weave with any LLM by initializing Weave with `weave.init('<your-project-name>')` and then wrapping the calls to your LLMs with `weave.op()`. For more details, see the [tracing guide](/weave/guides/tracking/tracing).
+
+## 
+
+​
+
+Update your OpenAI SDK code to use local models
+
+If your local model runner supports the OpenAI SDK, you can point the existing OpenAI client at it with two changes. The main change is the `base_url` parameter during the `openai.OpenAI()` initialization. This tells the OpenAI SDK to send requests to your local server instead of the OpenAI hosted API.
+    
+    
+    client = openai.OpenAI(
+        base_url="http://localhost:1234",
+    )
+    
+
+For local models, the `api_key` can be any string, but you must override it. Otherwise, the OpenAI SDK reads it from environment variables and shows an error.
+
+## 
+
+​
+
+Supported local model runners
+
+The following runners let you download and run models from Hugging Face on your computer. Each runner exposes an OpenAI-compatible endpoint that you can point the OpenAI SDK at using the preceding changes.
+
+  * Nomic [GPT4All](https://www.nomic.ai/gpt4all) \- support through Local Server in settings ([FAQ](https://docs.gpt4all.io/gpt4all_help/faq.html))
+  * [LMStudio](https://lmstudio.ai/) \- Local Server OpenAI SDK support [docs](https://lmstudio.ai/docs/developer/core/server)
+  * [Ollama](https://ollama.com/) \- [OpenAI compatibility](https://ollama.readthedocs.io/en/openai/) for OpenAI SDK
+  * [llama-cpp-python](https://llama-cpp-python.readthedocs.io/en/latest/server/) \- Python package for running `llama.cpp` with OpenAI SDK support
+  * [llamafile](https://github.com/Mozilla-Ocho/llamafile#other-example-llamafiles) \- `http://localhost:8080/v1` automatically supports the OpenAI SDK when you run Llamafile
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/integrations/local_models.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/integrations/local_models)
+
+[Model Context Protocol (MCP) and WeavePrevious](/weave/guides/integrations/mcp)[Deployment options and security featuresNext](/weave/guides/platform)
+
+⌘I

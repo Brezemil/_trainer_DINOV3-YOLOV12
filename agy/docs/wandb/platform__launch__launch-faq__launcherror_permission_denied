@@ -1,0 +1,23 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/launcherror_permission_denied
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# How do I fix a "permission denied" error in Launch?
+
+If you see the error `Launch Error: Permission denied`, you don’t have permission to log to the project. Review the following causes and resolutions:
+
+  * You aren’t logged in on this machine. Run [`wandb login`](/models/ref/cli/wandb-login) in the command line.
+  * The specified entity doesn’t exist. The entity must be your username or the name of an existing team. If necessary, create a team on the [Subscriptions page](https://app.wandb.ai/billing).
+  * You lack project permissions. Ask the project creator to change the privacy setting to **Open** so you can log runs to the project.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/launcherror_permission_denied.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/launcherror_permission_denied)
+
+[How to make W&B Launch work with TensorFlow on GPUPrevious](/platform/launch/launch-faq/launch_tensorflow_gpu)[What permissions does the agent require in Kubernetes?Next](/platform/launch/launch-faq/permissions_agent_require_kubernetes)
+
+⌘I

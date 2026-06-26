@@ -1,0 +1,41 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/security
+---
+
+# Security
+
+## Can W&B team members see my data?
+
+Key engineers and support staff at W&B access logged values for debugging purposes with user permission. All data stores …
+
+## Do you have a bug bounty program?
+
+W&B has a bug bounty program. For details, see the W&B security portal.
+
+## How can I rotate or revoke access?
+
+You can rotate or revoke personal and service account keys. Create a new API key or service account user, then reconfigu …
+
+## How do I find my API key?
+
+import ApiKeyFind from “/snippets/_includes/api-key-find.mdx”;
+
+## How do I fix service account errors like `Unauthorized` or missing runs?
+
+When you use a service account to automate W&B workflows, you might encounter authorization errors or find that runs don …
+
+## How do I resolve permission errors when logging a run?
+
+Permission errors when logging a run typically indicate a mismatch between your code, your credentials, or your deployme …
+
+## How do I set up SSO for W&B Multi-tenant?
+
+W&B supports Single Sign-On (SSO) for the Multi-tenant offering through Auth0, so you can let users authenticate with yo …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/security.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/security)
+
+[RunsPrevious](/support/models/tags/runs)[StorageNext](/support/models/tags/storage)
+
+⌘I

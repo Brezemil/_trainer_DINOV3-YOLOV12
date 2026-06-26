@@ -1,0 +1,113 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/administrator
+---
+
+# Administrator
+
+## Can I get an academic plan as a student?
+
+Students can apply for an academic plan by following these steps: Visit the Pricing page on wandb.com and apply for the …
+
+## How can I be removed from a team?
+
+A team admin can remove you from a team from the Users tab of the team settings.
+
+## How can I change my account from corporate to academic?
+
+If you signed up for W&B with a corporate email but qualify for an academic plan, you can switch your account. Link your …
+
+## How can I remove projects from a team space without admin privileges?
+
+To remove projects from a team space without admin privileges, try one of the following approaches: Request that a curre …
+
+## How can I rotate or revoke access?
+
+You can rotate or revoke personal and service account keys. Create a new API key or service account user, then reconfigu …
+
+## How can I see the bytes stored, bytes tracked and tracked hours of my organization?
+
+Organization administrators can review bytes stored, bytes tracked, and tracked hours on the Usage page in organization …
+
+## How do I add more seats to my account?
+
+If you’re an administrator who needs to expand your team’s access to W&B, you can request additional seats for your acco …
+
+## How do I cancel my subscription?
+
+To cancel your subscription, contact the W&B support team with the details that identify your account: 1. Contact the su …
+
+## How do I change my billing address?
+
+To change your billing address, contact the support team at [support@wandb.com](mailto:support@wandb.com).
+
+## How do I delete a team from my account?
+
+As a team admin, you can permanently delete a team from your W&B account. Use this procedure when you need to remove a t …
+
+## How do I delete my organization account?
+
+The W&B support team handles organization account deletion. To delete your organization account, contact support at supp …
+
+## How do I downgrade my subscription plan?
+
+To downgrade your subscription plan, contact the support team at [support@wandb.com](mailto:support@wandb.com) with your current plan details and th …
+
+## How do I export a list of users from my W&B organization?
+
+To export a list of users from a W&B organization as an administrator, use the SCIM API with the following code: Modify …
+
+## How do I fix service account errors like `Unauthorized` or missing runs?
+
+When you use a service account to automate W&B workflows, you might encounter authorization errors or find that runs don …
+
+## How do I get added to a team on W&B?
+
+To join a team, follow these steps: 1. Request an invitation from a team administrator or someone with administrative pr …
+
+## How do I log metrics without saving my code?
+
+To keep proprietary source code or training data out of W&B for privacy or compliance reasons, limit what W&B captures s …
+
+## How do I renew my expired license?
+
+To renew an expired license, contact the support team at [support@wandb.com](mailto:support@wandb.com) to start the renewal process and get a new li …
+
+## If I am the admin of my local instance, how should I manage it?
+
+If you’re the admin for your instance, review the User Management section for instructions on adding users and creating …
+
+## Is it possible to add the same service account to multiple teams?
+
+You can’t add a service account to multiple teams in W&B. Each service account is tied to a specific team.
+
+## Is it possible to change the username?
+
+You can’t change the username after account creation. Create a new account with the desired username instead.
+
+## Is there a monthly subscription option for the Teams plan?
+
+The Teams plan doesn’t offer a monthly subscription option. It’s billed annually.
+
+## On a local instance, which files should I check when I have issues?
+
+When you troubleshoot issues on a W&B local instance, start by collecting the Debug Bundle. The bundle contains the logs …
+
+## What is a service account, and why is it useful?
+
+A service account represents a non-human or machine identity that can automate common tasks across teams and projects. S …
+
+## What is the difference between team and organization?
+
+A team is a collaborative workspace for users on the same projects. An organization is a higher-level entity that can in …
+
+## Why is my enterprise license not recognized?
+
+This page helps administrators of W&B enterprise deployments diagnose common issues when W&B doesn’t recognize an enterp …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/administrator.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/administrator)
+
+[AcademicPrevious](/support/models/tags/academic)[AlertsNext](/support/models/tags/alerts)
+
+⌘I

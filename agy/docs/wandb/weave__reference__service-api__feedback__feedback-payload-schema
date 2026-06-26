@@ -1,0 +1,179 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/feedback/feedback-payload-schema
+---
+
+Feedback Payload Schema
+    
+    
+    curl --request POST \
+      --url https://api.example.com/feedback/payload_schema \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "feedback_type": "<string>",
+      "trigger_ref": "<string>",
+      "sample_limit": 2000
+    }
+    '
+    
+    
+    {
+      "paths": [
+        {
+          "json_path": "<string>",
+          "value_type": "numeric"
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Feedback](/weave/reference/service-api/feedback/feedback-create)
+
+# Feedback Payload Schema
+
+Discover feedback payload schema (paths and types) from sample rows.
+
+POST
+
+/
+
+feedback
+
+/
+
+payload_schema
+
+Feedback Payload Schema
+    
+    
+    curl --request POST \
+      --url https://api.example.com/feedback/payload_schema \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "feedback_type": "<string>",
+      "trigger_ref": "<string>",
+      "sample_limit": 2000
+    }
+    '
+    
+    
+    {
+      "paths": [
+        {
+          "json_path": "<string>",
+          "value_type": "numeric"
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request for feedback payload schema discovery.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+start
+
+string<date-time>
+
+required
+
+Inclusive start time (UTC, ISO 8601).
+
+​
+
+end
+
+string<date-time> | null
+
+Exclusive end time (UTC, ISO 8601). Defaults to now if omitted.
+
+​
+
+feedback_type
+
+string | null
+
+Filter by feedback_type.
+
+​
+
+trigger_ref
+
+string | null
+
+Filter by trigger_ref (exact or prefix match for all-versions).
+
+​
+
+sample_limit
+
+integer
+
+default:2000
+
+Max distinct trigger_refs to sample when discovering the payload schema. Each distinct trigger_ref (monitor/source) typically has a fixed payload structure, so sampling one payload per ref is usually enough to see the full schema. 2 000 covers virtually all real-world projects while keeping the query fast; the hard cap of 5 000 prevents runaway scans.
+
+Required range: `1 <= x <= 5000`
+
+#### Response
+
+Successful Response
+
+Response with discovered feedback payload paths and types.
+
+​
+
+paths
+
+FeedbackPayloadPath · object[]
+
+Discovered leaf paths with inferred value types.
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/feedback/feedback-payload-schema.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/feedback/feedback-payload-schema)
+
+[Feedback StatsPrevious](/weave/reference/service-api/feedback/feedback-stats)[Threads Query StreamNext](/weave/reference/service-api/threads/threads-query-stream)
+
+⌘I

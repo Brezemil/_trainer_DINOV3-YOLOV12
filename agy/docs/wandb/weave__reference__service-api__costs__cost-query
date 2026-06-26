@@ -1,0 +1,241 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/costs/cost-query
+---
+
+Cost Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/cost/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "fields": [
+        "id",
+        "llm_id",
+        "prompt_token_cost",
+        "completion_token_cost",
+        "prompt_token_cost_unit",
+        "completion_token_cost_unit",
+        "effective_date",
+        "provider_id"
+      ],
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "sort_by": [
+        {
+          "field": "<string>"
+        }
+      ],
+      "limit": 10,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "results": [
+        {
+          "id": "2341-asdf-asdf",
+          "llm_id": "gpt4",
+          "prompt_token_cost": 1,
+          "completion_token_cost": 1,
+          "prompt_token_cost_unit": "USD",
+          "completion_token_cost_unit": "USD",
+          "effective_date": "2024-01-01T00:00:00Z",
+          "provider_id": "openai"
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Costs](/weave/reference/service-api/costs/cost-create)
+
+# Cost Query
+
+POST
+
+/
+
+cost
+
+/
+
+query
+
+Cost Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/cost/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "fields": [
+        "id",
+        "llm_id",
+        "prompt_token_cost",
+        "completion_token_cost",
+        "prompt_token_cost_unit",
+        "completion_token_cost_unit",
+        "effective_date",
+        "provider_id"
+      ],
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "sort_by": [
+        {
+          "field": "<string>"
+        }
+      ],
+      "limit": 10,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "results": [
+        {
+          "id": "2341-asdf-asdf",
+          "llm_id": "gpt4",
+          "prompt_token_cost": 1,
+          "completion_token_cost": 1,
+          "prompt_token_cost_unit": "USD",
+          "completion_token_cost_unit": "USD",
+          "effective_date": "2024-01-01T00:00:00Z",
+          "provider_id": "openai"
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+fields
+
+string[] | null
+
+Example:
+    
+    
+    [  
+      "id",  
+      "llm_id",  
+      "prompt_token_cost",  
+      "completion_token_cost",  
+      "prompt_token_cost_unit",  
+      "completion_token_cost_unit",  
+      "effective_date",  
+      "provider_id"  
+    ]
+
+​
+
+query
+
+Query · object
+
+Show child attributes
+
+​
+
+sort_by
+
+SortBy · object[] | null
+
+Show child attributes
+
+​
+
+limit
+
+integer | null
+
+Example:
+
+`10`
+
+​
+
+offset
+
+integer | null
+
+Example:
+
+`0`
+
+#### Response
+
+Successful Response
+
+​
+
+results
+
+CostQueryOutput · object[]
+
+required
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/costs/cost-query.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/costs/cost-query)
+
+[Cost CreatePrevious](/weave/reference/service-api/costs/cost-create)[Cost PurgeNext](/weave/reference/service-api/costs/cost-purge)
+
+⌘I

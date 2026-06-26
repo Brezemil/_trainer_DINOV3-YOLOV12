@@ -1,0 +1,262 @@
+---
+source_url: https://docs.wandb.ai/models/ref/sdk-coding-cheat-sheet/runs
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[SDK Coding Cheat Sheet](/models/ref/sdk-coding-cheat-sheet)
+
+# Runs
+
+Initialize and manage W&B runs to organize your experiments and track your work.
+
+Initialize and manage W&B runs to organize your experiments and track your work.
+
+## 
+
+​
+
+Create an experiment
+    
+    
+    """
+    Create an experiment in W&B. If the project does not exist, W&B creates it.
+    
+    Note that this file only initializes the experiment; you can add code to log metrics,
+    artifacts, etc., within the `with` block.
+    """
+    import wandb
+    
+    # Initialize a W&B run
+    with wandb.init(project="<project>") as run:
+        # Experiment code goes here
+        pass
+    
+
+## 
+
+​
+
+Fork an existing run from a specific step
+    
+    
+    """Fork an existing W&B run from a specific step."""
+    
+    import wandb
+    
+    # Initialize a run to be forked later
+    with wandb.init(project="<project>", entity="<entity>") as original_run:
+        # Training and logging code goes here.
+        pass
+    
+    # Fork the run from a specific step. In this example, we fork from step 200. You can adjust the step number as needed.
+    with wandb.init(project="<project>",entity="<entity>", fork_from=f"{original_run.id}?_step=200") as forked_run:
+        # Training and logging code goes here.
+        pass
+    
+
+## 
+
+​
+
+Initialize a run
+    
+    
+    """
+    Initializes a W&B run.
+    
+    W&B automatically creates the project if it does not exist. Note that this
+    file only initializes the experiment; you can add code to log metrics,
+    artifacts, etc., within the `with` block.
+    """
+    import wandb
+    
+    # Note the usage of `with` statement to ensure proper resource management.
+    with wandb.init(project="<project>") as run:
+        # Training and logging code goes here
+        pass
+    
+
+## 
+
+​
+
+Set resume behaviour for a run if it is paused, stops, or fails
+    
+    
+    """
+    Set resume behaviour for a run if it is paused, stops, or fails. 
+    
+    This is useful for long-running experiments that may be interrupted. See
+    reference documentation for wandb.init(resume=) for a list of all resume options.
+    """
+    import wandb
+    
+    # Initialize a W&B run with resume behavior
+    with wandb.init(project="<project>", resume="<resume_option>") as run:
+        # Training and logging code goes here
+        pass
+    
+
+## 
+
+​
+
+Rewind a run to modify the history of a run
+    
+    
+    """
+    Rewind a run to modify the history of a run.
+    
+    Specify the run ID and step to rewind to with the `resume_from` parameter in `wandb.init()`.
+    """
+    import wandb
+    import math
+    
+    # Initialize a run and log some metrics
+    with wandb.init(project="<project>", entity="<entity>") as run:
+        # Training and logging code goes here
+        pass
+    
+    run_ID = "<run_id>" # Replace with run ID of the original run
+    step = int("<step>") # Specify the step to rewind to
+    
+    # Start a new run that resumes from the specified step of the original run
+    with wandb.init(project="<project>", entity="<entity>", resume_from=f"{run_ID}?_step={step}") as run:
+        # Training and logging code goes here
+        pass    
+    
+
+## 
+
+​
+
+Add one or more tags to a run
+    
+    
+    """
+    Add one or more tags to a run.
+    """
+    import wandb
+    
+    with wandb.init(entity="<entity>", project="<project>", tags=["<tag1>", "<tag2>"]) as run:
+        # Training and logging code goes here
+        pass
+    
+
+## 
+
+​
+
+Add one or more runs to a group
+    
+    
+    """
+    Add one or more runs to a group.
+    
+    Pass the name of your group as an argument to the `group` parameter when you
+    initialize a run with `wandb.init(group="")`.
+    """
+    import wandb
+    
+    entity = "<entity>"
+    project = "<project>"
+    
+    # The following creates 3 groups of runs, with 3 runs in each group. 
+    for group in ["<GroupA>", "<GroupB>", "<GroupC>"]: # Replace with your desired group names
+        # Simulate creating three runs for each group.
+        for i in range(3):
+            with wandb.init(entity=entity, project=project, group=group, name=f"{group}_run_{i}") as run:
+                # Training and logging code goes here
+                pass    
+    
+
+## 
+
+​
+
+Organize runs by their job type
+    
+    
+    """
+    Organize runs by their job type.
+    
+    Add a job type to a run by passing the `job_type` parameter to `wandb.init(job_type="")`.
+    """
+    import wandb
+    
+    entity = "<entity>"
+    project = "<project>"
+    
+    # Creates runs and organizes them by job type.
+    for job_type in ["<JobType1>", "<JobType2>"]: # Replace with job type names
+        # Simulate creating two runs for each job type.
+        for i in range(2):
+            with wandb.init(entity=entity, project=project, job_type=job_type, name=f"{job_type}_run_{i}") as run:
+                # Training and logging code goes here
+                pass    
+    
+
+## 
+
+​
+
+Add one or more tags to an active run
+    
+    
+    """
+    Add one or more tags to an active run.
+    
+    A run object's `tags` property is a tuple. To add a new tag to an existing run,
+    update the `tags` property with a new tuple that includes the existing tags and the new tag(s).
+    """
+    
+    import wandb
+    
+    with wandb.init(entity="<entity>", project="<project>", tags=["<tag1>", "<tag2>"]) as run:
+        # Training and logging code goes here
+    
+        # Add a new tag to the existing tags by creating a new tuple that includes the existing tags and the new tag.
+        run.tags += ("<tag3>",)
+    
+
+## 
+
+​
+
+Add one or more tags to previously saved runs
+    
+    
+    """
+    Add one or more tags to previously saved runs.
+    
+    Use the Public API to update tags on stored data after the run has finished or
+    when you are working outside the run process. This is useful when you need to
+    organize or categorize runs retroactively.
+    
+    To add a new tag to a run, update the `tags` property with a new list that
+    includes the existing tags and the new tags. The run's path consists of
+    `entity/project/run_id`. After updating the tags, you must call the run's
+    `update()` method to save the changes.
+    """
+    import wandb
+    
+    entity = "<entity>"
+    project = "<project>"
+    run_id = "<run-id>"  # Replace with the ID of the run you want to update
+    
+    # Path consists of entity/project/run_id
+    with wandb.Api().run(f"{entity}/{project}/{run_id}") as run:
+      run.tags.append("<tag>")
+      run.update()
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/sdk-coding-cheat-sheet/runs.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/sdk-coding-cheat-sheet/runs)
+
+[W&B SDK Python coding cheat sheetPrevious](/models/ref/sdk-coding-cheat-sheet)[LoggingNext](/models/ref/sdk-coding-cheat-sheet/logging)
+
+⌘I

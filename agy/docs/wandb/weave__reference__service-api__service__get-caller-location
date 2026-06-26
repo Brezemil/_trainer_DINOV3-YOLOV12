@@ -1,0 +1,119 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/service/get-caller-location
+---
+
+Get Caller Location
+    
+    
+    curl --request GET \
+      --url https://api.example.com/geolocate
+    
+    
+    {
+      "ip": "<string>",
+      "location": {
+        "file_index": 123,
+        "range_start_int": 123,
+        "range_end_int": 123,
+        "range_start_ip": "<string>",
+        "range_end_ip": "<string>",
+        "country_code": "<string>",
+        "country_name": "<string>"
+      },
+      "allowed": false
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Service](/weave/reference/service-api/service/read-root)
+
+# Get Caller Location
+
+Lookup the geographic location of a user based on their IP address.
+
+This API exists for debugging purposes and may not be available in the future.
+
+GET
+
+/
+
+geolocate
+
+Get Caller Location
+    
+    
+    curl --request GET \
+      --url https://api.example.com/geolocate
+    
+    
+    {
+      "ip": "<string>",
+      "location": {
+        "file_index": 123,
+        "range_start_int": 123,
+        "range_end_int": 123,
+        "range_start_ip": "<string>",
+        "range_end_ip": "<string>",
+        "country_code": "<string>",
+        "country_name": "<string>"
+      },
+      "allowed": false
+    }
+
+#### Query Parameters
+
+​
+
+ip
+
+string | null
+
+IP address to geolocate, defaults to client IP address
+
+Example:
+
+`"1.2.3.4"`
+
+#### Response
+
+Successful Response
+
+​
+
+ip
+
+string
+
+required
+
+Resolved IP address, useful for debugging
+
+​
+
+location
+
+Geolocation · object
+
+Information about the location of the IP address, None if could not be determined
+
+Show child attributes
+
+​
+
+allowed
+
+boolean
+
+default:false
+
+Whether the IP address is allowed to be used for inference.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/service/get-caller-location.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/service/get-caller-location)
+
+[Read VersionPrevious](/weave/reference/service-api/service/read-version)[Server InfoNext](/weave/reference/service-api/service/server-info)
+
+⌘I

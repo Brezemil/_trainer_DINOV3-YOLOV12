@@ -1,0 +1,50 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-symon
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb beta](/models/ref/cli/wandb-beta)
+
+[beta leet](/models/ref/cli/wandb-beta/wandb-beta-leet)
+
+# wandb beta leet symon
+
+## 
+
+​
+
+Usage
+    
+    
+    symon [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+Launch the standalone system monitor.
+
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--interval`| STR| Sampling interval for system metrics (e.g. 500ms, 2s, 1m). **Default** :  
+`-h, --help`| BOOL Flag| Show this message and exit. **Default** : False  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-symon.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-symon)
+
+[wandb beta leet runPrevious](/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-run)[wandb beta syncNext](/models/ref/cli/wandb-beta/wandb-beta-sync)
+
+⌘I

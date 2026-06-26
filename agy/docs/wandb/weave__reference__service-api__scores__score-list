@@ -1,0 +1,185 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/scores/score-list
+---
+
+Score List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/scores \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    [
+      {
+        "score_id": "<string>",
+        "scorer": "<string>",
+        "value": "<unknown>",
+        "evaluation_run_id": "<string>",
+        "wb_user_id": "<string>"
+      }
+    ]
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Scores](/weave/reference/service-api/scores/calls-score)
+
+# Score List
+
+List scores.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+scores
+
+Score List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/scores \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    [
+      {
+        "score_id": "<string>",
+        "scorer": "<string>",
+        "value": "<unknown>",
+        "evaluation_run_id": "<string>",
+        "wb_user_id": "<string>"
+      }
+    ]
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+evaluation_run_id
+
+string | null
+
+Filter by evaluation run ID
+
+​
+
+limit
+
+integer | null
+
+Maximum number of scores to return
+
+​
+
+offset
+
+integer | null
+
+Number of scores to skip
+
+#### Response
+
+Stream of data in JSONL format
+
+​
+
+score_id
+
+string
+
+required
+
+The score ID
+
+​
+
+scorer
+
+string
+
+required
+
+The scorer reference (weave:// URI)
+
+​
+
+value
+
+any
+
+required
+
+The raw output of the scorer
+
+​
+
+evaluation_run_id
+
+string | null
+
+Evaluation run ID if this score is linked to one
+
+​
+
+wb_user_id
+
+string | null
+
+Do not set directly. Server will automatically populate this field.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/scores/score-list.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/scores/score-list)
+
+[Calls ScorePrevious](/weave/reference/service-api/scores/calls-score)[Score CreateNext](/weave/reference/service-api/scores/score-create)
+
+⌘I

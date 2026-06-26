@@ -1,0 +1,2375 @@
+---
+source_url: https://docs.voxel51.com/model_zoo
+---
+
+# Model Zoo#
+
+Welcome to the FiftyOne Model Zoo! ð
+
+Here youâll discover state-of-the-art computer vision models, pre-trained on various datasets and ready to use with your FiftyOne datasets.
+
+The FiftyOne Model Zoo provides access to a curated collection of models from popular frameworks like PyTorch and TensorFlow, enabling you to quickly apply cutting-edge computer vision techniques to your data.
+
+[ Learn more about the Model Zoo ](overview.html)
+
+* * *
+
+**PE-Core-B16-224-Vision-Encoder**
+
+The ViT from the base variant of the PE Core line of models.
+
+Embeddings,PyTorch
+
+**PE-Core-L14-336-Vision-Encoder**
+
+The ViT from the large variant of the PE Core line of models.
+
+Embeddings,PyTorch
+
+**alexnet-imagenet-torch**
+
+Classic neural network that recognizes images and helped launch the deep learning revolution
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Alexnet,Official
+
+**apple-sharp-torch**
+
+Fast single-image to 3D Gaussian splat model generating photorealistic novel views in under one second
+
+3d,Gaussian-splatting,Novel-view,PyTorch,Transformer
+
+**centernet-hg104-1024-coco-tf2**
+
+Finds objects in high-resolution photos by pinpointing their centers with exceptional accuracy and speed
+
+Detection,Coco,TensorFlow-2,Centernet
+
+**centernet-hg104-512-coco-tf2**
+
+Efficient object finder optimized for medium-resolution images to run faster on regular computers
+
+Detection,Coco,TensorFlow-2,Centernet
+
+**centernet-mobilenet-v2-fpn-512-coco-tf2**
+
+Lightweight object detector that runs smoothly on phones and other portable devices
+
+Detection,Coco,TensorFlow-2,Centernet,Mobilenet
+
+**centernet-resnet101-v1-fpn-512-coco-tf2**
+
+Advanced object finder with deeper processing for more accurate results in challenging scenes
+
+Detection,Coco,TensorFlow-2,Centernet,Resnet
+
+**centernet-resnet50-v1-fpn-512-coco-tf2**
+
+Balanced object detector that works well for most everyday computer vision tasks and applications
+
+Detection,Coco,TensorFlow-2,Centernet,Resnet
+
+**centernet-resnet50-v2-512-coco-tf2**
+
+Updated version with improved training stability for more consistent object detection across different images
+
+Detection,Coco,TensorFlow-2,Centernet,Resnet
+
+**classification-transformer-torch**
+
+Vision transformer for image classification and custom fine-tuning on specialized datasets
+
+Classification,Logits,Embeddings,PyTorch,Transformers,Official
+
+**clip-vit-base32-torch**
+
+Understands both images and text together, enabling search and classification using natural language descriptions
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Transformer,Official
+
+**convnext-base-224-torch**
+
+Base modern CNN with transformer elements for robust visual understanding
+
+Classification,Imagenet,PyTorch,Transformers,Convnext,Official,Embeddings
+
+**convnext-large-224-torch**
+
+Large modern CNN demonstrating competitive performance with vision transformers
+
+Classification,Imagenet,PyTorch,Transformers,Convnext,Embeddings,Official
+
+**convnext-small-224-torch**
+
+Small modernized CNN delivering strong accuracy through architectural innovations
+
+Classification,Imagenet,PyTorch,Transformers,Convnext,Official,Embeddings
+
+**convnext-tiny-224-torch**
+
+Tiny modern CNN bridging traditional convolutions with transformer-inspired improvements
+
+Classification,Imagenet,PyTorch,Transformers,Convnext,Embeddings,Official
+
+**convnext-xlarge-224-torch**
+
+Extra-large modern CNN maximizing architectural improvements for top accuracy
+
+Classification,Imagenet,PyTorch,Transformers,Convnext,Official,Embeddings
+
+**deeplabv3-cityscapes-tf**
+
+Creates detailed pixel-by-pixel labels for urban scenes, helping autonomous vehicles understand their surroundings
+
+Segmentation,Cityscapes,TensorFlow,Deeplabv3,Legacy
+
+**deeplabv3-mnv2-cityscapes-tf**
+
+Efficient street scene labeler designed to run on phones and edge devices with limited resources
+
+Segmentation,Cityscapes,TensorFlow,Deeplabv3,Legacy
+
+**deeplabv3-resnet101-coco-torch**
+
+Labels everyday objects in images pixel by pixel for general scene understanding and analysis
+
+Segmentation,Coco,PyTorch,Resnet,Deeplabv3,Official
+
+**deeplabv3-resnet50-coco-torch**
+
+Faster version that quickly identifies and labels objects in images for real-time applications
+
+Segmentation,Coco,PyTorch,Resnet,Deeplabv3,Official
+
+**densenet121-imagenet-torch**
+
+Compact yet powerful classifier that delivers strong results while using minimal computational resources
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Densenet,Official
+
+**densenet161-imagenet-torch**
+
+Dense network that achieves high accuracy for image classification and adapts well to new tasks
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Densenet,Official
+
+**densenet169-imagenet-torch**
+
+Deeper variant offering improved accuracy while remaining efficient enough for practical deployment
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Densenet,Official
+
+**densenet201-imagenet-torch**
+
+Extra-deep model providing the most detailed features for complex image understanding tasks
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Densenet,Official
+
+**depth-anything-v2-base-torch**
+
+Balanced Depth Anything V2 model for general-purpose monocular depth estimation
+
+Depth,3d,PyTorch,Transformers
+
+**depth-anything-v2-large-torch**
+
+High-accuracy Depth Anything V2 model for detailed monocular depth estimation
+
+Depth,3d,PyTorch,Transformers
+
+**depth-anything-v2-small-torch**
+
+Lightweight Depth Anything V2 model for fast monocular depth estimation
+
+Depth,3d,PyTorch,Transformers
+
+**depth-anything-v3-base-torch**
+
+Balanced Depth Anything V3 model for general-purpose monocular depth estimation
+
+Depth,3d,PyTorch,Transformer
+
+**depth-anything-v3-giant-torch**
+
+Largest Depth Anything V3 model for maximum accuracy depth estimation
+
+Depth,3d,PyTorch,Transformer
+
+**depth-anything-v3-large-torch**
+
+High-accuracy Depth Anything V3 model for detailed monocular depth estimation
+
+Depth,3d,PyTorch,Transformer
+
+**depth-anything-v3-metric-large-torch**
+
+Depth Anything V3 with metric depth output in meters and sky segmentation
+
+Depth,3d,PyTorch,Transformer,Metric,Sky
+
+**depth-anything-v3-mono-large-torch**
+
+Depth Anything V3 monocular model with relative depth and sky segmentation
+
+Depth,3d,PyTorch,Transformer,Sky
+
+**depth-anything-v3-nested-giant-large-torch**
+
+Depth Anything V3 nested architecture combining giant encoder with large decoder
+
+Depth,3d,PyTorch,Transformer
+
+**depth-anything-v3-small-torch**
+
+Lightweight Depth Anything V3 model for fast monocular depth estimation
+
+Depth,3d,PyTorch,Transformer
+
+**depth-estimation-transformer-torch**
+
+Hugging Face Transformers model for monocular depth estimation
+
+Depth,PyTorch,Transformers
+
+**detection-transformer-torch**
+
+Modern object detector that finds items in images without needing complex post-processing steps
+
+Detection,Logits,Embeddings,PyTorch,Transformers,Official
+
+**dfine-large-coco-torch**
+
+D-FINE Large from "D-FINE: Redefine Regression Task in DETRs as Fine-grained Distribution Refinement" trained on COCO. Achieves 54.0% AP at 124 FPS on T4 GPU.
+
+Detection,Coco,Embeddings,PyTorch,Transformers,Detr,Official
+
+**dfine-medium-coco-torch**
+
+D-FINE Medium from "D-FINE: Redefine Regression Task in DETRs as Fine-grained Distribution Refinement" trained on COCO. Mid-size real-time object detector.
+
+Detection,Coco,Embeddings,PyTorch,Transformers,Detr,Official
+
+**dfine-nano-coco-torch**
+
+D-FINE Nano from "D-FINE: Redefine Regression Task in DETRs as Fine-grained Distribution Refinement" trained on COCO. Ultra-lightweight real-time object detector.
+
+Detection,Coco,Embeddings,PyTorch,Transformers,Detr,Official
+
+**dfine-small-coco-torch**
+
+D-FINE Small from "D-FINE: Redefine Regression Task in DETRs as Fine-grained Distribution Refinement" trained on COCO. Balanced real-time object detector.
+
+Detection,Coco,Embeddings,PyTorch,Transformers,Detr,Official
+
+**dfine-xlarge-coco-torch**
+
+D-FINE XLarge from "D-FINE: Redefine Regression Task in DETRs as Fine-grained Distribution Refinement" trained on COCO. Achieves 55.8% AP at 78 FPS on T4 GPU.
+
+Detection,Coco,Embeddings,PyTorch,Transformers,Detr,Official
+
+**dinov2-vitb14-reg-torch**
+
+Enhanced image search model that resists noise and errors for more reliable similarity matching
+
+Embeddings,PyTorch,Dinov2,Transformer,Official
+
+**dinov2-vitb14-torch**
+
+Creates searchable image fingerprints for finding similar pictures and organizing large photo collections
+
+Embeddings,PyTorch,Dinov2,Transformer,Official
+
+**dinov2-vitg14-reg-torch**
+
+Highest-capacity dinov2 search model with maximum stability for finding images across massive diverse datasets
+
+Embeddings,PyTorch,Dinov2,Transformer,Official
+
+**dinov2-vitg14-torch**
+
+Powerful image search engine that handles enormous photo collections with rich detail extraction
+
+Embeddings,PyTorch,Dinov2,Transformer,Official
+
+**dinov2-vitl14-reg-torch**
+
+Large stable model for finding and grouping similar images across big databases reliably
+
+Embeddings,PyTorch,Dinov2,Transformer,Official
+
+**dinov2-vitl14-torch**
+
+Large model that creates detailed image fingerprints for advanced search and automatic grouping
+
+Embeddings,PyTorch,Dinov2,Transformer,Official
+
+**dinov2-vits14-reg-torch**
+
+Compact stable model for image search that runs efficiently on phones and edge devices
+
+Embeddings,PyTorch,Dinov2,Transformer,Official
+
+**dinov2-vits14-torch**
+
+Small model enabling image search and similarity matching directly on mobile devices
+
+Embeddings,PyTorch,Dinov2,Transformer,Official
+
+**efficientdet-d0-512-coco-tf2**
+
+Tiny object detector optimized for phones and embedded systems working with smaller images
+
+Detection,Coco,TensorFlow-2,Efficientdet
+
+**efficientdet-d0-coco-tf1**
+
+Legacy-compatible tiny object detector for older systems still running TensorFlow 1 frameworks
+
+Detection,Coco,TensorFlow-1,Efficientdet,Legacy
+
+**efficientdet-d1-640-coco-tf2**
+
+Versatile object finder for medium-sized images supporting many different computer vision applications
+
+Detection,Coco,TensorFlow-2,Efficientdet
+
+**efficientdet-d1-coco-tf1**
+
+Legacy version of versatile object finder maintaining compatibility with TensorFlow 1
+
+Detection,Coco,TensorFlow-1,Efficientdet,Legacy
+
+**efficientdet-d2-768-coco-tf2**
+
+Balanced object detector offering good speed and accuracy for general-purpose image analysis
+
+Detection,Coco,TensorFlow-2,Efficientdet
+
+**efficientdet-d2-coco-tf1**
+
+Legacy-compatible balanced detector for established pipelines still using TensorFlow 1
+
+Detection,Coco,TensorFlow-1,Efficientdet,Legacy
+
+**efficientdet-d3-896-coco-tf2**
+
+Accurate object finder for larger images with better detection of big objects
+
+Detection,Coco,TensorFlow-2,Efficientdet
+
+**efficientdet-d3-coco-tf1**
+
+Legacy object detector maintaining compatibility for systems using TensorFlow 1
+
+Detection,Coco,TensorFlow-1,Efficientdet,Legacy
+
+**efficientdet-d4-1024-coco-tf2**
+
+High-accuracy object detector for detailed images delivering precise results in complex scenes
+
+Detection,Coco,TensorFlow-2,Efficientdet
+
+**efficientdet-d4-coco-tf1**
+
+Legacy high-accuracy object detector ensuring backward compatibility with TensorFlow 1
+
+Detection,Coco,TensorFlow-1,Efficientdet,Legacy
+
+**efficientdet-d5-1280-coco-tf2**
+
+Precision-focused object finder for very large images prioritizing accuracy over speed
+
+Detection,Coco,TensorFlow-2,Efficientdet
+
+**efficientdet-d5-coco-tf1**
+
+Legacy object detector with the highest accuracy in its family using TensorFlow 1
+
+Detection,Coco,TensorFlow-1,Efficientdet,Legacy
+
+**efficientdet-d6-1280-coco-tf2**
+
+Deep object detector for large images achieving state-of-the-art accuracy on challenging content
+
+Detection,Coco,TensorFlow-2,Efficientdet
+
+**efficientdet-d6-coco-tf1**
+
+Legacy deep detector maintaining top accuracy for mature TensorFlow 1 production stacks
+
+Detection,Coco,TensorFlow-1,Efficientdet,Legacy
+
+**efficientdet-d7-1536-coco-tf2**
+
+Maximum accuracy object finder for extra-large images pushing detection quality to the limit
+
+Detection,Coco,TensorFlow-2,Efficientdet
+
+**efficientnet-b0-imagenet-torch**
+
+Efficient image classifier optimized for mobile devices with excellent accuracy-efficiency tradeoff
+
+Classification,Imagenet,PyTorch,Transformers,Efficientnet,Official,Embeddings
+
+**efficientnet-b1-imagenet-torch**
+
+Scaled efficient classifier with improved accuracy for slightly larger computational budgets
+
+Classification,Imagenet,PyTorch,Transformers,Efficientnet,Official,Embeddings
+
+**efficientnet-b2-imagenet-torch**
+
+Balanced efficient model providing stronger performance while maintaining reasonable resource usage
+
+Classification,Imagenet,PyTorch,Transformers,Efficientnet,Official,Embeddings
+
+**efficientnet-b3-imagenet-torch**
+
+Mid-scale efficient classifier delivering high accuracy for versatile deployment scenarios
+
+Classification,Imagenet,PyTorch,Transformers,Efficientnet,Official,Embeddings
+
+**efficientnet-b4-imagenet-torch**
+
+Large efficient model with enhanced features for transfer learning applications
+
+Classification,Imagenet,PyTorch,Transformers,Efficientnet,Official,Embeddings
+
+**efficientnet-b5-imagenet-torch**
+
+High-capacity efficient classifier prioritizing accuracy with available compute resources
+
+Classification,Imagenet,PyTorch,Transformers,Efficientnet,Official,Embeddings
+
+**efficientnet-b6-imagenet-torch**
+
+Extended efficient model approaching state-of-the-art accuracy on challenging datasets
+
+Classification,Imagenet,PyTorch,Transformers,Efficientnet,Official,Embeddings
+
+**efficientnet-b7-imagenet-torch**
+
+Maximum efficient classifier pushing performance boundaries while preserving efficiency principles
+
+Classification,Imagenet,PyTorch,Transformers,Efficientnet,Official,Embeddings
+
+**faster-rcnn-inception-resnet-atrous-v2-coco-tf**
+
+High-accuracy object finder that sees wider context for better detection in complex scenes
+
+Detection,Coco,TensorFlow,Faster-rcnn,Inception,Resnet
+
+**faster-rcnn-inception-resnet-atrous-v2-lowproposals-coco-tf**
+
+Speed-optimized detector that runs faster by examining fewer regions while maintaining good accuracy
+
+Detection,Coco,TensorFlow,Faster-rcnn,Inception,Resnet,Legacy
+
+**faster-rcnn-inception-v2-coco-tf**
+
+Compact object detector achieving real-time speeds for responsive computer vision applications
+
+Detection,Coco,TensorFlow,Faster-rcnn,Inception
+
+**faster-rcnn-nas-coco-tf**
+
+Smart detector using NAS-designed architecture for improved object finding across diverse images
+
+Detection,Coco,TensorFlow,Faster-rcnn
+
+**faster-rcnn-nas-lowproposals-coco-tf**
+
+Fast NAS-designed detector that speeds up processing for time-sensitive applications and deployments
+
+Detection,Coco,TensorFlow,Faster-rcnn,Legacy
+
+**faster-rcnn-resnet101-coco-tf**
+
+Deep object detector balancing accuracy and speed for reliable performance across varied scenes
+
+Detection,Coco,TensorFlow,Faster-rcnn,Resnet,Legacy
+
+**faster-rcnn-resnet101-lowproposals-coco-tf**
+
+Accelerated deep detector that processes fewer regions for faster results with minimal accuracy loss
+
+Detection,Coco,TensorFlow,Faster-rcnn,Resnet,Legacy
+
+**faster-rcnn-resnet50-coco-tf**
+
+Versatile object detector suitable for everyday vision tasks in research and production environments
+
+Detection,Coco,TensorFlow,Faster-rcnn,Resnet
+
+**faster-rcnn-resnet50-fpn-coco-torch**
+
+Multi-scale object finder that accurately detects both small and large items in images
+
+Detection,Coco,PyTorch,Faster-rcnn,Resnet,Official
+
+**faster-rcnn-resnet50-lowproposals-coco-tf**
+
+Speed-focused detector optimized for running on embedded devices and resource-limited hardware
+
+Detection,Coco,TensorFlow,Faster-rcnn,Resnet,Legacy
+
+**fcn-resnet101-coco-torch**
+
+Creates detailed pixel-level labels for images, identifying and outlining twenty-one different object categories
+
+Segmentation,Coco,PyTorch,Fcn,Resnet,Official
+
+**fcn-resnet50-coco-torch**
+
+Fast image labeler that quickly identifies and outlines objects for interactive editing and annotation
+
+Segmentation,Coco,PyTorch,Fcn,Resnet,Official
+
+**googlenet-imagenet-torch**
+
+Classic image classifier providing reliable categorization and features for various computer vision projects.
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Googlenet,Official
+
+**group-vit-segmentation-transformer-torch**
+
+Hugging Face Transformers model for zero-shot semantic segmentation
+
+Segmentation,Embeddings,PyTorch,Transformers,Zero-shot,Official
+
+**inception-resnet-v2-imagenet-tf1**
+
+High-accuracy image classifier with advanced architecture for precise categorization and feature extraction
+
+Classification,Embeddings,Logits,Imagenet,TensorFlow-1,Inception,Resnet
+
+**inception-v3-imagenet-torch**
+
+Efficient image classifier delivering accurate results with useful features for transfer learning applications
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Inception,Official
+
+**inception-v4-imagenet-tf1**
+
+Enhanced image classifier with deeper architecture improving accuracy for demanding vision tasks
+
+Classification,Embeddings,Logits,Imagenet,TensorFlow-1,Inception,Legacy
+
+**keypoint-rcnn-resnet50-fpn-coco-torch**
+
+Finds people in images and maps their body joints for pose estimation and motion analysis
+
+Keypoints,Coco,PyTorch,Keypoint-rcnn,Resnet,Official
+
+**llmdet-base-torch**
+
+Balanced open-vocabulary detector that recognizes objects from natural-language prompts with strong accuracy.
+
+Detection,PyTorch,Transformers,Zero-shot,Official
+
+**llmdet-large-torch**
+
+High-capacity open-vocabulary detector for maximum detection quality from free-form text queries.
+
+Detection,PyTorch,Transformers,Zero-shot,Official
+
+**llmdet-tiny-torch**
+
+Lightweight open-vocabulary detector that finds any object you describe in images without class-specific training.
+
+Detection,PyTorch,Transformers,Zero-shot,Official
+
+**mask-rcnn-inception-resnet-v2-atrous-coco-tf**
+
+Creates precise object outlines and boxes for detailed scene understanding in high-resolution images
+
+Instances,Coco,TensorFlow,Mask-rcnn,Inception,Resnet
+
+**mask-rcnn-inception-v2-coco-tf**
+
+Fast object outliner generating masks and boxes with lower computing requirements for real-time use
+
+Instances,Coco,TensorFlow,Mask-rcnn,Inception
+
+**mask-rcnn-resnet101-atrous-coco-tf**
+
+Enhanced object outliner providing detailed masks with better handling of large objects in scenes
+
+Instances,Coco,TensorFlow,Mask-rcnn,Resnet,Legacy
+
+**mask-rcnn-resnet50-atrous-coco-tf**
+
+General-purpose object outliner creating masks and boxes suitable for most vision analysis tasks
+
+Instances,Coco,TensorFlow,Mask-rcnn,Resnet,Legacy
+
+**mask-rcnn-resnet50-fpn-coco-torch**
+
+Multi-scale object outliner using advanced architecture for accurate segmentation across different object sizes
+
+Instances,Coco,PyTorch,Mask-rcnn,Resnet,Official
+
+**med-sam-2-video-torch**
+
+Medical segmentation tool that outlines organs and structures in medical videos and 3D scans
+
+Segment-anything,PyTorch,Zero-shot,Video,Med-sam,Transformer,Official
+
+**medsiglip-448-zero-torch**
+
+Medical SigLIP for zero-shot image classification and embeddings
+
+Classification,PyTorch,Official,Medical,Zero-shot,Embeddings
+
+**mnasnet0.5-imagenet-torch**
+
+Ultra-lightweight image classifier designed by AI for running directly on phones and IoT devices
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Mnasnet,Official
+
+**mnasnet1.0-imagenet-torch**
+
+Mobile-optimized classifier balancing size and accuracy for efficient on-device image recognition
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Mnasnet,Official
+
+**mobilenet-v2-imagenet-tf1**
+
+Efficient mobile classifier using specialized architecture for fast image recognition on phones
+
+Classification,Embeddings,Logits,Imagenet,TensorFlow-1,Mobilenet
+
+**mobilenet-v2-imagenet-torch**
+
+Mobile-friendly image classifier optimized for quick training and deployment on resource-limited devices
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Mobilenet,Official
+
+**monet-zero-torch**
+
+CLIPâbased visionâlanguage model for zeroâshot dermatology image classification.
+
+Classification,PyTorch,Official,Medical,Embeddings
+
+**omdet-turbo-swin-tiny-torch**
+
+Real-time detector that finds any object you describe in words, perfect for live video analysis
+
+Detection,Logits,Embeddings,PyTorch,Transformers,Zero-shot,Official
+
+**open-clip-torch**
+
+Connects images with text descriptions enabling search by words and automatic content filtering systems
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Transformer
+
+**owlvit-base-patch16-torch**
+
+Finds any object you name in pictures using 16x16 image patches without needing specific training for those items
+
+Detection,Logits,PyTorch,Transformers,Zero-shot,Official
+
+**owlvit-base-patch32-torch**
+
+Finds any object you name in pictures using efficient 32x32 image patches without needing specific training
+
+Detection,Logits,PyTorch,Transformers,Zero-shot,Official
+
+**owlvit-large-patch14-torch**
+
+Large OWL-ViT zero-shot object detector with ViT-L/14 backbone. Achieves higher accuracy than base models, especially for smaller objects.
+
+Detection,Logits,PyTorch,Transformers,Zero-shot,Official
+
+**pose-estimation-transformer-torch**
+
+Vision Transformer for pose estimation with 90M parameters removing complex decoder components.
+
+Keypoints,Coco,PyTorch,Transformers,Pose-estimation
+
+**pubmed-clip-vit-base-patch32**
+
+Zero-shot medical image classifier trained on biomedical imageâtext pairs.
+
+Classification,PyTorch,Official,Medical,Zero-shot,Embeddings
+
+**qwen3-vl-2b-instruct-torch**
+
+Compact vision-language model for object detection via 2D grounding
+
+Detection,Vlm,PyTorch,Transformer,Zero-shot
+
+**qwen3-vl-4b-instruct-torch**
+
+Balanced vision-language model for object detection via 2D grounding
+
+Detection,Vlm,PyTorch,Transformer,Zero-shot
+
+**qwen3-vl-8b-instruct-torch**
+
+High-quality vision-language model for object detection via 2D grounding
+
+Detection,Vlm,PyTorch,Transformer,Zero-shot
+
+**qwen3-vl-embedding-2b-torch**
+
+Multimodal embedding model for image-text similarity and retrieval
+
+Embeddings,Vlm,PyTorch,Transformer
+
+**qwen3-vl-embedding-8b-torch**
+
+High-quality multimodal embedding model for image-text similarity and retrieval
+
+Embeddings,Vlm,PyTorch,Transformer
+
+**resnet-v1-50-imagenet-tf1**
+
+Classic image recognition model providing reliable categorization and visual features for many applications
+
+Classification,Embeddings,Logits,Imagenet,TensorFlow-1,Resnet,Legacy
+
+**resnet-v2-50-imagenet-tf1**
+
+Improved image classifier with smoother training process and better features for adapting to new tasks
+
+Classification,Embeddings,Logits,Imagenet,TensorFlow-1,Resnet,Legacy
+
+**resnet101-imagenet-torch**
+
+Deep image recognition model delivering high accuracy for demanding classification and analysis tasks
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Resnet,Official
+
+**resnet152-imagenet-torch**
+
+Very deep classifier providing the richest visual features for precision-critical image understanding applications
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Resnet,Official
+
+**resnet18-imagenet-torch**
+
+Lightweight image classifier designed for fast recognition on phones and other resource-limited devices
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Resnet,Official
+
+**resnet34-imagenet-torch**
+
+Balanced image classifier offering good accuracy and speed for everyday computer vision needs
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Resnet,Official
+
+**resnet50-imagenet-torch**
+
+Most popular image recognition backbone widely used as starting point for custom vision projects
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Resnet,Official
+
+**resnext101-32x8d-imagenet-torch**
+
+Powerful image classifier with enhanced capacity for handling complex visual recognition challenges effectively
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Resnext,Official
+
+**resnext50-32x4d-imagenet-torch**
+
+Efficient advanced classifier delivering strong accuracy with reasonable computing requirements for practical deployments
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Resnext,Official
+
+**retinanet-resnet50-fpn-coco-torch**
+
+Fast object detector that quickly finds and boxes eighty common items in any image
+
+Detection,Coco,PyTorch,Retinanet,Resnet,Official
+
+**rfcn-resnet101-coco-tf**
+
+Efficient object finder producing accurate boxes for eighty object types with optimized processing speed
+
+Detection,Coco,TensorFlow,Rfcn,Resnet,Legacy
+
+**rfdetr-base-coco-torch**
+
+RF-DETR Base real-time object detector trained on COCO. High accuracy for general use.
+
+Detection,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rfdetr-large-coco-torch**
+
+RF-DETR Large real-time object detector trained on COCO. Maximum detection accuracy.
+
+Detection,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rfdetr-medium-coco-torch**
+
+RF-DETR Medium real-time object detector trained on COCO. Balanced speed and accuracy.
+
+Detection,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rfdetr-nano-coco-torch**
+
+RF-DETR Nano real-time object detector trained on COCO. Ultra-fast, suitable for edge devices.
+
+Detection,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rfdetr-seg-2xlarge-coco-torch**
+
+RF-DETR Seg 2XLarge instance segmentation model trained on COCO. Maximum segmentation accuracy.
+
+Instances,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rfdetr-seg-large-coco-torch**
+
+RF-DETR Seg Large instance segmentation model trained on COCO. High accuracy segmentation.
+
+Instances,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rfdetr-seg-medium-coco-torch**
+
+RF-DETR Seg Medium instance segmentation model trained on COCO. Balanced speed and accuracy.
+
+Instances,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rfdetr-seg-nano-coco-torch**
+
+RF-DETR Seg Nano instance segmentation model trained on COCO. Ultra-fast, suitable for edge devices.
+
+Instances,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rfdetr-seg-small-coco-torch**
+
+RF-DETR Seg Small instance segmentation model trained on COCO. Fast with good accuracy.
+
+Instances,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rfdetr-seg-xlarge-coco-torch**
+
+RF-DETR Seg XLarge instance segmentation model trained on COCO. Very high accuracy.
+
+Instances,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rfdetr-small-coco-torch**
+
+RF-DETR Small real-time object detector trained on COCO. Fast with good accuracy.
+
+Detection,Coco,PyTorch,Transformer,Rfdetr,Official
+
+**rtdetr-l-coco-torch**
+
+Modern real-time object detector that finds items without complex post-processing for responsive applications
+
+Detection,Coco,PyTorch,Transformer,Rtdetr,Official
+
+**rtdetr-v2-m-coco-torch**
+
+Balanced real-time object detector offering improved accuracy for production use
+
+Detection,Coco,Embeddings,PyTorch,Transformers,Rtdetr,Official
+
+**rtdetr-v2-s-coco-torch**
+
+Lightweight real-time object detector optimized for speed on edge devices
+
+Detection,Coco,Embeddings,PyTorch,Transformers,Rtdetr,Official
+
+**rtdetr-x-coco-torch**
+
+High-capacity object detector delivering very precise results at speeds suitable for production use
+
+Detection,Coco,PyTorch,Transformer,Rtdetr,Official
+
+**segformer-b0-ade20k-torch**
+
+Efficient transformer-based semantic segmentation model for scene parsing with 150 classes
+
+Segmentation,PyTorch,Segformer,Official,Embeddings
+
+**segformer-b1-ade20k-torch**
+
+Balanced SegFormer model providing good accuracy-efficiency tradeoff for scene understanding
+
+Segmentation,PyTorch,Segformer,Official,Embeddings
+
+**segformer-b2-ade20k-torch**
+
+Medium-sized SegFormer delivering enhanced segmentation quality for complex scenes
+
+Segmentation,PyTorch,Segformer,Official,Embeddings
+
+**segformer-b3-ade20k-torch**
+
+Larger SegFormer model with improved accuracy for detailed semantic segmentation
+
+Segmentation,PyTorch,Segformer,Official,Embeddings
+
+**segformer-b4-ade20k-torch**
+
+High-capacity SegFormer achieving excellent results on challenging segmentation tasks
+
+Segmentation,PyTorch,Segformer,Official,Embeddings
+
+**segformer-b5-ade20k-torch**
+
+Largest SegFormer model delivering the best semantic segmentation performance in its family
+
+Segmentation,PyTorch,Segformer,Official,Embeddings
+
+**segment-anything-2-hiera-base-plus-image-torch**
+
+Accurate image segmentation model for editing, labeling, and creative work with still pictures
+
+Segment-anything,PyTorch,Zero-shot,Transformer,Official
+
+**segment-anything-2-hiera-base-plus-video-torch**
+
+Video segmentation model that tracks and outlines objects throughout clips for editing and analysis
+
+Segment-anything,PyTorch,Zero-shot,Video,Transformer,Official
+
+**segment-anything-2-hiera-large-image-torch**
+
+High-quality image segmenter producing detailed masks for demanding professional editing and annotation tasks
+
+Segment-anything,PyTorch,Zero-shot,Transformer,Official
+
+**segment-anything-2-hiera-large-video-torch**
+
+Advanced video segmenter providing fine object tracking throughout full videos for post-production work
+
+Segment-anything,PyTorch,Zero-shot,Video,Transformer,Official
+
+**segment-anything-2-hiera-small-image-torch**
+
+Fast image segmentation model that runs efficiently on laptops and edge computing devices
+
+Segment-anything,PyTorch,Zero-shot,Transformer,Official
+
+**segment-anything-2-hiera-small-video-torch**
+
+Quick video segmentation model delivering rapid object tracking on standard graphics cards
+
+Segment-anything,PyTorch,Zero-shot,Video,Transformer,Official
+
+**segment-anything-2-hiera-tiny-image-torch**
+
+Smallest image segmentation model offering instant results for mobile apps and embedded systems
+
+Segment-anything,PyTorch,Zero-shot,Official
+
+**segment-anything-2-hiera-tiny-video-torch**
+
+Tiny video segmenter enabling real-time object tracking on phones and compact devices
+
+Segment-anything,PyTorch,Zero-shot,Video,Transformer,Official
+
+**segment-anything-2.1-hiera-base-plus-image-torch**
+
+Updated image segmenter with improved mask accuracy for everyday editing and dataset creation
+
+Segment-anything,PyTorch,Zero-shot,Transformer,Official
+
+**segment-anything-2.1-hiera-base-plus-video-torch**
+
+Enhanced video segmenter with better tracking quality for video analysis and scene understanding
+
+Segment-anything,PyTorch,Zero-shot,Video,Transformer,Official
+
+**segment-anything-2.1-hiera-large-image-torch**
+
+Large updated model offering even finer masks for high-resolution professional image workflows
+
+Segment-anything,PyTorch,Zero-shot,Transformer,Official
+
+**segment-anything-2.1-hiera-large-video-torch**
+
+Large video model producing exceptionally detailed masks throughout long videos for intensive production
+
+Segment-anything,PyTorch,Zero-shot,Video,Transformer,Official
+
+**segment-anything-2.1-hiera-small-image-torch**
+
+Balanced updated segmenter combining speed and accuracy for edge device image processing
+
+Segment-anything,PyTorch,Zero-shot,Transformer,Official
+
+**segment-anything-2.1-hiera-small-video-torch**
+
+Improved video segmenter maintaining quick performance on compact hardware while enhancing mask quality
+
+Segment-anything,PyTorch,Zero-shot,Video,Transformer,Official
+
+**segment-anything-2.1-hiera-tiny-image-torch**
+
+Enhanced mobile image segmenter for apps, augmented reality filters, and on-device processing
+
+Segment-anything,PyTorch,Zero-shot,Transformer,Official
+
+**segment-anything-2.1-hiera-tiny-video-torch**
+
+Upgraded mobile video segmenter for live effects on phones, wearables, and smart cameras
+
+Segment-anything,PyTorch,Zero-shot,Video,Transformer,Official
+
+**segment-anything-3-image-torch**
+
+Open-vocabulary instance segmentation that finds and segments all objects matching a text concept like 'person' or 'yellow school bus'
+
+Segmentation,Instance-segmentation,Zero-shot,Open-vocabulary,Text-prompted,Transformer,Official
+
+**segment-anything-vitb-torch**
+
+Interactive segmentation tool that instantly outlines any object you point to or describe
+
+Segment-anything,Sa-1b,PyTorch,Zero-shot,Transformer,Official
+
+**segment-anything-vith-torch**
+
+Highest quality segmentation model creating extremely detailed masks for research and large-scale annotation projects
+
+Segment-anything,Sa-1b,PyTorch,Zero-shot,Transformer,Official
+
+**segment-anything-vitl-torch**
+
+Large segmentation model producing finer object outlines for professional editing and labeling workflows
+
+Segment-anything,Sa-1b,PyTorch,Zero-shot,Transformer,Official
+
+**segmentation-transformer-torch**
+
+Hugging Face Transformers model for semantic segmentation
+
+Segmentation,PyTorch,Transformers,Official,Embeddings
+
+**shufflenetv2-0.5x-imagenet-torch**
+
+Ultra-small image classifier for tiny devices with very limited power and memory
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Shufflenet,Official
+
+**shufflenetv2-1.0x-imagenet-torch**
+
+Mobile image classifier that works efficiently on phones with modest computing resources
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Shufflenet,Official
+
+**siglip-base-patch16-224-torch**
+
+Hugging Face Transformers model for zero-shot image classification
+
+Classification,Logits,Embeddings,PyTorch,Transformers,Zero-shot,Official
+
+**squeezenet-1@1.1.1-imagenet-torch**
+
+Tiny image classifier that fits in just five megabytes for embedded devices
+
+Classification,Imagenet,PyTorch,Squeezenet,Official
+
+**squeezenet-imagenet-torch@1.0**
+
+Ultra-compact image classifier perfect for severely resource-constrained hardware and applications
+
+Classification,Imagenet,PyTorch,Squeezenet,Official
+
+**ssd-inception-v2-coco-tf**
+
+Real-time object finder that quickly identifies eighty common items in any image
+
+Detection,Coco,TensorFlow,Ssd,Inception
+
+**ssd-mobilenet-v1-coco-tf**
+
+Mobile object detector that runs smoothly on phones and edge computing processors
+
+Detection,Coco,TensorFlow,Ssd,Mobilenet,Legacy
+
+**ssd-mobilenet-v1-fpn-640-coco17**
+
+Enhanced mobile detector that better finds small objects in larger resolution images
+
+Detection,Coco,TensorFlow-2,Ssd,Mobilenet
+
+**ssd-mobilenet-v1-fpn-coco-tf**
+
+Mobile object detector that runs smoothly on phones and edge computing processors
+
+Detection,Coco,TensorFlow,Ssd,Mobilenet,Legacy
+
+**ssd-mobilenet-v2-320-coco17**
+
+Fast object finder optimized for quick GPU processing of smaller input images
+
+Detection,Coco,TensorFlow-2,Ssd,Mobilenet
+
+**ssd-resnet50-fpn-coco-tf**
+
+Accurate object detector combining strong backbone with multi-scale detection for better results
+
+Detection,Coco,TensorFlow,Ssd,Resnet,Legacy
+
+**swin-v2-base-torch**
+
+Base hierarchical transformer delivering strong results across vision tasks
+
+Classification,Imagenet,PyTorch,Transformers,Swin-transformer,Official,Embeddings
+
+**swin-v2-large-torch**
+
+Large hierarchical transformer with enhanced capacity for demanding applications
+
+Classification,Imagenet,PyTorch,Transformers,Swin-transformer,Official,Embeddings
+
+**swin-v2-small-torch**
+
+Small hierarchical transformer balancing efficiency and performance for practical use
+
+Classification,Imagenet,PyTorch,Transformers,Swin-transformer,Official,Embeddings
+
+**swin-v2-tiny-torch**
+
+Tiny hierarchical transformer for efficient visual recognition on edge devices
+
+Classification,Imagenet,PyTorch,Transformers,Swin-transformer,Official,Embeddings
+
+**vgg11-bn-imagenet-torch**
+
+Classic image classifier with stable training useful for various computer vision projects
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Vgg,Official
+
+**vgg11-imagenet-torch**
+
+Simple baseline image classifier valuable for research experimentation and learning purposes
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Vgg,Official
+
+**vgg13-bn-imagenet-torch**
+
+Deeper classic classifier providing stable training process and solid accuracy results overall
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Vgg,Official
+
+**vgg13-imagenet-torch**
+
+Straightforward image classifier valued for easy experimentation and model compression studies
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Vgg,Official
+
+**vgg16-bn-imagenet-torch**
+
+Popular feature extractor widely used for detection, style transfer, and medical imaging
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Vgg,Official
+
+**vgg16-imagenet-tf1**
+
+TensorFlow version of the classic image classifier supporting legacy production systems
+
+Classification,Embeddings,Logits,Imagenet,TensorFlow-1,Vgg,Legacy
+
+**vgg16-imagenet-torch**
+
+PyTorch version of the popular classifier ready for modern deep learning workflows
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Vgg,Official
+
+**vgg19-bn-imagenet-torch**
+
+Deep classic model providing rich features for style transfer and interpretability analysis
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Vgg,Official
+
+**vgg19-imagenet-torch**
+
+Deep image classifier delivering detailed features for creative applications and research projects
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Vgg,Official
+
+**vit-base-patch16-224-imagenet-torch**
+
+Modern image classifier that recognizes objects and provides useful features for various computer vision tasks
+
+Classification,Logits,Embeddings,PyTorch,Transformers,Official
+
+**vitpose-base-simple-torch**
+
+Simplified ViTPose with 90M parameters removing complex decoder components. Maintains 75.1 AP through direct heatmap prediction from transformer features. Streamlined architecture for easier deployment while preserving accuracy on human pose tasks.
+
+Keypoints,Coco,PyTorch,Transformers,Pose-estimation,Official
+
+**vitpose-base-torch**
+
+Vision Transformer for pose estimation with 90M parameters using standard ViT backbone. Detects 17 human keypoints through heatmap regression achieving 75.8 AP on COCO. Processes 256x192 images with hierarchical features for accurate joint localization.
+
+Keypoints,Coco,PyTorch,Transformers,Pose-estimation,Official
+
+**vitpose-plus-base-torch**
+
+Base ViTPose+ with 130M parameters implementing mixture-of-experts modules. Delivers 77.5 AP through dataset-aware routing. MOE design handles multiple pose datasets simultaneously while maintaining strong per-dataset performance.
+
+Keypoints,Coco,PyTorch,Transformers,Pose-estimation,Official
+
+**vitpose-plus-huge-torch**
+
+Huge ViTPose+ with 900M parameters maximizing MOE capacity for best performance. Delivers 78.9 AP through massive scale. Flagship mixture-of-experts model handling diverse pose datasets with dataset-specific optimization paths.
+
+Keypoints,Coco,PyTorch,Transformers,Pose-estimation,Official
+
+**vitpose-plus-large-torch**
+
+Large ViTPose+ with 430M parameters scaling MOE architecture for superior accuracy. Achieves 78.3 AP on COCO through enhanced capacity. Mixture-of-experts enables specialization across pose datasets while maintaining unified architecture.
+
+Keypoints,Coco,PyTorch,Transformers,Pose-estimation,Official
+
+**vitpose-plus-small-torch**
+
+Small ViTPose+ with 30M parameters using mixture-of-experts for multi-dataset training. Achieves 68.7 AP through dataset-specific adaptation. Lightweight MOE architecture enables efficient pose estimation across diverse human pose datasets.
+
+Keypoints,Coco,PyTorch,Transformers,Pose-estimation,Official
+
+**wide-resnet101-2-imagenet-torch**
+
+Extra-wide deep classifier for high-precision image recognition and advanced transfer learning tasks
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Wide-resnet,Official
+
+**wide-resnet50-2-imagenet-torch**
+
+Wide classifier offering stronger accuracy and better features for adapting to new tasks
+
+Classification,Embeddings,Logits,Imagenet,PyTorch,Wide-resnet,Official
+
+**yolo-nas-torch**
+
+AI-designed detector family offering three model variants for diverse deployment scenarios
+
+Detection,PyTorch,Yolo,Official
+
+**yolo-v2-coco-tf1**
+
+Classic real-time detector finding eighty object types quickly for video analysis applications
+
+Detection,Coco,TensorFlow-1,Yolo,Legacy
+
+**yolo11l-coco-torch**
+
+Real-time object detector balancing high accuracy with fast processing speeds effectively
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolo11l-seg-coco-torch**
+
+Model creating detailed object outlines for precise image editing and analysis
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolo11m-coco-torch**
+
+Object detector offering good balance between speed and accuracy for most applications
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolo11m-seg-coco-torch**
+
+Model generating object masks efficiently for everyday segmentation tasks
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolo11n-coco-torch**
+
+Object detector designed specifically for phones and other edge computing devices
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolo11n-seg-coco-torch**
+
+Edge model producing object outlines directly on phones and edge devices
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolo11s-coco-torch**
+
+Fast object detector ideal for systems with limited graphics processing power
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolo11s-seg-coco-torch**
+
+Model creating object masks quickly for real-time segmentation applications
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolo11x-coco-torch**
+
+Object detector prioritizing accuracy over processing speed for critical applications
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolo11x-seg-coco-torch**
+
+Model delivering high-quality object outlines for professional workflows
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolo26l-cls-imagenet-torch**
+
+High-accuracy image classifier
+
+Classification,Imagenet,PyTorch,Yolo,Official
+
+**yolo26l-coco-torch**
+
+High-accuracy NMS-free detector for demanding tasks
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolo26l-pose-coco-torch**
+
+High-accuracy NMS-free pose estimation
+
+Keypoints,Coco,PyTorch,Yolo,Official
+
+**yolo26l-seg-coco-torch**
+
+High-accuracy NMS-free instance segmentation
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolo26m-cls-imagenet-torch**
+
+Medium image classifier for general use
+
+Classification,Imagenet,PyTorch,Yolo,Official
+
+**yolo26m-coco-torch**
+
+NMS-free detector with improved small object detection
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolo26m-pose-coco-torch**
+
+NMS-free pose estimation with improved keypoint accuracy
+
+Keypoints,Coco,PyTorch,Yolo,Official
+
+**yolo26m-seg-coco-torch**
+
+NMS-free instance segmentation with improved masks
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolo26n-cls-imagenet-torch**
+
+Ultra-fast image classifier for edge devices
+
+Classification,Imagenet,PyTorch,Yolo,Official
+
+**yolo26n-coco-torch**
+
+Ultra-fast NMS-free detector for edge devices
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolo26n-pose-coco-torch**
+
+Ultra-fast NMS-free pose estimation for edge devices
+
+Keypoints,Coco,PyTorch,Yolo,Official
+
+**yolo26n-seg-coco-torch**
+
+Ultra-fast NMS-free instance segmentation
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolo26s-cls-imagenet-torch**
+
+Fast image classifier balancing speed and accuracy
+
+Classification,Imagenet,PyTorch,Yolo,Official
+
+**yolo26s-coco-torch**
+
+Fast NMS-free detector balancing speed and accuracy
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolo26s-pose-coco-torch**
+
+Fast NMS-free pose estimation balancing speed and accuracy
+
+Keypoints,Coco,PyTorch,Yolo,Official
+
+**yolo26s-seg-coco-torch**
+
+Fast NMS-free instance segmentation
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolo26x-cls-imagenet-torch**
+
+Maximum accuracy image classifier
+
+Classification,Imagenet,PyTorch,Yolo,Official
+
+**yolo26x-coco-torch**
+
+Maximum accuracy NMS-free detector
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolo26x-pose-coco-torch**
+
+Maximum accuracy NMS-free pose estimation
+
+Keypoints,Coco,PyTorch,Yolo,Official
+
+**yolo26x-seg-coco-torch**
+
+Maximum accuracy NMS-free instance segmentation
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yoloe11l-seg-torch**
+
+Real-time model creating both object outlines and boxes for any described item
+
+Instances,PyTorch,Yolo,Zero-shot,Official
+
+**yoloe11m-seg-torch**
+
+Model producing masks and boxes for objects described in natural language
+
+Instances,PyTorch,Yolo,Zero-shot,Official
+
+**yoloe11s-seg-torch**
+
+Segments specified classes, generating object outlines and boxes for real-time applications
+
+Instances,PyTorch,Yolo,Zero-shot,Official
+
+**yoloev8l-seg-torch**
+
+Model outlining and boxing any object you describe without specific training
+
+Instances,PyTorch,Yolo,Zero-shot,Official
+
+**yoloev8m-seg-torch**
+
+Model creating masks for any object type you name in text
+
+Instances,PyTorch,Yolo,Zero-shot,Official
+
+**yoloev8s-seg-torch**
+
+Compact model producing outlines for objects described in words on edge devices
+
+Instances,PyTorch,Yolo,Zero-shot,Official
+
+**yolov10l-coco-torch**
+
+Object detector with special optimizations for even faster inference on modern hardware
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov10m-coco-torch**
+
+Balanced detector providing good accuracy and speed for general-purpose object detection tasks
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov10n-coco-torch**
+
+Edge-optimized detector for devices with minimal computing resources available
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov10s-coco-torch**
+
+Fast lightweight detector suitable for systems with limited GPU capabilities and memory
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov10x-coco-torch**
+
+High-accuracy detector for demanding object detection applications and research
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov5l-coco-torch**
+
+Real-time detector producing accurate results quickly for demanding vision applications
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov5m-coco-torch**
+
+Real-time detector balancing good accuracy with fast processing speeds
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov5n-coco-torch**
+
+Lightweight detector for edge devices needing basic object detection capabilities
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov5s-coco-torch**
+
+Real-time detector delivering good results with minimal computational requirements
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov5x-coco-torch**
+
+High-accuracy detector offering top precision for applications where quality is critical
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov8l-coco-torch**
+
+Real-time detector with advanced architecture for improved object finding in complex scenes
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov8l-obb-dotav1-torch**
+
+Specialized detector that finds rotated objects in aerial and satellite imagery accurately
+
+Detection,PyTorch,Yolo,Polylines,Obb,Official
+
+**yolov8l-oiv7-torch**
+
+General-purpose detector trained on diverse images recognizing over six hundred object categories
+
+Detection,Oiv7,PyTorch,Yolo,Official
+
+**yolov8l-seg-coco-torch**
+
+Creates precise object outlines for detailed image editing and analysis tasks
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolov8l-world-torch**
+
+Finds and boxes any object you describe using natural language prompts
+
+Detection,PyTorch,Yolo,Zero-shot,Official
+
+**yolov8m-coco-torch**
+
+Detector balancing speed and accuracy for everyday object detection needs
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov8m-obb-dotav1-torch**
+
+Finds rotated bounding boxes in aerial images for mapping and surveillance applications
+
+Detection,PyTorch,Yolo,Polylines,Obb,Official
+
+**yolov8m-oiv7-torch**
+
+Versatile detector recognizing hundreds of different object types across varied image domains
+
+Detection,Oiv7,PyTorch,Yolo,Official
+
+**yolov8m-seg-coco-torch**
+
+Generates object masks with good balance of speed and quality
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolov8m-world-torch**
+
+Detector understanding text descriptions to find matching objects in images
+
+Detection,PyTorch,Yolo,Zero-shot,Official
+
+**yolov8n-coco-torch**
+
+Edge-optimized detector recognizing common objects on resource-limited devices effectively
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov8n-obb-dotav1-torch**
+
+Lightweight detector for finding rotated objects in aerial imagery on edge hardware
+
+Detection,PyTorch,Yolo,Polylines,Obb,Official
+
+**yolov8n-oiv7-torch**
+
+Edge-friendly detector recognizing hundreds of object categories on resource-limited devices effectively
+
+Detection,Oiv7,PyTorch,Yolo,Official
+
+**yolov8n-seg-coco-torch**
+
+Edge-optimized model producing object outlines on devices with limited resources.
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolov8s-coco-torch**
+
+Detector offering fast performance on mid-range graphics cards and processors
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov8s-obb-dotav1-torch**
+
+Efficiently finds rotated objects in aerial photos for mapping and analysis tasks
+
+Detection,PyTorch,Yolo,Polylines,Obb,Official
+
+**yolov8s-oiv7-torch**
+
+Compact detector recognizing diverse object types across many different image categories
+
+Detection,Oiv7,PyTorch,Yolo,Official
+
+**yolov8s-seg-coco-torch**
+
+Fast model creating object masks for real-time image segmentation needs
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolov8s-world-torch**
+
+Lightweight detector finding objects based on text descriptions for edge applications
+
+Detection,PyTorch,Yolo,Zero-shot,Official
+
+**yolov8x-coco-torch**
+
+High-accuracy detector for critical applications where precision matters most
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov8x-obb-dotav1-torch**
+
+High-precision detector for rotated objects in aerial and satellite imagery analysis
+
+Detection,PyTorch,Yolo,Polylines,Obb,Official
+
+**yolov8x-oiv7-torch**
+
+Accurate general detector recognizing over six hundred different object types
+
+Detection,Oiv7,PyTorch,Yolo,Official
+
+**yolov8x-seg-coco-torch**
+
+High-accuracy model generating detailed object outlines for demanding professional applications
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolov8x-world-torch**
+
+Open-vocabulary detector with high accuracy for text-based object finding
+
+Detection,PyTorch,Yolo,Zero-shot,Official
+
+**yolov9c-coco-torch**
+
+Detector enhanced with transformer technology for improved object finding capabilities
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov9c-seg-coco-torch**
+
+Compact model producing both masks and boxes with transformer-enhanced accuracy
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**yolov9e-coco-torch**
+
+Advanced detector with transformer backbone delivering superior accuracy for complex scenes
+
+Detection,Coco,PyTorch,Yolo,Official
+
+**yolov9e-seg-coco-torch**
+
+Advanced model creating precise object outlines using enhanced transformer architecture
+
+Instances,Coco,PyTorch,Yolo,Official
+
+**zero-shot-classification-transformer-torch**
+
+Finds any object you name in images without requiring training on those specific items
+
+Classification,Logits,Embeddings,PyTorch,Transformers,Zero-shot,Official
+
+**zero-shot-detection-transformer-torch**
+
+Hugging Face Transformers model for zero-shot object detection
+
+Detection,Logits,PyTorch,Transformers,Zero-shot,Official
+
+**nvidia/LocateAnything-3B**
+
+NVIDIA LocateAnything-3B\: open-vocabulary grounding VLM (3B params, Qwen2.5-3B + MoonViT + Parallel Box Decoder). Image and (frame-sampled) video. 7 operations\: detect, grounding, point, scene_text, layout, text_grounding, gui_box. Returns fo.Detections or fo.Keypoints (image), {frame\: label} (video).
+
+Detection,Keypoints,Grounding,Ocr,Layout,Gui,PyTorch,Zero-shot,Image,Video,Vlm,Open-vocabulary,Plugin
+
+**Qwen/Qwen3-VL-8B-Instruct**
+
+Qwen3-VL is a multimodal vision-language model that processes and understands both text and visual input, enabling it to analyze images, video, and perform advanced reasoning and tasks involving both modalities.
+
+Classification,Detections,PyTorch,Temporal-detections,Zero-shot,Video,Embeddings,Plugin
+
+**Qwen/Qwen3-VL-4B-Instruct**
+
+Qwen3-VL is a multimodal vision-language model that processes and understands both text and visual input, enabling it to analyze images, video, and perform advanced reasoning and tasks involving both modalities.
+
+Classification,Detections,PyTorch,Temporal-detections,Zero-shot,Video,Embeddings,Plugin
+
+**Qwen/Qwen3-VL-2B-Instruct**
+
+Qwen3-VL is a multimodal vision-language model that processes and understands both text and visual input, enabling it to analyze images, video, and perform advanced reasoning and tasks involving both modalities.
+
+Classification,Detections,PyTorch,Temporal-detections,Zero-shot,Video,Embeddings,Plugin
+
+**nv_labs/c-radio_v4-h**
+
+C-RADIOv4-H (631M params) - Visual feature extraction model using multi-teacher distillation from SigLIP2, DINOv3, and SAM3. Generates image embeddings and spatial attention features.
+
+Embeddings,Heatmap,Plugin
+
+**nv_labs/c-radio_v4-so400m**
+
+C-RADIOv4-SO400M (412M params) - Efficient visual feature extraction model. Competitive with ViT-H at lower computational cost.
+
+Embeddings,Heatmap,Plugin
+
+**nomic-ai/nomic-embed-multimodal-7b**
+
+nomic-embed-multimodal-7b is a dense state-of-the-art multimodal embedding model that excels at visual document retrieval tasks.
+
+Classification,Logits,Embeddings,PyTorch,Visual-document-retrieval,Zero-shot,Plugin
+
+**nomic-ai/nomic-embed-multimodal-3b**
+
+nomic-embed-multimodal-3b is a dense state-of-the-art multimodal embedding model that excels at visual document retrieval tasks.
+
+Classification,Logits,Embeddings,PyTorch,Visual-document-retrieval,Zero-shot,Plugin
+
+**FriedFeid/oVDA-c16**
+
+Online Video Depth Anything (cache_size=16). Estimates temporally-consistent monocular depth for videos using a DINOv2 backbone with a rolling temporal cache. Outputs per-frame fo.Heatmap depth maps normalised to [0, 1].
+
+Depth-estimation,Video,Temporal,Heatmap,Plugin
+
+**FriedFeid/oVDA-c8**
+
+Online Video Depth Anything (cache_size=8). Lighter variant with a smaller temporal cache; faster and lower memory than c16 at some cost to temporal consistency.
+
+Depth-estimation,Video,Temporal,Heatmap,Plugin
+
+**google/Gemini-Vision**
+
+Gemini Vision remote model for VQA via Google Gemini API
+
+Gemini,Vision,Vqa,Multimodal,Plugin
+
+**jinaai/jina-embeddings-v4**
+
+jina-embeddings-v4 is a universal embedding model for multimodal and multilingual retrieval. The model is specially designed for complex document retrieval, including visually rich documents with charts, tables, and illustrations.
+
+Embeddings,PyTorch,Visual-document-retrieval,Zero-shot,Plugin
+
+**moondream/moondream3-preview**
+
+Moondream 3 (Preview) is an vision language model with a mixture-of-experts architecture (9B total parameters, 2B active).
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**nv_labs/c-radio_v3-g**
+
+C-RADIOv3-g model (ViT-H/14)
+
+Embeddings,Heatmap,Plugin
+
+**nv_labs/c-radio_v3-h**
+
+C-RADIOv3-H model (ViT-H/16)
+
+Embeddings,Heatmap,Plugin
+
+**nv_labs/c-radio_v3-l**
+
+C-RADIOv3-L model (ViT-L/16))
+
+Embeddings,Heatmap,Plugin
+
+**nv_labs/c-radio_v3-b**
+
+C-RADIOv3-B model (ViT-B/16)
+
+Embeddings,Heatmap,Plugin
+
+**Qwen/Qwen3-VL-Embedding-8B**
+
+Qwen3-VL-Embedding Specifically designed for multimodal information retrieval and cross-modal understanding, this suite accepts diverse inputs including text, images, screenshots, and videos, as well as inputs containing a mixture of these modalities
+
+Classification,PyTorch,Zero-shot,Video,Embeddings,Plugin
+
+**Qwen/Qwen3-VL-Embedding-2B**
+
+Qwen3-VL-Embedding Specifically designed for multimodal information retrieval and cross-modal understanding, this suite accepts diverse inputs including text, images, screenshots, and videos, as well as inputs containing a mixture of these modalities
+
+Classification,PyTorch,Zero-shot,Video,Embeddings,Plugin
+
+**Qwen/Qwen3.5-35B-A3B-FP8**
+
+Qwen3.5 is a multimodal vision-language model supporting images and videos. Image operations\: detect, point, classify, vqa, detect_3d. Video operations\: description, temporal_localization, tracking, ocr, comprehensive, custom.
+
+Detection,Classification,Keypoints,Vqa,Temporal-detections,PyTorch,Zero-shot,Image,Video,3d-detection,Plugin
+
+**Qwen/Qwen3.5-27B**
+
+Qwen3.5 is a multimodal vision-language model supporting images and videos. Image operations\: detect, point, classify, vqa, detect_3d. Video operations\: description, temporal_localization, tracking, ocr, comprehensive, custom.
+
+Detection,Classification,Keypoints,Vqa,Temporal-detections,PyTorch,Zero-shot,Image,Video,3d-detection,Plugin
+
+**Qwen/Qwen3.5-27B-FP8**
+
+Qwen3.5 is a multimodal vision-language model supporting images and videos. Image operations\: detect, point, classify, vqa, detect_3d. Video operations\: description, temporal_localization, tracking, ocr, comprehensive, custom.
+
+Detection,Classification,Keypoints,Vqa,Temporal-detections,PyTorch,Zero-shot,Image,Video,3d-detection,Plugin
+
+**Qwen/Qwen3.5-9B**
+
+Qwen3.5 is a multimodal vision-language model supporting images and videos. Image operations\: detect, point, classify, vqa, detect_3d. Video operations\: description, temporal_localization, tracking, ocr, comprehensive, custom.
+
+Detection,Classification,Keypoints,Vqa,Temporal-detections,PyTorch,Zero-shot,Image,Video,3d-detection,Plugin
+
+**Qwen/Qwen3.5-4B**
+
+Qwen3.5 is a multimodal vision-language model supporting images and videos. Image operations\: detect, point, classify, vqa, detect_3d. Video operations\: description, temporal_localization, tracking, ocr, comprehensive, custom.
+
+Detection,Classification,Keypoints,Vqa,Temporal-detections,PyTorch,Zero-shot,Image,Video,3d-detection,Plugin
+
+**Qwen/Qwen3.5-2B**
+
+Qwen3.5 is a multimodal vision-language model supporting images and videos. Image operations\: detect, point, classify, vqa, detect_3d. Video operations\: description, temporal_localization, tracking, ocr, comprehensive, custom.
+
+Detection,Classification,Keypoints,Vqa,Temporal-detections,PyTorch,Zero-shot,Image,Video,3d-detection,Plugin
+
+**Qwen/Qwen3.5-0.8B**
+
+Qwen3.5 is a multimodal vision-language model supporting images and videos. Image operations\: detect, point, classify, vqa, detect_3d. Video operations\: description, temporal_localization, tracking, ocr, comprehensive, custom.
+
+Detection,Classification,Keypoints,Vqa,Temporal-detections,PyTorch,Zero-shot,Image,Video,3d-detection,Plugin
+
+**google/gemma-4-E2B-it**
+
+Gemma 4 E2B is a 2.3B effective parameter multimodal model supporting text, image, video, and audio. Image operations\: detect, point, classify, vqa. Video operations\: description, temporal_localization, tracking, ocr, comprehensive, custom.
+
+Detection,Classification,Keypoints,Vqa,Temporal-detections,PyTorch,Zero-shot,Image,Video,Vlm,Plugin
+
+**google/gemma-4-E4B-it**
+
+Gemma 4 E4B is a 4.5B effective parameter multimodal model supporting text, image, video, and audio. Image operations\: detect, point, classify, vqa. Video operations\: description, temporal_localization, tracking, ocr, comprehensive, custom.
+
+Detection,Classification,Keypoints,Vqa,Temporal-detections,PyTorch,Zero-shot,Image,Video,Vlm,Plugin
+
+**google/gemma-4-26B-A4B-it**
+
+Gemma 4 26B-A4B is a 3.8B active parameter (25.2B total) MoE multimodal model supporting text and image. Image operations\: detect, point, classify, vqa. No video support.
+
+Detection,Classification,Keypoints,Vqa,PyTorch,Zero-shot,Image,Vlm,Plugin
+
+**google/gemma-4-31B-it**
+
+Gemma 4 31B is a 30.7B dense multimodal model supporting text and image. Image operations\: detect, point, classify, vqa. No video support.
+
+Detection,Classification,Keypoints,Vqa,PyTorch,Zero-shot,Image,Vlm,Plugin
+
+**PerceptronAI/Isaac-0.2-2B-Preview**
+
+Isaac 0.2 2B (Preview) is an open-source, 2B-parameter model built for real-world applications. Isaac 0.2 is part of Perceptron AI's family of models built to be the intelligence layer for the physical world.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Plugin
+
+**PerceptronAI/Isaac-0.2-1B**
+
+Isaac 0.2 1B is an open-source, 1B-parameter model built for real-world applications. Isaac 0.2 is part of Perceptron AI's family of models built to be the intelligence layer for the physical world.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Plugin
+
+**allenai/MolmoPoint-8B**
+
+MolmoPoint-8B is a vision-language model that locates and tracks objects in images and videos by pointing. For images, it returns normalized keypoint coordinates per instance. For videos, it supports frame-level tracking (follows objects over time) and sparse pointing (identifies objects across sampled frames).
+
+Keypoints,Pointing,Tracking,Video,Vlm,Zero-shot,Image-text-to-text,Plugin
+
+**allenai/MolmoPoint-Vid-4B**
+
+MolmoPoint-Vid-4B is a 4B vision-language model specialised for video pointing and tracking. Given a text prompt, it returns keypoint coordinates for each matching object across video frames. Supports frame-level tracking and sparse pointing modes.
+
+Keypoints,Pointing,Tracking,Video,Vlm,Zero-shot,Image-text-to-text,Plugin
+
+**allenai/MolmoPoint-Img-8B**
+
+MolmoPoint-Img-8B is a vision-language model specialised for pointing at UI elements and objects in screenshots. Given a text prompt, it returns normalized keypoint coordinates for each matching element found.
+
+Keypoints,Pointing,Vlm,Zero-shot,Image-text-to-text,Ui,Screenshots,Plugin
+
+**lightonai/LightOnOCR-2-1B**
+
+LightOnOCR is a 2.1B-parameter vision-language model optimized for optical character recognition. It uses a chat-based interface to extract text from images with high accuracy across various document types, handwritten text, and scene text.
+
+Ocr,Text-extraction,Vlm,Document-understanding,Plugin
+
+**moonshotai/Kimi-VL-A3B-Instruct**
+
+Kimi-VL is an efficient open-source Mixture-of-Experts (MoE) vision-language model (VLM) that offers advanced multimodal reasoning, long-context understanding, and strong agent capabilitiesâall while activating only 2.8B parameters in its language decoder
+
+Agentic,Detection,Ocr,Vlm,Classification,Zero-shot,Visual-agent,Plugin
+
+**moonshotai/Kimi-VL-A3B-Thinking**
+
+Kimi-VL is an efficient open-source Mixture-of-Experts (MoE) vision-language model (VLM) that offers advanced multimodal reasoning, long-context understanding, and strong agent capabilitiesâall while activating only 2.8B parameters in its language decoder
+
+Agentic,Detection,Segmentation,Ocr,Vlm,Zero-shot,Visual-agent,Plugin
+
+**moonshotai/Kimi-VL-A3B-Thinking-2506**
+
+Kimi-VL is an efficient open-source Mixture-of-Experts (MoE) vision-language model (VLM) that offers advanced multimodal reasoning, long-context understanding, and strong agent capabilitiesâall while activating only 2.8B parameters in its language decoder
+
+Agentic,Detection,Segmentation,Ocr,Vlm,Zero-shot,Visual-agent,Plugin
+
+**google/siglip2-base-patch16-224**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-base-patch16-256**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-base-patch16-384**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-base-patch16-512**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-large-patch16-256**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-large-patch16-384**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-large-patch16-512**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-base-patch32-256**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-giant-opt-patch16-256**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-giant-opt-patch16-384**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-so400m-patch14-224**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-so400m-patch14-384**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-so400m-patch16-256**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-so400m-patch16-384**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-so400m-patch16-512**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-base-patch16-naflex**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**google/siglip2-so400m-patch16-naflex**
+
+SigLIP 2 extends the pretraining objective of SigLIP with prior, independently developed techniques into a unified recipe, for improved semantic understanding, localization, and dense features.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**allenai/Molmo2-4B**
+
+Molmo2 is a family of open vision-language models developed by the Allen Institute for AI (Ai2) that support image, video and multi-image understanding and grounding.
+
+PyTorch,Keypoints,Zero-shot,Video,Plugin
+
+**allenai/Molmo2-O-7B**
+
+Molmo2 is a family of open vision-language models developed by the Allen Institute for AI (Ai2) that support image, video and multi-image understanding and grounding.
+
+PyTorch,Keypoints,Zero-shot,Video,Plugin
+
+**allenai/Molmo2-8B**
+
+Molmo2 is a family of open vision-language models developed by the Allen Institute for AI (Ai2) that support image, video and multi-image understanding and grounding.
+
+PyTorch,Keypoints,Zero-shot,Video,Plugin
+
+**allenai/Molmo2-VideoPoint-4B**
+
+Molmo2 is a family of open vision-language models developed by the Allen Institute for AI (Ai2) that support image, video and multi-image understanding and grounding.
+
+PyTorch,Keypoints,Zero-shot,Video,Plugin
+
+**facebook/sam3**
+
+SAM3 (Segment Anything Model 3) performs promptable segmentation on images using text or visual prompts. Supports concept segmentation (find all instances), visual segmentation (specific instances), automatic segmentation, and visual embeddings.
+
+Embeddings,PyTorch,Zero-shot,Segmentation,Segment-anything,Detections,Instance-segmentation,Visual-prompting,Plugin
+
+**apple/FastVLM-0.5B**
+
+FastVLM is a vision-language model from Apple that excels at visual question answering and image classification tasks. It supports both zero-shot classification and open-ended VQA with customizable prompts.
+
+Vision-language,Vqa,Multimodal,Transformers,PyTorch,Plugin
+
+**apple/FastVLM-1.5B**
+
+FastVLM is a vision-language model from Apple that excels at visual question answering and image classification tasks. It supports both zero-shot classification and open-ended VQA with customizable prompts.
+
+Vision-language,Vqa,Multimodal,Transformers,PyTorch,Plugin
+
+**apple/FastVLM-7B**
+
+FastVLM is a vision-language model from Apple that excels at visual question answering and image classification tasks. It supports both zero-shot classification and open-ended VQA with customizable prompts.
+
+Vision-language,Vqa,Multimodal,Transformers,PyTorch,Plugin
+
+**zai-org/GLM-OCR**
+
+GLM-OCR is a vision-language model for document understanding. Supports text recognition, formula recognition, table recognition, and custom structured extraction via JSON prompts.
+
+Ocr,Document-understanding,Visual-document-retrieval,Plugin
+
+**microsoft/GUI-Actor-3B-Qwen2.5-VL**
+
+GUI-Actor is Coordinate-Free Visual Grounding for GUI Agents
+
+Keypoints,Visual-agent,Plugin
+
+**microsoft/GUI-Actor-7B-Qwen2.5-VL**
+
+GUI-Actor is Coordinate-Free Visual Grounding for GUI Agents
+
+Keypoints,Visual-agent,Plugin
+
+**google/medgemma-1.5-4b-it**
+
+MedGemma 1.5 4B is an updated version of the MedGemma 1 4B model. MedGemma is a collection of Gemma 3 variants that are trained for performance on medical text and image comprehension
+
+Vlm,Zero-shot,Plugin
+
+**PerceptronAI/Isaac-0.1**
+
+Isaac 0.1 is an open-source, 2B-parameter model built for real-world applications. Isaac 0.1 is the first in Perceptron AI's family of models built to be the intelligence layer for the physical world.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Plugin
+
+**Apple/SHARP**
+
+SHARP is an approach to photorealistic view synthesis from a single image. Given a single photograph, SHARP regresses the parameters of a 3D Gaussian representation of the depicted scene.
+
+Threed,Plugin
+
+**opendatalab/MinerU2.5-2509-1.2B**
+
+MinerU2.5 is a 1.2B-parameter vision-language model for document parsing. It adopts a two-stage parsing strategy\: first conducting efficient global layout analysis on downsampled images, then performing fine-grained content recognition on native-resolution crops for text, formulas, and tables.
+
+Detection,Ocr,Vlm,Plugin
+
+**nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1**
+
+Llama Nemotron Nano VL is a leading document intelligence vision language model (VLMs) that enables the ability to query and summarize images from the physical or virtual world.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Visual-agent,Plugin
+
+**facebook/VGGT-1B**
+
+Visual Geometry Grounded Transformer (VGGT) is a feed-forward neural network that directly infers all key 3D attributes of a scene.
+
+Depth,Threed,Keypoints,Plugin
+
+**google/medsiglip-448**
+
+MedSigLIP is a variant of SigLIP that is trained to encode medical images and text into a common embedding space.
+
+Classification,Logits,Embeddings,PyTorch,Clip,Zero-shot,Plugin
+
+**nanonets/Nanonets-OCR2-3B**
+
+Nanonets-OCR2 are image-to-markdown OCR models that go far beyond traditional text extraction. It transforms documents into structured markdown with intelligent content recognition and semantic tagging, making it ideal for downstream processing by Large Language Models (LLMs).
+
+Detection,Ocr,Vlm,Plugin
+
+**allenai/olmOCR-2-7B-1025**
+
+olmOCR-2 is an advanced OCR model from AllenAI that uses Qwen2.5-VL architecture for document text extraction. Returns markdown output with YAML front matter containing document metadata (language, rotation, tables, diagrams). Converts equations to LaTeX and tables to HTML.
+
+Ocr,Document-understanding,Vlm,Vision-language,Plugin
+
+**deepseek-ai/DeepSeek-OCR**
+
+DeepSeek-OCR is an open-source vision-language model (VLM) developed by DeepSeek to perform optical character recognition (OCR) and context compression for long and complex documents
+
+Detection,Ocr,Vlm,Plugin
+
+**microsoft/kosmos-2.5**
+
+Kosmos-2.5 is a multimodal literate model for machine reading of text-intensive images.
+
+Detection,Ocr,Vlm,Plugin
+
+**google/medgemma-4b-it**
+
+MedGemma is a collection of Gemma 3 variants that are trained for performance on medical text and image comprehension
+
+Vlm,Zero-shot,Plugin
+
+**ModernVBERT/bimodernvbert**
+
+The ModernVBERT suite is a suite of compact 250M-parameter vision-language encoders. BiModernVBERT is the bi-encoder version that is fine-tuned for visual document retrieval tasks.
+
+Classification,Logits,Embeddings,PyTorch,Visual-document-retrieval,Zero-shot,Plugin
+
+**ModernVBERT/colmodernvbert**
+
+The ModernVBERT suite is a suite of compact 250M-parameter vision-language encoders. ColModernVBERT is the late-interaction version that is fine-tuned for visual document retrieval tasks, the most performant model on this task.
+
+Classification,Logits,Embeddings,PyTorch,Visual-document-retrieval,Zero-shot,Plugin
+
+**vidore/colqwen2.5-v0.2**
+
+ColQwen is a model based on a novel model architecture and training strategy based on Vision Language Models (VLMs) to efficiently index documents from their visual features. It is a Qwen2.5-VL-3B extension that generates ColBERT- style multi-vector representations of text and images.
+
+Classification,Logits,Embeddings,PyTorch,Visual-document-retrieval,Zero-shot,Plugin
+
+**ByteDance-Seed/UI-TARS-1.5-7B**
+
+UI-TARS-1.5 is an open-source multimodal agent capable of effectively performing diverse tasks within virtual worlds.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Visual-agent,Plugin
+
+**vidore/colpali-v1.3-merged**
+
+ColPali is a model based on a novel model architecture and training strategy based on Vision Language Models (VLMs) to efficiently index documents from their visual features. It is a PaliGemma-3B extension that generates ColBERT- style multi-vector representations of text and images
+
+Classification,Logits,Embeddings,PyTorch,Visual-document-retrieval,Zero-shot,Plugin
+
+**google/paligemma2-3b-mix-448**
+
+PaliGemma 2 mix checkpoints are fine-tuned on a diverse set of tasks and are ready to use out of the box. These tasks include short and long captioning, optical character recognition, question answering, object detection and segmentation, and more.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**google/paligemma2-10b-mix-448**
+
+PaliGemma 2 mix checkpoints are fine-tuned on a diverse set of tasks and are ready to use out of the box. These tasks include short and long captioning, optical character recognition, question answering, object detection and segmentation, and more.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**google/paligemma2-28b-mix-448**
+
+PaliGemma 2 mix checkpoints are fine-tuned on a diverse set of tasks and are ready to use out of the box. These tasks include short and long captioning, optical character recognition, question answering, object detection and segmentation, and more.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**google/paligemma2-3b-mix-224**
+
+PaliGemma 2 mix checkpoints are fine-tuned on a diverse set of tasks and are ready to use out of the box. These tasks include short and long captioning, optical character recognition, question answering, object detection and segmentation, and more.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**google/paligemma2-10b-mix-224**
+
+PaliGemma 2 mix checkpoints are fine-tuned on a diverse set of tasks and are ready to use out of the box. These tasks include short and long captioning, optical character recognition, question answering, object detection and segmentation, and more.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**google/paligemma2-28b-mix-224**
+
+PaliGemma 2 mix checkpoints are fine-tuned on a diverse set of tasks and are ready to use out of the box. These tasks include short and long captioning, optical character recognition, question answering, object detection and segmentation, and more.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**openbmb/MiniCPM-V-4_5**
+
+MiniCPM-V 4.5 is the latest and most capable model in the MiniCPM-V series. The model is built on Qwen3-8B and SigLIP2-400M with a total of 8B parameters.
+
+Detection,Keypoints,Ocr,Vlm,Classification,Zero-shot,Plugin
+
+**vikhyatk/moondream2**
+
+Moondream is a small vision language model designed to run efficiently on edge devices.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**microsoft/Florence-2-base**
+
+Florence-2 is a vision foundation model with a unified, prompt-based representation for a variety of computer vision and vision-language tasks (https\://arxiv.org/abs/2311.06242).
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**microsoft/Florence-2-large**
+
+Florence-2 is a vision foundation model with a unified, prompt-based representation for a variety of computer vision and vision-language tasks (https\://arxiv.org/abs/2311.06242).
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**microsoft/Florence-2-base-ft**
+
+Florence-2 is a vision foundation model with a unified, prompt-based representation for a variety of computer vision and vision-language tasks (https\://arxiv.org/abs/2311.06242).
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**microsoft/Florence-2-large-ft**
+
+Florence-2 is a vision foundation model with a unified, prompt-based representation for a variety of computer vision and vision-language tasks (https\://arxiv.org/abs/2311.06242).
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**showlab/ShowUI-2B**
+
+ShowUI is a lightweight (2B) vision-language-action model designed for GUI agents.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Visual-agent,Plugin
+
+**XiaomiMiMo/MiMo-VL-7B-RL**
+
+MiMo-VL-7B is a compact yet powerful vision-language model developed through extensive pre-training and reinforcement learning to achieve state-of-the-art performance on a variety of visual-language tasks.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Visual-agent,Plugin
+
+**XiaomiMiMo/MiMo-VL-7B-SFT**
+
+MiMo-VL-7B is a compact yet powerful vision-language model developed through extensive pre-training and reinforcement learning to achieve state-of-the-art performance on a variety of visual-language tasks.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Visual-agent,Plugin
+
+**XiaomiMiMo/MiMo-VL-7B-SFT-GGUF**
+
+MiMo-VL-7B is a compact yet powerful vision-language model developed through extensive pre-training and reinforcement learning to achieve state-of-the-art performance on a variety of visual-language tasks.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Visual-agent,Plugin
+
+**OS-Copilot/OS-Atlas-Base-7B**
+
+OS-Atlas provides a series of models specifically designed for GUI agents.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Visual-agent,Plugin
+
+**Qwen/Qwen2.5-VL-3B-Instruct**
+
+Qwen2.5-VL is the multimodal large language model series developed by Qwen team, Alibaba Cloud.
+
+Detection,Ocr,Vlm,Classification,Zero-shot,Plugin
+
+**Qwen/Qwen2.5-VL-3B-Instruct-AWQ**
+
+Qwen2.5-VL is the multimodal large language model series developed by Qwen team, Alibaba Cloud.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**Qwen/Qwen2.5-VL-7B-Instruct**
+
+Qwen2.5-VL is the multimodal large language model series developed by Qwen team, Alibaba Cloud.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**Qwen/Qwen2.5-VL-7B-Instruct-AWQ**
+
+Qwen2.5-VL is the multimodal large language model series developed by Qwen team, Alibaba Cloud.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**Qwen/Qwen2.5-VL-32B-Instruct**
+
+Qwen2.5-VL is the multimodal large language model series developed by Qwen team, Alibaba Cloud.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**Qwen/Qwen2.5-VL-32B-Instruct-AWQ**
+
+Qwen2.5-VL is the multimodal large language model series developed by Qwen team, Alibaba Cloud.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**Qwen/Qwen2.5-VL-72B-Instruct**
+
+Qwen2.5-VL is the multimodal large language model series developed by Qwen team, Alibaba Cloud.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**Qwen/Qwen2.5-VL-72B-Instruct-AWQ**
+
+Qwen2.5-VL is the multimodal large language model series developed by Qwen team, Alibaba Cloud.
+
+Detection,Segmentation,Ocr,Vlm,Zero-shot,Plugin
+
+**llamaindex/vdr-2b-v1**
+
+vdr-2b-v1 is an english only embedding model designed for visual document retrieval. It encodes document page screenshots into dense single-vector representations, this will effectively allow to search and query visually rich multilingual documents without the need for any OCR, data extraction pipelines, and chunking.
+
+Embeddings,Ocr,Vlm,Document-retrieval,Plugin
+
+**llamaindex/vdr-2b-multi-v1**
+
+vdr-2b-multi-v1 is a multilingual embedding model designed for visual document retrieval across multiple languages and domains. It encodes document page screenshots into dense single-vector representations, this will effectively allow to search and query visually rich multilingual documents without the need for any OCR, data extraction pipelines, and chunking. It's trained on ð®ð¹ Italian, ðªð¸ Spanish, ð¬ð§ English, ð«ð· French and ð©ðª German
+
+Embeddings,Ocr,Vlm,Document-retrieval,Plugin
+  *[*]: Keyword-only parameters separator (PEP 3102)
+  *[/]: Positional-only parameter separator (PEP 570)

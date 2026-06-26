@@ -1,0 +1,133 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/api-reference/chat-completions/create-chat-completion-1
+---
+
+Create Chat Completion
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v1/chat/completions \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "model": "<string>",
+      "messages": [
+        {}
+      ]
+    }
+    '
+    
+    
+    {
+      "choices": [
+        {
+          "message": {
+            "content": "<unknown>"
+          }
+        }
+      ]
+    }
+
+[Serverless Training](/serverless-training/api-reference)
+
+[chat-completions](/serverless-training/api-reference/chat-completions/create-chat-completion)
+
+# Create Chat Completion
+
+Create a new chat completion.
+
+POST
+
+/
+
+v1
+
+/
+
+chat
+
+/
+
+completions
+
+Create Chat Completion
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v1/chat/completions \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "model": "<string>",
+      "messages": [
+        {}
+      ]
+    }
+    '
+    
+    
+    {
+      "choices": [
+        {
+          "message": {
+            "content": "<unknown>"
+          }
+        }
+      ]
+    }
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+#### Body
+
+application/json
+
+​
+
+model
+
+string
+
+required
+
+​
+
+messages
+
+Messages · object[]
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+choices
+
+ChatChoice · object[]
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/api-reference/chat-completions/create-chat-completion-1.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/api-reference/chat-completions/create-chat-completion-1)
+
+[Create Chat CompletionPrevious](/serverless-training/api-reference/chat-completions/create-chat-completion)[Create ModelNext](/serverless-training/api-reference/models/create-model)
+
+⌘I

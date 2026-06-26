@@ -1,0 +1,61 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/dockerfile_let_wb_build_docker_image_me
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# Can I specify a Dockerfile and let W&B build a Docker image for me?
+
+Yes. You can provide your own Dockerfile and have W&B Launch build the image for your run. This lets you control the build environment while still using Launch to queue and run jobs. This approach works well for projects with stable requirements but changing codebases.
+
+Format your Dockerfile to use mounts. For details, see the [Docker mounts documentation](https://docs.docker.com/build/guide/mounts/).
+
+After you configure the Dockerfile, specify it to W&B in one of the following ways:
+
+  * Use `Dockerfile.wandb`
+  * Use W&B CLI
+  * Use W&B App
+
+
+
+  * Dockerfile.wandb
+
+  * W&B CLI
+
+  * W&B App
+
+
+
+
+Include a `Dockerfile.wandb` file in the same directory as the W&B run’s entrypoint. W&B uses this file instead of the built-in Dockerfile.
+
+To queue a job, use the `--dockerfile` flag with the `wandb launch` command:
+    
+    
+    wandb launch --dockerfile path/to/Dockerfile
+    
+
+When you add a job to a queue in the W&B App, provide the Dockerfile path in the **Overrides** section. Enter it as a key-value pair with `"dockerfile"` as the key and the path as the value.The following JSON shows how to include a Dockerfile from a local directory:
+
+Launch job W&B App
+    
+    
+    {
+      "args": [],
+      "run_config": {
+        "lr": 0,
+        "batch_size": 0,
+        "epochs": 0
+      },
+      "entrypoint": [],
+      "dockerfile": "./Dockerfile"
+    }
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/dockerfile_let_wb_build_docker_image_me.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/dockerfile_let_wb_build_docker_image_me)
+
+[When multiple jobs in a Docker queue download the same artifact, is any caching used, or is it re-downloaded every run?Previous](/platform/launch/launch-faq/docker_queues_run_multiple_jobs_download_same_artifact_useartifact)[Can Launch automatically provision (and spin down) compute resources for me in the target environment?Next](/platform/launch/launch-faq/launch_automatically_provision_spin_compute_resources_target_environment)
+
+⌘I

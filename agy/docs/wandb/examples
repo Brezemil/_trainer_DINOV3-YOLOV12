@@ -1,0 +1,465 @@
+---
+source_url: https://docs.wandb.ai/examples
+---
+
+# Example Code & Notebooks
+
+Hands-on tutorials, walkthroughs, and colab notebooks for every W&B product.
+
+Browse end-to-end examples grouped by product. Each page below links to a tutorial, walkthrough, or page containing a runnable colab notebook.
+
+## 
+
+​
+
+Quickstarts
+
+## Get started with W&B
+
+Cross-product entry point for getting up and running with Weights & Biases.
+
+## W&B Models: Quickstart
+
+Install W&B and start tracking experiments in minutes.
+
+## W&B Models: Get started with experiments
+
+Track experiments, log metrics, and visualize results.
+
+## W&B Weave: Quickstart
+
+Add tracing to your LLM application to debug and monitor model interactions.
+
+## W&B Weave: Learn Weave with Serverless Inference
+
+Trace model calls, compare outputs, and run evaluations using Serverless Inference.
+
+## W&B Weave: Leaderboard quickstart
+
+Build a leaderboard to compare models and experiments.
+
+## 
+
+​
+
+W&B Models
+
+### 
+
+​
+
+Experiments
+
+## W&B Models: Experiments overview
+
+Intro to tracking metrics, hyperparameters, system metrics, and model artifacts.
+
+## W&B Models: Configure experiments
+
+Save experiment configuration with a dictionary-like object.
+
+## W&B Models: View experiment results
+
+Explore run data in interactive workspaces.
+
+## W&B Models: Log media and objects
+
+Log rich media: 3D point clouds, molecules, HTML, histograms, and more.
+
+## W&B Models: Log models
+
+Log model artifacts to a run with `run.log_model()` and `run.use_model()`.
+
+## W&B Models: Create and track plots
+
+Build and track plots from ML experiments.
+
+### 
+
+​
+
+Sweeps, artifacts, tables
+
+## W&B Models: Sweeps overview
+
+Intro to hyperparameter search and model optimization with Sweeps.
+
+## W&B Models: Run a sweep
+
+Define, initialize, and run a hyperparameter sweep.
+
+## W&B Models: Artifacts overview
+
+Intro to W&B Artifacts and how to get started.
+
+## W&B Models: Create and use a dataset artifact
+
+Create, track, and use a dataset artifact across experiments.
+
+## W&B Models: Manage artifact retention
+
+Set TTL policies on artifacts to manage storage.
+
+## W&B Models: Tables overview
+
+Iterate on datasets and understand model predictions with Tables.
+
+## W&B Models: Log tables and query data
+
+Log tables, visualize, and query structured data.
+
+## W&B Models: Visualize and analyze tables
+
+Compare, filter, group, and sort tables in merged or side-by-side views.
+
+### 
+
+​
+
+Registry, reports, UI features
+
+## W&B Models: Registry overview
+
+Manage and share artifact versions across your organization.
+
+## W&B Models: Reference an artifact version with aliases
+
+Use default, custom, and protected aliases in the Registry.
+
+## W&B Models: Reports overview
+
+Project management and collaboration tools for ML projects.
+
+## W&B Models: Create a report
+
+Create a W&B Report with the App UI or programmatically.
+
+## W&B Models: Edit a report
+
+Edit reports interactively or with the Report API.
+
+## W&B Models: Custom charts overview
+
+Build custom charts in W&B projects with Vega visualizations.
+
+## W&B Models: Build custom charts
+
+Use custom charts to build tailored visualizations in the W&B UI.
+
+## W&B Models: Embed objects
+
+Use the embedding projector to explore object embeddings.
+
+### 
+
+​
+
+ML framework integrations
+
+## W&B Models: Keras
+
+Track experiments, checkpoint models, and visualize predictions with Keras callbacks.
+
+## W&B Models: PyTorch
+
+Track metrics, gradients, and models with the PyTorch integration.
+
+## W&B Models: PyTorch Lightning
+
+Use the built-in `WandbLogger` with PyTorch Lightning.
+
+## W&B Models: PyTorch Ignite
+
+Automatically log training metrics, model parameters, and configs.
+
+## W&B Models: PyTorch torchtune
+
+Track LLM fine-tuning experiments with the torchtune WandBLogger.
+
+## W&B Models: TensorFlow
+
+Log custom metrics, use estimator hooks, and sync TensorBoard logs.
+
+## W&B Models: XGBoost
+
+Log gradient boosting metrics, feature importance, and model performance.
+
+## W&B Models: YOLOv5
+
+Use the built-in W&B integration in YOLOv5 for experiment tracking and versioning.
+
+### 
+
+​
+
+ML library integrations
+
+## W&B Models: Hugging Face
+
+Visualize and track Hugging Face model performance with W&B.
+
+## W&B Models: Hugging Face Transformers
+
+Use W&B with the Hugging Face Transformers Trainer.
+
+## W&B Models: Simple Transformers
+
+Integrate W&B with Hugging Face Simple Transformers.
+
+## W&B Models: Hugging Face Diffusers
+
+Autolog prompts, generated media, and pipeline architecture.
+
+## W&B Models: OpenAI API
+
+Log chat completions, fine-tuning jobs, and token usage metrics.
+
+## W&B Models: Azure OpenAI fine-tuning
+
+Fine-tune Azure OpenAI models with W&B experiment tracking.
+
+## 
+
+​
+
+W&B Weave
+
+### 
+
+​
+
+Tutorials
+
+## W&B Weave: Build an evaluation
+
+Build an evaluation pipeline with Weave Models and Evaluations.
+
+## W&B Weave: Evaluate a RAG application
+
+Build and evaluate a RAG application with LLM judges.
+
+## W&B Weave: Trace nested functions
+
+Track deeply nested call structures with W&B tracing.
+
+## W&B Weave: Version an application
+
+Track and version your application and its parameters with Weave Model.
+
+### 
+
+​
+
+Cookbooks
+
+## W&B Weave: Introduction to traces
+
+A beginner-friendly introduction to tracing with Weave.
+
+## W&B Weave: Introduction to evaluations
+
+Get hands-on with running evaluations in Weave.
+
+## W&B Weave: Hugging Face dataset evaluations
+
+Run evaluations on Hugging Face datasets with Weave.
+
+## W&B Weave: Import a dataset from CSV
+
+Load a CSV into a Weave dataset and use it in evaluations.
+
+## W&B Weave: Use Weave with W&B Models
+
+Combine W&B Models and Weave in a single workflow.
+
+## W&B Weave: Chain of density summarization
+
+Implement chain-of-density prompting for iterative summarization.
+
+## W&B Weave: DSPy prompt optimization
+
+Optimize prompts with DSPy and track results in Weave.
+
+## W&B Weave: NotDiamond custom routing
+
+Route between models dynamically with NotDiamond.
+
+## W&B Weave: Multi-agent structured output
+
+Coordinate multiple agents that produce structured output.
+
+## W&B Weave: Code generation
+
+Build and evaluate a code-generation pipeline with Weave.
+
+## W&B Weave: OCR pipeline
+
+Trace and evaluate a computer-vision OCR pipeline.
+
+## W&B Weave: Audio with Weave
+
+Work with audio inputs and outputs in Weave traces.
+
+## W&B Weave: Online monitoring
+
+Monitor a production LLM application with Weave.
+
+## W&B Weave: Production feedback
+
+Collect and act on user feedback from production traffic.
+
+## W&B Weave: Scorers as guardrails
+
+Use Weave scorers as guardrails for production LLM calls.
+
+## W&B Weave: Custom model costs
+
+Track custom per-model costs alongside traces.
+
+## W&B Weave: PII data handling
+
+Redact PII in Weave traces for sensitive workloads.
+
+## W&B Weave: Use the Weave Service API
+
+Call the Weave Service API directly to record traces.
+
+### 
+
+​
+
+Evaluation and tracking
+
+## W&B Weave: Evaluate using local scorers
+
+Use small local language models to evaluate AI safety and quality.
+
+## W&B Weave: Set up annotation queues
+
+Route traces to domain experts and export structured feedback.
+
+## W&B Weave: Track custom costs
+
+Track and manage costs for LLM operations.
+
+### 
+
+​
+
+LLM provider integrations
+
+## W&B Weave: Anthropic
+
+Automatically track and log LLM calls made via the Anthropic SDK.
+
+## W&B Weave: Cohere
+
+Automatically track and log LLM calls made via the Cohere Python library.
+
+## W&B Weave: Google
+
+Trace and log Google GenAI model calls.
+
+## W&B Weave: Groq
+
+Track and monitor Groq LPU inference with Weave.
+
+## W&B Weave: MistralAI
+
+Trace and evaluate Mistral AI model calls with Weave.
+
+## W&B Weave: OpenAI
+
+Integrate OpenAI with Weave for tracing, evaluation, and monitoring.
+
+## W&B Weave: LiteLLM
+
+Automatically track and log LLM calls made via LiteLLM.
+
+### 
+
+​
+
+Framework and protocol integrations
+
+## W&B Weave: CrewAI
+
+Monitor and trace multi-agent applications with CrewAI.
+
+## W&B Weave: DSPy
+
+Track and log calls made using DSPy modules and functions.
+
+## W&B Weave: Instructor
+
+Trace structured-output calls made via Instructor.
+
+## W&B Weave: LangChain
+
+Track and log all calls made through the LangChain Python library.
+
+## W&B Weave: Verdict
+
+Use the Verdict evaluation framework to monitor LLM evaluation pipelines.
+
+## W&B Weave: Hugging Face Hub
+
+Track and analyze ML applications with Hugging Face Hub.
+
+## W&B Weave: Model Context Protocol (MCP)
+
+Trace activity between your MCP client and MCP server.
+
+## 
+
+​
+
+Serverless Inference
+
+## Serverless Inference: Create a fine-tuned LoRA
+
+Fine-tune and deploy a LoRA adapter with Serverless Inference.
+
+## Serverless Inference: Use Cline with Serverless Inference
+
+Integrate Cline with the Serverless Inference endpoints.
+
+## 
+
+​
+
+Serverless Training
+
+## Serverless RL: How to use
+
+Post-train models with reinforcement learning.
+
+## Serverless SFT: How to use
+
+Fine-tune models with Serverless SFT using the OpenPipe ART framework.
+
+## Serverless RL: Use trained models
+
+Make inference requests to the models you’ve trained.
+
+## 
+
+​
+
+Serverless Sandboxes
+
+## Serverless Sandboxes: Train a PyTorch model
+
+Train a PyTorch model in a Serverless Sandbox environment.
+
+## Serverless Sandboxes: Invoke an agent in a sandbox
+
+Invoke an OpenAI agent within a Serverless Sandbox.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/examples.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /examples)
+
+[Get Started with Weights & BiasesPrevious](/get-started)[Use the W&B MCP ServerNext](/platform/mcp-server)
+
+⌘I

@@ -1,0 +1,17 @@
+---
+source_url: https://docs.wandb.ai/support/models/articles/how-do-you-show-a-step-slider-in-a-custo
+---
+
+# How do you show a step slider in a custom chart?
+
+A step slider lets viewers scrub through logged steps in a custom chart. To enable it, open the **Other settings** page of the custom chart editor. Changing the query to use a `historyTable` instead of a `summaryTable` exposes the **Show step selector** option, which adds a slider for selecting the step.
+
+* * *
+
+[Charts](/support/models/tags/charts)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/articles/how-do-you-show-a-step-slider-in-a-custo.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/articles/how-do-you-show-a-step-slider-in-a-custo)
+
+⌘I

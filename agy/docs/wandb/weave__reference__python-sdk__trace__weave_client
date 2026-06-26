@@ -1,0 +1,1106 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/python-sdk/trace/weave_client
+---
+
+[W&B Weave](/weave/reference)
+
+[Python SDK](/weave/reference/python-sdk)
+
+[Core](/weave/reference/python-sdk/trace/feedback)
+
+# weave_client
+
+Python SDK reference for weave.trace.weave_client
+
+# 
+
+​
+
+API Overview
+
+* * *
+
+## 
+
+​
+
+`class` `CrossProjectRefError`
+
+Raised when client-side digest computation encounters a ref to a different project that cannot be resolved to an internal ID.
+
+* * *
+
+## 
+
+​
+
+`class` `FlushStatus`
+
+Status information about the current flush operation.
+
+* * *
+
+## 
+
+​
+
+`class` `NoInternalProjectIDError`
+
+Raised when client-side digest computation cannot proceed because no internal project ID has been resolved yet.
+
+* * *
+
+## 
+
+​
+
+`class` `PendingJobCounts`
+
+Counts of pending jobs for each type.
+
+* * *
+
+## 
+
+​
+
+`class` `WeaveClient`
+
+### 
+
+​
+
+`method` `__init__`
+    
+    
+    __init__(
+        entity: 'str',
+        project: 'str',
+        server: 'TraceServerClientInterface',
+        ensure_project_exists: 'bool' = True,
+        postprocess_inputs: 'PostprocessInputsFunc | None' = None,
+        postprocess_output: 'PostprocessOutputFunc | None' = None,
+        attributes: 'dict[str, Any] | None' = None,
+        api_key: 'str | None' = None
+    )
+    
+
+* * *
+
+#### 
+
+​
+
+`property` num_outstanding_jobs
+
+Returns the total number of pending jobs across all executors and the server. This property can be used to check the progress of background tasks without blocking the main thread. **Returns:**
+
+  * **`int`** : The total number of pending jobs
+
+
+
+* * *
+
+#### 
+
+​
+
+`property` project_id
+
+* * *
+
+### 
+
+​
+
+`method` `add_calls_to_annotation_queue`
+    
+    
+    add_calls_to_annotation_queue(
+        queue_id: 'str',
+        call_ids: 'list[str]',
+        display_fields: 'list[str]'
+    ) → AnnotationQueueAddCallsRes
+    
+
+Add calls to an annotation queue. **Args:**
+
+* * *
+
+### 
+
+​
+
+`method` `add_cost`
+    
+    
+    add_cost(
+        llm_id: 'str',
+        prompt_token_cost: 'float',
+        completion_token_cost: 'float',
+        effective_date: 'datetime | None' = None,
+        prompt_token_cost_unit: 'str | None' = 'USD',
+        completion_token_cost_unit: 'str | None' = 'USD',
+        provider_id: 'str | None' = 'default'
+    ) → CostCreateRes
+    
+
+Add a cost to the current project.
+
+  * **`queue_id`** : Annotation queue ID.
+  * **`call_ids`** : Call IDs to add to the queue.
+  * **`display_fields`** : JSON paths to show reviewers, such as `inputs.prompt` or `output.text`. **Examples:**
+
+
+    
+    
+    client.add_cost(llm_id="my_expensive_custom_model", prompt_token_cost=1, completion_token_cost=2)
+    client.add_cost(llm_id="my_expensive_custom_model", prompt_token_cost=500, completion_token_cost=1000, effective_date=datetime(1998, 10, 3))
+    
+
+**Args:**
+
+  * **`llm_id`** : The ID of the LLM. eg “gpt-4o-mini-2024-07-18”
+  * **`prompt_token_cost`** : The cost per prompt token. eg .0005
+  * **`completion_token_cost`** : The cost per completion token. eg .0015
+  * **`effective_date`** : Defaults to the current date. A datetime.datetime object.
+  * **`provider_id`** : The provider of the LLM. Defaults to “default”. eg “openai”
+  * **`prompt_token_cost_unit`** : The unit of the cost for the prompt tokens. Defaults to “USD”. (Currently unused, will be used in the future to specify the currency type for the cost eg “tokens” or “time”)
+  * **`completion_token_cost_unit`** : The unit of the cost for the completion tokens. Defaults to “USD”. (Currently unused, will be used in the future to specify the currency type for the cost eg “tokens” or “time”) **Returns:** A CostCreateRes object. Which has one field called a list of tuples called ids. Each tuple contains the llm_id and the id of the created cost object.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `add_tags`
+    
+    
+    add_tags(obj_ref: 'ObjectRef | str', tags: 'list[str]') → None
+    
+
+Add tags to an object version. **Args:**
+
+* * *
+
+### 
+
+​
+
+`method` `clear_wandb_run_context`
+    
+    
+    clear_wandb_run_context() → None
+    
+
+Clear wandb run context override. After calling this, calls will fall back to using the global wandb.run (if available) for run_id and step information.
+
+  * **`obj_ref`** : Reference to the object version, either an ObjectRef or a weave /// URI string.
+  * **`tags`** : List of tag strings to add. **Examples:**
+
+
+    
+    
+    client = weave.init("my-project")
+    client.set_wandb_run_context(run_id="my-run-id", step=5)
+    # ... make some calls ...
+    client.clear_wandb_run_context()
+    # Now calls will use global wandb.run again
+    
+
+* * *
+
+### 
+
+​
+
+`method` `create_annotation_queue`
+    
+    
+    create_annotation_queue(
+        name: 'str',
+        scorer_refs: 'list[str]',
+        description: 'str' = ''
+    ) → str
+    
+
+Create an annotation queue for this project. **Args:**
+
+  * **`name`** : Display name for the queue.
+  * **`scorer_refs`** : Weave refs for the scorers/annotation fields reviewers complete.
+  * **`description`** : Optional reviewer guidelines or queue description. **Returns:** The ID of the created annotation queue.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `create_call`
+    
+    
+    create_call(
+        op: 'str | Op',
+        inputs: 'dict[str, Any]',
+        parent: 'Call | None' = None,
+        attributes: 'dict[str, Any] | None' = None,
+        display_name: 'str | Callable[[Call], str] | None' = None,
+        use_stack: 'bool' = True,
+        _call_id_override: 'str | None' = None,
+        started_at: 'datetime | None' = None
+    ) → Call
+    
+
+Create, log, and push a call onto the runtime stack. **Args:**
+
+  * **`op`** : The operation producing the call, or the name of an anonymous operation.
+  * **`inputs`** : The inputs to the operation.
+  * **`parent`** : The parent call. If parent is not provided, the current run is used as the parent.
+  * **`display_name`** : The display name for the call. Defaults to None.
+  * **`attributes`** : The attributes for the call. Defaults to None.
+  * **`use_stack`** : Whether to push the call onto the runtime stack. Defaults to True.
+  * **`started_at`** : Override the call start time. If None, uses current time. **Returns:** The created Call object.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `delete_all_object_versions`
+    
+    
+    delete_all_object_versions(object_name: 'str') → int
+    
+
+Delete all versions of an object. **Args:**
+
+  * **`object_name`** : The name of the object whose versions should be deleted. **Returns:** The number of versions deleted.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `delete_all_op_versions`
+    
+    
+    delete_all_op_versions(op_name: 'str') → int
+    
+
+Delete all versions of an op. **Args:**
+
+  * **`op_name`** : The name of the op whose versions should be deleted. **Returns:** The number of versions deleted.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `delete_annotation_queue`
+    
+    
+    delete_annotation_queue(queue_id: 'str') → AnnotationQueueSchema
+    
+
+Soft-delete an annotation queue.
+
+* * *
+
+### 
+
+​
+
+`method` `delete_call`
+    
+    
+    delete_call(call: 'Call') → None
+    
+
+* * *
+
+### 
+
+​
+
+`method` `delete_calls`
+    
+    
+    delete_calls(call_ids: 'list[str]') → None
+    
+
+Delete calls by their IDs. Deleting a call will also delete all of its children. **Args:**
+
+* * *
+
+### 
+
+​
+
+`method` `delete_object_version`
+    
+    
+    delete_object_version(object: 'ObjectRef') → None
+    
+
+* * *
+
+### 
+
+​
+
+`method` `delete_object_versions`
+    
+    
+    delete_object_versions(object_name: 'str', digests: 'list[str]') → int
+    
+
+Delete specific versions of an object.
+
+  * **`call_ids`** : A list of call IDs to delete. Ex: [“2F0193e107-8fcf-7630-b576-977cc3062e2e”] **Args:**
+  * **`object_name`** : The name of the object whose versions should be deleted.
+  * **`digests`** : List of digests to delete. Can include aliases like “latest” or “v0”. **Returns:** The number of versions deleted.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `delete_op_version`
+    
+    
+    delete_op_version(op: 'OpRef') → None
+    
+
+* * *
+
+### 
+
+​
+
+`method` `fail_call`
+    
+    
+    fail_call(call: 'Call', exception: 'BaseException') → None
+    
+
+Fail a call with an exception. This is a convenience method for finish_call.
+
+* * *
+
+### 
+
+​
+
+`method` `finish`
+    
+    
+    finish(
+        use_progress_bar: 'bool' = True,
+        callback: 'Callable[[FlushStatus], None] | None' = None
+    ) → None
+    
+
+Flushes all background tasks to ensure they are processed. This method blocks until all currently enqueued jobs are processed, displaying a progress bar to show the status of the pending tasks. It ensures parallel processing during main thread execution and can improve performance when user code completes before data has been uploaded to the server. **Args:**
+
+* * *
+
+### 
+
+​
+
+`method` `finish_call`
+    
+    
+    finish_call(
+        call: 'Call',
+        output: 'Any' = None,
+        exception: 'BaseException | None' = None,
+        op: 'Op | None' = None,
+        ended_at: 'datetime | None' = None
+    ) → None
+    
+
+Finalize a call and persist its results. Any values present in `call.summary` are deep-merged with computed summary statistics (e.g. usage and status counts) before being written to the database.
+
+* * *
+
+### 
+
+​
+
+`method` `flush`
+    
+    
+    flush() → None
+    
+
+Flushes background asynchronous tasks, safe to call multiple times.
+
+* * *
+
+### 
+
+​
+
+`method` `get`
+    
+    
+    get(ref: 'ObjectRef', objectify: 'bool' = True) → Any
+    
+
+* * *
+
+### 
+
+​
+
+`method` `get_aliases`
+    
+    
+    get_aliases(obj_ref: 'ObjectRef | str') → list[str]
+    
+
+Get aliases for an object version.
+
+  * **`use_progress_bar`** : Whether to display a progress bar during flush. Set to False for environments where a progress bar would not render well (e.g., CI environments).
+  * **`callback`** : Optional callback function that receives status updates. Overrides use_progress_bar. **Args:**
+  * **`obj_ref`** : Reference to the object version, either an ObjectRef or a weave /// URI string. **Returns:** List of alias strings. Includes the virtual “latest” alias if the object version is the latest.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `get_annotation_queue`
+    
+    
+    get_annotation_queue(queue_id: 'str') → AnnotationQueueSchema
+    
+
+Read a single annotation queue by ID.
+
+* * *
+
+### 
+
+​
+
+`method` `get_annotation_queue_stats`
+    
+    
+    get_annotation_queue_stats(
+        queue_ids: 'list[str]'
+    ) → list[AnnotationQueueStatsSchema]
+    
+
+Get item completion stats for annotation queues.
+
+* * *
+
+### 
+
+​
+
+`method` `get_call`
+    
+    
+    get_call(
+        call_id: 'str',
+        include_costs: 'bool' = False,
+        include_feedback: 'bool' = False,
+        columns: 'list[str] | None' = None
+    ) → WeaveObject
+    
+
+Get a single call by its ID. **Args:**
+
+  * **`call_id`** : The ID of the call to get.
+  * **`include_costs`** : If true, cost info is included at summary.weave
+  * **`include_feedback`** : If true, feedback info is included at summary.weave.feedback
+  * **`columns`** : A list of columns to include in the response. If None, all columns are included. Specifying fewer columns may be more performant. Some columns are always included id, project_id, trace_id, op_name, started_at **Returns:** A call object.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `get_calls`
+    
+    
+    get_calls(
+        filter: 'CallsFilterLike | None' = None,
+        limit: 'int | None' = None,
+        offset: 'int | None' = None,
+        sort_by: 'list[SortByLike] | None' = None,
+        query: 'QueryLike | None' = None,
+        include_costs: 'bool' = False,
+        include_feedback: 'bool' = False,
+        include_storage_size: 'bool' = False,
+        include_total_storage_size: 'bool' = False,
+        include_usernames: 'bool' = False,
+        columns: 'list[str] | None' = None,
+        expand_columns: 'list[str] | None' = None,
+        return_expanded_column_values: 'bool' = True,
+        scored_by: 'str | list[str] | None' = None,
+        page_size: 'int' = 1000
+    ) → CallsIter
+    
+
+Retrieve a list of traced calls (operations) for this project. This method provides a powerful and flexible interface for querying trace data. It supports pagination, filtering, sorting, field projection, and scoring metadata, and can be used to power custom trace UIs or analysis tools. Performance Tip: Specify `columns` and use `filter` or `query` to reduce result size. **Args:**
+
+  * **`filter`** : High-level filter for narrowing results by fields like `op_name`, `parent_ids`, etc.
+  * **`limit`** : Maximum number of calls to return.
+  * **`offset`** : Number of calls to skip before returning results (used for pagination).
+  * **`sort_by`** : List of fields to sort the results by (e.g., `started_at desc`).
+  * **`query`** : A mongo-like expression for advanced filtering. Not all Mongo operators are supported.
+  * **`include_costs`** : If True, includes token/cost info in `summary.weave`.
+  * **`include_feedback`** : If True, includes feedback in `summary.weave.feedback`.
+  * **`include_storage_size`** : If True, includes the storage size for a call.
+  * **`include_total_storage_size`** : If True, includes the total storage size for a trace.
+  * **`include_usernames`** : If True, attempts to resolve each call’s `wb_user_id` to a `wb_username`.
+  * **`columns`** : List of fields to return per call. Reducing this can significantly improve performance. (Some fields like `id`, `trace_id`, `op_name`, and `started_at` are always included.)
+  * **`scored_by`** : Filter by one or more scorers (name or ref URI). Multiple scorers are AND-ed.
+  * **`page_size`** : Number of calls fetched per page. Tune this for performance in large queries.
+
+**Returns:**
+
+  * **`CallsIter`** : An iterator over `Call` objects. Supports slicing, iteration, and `.to_pandas()`.
+
+**Example:**
+    
+    
+    calls = client.get_calls(
+         filter=CallsFilter(op_names=["my_op"]),
+         columns=["inputs", "output", "summary"],
+         limit=100,
+    )
+    for call in calls:
+         print(call.inputs, call.output)
+    
+
+* * *
+
+### 
+
+​
+
+`method` `get_evaluation`
+    
+    
+    get_evaluation(uri: 'str') → Evaluation
+    
+
+Retrieve a specific Evaluation object by its URI. Evaluation URIs typically follow the format: `weave:///entity/project/object/Evaluation:version` You can also get the evaluation by its “friendly” name: get_evaluation(“Evaluation:v1”) **Args:**
+
+  * **`uri`** (str): The unique resource identifier of the evaluation to retrieve.
+
+**Returns:**
+
+  * **`Evaluation`** : The Evaluation object corresponding to the provided URI.
+
+**Raises:**
+
+  * **`TypeError`** : If the object at the URI is not an Evaluation instance.
+  * **`ValueError`** : If the URI is invalid or the object cannot be found.
+
+**Examples:**
+    
+    
+    client = weave.init("my-project")
+    evaluation = client.get_evaluation("weave:///entity/project/object/my-eval:v1")
+    print(evaluation.name)
+    
+
+* * *
+
+### 
+
+​
+
+`method` `get_evaluations`
+    
+    
+    get_evaluations() → list[Evaluation]
+    
+
+Retrieve all Evaluation objects from the current project. **Returns:**
+
+  * **`list[Evaluation]`** : A list of all Evaluation objects in the current project. Empty list if no evaluations are found or if all conversions fail.
+
+**Examples:**
+    
+    
+    client = weave.init("my-project")
+    evaluations = client.get_evaluations()
+    print(f"Found {len(evaluations)} evaluations")
+    for eval in evaluations:
+         print(f"Evaluation: {eval.name}")
+    
+
+* * *
+
+### 
+
+​
+
+`method` `get_feedback`
+    
+    
+    get_feedback(
+        query: 'Query | str | None' = None,
+        reaction: 'str | None' = None,
+        offset: 'int' = 0,
+        limit: 'int' = 100
+    ) → FeedbackQuery
+    
+
+Query project for feedback. **Examples:**
+    
+    
+    # Fetch a specific feedback object.
+    # Note that this still returns a collection, which is expected
+    # to contain zero or one item(s).
+    client.get_feedback("1B4082A3-4EDA-4BEB-BFEB-2D16ED59AA07")
+    
+    # Find all feedback objects with a specific reaction.
+    client.get_feedback(reaction="👍", limit=10)
+    
+    # Find all feedback objects with a specific feedback type with
+    # mongo-style query.
+    from weave.trace_server.interface.query import Query
+    
+    query = Query(
+        **{
+            "$expr": {
+                "$eq": [
+                    {"$getField": "feedback_type"},
+                    {"$literal": "wandb.reaction.1"},
+                ],
+            }
+        }
+    )
+    client.get_feedback(query=query)
+    
+
+**Args:**
+
+  * **`query`** : A mongo-style query expression. For convenience, also accepts a feedback UUID string.
+  * **`reaction`** : For convenience, filter by a particular reaction emoji.
+  * **`offset`** : The offset to start fetching feedback objects from.
+  * **`limit`** : The maximum number of feedback objects to fetch. **Returns:** A FeedbackQuery object.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `get_tags`
+    
+    
+    get_tags(obj_ref: 'ObjectRef | str') → list[str]
+    
+
+Get tags for an object version. **Args:**
+
+  * **`obj_ref`** : Reference to the object version, either an ObjectRef or a weave /// URI string. **Returns:** List of tag strings. Returns empty list if the object version has no tags.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `get_tags_and_aliases`
+    
+    
+    get_tags_and_aliases(obj_ref: 'ObjectRef | str') → tuple[list[str], list[str]]
+    
+
+Get both tags and aliases for an object version in a single call. **Args:**
+
+  * **`obj_ref`** : Reference to the object version, either an ObjectRef or a weave /// URI string. **Returns:** A tuple of (tags, aliases). Each is a list of strings. Returns empty lists if the object version has no tags or aliases.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `link_prompt_to_registry`
+    
+    
+    link_prompt_to_registry(
+        prompt: 'LinkablePrompt',
+        target_path: 'str',
+        aliases: 'Sequence[str] | None' = None
+    ) → LinkAssetToRegistryRes
+    
+
+Link a published prompt version into the registry. **Args:**
+
+  * **`prompt`** : A published prompt, an `ObjectRef`, or a fully qualified weave ///… URI string.
+  * **`target_path`** : Registry destination path in the format `<registry_project>/<portfolio_name>`, for example `wandb-registry-prompts/my-prompt-collection`.
+  * **`aliases`** : Optional aliases to attach to the created registry version. **Returns:**
+  * **`LinkAssetToRegistryRes`** : Parsed response from the registry-link endpoint.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `list_aliases`
+    
+    
+    list_aliases() → list[str]
+    
+
+List all distinct aliases in the project. **Returns:** List of all alias strings in the project.
+
+* * *
+
+### 
+
+​
+
+`method` `list_annotation_queue_items`
+    
+    
+    list_annotation_queue_items(
+        queue_id: 'str',
+        filter: 'AnnotationQueueItemsFilter | None' = None,
+        sort_by: 'list[SortBy] | None' = None,
+        limit: 'int | None' = None,
+        offset: 'int | None' = None,
+        include_position: 'bool' = False
+    ) → list[AnnotationQueueItemSchema]
+    
+
+List calls assigned to an annotation queue.
+
+* * *
+
+### 
+
+​
+
+`method` `list_annotation_queues`
+    
+    
+    list_annotation_queues(
+        name: 'str | None' = None,
+        sort_by: 'list[SortBy] | None' = None,
+        limit: 'int | None' = None,
+        offset: 'int | None' = None
+    ) → list[AnnotationQueueSchema]
+    
+
+List annotation queues for this project.
+
+* * *
+
+### 
+
+​
+
+`method` `list_tags`
+    
+    
+    list_tags() → list[str]
+    
+
+List all distinct tags in the project. **Returns:** List of all tag strings in the project.
+
+* * *
+
+### 
+
+​
+
+`method` `purge_costs`
+    
+    
+    purge_costs(ids: 'list[str] | str') → None
+    
+
+Purge costs from the current project. **Examples:**
+    
+    
+    client.purge_costs([ids])
+    client.purge_costs(ids)
+    
+
+**Args:**
+
+* * *
+
+### 
+
+​
+
+`method` `query_costs`
+    
+    
+    query_costs(
+        query: 'Query | str | None' = None,
+        llm_ids: 'list[str] | None' = None,
+        offset: 'int' = 0,
+        limit: 'int' = 100
+    ) → list[CostQueryOutput]
+    
+
+Query project for costs.
+
+  * **`ids`** : The cost IDs to purge. Can be a single ID or a list of IDs. **Examples:**
+
+
+    
+    
+    # Fetch a specific cost object.
+    # Note that this still returns a collection, which is expected
+    # to contain zero or one item(s).
+    client.query_costs("1B4082A3-4EDA-4BEB-BFEB-2D16ED59AA07")
+    
+    # Find all cost objects with a specific reaction.
+    client.query_costs(llm_ids=["gpt-4o-mini-2024-07-18"], limit=10)
+    
+
+**Args:**
+
+  * **`query`** : A mongo-style query expression. For convenience, also accepts a cost UUID string.
+  * **`llm_ids`** : For convenience, filter for a set of llm_ids.
+  * **`offset`** : The offset to start fetching cost objects from.
+  * **`limit`** : The maximum number of cost objects to fetch. **Returns:** A CostQuery object.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `remove_aliases`
+    
+    
+    remove_aliases(obj_ref: 'ObjectRef | str', alias: 'str | list[str]') → None
+    
+
+Remove one or more aliases from an object. **Args:**
+
+* * *
+
+### 
+
+​
+
+`method` `remove_tags`
+    
+    
+    remove_tags(obj_ref: 'ObjectRef | str', tags: 'list[str]') → None
+    
+
+Remove tags from an object version.
+
+  * **`obj_ref`** : Reference to the object, either an ObjectRef or a weave /// URI string (digest is not used since aliases are object-scoped).
+  * **`alias`** : An alias name or list of alias names to remove. **Args:**
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `save`
+    
+    
+    save(val: 'Any', name: 'str', branch: 'str' = 'latest') → Any
+    
+
+Do not call directly, use weave.publish() instead.
+
+  * **`obj_ref`** : Reference to the object version, either an ObjectRef or a weave /// URI string.
+  * **`tags`** : List of tag strings to remove. **Args:**
+  * **`val`** : The object to save.
+  * **`name`** : The name to save the object under.
+  * **`branch`** : The branch to save the object under. Defaults to “latest”. **Returns:** A deserialized version of the saved object.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `set_aliases`
+    
+    
+    set_aliases(obj_ref: 'ObjectRef | str', alias: 'str | list[str]') → None
+    
+
+Set one or more aliases for an object version. **Args:**
+
+* * *
+
+### 
+
+​
+
+`method` `set_wandb_run_context`
+    
+    
+    set_wandb_run_context(run_id: 'str', step: 'int | None' = None) → None
+    
+
+Override wandb run_id and step for calls created by this client. This allows you to associate Weave calls with a specific WandB run that is not bound to the global wandb.run symbol.
+
+  * **`obj_ref`** : Reference to the object version, either an ObjectRef or a weave /// URI string.
+  * **`alias`** : An alias name or list of alias names to set (e.g., “production”). **Args:**
+  * **`run_id`** : The run ID (not including entity/project prefix). The client will automatically add the entity/project prefix.
+  * **`step`** : The step number to use for calls. If None, step will not be set. **Examples:**
+
+
+    
+    
+    client = weave.init("my-project")
+    client.set_wandb_run_context(run_id="my-run-id", step=5)
+    # Now all calls will be associated with entity/project/my-run-id at step 5
+    
+    # Or without a step
+    client.set_wandb_run_context(run_id="my-run-id")
+    # Calls will be associated with entity/project/my-run-id with no step
+    
+
+* * *
+
+### 
+
+​
+
+`method` `update_annotation_queue`
+    
+    
+    update_annotation_queue(
+        queue_id: 'str',
+        name: 'str | None' = None,
+        description: 'str | None' = None,
+        scorer_refs: 'list[str] | None' = None
+    ) → AnnotationQueueSchema
+    
+
+Update annotation queue metadata.
+
+* * *
+
+### 
+
+​
+
+`function` `get_obj_name`
+    
+    
+    get_obj_name(val: 'Any') → str
+    
+
+* * *
+
+### 
+
+​
+
+`function` `get_parallelism_settings`
+    
+    
+    get_parallelism_settings() → tuple[int | None, int | None]
+    
+
+* * *
+
+### 
+
+​
+
+`function` `map_to_refs`
+    
+    
+    map_to_refs(obj: 'Any') → Any
+    
+
+* * *
+
+### 
+
+​
+
+`function` `print_call_link`
+    
+    
+    print_call_link(call: 'Call') → None
+    
+
+* * *
+
+### 
+
+​
+
+`function` `redact_sensitive_keys`
+    
+    
+    redact_sensitive_keys(obj: 'Any') → Any
+    
+
+* * *
+
+### 
+
+​
+
+`function` `sanitize_object_name`
+    
+    
+    sanitize_object_name(name: 'str') → str
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/python-sdk/trace/weave_client.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/python-sdk/trace/weave_client)
+
+[utilPrevious](/weave/reference/python-sdk/trace/util)[trace_server_interfaceNext](/weave/reference/python-sdk/trace_server/trace_server_interface)
+
+⌘I

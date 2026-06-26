@@ -1,0 +1,53 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/patchrealtimesession
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# patchRealtimeSession
+
+TypeScript SDK reference
+
+# 
+
+​
+
+patchRealtimeSession
+
+▸ **patchRealtimeSession**(): `Promise`<`boolean`> Manually patch the `RealtimeSession` class from `@openai/agents-realtime` so that every new instance is automatically traced by Weave. **Note: You typically don’t need to call this function!** `@openai/agents-realtime` is automatically instrumented via module loader hooks when you import Weave. This function is provided for edge cases where automatic instrumentation doesn’t work (e.g. dynamic imports, bundlers that bypass hooks). Call this **once** at app startup, before any `RealtimeSession` is constructed. The function is idempotent — safe to call multiple times.
+
+#### 
+
+​
+
+Returns
+
+`Promise`<`boolean`> `true` if the patch was applied (or was already in place), `false` if `@openai/agents-realtime` could not be loaded. `Example`
+    
+    
+    import { patchRealtimeSession } from 'weave';
+    await patchRealtimeSession();
+    // Every new RealtimeSession(...) is now auto-instrumented
+    
+
+#### 
+
+​
+
+Defined in
+
+[integrations/openai.realtime.agent.ts:808](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/integrations/openai.realtime.agent.ts#L808)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/patchrealtimesession.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/patchrealtimesession)
+
+[opPrevious](/weave/reference/typescript-sdk/functions/op)[requireCurrentCallStackEntryNext](/weave/reference/typescript-sdk/functions/requirecurrentcallstackentry)
+
+⌘I

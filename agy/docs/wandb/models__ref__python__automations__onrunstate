@@ -1,0 +1,64 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/automations/onrunstate
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Automations](/models/ref/python/automations)
+
+# OnRunState
+
+[GitHub source](https://github.com/wandb/wandb/blob/main/wandb/automations/events.py)
+
+## 
+
+​
+
+`class` `OnRunState`
+
+A run state changes. Examples: Define an event that triggers for any run in project “my-project” when its state changes to “finished” (i.e. succeeded) or “failed”:
+    
+    
+    from wandb import Api
+    from wandb.automations import OnRunState
+    
+    api = Api()
+    project = api.project(name="my-project")
+    
+    event = OnRunState(
+        scope=project,
+        filter=RunEvent.state.in_(["finished", "failed"]),
+    )
+    
+
+### 
+
+​
+
+`method` `OnRunState.__init__`
+    
+    
+    __init__(
+        event_type: 'Literal[RUN_STATE]' = RUN_STATE,
+        scope: 'ProjectScope',
+        filter: 'RunStateFilter'
+    ) → None
+    
+
+**Args:**
+
+  * `event_type` (Literal[RUN_STATE]):
+  * `scope` (ProjectScope): The scope of the event: must be a project.
+  * `filter` (RunStateFilter): Run state condition(s) that must be satisfied for this event to trigger.
+
+**Returns:** An `OnRunState` object.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/automations/onrunstate.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/automations/onrunstate)
+
+[OnRunMetricPrevious](/models/ref/python/automations/onrunmetric)[OnUnlinkArtifactNext](/models/ref/python/automations/onunlinkartifact)
+
+⌘I

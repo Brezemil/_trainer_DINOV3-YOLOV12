@@ -1,7 +1,6 @@
 # Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
 """Block modules."""
 
-import math
 import warnings
 
 import torch
@@ -15,7 +14,7 @@ from .transformer import TransformerBlock
 
 try:
     # Only using DINOv3 models from Facebook Research
-    from transformers import Dinov2Config, Dinov2Model
+    import transformers  # noqa: F401
 
     TRANSFORMERS_AVAILABLE = True
 except ImportError:
@@ -1222,12 +1221,8 @@ try:
 
         USE_FLASH_ATTN = True
     else:
-        from torch.nn.functional import scaled_dot_product_attention as sdpa
-
         logger.warning("FlashAttention is not available on this device. Using scaled_dot_product_attention instead.")
 except Exception:
-    from torch.nn.functional import scaled_dot_product_attention as sdpa
-
     logger.warning("FlashAttention is not available on this device. Using scaled_dot_product_attention instead.")
 
 
@@ -1508,6 +1503,14 @@ class DINO3Backbone(nn.Module):
                 "type": "vit",
                 "hub_name": "dinov3_vitl16",
             },
+            "dinov3_vitl16_sat493m": {
+                "params": 300,
+                "embed_dim": 1024,
+                "patch_size": 16,
+                "type": "vit",
+                "hub_name": "dinov3_vitl16_sat493m",
+                "dataset": "SAT-493M",
+            },
             "dinov3_vitl16plus": {
                 "params": 300,
                 "embed_dim": 1024,
@@ -1562,6 +1565,14 @@ class DINO3Backbone(nn.Module):
             "vits16": {"params": 21, "embed_dim": 384, "patch_size": 16, "type": "vit", "hub_name": "dinov3_vits16"},
             "vitb16": {"params": 86, "embed_dim": 768, "patch_size": 16, "type": "vit", "hub_name": "dinov3_vitb16"},
             "vitl16": {"params": 300, "embed_dim": 1024, "patch_size": 16, "type": "vit", "hub_name": "dinov3_vitl16"},
+            "vitl16_sat493m": {
+                "params": 300,
+                "embed_dim": 1024,
+                "patch_size": 16,
+                "type": "vit",
+                "hub_name": "dinov3_vitl16_sat493m",
+                "dataset": "SAT-493M",
+            },
             "vith16_plus": {
                 "params": 840,
                 "embed_dim": 1280,
@@ -1659,6 +1670,7 @@ class DINO3Backbone(nn.Module):
                 "dinov3_vits16": "facebook/dinov3-vits16-pretrain-lvd1689m",
                 "dinov3_vitb16": "facebook/dinov3-vitb16-pretrain-lvd1689m",
                 "dinov3_vitl16": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+                "dinov3_vitl16_sat493m": "facebook/dinov3-vitl16-pretrain-sat493m",
                 "dinov3_vith16plus": "facebook/dinov3-vit7b16-pretrain-lvd1689m",  # Use 7B as closest
                 "dinov3_vit7b16": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
                 # ConvNeXt models - use actual DINOv3 ConvNeXt models
@@ -1670,6 +1682,7 @@ class DINO3Backbone(nn.Module):
                 "vits16": "facebook/dinov3-vits16-pretrain-lvd1689m",
                 "vitb16": "facebook/dinov3-vitb16-pretrain-lvd1689m",
                 "vitl16": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+                "vitl16_sat493m": "facebook/dinov3-vitl16-pretrain-sat493m",
                 "vith16_plus": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
                 "vit7b16": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
                 "convnext_tiny": "facebook/dinov3-convnext-tiny-pretrain-lvd1689m",
@@ -1753,7 +1766,7 @@ class DINO3Backbone(nn.Module):
             self.embed_dim = actual_embed_dim
 
             # Note: Projection layers will be created dynamically in forward pass
-            print(f"   Projection layers will be created dynamically based on input shape")
+            print("   Projection layers will be created dynamically based on input shape")
 
             return model
 
@@ -1798,6 +1811,7 @@ class DINO3Backbone(nn.Module):
                 "dinov3_vits16": "facebook/dinov3-vits16-pretrain-lvd1689m",
                 "dinov3_vitb16": "facebook/dinov3-vitb16-pretrain-lvd1689m",
                 "dinov3_vitl16": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+                "dinov3_vitl16_sat493m": "facebook/dinov3-vitl16-pretrain-sat493m",
                 "dinov3_vith16plus": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
                 "dinov3_convnext_tiny": "facebook/dinov3-convnext-tiny-pretrain-lvd1689m",
                 "dinov3_convnext_small": "facebook/dinov3-convnext-small-pretrain-lvd1689m",
@@ -1807,6 +1821,7 @@ class DINO3Backbone(nn.Module):
                 "vits16": "facebook/dinov3-vits16-pretrain-lvd1689m",
                 "vitb16": "facebook/dinov3-vitb16-pretrain-lvd1689m",
                 "vitl16": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+                "vitl16_sat493m": "facebook/dinov3-vitl16-pretrain-sat493m",
                 "vith16plus": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
                 "vit7b16": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
                 "convnext_tiny": "facebook/dinov3-convnext-tiny-pretrain-lvd1689m",
@@ -1922,9 +1937,9 @@ class DINO3Backbone(nn.Module):
         if not os.path.exists(file_path):
             # File doesn't exist - report error and use fallback
             print(f"⚠️  WARNING: DINO pretrained weights not found at: {file_path}")
-            print(f"⚠️  The specified file does not exist!")
-            print(f"🔄 FALLBACK MODE: Loading DINOv3 from Hugging Face instead...")
-            print(f"   Note: This will use pretrained ImageNet weights, not your custom weights")
+            print("⚠️  The specified file does not exist!")
+            print("🔄 FALLBACK MODE: Loading DINOv3 from Hugging Face instead...")
+            print("   Note: This will use pretrained ImageNet weights, not your custom weights")
 
             # Use default fallback model based on version
             fallback_model = "dinov3_vitb16"  # Default to vitb16
@@ -1997,7 +2012,7 @@ class DINO3Backbone(nn.Module):
             if unexpected_keys:
                 print(f"   ⚠️  Unexpected keys: {len(unexpected_keys)} (this may be normal)")
 
-            print(f"✅ Successfully created model from local weights")
+            print("✅ Successfully created model from local weights")
             return model
 
         except Exception as e:
@@ -2344,6 +2359,14 @@ class DINO3Preprocessor(nn.Module):
                 "type": "vit",
                 "hub_name": "dinov3_vitl16",
             },
+            "dinov3_vitl16_sat493m": {
+                "params": 300,
+                "embed_dim": 1024,
+                "patch_size": 16,
+                "type": "vit",
+                "hub_name": "dinov3_vitl16_sat493m",
+                "dataset": "SAT-493M",
+            },
             "dinov3_vith16plus": {
                 "params": 840,
                 "embed_dim": 1280,
@@ -2390,7 +2413,7 @@ class DINO3Preprocessor(nn.Module):
         print(f"   🎯 Feature dim: {embed_dim}")
         print(f"   🔧 Output channels: {self.output_channels}")
         print(f"   🧊 Frozen: {self.freeze_backbone}")
-        print(f"   🏗️  Architecture: Input -> DINO3 -> Enhanced Features -> Original YOLOv12")
+        print("   🏗️  Architecture: Input -> DINO3 -> Enhanced Features -> Original YOLOv12")
 
     def _load_dino_model(self):
         """
@@ -2414,9 +2437,9 @@ class DINO3Preprocessor(nn.Module):
             else:
                 # File doesn't exist - report error and use fallback
                 print(f"⚠️  WARNING: DINO pretrained weights not found at: {self.model_name}")
-                print(f"⚠️  The specified file does not exist!")
-                print(f"🔄 FALLBACK MODE: Loading DINOv3 from Hugging Face instead...")
-                print(f"   Note: This will use pretrained ImageNet weights, not your custom crack detection weights")
+                print("⚠️  The specified file does not exist!")
+                print("🔄 FALLBACK MODE: Loading DINOv3 from Hugging Face instead...")
+                print("   Note: This will use pretrained ImageNet weights, not your custom crack detection weights")
 
                 # Extract base model name from path if possible, otherwise use default
                 # Try to infer model variant from filename (e.g., crack_detection_dino.pth -> vitb16 default)
@@ -2446,12 +2469,14 @@ class DINO3Preprocessor(nn.Module):
                     "dinov3_vits16": "facebook/dinov3-vits16-pretrain-lvd1689m",
                     "dinov3_vitb16": "facebook/dinov3-vitb16-pretrain-lvd1689m",
                     "dinov3_vitl16": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+                    "dinov3_vitl16_sat493m": "facebook/dinov3-vitl16-pretrain-sat493m",
                     "dinov3_vith16plus": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
                     "dinov3_vit7b16": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
                     # Handle simplified names
                     "vits16": "facebook/dinov3-vits16-pretrain-lvd1689m",
                     "vitb16": "facebook/dinov3-vitb16-pretrain-lvd1689m",
                     "vitl16": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+                    "vitl16_sat493m": "facebook/dinov3-vitl16-pretrain-sat493m",
                     "vith16plus": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
                     "vit7b16": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
                 }
@@ -2520,7 +2545,7 @@ class DINO3Preprocessor(nn.Module):
 
             # Update specs if custom
             if self.model_name not in self.dinov3_specs:
-                print(f"   Updating specs for custom model")
+                print("   Updating specs for custom model")
                 # Store inferred specs for this custom model
                 self.embed_dim = embed_dim
 
@@ -2570,13 +2595,13 @@ class DINO3Preprocessor(nn.Module):
                     for key in unexpected_keys[:5]:
                         print(f"      - {key}")
 
-            print(f"✅ Successfully created DINOv3 model from local weights")
+            print("✅ Successfully created DINOv3 model from local weights")
 
             # Freeze weights if requested
             if self.freeze_backbone:
                 for param in model.parameters():
                     param.requires_grad = False
-                print(f"🧊 DINOv3 preprocessor weights frozen")
+                print("🧊 DINOv3 preprocessor weights frozen")
 
             return model
 

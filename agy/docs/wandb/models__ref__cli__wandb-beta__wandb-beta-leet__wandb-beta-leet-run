@@ -1,0 +1,59 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-run
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb beta](/models/ref/cli/wandb-beta)
+
+[beta leet](/models/ref/cli/wandb-beta/wandb-beta-leet)
+
+# wandb beta leet run
+
+## 
+
+​
+
+Usage
+    
+    
+    run [OPTIONS] [PATH]
+    
+
+## 
+
+​
+
+Description
+
+Launch the LEET TUI. LEET is a terminal UI for viewing a W&B run specified by an optional PATH. PATH can include a .wandb file or a run directory containing a .wandb file. If PATH is not provided, the command will look for the latest run.
+
+## 
+
+​
+
+Arguments
+
+Name| Default| Type  
+---|---|---  
+`path`| STR| False  
+  
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`-h, --help`| BOOL Flag| Show this message and exit. **Default** : False  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-run.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-run)
+
+[wandb beta leet configPrevious](/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-config)[wandb beta leet symonNext](/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-symon)
+
+⌘I

@@ -1,0 +1,53 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/tools/serve
+---
+
+# Serve
+
+Expose your Weave ops and models as API endpoints for serving predictions and running inference in production.
+
+This guide shows you how to expose a W&B Weave Model as a FastAPI endpoint using `weave serve`, so you can query the model interactively and integrate it into production inference workflows. To start a FastAPI server for any Weave Model, pass the Weave ref to `weave serve`. Replace `[REF]` with your Weave Model ref.
+    
+    
+    weave serve [REF]
+    
+
+To query the model interactively, open the Swagger UI at `http://0.0.0.0:9996/docs`.
+
+## 
+
+​
+
+Install FastAPI
+
+`weave serve` uses FastAPI and Uvicorn to host the model, so you must install both packages before serving.
+    
+    
+    pip install fastapi uvicorn
+    
+
+## 
+
+​
+
+Serve model
+
+After installing the dependencies, start the server from a terminal. Replace `[YOUR-MODEL-REF]` with your Weave Model ref.
+    
+    
+    weave serve [YOUR-MODEL-REF]
+    
+
+Get your model ref by navigating to the model and copying it from the UI. It should look like the following, where `[ENTITY]` is your W&B entity, `[PROJECT-NAME]` is your project name, `[MODEL-NAME]` is the model name, and `[HASH]` is the model version hash:
+    
+    
+    weave://[ENTITY]/[PROJECT-NAME]/[MODEL-NAME]:[HASH]
+    
+
+To test the endpoint, open the Swagger UI, click the `predict` endpoint, then click **Try it out**. You now have a local FastAPI endpoint that serves predictions from your Weave Model.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/tools/serve.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/tools/serve)
+
+⌘I

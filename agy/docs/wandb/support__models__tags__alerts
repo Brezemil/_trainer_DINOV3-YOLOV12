@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/alerts
+---
+
+# Alerts
+
+## Do 'Run Finished' alerts work in notebooks?
+
+No. Run Finished alerts only work with Python scripts. Even if you’ve enabled the Run Finished setting in User Settings, …
+
+## How can I send run alerts to Microsoft Teams?
+
+W&B doesn’t send alerts to Microsoft Teams directly, but you can route them through email so your team sees run notifica …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/alerts.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/alerts)
+
+[AdministratorPrevious](/support/models/tags/administrator)[AnonymousNext](/support/models/tags/anonymous)
+
+⌘I

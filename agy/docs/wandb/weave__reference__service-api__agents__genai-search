@@ -1,0 +1,261 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/agents/genai-search
+---
+
+Genai Search
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/search \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "query": "<string>",
+      "roles": [],
+      "conversation_id": "<string>",
+      "agent_name": "<string>",
+      "provider_name": "<string>",
+      "request_model": "<string>",
+      "started_after": "2023-11-07T05:31:56Z",
+      "started_before": "2023-11-07T05:31:56Z",
+      "limit": 20,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "results": [
+        {
+          "conversation_id": "<string>",
+          "conversation_name": "<string>",
+          "agent_name": "<string>",
+          "matched_messages": [
+            {
+              "span_id": "<string>",
+              "trace_id": "<string>",
+              "content_preview": "<string>",
+              "content_digest": "<string>",
+              "started_at": "2023-11-07T05:31:56Z"
+            }
+          ],
+          "last_activity": "2023-11-07T05:31:56Z"
+        }
+      ],
+      "total_conversations": 0
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Agents](/weave/reference/service-api/agents/export-genai-trace)
+
+# Genai Search
+
+POST
+
+/
+
+agents
+
+/
+
+search
+
+Genai Search
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/search \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "query": "<string>",
+      "roles": [],
+      "conversation_id": "<string>",
+      "agent_name": "<string>",
+      "provider_name": "<string>",
+      "request_model": "<string>",
+      "started_after": "2023-11-07T05:31:56Z",
+      "started_before": "2023-11-07T05:31:56Z",
+      "limit": 20,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "results": [
+        {
+          "conversation_id": "<string>",
+          "conversation_name": "<string>",
+          "agent_name": "<string>",
+          "matched_messages": [
+            {
+              "span_id": "<string>",
+              "trace_id": "<string>",
+              "content_preview": "<string>",
+              "content_digest": "<string>",
+              "started_at": "2023-11-07T05:31:56Z"
+            }
+          ],
+          "last_activity": "2023-11-07T05:31:56Z"
+        }
+      ],
+      "total_conversations": 0
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Full-text search across message content and span metadata.
+
+Scans the `messages` table (one row per message occurrence, populated by an MV from spans) and returns matching span-level hits. The caller groups by conversation for the response shape.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+query
+
+string
+
+required
+
+​
+
+roles
+
+enum<string>[] | null
+
+Available options:
+
+``,
+
+`user`,
+
+`assistant`,
+
+`system`,
+
+`tool`,
+
+`tool_call`,
+
+`tool_result`
+
+​
+
+conversation_id
+
+string | null
+
+​
+
+agent_name
+
+string | null
+
+​
+
+provider_name
+
+string | null
+
+​
+
+request_model
+
+string | null
+
+​
+
+started_after
+
+string<date-time> | null
+
+​
+
+started_before
+
+string<date-time> | null
+
+​
+
+limit
+
+integer
+
+default:20
+
+Required range: `0 <= x <= 1000`
+
+​
+
+offset
+
+integer
+
+default:0
+
+Required range: `x >= 0`
+
+#### Response
+
+Successful Response
+
+Response from a full-text search across agent messages.
+
+​
+
+results
+
+AgentSearchConversationResult · object[]
+
+required
+
+Show child attributes
+
+​
+
+total_conversations
+
+integer
+
+default:0
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/agents/genai-search.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/agents/genai-search)
+
+[Genai Agent Versions QueryPrevious](/weave/reference/service-api/agents/genai-agent-versions-query)[Genai Traces ChatNext](/weave/reference/service-api/agents/genai-traces-chat)
+
+⌘I

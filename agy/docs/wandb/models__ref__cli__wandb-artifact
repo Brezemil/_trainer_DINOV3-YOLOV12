@@ -1,0 +1,50 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-artifact
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb artifact](/models/ref/cli/wandb-artifact)
+
+# wandb artifact
+
+## 
+
+​
+
+Usage
+    
+    
+    artifact [OPTIONS] COMMAND [ARGS]...
+    
+
+## 
+
+​
+
+Description
+
+Upload, download, and manage W&B artifacts.
+
+## 
+
+​
+
+Subcommands
+
+Command| Description  
+---|---  
+`wandb artifact cache`| Manage the local artifact cache.  
+`wandb artifact get`| Download an artifact from W&B by its path.  
+`wandb artifact ls`| List all artifacts in a W&B project.  
+`wandb artifact put`| Upload an artifact to W&B.  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-artifact.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-artifact)
+
+[wandb agentPrevious](/models/ref/cli/wandb-agent)[wandb artifact cacheNext](/models/ref/cli/wandb-artifact/wandb-artifact-cache)
+
+⌘I

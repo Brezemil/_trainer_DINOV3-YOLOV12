@@ -1,0 +1,131 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/calls-delete
+---
+
+Calls Delete
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/delete \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_ids": [
+        "<string>"
+      ],
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "num_deleted": 123
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Calls Delete
+
+POST
+
+/
+
+calls
+
+/
+
+delete
+
+Calls Delete
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/delete \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_ids": [
+        "<string>"
+      ],
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "num_deleted": 123
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+call_ids
+
+string[]
+
+required
+
+​
+
+wb_user_id
+
+string | null
+
+Do not set directly. Server will automatically populate this field.
+
+#### Response
+
+Successful Response
+
+​
+
+num_deleted
+
+integer
+
+required
+
+The number of calls deleted
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/calls-delete.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/calls-delete)
+
+[Call Start BatchPrevious](/weave/reference/service-api/calls/call-start-batch)[Call UpdateNext](/weave/reference/service-api/calls/call-update)
+
+⌘I

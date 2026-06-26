@@ -1,0 +1,99 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/toolinit
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: ToolInit
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / ToolInit
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [args](/weave/reference/typescript-sdk/interfaces/toolinit#args)
+  * [name](/weave/reference/typescript-sdk/interfaces/toolinit#name)
+  * [toolCallId](/weave/reference/typescript-sdk/interfaces/toolinit#toolcallid)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+args
+
+• `Optional` **args** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/tool.ts:17](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/tool.ts#L17)
+
+* * *
+
+### 
+
+​
+
+name
+
+• **name** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/tool.ts:16](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/tool.ts#L16)
+
+* * *
+
+### 
+
+​
+
+toolCallId
+
+• `Optional` **toolCallId** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/tool.ts:18](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/tool.ts#L18)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/toolinit.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/toolinit)
+
+[Interface: SubAgentInitPrevious](/weave/reference/typescript-sdk/interfaces/subagentinit)[Interface: TurnInitNext](/weave/reference/typescript-sdk/interfaces/turninit)
+
+⌘I

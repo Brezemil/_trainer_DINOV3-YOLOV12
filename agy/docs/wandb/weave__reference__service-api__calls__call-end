@@ -1,0 +1,121 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/call-end
+---
+
+Call End
+    
+    
+    curl --request POST \
+      --url https://api.example.com/call/end \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "end": {
+        "project_id": "<string>",
+        "id": "<string>",
+        "ended_at": "2023-11-07T05:31:56Z",
+        "summary": {
+          "usage": {},
+          "status_counts": {}
+        },
+        "started_at": "2023-11-07T05:31:56Z",
+        "exception": "<string>",
+        "output": null,
+        "wb_run_step_end": 123
+      }
+    }
+    '
+    
+    
+    {}
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Call End
+
+POST
+
+/
+
+call
+
+/
+
+end
+
+Call End
+    
+    
+    curl --request POST \
+      --url https://api.example.com/call/end \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "end": {
+        "project_id": "<string>",
+        "id": "<string>",
+        "ended_at": "2023-11-07T05:31:56Z",
+        "summary": {
+          "usage": {},
+          "status_counts": {}
+        },
+        "started_at": "2023-11-07T05:31:56Z",
+        "exception": "<string>",
+        "output": null,
+        "wb_run_step_end": 123
+      }
+    }
+    '
+    
+    
+    {}
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+end
+
+EndedCallSchemaForInsert · object
+
+required
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+The response is of type `CallEndRes · object`.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/call-end.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/call-end)
+
+[Call StartPrevious](/weave/reference/service-api/calls/call-start)[Call Start BatchNext](/weave/reference/service-api/calls/call-start-batch)
+
+⌘I

@@ -1033,7 +1033,7 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
                 legacy = False
                 if scale in "mlx":
                     args[3] = True
-            if m is A2C2f: 
+            if m is A2C2f:
                 legacy = False
                 if scale in "lx":  # for L/X sizes
                     args.append(True)
@@ -1068,7 +1068,7 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             c2 = ch[f[-1]]
         elif m in {DINO3Preprocessor, DINO3Backbone}:
             # DINO modules: maintain input channels, args format: [model_name, freeze_backbone, output_channels]
-            c1 = ch[f] 
+            c1 = ch[f]
             c2 = args[2] if len(args) > 2 else ch[f]  # output channels specified in args, default to input
             args = [*args]  # keep original args format for DINO modules
         else:
@@ -1099,11 +1099,11 @@ def yaml_model_load(path):
     unified_path = re.sub(r"(\d+)([nslmx])(.+)?$", r"\1\3", str(path))  # i.e. yolov8x.yaml -> yolov8.yaml
     yaml_file = check_yaml(unified_path, hard=False) or check_yaml(path)
     d = yaml_load(yaml_file)  # model dict
-    
+
     # Only guess scale from filename if not explicitly set in YAML
     if "scale" not in d or not d["scale"]:
         d["scale"] = guess_model_scale(path)
-    
+
     d["yaml_file"] = str(path)
     return d
 

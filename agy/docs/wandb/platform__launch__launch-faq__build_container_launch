@@ -1,0 +1,27 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/build_container_launch
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# I don't want W&B to build a container for me, can I still use Launch?
+
+To launch a pre-built Docker image, replace the `<>` placeholders with your values and run:
+    
+    
+    wandb launch -d <docker-image-uri> -q <queue-name> -E <entrypoint>
+    
+
+This command creates a job and starts a run. To create a job from an image, run:
+    
+    
+    wandb job create image <image-name> -p <project> -e <entity>
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/build_container_launch.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/build_container_launch)
+
+[Are there best practices for using Launch effectively?Previous](/platform/launch/launch-faq/best_practices_launch_effectively)[I don't like clicking, can I use Launch without going through the UI?Next](/platform/launch/launch-faq/clicking_launch_without_going_ui)
+
+⌘I

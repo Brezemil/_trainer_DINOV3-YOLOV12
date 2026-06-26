@@ -1,0 +1,117 @@
+---
+source_url: https://docs.voxel51.com/labs/labs_ecosystem/zero_shot_coreset_selection.html
+---
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](https://github.com/voxel51/zero-shot-coreset-selection)
+
+# zero-shot-coreset-selection#
+
+This implements https://arxiv.org/pdf/2411.15349, a zero shot coreset selection method on unlabeled image data. Selection is based on novel redundancy and coverage metrics in a foundation-model-generated embedding space.
+
+Importantly, this method does NOT require:
+
+  * the presence of any labels
+
+  * training on (parts of) the dataset to be analyzed
+
+
+
+
+## Notes on performance.#
+
+  * The choice of embedding model matters. CLIP (https://arxiv.org/abs/2103.00020) is a good default.
+
+  * 1e6 is a reasonable upper bound for the number of samples drawn for coverage and redundancy estimation, even for very large datasets.
+
+  * Zcore scores are not necessarily meaningful between datasets. They should be applied and interpreted only within the dataset they were generated for.
+
+
+
+
+## Usage#
+
+Generating zcore scores and selecting a coreset based on some threshold can be achieved in the app and programmatically.
+
+### In the app#
+    
+    
+    import fiftyone.zoo as foz
+    import fiftyone as fo
+    
+    dataset = foz.load_zoo_dataset(
+        "quickstart", drop_existing_dataset=True, persistent=True
+    )
+    
+    session = fo.launch_app(dataset)
+    
+    session.wait()
+    
+
+![Operators panel](https://raw.githubusercontent.com/voxel51/zero-shot-coreset-selection/main/assets/operators_screenshot.png)
+
+_Select zcore operator_
+
+![Parameters dialog](https://raw.githubusercontent.com/voxel51/zero-shot-coreset-selection/main/assets/parameters_screenshot.png)
+
+_Choose appropriate parameterization_
+
+![Coreset view](https://raw.githubusercontent.com/voxel51/zero-shot-coreset-selection/main/assets/coreset_screenshot.png)
+
+_Choose coreset based on score threshold_
+
+If you want to make use of multiprocessing in the app, use delegated execution of the operator. In order to enable delegated execution, run `fiftyone delegated launch` in a separate terminal. Then, launch the app as above and choose âscheduleâ instead of âexecuteâ when running the operator. Make sure that you have set `export FIFTYONE_ALLOW_LEGACY_ORCHESTRATORS=true` in the terminal where you launch the app. See [the docs](https://docs.voxel51.com/plugins/using_plugins.html#delegated-operations) for more info.
+
+![Choose schedule instead of execute](https://raw.githubusercontent.com/voxel51/zero-shot-coreset-selection/main/assets/schedule_screenshot.png)
+
+Then, monitor the local DO executor in the second terminal:
+    
+    
+    Running operation 68fa508ef152073068baa37a (<operator uri>)
+    ...
+    Operator-specific logging
+    ...
+    Operation 68fa508ef152073068baa37a complete
+    
+
+Then, reload the dataset in the app in order for the `zcore_score` sample field to get displayed.
+
+![Reload the dataset](https://raw.githubusercontent.com/voxel51/zero-shot-coreset-selection/main/assets/reload_screenshot.png)
+
+### Programmatically#
+    
+    
+    import fiftyone.zoo as foz
+    
+    dataset = foz.load_zoo_dataset(
+        "quickstart", drop_existing_dataset=True, persistent=True
+    )
+    model = foz.load_zoo_model("clip-vit-base32-torch")
+    embeddings = dataset.compute_embeddings(model, batch_size=2)
+    
+    # By default, use_multiprocessing is set to False
+    scores = zcore_scores(embeddings, use_multiprocessing=True, num_workers=4)
+    
+    coreset = select_coreset(dataset, scores, coreset_size=10)
+    
+
+## Installation#
+    
+    
+    # Install dependencies
+    pip install -r requirements.txt
+    
+    # (Optional) Install pre-commit hooks
+    pip install pre-commit
+    pre-commit install
+    
+
+## TO DOs#
+
+  * Add score computation on concatenated embedding vector from multiple foundation models
+
+
+
+
+IN THIS ARTICLE 
+  *[*]: Keyword-only parameters separator (PEP 3102)
+  *[/]: Positional-only parameter separator (PEP 570)

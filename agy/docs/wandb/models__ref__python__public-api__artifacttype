@@ -1,0 +1,107 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/artifacttype
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# ArtifactType
+
+## 
+
+​
+
+`class` `ArtifactType`
+
+An artifact object that satisfies query based on the specified type. **Args:**
+
+  * `service_api`: Interface to the wandb-core service that performs W&B API calls for this artifact type.
+  * `entity`: The entity (user or team) that owns the project.
+  * `project`: The name of the project to query for artifact types.
+  * `type_name`: The name of the artifact type.
+  * `attrs`: Optional attributes to initialize the ArtifactType. If omitted, the object will load its attributes from W&B upon initialization.
+
+
+
+### 
+
+​
+
+`property` ArtifactType.id
+
+The unique identifier of the artifact type. **Returns:**
+
+  * `str`: The id property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactType.name
+
+The name of the artifact type. **Returns:**
+
+  * `str`: The name property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `ArtifactType.collection`
+    
+    
+    collection(name: 'str') → ArtifactCollection
+    
+
+Get a specific artifact collection by name. **Args:**
+
+  * `name` (str): The name of the artifact collection to retrieve.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `ArtifactType.collections`
+    
+    
+    collections(
+        filters: 'Mapping[str, Any] | None' = None,
+        order: 'str | None' = None,
+        per_page: 'int' = 50,
+        start: 'str | None' = None
+    ) → ArtifactCollections
+    
+
+Get all artifact collections associated with this artifact type. **Args:**
+
+  * `filters` (dict): Optional mapping of filters to apply to the query.
+  * `order` (str): Optional string to specify the order of the results. If you prepend order with a + order is ascending (default). If you prepend order with a - order is descending. The default order is the collection ID in descending order.
+  * `per_page` (int): The number of artifact collections to fetch per page. Default is 50.
+  * `start`: Pagination cursor for resuming a past query, captured from a previous paginator’s `.cursor` attribute.
+
+
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/artifacttype.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/artifacttype)
+
+[ArtifactsPrevious](/models/ref/python/public-api/artifacts)[ArtifactTypesNext](/models/ref/python/public-api/artifacttypes)
+
+⌘I

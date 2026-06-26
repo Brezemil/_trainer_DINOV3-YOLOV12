@@ -1,0 +1,171 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/tracking/redact-pii
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Monitor and collect feedback](/weave/guides/tracking/annotation-queues)
+
+# Redact PII from traces
+
+Automatically redact Personally Identifiable Information from traces
+
+This feature is only accessible through the Python SDK.
+
+Some organizations process Personally Identifiable Information (PII) such as names, phone numbers, and email addresses in their Large Language Model (LLM) workflows. Storing this data in W&B Weave poses compliance and security risks. Stripping this data before you log it helps keep your agent compliant with policies like [GDPR](https://gdpr.eu/) and [HIPAA](https://www.hhs.gov/hipaa/index.html). The _Sensitive Data Protection_ feature lets you automatically redact Personally Identifiable Information (PII) from a [trace](/weave/guides/tracking) before Weave sends it to Weave servers. This feature integrates [Microsoft Presidio](https://microsoft.github.io/presidio/) into the Weave Python SDK, so you can control redaction settings at the SDK level. The Sensitive Data Protection feature introduces the following functionality to the Python SDK:
+
+  * A `redact_pii` setting, which you can enable or disable in the `weave.init()` call to turn on PII redaction.
+  * Automatic redaction of common entities when `redact_pii = True`.
+  * Customizable redaction fields with the configurable `redact_pii_fields` setting.
+  * Exclusion of specific entities from redaction with the `redact_pii_exclude_fields` setting.
+
+
+
+## 
+
+​
+
+Enable PII redaction
+
+This section walks you through installing the required dependencies, turning on PII redaction in `weave.init()`, and optionally tailoring which entities Weave redacts. To get started with the Sensitive Data Protection feature in Weave, complete the following steps:
+
+  1. Install the required dependencies:
+         
+         pip install presidio-analyzer presidio-anonymizer
+         
+
+  2. Modify your `weave.init()` call to enable redaction. When `redact_pii=True`, Weave redacts common entities by default:
+         
+         import weave
+         
+         weave.init("my-project", settings={"redact_pii": True})
+         
+
+  3. Optional: Customize redaction fields with the `redact_pii_fields` parameter:
+         
+         weave.init("my-project", settings={"redact_pii": True, "redact_pii_fields":["CREDIT_CARD", "US_SSN"]})
+         
+
+For a full list of the entities that can be detected and redacted, see [PII entities supported by Presidio](https://microsoft.github.io/presidio/supported_entities/).
+  4. Optional: Exclude specific entities from redaction with the `redact_pii_exclude_fields` parameter. This is useful when you want to keep the default redaction but preserve certain entity types. The following example shows how to redact all default entities except `EMAIL_ADDRESS` and `PERSON`:
+         
+         weave.init("my-project", settings={"redact_pii": True, "redact_pii_exclude_fields":["EMAIL_ADDRESS", "PERSON"]})
+         
+
+
+After you complete these steps, Weave redacts the configured PII entities from traces before sending them to Weave servers.
+
+## 
+
+​
+
+Entities redacted by default
+
+This section lists the PII entity types that Weave redacts automatically when you enable PII redaction without specifying `redact_pii_fields`. Weave automatically redacts the following entities when you enable PII redaction:
+
+  * `CREDIT_CARD`
+  * `CRYPTO`
+  * `EMAIL_ADDRESS`
+  * `ES_NIF`
+  * `FI_PERSONAL_IDENTITY_CODE`
+  * `IBAN_CODE`
+  * `IN_AADHAAR`
+  * `IN_PAN`
+  * `IP_ADDRESS`
+  * `LOCATION`
+  * `PERSON`
+  * `PHONE_NUMBER`
+  * `UK_NHS`
+  * `UK_NINO`
+  * `US_BANK_NUMBER`
+  * `US_DRIVER_LICENSE`
+  * `US_PASSPORT`
+  * `US_SSN`
+
+
+
+## 
+
+​
+
+Redact sensitive keys with `REDACT_KEYS`
+
+In addition to PII redaction, the Weave SDK supports redaction of custom keys with `REDACT_KEYS`. This is useful when you want to protect additional sensitive data that might not fall under the PII category but must remain private. Examples include:
+
+  * API keys
+  * Authentication headers
+  * Tokens
+  * Internal IDs
+  * Config values
+
+
+
+### 
+
+​
+
+Pre-defined `REDACT_KEYS`
+
+Weave automatically redacts the following sensitive keys by default:
+    
+    
+    [
+      "api_key",
+      "auth_headers",
+      "authorization"
+    ]
+    
+
+### 
+
+​
+
+Add your own keys
+
+If your application uses other field names that contain sensitive values, you can extend the default `REDACT_KEYS` list. Add your own custom keys that you want to redact from traces:
+    
+    
+    import weave
+    from weave.utils import sanitize
+    
+    client = weave.init("my-project", settings={"redact_pii": True})
+    
+    # Add custom keys to redact
+    sanitize.add_redact_key("client_id")
+    sanitize.add_redact_key("token")
+    
+    client_id = "123"
+    token = "789"
+    
+    @weave.op
+    def test(client_id, token):
+        return client_id + token
+    
+    test(client_id, token)
+    
+
+When you view them in the Weave UI, the values of `client_id` and `token` appear as `"REDACTED"`:
+    
+    
+    client_id = "REDACTED"
+    token = "REDACTED"
+    
+
+## 
+
+​
+
+Usage information
+
+  * This feature is only available in the Python SDK.
+  * When you enable redaction, processing time increases because of the Presidio dependency.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/tracking/redact-pii.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/tracking/redact-pii)
+
+[Collect feedback and use annotationsPrevious](/weave/guides/tracking/feedback)[Monitor using built-in signalsNext](/weave/guides/evaluation/monitors)
+
+⌘I

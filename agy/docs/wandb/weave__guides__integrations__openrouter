@@ -1,0 +1,56 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/integrations/openrouter
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Integrate with your LLM provider and frameworks](/weave/guides/integrations)
+
+[LLM Providers](/weave/guides/integrations/bedrock)
+
+# OpenRouter
+
+Use OpenRouter’s unified interface for many LLMs with automatic Weave integration
+
+This guide shows you how to use Weave to automatically trace calls to LLMs accessed through OpenRouter, so you can monitor, debug, and evaluate your application’s model usage from a single dashboard. OpenRouter is a unified interface for many LLMs, supporting both foundational models like OpenAI GPT-4, Anthropic Claude, and Google Gemini, as well as open-source models like LLama-3, Mixtral, and [more](https://openrouter.ai/models). Some models are offered for free. OpenRouter offers a REST API and [OpenAI SDK compatibility](https://openrouter.ai/docs/guides/community/openai-sdk) that Weave automatically detects and integrates with. For more details, refer to the OpenRouter [quick start guide](https://openrouter.ai/docs/quick-start). Because Weave detects the OpenAI SDK, you can reuse existing OpenAI code with a few configuration changes. To switch your OpenAI SDK code to OpenRouter, switch out the API key to your [OpenRouter API](https://openrouter.ai/docs/api-keys) key, set `base_url` to `https://openrouter.ai/api/v1`, and set the model to one of the available [chat models](https://openrouter.ai/docs/models). When you call `weave.init()`, provide a project name for your traces. If you don’t specify one, Weave uses your default entity. To find or update your default entity, refer to [User Settings](https://docs.wandb.ai/platform/app/settings-page/user-settings/#default-team) in the W&B Models documentation. After you run the following example, Weave captures your call to OpenRouter as a trace in your Weave project.
+    
+    
+    import os
+    import openai
+    import weave
+    
+    weave.init('openrouter-weave')
+    
+    system_content = "You are a travel agent. Be descriptive and helpful."
+    user_content = "Tell me about San Francisco"
+    
+    client = openai.OpenAI(
+        api_key=os.environ.get("OPENROUTER_API_KEY"),
+        base_url="https://openrouter.ai/api/v1",
+    )
+    chat_completion = client.chat.completions.create(
+        extra_headers={
+        "HTTP-Referer": "[YOUR-SITE-URL]", # Optional, for including your app on openrouter.ai rankings.
+        "X-Title": "[YOUR-APP-NAME]", # Optional. Shows in rankings on openrouter.ai.
+        },
+        model="meta-llama/llama-3.1-8b-instruct:free",
+        messages=[
+            {"role": "system", "content": system_content},
+            {"role": "user", "content": user_content},
+        ],
+        temperature=0.7,
+        max_tokens=1024,
+    )
+    response = chat_completion.choices[0].message.content
+    print("Model response:\n", response)
+    
+
+While this is a basic example to get started, see the [OpenAI](/weave/guides/integrations/openai#track-your-own-ops) guide for more details on how to integrate Weave with your own functions for more complex use cases.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/integrations/openrouter.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/integrations/openrouter)
+
+[OpenAIPrevious](/weave/guides/integrations/openai)[Together AINext](/weave/guides/integrations/together_ai)
+
+⌘I

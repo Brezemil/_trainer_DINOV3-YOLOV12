@@ -1,0 +1,269 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/feedback/feedback-stats
+---
+
+Feedback Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/feedback/stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "feedback_type": "<string>",
+      "trigger_ref": "<string>",
+      "granularity": 123,
+      "timezone": "UTC",
+      "metrics": [
+        {
+          "json_path": "<string>",
+          "value_type": "numeric",
+          "aggregations": [],
+          "percentiles": [
+            123
+          ]
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "granularity": 123,
+      "timezone": "<string>",
+      "buckets": [
+        {}
+      ],
+      "window_stats": {}
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Feedback](/weave/reference/service-api/feedback/feedback-create)
+
+# Feedback Stats
+
+Return aggregated feedback statistics over time buckets.
+
+POST
+
+/
+
+feedback
+
+/
+
+stats
+
+Feedback Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/feedback/stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "feedback_type": "<string>",
+      "trigger_ref": "<string>",
+      "granularity": 123,
+      "timezone": "UTC",
+      "metrics": [
+        {
+          "json_path": "<string>",
+          "value_type": "numeric",
+          "aggregations": [],
+          "percentiles": [
+            123
+          ]
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "granularity": 123,
+      "timezone": "<string>",
+      "buckets": [
+        {}
+      ],
+      "window_stats": {}
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request for aggregated feedback statistics over time buckets.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+start
+
+string<date-time>
+
+required
+
+Inclusive start time (UTC, ISO 8601).
+
+​
+
+end
+
+string<date-time> | null
+
+Exclusive end time (UTC, ISO 8601). Defaults to now if omitted.
+
+​
+
+feedback_type
+
+string | null
+
+Filter by feedback_type.
+
+​
+
+trigger_ref
+
+string | null
+
+Filter by trigger_ref (exact or prefix match for all-versions).
+
+​
+
+granularity
+
+integer | null
+
+Bucket size in seconds. If omitted, auto-selected based on time range.
+
+​
+
+timezone
+
+string
+
+default:UTC
+
+IANA timezone for bucket alignment.
+
+​
+
+metrics
+
+FeedbackMetricSpec · object[]
+
+Metrics to aggregate from payload_dump.
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+Response with time-series feedback statistics.
+
+​
+
+start
+
+string<date-time>
+
+required
+
+Resolved start time (always UTC, regardless of the requested timezone).
+
+​
+
+end
+
+string<date-time>
+
+required
+
+Resolved end time (always UTC, regardless of the requested timezone).
+
+​
+
+granularity
+
+integer
+
+required
+
+Bucket size used (in seconds)
+
+​
+
+timezone
+
+string
+
+required
+
+Timezone used for bucket alignment
+
+​
+
+buckets
+
+Buckets · object[]
+
+Time-bucketed aggregations. Each dict has 'timestamp' (ISO string), 'count' (int), and '{agg}_{slug}' keys for each requested metric+aggregation.
+
+​
+
+window_stats
+
+Window Stats · object
+
+Aggregations over the full query window, keyed by metric slug (e.g. 'output_score'). Each value maps agg name to result.
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/feedback/feedback-stats.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/feedback/feedback-stats)
+
+[Feedback ReplacePrevious](/weave/reference/service-api/feedback/feedback-replace)[Feedback Payload SchemaNext](/weave/reference/service-api/feedback/feedback-payload-schema)
+
+⌘I

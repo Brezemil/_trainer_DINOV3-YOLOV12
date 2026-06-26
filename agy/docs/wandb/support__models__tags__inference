@@ -1,0 +1,33 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/inference
+---
+
+# Inference
+
+## How do I fix Invalid Authentication (401) errors with Serverless Inference?
+
+A 401 Invalid Authentication error means your API key is invalid or your W&B project entity or name is incorrect. Use th …
+
+## How do I fix server errors (500, 503) with Serverless Inference?
+
+Server errors indicate temporary issues with the Serverless Inference service. This page helps you identify these errors …
+
+## What are the best practices for handling Serverless Inference errors?
+
+Follow these best practices to handle W&B Serverless Inference errors and maintain reliable applications. Always impleme …
+
+## Why am I getting insufficient quota errors (402) with Serverless Inference?
+
+Insufficient quota errors (402) occur when you don’t have remaining credits in your plan. Error: “You exceeded your curr …
+
+## Why am I getting rate limit errors (429) with Serverless Inference?
+
+This page explains why Serverless Inference returns 429 rate limit errors and how to resolve them so your requests succe …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/inference.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/inference)
+
+[HyperparameterPrevious](/support/models/tags/hyperparameter)[LogsNext](/support/models/tags/logs)
+
+⌘I

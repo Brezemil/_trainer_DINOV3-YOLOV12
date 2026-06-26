@@ -1,0 +1,39 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-config
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb beta](/models/ref/cli/wandb-beta)
+
+[beta leet](/models/ref/cli/wandb-beta/wandb-beta-leet)
+
+# wandb beta leet config
+
+## 
+
+​
+
+Usage
+    
+    
+    config [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+Edit LEET configuration.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-config.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-config)
+
+[wandb beta leetPrevious](/models/ref/cli/wandb-beta/wandb-beta-leet)[wandb beta leet runNext](/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-run)
+
+⌘I

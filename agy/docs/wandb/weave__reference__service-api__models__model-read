@@ -1,0 +1,219 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/models/model-read
+---
+
+Model Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/models/{object_id}/versions/{digest} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "object_id": "<string>",
+      "digest": "<string>",
+      "version_index": 123,
+      "created_at": "2023-11-07T05:31:56Z",
+      "name": "<string>",
+      "source_code": "<string>",
+      "description": "<string>",
+      "attributes": {}
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Models](/weave/reference/service-api/models/model-list)
+
+# Model Read
+
+Get a model object.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+models
+
+/
+
+{object_id}
+
+/
+
+versions
+
+/
+
+{digest}
+
+Model Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/models/{object_id}/versions/{digest} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "object_id": "<string>",
+      "digest": "<string>",
+      "version_index": 123,
+      "created_at": "2023-11-07T05:31:56Z",
+      "name": "<string>",
+      "source_code": "<string>",
+      "description": "<string>",
+      "attributes": {}
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+object_id
+
+string
+
+required
+
+​
+
+digest
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+object_id
+
+string
+
+required
+
+The model ID
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the model
+
+​
+
+version_index
+
+integer
+
+required
+
+The version index of the object
+
+​
+
+created_at
+
+string<date-time>
+
+required
+
+When the model was created
+
+​
+
+name
+
+string
+
+required
+
+The name of the model
+
+​
+
+source_code
+
+string
+
+required
+
+The source code of the model
+
+​
+
+description
+
+string | null
+
+Description of the model
+
+​
+
+attributes
+
+Attributes · object
+
+Additional attributes stored with the model
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/models/model-read.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/models/model-read)
+
+[Model CreatePrevious](/weave/reference/service-api/models/model-create)[Model DeleteNext](/weave/reference/service-api/models/model-delete)
+
+⌘I

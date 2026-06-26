@@ -1,0 +1,228 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/weaveobject
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Classes](/weave/reference/typescript-sdk/classes/dataset)
+
+# Class: WeaveObject
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / WeaveObject
+
+## 
+
+​
+
+Hierarchy
+
+  * `WeaveObject` ↳ [`Dataset`](/weave/reference/typescript-sdk/classes/dataset) ↳ [`Evaluation`](/weave/reference/typescript-sdk/classes/evaluation)
+
+
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Constructors
+
+  * [constructor](/weave/reference/typescript-sdk/classes/weaveobject#constructor)
+
+
+
+### 
+
+​
+
+Properties
+
+  * [__savedRef](/weave/reference/typescript-sdk/classes/weaveobject#__savedref)
+
+
+
+### 
+
+​
+
+Accessors
+
+  * [description](/weave/reference/typescript-sdk/classes/weaveobject#description)
+  * [name](/weave/reference/typescript-sdk/classes/weaveobject#name)
+
+
+
+### 
+
+​
+
+Methods
+
+  * [saveAttrs](/weave/reference/typescript-sdk/classes/weaveobject#saveattrs)
+
+
+
+## 
+
+​
+
+Constructors
+
+### 
+
+​
+
+constructor
+
+• **new WeaveObject**(`_baseParameters`): [`WeaveObject`](/weave/reference/typescript-sdk/classes/weaveobject)
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`_baseParameters`| `WeaveObjectParameters`  
+  
+#### 
+
+​
+
+Returns
+
+[`WeaveObject`](/weave/reference/typescript-sdk/classes/weaveobject)
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:75](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L75)
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+__savedRef
+
+• `Optional` **__savedRef** : [`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref) | `Promise`<[`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref)>
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:73](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L73)
+
+## 
+
+​
+
+Accessors
+
+### 
+
+​
+
+description
+
+• `get` **description**(): `undefined` | `string`
+
+#### 
+
+​
+
+Returns
+
+`undefined` | `string`
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:100](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L100)
+
+* * *
+
+### 
+
+​
+
+name
+
+• `get` **name**(): `string`
+
+#### 
+
+​
+
+Returns
+
+`string`
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:96](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L96)
+
+## 
+
+​
+
+Methods
+
+### 
+
+​
+
+saveAttrs
+
+▸ **saveAttrs**(): `Object`
+
+#### 
+
+​
+
+Returns
+
+`Object`
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:77](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L77)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/classes/weaveobject.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/classes/weaveobject)
+
+[Class: WeaveClientPrevious](/weave/reference/typescript-sdk/classes/weaveclient)[createOpenAIAgentsTracingProcessorNext](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+⌘I

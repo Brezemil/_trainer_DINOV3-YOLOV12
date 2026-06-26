@@ -1,0 +1,203 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/ops/op-read
+---
+
+Op Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/ops/{object_id}/versions/{digest} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "object_id": "<string>",
+      "digest": "<string>",
+      "version_index": 123,
+      "created_at": "2023-11-07T05:31:56Z",
+      "code": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Ops](/weave/reference/service-api/ops/op-list)
+
+# Op Read
+
+Get an op object.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+ops
+
+/
+
+{object_id}
+
+/
+
+versions
+
+/
+
+{digest}
+
+Op Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/ops/{object_id}/versions/{digest} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "object_id": "<string>",
+      "digest": "<string>",
+      "version_index": 123,
+      "created_at": "2023-11-07T05:31:56Z",
+      "code": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+object_id
+
+string
+
+required
+
+​
+
+digest
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+eager
+
+boolean
+
+default:false
+
+Whether to eagerly load the op code
+
+#### Response
+
+Successful Response
+
+Response model for reading an Op object.
+
+The code field contains the actual source code of the op.
+
+​
+
+object_id
+
+string
+
+required
+
+The op ID
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the op
+
+​
+
+version_index
+
+integer
+
+required
+
+The version index of this op
+
+​
+
+created_at
+
+string<date-time>
+
+required
+
+When this op was created
+
+​
+
+code
+
+string
+
+required
+
+The actual op source code
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/ops/op-read.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/ops/op-read)
+
+[Op CreatePrevious](/weave/reference/service-api/ops/op-create)[Op DeleteNext](/weave/reference/service-api/ops/op-delete)
+
+⌘I

@@ -1,0 +1,51 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/opentelemetry/export-trace
+---
+
+Export Trace
+    
+    
+    curl --request POST \
+      --url https://api.example.com/otel/v1/traces
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[OpenTelemetry](/weave/reference/service-api/opentelemetry/export-trace)
+
+# Export Trace
+
+POST
+
+/
+
+otel
+
+/
+
+v1
+
+/
+
+traces
+
+Export Trace
+    
+    
+    curl --request POST \
+      --url https://api.example.com/otel/v1/traces
+
+#### Response
+
+200 - application/json
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/opentelemetry/export-trace.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/opentelemetry/export-trace)
+
+[Projects InfoPrevious](/weave/reference/service-api/service/projects-info)[Export Genai TraceNext](/weave/reference/service-api/agents/export-genai-trace)
+
+⌘I

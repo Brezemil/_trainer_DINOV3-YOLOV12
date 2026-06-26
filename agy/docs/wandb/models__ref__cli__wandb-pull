@@ -1,0 +1,60 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-pull
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+# wandb pull
+
+## 
+
+​
+
+Usage
+    
+    
+    pull [OPTIONS] RUN
+    
+
+## 
+
+​
+
+Description
+
+Download files from a W&B run. Fetch all files associated with the specified run. Skip files that already exist locally with the same content. Create subdirectories as needed to mirror the structure of the files in W&B. Use the run ID to reference the run, and optionally specify the project and entity if not included in the run argument. For example, to download files from a run with run ID “abcd1234” in the “foobar” project and “team-awesome” entity:
+    
+    
+    wandb pull -p foobar -e team-awesome abcd1234
+    
+
+## 
+
+​
+
+Arguments
+
+Name| Default| Type  
+---|---|---  
+`run`| STR| True  
+  
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--project, -p`| STR| The project containing the run to pull files from. **Default** : None  
+`--entity, -e`| STR| The entity that owns the project. Defaults to the value of the WANDB_ENTITY environment variable or the default entity if not set. **Default** : models  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-pull.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-pull)
+
+[wandb onlinePrevious](/models/ref/cli/wandb-online)[wandb purge-cacheNext](/models/ref/cli/wandb-purge-cache)
+
+⌘I

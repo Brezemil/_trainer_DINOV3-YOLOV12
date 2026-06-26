@@ -1,0 +1,74 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-beta/wandb-beta-core
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb beta](/models/ref/cli/wandb-beta)
+
+[beta core](/models/ref/cli/wandb-beta/wandb-beta-core)
+
+# wandb beta core
+
+## 
+
+​
+
+Usage
+    
+    
+    core [OPTIONS] COMMAND [ARGS]...
+    
+
+## 
+
+​
+
+Description
+
+Manage a shared local wandb-core service for multi-process workloads. wandb-core is the local backend process that handles run data, file uploads, and system metrics collection. By default, each process that calls `wandb.init()` starts its own backend. On a machine running many independent workers, that duplicates work and wastes CPU and memory. Use these commands to start one detached wandb-core instance and point multiple workers on the same machine at it with the WANDB_SERVICE environment variable. Typical workflow:
+    
+    
+    wandb beta core start
+    
+    
+    
+    export WANDB_SERVICE=printed_value
+    
+    
+    
+    python -m your_launcher
+    
+    
+    
+    wandb beta core stop
+    
+
+For shell scripts, capture the raw WANDB_SERVICE value from stdout:
+    
+    
+    export WANDB_SERVICE="$(wandb beta core start)"
+    
+
+The shared service exits after 10 minutes of idleness by default. Override this with —idle-timeout on the start command.
+
+## 
+
+​
+
+Subcommands
+
+Command| Description  
+---|---  
+`wandb beta core start`| Start a detached wandb-core service.  
+`wandb beta core stop`| Stop a detached wandb-core service.  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-beta/wandb-beta-core.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-beta/wandb-beta-core)
+
+[wandb betaPrevious](/models/ref/cli/wandb-beta)[wandb beta core startNext](/models/ref/cli/wandb-beta/wandb-beta-core/wandb-beta-core-start)
+
+⌘I

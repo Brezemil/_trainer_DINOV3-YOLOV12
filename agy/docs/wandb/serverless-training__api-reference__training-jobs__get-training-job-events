@@ -1,0 +1,185 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/api-reference/training-jobs/get-training-job-events
+---
+
+Get Training Job Events
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v1/preview/training-jobs/{training_job_id}/events \
+      --header 'Authorization: Bearer <token>'
+    
+    
+    {
+      "data": [
+        {
+          "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+          "data": {}
+        }
+      ],
+      "has_more": true,
+      "object": "list",
+      "first_id": "",
+      "last_id": ""
+    }
+
+[Serverless Training](/serverless-training/api-reference)
+
+[training-jobs](/serverless-training/api-reference/training-jobs/create-rl-training-job)
+
+# Get Training Job Events
+
+Get events for a training job.
+
+GET
+
+/
+
+v1
+
+/
+
+preview
+
+/
+
+training-jobs
+
+/
+
+{training_job_id}
+
+/
+
+events
+
+Get Training Job Events
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v1/preview/training-jobs/{training_job_id}/events \
+      --header 'Authorization: Bearer <token>'
+    
+    
+    {
+      "data": [
+        {
+          "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+          "data": {}
+        }
+      ],
+      "has_more": true,
+      "object": "list",
+      "first_id": "",
+      "last_id": ""
+    }
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+#### Path Parameters
+
+​
+
+training_job_id
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+after
+
+string
+
+Cursor for pagination
+
+​
+
+limit
+
+integer
+
+default:20
+
+Number of items to return
+
+Required range: `1 <= x <= 100`
+
+#### Response
+
+Successful Response
+
+​
+
+data
+
+TrainingJobEventResponse · object[]
+
+required
+
+Array of items
+
+Show child attributes
+
+​
+
+has_more
+
+boolean
+
+required
+
+Whether there are more items available
+
+​
+
+object
+
+string
+
+default:list
+
+Object type identifier
+
+​
+
+first_id
+
+string
+
+default:""
+
+ID of the first item in the current page
+
+​
+
+last_id
+
+string
+
+default:""
+
+ID of the last item in the current page
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/api-reference/training-jobs/get-training-job-events.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/api-reference/training-jobs/get-training-job-events)
+
+[Get Training JobPrevious](/serverless-training/api-reference/training-jobs/get-training-job)[Health CheckNext](/serverless-training/api-reference/health/health-check)
+
+⌘I

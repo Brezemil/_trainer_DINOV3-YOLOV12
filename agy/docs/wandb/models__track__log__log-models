@@ -1,0 +1,81 @@
+---
+source_url: https://docs.wandb.ai/models/track/log/log-models
+---
+
+[Guides](/models/track)
+
+[Experiments](/models/track)
+
+[Log objects and media](/models/track/log)
+
+# Log models
+
+Log model artifacts to a W&B run and retrieve them later using the log_model and use_model SDK methods.
+
+# 
+
+​
+
+Log models
+
+The following guide describes how to log models to a W&B run and interact with them.
+
+The following APIs are useful for tracking models as a part of your experiment tracking workflow. Use the APIs listed on this page to log models to a run, and to access metrics, tables, media, and other objects.W&B suggests that you use [W&B Artifacts](/models/artifacts) if you want to:
+
+  * Create and keep track of different versions of serialized data besides models, such as datasets, prompts, and more.
+  * Explore [lineage graphs](/models/artifacts/explore-and-traverse-an-artifact-graph) of a model or any other objects tracked in W&B.
+  * Interact with the model artifacts these methods created, such as [updating properties](/models/artifacts/update-an-artifact) (metadata, aliases, and descriptions)
+
+For more information on W&B Artifacts and advanced versioning use cases, see the [Artifacts](/models/artifacts) documentation.
+
+## 
+
+​
+
+Log a model to a run
+
+Use the [`log_model`](/models/ref/python/experiments/run#log_model) to log a model artifact that contains content within a directory you specify. The [`log_model`](/models/ref/python/experiments/run#log_model) method also marks the resulting model artifact as an output of the W&B run. You can track a model’s dependencies and the model’s associations if you mark the model as the input or output of a W&B run. View the lineage of the model within the W&B App UI. See the [Explore and traverse artifact graphs](/models/artifacts/explore-and-traverse-an-artifact-graph) page within the [Artifacts](/models/artifacts) chapter for more information. Provide the path where your model files are saved to the `path` parameter. The path can be a local file, directory, or [reference URI](/models/artifacts/track-external-files#amazon-s3--gcs--azure-blob-storage-references) to an external bucket such as `s3://bucket/path`. Ensure to replace values enclosed in `<>` with your own.
+    
+    
+    import wandb
+    
+    # Initialize a W&B run
+    with wandb.init(project="<your-project>", entity="<your-entity>") as run:
+    
+        # Log the model
+        run.log_model(path="<path-to-model>", name="<name>")
+    
+
+Optionally provide a name for the model artifact for the `name` parameter. If `name` is not specified, W&B will use the basename of the input path prepended with the run ID as the name.
+
+Keep track of the `name` that you, or W&B assigns, to the model. You will need the name of the model to retrieve the model path with the [`wandb.Run.use_model()`](/models/ref/python/experiments/run#use_model) method.
+
+See [`log_model`](/models/ref/python/experiments/run#log_model) in the API Reference for parameters.
+
+## 
+
+​
+
+Download and use a logged model
+
+Use the [`use_model`](/models/ref/python/experiments/run#use_model) function to access and download models files previously logged to a W&B run. Provide the name of the model artifact where the model files you want to retrieve are stored. The name you provide must match the name of an existing logged model artifact. If you did not define `name` when you originally logged the files with `log_model`, the default name assigned is the basename of the input path, prepended with the run ID. Ensure to replace the values enclosed in `<>` with your own:
+    
+    
+    import wandb
+    
+    # Initialize a run
+    with wandb.init(project="<your-project>", entity="<your-entity>") as run:
+    
+        # Access and download model. Returns path to downloaded artifact
+        downloaded_model_path = run.use_model(name="<your-model-name>")
+    
+
+The [use_model](/models/ref/python/experiments/run#use_model) function returns the path of downloaded model files. Keep track of this path if you want to link this model later. In the preceding code snippet, the returned path is stored in a variable called `downloaded_model_path`. See [`use_model`](/models/ref/python/experiments/run#use_model) in the API Reference for parameters and return type.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/track/log/log-models.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/track/log/log-models)
+
+[Log media and objectsPrevious](/models/track/log/media)[Log summary metricsNext](/models/track/log/log-summary)
+
+⌘I

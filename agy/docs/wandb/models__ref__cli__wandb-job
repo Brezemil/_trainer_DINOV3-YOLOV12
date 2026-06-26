@@ -1,0 +1,49 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-job
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb job](/models/ref/cli/wandb-job)
+
+# wandb job
+
+## 
+
+​
+
+Usage
+    
+    
+    job [OPTIONS] COMMAND [ARGS]...
+    
+
+## 
+
+​
+
+Description
+
+Commands for managing and viewing W&B jobs.
+
+## 
+
+​
+
+Subcommands
+
+Command| Description  
+---|---  
+`wandb job create`| Create a job from a source, without a wandb run.  
+`wandb job describe`| Describe a launch job. Provide the launch job in the form  
+`wandb job list`| List jobs in a project.  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-job.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-job)
+
+[wandb initPrevious](/models/ref/cli/wandb-init)[wandb job createNext](/models/ref/cli/wandb-job/wandb-job-create)
+
+⌘I

@@ -1,0 +1,681 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/agents/genai-spans-query
+---
+
+Genai Spans Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/spans/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "group_by": [
+        {
+          "key": "<string>",
+          "source": "field",
+          "alias": "<string>"
+        }
+      ],
+      "measures": [
+        {
+          "alias": "<string>",
+          "value": {
+            "key": "<string>",
+            "source": "field"
+          },
+          "filter": {
+            "$expr": {
+              "$and": [
+                {
+                  "$literal": "<string>"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "group_filters": [
+        {
+          "measure": {
+            "alias": "<string>",
+            "value": {
+              "key": "<string>",
+              "source": "field"
+            },
+            "filter": {
+              "$expr": {
+                "$and": [
+                  {
+                    "$literal": "<string>"
+                  }
+                ]
+              }
+            }
+          },
+          "group_by": [
+            {
+              "key": "<string>",
+              "source": "field",
+              "alias": "<string>"
+            }
+          ],
+          "min": 123,
+          "max": 123
+        }
+      ],
+      "group_distributions": [
+        {
+          "alias": "<string>",
+          "value": {
+            "key": "<string>",
+            "source": "field"
+          },
+          "bins": 12,
+          "top_n": 5
+        }
+      ],
+      "custom_attr_columns": [
+        {
+          "key": "<string>",
+          "source": "field"
+        }
+      ],
+      "include_details": false,
+      "sort_by": [
+        {
+          "field": "<string>",
+          "direction": "desc"
+        }
+      ],
+      "limit": 100,
+      "offset": 0,
+      "started_after": "2023-11-07T05:31:56Z",
+      "started_before": "2023-11-07T05:31:56Z"
+    }
+    '
+    
+    
+    {
+      "spans": [
+        {
+          "project_id": "<string>",
+          "trace_id": "<string>",
+          "span_id": "<string>",
+          "parent_span_id": "<string>",
+          "span_name": "<string>",
+          "started_at": "2023-11-07T05:31:56Z",
+          "ended_at": "2023-11-07T05:31:56Z",
+          "status_message": "<string>",
+          "operation_name": "<string>",
+          "provider_name": "<string>",
+          "agent_name": "<string>",
+          "agent_id": "<string>",
+          "agent_description": "<string>",
+          "agent_version": "<string>",
+          "request_model": "<string>",
+          "response_model": "<string>",
+          "response_id": "<string>",
+          "input_tokens": 123,
+          "output_tokens": 123,
+          "reasoning_tokens": 123,
+          "cache_creation_input_tokens": 123,
+          "cache_read_input_tokens": 123,
+          "reasoning_content": "<string>",
+          "conversation_id": "<string>",
+          "conversation_name": "<string>",
+          "tool_name": "<string>",
+          "tool_type": "<string>",
+          "tool_call_id": "<string>",
+          "tool_description": "<string>",
+          "tool_definitions": "<string>",
+          "finish_reasons": [
+            "<string>"
+          ],
+          "error_type": "<string>",
+          "request_temperature": 123,
+          "request_max_tokens": 123,
+          "request_top_p": 123,
+          "request_frequency_penalty": 123,
+          "request_presence_penalty": 123,
+          "request_seed": 123,
+          "request_stop_sequences": [
+            "<string>"
+          ],
+          "request_choice_count": 123,
+          "output_type": "<string>",
+          "input_messages": [
+            {
+              "content": "<string>",
+              "role": "",
+              "finish_reason": ""
+            }
+          ],
+          "output_messages": [
+            {
+              "content": "<string>",
+              "role": "",
+              "finish_reason": ""
+            }
+          ],
+          "system_instructions": [
+            "<string>"
+          ],
+          "tool_call_arguments": "<string>",
+          "tool_call_result": "<string>",
+          "compaction_summary": "<string>",
+          "compaction_items_before": 123,
+          "compaction_items_after": 123,
+          "content_refs": [
+            "<string>"
+          ],
+          "artifact_refs": [
+            "<string>"
+          ],
+          "object_refs": [
+            "<string>"
+          ],
+          "custom_attrs_string": {},
+          "custom_attrs_int": {},
+          "custom_attrs_float": {},
+          "custom_attrs_bool": {},
+          "server_address": "<string>",
+          "server_port": 123,
+          "wb_user_id": "<string>",
+          "wb_run_id": "<string>",
+          "wb_run_step": 123,
+          "wb_run_step_end": 123,
+          "raw_span_dump": "<string>"
+        }
+      ],
+      "groups": [
+        {
+          "group_keys": {},
+          "span_count": 0,
+          "invocation_count": 0,
+          "conversation_count": 0,
+          "total_input_tokens": 0,
+          "total_cache_creation_input_tokens": 0,
+          "total_cache_read_input_tokens": 0,
+          "total_output_tokens": 0,
+          "total_reasoning_tokens": 0,
+          "total_duration_ms": 0,
+          "error_count": 0,
+          "agent_names": [
+            "<string>"
+          ],
+          "agent_versions": [
+            "<string>"
+          ],
+          "provider_names": [
+            "<string>"
+          ],
+          "request_models": [
+            "<string>"
+          ],
+          "conversation_names": [
+            "<string>"
+          ],
+          "first_seen": "2023-11-07T05:31:56Z",
+          "last_seen": "2023-11-07T05:31:56Z",
+          "first_message": {
+            "role": "",
+            "text": ""
+          },
+          "last_message": {
+            "role": "",
+            "text": ""
+          },
+          "metrics": {},
+          "distributions": {}
+        }
+      ],
+      "total_count": 0
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Agents](/weave/reference/service-api/agents/export-genai-trace)
+
+# Genai Spans Query
+
+Query agent spans, either as raw rows or grouped aggregates.
+
+POST
+
+/
+
+agents
+
+/
+
+spans
+
+/
+
+query
+
+Genai Spans Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/spans/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "group_by": [
+        {
+          "key": "<string>",
+          "source": "field",
+          "alias": "<string>"
+        }
+      ],
+      "measures": [
+        {
+          "alias": "<string>",
+          "value": {
+            "key": "<string>",
+            "source": "field"
+          },
+          "filter": {
+            "$expr": {
+              "$and": [
+                {
+                  "$literal": "<string>"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "group_filters": [
+        {
+          "measure": {
+            "alias": "<string>",
+            "value": {
+              "key": "<string>",
+              "source": "field"
+            },
+            "filter": {
+              "$expr": {
+                "$and": [
+                  {
+                    "$literal": "<string>"
+                  }
+                ]
+              }
+            }
+          },
+          "group_by": [
+            {
+              "key": "<string>",
+              "source": "field",
+              "alias": "<string>"
+            }
+          ],
+          "min": 123,
+          "max": 123
+        }
+      ],
+      "group_distributions": [
+        {
+          "alias": "<string>",
+          "value": {
+            "key": "<string>",
+            "source": "field"
+          },
+          "bins": 12,
+          "top_n": 5
+        }
+      ],
+      "custom_attr_columns": [
+        {
+          "key": "<string>",
+          "source": "field"
+        }
+      ],
+      "include_details": false,
+      "sort_by": [
+        {
+          "field": "<string>",
+          "direction": "desc"
+        }
+      ],
+      "limit": 100,
+      "offset": 0,
+      "started_after": "2023-11-07T05:31:56Z",
+      "started_before": "2023-11-07T05:31:56Z"
+    }
+    '
+    
+    
+    {
+      "spans": [
+        {
+          "project_id": "<string>",
+          "trace_id": "<string>",
+          "span_id": "<string>",
+          "parent_span_id": "<string>",
+          "span_name": "<string>",
+          "started_at": "2023-11-07T05:31:56Z",
+          "ended_at": "2023-11-07T05:31:56Z",
+          "status_message": "<string>",
+          "operation_name": "<string>",
+          "provider_name": "<string>",
+          "agent_name": "<string>",
+          "agent_id": "<string>",
+          "agent_description": "<string>",
+          "agent_version": "<string>",
+          "request_model": "<string>",
+          "response_model": "<string>",
+          "response_id": "<string>",
+          "input_tokens": 123,
+          "output_tokens": 123,
+          "reasoning_tokens": 123,
+          "cache_creation_input_tokens": 123,
+          "cache_read_input_tokens": 123,
+          "reasoning_content": "<string>",
+          "conversation_id": "<string>",
+          "conversation_name": "<string>",
+          "tool_name": "<string>",
+          "tool_type": "<string>",
+          "tool_call_id": "<string>",
+          "tool_description": "<string>",
+          "tool_definitions": "<string>",
+          "finish_reasons": [
+            "<string>"
+          ],
+          "error_type": "<string>",
+          "request_temperature": 123,
+          "request_max_tokens": 123,
+          "request_top_p": 123,
+          "request_frequency_penalty": 123,
+          "request_presence_penalty": 123,
+          "request_seed": 123,
+          "request_stop_sequences": [
+            "<string>"
+          ],
+          "request_choice_count": 123,
+          "output_type": "<string>",
+          "input_messages": [
+            {
+              "content": "<string>",
+              "role": "",
+              "finish_reason": ""
+            }
+          ],
+          "output_messages": [
+            {
+              "content": "<string>",
+              "role": "",
+              "finish_reason": ""
+            }
+          ],
+          "system_instructions": [
+            "<string>"
+          ],
+          "tool_call_arguments": "<string>",
+          "tool_call_result": "<string>",
+          "compaction_summary": "<string>",
+          "compaction_items_before": 123,
+          "compaction_items_after": 123,
+          "content_refs": [
+            "<string>"
+          ],
+          "artifact_refs": [
+            "<string>"
+          ],
+          "object_refs": [
+            "<string>"
+          ],
+          "custom_attrs_string": {},
+          "custom_attrs_int": {},
+          "custom_attrs_float": {},
+          "custom_attrs_bool": {},
+          "server_address": "<string>",
+          "server_port": 123,
+          "wb_user_id": "<string>",
+          "wb_run_id": "<string>",
+          "wb_run_step": 123,
+          "wb_run_step_end": 123,
+          "raw_span_dump": "<string>"
+        }
+      ],
+      "groups": [
+        {
+          "group_keys": {},
+          "span_count": 0,
+          "invocation_count": 0,
+          "conversation_count": 0,
+          "total_input_tokens": 0,
+          "total_cache_creation_input_tokens": 0,
+          "total_cache_read_input_tokens": 0,
+          "total_output_tokens": 0,
+          "total_reasoning_tokens": 0,
+          "total_duration_ms": 0,
+          "error_count": 0,
+          "agent_names": [
+            "<string>"
+          ],
+          "agent_versions": [
+            "<string>"
+          ],
+          "provider_names": [
+            "<string>"
+          ],
+          "request_models": [
+            "<string>"
+          ],
+          "conversation_names": [
+            "<string>"
+          ],
+          "first_seen": "2023-11-07T05:31:56Z",
+          "last_seen": "2023-11-07T05:31:56Z",
+          "first_message": {
+            "role": "",
+            "text": ""
+          },
+          "last_message": {
+            "role": "",
+            "text": ""
+          },
+          "metrics": {},
+          "distributions": {}
+        }
+      ],
+      "total_count": 0
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request to query agent spans for a project.
+
+When `group_by` is empty (or omitted), returns raw span rows in the response's `spans` field. When `group_by` is non-empty, returns aggregate group rows in the response's `groups` field.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+query
+
+Query · object
+
+Show child attributes
+
+​
+
+group_by
+
+AgentGroupByRef · object[] | null
+
+Show child attributes
+
+​
+
+measures
+
+AgentSpanMeasureSpec · object[]
+
+Show child attributes
+
+​
+
+group_filters
+
+AgentSpanGroupFilter · object[]
+
+Show child attributes
+
+​
+
+group_distributions
+
+AgentSpanGroupDistributionSpec · object[]
+
+Maximum array length: `20`
+
+Show child attributes
+
+​
+
+custom_attr_columns
+
+AgentSpanValueRef · object[]
+
+Show child attributes
+
+​
+
+include_details
+
+boolean
+
+default:false
+
+​
+
+sort_by
+
+AgentSortBy · object[] | null
+
+Show child attributes
+
+​
+
+limit
+
+integer
+
+default:100
+
+Required range: `0 <= x <= 10000`
+
+​
+
+offset
+
+integer
+
+default:0
+
+Required range: `x >= 0`
+
+​
+
+started_after
+
+string<date-time> | null
+
+​
+
+started_before
+
+string<date-time> | null
+
+#### Response
+
+Successful Response
+
+Response from a spans query.
+
+Exactly one of `spans` or `groups` will be populated, based on whether the request specified `group_by`.
+
+​
+
+spans
+
+AgentSpanSchema · object[]
+
+Show child attributes
+
+​
+
+groups
+
+AgentSpanGroupRow · object[]
+
+Show child attributes
+
+​
+
+total_count
+
+integer
+
+default:0
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/agents/genai-spans-query.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/agents/genai-spans-query)
+
+[Export Genai TracePrevious](/weave/reference/service-api/agents/export-genai-trace)[Genai Spans StatsNext](/weave/reference/service-api/agents/genai-spans-stats)
+
+⌘I

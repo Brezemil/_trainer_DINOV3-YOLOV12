@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/inference/tags/server-errors
+---
+
+# Server Errors
+
+## API error code 500 - The server had an error while processing your request
+
+A 500 error with the message The server had an error while processing your request indicates an internal server error in …
+
+## API error code 503: The engine is currently overloaded
+
+A 503 error with the message “The engine is currently overloaded, please try again later” means the Serverless Inference …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/inference/tags/server-errors.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/inference/tags/server-errors)
+
+[Quotas & Rate LimitsPrevious](/support/inference/tags/quotas-rate-limits)
+
+⌘I

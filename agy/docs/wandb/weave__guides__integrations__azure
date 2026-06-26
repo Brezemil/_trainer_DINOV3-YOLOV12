@@ -1,0 +1,70 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/integrations/azure
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Integrate with your LLM provider and frameworks](/weave/guides/integrations)
+
+[LLM Providers](/weave/guides/integrations/bedrock)
+
+# Microsoft Azure
+
+Integrate Weave with Microsoft Azure OpenAI services
+
+Weights & Biases (W&B) Weave integrates with Microsoft Azure OpenAI services, helping teams optimize their Azure AI applications. This page shows you how to start tracking calls to Azure OpenAI with Weave and points to additional resources for more advanced workflows.
+
+For the latest tutorials, visit [Weights & Biases on Microsoft Azure](https://wandb.ai/site/partners/azure).
+
+## 
+
+​
+
+Get started
+
+To start tracking Azure OpenAI calls with Weave, decorate the functions you want to track with `weave.op`. Once decorated, Weave automatically captures inputs, outputs, and metadata for each call to the function.
+    
+    
+    @weave.op()
+    def call_azure_chat(model_id: str, messages: list, max_tokens: int = 1000, temperature: float = 0.5):
+        response = client.chat.completions.create(
+            model=model_id,
+            messages=messages,
+            max_tokens=max_tokens,
+            temperature=temperature
+        )
+        return {"status": "success", "response": response.choices[0].message.content}
+    
+    
+
+## 
+
+​
+
+Learn more
+
+The following sections describe advanced Azure with Weave topics.
+
+### 
+
+​
+
+Use the Azure AI Model Inference API with Weave
+
+Learn how to [use the Azure AI Model Inference API with Weave to gain insights into Azure models](https://wandb.ai/byyoung3/ML-NEWS2/reports/A-guide-to-using-the-Azure-AI-model-inference-API--Vmlldzo4OTY1MjEy#tutorial:-implementing-azure-ai-model-inference-api-with-w&b-weave-).
+
+### 
+
+​
+
+Trace Azure OpenAI models with Weave
+
+Learn how to [trace Azure OpenAI models using Weave](https://wandb.ai/a-sh0ts/azure-weave-cookbook/reports/How-to-use-Azure-OpenAI-and-Azure-AI-Studio-with-W-B-Weave--Vmlldzo4MTI0NDgy).
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/integrations/azure.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/integrations/azure)
+
+[LiteLLMPrevious](/weave/guides/integrations/litellm)[MistralAINext](/weave/guides/integrations/mistral)
+
+⌘I

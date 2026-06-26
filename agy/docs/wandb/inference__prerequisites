@@ -1,0 +1,90 @@
+---
+source_url: https://docs.wandb.ai/inference/prerequisites
+---
+
+# Prerequisites
+
+Set up your environment, API key, and dependencies before using the Serverless Inference service through the API or UI.
+
+This page lists the accounts, credentials, and tools you must set up before you can call the Serverless Inference service from the API or the UI. Complete every item in the following sections so that later requests authenticate successfully and route to a valid project.
+
+Before you start, review the [usage information and limits](/inference/usage-limits) to understand costs and restrictions.
+
+## 
+
+​
+
+Set up your W&B account and project
+
+You must have the following items to access Serverless Inference:
+
+  1. **A W &B account.** Sign up at [W&B](https://app.wandb.ai/login?signup=true).
+  2. **A W &B API key.** To create an API key, select the **Personal API key** or **Service Account API key** tab for details.
+
+     * Personal API key
+
+     * Service account API key
+
+To create a personal API key owned by your user ID:
+     1. Log in to W&B, then click your user profile icon **> User Settings**.
+     2. Click **Create new API key**.
+     3. Provide a descriptive name for your API key.
+     4. Click **Create**.
+     5. Copy the displayed API key immediately and store it securely.
+
+To create an API key owned by a service account:
+     1. In your team or organization settings, go to the **Service Accounts** tab.
+     2. Find the service account in the list.
+     3. Click the **action ()** menu, then click **Create API key**.
+     4. Provide a name for the API key, then click **Create**.
+     5. Copy the displayed API key immediately and store it securely.
+     6. Click **Done**.
+You can create multiple API keys for a single service account to support different environments or workflows.
+
+W&B shows the full API key only once, when you create it. After you close the dialog, you cannot view the full API key again. Your settings display only the key ID (the first part of the key). If you lose the full API key, you must create a new one.
+
+For secure storage options, see [Store API keys securely](/platform/app/settings-page/user-settings#store-and-handle-api-keys-securely).
+  3. **A W &B project.** Create a project in your W&B account to track usage.
+
+After you complete these three items, you have a W&B identity that can authenticate to the Inference API and a project that records your usage.
+
+## 
+
+​
+
+Set up your environment for Python
+
+If you plan to call the Inference API from Python, set up the following in addition to the general requirements:
+
+  1. Complete the general requirements in the preceding section.
+  2. Install the required libraries:
+         
+         pip install openai weave
+         
+
+
+
+
+**Note** The `weave` library is optional but recommended. It lets you trace your LLM applications. Learn more in the [Weave Quickstart](/models/quickstart).
+
+## 
+
+​
+
+Next steps
+
+With your account, API key, project, and optional Python environment in place, you’re ready to start sending requests. Continue with one of the following resources:
+
+  * Check the [API reference](/inference/api-reference) to learn about available endpoints.
+  * Try the [usage examples](/inference/examples) to see the service in action.
+  * Use the [UI guide](/inference/ui-guide) to access models through the web interface.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/inference/prerequisites.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /inference/prerequisites)
+
+[Serverless InferencePrevious](/inference)[Available modelsNext](/inference/models)
+
+⌘I

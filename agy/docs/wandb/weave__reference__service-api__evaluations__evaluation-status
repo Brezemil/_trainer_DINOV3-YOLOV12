@@ -1,0 +1,132 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/evaluations/evaluation-status
+---
+
+Evaluation Status
+    
+    
+    curl --request POST \
+      --url https://api.example.com/evaluations/status \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "status": {
+        "code": "not_found"
+      }
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Evaluations](/weave/reference/service-api/evaluations/evaluate-model)
+
+# Evaluation Status
+
+POST
+
+/
+
+evaluations
+
+/
+
+status
+
+Evaluation Status
+    
+    
+    curl --request POST \
+      --url https://api.example.com/evaluations/status \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "status": {
+        "code": "not_found"
+      }
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+call_id
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+status
+
+EvaluationStatusNotFound · object
+
+required
+
+  * EvaluationStatusNotFound
+
+  * EvaluationStatusRunning
+
+  * EvaluationStatusFailed
+
+  * EvaluationStatusComplete
+
+
+
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/evaluations/evaluation-status.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/evaluations/evaluation-status)
+
+[Evaluate ModelPrevious](/weave/reference/service-api/evaluations/evaluate-model)[Rescore EvaluationNext](/weave/reference/service-api/evaluations/rescore-evaluation)
+
+⌘I

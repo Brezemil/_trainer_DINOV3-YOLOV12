@@ -1,0 +1,30 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/launch_d_wandb_job_create_image_uploading_whole_docker
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# Is `wandb launch -d` or `wandb job create image` uploading a whole Docker artifact and not pulling from a registry?
+
+No, the `wandb launch -d` command doesn’t upload images to a registry. Upload images to a registry separately. Follow these steps:
+
+  1. Build an image.
+  2. Push the image to a registry.
+
+The workflow is as follows. Replace `[REPO-URL]` with your registry URL and `[TAG]` with the image tag:
+    
+    
+    docker build -t [REPO-URL]:[TAG] .
+    docker push [REPO-URL]:[TAG]
+    wandb launch -d [REPO-URL]:[TAG]
+    
+
+The launch agent then starts a job pointing to the specified container. For examples of configuring agent access to pull images from a container registry, see [Advanced agent setup](/platform/launch/setup-agent-advanced#agent-configuration). For Kubernetes, ensure that the Pods in the cluster have access to the registry where the image is pushed.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/launch_d_wandb_job_create_image_uploading_whole_docker.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/launch_d_wandb_job_create_image_uploading_whole_docker)
+
+[How W&B Launch builds imagesPrevious](/platform/launch/launch-faq/launch_build_images)[Does Launch support parallelization? How can I limit the resources consumed by a job?Next](/platform/launch/launch-faq/launch_support_parallelization_limit_resources_consumed_job)
+
+⌘I

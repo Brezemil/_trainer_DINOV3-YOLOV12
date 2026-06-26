@@ -1,0 +1,236 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/evaluationlogger
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Classes](/weave/reference/typescript-sdk/classes/dataset)
+
+# Class: EvaluationLogger
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / EvaluationLogger EvaluationLogger enables incremental logging of predictions and scores. Unlike the traditional Evaluation class which requires upfront dataset and batch processing, EvaluationLogger allows you to log predictions as they happen, with flexible scoring. `Example`
+    
+    
+    const ev = new EvaluationLogger({name: 'my-eval', dataset: 'my-dataset'});
+    
+    for (const example of streamingData) {
+      const output = await myModel.predict(example);
+      const pred = ev.logPrediction(example, output);
+    
+      if (shouldScore(output)) {
+        pred.logScore("accuracy", calculateAccuracy(output));
+      }
+      pred.finish();
+    }
+    
+    await ev.logSummary();
+    
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Constructors
+
+  * [constructor](/weave/reference/typescript-sdk/classes/evaluationlogger#constructor)
+
+
+
+### 
+
+​
+
+Methods
+
+  * [logPrediction](/weave/reference/typescript-sdk/classes/evaluationlogger#logprediction)
+  * [logPredictionAsync](/weave/reference/typescript-sdk/classes/evaluationlogger#logpredictionasync)
+  * [logSummary](/weave/reference/typescript-sdk/classes/evaluationlogger#logsummary)
+
+
+
+## 
+
+​
+
+Constructors
+
+### 
+
+​
+
+constructor
+
+• **new EvaluationLogger**(`options`): [`EvaluationLogger`](/weave/reference/typescript-sdk/classes/evaluationlogger)
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`options`| `EvaluationLoggerOptions`  
+  
+#### 
+
+​
+
+Returns
+
+[`EvaluationLogger`](/weave/reference/typescript-sdk/classes/evaluationlogger)
+
+#### 
+
+​
+
+Defined in
+
+[evaluationLogger.ts:570](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/evaluationLogger.ts#L570)
+
+## 
+
+​
+
+Methods
+
+### 
+
+​
+
+logPrediction
+
+▸ **logPrediction**(`inputs`, `output`): [`ScoreLogger`](/weave/reference/typescript-sdk/classes/scorelogger) Log a prediction with its input and output (synchronous version). Creates a predict_and_score call (with child predict call). Returns a ScoreLogger immediately for adding scores. This method returns the ScoreLogger synchronously. Operations on the ScoreLogger (logScore, finish) will be queued and executed when initialization completes.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`inputs`| `Record`<`string`, `any`>  
+`output`| `any`  
+  
+#### 
+
+​
+
+Returns
+
+[`ScoreLogger`](/weave/reference/typescript-sdk/classes/scorelogger) `Example`
+    
+    
+    // Fire-and-forget style
+    const scoreLogger = evalLogger.logPrediction({input: 'test'}, 'output');
+    scoreLogger.logScore('accuracy', 0.95);
+    scoreLogger.finish();
+    await evalLogger.logSummary(); // Waits for everything
+    
+
+#### 
+
+​
+
+Defined in
+
+[evaluationLogger.ts:657](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/evaluationLogger.ts#L657)
+
+* * *
+
+### 
+
+​
+
+logPredictionAsync
+
+▸ **logPredictionAsync**(`inputs`, `output`): `Promise`<[`ScoreLogger`](/weave/reference/typescript-sdk/classes/scorelogger)> Log a prediction with its input and output (async version). Like logPrediction() but returns a Promise that resolves when the prediction call is fully initialized. Use this if you need to await the initialization before proceeding.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`inputs`| `Record`<`string`, `any`>  
+`output`| `any`  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<[`ScoreLogger`](/weave/reference/typescript-sdk/classes/scorelogger)> `Example`
+    
+    
+    // Awaitable style
+    const scoreLogger = await evalLogger.logPredictionAsync({input: 'test'}, 'output');
+    await scoreLogger.logScore('accuracy', 0.95);
+    await scoreLogger.finish();
+    
+
+#### 
+
+​
+
+Defined in
+
+[evaluationLogger.ts:682](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/evaluationLogger.ts#L682)
+
+* * *
+
+### 
+
+​
+
+logSummary
+
+▸ **logSummary**(`summary?`): `Promise`<`void`> Log a summary and finalize the evaluation. Creates a summarize call and finishes the evaluate call. This method can be called without await (fire-and-forget), but internally it will wait for all pending operations to complete.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`summary?`| `Record`<`string`, `any`>  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`void`>
+
+#### 
+
+​
+
+Defined in
+
+[evaluationLogger.ts:783](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/evaluationLogger.ts#L783)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/classes/evaluationlogger.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/classes/evaluationlogger)
+
+[Class: Evaluation<R, E, M>Previous](/weave/reference/typescript-sdk/classes/evaluation)[Class: LLMNext](/weave/reference/typescript-sdk/classes/llm)
+
+⌘I

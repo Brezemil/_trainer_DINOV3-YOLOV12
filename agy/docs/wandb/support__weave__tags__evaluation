@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/weave/tags/evaluation
+---
+
+# Evaluation
+
+## Long eval clean up times
+
+This page describes two methods to use together to reduce long clean-up times when you run W&B Weave evaluations with la …
+
+## What is pairwise evaluation and how do I do it?
+
+When you score models in a Weave evaluation, absolute value metrics (for example, 9/10 for Model A and 8/10 for Model B) …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/weave/tags/evaluation.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/weave/tags/evaluation)
+
+[Data CapturePrevious](/support/weave/tags/data-capture)[PerformanceNext](/support/weave/tags/performance)
+
+⌘I

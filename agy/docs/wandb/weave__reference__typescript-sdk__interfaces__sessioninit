@@ -1,0 +1,99 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/sessioninit
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: SessionInit
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / SessionInit
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [agentName](/weave/reference/typescript-sdk/interfaces/sessioninit#agentname)
+  * [model](/weave/reference/typescript-sdk/interfaces/sessioninit#model)
+  * [sessionId](/weave/reference/typescript-sdk/interfaces/sessioninit#sessionid)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+agentName
+
+• `Optional` **agentName** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/session.ts:7](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/session.ts#L7)
+
+* * *
+
+### 
+
+​
+
+model
+
+• `Optional` **model** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/session.ts:8](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/session.ts#L8)
+
+* * *
+
+### 
+
+​
+
+sessionId
+
+• `Optional` **sessionId** : `string` Conversation ID propagated to every span under this session as `gen_ai.conversation.id`. Auto-generated if omitted.
+
+#### 
+
+​
+
+Defined in
+
+[genai/session.ts:11](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/session.ts#L11)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/sessioninit.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/sessioninit)
+
+[Interface: ReasoningPrevious](/weave/reference/typescript-sdk/interfaces/reasoning)[Interface: SortByNext](/weave/reference/typescript-sdk/interfaces/sortby)
+
+⌘I

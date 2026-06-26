@@ -1,0 +1,431 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/artifact-version
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# artifactVersion
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`artifactVersion-aliases`
+
+Returns the aliases for a [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The aliases for a [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-createdAt`
+
+Returns the datetime at which the [artifactVersion](/models/ref/query-panel/artifact-version) was created
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The datetime at which the [artifactVersion](/models/ref/query-panel/artifact-version) was created
+
+### 
+
+​
+
+`artifactVersion-file`
+
+Returns the _file_ of the [artifactVersion](/models/ref/query-panel/artifact-version) for the given path
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+`path`| The path of the _file_  
+  
+#### 
+
+​
+
+Return Value
+
+The _file_ of the [artifactVersion](/models/ref/query-panel/artifact-version) for the given path
+
+### 
+
+​
+
+`artifactVersion-files`
+
+Returns the _list_ of _files_ of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The _list_ of _files_ of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-link`
+
+Returns the url for a [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The url for a [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-metadata`
+
+Returns the [artifactVersion](/models/ref/query-panel/artifact-version) metadata dictionary
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersion](/models/ref/query-panel/artifact-version) metadata dictionary
+
+### 
+
+​
+
+`artifactVersion-name`
+
+Returns the name of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-size`
+
+Returns the size of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The size of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-usedBy`
+
+Returns the [runs](/models/ref/query-panel/run) that use the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The [runs](/models/ref/query-panel/run) that use the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-versionId`
+
+Returns the versionId of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The versionId of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`artifactVersion-aliases`
+
+Returns the aliases for a [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The aliases for a [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-createdAt`
+
+Returns the datetime at which the [artifactVersion](/models/ref/query-panel/artifact-version) was created
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The datetime at which the [artifactVersion](/models/ref/query-panel/artifact-version) was created
+
+### 
+
+​
+
+`artifactVersion-file`
+
+Returns the _file_ of the [artifactVersion](/models/ref/query-panel/artifact-version) for the given path
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+`path`| The path of the _file_  
+  
+#### 
+
+​
+
+Return Value
+
+The _file_ of the [artifactVersion](/models/ref/query-panel/artifact-version) for the given path
+
+### 
+
+​
+
+`artifactVersion-files`
+
+Returns the _list_ of _files_ of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The _list_ of _files_ of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-link`
+
+Returns the url for a [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The url for a [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-metadata`
+
+Returns the [artifactVersion](/models/ref/query-panel/artifact-version) metadata dictionary
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersion](/models/ref/query-panel/artifact-version) metadata dictionary
+
+### 
+
+​
+
+`artifactVersion-name`
+
+Returns the name of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-size`
+
+Returns the size of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The size of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-usedBy`
+
+Returns the [runs](/models/ref/query-panel/run) that use the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The [runs](/models/ref/query-panel/run) that use the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+### 
+
+​
+
+`artifactVersion-versionId`
+
+Returns the versionId of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Argument| Description  
+---|---  
+`artifactVersion`| An [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The versionId of the [artifactVersion](/models/ref/query-panel/artifact-version)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/artifact-version.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/artifact-version)
+
+[artifactTypePrevious](/models/ref/query-panel/artifact-type)[audio-fileNext](/models/ref/query-panel/audio-file)
+
+⌘I

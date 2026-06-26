@@ -1,0 +1,133 @@
+---
+source_url: https://docs.wandb.ai/get-started
+---
+
+# Get Started with Weights & Biases
+
+Choose the right W&B product for your use case and learn how to get started
+
+## 
+
+​
+
+Product comparison
+
+Welcome to Weights & Biases! Before getting started with our products, it’s important to identify which ones suit your use case.
+
+Product| Best For| Key Features  
+---|---|---  
+**W&B Models**| Training ML models from scratch| Experiment tracking, hyperparameter optimization, model registry, visualizations  
+**W&B Weave**| Building LLM applications| Tracing, prompt management, evaluation, cost tracking for production AI apps  
+**Serverless Inference**|  Using pre-trained models| Hosted open-source models, API access, model playground for testing  
+**Serverless Training**|  Fine-tuning and post-training models| Create and deploy LoRAs and custom model adaptations with reinforcement learning (RL) and supervised fine-tuning (SFT)  
+**Serverless Sandboxes**|  Running isolated compute environments| On-demand, disposable sandboxes for training jobs, agent tool use, and reproducible experiments  
+  
+## 
+
+​
+
+W&B Models
+
+## Models Quickstart
+
+The “hello world” of W&B, which guides you to logging your first data.
+
+## Get Started with Models
+
+A full-fledged tutorial that walks through the entire Models product using a real ML experiment.
+
+## W&B 101 Course
+
+A video-led course that emphasizes experiment tracking and features quizzes to ensure comprehension.
+
+## YouTube Tutorial
+
+Learn how models are trained, evaluated, developed, and deployed and how you can use wandb at each step of that lifecycle to help build better performing models faster.
+
+## 
+
+​
+
+W&B Weave
+
+## Weave Quickstart
+
+Learn how to decorate your code so that calling into an LLM logs Weave traces and sets you on the path of a perfect LLM workflow.
+
+## Learn Weave with Serverless Inference
+
+A full-fledged tutorial that shows Weave doing real-world evaluation of the performance of various models hosted by Serverless Inference
+
+## W&B Weave 101 Course
+
+A video-led course that teaches you how to log, debug, and evaluate language model workflows, and features quizzes to ensure comprehension.
+
+## YouTube Demo
+
+Learn how you can evaluate, monitor, and iterate continuously on your AI applications and improve quality, latency, cost, and safety.
+
+## 
+
+​
+
+Serverless Inference
+
+## Inference Introduction
+
+Features a quickstart that shows how you use the standard OpenAI REST API to call any model hosted on Serverless Inference.
+
+## Learn Weave with Serverless Inference
+
+A full-fledged tutorial that shows Weave doing real-world evaluation of the performance of various models hosted by Serverless Inference
+
+## Try the Inference Playground
+
+Serverless Inference is really simple to use. Click on any model we host, start trying prompts, and see our observability layer kick into action.
+
+## Examples
+
+Run through a few quick examples of Serverless Inference tracing calls to popular LLMs and evaluating the results.
+
+## 
+
+​
+
+Serverless Training
+
+## Quickstart
+
+Use Serverless RL with OpenPipe’s ART library to train a model to play the game 2048.
+
+## Use your trained models
+
+After creating your trained model, learn how to use it in your code.
+
+## 
+
+​
+
+Serverless Sandboxes
+
+## Sandboxes Introduction
+
+Learn what Serverless Sandboxes are and when to use them for isolated, disposable compute.
+
+## Create a sandbox
+
+Spin up your first sandbox in Python and start running code in seconds.
+
+## Train a PyTorch model in a sandbox
+
+A full tutorial that walks through training a PyTorch model inside a sandbox from start to finish.
+
+## Invoke an agent in a sandbox
+
+Give an OpenAI agent access to a sandbox for safe, isolated tool use.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/get-started.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /get-started)
+
+[Example Code & NotebooksNext](/examples)
+
+⌘I

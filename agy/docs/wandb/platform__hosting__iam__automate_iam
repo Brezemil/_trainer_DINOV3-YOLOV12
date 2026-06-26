@@ -1,0 +1,79 @@
+---
+source_url: https://docs.wandb.ai/platform/hosting/iam/automate_iam
+---
+
+[Platform Details](/platform/app/settings-page)
+
+[Configure W&B](/platform/app/settings-page)
+
+[Identity and access management (IAM)](/platform/hosting/iam/org_team_struct)
+
+# Automate user and team management
+
+Automate user and team management at scale in W&B using the SCIM API and the Python SDK API.
+
+This page describes how to automate user and team management at scale using the [SCIM API](/platform/hosting/iam/scim) and the [Python SDK API](/models/ref/python/public-api).
+
+## 
+
+​
+
+SCIM API
+
+Use the W&B SCIM API to manage your W&B organization’s users and teams at scale through an identity provider (IdP) like Okta or Microsoft Entra. For more information, see [Authentication](/platform/hosting/iam/scim#authentication) on the SCIM reference page.
+
+W&B’s implementation includes endpoints for creating and managing custom roles and for assigning built-in and custom roles. Role endpoints aren’t part of the official SCIM schema. W&B adds role endpoints to support automated management of custom roles.
+
+The following sections describe each category of the SCIM API.
+
+### 
+
+​
+
+User SCIM API
+
+The [User SCIM API](/platform/hosting/iam/scim#user-resource) lets you create, deactivate, fetch, and list users in a W&B organization, and assign predefined or custom roles. For complete request and response examples, see the [SCIM reference](/platform/hosting/iam/scim#user-management).
+
+To deactivate a user, send `PATCH /scim/Users/{id}` with `{"active": false}`. The hosting option determines the outcome: Dedicated Cloud and Self-Managed deployments retain the user record, while Multi-tenant Cloud removes the user from the organization. Reactivation isn’t available in Multi-tenant Cloud. Re-add the user instead. See [Deactivate user](/platform/hosting/iam/scim#deactivate-user) and [Reactivate user](/platform/hosting/iam/scim#reactivate-user).
+
+### 
+
+​
+
+Group SCIM API
+
+The [Group SCIM API](/platform/hosting/iam/scim#group-resource) lets you manage W&B teams, including creating or removing teams in an organization. To add or remove users in an existing team, use `PATCH Group`.
+
+W&B has no notion of a “group of users having the same role.” A W&B team closely resembles a group and lets users with different roles work collaboratively on a set of related projects. Teams can consist of different groups of users. Assign each user in a team a role: team admin, member, viewer, or a custom role.W&B maps Group SCIM API endpoints to W&B teams because of the similarity between groups and W&B teams.
+
+### 
+
+​
+
+Custom role SCIM API
+
+The [Custom Role SCIM API](/platform/hosting/iam/scim#role-resource) lets you manage custom roles, including creating, listing, or updating custom roles in an organization.
+
+Delete a custom role with caution.To delete a custom role within a W&B organization, use the `DELETE Role` endpoint. W&B assigns the inherited predefined role to all users who had the custom role before deletion.To update the inherited role for a custom role, use the `PUT Role` endpoint. This operation doesn’t affect any existing non-inherited custom permissions in the custom role.
+
+## 
+
+​
+
+W&B Python SDK API
+
+Use the [W&B Python SDK API](/models/ref/python/public-api/api) to manage organization users, teams, and team membership through the following classes:
+
+  * [`User`](/models/ref/python/public-api/user)
+  * [`Team`](/models/ref/python/public-api/team)
+  * [`Member`](/models/ref/python/public-api/member)
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/hosting/iam/automate_iam.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/hosting/iam/automate_iam)
+
+[Manage access control for projectsPrevious](/platform/hosting/iam/access-management/restricted-projects)[Manage users, groups, and roles with SCIMNext](/platform/hosting/iam/scim)
+
+⌘I

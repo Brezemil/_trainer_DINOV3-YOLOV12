@@ -1,0 +1,19 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/usage
+---
+
+[Serverless RL](/serverless-training/usage)
+
+# How to use Serverless RL
+
+Post-train models with Serverless RL using OpenPipe’s ART framework and the Serverless Training API for reinforcement learning.
+
+Use Serverless RL through [OpenPipe’s ART framework](https://art.openpipe.ai/getting-started/about) and the [Serverless Training API](/serverless-training/api-reference). To start using Serverless RL, you must satisfy the [prerequisites](/serverless-training/prerequisites) to use W&B tools, and then go through the ART [quickstart](https://art.openpipe.ai/getting-started/quick-start). For code examples and workflows, see the [Google Colab notebook](https://colab.research.google.com/github/openpipe/art-notebooks/blob/main/examples/2048/2048.ipynb).
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/usage.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/usage)
+
+[Usage information and limitsPrevious](/serverless-training/usage-limits)[Available modelsNext](/serverless-training/available-models)
+
+⌘I

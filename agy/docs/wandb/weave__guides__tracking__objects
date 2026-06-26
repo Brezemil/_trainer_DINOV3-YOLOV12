@@ -1,0 +1,161 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/tracking/objects
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Version your work](/weave/tutorial-weave_models)
+
+# Track and version objects
+
+Track and version any JSON-serializable object in W&B Weave
+
+This page explains how to publish, retrieve, delete, and reference versioned objects in W&B Weave. Use it when you need to track structured data such as datasets, models, or prompts across runs and over time.
+
+## 
+
+​
+
+Objects
+
+An **Object** is versioned, serializable data. Weave automatically versions objects when they change and creates an immutable history. Objects include:
+
+  * **Datasets** : Collections of examples for evaluation
+  * **Models** : Configurations and parameters for your LLM logic
+  * **Prompts** : Versioned prompt templates
+
+
+    
+    
+    dataset = weave.Dataset(
+        name="test-cases",
+        rows=[
+            {"input": "What is 2+2?", "expected": "4"},
+            {"input": "What is the capital of France?", "expected": "Paris"},
+        ]
+    )
+    weave.publish(dataset)
+    
+
+## 
+
+​
+
+Publish an object
+
+Weave’s serialization layer saves and versions objects.
+
+  * Python
+
+  * TypeScript
+
+
+
+    
+    
+    import weave
+    weave.init("your-team-name/your-project-name")
+    # Save a list, giving it the name 'cat-names'
+    weave.publish(['felix', 'jimbo', 'billie'], 'cat-names')
+    
+
+TypeScript publishing support is limited. Not all objects are supported.
+    
+    
+    import * as weave from 'weave'
+    
+    const client = await weave.init("your-team-name/your-project-name")
+    
+    // Save an array, giving it the name 'cat-names'
+    client.publish(['felix', 'jimbo', 'billie'], 'cat-names')
+    
+
+When you save an object with a name, Weave creates the first version of that object if it doesn’t exist.
+
+## 
+
+​
+
+Get an object back
+
+After publishing, you can fetch a stored object using its reference.
+
+  * Python
+
+  * TypeScript
+
+
+
+
+`weave.publish()` returns a Ref. Call `.get()` on any Ref to get the object back.You can construct a ref and then fetch the object back.
+    
+    
+    weave.init("your-team-name/your-project-name")
+    cat_names = weave.ref('cat-names').get()
+    
+    
+    
+    This feature isn't available in TypeScript yet.
+    
+
+## 
+
+​
+
+Delete an object
+
+If you no longer need a specific version of an object, you can remove it using its ref.
+
+  * Python
+
+  * TypeScript
+
+
+
+
+To delete a version of an object, call `.delete()` on the object’s ref.
+    
+    
+    weave.init("your-team-name/your-project-name")
+    cat_names_ref = weave.ref('cat-names:v1')
+    cat_names_ref.delete()
+    
+
+Accessing a deleted object returns an error. Resolving an object that references a deleted object returns a `DeletedRef` in place of the deleted object.
+    
+    
+    This feature isn't available in TypeScript yet.
+    
+
+## 
+
+​
+
+Construct object refs
+
+Refs uniquely identify a stored object and version. The following sections describe the URI structure and the ways you can construct a ref. In Weave, a fully qualified object ref URI looks like this:
+    
+    
+    weave:///[YOUR-TEAM-NAME]/[YOUR-PROJECT-NAME]/object/[OBJECT-NAME]:[OBJECT-VERSION]
+    
+
+  * `[YOUR-TEAM-NAME]`: W&B entity (username or team name)
+  * `[YOUR-PROJECT-NAME]`: W&B project
+  * `[OBJECT-NAME]`: object name
+  * `[OBJECT-VERSION]`: either a version hash, a string like `v0` or `v1`, or an alias like `:latest`. All objects have the `:latest` alias.
+
+You can construct refs with a few different styles:
+
+  * `weave.ref([NAME])`: retrieves the `:latest` version of an object. Requires calling `weave.init(...)`.
+  * `weave.ref([NAME]:[VERSION])`: retrieves the specified version of an object. Requires calling `weave.init(...)`.
+  * `weave.ref([FULLY-QUALIFIED-REF-URI])`: retrieves the object located at the specified fully qualified object ref URI. Doesn’t require calling `weave.init()`.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/tracking/objects.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/tracking/objects)
+
+[Store and track versions of promptsPrevious](/weave/guides/core-types/prompts-version)[Set up annotation queuesNext](/weave/guides/tracking/annotation-queues)
+
+⌘I

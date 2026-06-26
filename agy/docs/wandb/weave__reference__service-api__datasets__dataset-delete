@@ -1,0 +1,133 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/datasets/dataset-delete
+---
+
+Dataset Delete
+    
+    
+    curl --request DELETE \
+      --url https://api.example.com/v2/{entity}/{project}/datasets/{object_id} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "num_deleted": 123
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Datasets](/weave/reference/service-api/datasets/dataset-list)
+
+# Dataset Delete
+
+Delete a dataset object. If digests are provided, only those versions are deleted. Otherwise, all versions are deleted.
+
+DELETE
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+datasets
+
+/
+
+{object_id}
+
+Dataset Delete
+    
+    
+    curl --request DELETE \
+      --url https://api.example.com/v2/{entity}/{project}/datasets/{object_id} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "num_deleted": 123
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+object_id
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+digests
+
+string[] | null
+
+List of digests to delete. If not provided, all digests for the dataset will be deleted.
+
+#### Response
+
+Successful Response
+
+​
+
+num_deleted
+
+integer
+
+required
+
+Number of dataset versions deleted
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/datasets/dataset-delete.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/datasets/dataset-delete)
+
+[Dataset ReadPrevious](/weave/reference/service-api/datasets/dataset-read)[Scorer ListNext](/weave/reference/service-api/scorers/scorer-list)
+
+⌘I

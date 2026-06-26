@@ -1,0 +1,47 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/data-types/plotly
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Data Types](/models/ref/python/data-types)
+
+# Plotly
+
+[GitHub source](https://github.com/wandb/wandb/blob/main/wandb/sdk/data_types/plotly.py)
+
+## 
+
+​
+
+`class` `Plotly`
+
+W&B class for Plotly plots.
+
+### 
+
+​
+
+`method` `Plotly.__init__`
+    
+    
+    __init__(val: 'plotly.Figure | matplotlib.artist.Artist')
+    
+
+Initialize a Plotly object. **Args:**
+
+  * `val`: Matplotlib or Plotly figure.
+
+
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/data-types/plotly.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/data-types/plotly)
+
+[Object3DPrevious](/models/ref/python/data-types/object3d)[TableNext](/models/ref/python/data-types/table)
+
+⌘I

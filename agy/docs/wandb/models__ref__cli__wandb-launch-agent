@@ -1,0 +1,44 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-launch-agent
+---
+
+# wandb launch-agent
+
+## 
+
+​
+
+Usage
+    
+    
+    launch-agent [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+Run a W&B launch agent.
+
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--queue, -q`| STR| The name of a queue for the agent to watch. Multiple -q flags are supported. **Default** : None  
+`--entity, -e`| STR| The entity to use. Defaults to current logged-in user **Default** : None  
+`--log-file, -l`| STR| Destination for internal agent logs. Use - for stdout. By default all agents logs will go to debug.log in your wandb/ subdirectory or WANDB_DIR if set. **Default** : None  
+`--max-jobs, -j`| STR| The maximum number of launch jobs this agent can run in parallel. Defaults to 1. Set to -1 for no upper limit. **Default** : None  
+`--config, -c`| STR| path to the agent config yaml to use. **Default** : None  
+`--verbose, -v`| INT| Display verbose output **Default** : 0  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-launch-agent.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-launch-agent)
+
+⌘I

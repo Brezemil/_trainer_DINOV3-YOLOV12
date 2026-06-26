@@ -1,0 +1,51 @@
+---
+source_url: https://docs.wandb.ai/platform/hosting/hosting-options/dedicated-cloud/rate-limits
+---
+
+[Platform Details](/platform/app/settings-page)
+
+[Deployment Options](/platform/hosting)
+
+[Dedicated Cloud](/platform/hosting/hosting-options/dedicated-cloud)
+
+# Rate limits
+
+Default rate limits on Dedicated Cloud and how to request changes
+
+W&B Dedicated Cloud applies rate limits to maintain instance stability. W&B can adjust limits when you scale up training or need higher throughput. Use this page to understand the default limits that apply to your Dedicated Cloud instance and how to request an increase if your workloads need more capacity.
+
+## 
+
+​
+
+Default limits and notification
+
+The following section lists the default rate limits and describes how the W&B SDK behaves when you exceed a limit. The following default limits help maintain platform stability:
+
+Limit| Default| Scope  
+---|---|---  
+Filestream requests per second| 500| Project  
+Filestream ingestion per second| 120 MB| Project  
+Filestream requests per second| 2| Run  
+Run creation requests per second| 80| Project  
+  
+When a limit is exceeded, the W&B SDK returns HTTP response `429`, and the message `HTTP 429: rate limit exceeded` appears in the SDK logs. How the SDK responds depends on which limit was exceeded:
+
+  * Filestream rate limits don’t cause logging to crash or fail. When the SDK receives a `429` response on a filestream request, it backs off and retries the rate-limited request as-is, while subsequent updates accumulate.
+  * Run creation rate limits block further training.
+
+
+    
+    
+    HTTP 429: rate limit exceeded
+    
+
+W&B recommends these defaults for typical production workloads. See [Set rate limits](/platform/hosting/self-managed/operator#set-rate-limits). If your workloads consistently exceed these limits, contact [W&B support](mailto:support@wandb.com) or your Account Solutions Engineer (AISE) to request higher limits. Provide details of your experimental setup and usage patterns so that W&B can scope an appropriate adjustment.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/hosting/hosting-options/dedicated-cloud/rate-limits.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/hosting/hosting-options/dedicated-cloud/rate-limits)
+
+[Dedicated CloudPrevious](/platform/hosting/hosting-options/dedicated-cloud)[Supported Dedicated Cloud regionsNext](/platform/hosting/hosting-options/dedicated-cloud/regions)
+
+⌘I

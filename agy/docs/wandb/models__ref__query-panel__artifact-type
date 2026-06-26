@@ -1,0 +1,149 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/artifact-type
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# artifactType
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`artifactType-artifactVersions`
+
+Returns the [artifactVersions](/models/ref/query-panel/artifact-version) of all [artifacts](/models/ref/query-panel/artifact) of the [artifactType](/models/ref/query-panel/artifact-type)
+
+Argument| Description  
+---|---  
+`artifactType`| An [artifactType](/models/ref/query-panel/artifact-type)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersions](/models/ref/query-panel/artifact-version) of all [artifacts](/models/ref/query-panel/artifact) of the [artifactType](/models/ref/query-panel/artifact-type)
+
+### 
+
+​
+
+`artifactType-artifacts`
+
+Returns the [artifacts](/models/ref/query-panel/artifact) of the [artifactType](/models/ref/query-panel/artifact-type)
+
+Argument| Description  
+---|---  
+`artifactType`| An [artifactType](/models/ref/query-panel/artifact-type)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifacts](/models/ref/query-panel/artifact) of the [artifactType](/models/ref/query-panel/artifact-type)
+
+### 
+
+​
+
+`artifactType-name`
+
+Returns the name of the [artifactType](/models/ref/query-panel/artifact-type)
+
+Argument| Description  
+---|---  
+`artifactType`| An [artifactType](/models/ref/query-panel/artifact-type)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [artifactType](/models/ref/query-panel/artifact-type)
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`artifactType-artifactVersions`
+
+Returns the [artifactVersions](/models/ref/query-panel/artifact-version) of all [artifacts](/models/ref/query-panel/artifact) of the [artifactType](/models/ref/query-panel/artifact-type)
+
+Argument| Description  
+---|---  
+`artifactType`| An [artifactType](/models/ref/query-panel/artifact-type)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersions](/models/ref/query-panel/artifact-version) of all [artifacts](/models/ref/query-panel/artifact) of the [artifactType](/models/ref/query-panel/artifact-type)
+
+### 
+
+​
+
+`artifactType-artifacts`
+
+Returns the [artifacts](/models/ref/query-panel/artifact) of the [artifactType](/models/ref/query-panel/artifact-type)
+
+Argument| Description  
+---|---  
+`artifactType`| An [artifactType](/models/ref/query-panel/artifact-type)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifacts](/models/ref/query-panel/artifact) of the [artifactType](/models/ref/query-panel/artifact-type)
+
+### 
+
+​
+
+`artifactType-name`
+
+Returns the name of the [artifactType](/models/ref/query-panel/artifact-type)
+
+Argument| Description  
+---|---  
+`artifactType`| An [artifactType](/models/ref/query-panel/artifact-type)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [artifactType](/models/ref/query-panel/artifact-type)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/artifact-type.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/artifact-type)
+
+[artifactPrevious](/models/ref/query-panel/artifact)[artifactVersionNext](/models/ref/query-panel/artifact-version)
+
+⌘I

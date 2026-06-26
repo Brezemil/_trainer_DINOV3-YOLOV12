@@ -1,0 +1,33 @@
+---
+source_url: https://docs.wandb.ai/support/weave/tags/performance
+---
+
+# Performance
+
+## Long eval clean up times
+
+This page describes two methods to use together to reduce long clean-up times when you run W&B Weave evaluations with la …
+
+## OS errors - Too many open files
+
+Errno 24 : Too many open files This error occurs when the number of open files exceeds the limit set by your operating s …
+
+## Server response caching
+
+Weave provides server response caching to improve performance when you run repeated queries or work with limited network …
+
+## Trace data loss in worker processes
+
+Weave uploads trace data in background threads to minimize impact on your application’s performance. However, you might …
+
+## Will Weave affect my function's execution speed?
+
+The overhead of Weave logging is typically negligible compared to making a call to an LLM. To minimize Weave’s impact on …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/weave/tags/performance.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/weave/tags/performance)
+
+[EvaluationPrevious](/support/weave/tags/evaluation)[System InfoNext](/support/weave/tags/system-info)
+
+⌘I

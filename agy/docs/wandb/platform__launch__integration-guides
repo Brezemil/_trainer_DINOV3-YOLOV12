@@ -1,0 +1,17 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/integration-guides
+---
+
+[Advanced](/platform/launch/sweeps-on-launch)
+
+# Launch integration guides
+
+Browse integration guides for configuring W&B Launch with Docker, Kubernetes, SageMaker, and Vertex AI.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/integration-guides.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/integration-guides)
+
+[Monitor launch queuePrevious](/platform/launch/launch-queue-observability)[Launch FAQNext](/platform/launch/launch-faq)
+
+⌘I

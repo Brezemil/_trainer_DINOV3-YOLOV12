@@ -1,0 +1,43 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/service/read-version
+---
+
+Read Version
+    
+    
+    curl --request GET \
+      --url https://api.example.com/version
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Service](/weave/reference/service-api/service/read-root)
+
+# Read Version
+
+GET
+
+/
+
+version
+
+Read Version
+    
+    
+    curl --request GET \
+      --url https://api.example.com/version
+
+#### Response
+
+200 - application/json
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/service/read-version.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/service/read-version)
+
+[Read RootPrevious](/weave/reference/service-api/service/read-root)[Get Caller LocationNext](/weave/reference/service-api/service/get-caller-location)
+
+⌘I

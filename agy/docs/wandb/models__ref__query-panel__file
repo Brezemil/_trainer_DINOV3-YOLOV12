@@ -1,0 +1,189 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/file
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# file
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`file-contents`
+
+Returns the contents of the _file_
+
+Argument| Description  
+---|---  
+`file`| A _file_  
+  
+#### 
+
+​
+
+Return Value
+
+The contents of the _file_
+
+### 
+
+​
+
+`file-digest`
+
+Returns the digest of the _file_
+
+Argument| Description  
+---|---  
+`file`| A _file_  
+  
+#### 
+
+​
+
+Return Value
+
+The digest of the _file_
+
+### 
+
+​
+
+`file-size`
+
+Returns the size of the _file_
+
+Argument| Description  
+---|---  
+`file`| A _file_  
+  
+#### 
+
+​
+
+Return Value
+
+The size of the _file_
+
+### 
+
+​
+
+`file-table`
+
+Returns the contents of the _file_ as a _table_
+
+Argument| Description  
+---|---  
+`file`| A _file_  
+  
+#### 
+
+​
+
+Return Value
+
+The contents of the _file_ as a _table_
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`file-contents`
+
+Returns the contents of the _file_
+
+Argument| Description  
+---|---  
+`file`| A _file_  
+  
+#### 
+
+​
+
+Return Value
+
+The contents of the _file_
+
+### 
+
+​
+
+`file-digest`
+
+Returns the digest of the _file_
+
+Argument| Description  
+---|---  
+`file`| A _file_  
+  
+#### 
+
+​
+
+Return Value
+
+The digest of the _file_
+
+### 
+
+​
+
+`file-size`
+
+Returns the size of the _file_
+
+Argument| Description  
+---|---  
+`file`| A _file_  
+  
+#### 
+
+​
+
+Return Value
+
+The size of the _file_
+
+### 
+
+​
+
+`file-table`
+
+Returns the contents of the _file_ as a _table_
+
+Argument| Description  
+---|---  
+`file`| A _file_  
+  
+#### 
+
+​
+
+Return Value
+
+The contents of the _file_ as a _table_
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/file.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/file)
+
+[entityPrevious](/models/ref/query-panel/entity)[floatNext](/models/ref/query-panel/float)
+
+⌘I

@@ -1,0 +1,7303 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/python-sdk/trace_server/trace_server_interface
+---
+
+[W&B Weave](/weave/reference)
+
+[Python SDK](/weave/reference/python-sdk)
+
+[Trace Server](/weave/reference/python-sdk/trace_server/trace_server_interface)
+
+# trace_server_interface
+
+Python SDK reference for weave.trace_server.trace_server_interface
+
+# 
+
+​
+
+API Overview
+
+* * *
+
+## 
+
+​
+
+`class` `ActionsExecuteBatchReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `action_ref`: `<class 'str'>`
+  * `call_ids`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ActionsExecuteBatchRes`
+
+* * *
+
+## 
+
+​
+
+`class` `AggregationType`
+
+Aggregation functions supported by feedback and call stats metrics.
+
+* * *
+
+## 
+
+​
+
+`class` `AliasesListReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AliasesListRes`
+
+**Pydantic Fields:**
+
+  * `aliases`: `list[str]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueAddCallsReq`
+
+Request to add calls to an annotation queue in batch. Extends AnnotationQueueAddCallsBody by adding queue_id for internal API usage. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `call_ids`: `list[str]`
+  * `display_fields`: `list[str]`
+  * `queue_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueAddCallsRes`
+
+Response from adding calls to a queue. **Pydantic Fields:**
+
+  * `added_count`: `<class 'int'>`
+  * `duplicates`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueCreateReq`
+
+Request to create a new annotation queue. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `name`: `<class 'str'>`
+  * `description`: `<class 'str'>`
+  * `scorer_refs`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueCreateRes`
+
+Response from creating an annotation queue. **Pydantic Fields:**
+
+  * `id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueDeleteReq`
+
+Request to delete (soft-delete) an annotation queue. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `queue_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueDeleteRes`
+
+Response from deleting an annotation queue. **Pydantic Fields:**
+
+  * `queue`: `<class 'AnnotationQueueSchema'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueItemSchema`
+
+Schema for annotation queue item responses. **Pydantic Fields:**
+
+  * `id`: `<class 'str'>`
+  * `project_id`: `<class 'str'>`
+  * `queue_id`: `<class 'str'>`
+  * `call_id`: `<class 'str'>`
+  * `call_started_at`: `<class 'datetime.datetime'>`
+  * `call_ended_at`: `datetime.datetime | None`
+  * `call_op_name`: `<class 'str'>`
+  * `call_trace_id`: `<class 'str'>`
+  * `display_fields`: `list[str]`
+  * `added_by`: `str | None`
+  * `annotation_state`: `typing.Literal['unstarted', 'in_progress', 'completed', 'skipped']`
+  * `annotator_user_id`: `str | None`
+  * `created_at`: `<class 'datetime.datetime'>`
+  * `created_by`: `<class 'str'>`
+  * `updated_at`: `<class 'datetime.datetime'>`
+  * `deleted_at`: `datetime.datetime | None`
+  * `position_in_queue`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueItemsQueryReq`
+
+Request to query items in an annotation queue. Extends AnnotationQueueItemsQueryBody by adding queue_id for internal API usage. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `filter`: `weave.trace_server.common_interface.AnnotationQueueItemsFilter | None`
+  * `sort_by`: `list[weave.trace_server.common_interface.SortBy] | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `include_position`: `<class 'bool'>`
+  * `queue_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueItemsQueryRes`
+
+Response from querying annotation queue items. **Pydantic Fields:**
+
+  * `items`: `list[AnnotationQueueItemSchema]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueReadReq`
+
+Request to read a specific annotation queue. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `queue_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueReadRes`
+
+Response from reading an annotation queue. **Pydantic Fields:**
+
+  * `queue`: `<class 'AnnotationQueueSchema'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueSchema`
+
+Schema for annotation queue responses. **Pydantic Fields:**
+
+  * `id`: `<class 'str'>`
+  * `project_id`: `<class 'str'>`
+  * `name`: `<class 'str'>`
+  * `description`: `<class 'str'>`
+  * `scorer_refs`: `list[str]`
+  * `created_at`: `<class 'datetime.datetime'>`
+  * `created_by`: `<class 'str'>`
+  * `updated_at`: `<class 'datetime.datetime'>`
+  * `deleted_at`: `datetime.datetime | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueStatsSchema`
+
+Statistics for a single annotation queue. **Pydantic Fields:**
+
+  * `queue_id`: `<class 'str'>`
+  * `total_items`: `<class 'int'>`
+  * `completed_items`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueUpdateReq`
+
+Request to update an annotation queue. All fields except project_id and queue_id are optional - only provided fields will be updated. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `queue_id`: `<class 'str'>`
+  * `name`: `str | None`
+  * `description`: `str | None`
+  * `scorer_refs`: `list[str] | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueueUpdateRes`
+
+Response from updating an annotation queue. **Pydantic Fields:**
+
+  * `queue`: `<class 'AnnotationQueueSchema'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueuesQueryReq`
+
+Request to query annotation queues for a project. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `name`: `str | None`
+  * `sort_by`: `list[weave.trace_server.common_interface.SortBy] | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueuesQueryRes`
+
+Response from querying annotation queues. **Pydantic Fields:**
+
+  * `queues`: `list[AnnotationQueueSchema]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueuesStatsReq`
+
+Request to get stats for multiple annotation queues. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `queue_ids`: `list[str]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotationQueuesStatsRes`
+
+Response with stats for multiple annotation queues. **Pydantic Fields:**
+
+  * `stats`: `list[AnnotationQueueStatsSchema]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotatorQueueItemsProgressUpdateReq`
+
+Request to update the annotation state of a queue item for the current annotator. Valid state transitions:
+
+  * (absence) -> ‘in_progress’: Mark item as in progress (only when no record exists)
+  * (absence) -> ‘completed’ or ‘skipped’: Directly complete/skip item
+  * ‘in_progress’ or ‘unstarted’ -> ‘completed’ or ‘skipped’: Complete/skip started item
+  * same_state -> same_state: Idempotent no-op (returns existing item unchanged)
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `queue_id`: `<class 'str'>`
+  * `item_id`: `<class 'str'>`
+  * `annotation_state`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `AnnotatorQueueItemsProgressUpdateRes`
+
+Response from updating annotation state. **Pydantic Fields:**
+
+  * `item`: `<class 'AnnotationQueueItemSchema'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallBatchEndMode`
+
+**Pydantic Fields:**
+
+  * `mode`: `<class 'str'>`
+  * `req`: `<class 'CallEndReq'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallBatchStartMode`
+
+**Pydantic Fields:**
+
+  * `mode`: `<class 'str'>`
+  * `req`: `<class 'CallStartReq'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallCreateBatchReq`
+
+**Pydantic Fields:**
+
+  * `batch`: `list[CallBatchStartMode | CallBatchEndMode]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallCreateBatchRes`
+
+**Pydantic Fields:**
+
+  * `res`: `list[CallStartRes | CallEndRes]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallEndReq`
+
+**Pydantic Fields:**
+
+  * `end`: `<class 'EndedCallSchemaForInsert'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallEndRes`
+
+* * *
+
+## 
+
+​
+
+`class` `CallEndV2Req`
+
+Request for ending a single call via v2 API. **Pydantic Fields:**
+
+  * `end`: `<class 'EndedCallSchemaForInsertWithStartedAt'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallEndV2Res`
+
+Response for ending a single call via v2 API.
+
+* * *
+
+## 
+
+​
+
+`class` `CallMetricSpec`
+
+Specification for a call-level metric to aggregate (not grouped by model). **Pydantic Fields:**
+
+  * `metric`: `typing.Literal['latency_ms', 'call_count', 'error_count']`
+  * `aggregations`: `list[AggregationType]`
+  * `percentiles`: `list[float]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `id`: `<class 'str'>`
+  * `include_costs`: `bool | None`
+  * `include_storage_size`: `bool | None`
+  * `include_total_storage_size`: `bool | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallReadRes`
+
+**Pydantic Fields:**
+
+  * `call`: `CallSchema | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallSchema`
+
+**Pydantic Fields:**
+
+  * `id`: `<class 'str'>`
+  * `project_id`: `<class 'str'>`
+  * `op_name`: `<class 'str'>`
+  * `display_name`: `str | None`
+  * `trace_id`: `<class 'str'>`
+  * `parent_id`: `str | None`
+  * `thread_id`: `str | None`
+  * `turn_id`: `str | None`
+  * `started_at`: `<class 'datetime.datetime'>`
+  * `attributes`: `dict[str, typing.Any]`
+  * `inputs`: `dict[str, typing.Any]`
+  * `ended_at`: `datetime.datetime | None`
+  * `exception`: `str | None`
+  * `output`: `typing.Any | None`
+  * `summary`: `SummaryMap | None`
+  * `wb_user_id`: `str | None`
+  * `wb_username`: `str | None`
+  * `wb_run_id`: `str | None`
+  * `wb_run_step`: `int | None`
+  * `wb_run_step_end`: `int | None`
+  * `deleted_at`: `datetime.datetime | None`
+  * `expire_at`: `datetime.datetime | None`
+  * `storage_size_bytes`: `int | None`
+  * `total_storage_size_bytes`: `int | None`
+
+
+
+### 
+
+​
+
+`method` `serialize_typed_dicts`
+    
+    
+    serialize_typed_dicts(v: dict[str, Any]) → dict[str, Any]
+    
+
+* * *
+
+## 
+
+​
+
+`class` `CallStartReq`
+
+**Pydantic Fields:**
+
+  * `start`: `<class 'StartedCallSchemaForInsert'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallStartRes`
+
+**Pydantic Fields:**
+
+  * `id`: `<class 'str'>`
+  * `trace_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallStartV2Req`
+
+Request for starting a single call via v2 API. **Pydantic Fields:**
+
+  * `start`: `<class 'StartedCallSchemaForInsert'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallStartV2Res`
+
+Response for starting a single call via v2 API. **Pydantic Fields:**
+
+  * `id`: `<class 'str'>`
+  * `trace_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallStatsReq`
+
+Request for aggregated call statistics over a time range. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `start`: `<class 'datetime.datetime'>`
+  * `end`: `datetime.datetime | None`
+  * `granularity`: `int | None`
+  * `usage_metrics`: `list[UsageMetricSpec] | None`
+  * `call_metrics`: `list[CallMetricSpec] | None`
+  * `filter`: `CallsFilter | None`
+  * `timezone`: `<class 'str'>`
+
+
+
+### 
+
+​
+
+`method` `validate_date_range`
+    
+    
+    validate_date_range() → CallStatsReq
+    
+
+Ensure call stats requests are bounded to a safe date range.
+
+* * *
+
+## 
+
+​
+
+`class` `CallStatsRes`
+
+Response containing time-series call statistics. **Pydantic Fields:**
+
+  * `start`: `<class 'datetime.datetime'>`
+  * `end`: `<class 'datetime.datetime'>`
+  * `granularity`: `<class 'int'>`
+  * `timezone`: `<class 'str'>`
+  * `usage_buckets`: `list[dict[str, typing.Any]]`
+  * `call_buckets`: `list[dict[str, typing.Any]]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallUpdateReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `call_id`: `<class 'str'>`
+  * `display_name`: `str | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallUpdateRes`
+
+* * *
+
+## 
+
+​
+
+`class` `CallsDeleteReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `call_ids`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallsDeleteRes`
+
+**Pydantic Fields:**
+
+  * `num_deleted`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallsFilter`
+
+**Pydantic Fields:**
+
+  * `op_names`: `list[str] | None`
+  * `input_refs`: `list[str] | None`
+  * `output_refs`: `list[str] | None`
+  * `parent_ids`: `list[str] | None`
+  * `trace_ids`: `list[str] | None`
+  * `call_ids`: `list[str] | None`
+  * `thread_ids`: `list[str] | None`
+  * `turn_ids`: `list[str] | None`
+  * `trace_roots_only`: `bool | None`
+  * `wb_user_ids`: `list[str] | None`
+  * `wb_run_ids`: `list[str] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallsQueryReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `filter`: `CallsFilter | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `sort_by`: `list[weave.trace_server.common_interface.SortBy] | None`
+  * `query`: `weave.trace_server.interface.query.Query | None`
+  * `include_costs`: `bool | None`
+  * `include_feedback`: `bool | None`
+  * `include_storage_size`: `bool | None`
+  * `include_total_storage_size`: `bool | None`
+  * `include_usernames`: `bool | None`
+  * `columns`: `list[str] | None`
+  * `expand_columns`: `list[str] | None`
+  * `return_expanded_column_values`: `bool | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallsQueryRes`
+
+**Pydantic Fields:**
+
+  * `calls`: `list[CallSchema]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallsQueryStatsReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `filter`: `CallsFilter | None`
+  * `query`: `weave.trace_server.interface.query.Query | None`
+  * `limit`: `int | None`
+  * `include_total_storage_size`: `bool | None`
+  * `expand_columns`: `list[str] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallsQueryStatsRes`
+
+**Pydantic Fields:**
+
+  * `count`: `<class 'int'>`
+  * `has_more`: `<class 'bool'>`
+  * `total_storage_size_bytes`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallsScoreReq`
+
+Request to enqueue scoring jobs for a list of calls. Scoring is performed asynchronously by the call_scoring_worker, which consumes messages from Kafka and applies each scorer_ref to each call_id. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `call_ids`: `list[str]`
+  * `scorer_refs`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallsScoreRes`
+
+Empty response for calls_score. Defined as a model (rather than returning None) to follow the convention used throughout this interface and to allow fields to be added later without a breaking change.
+
+* * *
+
+## 
+
+​
+
+`class` `CallsUpsertCompleteReq`
+
+Request for upserting a batch of completed calls. **Pydantic Fields:**
+
+  * `batch`: `list[CompletedCallSchemaForInsert]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallsUpsertCompleteRes`
+
+Response for upserting a batch of completed calls.
+
+* * *
+
+## 
+
+​
+
+`class` `CallsUsageReq`
+
+Request to compute aggregated usage for multiple root calls. This endpoint returns usage metrics for each requested root call, where each root’s metrics include the sum of its own usage plus all descendants’ usage. Note: All matching calls are loaded into memory for aggregation. For very large result sets (>10k calls), consider batching root call IDs or using narrower filters at the application layer. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `call_ids`: `list[str]`
+  * `include_costs`: `<class 'bool'>`
+  * `limit`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CallsUsageRes`
+
+Response with aggregated usage metrics per root call. **Pydantic Fields:**
+
+  * `call_usage`: `dict[str, dict[str, LLMAggregatedUsage]]`
+  * `unfinished_call_ids`: `list[str]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CompletedCallSchemaForInsert`
+
+Schema for inserting a completed call directly. This represents a call that is already finished at insertion time, with both start and end information provided together. Used by the calls_complete endpoint. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `id`: `<class 'str'>`
+  * `trace_id`: `<class 'str'>`
+  * `op_name`: `<class 'str'>`
+  * `started_at`: `<class 'datetime.datetime'>`
+  * `ended_at`: `<class 'datetime.datetime'>`
+  * `display_name`: `str | None`
+  * `parent_id`: `str | None`
+  * `thread_id`: `str | None`
+  * `turn_id`: `str | None`
+  * `attributes`: `dict[str, typing.Any]`
+  * `inputs`: `dict[str, typing.Any]`
+  * `output`: `typing.Any | None`
+  * `summary`: `<class 'SummaryInsertMap'>`
+  * `otel_dump`: `dict[str, typing.Any] | None`
+  * `exception`: `str | None`
+  * `wb_user_id`: `str | None`
+  * `wb_run_id`: `str | None`
+  * `wb_run_step`: `int | None`
+  * `wb_run_step_end`: `int | None`
+
+
+
+### 
+
+​
+
+`method` `serialize_typed_dicts`
+    
+    
+    serialize_typed_dicts(v: dict[str, Any]) → dict[str, Any]
+    
+
+* * *
+
+## 
+
+​
+
+`class` `CompletionsCreateReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `inputs`: `<class 'CompletionsCreateRequestInputs'>`
+  * `wb_user_id`: `str | None`
+  * `track_llm_call`: `bool | None`
+  * `trace_id`: `str | None`
+  * `parent_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CompletionsCreateRequestInputs`
+
+**Pydantic Fields:**
+
+  * `model`: `<class 'str'>`
+  * `messages`: `<class 'list'>`
+  * `timeout`: `float | str | None`
+  * `temperature`: `float | None`
+  * `top_p`: `float | None`
+  * `n`: `int | None`
+  * `stop`: `str | list | None`
+  * `max_completion_tokens`: `int | None`
+  * `max_tokens`: `int | None`
+  * `modalities`: `list | None`
+  * `presence_penalty`: `float | None`
+  * `frequency_penalty`: `float | None`
+  * `stream`: `bool | None`
+  * `logit_bias`: `dict | None`
+  * `user`: `str | None`
+  * `response_format`: `dict | type[pydantic.main.BaseModel] | None`
+  * `seed`: `int | None`
+  * `tools`: `list | None`
+  * `tool_choice`: `str | dict | None`
+  * `logprobs`: `bool | None`
+  * `top_logprobs`: `int | None`
+  * `parallel_tool_calls`: `bool | None`
+  * `extra_headers`: `dict | None`
+  * `functions`: `list | None`
+  * `function_call`: `str | None`
+  * `api_version`: `str | None`
+  * `prompt`: `str | None`
+  * `template_vars`: `dict[str, typing.Any] | None`
+  * `vertex_credentials`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CompletionsCreateRes`
+
+**Pydantic Fields:**
+
+  * `response`: `dict[str, typing.Any]`
+  * `weave_call_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CostCreateInput`
+
+**Pydantic Fields:**
+
+  * `prompt_token_cost`: `<class 'float'>`
+  * `completion_token_cost`: `<class 'float'>`
+  * `cache_read_input_token_cost`: `<class 'float'>`
+  * `cache_creation_input_token_cost`: `<class 'float'>`
+  * `prompt_token_cost_unit`: `str | None`
+  * `completion_token_cost_unit`: `str | None`
+  * `effective_date`: `datetime.datetime | None`
+  * `provider_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CostCreateReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `costs`: `dict[str, CostCreateInput]`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CostCreateRes`
+
+**Pydantic Fields:**
+
+  * `ids`: `list[tuple[str, str]]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CostPurgeReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `query`: `<class 'weave.trace_server.interface.query.Query'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CostPurgeRes`
+
+* * *
+
+## 
+
+​
+
+`class` `CostQueryOutput`
+
+**Pydantic Fields:**
+
+  * `id`: `str | None`
+  * `llm_id`: `str | None`
+  * `prompt_token_cost`: `float | None`
+  * `completion_token_cost`: `float | None`
+  * `prompt_token_cost_unit`: `str | None`
+  * `completion_token_cost_unit`: `str | None`
+  * `effective_date`: `datetime.datetime | None`
+  * `provider_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CostQueryReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `fields`: `list[str] | None`
+  * `query`: `weave.trace_server.interface.query.Query | None`
+  * `sort_by`: `list[weave.trace_server.common_interface.SortBy] | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `CostQueryRes`
+
+**Pydantic Fields:**
+
+  * `results`: `list[CostQueryOutput]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `DatasetCreateBody`
+
+**Pydantic Fields:**
+
+  * `name`: `str | None`
+  * `description`: `str | None`
+  * `rows`: `list[dict[str, typing.Any]]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `DatasetCreateReq`
+
+**Pydantic Fields:**
+
+  * `name`: `str | None`
+  * `description`: `str | None`
+  * `rows`: `list[dict[str, typing.Any]]`
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `DatasetCreateRes`
+
+**Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `DatasetDeleteReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digests`: `list[str] | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `DatasetDeleteRes`
+
+**Pydantic Fields:**
+
+  * `num_deleted`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `DatasetListReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `DatasetReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `DatasetReadRes`
+
+**Pydantic Fields:**
+
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+  * `created_at`: `<class 'datetime.datetime'>`
+  * `name`: `<class 'str'>`
+  * `description`: `str | None`
+  * `rows`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EndedCallSchemaForInsert`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `id`: `<class 'str'>`
+  * `ended_at`: `<class 'datetime.datetime'>`
+  * `started_at`: `datetime.datetime | None`
+  * `exception`: `str | None`
+  * `output`: `typing.Any | None`
+  * `summary`: `<class 'SummaryInsertMap'>`
+  * `wb_run_step_end`: `int | None`
+
+
+
+### 
+
+​
+
+`method` `serialize_typed_dicts`
+    
+    
+    serialize_typed_dicts(v: dict[str, Any]) → dict[str, Any]
+    
+
+* * *
+
+## 
+
+​
+
+`class` `EndedCallSchemaForInsertWithStartedAt`
+
+Deprecated alias. `started_at` now lives on the parent `EndedCallSchemaForInsert`; prefer that. Kept so external SDK pins on the `WithStartedAt` name keep importing. Remove once all in-tree callers migrate. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `id`: `<class 'str'>`
+  * `ended_at`: `<class 'datetime.datetime'>`
+  * `started_at`: `datetime.datetime | None`
+  * `exception`: `str | None`
+  * `output`: `typing.Any | None`
+  * `summary`: `<class 'SummaryInsertMap'>`
+  * `wb_run_step_end`: `int | None`
+
+
+
+### 
+
+​
+
+`method` `serialize_typed_dicts`
+    
+    
+    serialize_typed_dicts(v: dict[str, Any]) → dict[str, Any]
+    
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsEvaluationSummary`
+
+**Pydantic Fields:**
+
+  * `evaluation_call_id`: `<class 'str'>`
+  * `trial_count`: `<class 'int'>`
+  * `scorer_stats`: `list[EvalResultsScorerStats]`
+  * `evaluation_ref`: `str | None`
+  * `model_ref`: `str | None`
+  * `display_name`: `str | None`
+  * `trace_id`: `str | None`
+  * `started_at`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsFilter`
+
+A filter scoped to an optional evaluation. **Pydantic Fields:**
+
+  * `evaluation_call_id`: `str | None`
+  * `query`: `<class 'weave.trace_server.interface.query.Query'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsQueryBody`
+
+**Pydantic Fields:**
+
+  * `evaluation_call_ids`: `list[str] | None`
+  * `evaluation_run_ids`: `list[str] | None`
+  * `require_intersection`: `<class 'bool'>`
+  * `include_raw_data_rows`: `<class 'bool'>`
+  * `resolve_row_refs`: `<class 'bool'>`
+  * `include_rows`: `<class 'bool'>`
+  * `include_summary`: `<class 'bool'>`
+  * `summary_require_intersection`: `bool | None`
+  * `include_predict_and_score_children`: `<class 'bool'>`
+  * `sort_by`: `list[EvalResultsSortBy] | None`
+  * `filters`: `list[EvalResultsFilter] | None`
+  * `limit`: `int | None`
+  * `offset`: `<class 'int'>`
+
+
+
+### 
+
+​
+
+`method` `validate_identifiers`
+    
+    
+    validate_identifiers() → EvalResultsQueryBody
+    
+
+Validate that at least one evaluation identifier is provided.
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsQueryReq`
+
+**Pydantic Fields:**
+
+  * `evaluation_call_ids`: `list[str] | None`
+  * `evaluation_run_ids`: `list[str] | None`
+  * `require_intersection`: `<class 'bool'>`
+  * `include_raw_data_rows`: `<class 'bool'>`
+  * `resolve_row_refs`: `<class 'bool'>`
+  * `include_rows`: `<class 'bool'>`
+  * `include_summary`: `<class 'bool'>`
+  * `summary_require_intersection`: `bool | None`
+  * `include_predict_and_score_children`: `<class 'bool'>`
+  * `sort_by`: `list[EvalResultsSortBy] | None`
+  * `filters`: `list[EvalResultsFilter] | None`
+  * `limit`: `int | None`
+  * `offset`: `<class 'int'>`
+  * `project_id`: `<class 'str'>`
+
+
+
+### 
+
+​
+
+`method` `validate_identifiers`
+    
+    
+    validate_identifiers() → EvalResultsQueryBody
+    
+
+Validate that at least one evaluation identifier is provided.
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsQueryRes`
+
+**Pydantic Fields:**
+
+  * `rows`: `list[EvalResultsRow]`
+  * `total_rows`: `<class 'int'>`
+  * `summary`: `ForwardRef('EvalResultsSummaryRes | None')`
+  * `warnings`: `list[str]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsRow`
+
+**Pydantic Fields:**
+
+  * `row_digest`: `<class 'str'>`
+  * `raw_data_row`: `typing.Any | None`
+  * `evaluations`: `list[EvalResultsRowEvaluation]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsRowEvaluation`
+
+**Pydantic Fields:**
+
+  * `evaluation_call_id`: `<class 'str'>`
+  * `trials`: `list[EvalResultsTrial]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsScorerStats`
+
+Stats for a single flattened score dimension (scorer_key or scorer_key.path.to.leaf). **Pydantic Fields:**
+
+  * `scorer_key`: `<class 'str'>`
+  * `path`: `str | None`
+  * `value_type`: `typing.Optional[typing.Literal['binary', 'continuous', 'text']]`
+  * `trial_count`: `<class 'int'>`
+  * `numeric_count`: `<class 'int'>`
+  * `numeric_mean`: `float | None`
+  * `pass_true_count`: `<class 'int'>`
+  * `pass_known_count`: `<class 'int'>`
+  * `pass_rate`: `float | None`
+  * `pass_signal_coverage`: `float | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsSortBy`
+
+Sort specification for evaluation results, extending SortBy **Pydantic Fields:**
+
+  * `field`: `<class 'str'>`
+  * `direction`: `typing.Literal['asc', 'desc']`
+  * `evaluation_call_id`: `str | None`
+  * `mode`: `typing.Literal['value', 'difference']`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsSummaryRes`
+
+**Pydantic Fields:**
+
+  * `row_count`: `<class 'int'>`
+  * `evaluations`: `list[EvalResultsEvaluationSummary]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvalResultsTrial`
+
+**Pydantic Fields:**
+
+  * `predict_and_score_call_id`: `<class 'str'>`
+  * `predict_call_id`: `str | None`
+  * `model_output`: `typing.Any | None`
+  * `scores`: `dict[str, typing.Any]`
+  * `model_latency_seconds`: `float | None`
+  * `total_tokens`: `int | None`
+  * `scorer_call_ids`: `dict[str, str]`
+  * `genai_span_ref`: `list[GenAISpanRef] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluateModelArgs`
+
+Arguments for a full evaluate-model job (loads model + runs predictions + scores). Moved from workers/evaluate_model_worker/evaluate_model_worker.py so both job types (EvaluateModelArgs and RescoringArgs) can be co-located in the same module for the EvalWorkerJob discriminated union. **Pydantic Fields:**
+
+  * `job_type`: `typing.Literal['evaluate_model']`
+  * `project_id`: `<class 'str'>`
+  * `evaluation_ref`: `<class 'str'>`
+  * `model_ref`: `<class 'str'>`
+  * `wb_user_id`: `<class 'str'>`
+  * `evaluation_call_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluateModelReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `evaluation_ref`: `<class 'str'>`
+  * `model_ref`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluateModelRes`
+
+**Pydantic Fields:**
+
+  * `call_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationCreateBody`
+
+**Pydantic Fields:**
+
+  * `name`: `<class 'str'>`
+  * `description`: `str | None`
+  * `dataset`: `<class 'str'>`
+  * `scorers`: `list[str] | None`
+  * `trials`: `<class 'int'>`
+  * `evaluation_name`: `str | None`
+  * `eval_attributes`: `dict[str, typing.Any] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationCreateReq`
+
+**Pydantic Fields:**
+
+  * `name`: `<class 'str'>`
+  * `description`: `str | None`
+  * `dataset`: `<class 'str'>`
+  * `scorers`: `list[str] | None`
+  * `trials`: `<class 'int'>`
+  * `evaluation_name`: `str | None`
+  * `eval_attributes`: `dict[str, typing.Any] | None`
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationCreateRes`
+
+**Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+  * `evaluation_ref`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationDeleteReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digests`: `list[str] | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationDeleteRes`
+
+**Pydantic Fields:**
+
+  * `num_deleted`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationListReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationReadRes`
+
+**Pydantic Fields:**
+
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+  * `created_at`: `<class 'datetime.datetime'>`
+  * `name`: `<class 'str'>`
+  * `description`: `str | None`
+  * `dataset`: `<class 'str'>`
+  * `scorers`: `list[str]`
+  * `trials`: `<class 'int'>`
+  * `evaluation_name`: `str | None`
+  * `evaluate_op`: `str | None`
+  * `predict_and_score_op`: `str | None`
+  * `summarize_op`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunCreateBody`
+
+**Pydantic Fields:**
+
+  * `evaluation`: `<class 'str'>`
+  * `model`: `<class 'str'>`
+  * `source_evaluation_run_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunCreateReq`
+
+**Pydantic Fields:**
+
+  * `evaluation`: `<class 'str'>`
+  * `model`: `<class 'str'>`
+  * `source_evaluation_run_id`: `str | None`
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunCreateRes`
+
+**Pydantic Fields:**
+
+  * `evaluation_run_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunDeleteReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `evaluation_run_ids`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunDeleteRes`
+
+**Pydantic Fields:**
+
+  * `num_deleted`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunFilter`
+
+**Pydantic Fields:**
+
+  * `evaluations`: `list[str] | None`
+  * `models`: `list[str] | None`
+  * `evaluation_run_ids`: `list[str] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunFinishBody`
+
+Request body for finishing an evaluation run via REST API. This model excludes project_id and evaluation_run_id since they come from the URL path in RESTful endpoints. **Pydantic Fields:**
+
+  * `summary`: `dict[str, typing.Any] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunFinishReq`
+
+**Pydantic Fields:**
+
+  * `summary`: `dict[str, typing.Any] | None`
+  * `project_id`: `<class 'str'>`
+  * `evaluation_run_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunFinishRes`
+
+**Pydantic Fields:**
+
+  * `success`: `<class 'bool'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunListReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `filter`: `EvaluationRunFilter | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `evaluation_run_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationRunReadRes`
+
+**Pydantic Fields:**
+
+  * `evaluation_run_id`: `<class 'str'>`
+  * `evaluation`: `<class 'str'>`
+  * `model`: `<class 'str'>`
+  * `status`: `str | None`
+  * `started_at`: `datetime.datetime | None`
+  * `finished_at`: `datetime.datetime | None`
+  * `summary`: `dict[str, typing.Any] | None`
+  * `source_evaluation_run_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationStatusComplete`
+
+**Pydantic Fields:**
+
+  * `code`: `typing.Literal['complete']`
+  * `output`: `dict[str, typing.Any]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationStatusFailed`
+
+**Pydantic Fields:**
+
+  * `code`: `typing.Literal['failed']`
+  * `error`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationStatusNotFound`
+
+**Pydantic Fields:**
+
+  * `code`: `typing.Literal['not_found']`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationStatusReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `call_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationStatusRes`
+
+**Pydantic Fields:**
+
+  * `status`: `EvaluationStatusNotFound | EvaluationStatusRunning | EvaluationStatusFailed | EvaluationStatusComplete`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `EvaluationStatusRunning`
+
+**Pydantic Fields:**
+
+  * `code`: `typing.Literal['running']`
+  * `completed_rows`: `<class 'int'>`
+  * `total_rows`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ExportTracePartialSuccess`
+
+**Pydantic Fields:**
+
+  * `rejected_spans`: `<class 'int'>`
+  * `error_message`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ExtraKeysTypedDict`
+
+* * *
+
+## 
+
+​
+
+`class` `Feedback`
+
+**Pydantic Fields:**
+
+  * `id`: `<class 'str'>`
+  * `project_id`: `<class 'str'>`
+  * `weave_ref`: `<class 'str'>`
+  * `creator`: `str | None`
+  * `feedback_type`: `<class 'str'>`
+  * `payload`: `dict[str, typing.Any]`
+  * `annotation_ref`: `str | None`
+  * `runnable_ref`: `str | None`
+  * `call_ref`: `str | None`
+  * `trigger_ref`: `str | None`
+  * `queue_id`: `str | None`
+  * `scorer_tags`: `list[str]`
+  * `scorer_tag_reasons`: `dict[str, str]`
+  * `scorer_tag_confidences`: `dict[str, float]`
+  * `scorer_ratings`: `dict[str, float]`
+  * `scorer_rating_reasons`: `dict[str, str]`
+  * `scorer_rating_confidences`: `dict[str, float]`
+  * `wb_user_id`: `str | None`
+  * `created_at`: `<class 'datetime.datetime'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackCreateBatchReq`
+
+**Pydantic Fields:**
+
+  * `batch`: `list[FeedbackCreateReq]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackCreateBatchRes`
+
+**Pydantic Fields:**
+
+  * `res`: `list[FeedbackCreateRes]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackCreateReq`
+
+**Pydantic Fields:**
+
+  * `id`: `str | None`
+  * `project_id`: `<class 'str'>`
+  * `weave_ref`: `<class 'str'>`
+  * `creator`: `str | None`
+  * `feedback_type`: `<class 'str'>`
+  * `payload`: `dict[str, typing.Any]`
+  * `annotation_ref`: `str | None`
+  * `runnable_ref`: `str | None`
+  * `call_ref`: `str | None`
+  * `trigger_ref`: `str | None`
+  * `queue_id`: `str | None`
+  * `scorer_tags`: `list[str]`
+  * `scorer_tag_reasons`: `dict[str, str]`
+  * `scorer_tag_confidences`: `dict[str, float]`
+  * `scorer_ratings`: `dict[str, float]`
+  * `scorer_rating_reasons`: `dict[str, str]`
+  * `scorer_rating_confidences`: `dict[str, float]`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackCreateRes`
+
+**Pydantic Fields:**
+
+  * `id`: `<class 'str'>`
+  * `created_at`: `<class 'datetime.datetime'>`
+  * `wb_user_id`: `<class 'str'>`
+  * `payload`: `dict[str, typing.Any]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackDict`
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackMetricSpec`
+
+Specification for a feedback payload metric to aggregate. **Pydantic Fields:**
+
+  * `json_path`: `<class 'str'>`
+  * `value_type`: `typing.Literal['numeric', 'boolean', 'categorical']`
+  * `aggregations`: `list[AggregationType]`
+  * `percentiles`: `list[float]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackPayloadPath`
+
+Discovered path in feedback payload with inferred type. **Pydantic Fields:**
+
+  * `json_path`: `<class 'str'>`
+  * `value_type`: `typing.Literal['numeric', 'boolean', 'categorical']`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackPayloadSchemaReq`
+
+Request for feedback payload schema discovery. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `start`: `<class 'datetime.datetime'>`
+  * `end`: `datetime.datetime | None`
+  * `feedback_type`: `str | None`
+  * `trigger_ref`: `str | None`
+  * `sample_limit`: `<class 'int'>`
+
+
+
+### 
+
+​
+
+`method` `validate_date_range`
+    
+    
+    validate_date_range() → _FeedbackFilterBase
+    
+
+Ensure feedback requests are bounded to a safe date range.
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackPayloadSchemaRes`
+
+Response with discovered feedback payload paths and types. **Pydantic Fields:**
+
+  * `paths`: `list[FeedbackPayloadPath]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackPurgeReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `query`: `<class 'weave.trace_server.interface.query.Query'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackPurgeRes`
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackQueryReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `fields`: `list[str] | None`
+  * `query`: `weave.trace_server.interface.query.Query | None`
+  * `sort_by`: `list[weave.trace_server.common_interface.SortBy] | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackQueryRes`
+
+**Pydantic Fields:**
+
+  * `result`: `list[dict[str, typing.Any]]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackReplaceReq`
+
+**Pydantic Fields:**
+
+  * `id`: `str | None`
+  * `project_id`: `<class 'str'>`
+  * `weave_ref`: `<class 'str'>`
+  * `creator`: `str | None`
+  * `feedback_type`: `<class 'str'>`
+  * `payload`: `dict[str, typing.Any]`
+  * `annotation_ref`: `str | None`
+  * `runnable_ref`: `str | None`
+  * `call_ref`: `str | None`
+  * `trigger_ref`: `str | None`
+  * `queue_id`: `str | None`
+  * `scorer_tags`: `list[str]`
+  * `scorer_tag_reasons`: `dict[str, str]`
+  * `scorer_tag_confidences`: `dict[str, float]`
+  * `scorer_ratings`: `dict[str, float]`
+  * `scorer_rating_reasons`: `dict[str, str]`
+  * `scorer_rating_confidences`: `dict[str, float]`
+  * `wb_user_id`: `str | None`
+  * `feedback_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackReplaceRes`
+
+**Pydantic Fields:**
+
+  * `id`: `<class 'str'>`
+  * `created_at`: `<class 'datetime.datetime'>`
+  * `wb_user_id`: `<class 'str'>`
+  * `payload`: `dict[str, typing.Any]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackStatsReq`
+
+Request for aggregated feedback statistics over time buckets. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `start`: `<class 'datetime.datetime'>`
+  * `end`: `datetime.datetime | None`
+  * `feedback_type`: `str | None`
+  * `trigger_ref`: `str | None`
+  * `granularity`: `int | None`
+  * `timezone`: `<class 'str'>`
+  * `metrics`: `list[FeedbackMetricSpec]`
+
+
+
+### 
+
+​
+
+`method` `validate_date_range`
+    
+    
+    validate_date_range() → _FeedbackFilterBase
+    
+
+Ensure feedback requests are bounded to a safe date range.
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackStatsRes`
+
+Response with time-series feedback statistics. **Pydantic Fields:**
+
+  * `start`: `<class 'datetime.datetime'>`
+  * `end`: `<class 'datetime.datetime'>`
+  * `granularity`: `<class 'int'>`
+  * `timezone`: `<class 'str'>`
+  * `buckets`: `list[dict[str, typing.Any]]`
+  * `window_stats`: `dict[str, dict[str, float | None]] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FileContentReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FileContentReadRes`
+
+**Pydantic Fields:**
+
+  * `content`: `<class 'bytes'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FileCreateReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `name`: `<class 'str'>`
+  * `content`: `<class 'bytes'>`
+  * `expected_digest`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FileCreateRes`
+
+**Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FilesStatsReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FilesStatsRes`
+
+**Pydantic Fields:**
+
+  * `total_size_bytes`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `FullTraceServerInterface`
+
+Complete trace server interface supporting both V1 and Object APIs. This protocol represents a trace server implementation that supports the full set of APIs - both legacy V1 endpoints and modern Object endpoints. Use this type for implementations that need to support both API versions.
+
+* * *
+
+### 
+
+​
+
+`method` `actions_execute_batch`
+    
+    
+    actions_execute_batch(req: ActionsExecuteBatchReq) → ActionsExecuteBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_agents_query`
+    
+    
+    agent_agents_query(req: AgentsQueryReq) → AgentsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_conversation_chat`
+    
+    
+    agent_conversation_chat(
+        req: AgentConversationChatReq
+    ) → AgentConversationChatRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_custom_attrs_schema`
+    
+    
+    agent_custom_attrs_schema(
+        req: AgentCustomAttrsSchemaReq
+    ) → AgentCustomAttrsSchemaRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_search`
+    
+    
+    agent_search(req: AgentSearchReq) → AgentSearchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_spans_query`
+    
+    
+    agent_spans_query(req: AgentSpansQueryReq) → AgentSpansQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_spans_stats`
+    
+    
+    agent_spans_stats(req: AgentSpanStatsReq) → AgentSpanStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_traces_chat`
+    
+    
+    agent_traces_chat(req: AgentTraceChatReq) → AgentTraceChatRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_versions_query`
+    
+    
+    agent_versions_query(req: AgentVersionsQueryReq) → AgentVersionsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `aliases_list`
+    
+    
+    aliases_list(req: AliasesListReq) → AliasesListRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_add_calls`
+    
+    
+    annotation_queue_add_calls(
+        req: AnnotationQueueAddCallsReq
+    ) → AnnotationQueueAddCallsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_create`
+    
+    
+    annotation_queue_create(
+        req: AnnotationQueueCreateReq
+    ) → AnnotationQueueCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_delete`
+    
+    
+    annotation_queue_delete(
+        req: AnnotationQueueDeleteReq
+    ) → AnnotationQueueDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_items_query`
+    
+    
+    annotation_queue_items_query(
+        req: AnnotationQueueItemsQueryReq
+    ) → AnnotationQueueItemsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_read`
+    
+    
+    annotation_queue_read(req: AnnotationQueueReadReq) → AnnotationQueueReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_update`
+    
+    
+    annotation_queue_update(
+        req: AnnotationQueueUpdateReq
+    ) → AnnotationQueueUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queues_query_stream`
+    
+    
+    annotation_queues_query_stream(
+        req: AnnotationQueuesQueryReq
+    ) → Iterator[AnnotationQueueSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queues_stats`
+    
+    
+    annotation_queues_stats(
+        req: AnnotationQueuesStatsReq
+    ) → AnnotationQueuesStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotator_queue_items_progress_update`
+    
+    
+    annotator_queue_items_progress_update(
+        req: AnnotatorQueueItemsProgressUpdateReq
+    ) → AnnotatorQueueItemsProgressUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_end`
+    
+    
+    call_end(req: CallEndReq) → CallEndRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_end_v2`
+    
+    
+    call_end_v2(req: CallEndV2Req) → CallEndV2Res
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_read`
+    
+    
+    call_read(req: CallReadReq) → CallReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_start`
+    
+    
+    call_start(req: CallStartReq) → CallStartRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_start_batch`
+    
+    
+    call_start_batch(req: CallCreateBatchReq) → CallCreateBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_start_v2`
+    
+    
+    call_start_v2(req: CallStartV2Req) → CallStartV2Res
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_stats`
+    
+    
+    call_stats(req: 'CallStatsReq') → CallStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_update`
+    
+    
+    call_update(req: CallUpdateReq) → CallUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_complete`
+    
+    
+    calls_complete(req: CallsUpsertCompleteReq) → CallsUpsertCompleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_delete`
+    
+    
+    calls_delete(req: CallsDeleteReq) → CallsDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_query`
+    
+    
+    calls_query(req: CallsQueryReq) → CallsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_query_stats`
+    
+    
+    calls_query_stats(req: CallsQueryStatsReq) → CallsQueryStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_query_stream`
+    
+    
+    calls_query_stream(req: CallsQueryReq) → Iterator[CallSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_score`
+    
+    
+    calls_score(req: CallsScoreReq) → CallsScoreRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_usage`
+    
+    
+    calls_usage(req: 'CallsUsageReq') → CallsUsageRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `completions_create`
+    
+    
+    completions_create(req: CompletionsCreateReq) → CompletionsCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `completions_create_stream`
+    
+    
+    completions_create_stream(req: CompletionsCreateReq) → Iterator[dict[str, Any]]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `cost_create`
+    
+    
+    cost_create(req: CostCreateReq) → CostCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `cost_purge`
+    
+    
+    cost_purge(req: CostPurgeReq) → CostPurgeRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `cost_query`
+    
+    
+    cost_query(req: CostQueryReq) → CostQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_create`
+    
+    
+    dataset_create(req: DatasetCreateReq) → DatasetCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_delete`
+    
+    
+    dataset_delete(req: DatasetDeleteReq) → DatasetDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_list`
+    
+    
+    dataset_list(req: DatasetListReq) → Iterator[DatasetReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_read`
+    
+    
+    dataset_read(req: DatasetReadReq) → DatasetReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `eval_results_query`
+    
+    
+    eval_results_query(req: EvalResultsQueryReq) → EvalResultsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluate_model`
+    
+    
+    evaluate_model(req: EvaluateModelReq) → EvaluateModelRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_create`
+    
+    
+    evaluation_create(req: EvaluationCreateReq) → EvaluationCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_delete`
+    
+    
+    evaluation_delete(req: EvaluationDeleteReq) → EvaluationDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_list`
+    
+    
+    evaluation_list(req: EvaluationListReq) → Iterator[EvaluationReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_read`
+    
+    
+    evaluation_read(req: EvaluationReadReq) → EvaluationReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_create`
+    
+    
+    evaluation_run_create(req: EvaluationRunCreateReq) → EvaluationRunCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_delete`
+    
+    
+    evaluation_run_delete(req: EvaluationRunDeleteReq) → EvaluationRunDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_finish`
+    
+    
+    evaluation_run_finish(req: EvaluationRunFinishReq) → EvaluationRunFinishRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_list`
+    
+    
+    evaluation_run_list(req: EvaluationRunListReq) → Iterator[EvaluationRunReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_read`
+    
+    
+    evaluation_run_read(req: EvaluationRunReadReq) → EvaluationRunReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_status`
+    
+    
+    evaluation_status(req: EvaluationStatusReq) → EvaluationStatusRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_create`
+    
+    
+    feedback_create(req: FeedbackCreateReq) → FeedbackCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_create_batch`
+    
+    
+    feedback_create_batch(req: FeedbackCreateBatchReq) → FeedbackCreateBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_payload_schema`
+    
+    
+    feedback_payload_schema(
+        req: FeedbackPayloadSchemaReq
+    ) → FeedbackPayloadSchemaRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_purge`
+    
+    
+    feedback_purge(req: FeedbackPurgeReq) → FeedbackPurgeRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_query`
+    
+    
+    feedback_query(req: FeedbackQueryReq) → FeedbackQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_replace`
+    
+    
+    feedback_replace(req: FeedbackReplaceReq) → FeedbackReplaceRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_stats`
+    
+    
+    feedback_stats(req: FeedbackStatsReq) → FeedbackStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `file_content_read`
+    
+    
+    file_content_read(req: FileContentReadReq) → FileContentReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `file_create`
+    
+    
+    file_create(req: FileCreateReq) → FileCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `files_stats`
+    
+    
+    files_stats(req: FilesStatsReq) → FilesStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `genai_otel_export`
+    
+    
+    genai_otel_export(req: GenAIOTelExportReq) → GenAIOTelExportRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `image_create`
+    
+    
+    image_create(req: ImageGenerationCreateReq) → ImageGenerationCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_create`
+    
+    
+    model_create(req: ModelCreateReq) → ModelCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_delete`
+    
+    
+    model_delete(req: ModelDeleteReq) → ModelDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_list`
+    
+    
+    model_list(req: ModelListReq) → Iterator[ModelReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_read`
+    
+    
+    model_read(req: ModelReadReq) → ModelReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_add_tags`
+    
+    
+    obj_add_tags(req: ObjAddTagsReq) → ObjAddTagsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_create`
+    
+    
+    obj_create(req: ObjCreateReq) → ObjCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_delete`
+    
+    
+    obj_delete(req: ObjDeleteReq) → ObjDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_read`
+    
+    
+    obj_read(req: ObjReadReq) → ObjReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_remove_aliases`
+    
+    
+    obj_remove_aliases(req: ObjRemoveAliasesReq) → ObjRemoveAliasesRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_remove_tags`
+    
+    
+    obj_remove_tags(req: ObjRemoveTagsReq) → ObjRemoveTagsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_set_aliases`
+    
+    
+    obj_set_aliases(req: ObjSetAliasesReq) → ObjSetAliasesRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `objs_query`
+    
+    
+    objs_query(req: ObjQueryReq) → ObjQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_create`
+    
+    
+    op_create(req: OpCreateReq) → OpCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_delete`
+    
+    
+    op_delete(req: OpDeleteReq) → OpDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_list`
+    
+    
+    op_list(req: OpListReq) → Iterator[OpReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_read`
+    
+    
+    op_read(req: OpReadReq) → OpReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `otel_export`
+    
+    
+    otel_export(req: OTelExportReq) → OTelExportRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_create`
+    
+    
+    prediction_create(req: PredictionCreateReq) → PredictionCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_delete`
+    
+    
+    prediction_delete(req: PredictionDeleteReq) → PredictionDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_finish`
+    
+    
+    prediction_finish(req: PredictionFinishReq) → PredictionFinishRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_list`
+    
+    
+    prediction_list(req: PredictionListReq) → Iterator[PredictionReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_read`
+    
+    
+    prediction_read(req: PredictionReadReq) → PredictionReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `project_stats`
+    
+    
+    project_stats(req: ProjectStatsReq) → ProjectStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `project_ttl_settings_read`
+    
+    
+    project_ttl_settings_read(
+        req: ProjectTTLSettingsReadReq
+    ) → ProjectTTLSettingsReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `project_ttl_settings_update`
+    
+    
+    project_ttl_settings_update(
+        req: ProjectTTLSettingsUpdateReq
+    ) → ProjectTTLSettingsUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `refs_read_batch`
+    
+    
+    refs_read_batch(req: RefsReadBatchReq) → RefsReadBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `rescore`
+    
+    
+    rescore(req: RescoreReq) → RescoreRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_create`
+    
+    
+    score_create(req: ScoreCreateReq) → ScoreCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_delete`
+    
+    
+    score_delete(req: ScoreDeleteReq) → ScoreDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_list`
+    
+    
+    score_list(req: ScoreListReq) → Iterator[ScoreReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_read`
+    
+    
+    score_read(req: ScoreReadReq) → ScoreReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_create`
+    
+    
+    scorer_create(req: ScorerCreateReq) → ScorerCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_delete`
+    
+    
+    scorer_delete(req: ScorerDeleteReq) → ScorerDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_list`
+    
+    
+    scorer_list(req: ScorerListReq) → Iterator[ScorerReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_read`
+    
+    
+    scorer_read(req: ScorerReadReq) → ScorerReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_create`
+    
+    
+    table_create(req: TableCreateReq) → TableCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_create_from_digests`
+    
+    
+    table_create_from_digests(
+        req: TableCreateFromDigestsReq
+    ) → TableCreateFromDigestsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query`
+    
+    
+    table_query(req: TableQueryReq) → TableQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query_stats`
+    
+    
+    table_query_stats(req: TableQueryStatsReq) → TableQueryStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query_stats_batch`
+    
+    
+    table_query_stats_batch(req: TableQueryStatsBatchReq) → TableQueryStatsBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query_stream`
+    
+    
+    table_query_stream(req: TableQueryReq) → Iterator[TableRowSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_update`
+    
+    
+    table_update(req: TableUpdateReq) → TableUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `tags_list`
+    
+    
+    tags_list(req: TagsListReq) → TagsListRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `threads_query_stream`
+    
+    
+    threads_query_stream(req: ThreadsQueryReq) → Iterator[ThreadSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `trace_usage`
+    
+    
+    trace_usage(req: 'TraceUsageReq') → TraceUsageRes
+    
+
+* * *
+
+## 
+
+​
+
+`class` `GenAISpanRef`
+
+**Pydantic Fields:**
+
+  * `trace_id`: `<class 'str'>`
+  * `span_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ImageGenerationCreateReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `inputs`: `<class 'ImageGenerationRequestInputs'>`
+  * `wb_user_id`: `str | None`
+  * `track_llm_call`: `bool | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ImageGenerationCreateRes`
+
+**Pydantic Fields:**
+
+  * `response`: `dict[str, typing.Any]`
+  * `weave_call_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ImageGenerationRequestInputs`
+
+**Pydantic Fields:**
+
+  * `model`: `<class 'str'>`
+  * `prompt`: `<class 'str'>`
+  * `n`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `LLMAggregatedUsage`
+
+Aggregated usage metrics for a specific LLM. **Pydantic Fields:**
+
+  * `requests`: `<class 'int'>`
+  * `prompt_tokens`: `<class 'int'>`
+  * `completion_tokens`: `<class 'int'>`
+  * `total_tokens`: `<class 'int'>`
+  * `cache_read_input_tokens`: `<class 'int'>`
+  * `cache_creation_input_tokens`: `<class 'int'>`
+  * `prompt_tokens_total_cost`: `float | None`
+  * `completion_tokens_total_cost`: `float | None`
+  * `cache_read_input_tokens_total_cost`: `float | None`
+  * `cache_creation_input_tokens_total_cost`: `float | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `LLMCostSchema`
+
+* * *
+
+## 
+
+​
+
+`class` `LLMUsageSchema`
+
+* * *
+
+## 
+
+​
+
+`class` `ModelCreateBody`
+
+**Pydantic Fields:**
+
+  * `name`: `<class 'str'>`
+  * `description`: `str | None`
+  * `source_code`: `<class 'str'>`
+  * `attributes`: `dict[str, typing.Any] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ModelCreateReq`
+
+**Pydantic Fields:**
+
+  * `name`: `<class 'str'>`
+  * `description`: `str | None`
+  * `source_code`: `<class 'str'>`
+  * `attributes`: `dict[str, typing.Any] | None`
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ModelCreateRes`
+
+**Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+  * `model_ref`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ModelDeleteReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digests`: `list[str] | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ModelDeleteRes`
+
+**Pydantic Fields:**
+
+  * `num_deleted`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ModelListReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ModelReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ModelReadRes`
+
+**Pydantic Fields:**
+
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+  * `created_at`: `<class 'datetime.datetime'>`
+  * `name`: `<class 'str'>`
+  * `description`: `str | None`
+  * `source_code`: `<class 'str'>`
+  * `attributes`: `dict[str, typing.Any] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `OTelExportReq`
+
+**Pydantic Fields:**
+
+  * `processed_spans`: `list[ProcessedResourceSpans]`
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `OTelExportRes`
+
+**Pydantic Fields:**
+
+  * `partial_success`: `ExportTracePartialSuccess | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjAddTagsReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `tags`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+### 
+
+​
+
+`method` `validate_tags`
+    
+    
+    validate_tags() → ObjAddTagsReq
+    
+
+* * *
+
+## 
+
+​
+
+`class` `ObjAddTagsRes`
+
+* * *
+
+## 
+
+​
+
+`class` `ObjCreateReq`
+
+**Pydantic Fields:**
+
+  * `obj`: `<class 'ObjSchemaForInsert'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjCreateRes`
+
+**Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+  * `object_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjDeleteReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digests`: `list[str] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjDeleteRes`
+
+**Pydantic Fields:**
+
+  * `num_deleted`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjQueryReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `filter`: `ObjectVersionFilter | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `sort_by`: `list[weave.trace_server.common_interface.SortBy] | None`
+  * `metadata_only`: `bool | None`
+  * `include_storage_size`: `bool | None`
+  * `include_tags_and_aliases`: `bool | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjQueryRes`
+
+**Pydantic Fields:**
+
+  * `objs`: `list[ObjSchema]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `metadata_only`: `bool | None`
+  * `include_tags_and_aliases`: `bool | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjReadRes`
+
+**Pydantic Fields:**
+
+  * `obj`: `<class 'ObjSchema'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjRemoveAliasesReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `aliases`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+### 
+
+​
+
+`method` `validate_aliases`
+    
+    
+    validate_aliases() → ObjRemoveAliasesReq
+    
+
+* * *
+
+## 
+
+​
+
+`class` `ObjRemoveAliasesRes`
+
+* * *
+
+## 
+
+​
+
+`class` `ObjRemoveTagsReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `tags`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjRemoveTagsRes`
+
+* * *
+
+## 
+
+​
+
+`class` `ObjSchema`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `created_at`: `<class 'datetime.datetime'>`
+  * `deleted_at`: `datetime.datetime | None`
+  * `digest`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+  * `is_latest`: `<class 'int'>`
+  * `kind`: `<class 'str'>`
+  * `base_object_class`: `str | None`
+  * `leaf_object_class`: `str | None`
+  * `val`: `typing.Any`
+  * `wb_user_id`: `str | None`
+  * `size_bytes`: `int | None`
+  * `tags`: `list[str] | None`
+  * `aliases`: `list[str] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ObjSchemaForInsert`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `val`: `typing.Any`
+  * `builtin_object_class`: `str | None`
+  * `set_base_object_class`: `str | None`
+  * `expected_digest`: `str | None`
+  * `wb_user_id`: `str | None`
+
+
+
+### 
+
+​
+
+`method` `model_post_init`
+    
+    
+    model_post_init(context: Any) → None
+    
+
+* * *
+
+## 
+
+​
+
+`class` `ObjSetAliasesReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `aliases`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+### 
+
+​
+
+`method` `validate_aliases`
+    
+    
+    validate_aliases() → ObjSetAliasesReq
+    
+
+* * *
+
+## 
+
+​
+
+`class` `ObjSetAliasesRes`
+
+* * *
+
+## 
+
+​
+
+`class` `ObjectInterface`
+
+Object API endpoints for Trace Server. This protocol contains object management APIs that provide cleaner, more RESTful interfaces. Implementations should support both this protocol and TraceServerInterface to maintain backward compatibility.
+
+* * *
+
+### 
+
+​
+
+`method` `call_end_v2`
+    
+    
+    call_end_v2(req: CallEndV2Req) → CallEndV2Res
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_start_v2`
+    
+    
+    call_start_v2(req: CallStartV2Req) → CallStartV2Res
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_complete`
+    
+    
+    calls_complete(req: CallsUpsertCompleteReq) → CallsUpsertCompleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_create`
+    
+    
+    dataset_create(req: DatasetCreateReq) → DatasetCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_delete`
+    
+    
+    dataset_delete(req: DatasetDeleteReq) → DatasetDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_list`
+    
+    
+    dataset_list(req: DatasetListReq) → Iterator[DatasetReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_read`
+    
+    
+    dataset_read(req: DatasetReadReq) → DatasetReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `eval_results_query`
+    
+    
+    eval_results_query(req: EvalResultsQueryReq) → EvalResultsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_create`
+    
+    
+    evaluation_create(req: EvaluationCreateReq) → EvaluationCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_delete`
+    
+    
+    evaluation_delete(req: EvaluationDeleteReq) → EvaluationDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_list`
+    
+    
+    evaluation_list(req: EvaluationListReq) → Iterator[EvaluationReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_read`
+    
+    
+    evaluation_read(req: EvaluationReadReq) → EvaluationReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_create`
+    
+    
+    evaluation_run_create(req: EvaluationRunCreateReq) → EvaluationRunCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_delete`
+    
+    
+    evaluation_run_delete(req: EvaluationRunDeleteReq) → EvaluationRunDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_finish`
+    
+    
+    evaluation_run_finish(req: EvaluationRunFinishReq) → EvaluationRunFinishRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_list`
+    
+    
+    evaluation_run_list(req: EvaluationRunListReq) → Iterator[EvaluationRunReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_read`
+    
+    
+    evaluation_run_read(req: EvaluationRunReadReq) → EvaluationRunReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_create`
+    
+    
+    model_create(req: ModelCreateReq) → ModelCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_delete`
+    
+    
+    model_delete(req: ModelDeleteReq) → ModelDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_list`
+    
+    
+    model_list(req: ModelListReq) → Iterator[ModelReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_read`
+    
+    
+    model_read(req: ModelReadReq) → ModelReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_create`
+    
+    
+    op_create(req: OpCreateReq) → OpCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_delete`
+    
+    
+    op_delete(req: OpDeleteReq) → OpDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_list`
+    
+    
+    op_list(req: OpListReq) → Iterator[OpReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_read`
+    
+    
+    op_read(req: OpReadReq) → OpReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_create`
+    
+    
+    prediction_create(req: PredictionCreateReq) → PredictionCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_delete`
+    
+    
+    prediction_delete(req: PredictionDeleteReq) → PredictionDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_finish`
+    
+    
+    prediction_finish(req: PredictionFinishReq) → PredictionFinishRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_list`
+    
+    
+    prediction_list(req: PredictionListReq) → Iterator[PredictionReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_read`
+    
+    
+    prediction_read(req: PredictionReadReq) → PredictionReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_create`
+    
+    
+    score_create(req: ScoreCreateReq) → ScoreCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_delete`
+    
+    
+    score_delete(req: ScoreDeleteReq) → ScoreDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_list`
+    
+    
+    score_list(req: ScoreListReq) → Iterator[ScoreReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_read`
+    
+    
+    score_read(req: ScoreReadReq) → ScoreReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_create`
+    
+    
+    scorer_create(req: ScorerCreateReq) → ScorerCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_delete`
+    
+    
+    scorer_delete(req: ScorerDeleteReq) → ScorerDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_list`
+    
+    
+    scorer_list(req: ScorerListReq) → Iterator[ScorerReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_read`
+    
+    
+    scorer_read(req: ScorerReadReq) → ScorerReadRes
+    
+
+* * *
+
+## 
+
+​
+
+`class` `ObjectVersionFilter`
+
+**Pydantic Fields:**
+
+  * `base_object_classes`: `list[str] | None`
+  * `exclude_base_object_classes`: `list[str] | None`
+  * `leaf_object_classes`: `list[str] | None`
+  * `object_ids`: `list[str] | None`
+  * `is_op`: `bool | None`
+  * `latest_only`: `bool | None`
+  * `tags`: `list[str] | None`
+  * `aliases`: `list[str] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `OpCreateBody`
+
+Request body for creating an Op object via REST API. This model excludes project_id since it comes from the URL path in RESTful endpoints. **Pydantic Fields:**
+
+  * `name`: `str | None`
+  * `source_code`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `OpCreateReq`
+
+Request model for creating an Op object. Extends OpCreateBody by adding project_id for internal API usage. **Pydantic Fields:**
+
+  * `name`: `str | None`
+  * `source_code`: `str | None`
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `OpCreateRes`
+
+Response model for creating an Op object. **Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `OpDeleteReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digests`: `list[str] | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `OpDeleteRes`
+
+**Pydantic Fields:**
+
+  * `num_deleted`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `OpListReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `OpReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `OpReadRes`
+
+Response model for reading an Op object. The code field contains the actual source code of the op. **Pydantic Fields:**
+
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+  * `created_at`: `<class 'datetime.datetime'>`
+  * `code`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionCreateBody`
+
+Request body for creating a Prediction via REST API. This model excludes project_id since it comes from the URL path in RESTful endpoints. **Pydantic Fields:**
+
+  * `model`: `<class 'str'>`
+  * `inputs`: `dict[str, typing.Any]`
+  * `output`: `typing.Any`
+  * `evaluation_run_id`: `str | None`
+  * `genai_span_ref`: `list[GenAISpanRef] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionCreateReq`
+
+Request model for creating a Prediction. Extends PredictionCreateBody by adding project_id for internal API usage. **Pydantic Fields:**
+
+  * `model`: `<class 'str'>`
+  * `inputs`: `dict[str, typing.Any]`
+  * `output`: `typing.Any`
+  * `evaluation_run_id`: `str | None`
+  * `genai_span_ref`: `list[GenAISpanRef] | None`
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionCreateRes`
+
+**Pydantic Fields:**
+
+  * `prediction_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionDeleteReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `prediction_ids`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionDeleteRes`
+
+**Pydantic Fields:**
+
+  * `num_deleted`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionFinishReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `prediction_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionFinishRes`
+
+**Pydantic Fields:**
+
+  * `success`: `<class 'bool'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionListReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `evaluation_run_id`: `str | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionListRes`
+
+**Pydantic Fields:**
+
+  * `predictions`: `list[PredictionReadRes]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `prediction_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `PredictionReadRes`
+
+**Pydantic Fields:**
+
+  * `prediction_id`: `<class 'str'>`
+  * `model`: `<class 'str'>`
+  * `inputs`: `dict[str, typing.Any]`
+  * `output`: `typing.Any`
+  * `evaluation_run_id`: `str | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ProcessedResourceSpans`
+
+**Pydantic Fields:**
+
+  * `entity`: `<class 'str'>`
+  * `project`: `<class 'str'>`
+  * `run_id`: `str | None`
+  * `resource_spans`: `<class 'opentelemetry.proto.trace.v1.trace_pb2.ResourceSpans'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ProjectStatsReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `include_trace_storage_size`: `bool | None`
+  * `include_object_storage_size`: `bool | None`
+  * `include_table_storage_size`: `bool | None`
+  * `include_file_storage_size`: `bool | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ProjectStatsRes`
+
+**Pydantic Fields:**
+
+  * `trace_storage_size_bytes`: `<class 'int'>`
+  * `objects_storage_size_bytes`: `<class 'int'>`
+  * `tables_storage_size_bytes`: `<class 'int'>`
+  * `files_storage_size_bytes`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ProjectTTLSettingsReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ProjectTTLSettingsReadRes`
+
+**Pydantic Fields:**
+
+  * `retention_days`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ProjectTTLSettingsUpdateReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `retention_days`: `int | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ProjectTTLSettingsUpdateRes`
+
+**Pydantic Fields:**
+
+  * `retention_days`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `RefsReadBatchReq`
+
+**Pydantic Fields:**
+
+  * `refs`: `list[str]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `RefsReadBatchRes`
+
+**Pydantic Fields:**
+
+  * `vals`: `list[typing.Any]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `RescoreBody`
+
+Request body for rescoring via REST API (excludes server-set fields). **Pydantic Fields:**
+
+  * `source_evaluation_run_id`: `<class 'str'>`
+  * `scorer_refs`: `list[str]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `RescoreReq`
+
+Full rescore request including server-set fields. **Pydantic Fields:**
+
+  * `source_evaluation_run_id`: `<class 'str'>`
+  * `scorer_refs`: `list[str]`
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `RescoreRes`
+
+Response for a rescore request. **Pydantic Fields:**
+
+  * `call_id`: `<class 'str'>`
+  * `evaluation_run_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `RescoringArgs`
+
+Arguments for a rescore job dispatched to the evaluate-model worker. Differs from EvaluateModelArgs: no model is loaded, no predictions are run. Only scorer(s) are applied to existing predictions from source_evaluation_run_id. **Pydantic Fields:**
+
+  * `job_type`: `typing.Literal['rescore']`
+  * `project_id`: `<class 'str'>`
+  * `source_evaluation_run_id`: `<class 'str'>`
+  * `scorer_refs`: `list[str]`
+  * `wb_user_id`: `str | None`
+  * `new_evaluation_run_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScoreCreateBody`
+
+Request body for creating a Score via REST API. This model excludes project_id since it comes from the URL path in RESTful endpoints. **Pydantic Fields:**
+
+  * `prediction_id`: `<class 'str'>`
+  * `scorer`: `<class 'str'>`
+  * `value`: `typing.Any`
+  * `evaluation_run_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScoreCreateReq`
+
+Request model for creating a Score. Extends ScoreCreateBody by adding project_id for internal API usage. **Pydantic Fields:**
+
+  * `prediction_id`: `<class 'str'>`
+  * `scorer`: `<class 'str'>`
+  * `value`: `typing.Any`
+  * `evaluation_run_id`: `str | None`
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScoreCreateRes`
+
+**Pydantic Fields:**
+
+  * `score_id`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScoreDeleteReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `score_ids`: `list[str]`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScoreDeleteRes`
+
+**Pydantic Fields:**
+
+  * `num_deleted`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScoreListReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `evaluation_run_id`: `str | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScoreReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `score_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScoreReadRes`
+
+**Pydantic Fields:**
+
+  * `score_id`: `<class 'str'>`
+  * `scorer`: `<class 'str'>`
+  * `value`: `typing.Any`
+  * `evaluation_run_id`: `str | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScorerCreateBody`
+
+**Pydantic Fields:**
+
+  * `name`: `<class 'str'>`
+  * `description`: `str | None`
+  * `op_source_code`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScorerCreateReq`
+
+**Pydantic Fields:**
+
+  * `name`: `<class 'str'>`
+  * `description`: `str | None`
+  * `op_source_code`: `<class 'str'>`
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScorerCreateRes`
+
+**Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+  * `scorer`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScorerDeleteReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digests`: `list[str] | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScorerDeleteRes`
+
+**Pydantic Fields:**
+
+  * `num_deleted`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScorerListReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScorerReadReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ScorerReadRes`
+
+**Pydantic Fields:**
+
+  * `object_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `version_index`: `<class 'int'>`
+  * `created_at`: `<class 'datetime.datetime'>`
+  * `name`: `<class 'str'>`
+  * `description`: `str | None`
+  * `score_op`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `StartedCallSchemaForInsert`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `id`: `str | None`
+  * `op_name`: `<class 'str'>`
+  * `display_name`: `str | None`
+  * `trace_id`: `str | None`
+  * `parent_id`: `str | None`
+  * `thread_id`: `str | None`
+  * `turn_id`: `str | None`
+  * `started_at`: `<class 'datetime.datetime'>`
+  * `attributes`: `dict[str, typing.Any]`
+  * `inputs`: `dict[str, typing.Any]`
+  * `otel_dump`: `dict[str, typing.Any] | None`
+  * `wb_user_id`: `str | None`
+  * `wb_run_id`: `str | None`
+  * `wb_run_step`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `SummaryInsertMap`
+
+* * *
+
+## 
+
+​
+
+`class` `SummaryMap`
+
+* * *
+
+## 
+
+​
+
+`class` `TableAppendSpec`
+
+**Pydantic Fields:**
+
+  * `append`: `<class 'TableAppendSpecPayload'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableAppendSpecPayload`
+
+**Pydantic Fields:**
+
+  * `row`: `dict[str, typing.Any]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableCreateFromDigestsReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `row_digests`: `list[str]`
+  * `expected_digest`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableCreateFromDigestsRes`
+
+**Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableCreateReq`
+
+**Pydantic Fields:**
+
+  * `table`: `<class 'TableSchemaForInsert'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableCreateRes`
+
+**Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+  * `row_digests`: `list[str]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableInsertSpec`
+
+**Pydantic Fields:**
+
+  * `insert`: `<class 'TableInsertSpecPayload'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableInsertSpecPayload`
+
+**Pydantic Fields:**
+
+  * `index`: `<class 'int'>`
+  * `row`: `dict[str, typing.Any]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TablePopSpec`
+
+**Pydantic Fields:**
+
+  * `pop`: `<class 'TablePopSpecPayload'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TablePopSpecPayload`
+
+**Pydantic Fields:**
+
+  * `index`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableQueryReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+  * `filter`: `TableRowFilter | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `sort_by`: `list[weave.trace_server.common_interface.SortBy] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableQueryRes`
+
+**Pydantic Fields:**
+
+  * `rows`: `list[TableRowSchema]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableQueryStatsBatchReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `digests`: `list[str] | None`
+  * `include_storage_size`: `bool | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableQueryStatsBatchRes`
+
+**Pydantic Fields:**
+
+  * `tables`: `list[TableStatsRow]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableQueryStatsReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `digest`: `<class 'str'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableQueryStatsRes`
+
+**Pydantic Fields:**
+
+  * `count`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableRowFilter`
+
+**Pydantic Fields:**
+
+  * `row_digests`: `list[str] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableRowSchema`
+
+**Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+  * `val`: `typing.Any`
+  * `original_index`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableSchemaForInsert`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `rows`: `list[dict[str, typing.Any]]`
+  * `expected_digest`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableStatsRow`
+
+**Pydantic Fields:**
+
+  * `count`: `<class 'int'>`
+  * `digest`: `<class 'str'>`
+  * `storage_size_bytes`: `int | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableUpdateReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `base_digest`: `<class 'str'>`
+  * `updates`: `list[TableAppendSpec | TablePopSpec | TableInsertSpec]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TableUpdateRes`
+
+**Pydantic Fields:**
+
+  * `digest`: `<class 'str'>`
+  * `updated_row_digests`: `list[str]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TagsListReq`
+
+**Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `wb_user_id`: `str | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TagsListRes`
+
+**Pydantic Fields:**
+
+  * `tags`: `list[str]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ThreadSchema`
+
+**Pydantic Fields:**
+
+  * `thread_id`: `<class 'str'>`
+  * `turn_count`: `<class 'int'>`
+  * `start_time`: `<class 'datetime.datetime'>`
+  * `last_updated`: `<class 'datetime.datetime'>`
+  * `first_turn_id`: `str | None`
+  * `last_turn_id`: `str | None`
+  * `p50_turn_duration_ms`: `float | None`
+  * `p99_turn_duration_ms`: `float | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ThreadsQueryFilter`
+
+**Pydantic Fields:**
+
+  * `after_datetime`: `datetime.datetime | None`
+  * `before_datetime`: `datetime.datetime | None`
+  * `thread_ids`: `list[str] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `ThreadsQueryReq`
+
+Query threads with aggregated statistics based on turn calls only. Turn calls are the immediate children of thread contexts (where call.id == turn_id). This provides meaningful conversation-level statistics rather than including all nested implementation details. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `filter`: `ThreadsQueryFilter | None`
+  * `limit`: `int | None`
+  * `offset`: `int | None`
+  * `sort_by`: `list[weave.trace_server.common_interface.SortBy] | None`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TraceServerInterface`
+
+* * *
+
+### 
+
+​
+
+`method` `actions_execute_batch`
+    
+    
+    actions_execute_batch(req: ActionsExecuteBatchReq) → ActionsExecuteBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_agents_query`
+    
+    
+    agent_agents_query(req: AgentsQueryReq) → AgentsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_conversation_chat`
+    
+    
+    agent_conversation_chat(
+        req: AgentConversationChatReq
+    ) → AgentConversationChatRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_custom_attrs_schema`
+    
+    
+    agent_custom_attrs_schema(
+        req: AgentCustomAttrsSchemaReq
+    ) → AgentCustomAttrsSchemaRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_search`
+    
+    
+    agent_search(req: AgentSearchReq) → AgentSearchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_spans_query`
+    
+    
+    agent_spans_query(req: AgentSpansQueryReq) → AgentSpansQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_spans_stats`
+    
+    
+    agent_spans_stats(req: AgentSpanStatsReq) → AgentSpanStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_traces_chat`
+    
+    
+    agent_traces_chat(req: AgentTraceChatReq) → AgentTraceChatRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `agent_versions_query`
+    
+    
+    agent_versions_query(req: AgentVersionsQueryReq) → AgentVersionsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `aliases_list`
+    
+    
+    aliases_list(req: AliasesListReq) → AliasesListRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_add_calls`
+    
+    
+    annotation_queue_add_calls(
+        req: AnnotationQueueAddCallsReq
+    ) → AnnotationQueueAddCallsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_create`
+    
+    
+    annotation_queue_create(
+        req: AnnotationQueueCreateReq
+    ) → AnnotationQueueCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_delete`
+    
+    
+    annotation_queue_delete(
+        req: AnnotationQueueDeleteReq
+    ) → AnnotationQueueDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_items_query`
+    
+    
+    annotation_queue_items_query(
+        req: AnnotationQueueItemsQueryReq
+    ) → AnnotationQueueItemsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_read`
+    
+    
+    annotation_queue_read(req: AnnotationQueueReadReq) → AnnotationQueueReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_update`
+    
+    
+    annotation_queue_update(
+        req: AnnotationQueueUpdateReq
+    ) → AnnotationQueueUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queues_query_stream`
+    
+    
+    annotation_queues_query_stream(
+        req: AnnotationQueuesQueryReq
+    ) → Iterator[AnnotationQueueSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queues_stats`
+    
+    
+    annotation_queues_stats(
+        req: AnnotationQueuesStatsReq
+    ) → AnnotationQueuesStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotator_queue_items_progress_update`
+    
+    
+    annotator_queue_items_progress_update(
+        req: AnnotatorQueueItemsProgressUpdateReq
+    ) → AnnotatorQueueItemsProgressUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_end`
+    
+    
+    call_end(req: CallEndReq) → CallEndRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_read`
+    
+    
+    call_read(req: CallReadReq) → CallReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_start`
+    
+    
+    call_start(req: CallStartReq) → CallStartRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_start_batch`
+    
+    
+    call_start_batch(req: CallCreateBatchReq) → CallCreateBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_stats`
+    
+    
+    call_stats(req: 'CallStatsReq') → CallStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_update`
+    
+    
+    call_update(req: CallUpdateReq) → CallUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_delete`
+    
+    
+    calls_delete(req: CallsDeleteReq) → CallsDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_query`
+    
+    
+    calls_query(req: CallsQueryReq) → CallsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_query_stats`
+    
+    
+    calls_query_stats(req: CallsQueryStatsReq) → CallsQueryStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_query_stream`
+    
+    
+    calls_query_stream(req: CallsQueryReq) → Iterator[CallSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_score`
+    
+    
+    calls_score(req: CallsScoreReq) → CallsScoreRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_usage`
+    
+    
+    calls_usage(req: 'CallsUsageReq') → CallsUsageRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `completions_create`
+    
+    
+    completions_create(req: CompletionsCreateReq) → CompletionsCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `completions_create_stream`
+    
+    
+    completions_create_stream(req: CompletionsCreateReq) → Iterator[dict[str, Any]]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `cost_create`
+    
+    
+    cost_create(req: CostCreateReq) → CostCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `cost_purge`
+    
+    
+    cost_purge(req: CostPurgeReq) → CostPurgeRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `cost_query`
+    
+    
+    cost_query(req: CostQueryReq) → CostQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluate_model`
+    
+    
+    evaluate_model(req: EvaluateModelReq) → EvaluateModelRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_status`
+    
+    
+    evaluation_status(req: EvaluationStatusReq) → EvaluationStatusRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_create`
+    
+    
+    feedback_create(req: FeedbackCreateReq) → FeedbackCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_create_batch`
+    
+    
+    feedback_create_batch(req: FeedbackCreateBatchReq) → FeedbackCreateBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_payload_schema`
+    
+    
+    feedback_payload_schema(
+        req: FeedbackPayloadSchemaReq
+    ) → FeedbackPayloadSchemaRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_purge`
+    
+    
+    feedback_purge(req: FeedbackPurgeReq) → FeedbackPurgeRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_query`
+    
+    
+    feedback_query(req: FeedbackQueryReq) → FeedbackQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_replace`
+    
+    
+    feedback_replace(req: FeedbackReplaceReq) → FeedbackReplaceRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_stats`
+    
+    
+    feedback_stats(req: FeedbackStatsReq) → FeedbackStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `file_content_read`
+    
+    
+    file_content_read(req: FileContentReadReq) → FileContentReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `file_create`
+    
+    
+    file_create(req: FileCreateReq) → FileCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `files_stats`
+    
+    
+    files_stats(req: FilesStatsReq) → FilesStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `genai_otel_export`
+    
+    
+    genai_otel_export(req: GenAIOTelExportReq) → GenAIOTelExportRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `image_create`
+    
+    
+    image_create(req: ImageGenerationCreateReq) → ImageGenerationCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_add_tags`
+    
+    
+    obj_add_tags(req: ObjAddTagsReq) → ObjAddTagsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_create`
+    
+    
+    obj_create(req: ObjCreateReq) → ObjCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_delete`
+    
+    
+    obj_delete(req: ObjDeleteReq) → ObjDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_read`
+    
+    
+    obj_read(req: ObjReadReq) → ObjReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_remove_aliases`
+    
+    
+    obj_remove_aliases(req: ObjRemoveAliasesReq) → ObjRemoveAliasesRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_remove_tags`
+    
+    
+    obj_remove_tags(req: ObjRemoveTagsReq) → ObjRemoveTagsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_set_aliases`
+    
+    
+    obj_set_aliases(req: ObjSetAliasesReq) → ObjSetAliasesRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `objs_query`
+    
+    
+    objs_query(req: ObjQueryReq) → ObjQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `otel_export`
+    
+    
+    otel_export(req: OTelExportReq) → OTelExportRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `project_stats`
+    
+    
+    project_stats(req: ProjectStatsReq) → ProjectStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `project_ttl_settings_read`
+    
+    
+    project_ttl_settings_read(
+        req: ProjectTTLSettingsReadReq
+    ) → ProjectTTLSettingsReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `project_ttl_settings_update`
+    
+    
+    project_ttl_settings_update(
+        req: ProjectTTLSettingsUpdateReq
+    ) → ProjectTTLSettingsUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `refs_read_batch`
+    
+    
+    refs_read_batch(req: RefsReadBatchReq) → RefsReadBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `rescore`
+    
+    
+    rescore(req: RescoreReq) → RescoreRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_create`
+    
+    
+    table_create(req: TableCreateReq) → TableCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_create_from_digests`
+    
+    
+    table_create_from_digests(
+        req: TableCreateFromDigestsReq
+    ) → TableCreateFromDigestsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query`
+    
+    
+    table_query(req: TableQueryReq) → TableQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query_stats`
+    
+    
+    table_query_stats(req: TableQueryStatsReq) → TableQueryStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query_stats_batch`
+    
+    
+    table_query_stats_batch(req: TableQueryStatsBatchReq) → TableQueryStatsBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query_stream`
+    
+    
+    table_query_stream(req: TableQueryReq) → Iterator[TableRowSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_update`
+    
+    
+    table_update(req: TableUpdateReq) → TableUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `tags_list`
+    
+    
+    tags_list(req: TagsListReq) → TagsListRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `threads_query_stream`
+    
+    
+    threads_query_stream(req: ThreadsQueryReq) → Iterator[ThreadSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `trace_usage`
+    
+    
+    trace_usage(req: 'TraceUsageReq') → TraceUsageRes
+    
+
+* * *
+
+## 
+
+​
+
+`class` `TraceStatus`
+
+* * *
+
+## 
+
+​
+
+`class` `TraceUsageReq`
+
+Request to compute per-call usage for a trace, with descendant rollup. This endpoint returns usage metrics for each call in the trace, where each call’s metrics include the sum of its own usage plus all descendants’ usage. Use this for trace view where you want to see rolled-up metrics per call. Note: All matching calls are loaded into memory for aggregation. For very large result sets (>10k calls), consider using more specific filters or pagination at the application layer. **Pydantic Fields:**
+
+  * `project_id`: `<class 'str'>`
+  * `filter`: `CallsFilter | None`
+  * `query`: `weave.trace_server.interface.query.Query | None`
+  * `include_costs`: `<class 'bool'>`
+  * `limit`: `<class 'int'>`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `TraceUsageRes`
+
+Response with per-call usage metrics (each includes descendant contributions). **Pydantic Fields:**
+
+  * `call_usage`: `dict[str, dict[str, LLMAggregatedUsage]]`
+  * `unfinished_call_ids`: `list[str]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `UsageMetricSpec`
+
+Specification for a usage metric to aggregate (grouped by model). **Pydantic Fields:**
+
+  * `metric`: `typing.Literal['input_tokens', 'output_tokens', 'total_tokens', 'cache_read_input_tokens', 'cache_creation_input_tokens', 'input_cost', 'output_cost', 'total_cost']`
+  * `aggregations`: `list[AggregationType]`
+  * `percentiles`: `list[float]`
+
+
+
+* * *
+
+## 
+
+​
+
+`class` `WeaveSummarySchema`
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/python-sdk/trace_server/trace_server_interface.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/python-sdk/trace_server/trace_server_interface)
+
+[weave_clientPrevious](/weave/reference/python-sdk/trace/weave_client)[remote_http_trace_serverNext](/weave/reference/python-sdk/trace_server_bindings/remote_http_trace_server)
+
+⌘I

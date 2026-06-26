@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/inference/tags/quotas-rate-limits
+---
+
+# Quotas & Rate Limits
+
+## API error code 402 - You exceeded your current quota
+
+A 402 error with the message You exceeded your current quota, please check your plan and billing details means you’ve ru …
+
+## API error code 429 - Concurrency limit reached for requests
+
+A 429 error with the message “Concurrency limit reached for requests” means you’re sending too many concurrent requests …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/inference/tags/quotas-rate-limits.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/inference/tags/quotas-rate-limits)
+
+[BillingPrevious](/support/inference/tags/billing)[Server ErrorsNext](/support/inference/tags/server-errors)
+
+⌘I

@@ -1,0 +1,15 @@
+---
+source_url: https://docs.wandb.ai/platform/launch
+---
+
+# W&B Launch
+
+Scale and manage ML workloads with W&B Launch by configuring jobs, queues, and agents on your compute infrastructure.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch)
+
+[Tutorial: W&B Launch basicsNext](/platform/launch/walkthrough)
+
+⌘I

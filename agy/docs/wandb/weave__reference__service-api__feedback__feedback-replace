@@ -1,0 +1,394 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/feedback/feedback-replace
+---
+
+Feedback Replace
+    
+    
+    curl --request POST \
+      --url https://api.example.com/feedback/replace \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "weave_ref": "<string>",
+      "feedback_type": "<string>",
+      "payload": {},
+      "feedback_id": "<string>",
+      "id": "018f1f2a-9c2b-7d3e-b5a1-8c9d2e4f6a7b",
+      "creator": "Jane Smith",
+      "annotation_ref": "weave:///entity/project/object/name:digest",
+      "runnable_ref": "weave:///entity/project/op/name:digest",
+      "call_ref": "weave:///entity/project/call/call_id",
+      "trigger_ref": "weave:///entity/project/object/name:digest",
+      "queue_id": "018f1f2a-9c2b-7d3e-b5a1-8c9d2e4f6a7b",
+      "scorer_tags": [
+        "<string>"
+      ],
+      "scorer_tag_reasons": {},
+      "scorer_tag_confidences": {},
+      "scorer_ratings": {},
+      "scorer_rating_reasons": {},
+      "scorer_rating_confidences": {},
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "id": "<string>",
+      "created_at": "2023-11-07T05:31:56Z",
+      "wb_user_id": "<string>",
+      "payload": {}
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Feedback](/weave/reference/service-api/feedback/feedback-create)
+
+# Feedback Replace
+
+POST
+
+/
+
+feedback
+
+/
+
+replace
+
+Feedback Replace
+    
+    
+    curl --request POST \
+      --url https://api.example.com/feedback/replace \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "weave_ref": "<string>",
+      "feedback_type": "<string>",
+      "payload": {},
+      "feedback_id": "<string>",
+      "id": "018f1f2a-9c2b-7d3e-b5a1-8c9d2e4f6a7b",
+      "creator": "Jane Smith",
+      "annotation_ref": "weave:///entity/project/object/name:digest",
+      "runnable_ref": "weave:///entity/project/op/name:digest",
+      "call_ref": "weave:///entity/project/call/call_id",
+      "trigger_ref": "weave:///entity/project/object/name:digest",
+      "queue_id": "018f1f2a-9c2b-7d3e-b5a1-8c9d2e4f6a7b",
+      "scorer_tags": [
+        "<string>"
+      ],
+      "scorer_tag_reasons": {},
+      "scorer_tag_confidences": {},
+      "scorer_ratings": {},
+      "scorer_rating_reasons": {},
+      "scorer_rating_confidences": {},
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "id": "<string>",
+      "created_at": "2023-11-07T05:31:56Z",
+      "wb_user_id": "<string>",
+      "payload": {}
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+weave_ref
+
+string
+
+required
+
+Example:
+
+`"weave:///entity/project/object/name:digest"`
+
+​
+
+feedback_type
+
+string
+
+required
+
+Example:
+
+`"custom"`
+
+​
+
+payload
+
+Payload · object
+
+required
+
+Example:
+    
+    
+    { "key": "value" }
+
+​
+
+feedback_id
+
+string
+
+required
+
+​
+
+id
+
+string | null
+
+If provided by the client, this ID will be used for the feedback row instead of a server-generated one.
+
+Example:
+
+`"018f1f2a-9c2b-7d3e-b5a1-8c9d2e4f6a7b"`
+
+​
+
+creator
+
+string | null
+
+Example:
+
+`"Jane Smith"`
+
+​
+
+annotation_ref
+
+string | null
+
+Example:
+
+`"weave:///entity/project/object/name:digest"`
+
+​
+
+runnable_ref
+
+string | null
+
+Example:
+
+`"weave:///entity/project/op/name:digest"`
+
+​
+
+call_ref
+
+string | null
+
+Example:
+
+`"weave:///entity/project/call/call_id"`
+
+​
+
+trigger_ref
+
+string | null
+
+Example:
+
+`"weave:///entity/project/object/name:digest"`
+
+​
+
+queue_id
+
+string | null
+
+The annotation queue ID this feedback was created from. References annotation_queues.id. NULL when feedback is created outside of queues.
+
+Example:
+
+`"018f1f2a-9c2b-7d3e-b5a1-8c9d2e4f6a7b"`
+
+​
+
+scorer_tags
+
+string[]
+
+Tags applied to the ref by a scorer
+
+Example:
+    
+    
+    ["nsfw", "high-quality"]
+
+​
+
+scorer_tag_reasons
+
+Scorer Tag Reasons · object
+
+reason text per tag, keyed by tag name
+
+Show child attributes
+
+Example:
+    
+    
+    { "nsfw": "Contains explicit language" }
+
+​
+
+scorer_tag_confidences
+
+Scorer Tag Confidences · object
+
+confidence (0-1) per tag, keyed by tag name
+
+Show child attributes
+
+Example:
+    
+    
+    { "nsfw": 0.92 }
+
+​
+
+scorer_ratings
+
+Scorer Ratings · object
+
+numeric ratings (0-1) keyed by rating name
+
+Show child attributes
+
+Example:
+    
+    
+    { "_rating_": 0.87 }
+
+​
+
+scorer_rating_reasons
+
+Scorer Rating Reasons · object
+
+reason text per rating, keyed by rating name
+
+Show child attributes
+
+Example:
+    
+    
+    { "_rating_": "very confident response" }
+
+​
+
+scorer_rating_confidences
+
+Scorer Rating Confidences · object
+
+confidence (0-1) per rating, keyed by rating name
+
+Show child attributes
+
+Example:
+    
+    
+    { "_rating_": 0.92 }
+
+​
+
+wb_user_id
+
+string | null
+
+Do not set directly. Server will automatically populate this field.
+
+#### Response
+
+Successful Response
+
+​
+
+id
+
+string
+
+required
+
+​
+
+created_at
+
+string<date-time>
+
+required
+
+​
+
+wb_user_id
+
+string
+
+required
+
+​
+
+payload
+
+Payload · object
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/feedback/feedback-replace.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/feedback/feedback-replace)
+
+[Feedback PurgePrevious](/weave/reference/service-api/feedback/feedback-purge)[Feedback StatsNext](/weave/reference/service-api/feedback/feedback-stats)
+
+⌘I

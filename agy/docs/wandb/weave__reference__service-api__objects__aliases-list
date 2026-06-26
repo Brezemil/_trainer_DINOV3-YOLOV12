@@ -1,0 +1,93 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/objects/aliases-list
+---
+
+Aliases List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/aliases \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "aliases": [
+        "<string>"
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Objects](/weave/reference/service-api/objects/obj-create)
+
+# Aliases List
+
+List all aliases in a project.
+
+GET
+
+/
+
+aliases
+
+Aliases List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/aliases \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "aliases": [
+        "<string>"
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Query Parameters
+
+​
+
+project_id
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+aliases
+
+string[]
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/objects/aliases-list.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/objects/aliases-list)
+
+[Tags ListPrevious](/weave/reference/service-api/objects/tags-list)[Table CreateNext](/weave/reference/service-api/tables/table-create)
+
+⌘I

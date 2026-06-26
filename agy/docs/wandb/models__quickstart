@@ -1,0 +1,193 @@
+---
+source_url: https://docs.wandb.ai/models/quickstart
+---
+
+# W&B Quickstart
+
+Install W&B and start tracking, visualizing, and managing machine learning experiments in minutes.
+
+Install W&B to track, visualize, and manage machine learning experiments of any size.
+
+Are you looking for information on W&B Weave? See the [Weave Python SDK quickstart](/weave/quickstart) or [Weave TypeScript SDK quickstart](/weave/reference/generated_typescript_docs/intro-notebook).
+
+## 
+
+​
+
+Sign up and create an API key
+
+To authenticate your machine with W&B, you need an API key. To create an API key, select the **Personal API key** or **Service Account API key** tab for details.
+
+  * Personal API key
+
+  * Service account API key
+
+
+
+
+To create a personal API key owned by your user ID:
+
+  1. Log in to W&B, then click your user profile icon **> User Settings**.
+  2. Click **Create new API key**.
+  3. Provide a descriptive name for your API key.
+  4. Click **Create**.
+  5. Copy the displayed API key immediately and store it securely.
+
+
+
+To create an API key owned by a service account:
+
+  1. In your team or organization settings, go to the **Service Accounts** tab.
+  2. Find the service account in the list.
+  3. Click the **action ()** menu, then click **Create API key**.
+  4. Provide a name for the API key, then click **Create**.
+  5. Copy the displayed API key immediately and store it securely.
+  6. Click **Done**.
+
+You can create multiple API keys for a single service account to support different environments or workflows.
+
+W&B shows the full API key only once, when you create it. After you close the dialog, you cannot view the full API key again. Your settings display only the key ID (the first part of the key). If you lose the full API key, you must create a new one.
+
+For secure storage options, see [Store API keys securely](/platform/app/settings-page/user-settings#store-and-handle-api-keys-securely). This quickstart is also available as a Colab notebook:
+
+## 
+
+​
+
+Install the `wandb` library and log in
+
+  * Command Line
+
+  * Python
+
+  * Python notebook
+
+
+
+
+  1. Set the `WANDB_API_KEY` [environment variable](/models/track/environment-variables).
+         
+         export WANDB_API_KEY=<your_api_key>
+         
+
+  2. Install the `wandb` library and log in.
+         
+         pip install wandb
+         wandb login
+         
+
+
+
+    
+    
+    pip install wandb
+    
+    
+    
+    import wandb
+    
+    wandb.login()
+    
+    
+    
+    !pip install wandb
+    import wandb
+    wandb.login()
+    
+
+## 
+
+​
+
+Initialize a run and track hyperparameters
+
+In your Python script or notebook, initialize a W&B run object with [`wandb.init()`](/models/ref/python/experiments/run). Use a dictionary for the `config` parameter to specify hyperparameter names and values. Within the `with` statement, you can log metrics and other information to W&B.
+    
+    
+    import wandb
+    
+    wandb.login()
+    
+    # Project that the run is recorded to
+    project = "my-awesome-project"
+    
+    # Dictionary with hyperparameters
+    config = {
+        'epochs' : 10,
+        'lr' : 0.01
+    }
+    
+    with wandb.init(project=project, config=config) as run:
+        # Training code here
+        # Log values to W&B with run.log()
+        run.log({"accuracy": 0.9, "loss": 0.1})
+    
+
+See the next section for a complete example that simulates a training run and logs accuracy and loss metrics to W&B.
+
+A [run](/models/runs) is a core element of W&B. You use runs to [track metrics](/models/track), [create logs](/models/track/log), track artifacts, and more.
+
+## 
+
+​
+
+Create a machine learning training experiment
+
+This mock training script logs simulated accuracy and loss metrics to W&B. Copy and paste the following code into a Python script or notebook cell and run it:
+    
+    
+    import wandb
+    import random
+    
+    wandb.login()
+    
+    # Project that the run is recorded to
+    project = "my-awesome-project"
+    
+    # Dictionary with hyperparameters
+    config = {
+        'epochs' : 10,
+        'lr' : 0.01
+    }
+    
+    with wandb.init(project=project, config=config) as run:
+        offset = random.random() / 5
+        print(f"lr: {config['lr']}")
+        
+        # Simulate a training run
+        for epoch in range(2, config['epochs']):
+            acc = 1 - 2**-config['epochs'] - random.random() / config['epochs'] - offset
+            loss = 2**-config['epochs'] + random.random() / config['epochs'] + offset
+            print(f"epoch={config['epochs']}, accuracy={acc}, loss={loss}")
+            run.log({"accuracy": acc, "loss": loss})
+    
+
+Visit [wandb.ai/home](https://wandb.ai/home) to view recorded metrics such as accuracy and loss and how they changed during each training step. The following image shows the loss and accuracy tracked from each run. Each run object appears in the **Runs** column with generated names.
+
+![Shows loss and accuracy tracked from each run.](https://mintcdn.com/wb-21fd5541/mmuC1X8m1VKb0ElQ/images/quickstart/quickstart_image.png?fit=max&auto=format&n=mmuC1X8m1VKb0ElQ&q=85&s=220f7435e1cb29fc63fd00fc561116e8)
+
+## 
+
+​
+
+Next steps
+
+Explore more features of the W&B ecosystem:
+
+  1. Read the [W&B Integration tutorials](/models/integrations) that combine W&B with frameworks like PyTorch, libraries like Hugging Face, and services like SageMaker.
+  2. Organize runs, automate visualizations, summarize findings, and share updates with collaborators using [W&B Reports](/models/reports).
+  3. Create [W&B Artifacts](/models/artifacts) to track datasets, models, dependencies, and results throughout your machine learning pipeline.
+  4. Automate hyperparameter searches and optimize models with [W&B Sweeps](/models/sweeps).
+  5. Analyze runs, visualize model predictions, and share insights on a [central dashboard](/models/tables).
+  6. Visit [W&B AI Academy](https://wandb.ai/site/courses/) to learn about LLMs, MLOps, and W&B Models through hands-on courses.
+  7. Visit [weave-docs.wandb.ai](/weave) to learn how to track, experiment with, evaluate, deploy, and improve your LLM-based applications using Weave.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/quickstart.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/quickstart)
+
+[W&B ModelsPrevious](/models)[Get Started with W&B ModelsNext](/models/models_quickstart)
+
+⌘I

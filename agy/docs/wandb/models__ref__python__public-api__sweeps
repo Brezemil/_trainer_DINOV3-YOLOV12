@@ -1,0 +1,74 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/sweeps
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# Sweeps
+
+## 
+
+​
+
+`class` `Sweeps`
+
+A lazy iterator over a collection of `Sweep` objects. **Examples:**
+    
+    
+    from wandb.apis.public import Api
+    
+    sweeps = Api().project(name="project_name", entity="entity").sweeps()
+    
+    # Iterate over sweeps and print details
+    for sweep in sweeps:
+        print(f"Sweep name: {sweep.name}")
+        print(f"Sweep ID: {sweep.id}")
+        print(f"Sweep URL: {sweep.url}")
+        print("----------")
+    
+
+### 
+
+​
+
+`method` `Sweeps.__init__`
+    
+    
+    __init__(
+        service_api: 'ServiceApi',
+        entity: 'str',
+        project: 'str',
+        per_page: 'int' = 50
+    ) → Sweeps
+    
+
+An iterable collection of `Sweep` objects. **Args:**
+
+  * `service_api`: The service API used to query W&B.
+  * `entity`: The entity which owns the sweeps.
+  * `project`: The project which contains the sweeps.
+  * `per_page`: The number of sweeps to fetch per request to the API.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Sweeps.length
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/sweeps.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/sweeps)
+
+[SweepPrevious](/models/ref/python/public-api/sweep)[TeamNext](/models/ref/python/public-api/team)
+
+⌘I

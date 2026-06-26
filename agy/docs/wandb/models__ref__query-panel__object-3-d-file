@@ -1,0 +1,69 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/object-3-d-file
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# object3D-file
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`asset-file`
+
+Returns the _file_ of the asset
+
+Argument| Description  
+---|---  
+`asset`| The asset  
+  
+#### 
+
+​
+
+Return Value
+
+The _file_ of the asset
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`asset-file`
+
+Returns the _file_ of the asset
+
+Argument| Description  
+---|---  
+`asset`| The asset  
+  
+#### 
+
+​
+
+Return Value
+
+The _file_ of the asset
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/object-3-d-file.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/object-3-d-file)
+
+[numberPrevious](/models/ref/query-panel/number)[partitioned-tableNext](/models/ref/query-panel/partitioned-table)
+
+⌘I

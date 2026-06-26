@@ -1,0 +1,169 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/experiments
+---
+
+# Experiments
+
+## Does W&B use the `multiprocessing` library?
+
+Yes, W&B uses the multiprocessing library. As a result, scripts that call W&B directly need to guard their entry point s …
+
+## Does logging block my training?
+
+“Is the logging function lazy? I don’t want to depend on the network to send results to your servers while executing loc …
+
+## Does your tool track or store training data?
+
+To associate a dataset with a training run, pass a SHA or unique identifier to wandb.Run.config.update(…). W&B stores …
+
+## How can I access the data logged to my runs directly and programmatically?
+
+The history object tracks metrics logged with wandb.log. To access the history object, use the API:
+
+## How can I compare images or media across epochs or steps?
+
+To compare images or other media logged at different epochs or steps, expand the image panel and use the step slider to …
+
+## How can I configure the name of the run in my training code?
+
+At the beginning of the training script, call wandb.init with a run name. For example: wandb.init(name=“my_awesome_run”) …
+
+## How can I define the local location for `wandb` files?
+
+You can control where wandb stores its files locally by setting the following environment variables or, where noted, by …
+
+## How can I organize my logged charts and media in the W&B UI?
+
+Organize logged charts and media into related groups by naming logged items with a shared prefix, which makes it easier …
+
+## How can I save the git commit associated with my run?
+
+When you call wandb.init, W&B automatically collects Git information, including the remote repository link and the SHA o …
+
+## How can I see files that don't appear in the Files tab?
+
+The Files tab shows a maximum of 10,000 files. To download all files, use the public API:
+
+## How can I use W&B with multiprocessing, for example distributed training?
+
+This article explains how to use W&B in training programs that span multiple processes, such as distributed training job …
+
+## How do I add Plotly or Bokeh Charts into Tables?
+
+Direct integration of Plotly or Bokeh figures into tables isn’t supported. Instead, export the figures to HTML and inclu …
+
+## How do I fix `Rate limit exceeded` errors when logging metrics?
+
+If you receive an HTTP 429 Rate limit exceeded error when you call wandb.log(), you’re exceeding the rate limit quota fo …
+
+## How do I get the random run name in my script?
+
+Call a run object’s .save() method to save the current run. Retrieve the name using the run object’s name attribute.
+
+## How do I launch multiple runs from one script?
+
+To log multiple runs within a single script, you must finish each previous run before you start a new one. The following …
+
+## How do I log a list of values?
+
+You can log a list of values, such as per-step losses, with wandb.Run.log(). The following examples show two common appr …
+
+## How do I log metrics on two different time scales?
+
+To log metrics on two different time scales, log indices like batch and epoch alongside your metrics. For example, you m …
+
+## How do I plot multiple lines on a plot with a legend?
+
+Create a multi-line custom chart with wandb.plot.line_series(). Go to the project page to view the line chart. To add a …
+
+## How do I programmatically access the human-readable run name?
+
+To access the .name attribute of a wandb.Run, use the following code:
+
+## How do I run W&B offline?
+
+To train on a machine without internet access and upload your results to W&B later, follow these steps: 1. Set the envir …
+
+## How do I set the run name to the run ID?
+
+To overwrite the run name with the run ID, use the following code snippet:
+
+## I didn't name my run. Where is the run name coming from?
+
+If a run isn’t explicitly named, W&B assigns a random name to identify it in your project. Examples of random names are …
+
+## InitStartError: Error communicating with wandb process
+
+This error indicates that the W&B library can’t launch the process that synchronizes data to the server. To resolve the …
+
+## Is it possible to save metrics offline and sync them to W&B later?
+
+By default, wandb.init starts a process that syncs metrics in real time to the cloud. If you need to run experiments wit …
+
+## My run's state is `crashed` on the UI but is still running on my machine. What do I do to get my data back?
+
+This state usually means you lost connection to your machine during training. To recover your data, run wandb sync PATH_ …
+
+## What does wandb.init do to my training process?
+
+When wandb.init() runs in a training script, an API call creates a run object on the W&B servers. A new process starts t …
+
+## What happens if I pass a class attribute into wandb.Run.log()?
+
+Avoid passing class attributes into wandb.Run.log(). Attributes may change before the network call executes. When you st …
+
+## What happens when I log millions of steps to W&B? How is that rendered in the browser?
+
+The number of points sent affects the loading time of graphs in the UI. For lines exceeding 1,000 points, the backend sa …
+
+## What if I want to integrate W&B into my project, but I don't want to upload any images or media?
+
+W&B supports projects that log only scalars by letting you specify which files or data to upload. For an example of logg …
+
+## What if I want to log some metrics on batches and some metrics only on epochs?
+
+To log specific metrics in each batch and standardize plots, log the desired x-axis values alongside the metrics. In the …
+
+## What is the difference between wandb.init modes?
+
+When you call wandb.init, you can choose a mode that controls how the client communicates with the W&B server. The follo …
+
+## Why am I seeing fewer data points than I logged?
+
+When you visualize metrics against an X-axis other than Step, expect to see fewer data points. You must log metrics at t …
+
+## Why are steps missing from a CSV metric export?
+
+Export limits can prevent you from exporting the entire run history as a CSV or with the run.history API. To access the …
+
+## Why can't I sort or filter metrics with certain characters?
+
+Metric names in W&B must follow GraphQL naming conventions so that you can sort and filter them in the UI. Valid metric …
+
+## Why does my process stop responding when using Hydra with W&B?
+
+This page explains how to resolve unresponsive processes that occur when you start a process with Hydra alongside W&B. I …
+
+## Why does my training hang with distributed training?
+
+This article helps you resolve training hangs when you use W&B with distributed training frameworks, so your runs can st …
+
+## Why is nothing showing up in my graphs?
+
+If the message “No visualization data logged yet” appears, the script hasn’t executed the first wandb.log call. This can …
+
+## Why is the same metric appearing more than once?
+
+When you log multiple data types under the same key, W&B splits them in the database. This results in multiple entries o …
+
+## Will wandb slow down my training?
+
+W&B has a minimal impact on training performance under normal usage conditions. Normal use includes logging at a rate of …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/experiments.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/experiments)
+
+[Environment VariablesPrevious](/support/models/tags/environment-variables)[HyperparameterNext](/support/models/tags/hyperparameter)
+
+⌘I

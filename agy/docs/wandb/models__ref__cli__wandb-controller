@@ -1,0 +1,59 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-controller
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+# wandb controller
+
+## 
+
+​
+
+Usage
+    
+    
+    controller [OPTIONS] SWEEP_ID
+    
+
+## 
+
+​
+
+Description
+
+Start a local sweep controller for a W&B hyperparameter sweep. Start a local process that orchestrates the specified sweep. Read the sweep configuration from W&B, select hyperparameter combinations based on the configured search strategy (grid, random, Bayesian, and so on), and dispatch runs to sweep agents. By default, W&B runs sweep controllers on its managed infrastructure. Use this command to run the controller locally instead. For example, you can use this command to debug behavior or operate in environments with limited connectivity. sweep_id is printed by `wandb sweep` when you create a sweep. It consists of a unique identifier for the sweep and may include the entity and project path (entity/project/sweep_id). For example, to start a local sweep controller for a sweep with sweep ID wbyz9876:
+    
+    
+    wandb controller wbyz9876
+    
+
+## 
+
+​
+
+Arguments
+
+Name| Default| Type  
+---|---|---  
+`sweep_id`| STR| True  
+  
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--verbose`| BOOL Flag| Display verbose output from controller. **Default** : False  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-controller.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-controller)
+
+[wandb beta syncPrevious](/models/ref/cli/wandb-beta/wandb-beta-sync)[wandb disabledNext](/models/ref/cli/wandb-disabled)
+
+⌘I

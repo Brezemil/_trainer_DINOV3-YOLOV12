@@ -1,0 +1,197 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/op
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# op
+
+TypeScript SDK reference
+
+# 
+
+​
+
+op
+
+▸ **op** <`T`>(`fn`, `options?`): [`Op`](/weave/reference/typescript-sdk/type-aliases/op)<`T`>
+
+#### 
+
+​
+
+Type parameters
+
+Name| Type  
+---|---  
+`T`| extends (…`args`: `any`[]) => `any`  
+  
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`fn`| `T`  
+`options?`| `OpOptions`<`T`>  
+  
+#### 
+
+​
+
+Returns
+
+[`Op`](/weave/reference/typescript-sdk/type-aliases/op)<`T`>
+
+#### 
+
+​
+
+Defined in
+
+[op.ts:381](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/op.ts#L381) ▸ **op** <`T`>(`thisArg`, `fn`, `options?`): [`Op`](/weave/reference/typescript-sdk/type-aliases/op)<`T`>
+
+#### 
+
+​
+
+Type parameters
+
+Name| Type  
+---|---  
+`T`| extends (…`args`: `any`[]) => `any`  
+  
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`thisArg`| `any`  
+`fn`| `T`  
+`options?`| `OpOptions`<`T`>  
+  
+#### 
+
+​
+
+Returns
+
+[`Op`](/weave/reference/typescript-sdk/type-aliases/op)<`T`>
+
+#### 
+
+​
+
+Defined in
+
+[op.ts:386](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/op.ts#L386) ▸ **op**(`target`, `propertyKey`, `descriptor`): `TypedPropertyDescriptor`<`any`>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`target`| `Object`  
+`propertyKey`| `string` | `symbol`  
+`descriptor`| `TypedPropertyDescriptor`<`any`>  
+  
+#### 
+
+​
+
+Returns
+
+`TypedPropertyDescriptor`<`any`>
+
+#### 
+
+​
+
+Defined in
+
+[op.ts:392](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/op.ts#L392) ▸ **op** <`T`>(`value`, `context`): [`Op`](/weave/reference/typescript-sdk/type-aliases/op)<`T`>
+
+#### 
+
+​
+
+Type parameters
+
+Name| Type  
+---|---  
+`T`| extends (…`args`: `any`[]) => `any`  
+  
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`value`| `T`  
+`context`| `MethodDecoratorContext`  
+  
+#### 
+
+​
+
+Returns
+
+[`Op`](/weave/reference/typescript-sdk/type-aliases/op)<`T`>
+
+#### 
+
+​
+
+Defined in
+
+[op.ts:398](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/op.ts#L398) ▸ **op**(`options`): `MethodDecorator`
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`options`| `Partial`<`OpOptions`<`any`>>  
+  
+#### 
+
+​
+
+Returns
+
+`MethodDecorator`
+
+#### 
+
+​
+
+Defined in
+
+[op.ts:403](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/op.ts#L403)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/op.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/op)
+
+[loginPrevious](/weave/reference/typescript-sdk/functions/login)[patchRealtimeSessionNext](/weave/reference/typescript-sdk/functions/patchrealtimesession)
+
+⌘I

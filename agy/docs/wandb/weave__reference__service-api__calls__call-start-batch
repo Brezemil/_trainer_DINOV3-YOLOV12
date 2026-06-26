@@ -1,0 +1,179 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/call-start-batch
+---
+
+Call Start Batch
+    
+    
+    curl --request POST \
+      --url https://api.example.com/call/upsert_batch \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "batch": [
+        {
+          "req": {
+            "start": {
+              "project_id": "<string>",
+              "op_name": "<string>",
+              "started_at": "2023-11-07T05:31:56Z",
+              "attributes": {},
+              "inputs": {},
+              "id": "<string>",
+              "display_name": "<string>",
+              "trace_id": "<string>",
+              "parent_id": "<string>",
+              "thread_id": "<string>",
+              "turn_id": "<string>",
+              "otel_dump": {},
+              "wb_user_id": "<string>",
+              "wb_run_id": "<string>",
+              "wb_run_step": 123
+            }
+          },
+          "mode": "start"
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "res": [
+        {
+          "id": "<string>",
+          "trace_id": "<string>"
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Call Start Batch
+
+POST
+
+/
+
+call
+
+/
+
+upsert_batch
+
+Call Start Batch
+    
+    
+    curl --request POST \
+      --url https://api.example.com/call/upsert_batch \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "batch": [
+        {
+          "req": {
+            "start": {
+              "project_id": "<string>",
+              "op_name": "<string>",
+              "started_at": "2023-11-07T05:31:56Z",
+              "attributes": {},
+              "inputs": {},
+              "id": "<string>",
+              "display_name": "<string>",
+              "trace_id": "<string>",
+              "parent_id": "<string>",
+              "thread_id": "<string>",
+              "turn_id": "<string>",
+              "otel_dump": {},
+              "wb_user_id": "<string>",
+              "wb_run_id": "<string>",
+              "wb_run_step": 123
+            }
+          },
+          "mode": "start"
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "res": [
+        {
+          "id": "<string>",
+          "trace_id": "<string>"
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+batch
+
+(CallBatchStartMode · object | CallBatchEndMode · object)[]
+
+required
+
+  * CallBatchStartMode
+
+  * CallBatchEndMode
+
+
+
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+​
+
+res
+
+(CallStartRes · object | CallEndRes · object)[]
+
+required
+
+  * CallStartRes
+
+  * CallEndRes
+
+
+
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/call-start-batch.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/call-start-batch)
+
+[Call EndPrevious](/weave/reference/service-api/calls/call-end)[Calls DeleteNext](/weave/reference/service-api/calls/calls-delete)
+
+⌘I

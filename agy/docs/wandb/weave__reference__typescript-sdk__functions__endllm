@@ -1,0 +1,47 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/endllm
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# endLLM
+
+TypeScript SDK reference
+
+# 
+
+​
+
+endLLM
+
+▸ **endLLM**(): `void` End the current LLM. No-op if no LLM is active.
+
+#### 
+
+​
+
+Returns
+
+`void`
+
+#### 
+
+​
+
+Defined in
+
+[genai/api.ts:102](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/api.ts#L102)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/endllm.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/endllm)
+
+[createOtelExtensionPrevious](/weave/reference/typescript-sdk/functions/createotelextension)[endSessionNext](/weave/reference/typescript-sdk/functions/endsession)
+
+⌘I

@@ -1,0 +1,64 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/automations/onrunmetric
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Automations](/models/ref/python/automations)
+
+# OnRunMetric
+
+[GitHub source](https://github.com/wandb/wandb/blob/main/wandb/automations/events.py)
+
+## 
+
+​
+
+`class` `OnRunMetric`
+
+A run metric satisfies a user-defined condition. Examples: Define an event that triggers for any run in project “my-project” when the average of the last 5 values of metric “my-metric” exceeds 123.45:
+    
+    
+    from wandb import Api
+    from wandb.automations import OnRunMetric, RunEvent
+    
+    api = Api()
+    project = api.project(name="my-project")
+    
+    event = OnRunMetric(
+        scope=project,
+        filter=RunEvent.metric("my-metric").avg(5).gt(123.45),
+    )
+    
+
+### 
+
+​
+
+`method` `OnRunMetric.__init__`
+    
+    
+    __init__(
+        event_type: 'Literal[RUN_METRIC_THRESHOLD, RUN_METRIC_CHANGE, RUN_METRIC_ZSCORE]',
+        scope: 'ProjectScope',
+        filter: 'RunMetricFilter'
+    ) → None
+    
+
+**Args:**
+
+  * `event_type` (Literal[RUN_METRIC_THRESHOLD, RUN_METRIC_CHANGE, RUN_METRIC_ZSCORE]):
+  * `scope` (ProjectScope): The scope of the event: must be a project.
+  * `filter` (RunMetricFilter): Run and/or metric condition(s) that must be satisfied for this event to trigger.
+
+**Returns:** An `OnRunMetric` object.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/automations/onrunmetric.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/automations/onrunmetric)
+
+[OnRemoveCollectionTagPrevious](/models/ref/python/automations/onremovecollectiontag)[OnRunStateNext](/models/ref/python/automations/onrunstate)
+
+⌘I

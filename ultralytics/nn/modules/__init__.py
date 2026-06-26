@@ -165,5 +165,5 @@ __all__ = (
     "Index",
     "A2C2f",
     "DINO3Backbone",
-    "DINO3Preprocessor"
+    "DINO3Preprocessor",
 )

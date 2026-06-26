@@ -1,0 +1,139 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/inference/inference-router-openrouter-models
+---
+
+Inference Router Openrouter Models
+    
+    
+    curl --request GET \
+      --url https://api.example.com/inference/router/openrouter/models
+    
+    
+    {
+      "data": [
+        {
+          "id": "<string>",
+          "hugging_face_id": "<string>",
+          "name": "<string>",
+          "created": 123,
+          "input_modalities": [
+            "<string>"
+          ],
+          "output_modalities": [
+            "<string>"
+          ],
+          "context_length": 123,
+          "max_output_length": 123,
+          "pricing": {
+            "prompt": "<string>",
+            "completion": "<string>",
+            "image": "<string>",
+            "request": "<string>",
+            "input_cache_read": "<string>"
+          },
+          "supported_sampling_parameters": [],
+          "supported_features": [],
+          "datacenters": [
+            {
+              "country_code": "<string>"
+            }
+          ],
+          "deprecation_date": "<string>"
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Inference](/weave/reference/service-api/inference/inference-catalog-models)
+
+# Inference Router Openrouter Models
+
+Returns a list of models that are available to be used with OpenRouter.
+
+This API is available without authentication.
+
+GET
+
+/
+
+inference
+
+/
+
+router
+
+/
+
+openrouter
+
+/
+
+models
+
+Inference Router Openrouter Models
+    
+    
+    curl --request GET \
+      --url https://api.example.com/inference/router/openrouter/models
+    
+    
+    {
+      "data": [
+        {
+          "id": "<string>",
+          "hugging_face_id": "<string>",
+          "name": "<string>",
+          "created": 123,
+          "input_modalities": [
+            "<string>"
+          ],
+          "output_modalities": [
+            "<string>"
+          ],
+          "context_length": 123,
+          "max_output_length": 123,
+          "pricing": {
+            "prompt": "<string>",
+            "completion": "<string>",
+            "image": "<string>",
+            "request": "<string>",
+            "input_cache_read": "<string>"
+          },
+          "supported_sampling_parameters": [],
+          "supported_features": [],
+          "datacenters": [
+            {
+              "country_code": "<string>"
+            }
+          ],
+          "deprecation_date": "<string>"
+        }
+      ]
+    }
+
+#### Response
+
+200 - application/json
+
+Successful Response
+
+​
+
+data
+
+RouterOpenRouterModel · object[]
+
+required
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/inference/inference-router-openrouter-models.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/inference/inference-router-openrouter-models)
+
+[Inference Analysis Artificialanalysis ModelsPrevious](/weave/reference/service-api/inference/inference-analysis-artificialanalysis-models)[Nvidia HardwareNext](/weave/reference/service-api/inference/nvidia-hardware)
+
+⌘I

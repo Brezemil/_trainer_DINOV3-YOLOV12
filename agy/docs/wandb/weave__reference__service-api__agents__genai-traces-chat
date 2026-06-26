@@ -1,0 +1,275 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/agents/genai-traces-chat
+---
+
+Genai Traces Chat
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/traces/chat \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "trace_id": "<string>",
+      "include_feedback": false
+    }
+    '
+    
+    
+    {
+      "trace_id": "<string>",
+      "root_span_name": "<string>",
+      "provider": "<string>",
+      "total_duration_ms": 123,
+      "messages": [
+        {
+          "span_id": "<string>",
+          "agent_name": "<string>",
+          "started_at": "2023-11-07T05:31:56Z",
+          "user_message": {
+            "text": "<string>",
+            "content_refs": [
+              "<string>"
+            ]
+          },
+          "assistant_message": {
+            "text": "<string>",
+            "model": "<string>",
+            "reasoning_content": "<string>",
+            "reasoning_tokens": 123,
+            "input_tokens": 123,
+            "output_tokens": 123,
+            "duration_ms": 123,
+            "content_refs": [
+              "<string>"
+            ]
+          },
+          "tool_call": {
+            "tool_name": "<string>",
+            "tool_arguments": "<string>",
+            "tool_result": "<string>",
+            "duration_ms": 123,
+            "content_refs": [
+              "<string>"
+            ]
+          },
+          "agent_start": {
+            "model": "<string>",
+            "system_instructions": "<string>",
+            "tool_definitions": "<string>"
+          },
+          "agent_handoff": {},
+          "context_compacted": {
+            "compaction_summary": "<string>",
+            "compaction_items_before": 123,
+            "compaction_items_after": 123
+          },
+          "feedback": [
+            {}
+          ]
+        }
+      ],
+      "feedback": [
+        {}
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Agents](/weave/reference/service-api/agents/export-genai-trace)
+
+# Genai Traces Chat
+
+POST
+
+/
+
+agents
+
+/
+
+traces
+
+/
+
+chat
+
+Genai Traces Chat
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/traces/chat \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "trace_id": "<string>",
+      "include_feedback": false
+    }
+    '
+    
+    
+    {
+      "trace_id": "<string>",
+      "root_span_name": "<string>",
+      "provider": "<string>",
+      "total_duration_ms": 123,
+      "messages": [
+        {
+          "span_id": "<string>",
+          "agent_name": "<string>",
+          "started_at": "2023-11-07T05:31:56Z",
+          "user_message": {
+            "text": "<string>",
+            "content_refs": [
+              "<string>"
+            ]
+          },
+          "assistant_message": {
+            "text": "<string>",
+            "model": "<string>",
+            "reasoning_content": "<string>",
+            "reasoning_tokens": 123,
+            "input_tokens": 123,
+            "output_tokens": 123,
+            "duration_ms": 123,
+            "content_refs": [
+              "<string>"
+            ]
+          },
+          "tool_call": {
+            "tool_name": "<string>",
+            "tool_arguments": "<string>",
+            "tool_result": "<string>",
+            "duration_ms": 123,
+            "content_refs": [
+              "<string>"
+            ]
+          },
+          "agent_start": {
+            "model": "<string>",
+            "system_instructions": "<string>",
+            "tool_definitions": "<string>"
+          },
+          "agent_handoff": {},
+          "context_compacted": {
+            "compaction_summary": "<string>",
+            "compaction_items_before": 123,
+            "compaction_items_after": 123
+          },
+          "feedback": [
+            {}
+          ]
+        }
+      ],
+      "feedback": [
+        {}
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request to get the structured chat / trajectory view for a trace.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+trace_id
+
+string
+
+required
+
+​
+
+include_feedback
+
+boolean
+
+default:false
+
+#### Response
+
+Successful Response
+
+Structured chat view: a linear sequence of messages representing the agent trajectory for a single trace.
+
+​
+
+trace_id
+
+string
+
+required
+
+​
+
+root_span_name
+
+string | null
+
+​
+
+provider
+
+string | null
+
+​
+
+total_duration_ms
+
+integer | null
+
+Wall-clock duration of the trace root span in milliseconds. This is not a sum of child span durations.
+
+​
+
+messages
+
+AgentChatMessage · object[]
+
+Show child attributes
+
+​
+
+feedback
+
+Feedback · object[] | null
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/agents/genai-traces-chat.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/agents/genai-traces-chat)
+
+[Genai SearchPrevious](/weave/reference/service-api/agents/genai-search)[Genai Conversation ChatNext](/weave/reference/service-api/agents/genai-conversation-chat)
+
+⌘I

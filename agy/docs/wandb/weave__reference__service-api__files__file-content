@@ -1,0 +1,123 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/files/file-content
+---
+
+File Content
+    
+    
+    curl --request POST \
+      --url https://api.example.com/file/content \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "digest": "<string>"
+    }
+    '
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Files](/weave/reference/service-api/files/file-create)
+
+# File Content
+
+POST
+
+/
+
+file
+
+/
+
+content
+
+File Content
+    
+    
+    curl --request POST \
+      --url https://api.example.com/file/content \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "digest": "<string>"
+    }
+    '
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+digest
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/files/file-content.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/files/file-content)
+
+[File CreatePrevious](/weave/reference/service-api/files/file-create)[Files StatsNext](/weave/reference/service-api/files/files-stats)
+
+⌘I

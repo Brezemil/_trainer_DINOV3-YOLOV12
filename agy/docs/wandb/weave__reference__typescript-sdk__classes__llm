@@ -1,0 +1,517 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/llm
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Classes](/weave/reference/typescript-sdk/classes/dataset)
+
+# Class: LLM
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / LLM An LLM call. Emits a `chat` span with `gen_ai.*` attributes. Created by `weave.startLLM()` (or `turn.startLLM()`) and terminated with `end()`. Only one LLM may be active in an async context at a time; nest tool/subagent calls under it via `startTool` / `startSubagent`. Populate `inputMessages` / `outputMessages` / `usage` / `reasoning` directly, or via the helper functions (`output`, `think`, `attachMedia`, `record`). All recorded data is flushed to the span at `end()`. `Example`
+    
+    
+    const llm = weave.startLLM({model: 'gpt-4o-mini', providerName: 'openai'});
+    try {
+      llm.inputMessages = [{role: 'user', content: prompt}];
+      const resp = await openai.chat.completions.create({...});
+      llm.output(resp.choices[0].message.content ?? '');
+      llm.record({usage: {inputTokens: resp.usage?.prompt_tokens}});
+    } finally {
+      llm.end();
+    }
+    
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [inputMessages](/weave/reference/typescript-sdk/classes/llm#inputmessages)
+  * [model](/weave/reference/typescript-sdk/classes/llm#model)
+  * [outputMessages](/weave/reference/typescript-sdk/classes/llm#outputmessages)
+  * [providerName](/weave/reference/typescript-sdk/classes/llm#providername)
+  * [reasoning](/weave/reference/typescript-sdk/classes/llm#reasoning)
+  * [usage](/weave/reference/typescript-sdk/classes/llm#usage)
+
+
+
+### 
+
+​
+
+Methods
+
+  * [attachMedia](/weave/reference/typescript-sdk/classes/llm#attachmedia)
+  * [attachMediaUrl](/weave/reference/typescript-sdk/classes/llm#attachmediaurl)
+  * [end](/weave/reference/typescript-sdk/classes/llm#end)
+  * [output](/weave/reference/typescript-sdk/classes/llm#output)
+  * [record](/weave/reference/typescript-sdk/classes/llm#record)
+  * [startSubagent](/weave/reference/typescript-sdk/classes/llm#startsubagent)
+  * [startTool](/weave/reference/typescript-sdk/classes/llm#starttool)
+  * [think](/weave/reference/typescript-sdk/classes/llm#think)
+  * [create](/weave/reference/typescript-sdk/classes/llm#create)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+inputMessages
+
+• **inputMessages** : [`Message`](/weave/reference/typescript-sdk/interfaces/message)[] = `[]` Input messages sent to the model. Flushed to `gen_ai.input.messages` on `end()`.
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:78](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L78)
+
+* * *
+
+### 
+
+​
+
+model
+
+• `Readonly` **model** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:98](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L98)
+
+* * *
+
+### 
+
+​
+
+outputMessages
+
+• **outputMessages** : [`Message`](/weave/reference/typescript-sdk/interfaces/message)[] = `[]` Assistant messages returned by the model. Flushed to `gen_ai.output.messages` on `end()`.
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:83](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L83)
+
+* * *
+
+### 
+
+​
+
+providerName
+
+• `Readonly` **providerName** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:99](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L99)
+
+* * *
+
+### 
+
+​
+
+reasoning
+
+• `Optional` **reasoning** : [`Reasoning`](/weave/reference/typescript-sdk/interfaces/reasoning) Chain-of-thought content. Folded into the last assistant message as a ReasoningPart at serialization time.
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:90](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L90)
+
+* * *
+
+### 
+
+​
+
+usage
+
+• **usage** : [`Usage`](/weave/reference/typescript-sdk/interfaces/usage) = `{}` Token counts and cache stats. Flushed to `gen_ai.usage.*` on `end()`.
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:85](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L85)
+
+## 
+
+​
+
+Methods
+
+### 
+
+​
+
+attachMedia
+
+▸ **attachMedia**(`opts`): `this` Attach a media part to the last input message. Pick exactly one of `content` (inline base64 bytes), `uri` (URI reference), or `fileId` (pre-uploaded file id).
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| `AttachMediaOpts`  
+  
+#### 
+
+​
+
+Returns
+
+`this`
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:168](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L168)
+
+* * *
+
+### 
+
+​
+
+attachMediaUrl
+
+▸ **attachMediaUrl**(`url`, `opts`): `this` Convenience for `attachMedia({uri, modality})`.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`url`| `string`  
+`opts`| `Object`  
+`opts.modality`| [`Modality`](/weave/reference/typescript-sdk#modality)  
+  
+#### 
+
+​
+
+Returns
+
+`this`
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:186](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L186)
+
+* * *
+
+### 
+
+​
+
+end
+
+▸ **end**(`opts?`): `void` Flush accumulated state to the span and close it. Idempotent. Pass `error` to mark the span as failed.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts?`| `Object`  
+`opts.error?`| `Error`  
+  
+#### 
+
+​
+
+Returns
+
+`void`
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:246](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L246)
+
+* * *
+
+### 
+
+​
+
+output
+
+▸ **output**(`content`): `this` Append an assistant message to the response.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`content`| `string`  
+  
+#### 
+
+​
+
+Returns
+
+`this`
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:141](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L141)
+
+* * *
+
+### 
+
+​
+
+record
+
+▸ **record**(`opts`): `this` Bulk-set any subset of the mutable fields. Replaces (does not merge). Useful for assigning everything at once after a provider call returns.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| `LLMRecordOpts`  
+  
+#### 
+
+​
+
+Returns
+
+`this`
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:197](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L197)
+
+* * *
+
+### 
+
+​
+
+startSubagent
+
+▸ **startSubagent**(`opts`): [`SubAgent`](/weave/reference/typescript-sdk/classes/subagent) Start a child SubAgent span nested under this LLM.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`SubAgentInit`](/weave/reference/typescript-sdk/interfaces/subagentinit)  
+  
+#### 
+
+​
+
+Returns
+
+[`SubAgent`](/weave/reference/typescript-sdk/classes/subagent)
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:230](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L230)
+
+* * *
+
+### 
+
+​
+
+startTool
+
+▸ **startTool**(`opts`): [`Tool`](/weave/reference/typescript-sdk/classes/tool) Start a child Tool span nested under this LLM.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`ToolInit`](/weave/reference/typescript-sdk/interfaces/toolinit)  
+  
+#### 
+
+​
+
+Returns
+
+[`Tool`](/weave/reference/typescript-sdk/classes/tool)
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:221](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L221)
+
+* * *
+
+### 
+
+​
+
+think
+
+▸ **think**(`content`): `this` Set or extend the model’s reasoning/chain-of-thought content. Accumulates into `this.reasoning.content`. Folded into the last assistant message as a `ReasoningPart` at serialization time, matching the Python SDK’s on-the-wire shape.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`content`| `string`  
+  
+#### 
+
+​
+
+Returns
+
+`this`
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:153](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L153)
+
+* * *
+
+### 
+
+​
+
+create
+
+▸ **create**(`opts`): [`LLM`](/weave/reference/typescript-sdk/classes/llm)
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`LLMInit`](/weave/reference/typescript-sdk/interfaces/llminit) & `ChildSpanContext`  
+  
+#### 
+
+​
+
+Returns
+
+[`LLM`](/weave/reference/typescript-sdk/classes/llm)
+
+#### 
+
+​
+
+Defined in
+
+[genai/llm.ts:102](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/llm.ts#L102)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/classes/llm.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/classes/llm)
+
+[Class: EvaluationLoggerPrevious](/weave/reference/typescript-sdk/classes/evaluationlogger)[Class: MessagesPromptNext](/weave/reference/typescript-sdk/classes/messagesprompt)
+
+⌘I

@@ -1,0 +1,129 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/registry/link-to-registry
+---
+
+Link To Registry
+    
+    
+    curl --request POST \
+      --url https://api.example.com/link_to_registry \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "ref": "<string>",
+      "target": {
+        "portfolio_name": "<string>",
+        "entity_name": "<string>",
+        "project_name": "<string>"
+      },
+      "aliases": []
+    }
+    '
+    
+    
+    {
+      "version_index": 123
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Registry](/weave/reference/service-api/registry/link-to-registry)
+
+# Link To Registry
+
+POST
+
+/
+
+link_to_registry
+
+Link To Registry
+    
+    
+    curl --request POST \
+      --url https://api.example.com/link_to_registry \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "ref": "<string>",
+      "target": {
+        "portfolio_name": "<string>",
+        "entity_name": "<string>",
+        "project_name": "<string>"
+      },
+      "aliases": []
+    }
+    '
+    
+    
+    {
+      "version_index": 123
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+ref
+
+string
+
+required
+
+Minimum string length: `1`
+
+​
+
+target
+
+CreateAndLinkTarget · object
+
+required
+
+Show child attributes
+
+​
+
+aliases
+
+string[]
+
+#### Response
+
+Successful Response
+
+​
+
+version_index
+
+integer | null
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/registry/link-to-registry.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/registry/link-to-registry)
+
+[Image CreatePrevious](/weave/reference/service-api/images/image-create)[Op ListNext](/weave/reference/service-api/ops/op-list)
+
+⌘I

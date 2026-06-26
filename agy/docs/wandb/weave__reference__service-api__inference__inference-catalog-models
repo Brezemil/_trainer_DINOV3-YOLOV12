@@ -1,0 +1,163 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/inference/inference-catalog-models
+---
+
+Inference Catalog Models
+    
+    
+    curl --request GET \
+      --url https://api.example.com/inference/catalog/models
+    
+    
+    {
+      "models": [
+        {
+          "provider": "<string>",
+          "id": "<string>",
+          "idPlayground": "<string>",
+          "idHuggingFace": "<string>",
+          "label": "<string>",
+          "labelOpenRouter": "<string>",
+          "status": "<string>",
+          "availableIn": [],
+          "launchedQuarter": "<string>",
+          "descriptionShort": "<string>",
+          "descriptionMedium": "<string>",
+          "launchDate": "<string>",
+          "featureReasoning": true,
+          "featureJsonMode": true,
+          "featureStructuredOutput": true,
+          "featureToolCalling": true,
+          "featureLoRA": true,
+          "featureTrainableServerlessRL": true,
+          "parameterCountTotal": 123,
+          "contextWindow": 123,
+          "priceCentsPerBillionTokensInput": 123,
+          "priceCentsPerBillionTokensCached": 123,
+          "priceCentsPerBillionTokensOutput": 123,
+          "isAvailableOpenRouter": true,
+          "apiStyle": "<string>",
+          "modalities": [
+            "<string>"
+          ],
+          "modalitiesInput": [
+            "<string>"
+          ],
+          "modalitiesOutput": [
+            "<string>"
+          ],
+          "tags": [
+            "<string>"
+          ],
+          "likesHuggingFace": 123,
+          "downloadsHuggingFace": 123,
+          "license": "<string>",
+          "parameterCountActive": 123
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Inference](/weave/reference/service-api/inference/inference-catalog-models)
+
+# Inference Catalog Models
+
+Returns a list of available Serverless Inference models.
+
+This API is available without authentication.
+
+GET
+
+/
+
+inference
+
+/
+
+catalog
+
+/
+
+models
+
+Inference Catalog Models
+    
+    
+    curl --request GET \
+      --url https://api.example.com/inference/catalog/models
+    
+    
+    {
+      "models": [
+        {
+          "provider": "<string>",
+          "id": "<string>",
+          "idPlayground": "<string>",
+          "idHuggingFace": "<string>",
+          "label": "<string>",
+          "labelOpenRouter": "<string>",
+          "status": "<string>",
+          "availableIn": [],
+          "launchedQuarter": "<string>",
+          "descriptionShort": "<string>",
+          "descriptionMedium": "<string>",
+          "launchDate": "<string>",
+          "featureReasoning": true,
+          "featureJsonMode": true,
+          "featureStructuredOutput": true,
+          "featureToolCalling": true,
+          "featureLoRA": true,
+          "featureTrainableServerlessRL": true,
+          "parameterCountTotal": 123,
+          "contextWindow": 123,
+          "priceCentsPerBillionTokensInput": 123,
+          "priceCentsPerBillionTokensCached": 123,
+          "priceCentsPerBillionTokensOutput": 123,
+          "isAvailableOpenRouter": true,
+          "apiStyle": "<string>",
+          "modalities": [
+            "<string>"
+          ],
+          "modalitiesInput": [
+            "<string>"
+          ],
+          "modalitiesOutput": [
+            "<string>"
+          ],
+          "tags": [
+            "<string>"
+          ],
+          "likesHuggingFace": 123,
+          "downloadsHuggingFace": 123,
+          "license": "<string>",
+          "parameterCountActive": 123
+        }
+      ]
+    }
+
+#### Response
+
+200 - application/json
+
+Successful Response
+
+​
+
+models
+
+LLMModelDetails · object[]
+
+required
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/inference/inference-catalog-models.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/inference/inference-catalog-models)
+
+[Call StatsPrevious](/weave/reference/service-api/calls/call-stats)[Inference Analysis Artificialanalysis ModelsNext](/weave/reference/service-api/inference/inference-analysis-artificialanalysis-models)
+
+⌘I

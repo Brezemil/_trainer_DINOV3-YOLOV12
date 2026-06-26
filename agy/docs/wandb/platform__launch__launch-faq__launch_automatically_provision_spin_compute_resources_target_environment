@@ -1,0 +1,22 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/launch_automatically_provision_spin_compute_resources_target_environment
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# Can Launch automatically provision (and spin down) compute resources for me in the target environment?
+
+Whether Launch automatically provisions and scales compute resources depends on the target environment:
+
+  * **Amazon SageMaker and Vertex AI** : These platforms provision resources automatically.
+  * **Kubernetes** : Autoscalers adjust resources based on demand. W&B solution architects can help you configure your Kubernetes infrastructure to enable retries, autoscaling, and spot instance node pools.
+
+For support, contact [W&B support](mailto:support@wandb.com) or use your shared Slack channel.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/launch_automatically_provision_spin_compute_resources_target_environment.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/launch_automatically_provision_spin_compute_resources_target_environment)
+
+[Can I specify a Dockerfile and let W&B build a Docker image for me?Previous](/platform/launch/launch-faq/dockerfile_let_wb_build_docker_image_me)[How W&B Launch builds imagesNext](/platform/launch/launch-faq/launch_build_images)
+
+⌘I

@@ -1,0 +1,25 @@
+---
+source_url: https://docs.wandb.ai/support/inference/tags/authentication-access
+---
+
+# Authentication & Access
+
+## API error code 401: Authentication failed
+
+A 401 error with the message “Authentication failed” means your authentication credentials are incorrect, or your W&B pr …
+
+## API error code 403 - Country, region, or territory not supported
+
+A 403 error with the message “Country, region, or territory not supported” means you’re accessing Serverless Inference f …
+
+## API error code 403: The inference gateway is not enabled for your organization
+
+A 403 error with the message The inference gateway is not enabled for your organization means your organization doesn’t …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/inference/tags/authentication-access.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/inference/tags/authentication-access)
+
+[AdministratorPrevious](/support/inference/tags/administrator)[BillingNext](/support/inference/tags/billing)
+
+⌘I

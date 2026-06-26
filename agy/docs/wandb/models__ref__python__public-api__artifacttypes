@@ -1,0 +1,47 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/artifacttypes
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# ArtifactTypes
+
+## 
+
+​
+
+`class` `ArtifactTypes`
+
+An lazy iterator of `ArtifactType` objects for a specific project.
+
+### 
+
+​
+
+`property` ArtifactTypes.cursor
+
+An opaque cursor that marks the start of the next page to fetch. This value may be saved and passed as `start=` to a later paginated query to resume iteration from where this paginator left off. **Returns:**
+
+  * `str | None`: The cursor property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactTypes.more
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/artifacttypes.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/artifacttypes)
+
+[ArtifactTypePrevious](/models/ref/python/public-api/artifacttype)[AutomationsNext](/models/ref/python/public-api/automations)
+
+⌘I

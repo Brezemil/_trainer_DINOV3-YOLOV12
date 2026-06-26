@@ -4,13 +4,13 @@ Demo: --unfreeze-dino argument usage examples
 """
 
 print("🚀 DINOv3-YOLOv12 Training with --unfreeze-dino")
-print("="*60)
+print("=" * 60)
 
 print("\n📖 **DINO Weight Control Options:**")
 print()
 print("🔒 **Default (Recommended): FROZEN DINO Weights**")
 print("   • Faster training, lower VRAM usage")
-print("   • Preserves pretrained DINOv3 knowledge") 
+print("   • Preserves pretrained DINOv3 knowledge")
 print("   • Best for most use cases")
 print("   Command:")
 print("   python train_yolov12_dino.py \\")
@@ -39,14 +39,18 @@ print("1️⃣ **Single P4 Integration (Efficient)**")
 print("   # Frozen (default):")
 print("   python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-variant vitb16 --integration single")
 print("   # Trainable:")
-print("   python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-variant vitb16 --integration single --unfreeze-dino")
+print(
+    "   python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-variant vitb16 --integration single --unfreeze-dino"
+)
 print()
 
 print("2️⃣ **Dual P3+P4 Integration (High Performance)**")
 print("   # Frozen (default):")
 print("   python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-variant vitb16 --integration dual")
 print("   # Trainable:")
-print("   python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-variant vitb16 --integration dual --unfreeze-dino")
+print(
+    "   python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-variant vitb16 --integration dual --unfreeze-dino"
+)
 print()
 
 print("3️⃣ **Input Preprocessing P0 (Most Stable)**")
@@ -58,9 +62,13 @@ print()
 
 print("4️⃣ **Full-Scale P0+P3+P4 Integration (Ultimate)**")
 print("   # Frozen (default):")
-print("   python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-input dinov3_vitb16 --dino-variant vitb16 --integration dual")
+print(
+    "   python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-input dinov3_vitb16 --dino-variant vitb16 --integration dual"
+)
 print("   # Trainable:")
-print("   python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-input dinov3_vitb16 --dino-variant vitb16 --integration dual --unfreeze-dino")
+print(
+    "   python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-input dinov3_vitb16 --dino-variant vitb16 --integration dual --unfreeze-dino"
+)
 print()
 
 print("💡 **Resource Requirements:**")

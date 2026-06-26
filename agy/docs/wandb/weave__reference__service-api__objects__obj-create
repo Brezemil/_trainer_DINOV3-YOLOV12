@@ -1,0 +1,131 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/objects/obj-create
+---
+
+Obj Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/obj/create \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "obj": {
+        "project_id": "<string>",
+        "object_id": "<string>",
+        "val": "<unknown>",
+        "builtin_object_class": "<string>",
+        "set_base_object_class": "<string>",
+        "expected_digest": "<string>",
+        "wb_user_id": "<string>"
+      }
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "object_id": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Objects](/weave/reference/service-api/objects/obj-create)
+
+# Obj Create
+
+POST
+
+/
+
+obj
+
+/
+
+create
+
+Obj Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/obj/create \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "obj": {
+        "project_id": "<string>",
+        "object_id": "<string>",
+        "val": "<unknown>",
+        "builtin_object_class": "<string>",
+        "set_base_object_class": "<string>",
+        "expected_digest": "<string>",
+        "wb_user_id": "<string>"
+      }
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "object_id": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+obj
+
+ObjSchemaForInsert · object
+
+required
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+​
+
+digest
+
+string
+
+required
+
+​
+
+object_id
+
+string | null
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/objects/obj-create.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/objects/obj-create)
+
+[Nvidia HardwarePrevious](/weave/reference/service-api/inference/nvidia-hardware)[Obj ReadNext](/weave/reference/service-api/objects/obj-read)
+
+⌘I

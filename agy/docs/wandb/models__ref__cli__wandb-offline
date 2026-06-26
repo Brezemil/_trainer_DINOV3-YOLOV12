@@ -1,0 +1,51 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-offline
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+# wandb offline
+
+## 
+
+​
+
+Usage
+    
+    
+    offline [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+Save data logged to W&B locally without uploading it to the cloud. Use `wandb online` or `wandb sync` to upload offline runs. For example, to run a script in offline mode to log data locally without syncing to the cloud:
+    
+    
+    wandb offline && python train.py
+    
+
+To run a script in offline mode:
+    
+    
+    wandb offline && python train.py
+    
+
+At a later time, sync all offline runs to the cloud:
+    
+    
+    wandb sync --sync-all
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-offline.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-offline)
+
+[wandb loginPrevious](/models/ref/cli/wandb-login)[wandb onlineNext](/models/ref/cli/wandb-online)
+
+⌘I

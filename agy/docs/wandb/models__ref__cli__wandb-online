@@ -1,0 +1,45 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-online
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+# wandb online
+
+## 
+
+​
+
+Usage
+    
+    
+    online [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+Re-enable cloud syncing for W&B runs. Clear the offline mode setting so subsequent runs in this directory sync data to the W&B cloud. Undoes a previous call to `wandb offline`. For example, to re-enable cloud syncing after working offline:
+    
+    
+    wandb online
+    
+
+To re-enable cloud syncing, then run a training script:
+    
+    
+    wandb online && python train.py
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-online.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-online)
+
+[wandb offlinePrevious](/models/ref/cli/wandb-offline)[wandb pullNext](/models/ref/cli/wandb-pull)
+
+⌘I

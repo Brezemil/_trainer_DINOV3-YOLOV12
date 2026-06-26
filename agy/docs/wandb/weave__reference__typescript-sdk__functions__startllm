@@ -1,0 +1,57 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/startllm
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# startLLM
+
+TypeScript SDK reference
+
+# 
+
+​
+
+startLLM
+
+▸ **startLLM**(`opts`): [`LLM`](/weave/reference/typescript-sdk/classes/llm) Start an LLM span as a child of the current Turn. Throws if no Turn is active.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`LLMInit`](/weave/reference/typescript-sdk/interfaces/llminit)  
+  
+#### 
+
+​
+
+Returns
+
+[`LLM`](/weave/reference/typescript-sdk/classes/llm)
+
+#### 
+
+​
+
+Defined in
+
+[genai/api.ts:32](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/api.ts#L32)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/startllm.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/startllm)
+
+[runIsolatedPrevious](/weave/reference/typescript-sdk/functions/runisolated)[startSessionNext](/weave/reference/typescript-sdk/functions/startsession)
+
+⌘I

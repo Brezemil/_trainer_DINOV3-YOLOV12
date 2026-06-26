@@ -1,0 +1,19 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/sft/usage
+---
+
+[Serverless SFT](/serverless-training/sft)
+
+# How to use Serverless SFT
+
+Fine-tune models with Serverless SFT using OpenPipe’s ART framework and the Serverless Training API for supervised learning.
+
+Use Serverless supervised fine-tuning (SFT) through [OpenPipe’s ART framework](https://art.openpipe.ai/getting-started/about) and the Serverless Training API. To start using Serverless SFT, satisfy the [prerequisites](/serverless-training/prerequisites) for W&B tools, and then see the [ART Serverless SFT documentation](https://art.openpipe.ai/fundamentals/sft-training). To learn about Serverless SFT’s API endpoints, see the [Serverless Training API reference](/serverless-training/api-reference).
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/sft/usage.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/sft/usage)
+
+[Serverless SFTPrevious](/serverless-training/sft)[API ReferenceNext](/serverless-training/ref-link-api)
+
+⌘I

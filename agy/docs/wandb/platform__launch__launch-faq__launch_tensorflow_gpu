@@ -1,0 +1,30 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/launch_tensorflow_gpu
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# How to make W&B Launch work with TensorFlow on GPU
+
+To run TensorFlow jobs on GPUs with W&B Launch, specify a custom base image for the container build. This lets the resulting container access the GPU. Add an image tag under the `builder.accelerator.base_image` key in the resource configuration. For example:
+    
+    
+    {
+        "gpus": "all",
+        "builder": {
+            "accelerator": {
+                "base_image": "tensorflow/tensorflow:latest-gpu"
+            }
+        }
+    }
+    
+
+In versions before W&B 0.15.6, use `cuda` instead of `accelerator` as the parent key for `base_image`.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/launch_tensorflow_gpu.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/launch_tensorflow_gpu)
+
+[Does Launch support parallelization? How can I limit the resources consumed by a job?Previous](/platform/launch/launch-faq/launch_support_parallelization_limit_resources_consumed_job)[How do I fix a "permission denied" error in Launch?Next](/platform/launch/launch-faq/launcherror_permission_denied)
+
+⌘I

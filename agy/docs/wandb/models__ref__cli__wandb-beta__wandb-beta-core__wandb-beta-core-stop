@@ -1,0 +1,39 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-beta/wandb-beta-core/wandb-beta-core-stop
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb beta](/models/ref/cli/wandb-beta)
+
+[beta core](/models/ref/cli/wandb-beta/wandb-beta-core)
+
+# wandb beta core stop
+
+## 
+
+​
+
+Usage
+    
+    
+    stop [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+Stop a detached wandb-core service. The service address is taken from the WANDB_SERVICE environment variable.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-beta/wandb-beta-core/wandb-beta-core-stop.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-beta/wandb-beta-core/wandb-beta-core-stop)
+
+[wandb beta core startPrevious](/models/ref/cli/wandb-beta/wandb-beta-core/wandb-beta-core-start)[wandb beta leetNext](/models/ref/cli/wandb-beta/wandb-beta-leet)
+
+⌘I

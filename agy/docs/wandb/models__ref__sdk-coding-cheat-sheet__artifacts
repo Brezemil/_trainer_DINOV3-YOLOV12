@@ -1,0 +1,372 @@
+---
+source_url: https://docs.wandb.ai/models/ref/sdk-coding-cheat-sheet/artifacts
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[SDK Coding Cheat Sheet](/models/ref/sdk-coding-cheat-sheet)
+
+# Artifacts
+
+Create, update, download, and manage W&B Artifacts for data versioning.
+
+Create, update, download, and manage W&B Artifacts for data versioning.
+
+## 
+
+​
+
+Create and log an artifact
+    
+    
+    """
+    Creates and logs a W&B artifact. First create an
+    artifact object. Next, add files, directories, or external references to the artifact.
+    Finally, log the artifact to a W&B run.
+    """
+    import wandb
+    
+    # Create an artfiact object
+    artifact = wandb.Artifact(name="<artifact_name>", type="<artifact_type>")
+    
+    # Add one or more files to the artifact
+    artifact.add_file(local_path="data/file1.csv")
+    
+    # Recursively add a directory to the artifact
+    artifact.add_dir(local_path="data/directory")
+    
+    # Add external URI reference to the artifact
+    artifact.add_reference(uri="s3://my-bucket/path/to/data.csv")
+    
+    with wandb.init(project="<project>") as run:
+        # Training and logging code goes here
+    
+        # Example of logging an artifact
+        run.log_artifact(artifact)
+    
+
+## 
+
+​
+
+Track an external artifact by adding a reference to a cloud storage bucket path
+    
+    
+    """
+    Tracks an external artifact by adding a reference to a cloud storage bucket path.
+    """
+    
+    import wandb
+    
+    # Create an artifact object
+    artifact = wandb.Artifact(name="<artifact_name>", type="<artifact_type>")
+    
+    # Add a reference to the bucket path
+    artifact.add_reference(uri = "uri/to/your/bucket/path")
+    
+    # Initialize a W&B run
+    with wandb.init(project="<project>") as run:
+    
+      # Log the artifact's metadata
+      run.log_artifact(artifact)
+    
+
+## 
+
+​
+
+Delete specific artifact version from a run
+    
+    
+    """
+    Delete specific artifact version from a W&B run. Set delete_aliaes to `True` 
+    if the artifact has an alias attached to it.
+    """
+    import wandb
+    
+    # Initialize W&B API
+    api = wandb.Api()
+    
+    # Get the run by its path. Consists of <entity>/<project>/<run_path>
+    runs = api.run("<entity>/<project>/<run_path>")
+    
+    # wandb.Api().Run.logged_artifacts() returns a list of artifact versions
+    # that consists of artifact name and version <artifact_name>:v<version_number>
+    for artifact_version in runs.logged_artifacts():
+        # Index the last two characters of the artifact version name (str) that
+        # consists of the version number
+        if artifact_version.name[-2:] == "v"+ "<version_number>":
+            artifact_version.delete(delete_aliases=True)
+    
+
+## 
+
+​
+
+Delete an artifact collection
+    
+    
+    """
+    Delete an artifact collection from W&B.
+    """
+    import wandb
+    
+    # Initialize W&B API
+    api = wandb.Api()
+    
+    # Delete an artifact collection by its name and type
+    # Name format: <entity>/<project>/<run_path>
+    collection = api.artifact_collection(
+        name="<entity>/<project>/<run_path>",
+        type_name="<artifact_type>"
+    )
+    
+    collection.delete()
+    
+
+## 
+
+​
+
+Download specific files or sub-folders from artifacts
+    
+    
+    """
+    Downloads specific files or sub-folders from W&B artifacts. The same
+    logic applies to external artifacts.
+    """
+    import wandb
+    
+    with wandb.init(project="<project>") as run:
+        # Indicate the artifact to use. Format is "name:alias"
+        artifact = run.use_artifact("<artifact_name>:<alias>")
+    
+        # Download a specific file or sub-folder
+        artifact.download(path_prefix="<file_name>") # downloads only the specified file or folder
+    
+
+## 
+
+​
+
+Download files or entire artifacts
+    
+    
+    """
+    Downloads files or entire artifacts from W&B. The same
+    logic applies to external artifacts.
+    """
+    
+    import wandb    
+    
+    with wandb.init(project="<project>") as run:
+        # Indicate the artifact to use. Format is "name:alias"
+        artifact = run.use_artifact("<artifact_name>:<alias>")
+    
+        # Downloads file from the artifact at path name
+        # If artifact.add_reference() was used, returns the reference URL
+        entry = artifact.get_entry("<file_name>")
+    
+        # Download the entire artifact
+        datadir = artifact.download()
+    
+
+## 
+
+​
+
+Add one or more aliases to an artifact when logging it
+    
+    
+    """
+    Add one or more aliases to an artifact when logging it to W&B.
+    """
+    import wandb
+    
+    # Create an artifact
+    artifact = wandb.Artifact(name="<artifact_name>", type="<artifact_type>")
+    # Add files to the artifact
+    artifact.add_file("<file_path>")
+    
+    with wandb.init(project="<project>") as run:
+        # Log the artifact with aliases
+        run.log_artifact(artifact, aliases=["<alias1>", "<alias2>"])
+    
+
+## 
+
+​
+
+Add an alias to an existing artifact
+    
+    
+    """
+    Adds an alias to an existing W&B artifact.
+    """
+    import wandb
+    
+    # Retrieve an existing artifact and add an alias to it
+    artifact = wandb.Api().artifact("entity/project/artifact:version")
+    artifact.aliases = ["<new-alias>"]
+    artifact.save()
+    
+
+## 
+
+​
+
+Add a tag to an artifact when logging it
+    
+    
+    """
+    Add a tag to an artifact when logging it to W&B.
+    """
+    import wandb
+    
+    # Create an artifact
+    artifact = wandb.Artifact(name="<artifact_name>", type="<artifact_type>")
+    
+    # Log the artifact with tags
+    with wandb.init(project="<project>") as run:
+        run.log_artifact(artifact, tags=["<tag1>", "<tag2>"])
+    
+
+## 
+
+​
+
+Add a tag to an existing artifact
+    
+    
+    """
+    Adds a tag to an existing W&B artifact.
+    """
+    import wandb
+    
+    # Retrieve an existing artifact and add a tag to it
+    artifact = wandb.Api().artifact("entity/project/artifact:version")
+    artifact.tags = ["new-tag"]
+    artifact.save()
+    
+
+## 
+
+​
+
+Create and log an artifact with a TTL policy
+    
+    
+    """
+    Create and log an artifact with a TTL policy in W&B.
+    """
+    import wandb
+    from datetime import timedelta
+    
+    # Create an artifact with TTL policy
+    artifact = wandb.Artifact(name="<artifact_name>", type="<artifact_type>")
+    artifact.add_file("<file_path>")
+    artifact.ttl = timedelta(days=30)  # Set TTL policy
+    
+    with wandb.init(project="<project>", entity="<entity>") as run:
+        # Log the artifact with TTL
+        run.log_artifact(artifact)
+    
+
+## 
+
+​
+
+Update the TTL policy of an existing artifact
+    
+    
+    """
+    Update the TTL policy of an existing artifact in W&B.
+    """
+    import wandb
+    from datetime import timedelta
+    
+    # Initialize the W&B API
+    api = wandb.Api()
+    
+    # Retrieve the existing artifact
+    artifact = api.artifact("<entity/project/artifact:alias>")
+    
+    # Add or update the TTL policy. Specify the desired duration.
+    artifact.ttl = timedelta(days=365)  # Delete in one year
+    
+    # Save the updated artifact
+    artifact.save()
+    
+
+## 
+
+​
+
+Update an existing artifact’s description within a run
+    
+    
+    """
+    Update an existing W&B artifact's description within a W&B run.
+    
+    This code initializes a W&B run, retrieves the specified artifact by name and alias,
+    updates its description, and saves the changes.
+    """
+    import wandb
+    
+    with wandb.init(entity="<entity>", project="<project>") as run:
+        # Retrieve the artifact by name and alias
+        artifact = run.use_artifact(artifact_or_name="<artifact>:<alias>")
+        # Update the artifact's description
+        artifact.description = "<description>"
+        # Save the updated artifact
+        artifact.save()
+    
+
+## 
+
+​
+
+Given an existing artifact, update its description, metadata, and aliases without creating a new run
+    
+    
+    """
+    Given an existing artifact, update its description, metadata, and aliases
+    without creating a new run.
+    """
+    import wandb
+    
+    api = wandb.Api()
+    
+    artifact = api.artifact(name="<entity/project/artifact:alias>")
+    
+    # Update the description
+    artifact.description = "My new description"
+    
+    # Selectively update metadata keys
+    artifact.metadata["oldKey"] = "new value"
+    
+    # Replace the metadata entirely
+    artifact.metadata = {"newKey": "new value"}
+    
+    # Add an alias
+    artifact.aliases.append("best")
+    
+    # Remove an alias
+    artifact.aliases.remove("latest")
+    
+    # Completely replace the aliases
+    artifact.aliases = ["replaced"]
+    
+    # Persist all artifact modifications
+    artifact.save()
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/sdk-coding-cheat-sheet/artifacts.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/sdk-coding-cheat-sheet/artifacts)
+
+[LoggingPrevious](/models/ref/sdk-coding-cheat-sheet/logging)[RegistryNext](/models/ref/sdk-coding-cheat-sheet/registry)
+
+⌘I

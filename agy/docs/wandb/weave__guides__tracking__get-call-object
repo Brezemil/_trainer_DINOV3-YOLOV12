@@ -1,0 +1,72 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/tracking/get-call-object
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Trace your applications](/weave/guides/tracking/tracing)
+
+[Work with Calls](/weave/guides/tracking/update-call)
+
+# Get a handle to the Call object during execution
+
+Access the W&B Weave `Call` object at runtime for feedback, display names, and other metadata
+
+This guide shows how to get a handle to the Weave `Call` object while your code runs, so you can inspect inputs and outputs, update metadata, or attach feedback at runtime. It’s intended for developers who already use Weave Ops and want to interact with the underlying `Call` object programmatically. When you use an Op in Weave, you can call it directly as you would any function:
+    
+    
+    @weave.op
+    def my_op():
+        ...
+    
+    my_op()
+    
+
+To access the `Call` object directly, invoke the `op.call` method, which returns both the result and the `Call` object:
+
+  * Python
+
+  * TypeScript
+
+
+
+    
+    
+    @weave.op
+    def my_op():
+    ...
+    
+    output, call = my_op.call()
+    
+
+The `call` object contains all the information about the `Call`, including the inputs, outputs, and other metadata. Use `call` to set, update, fetch additional properties, or add feedback.If your Op is a method on a class, pass the class instance as the first argument to `call`:
+    
+    
+    import weave
+    
+    # Initialize Weave Tracing
+    weave.init("intro-example")
+    
+    class MyClass:
+        # Decorate your method
+        @weave.op
+        def my_method(self, name: str):
+            return f"Hello, {name}!"
+    
+    instance = MyClass()
+    
+    # Pass `instance` as the first argument to `call`.
+    result, call = instance.my_method.call(instance, "World")
+    
+    
+    
+    This feature is not available in the TypeScript SDK yet.
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/tracking/get-call-object.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/tracking/get-call-object)
+
+[Call schema referencePrevious](/weave/guides/tracking/call-schema-reference)[Set Call display nameNext](/weave/guides/tracking/set-call-display)
+
+⌘I

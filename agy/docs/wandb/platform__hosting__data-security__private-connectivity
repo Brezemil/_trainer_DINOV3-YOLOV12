@@ -1,0 +1,37 @@
+---
+source_url: https://docs.wandb.ai/platform/hosting/data-security/private-connectivity
+---
+
+[Platform Details](/platform/app/settings-page)
+
+[Configure W&B](/platform/app/settings-page)
+
+[Data security](/platform/hosting/data-security/secure-storage-connector)
+
+# Configure private connectivity to Dedicated Cloud
+
+Connect to a W&B Dedicated Cloud instance over a private network using AWS PrivateLink, GCP, or Azure Private Link.
+
+This document explains how to connect to a W&B Dedicated Cloud instance over a cloud provider’s secure private network, so that traffic between your environment and W&B avoids the public internet. It’s intended for cloud and security administrators who manage Dedicated Cloud instances and want to harden network access for AI workloads and user traffic. You can connect to your [Dedicated Cloud](/platform/hosting/hosting-options/dedicated-cloud) instance over the cloud provider’s secure private network. This applies to access from your AI workloads to the W&B APIs and optionally from your user browsers to the W&B app UI. When you use private connectivity, the relevant requests and responses don’t transit through the public network or internet. This reduces exposure to the public internet and helps satisfy network isolation requirements for sensitive workloads.
+
+Secure private connectivity is offered as an advanced security option with Dedicated Cloud.
+
+Secure private connectivity is available on Dedicated Cloud instances on AWS, Google Cloud, and Azure:
+
+  * Use [AWS PrivateLink](https://aws.amazon.com/privatelink/) on AWS.
+  * Use [Google Cloud Private Service Connect](https://cloud.google.com/vpc/docs/private-service-connect) on Google Cloud.
+  * Use [Azure Private Link](https://azure.microsoft.com/products/private-link) on Azure.
+
+After W&B enables the feature, W&B creates a private endpoint service for your instance and provides you the relevant DNS URI to connect to. With that, you can create private endpoints in your cloud accounts that route the relevant traffic to the private endpoint service. You can set up private endpoints for your AI training workloads that run within your cloud VPC or VNet. To use the same mechanism for traffic from your user browsers to the W&B app UI, you must configure appropriate DNS-based routing from your corporate network to the private endpoints in your cloud accounts. The DNS configuration ensures browser traffic resolves to your private endpoint instead of the public W&B endpoint.
+
+To use this feature, contact your W&B team.
+
+You can use secure private connectivity with [IP allowlisting](/platform/hosting/data-security/ip-allowlisting) to combine network isolation with location-based access controls. If you combine the two, W&B recommends that you use secure private connectivity for all traffic from your AI workloads and for browser traffic from your users where possible, and use IP allowlisting for instance administration from privileged locations.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/hosting/data-security/private-connectivity.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/hosting/data-security/private-connectivity)
+
+[Configure IP allowlisting for Dedicated CloudPrevious](/platform/hosting/data-security/ip-allowlisting)[Data encryption in Dedicated CloudNext](/platform/hosting/data-security/data-encryption)
+
+⌘I

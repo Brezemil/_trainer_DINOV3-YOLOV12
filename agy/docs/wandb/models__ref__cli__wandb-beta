@@ -1,0 +1,49 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-beta
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb beta](/models/ref/cli/wandb-beta)
+
+# wandb beta
+
+## 
+
+​
+
+Usage
+    
+    
+    beta [OPTIONS] COMMAND [ARGS]...
+    
+
+## 
+
+​
+
+Description
+
+Beta versions of wandb CLI commands. These commands may change or even completely break in any release of wandb.
+
+## 
+
+​
+
+Subcommands
+
+Command| Description  
+---|---  
+`wandb beta core`| Manage a shared local wandb-core service for multi-process workloads.  
+`wandb beta leet`| W&B LEET: the Lightweight Experiment Exploration Tool.  
+`wandb beta sync`| Upload .wandb files specified by PATHS.  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-beta.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-beta)
+
+[wandb artifact putPrevious](/models/ref/cli/wandb-artifact/wandb-artifact-put)[wandb beta coreNext](/models/ref/cli/wandb-beta/wandb-beta-core)
+
+⌘I

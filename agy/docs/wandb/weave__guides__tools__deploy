@@ -1,0 +1,29 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/tools/deploy
+---
+
+# Deploy to Google Cloud
+
+Deploy Weave models and ops to cloud platforms as production-ready API endpoints for inference and serving.
+
+Use the `weave deploy` command to deploy a Weave model to Google Cloud as a production-ready API endpoint that you can call for inference.
+
+`weave deploy` requires your machine to have `gcloud` installed and configured. `weave deploy gcp` uses your existing `gcloud` configuration when you don’t specify settings directly with command-line arguments.
+
+To deploy a Weave model to Google Cloud, run:
+    
+    
+    weave deploy gcp [REF]
+    
+
+After deployment, the command outputs a URL using the following schema. Visit the `/docs` path of the URL to interact with your deployed model.
+    
+    
+    Service URL: <PATH_TO_MODEL>. Visit <PATH_TO_MODEL>/docs to interact with your model!
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/tools/deploy.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/tools/deploy)
+
+⌘I

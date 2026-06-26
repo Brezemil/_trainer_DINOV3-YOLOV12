@@ -1,0 +1,375 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/turn
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Classes](/weave/reference/typescript-sdk/classes/dataset)
+
+# Class: Turn
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / Turn An agent invocation. Typically wraps the work to respond to a single user message. Emits an `invoke_agent` span and acts as the root of the trace for that turn: it is always started under `ROOT_CONTEXT` so it never accidentally inherits a parent from another OTel-instrumented library. Created by `weave.startTurn()` (or `session.startTurn()`) and terminated with `end()`. Only one Turn may be active in an async chain. Children (LLM, Tool, SubAgent) attach via the `startLLM`, `startTool`, `startSubagent` methods. `Example`
+    
+    
+    const turn = weave.startTurn({agentName: 'research-bot', model: MODEL});
+    try {
+      const llm = turn.startLLM({model: MODEL, providerName: 'openai'});
+      // ...
+      llm.end();
+    } finally {
+      turn.end();
+    }
+    
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [agentName](/weave/reference/typescript-sdk/classes/turn#agentname)
+  * [model](/weave/reference/typescript-sdk/classes/turn#model)
+
+
+
+### 
+
+​
+
+Methods
+
+  * [addEvent](/weave/reference/typescript-sdk/classes/turn#addevent)
+  * [end](/weave/reference/typescript-sdk/classes/turn#end)
+  * [setAttribute](/weave/reference/typescript-sdk/classes/turn#setattribute)
+  * [startLLM](/weave/reference/typescript-sdk/classes/turn#startllm)
+  * [startSubagent](/weave/reference/typescript-sdk/classes/turn#startsubagent)
+  * [startTool](/weave/reference/typescript-sdk/classes/turn#starttool)
+  * [create](/weave/reference/typescript-sdk/classes/turn#create)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+agentName
+
+• `Readonly` **agentName** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:60](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L60)
+
+* * *
+
+### 
+
+​
+
+model
+
+• `Readonly` **model** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:61](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L61)
+
+## 
+
+​
+
+Methods
+
+### 
+
+​
+
+addEvent
+
+▸ **addEvent**(`name`, `attributes?`, `startTime?`): `this` Add a named event to the Turn span. Useful for marking non-span moments such as context compaction, tool-loop detection, or guardrail trips. No-op after `end()`. Mirrors OTel `Span.addEvent`.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`name`| `string`  
+`attributes?`| `Attributes`  
+`startTime?`| `TimeInput`  
+  
+#### 
+
+​
+
+Returns
+
+`this` `Example`
+    
+    
+    turn.addEvent('context_compacted', {removedMessages: 12});
+    
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:152](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L152)
+
+* * *
+
+### 
+
+​
+
+end
+
+▸ **end**(`opts?`): `void` Close the Turn span. Idempotent. Pass `error` to mark it as failed.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts?`| `Object`  
+`opts.error?`| `Error`  
+  
+#### 
+
+​
+
+Returns
+
+`void`
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:159](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L159)
+
+* * *
+
+### 
+
+​
+
+setAttribute
+
+▸ **setAttribute**(`key`, `value`): `this` Set a single attribute on the Turn span. Useful for stamping running totals (e.g. cumulative cost, token usage) or other metadata that becomes known mid-turn. No-op after `end()`. Mirrors OTel `Span.setAttribute`.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`key`| `string`  
+`value`| `AttributeValue`  
+  
+#### 
+
+​
+
+Returns
+
+`this` `Example`
+    
+    
+    turn.setAttribute('gen_ai.usage.input_tokens', totalInputTokens);
+    
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:138](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L138)
+
+* * *
+
+### 
+
+​
+
+startLLM
+
+▸ **startLLM**(`opts`): [`LLM`](/weave/reference/typescript-sdk/classes/llm) Start a child LLM span under this Turn.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`LLMInit`](/weave/reference/typescript-sdk/interfaces/llminit)  
+  
+#### 
+
+​
+
+Returns
+
+[`LLM`](/weave/reference/typescript-sdk/classes/llm)
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:104](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L104)
+
+* * *
+
+### 
+
+​
+
+startSubagent
+
+▸ **startSubagent**(`opts`): [`SubAgent`](/weave/reference/typescript-sdk/classes/subagent) Start a child SubAgent span under this Turn.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`SubAgentInit`](/weave/reference/typescript-sdk/interfaces/subagentinit)  
+  
+#### 
+
+​
+
+Returns
+
+[`SubAgent`](/weave/reference/typescript-sdk/classes/subagent)
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:122](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L122)
+
+* * *
+
+### 
+
+​
+
+startTool
+
+▸ **startTool**(`opts`): [`Tool`](/weave/reference/typescript-sdk/classes/tool) Start a child Tool span under this Turn.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`ToolInit`](/weave/reference/typescript-sdk/interfaces/toolinit)  
+  
+#### 
+
+​
+
+Returns
+
+[`Tool`](/weave/reference/typescript-sdk/classes/tool)
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:113](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L113)
+
+* * *
+
+### 
+
+​
+
+create
+
+▸ **create**(`opts?`): [`Turn`](/weave/reference/typescript-sdk/classes/turn)
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`TurnInit`](/weave/reference/typescript-sdk/interfaces/turninit) & { `conversationId?`: `string` }  
+  
+#### 
+
+​
+
+Returns
+
+[`Turn`](/weave/reference/typescript-sdk/classes/turn)
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:64](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L64)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/classes/turn.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/classes/turn)
+
+[Class: ToolPrevious](/weave/reference/typescript-sdk/classes/tool)[Class: WeaveClientNext](/weave/reference/typescript-sdk/classes/weaveclient)
+
+⌘I

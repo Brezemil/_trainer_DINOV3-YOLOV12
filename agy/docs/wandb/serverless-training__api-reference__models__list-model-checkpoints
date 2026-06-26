@@ -1,0 +1,201 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/api-reference/models/list-model-checkpoints
+---
+
+List Model Checkpoints
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v1/preview/models/{model_id}/checkpoints \
+      --header 'Authorization: Bearer <token>'
+    
+    
+    {
+      "data": [
+        {
+          "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+          "step": 123,
+          "metrics": {}
+        }
+      ],
+      "has_more": true,
+      "object": "list",
+      "first_id": "",
+      "last_id": ""
+    }
+
+[Serverless Training](/serverless-training/api-reference)
+
+[models](/serverless-training/api-reference/models/create-model)
+
+# List Model Checkpoints
+
+GET
+
+/
+
+v1
+
+/
+
+preview
+
+/
+
+models
+
+/
+
+{model_id}
+
+/
+
+checkpoints
+
+List Model Checkpoints
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v1/preview/models/{model_id}/checkpoints \
+      --header 'Authorization: Bearer <token>'
+    
+    
+    {
+      "data": [
+        {
+          "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+          "step": 123,
+          "metrics": {}
+        }
+      ],
+      "has_more": true,
+      "object": "list",
+      "first_id": "",
+      "last_id": ""
+    }
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+#### Path Parameters
+
+​
+
+model_id
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+after
+
+string
+
+Cursor for pagination - ID of the last item from previous page
+
+​
+
+limit
+
+integer
+
+default:20
+
+Number of items to return
+
+Required range: `1 <= x <= 100`
+
+​
+
+order
+
+enum<string>
+
+default:asc
+
+Sort order
+
+Available options:
+
+`asc`,
+
+`desc`
+
+#### Response
+
+Successful Response
+
+​
+
+data
+
+CheckpointResponse · object[]
+
+required
+
+Array of items
+
+Show child attributes
+
+​
+
+has_more
+
+boolean
+
+required
+
+Whether there are more items available
+
+​
+
+object
+
+string
+
+default:list
+
+Object type identifier
+
+​
+
+first_id
+
+string
+
+default:""
+
+ID of the first item in the current page
+
+​
+
+last_id
+
+string
+
+default:""
+
+ID of the last item in the current page
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/api-reference/models/list-model-checkpoints.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/api-reference/models/list-model-checkpoints)
+
+[Create ModelPrevious](/serverless-training/api-reference/models/create-model)[Delete Model CheckpointsNext](/serverless-training/api-reference/models/delete-model-checkpoints)
+
+⌘I

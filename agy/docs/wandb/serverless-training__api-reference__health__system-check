@@ -1,0 +1,58 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/api-reference/health/system-check
+---
+
+System Check
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v1/system-check
+
+[Serverless Training](/serverless-training/api-reference)
+
+[health](/serverless-training/api-reference/health/health-check)
+
+# System Check
+
+Check health of all system components.
+
+Returns: JSON with status of:
+
+  * api: Always true (if endpoint is reachable)
+  * database: Whether DB connection works
+  * cpu_queue: Success, duration, and any errors
+  * gpu_queue: Success, duration, and any errors
+
+
+
+Returns HTTP 503 if any checks fail.
+
+GET
+
+/
+
+v1
+
+/
+
+system-check
+
+System Check
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v1/system-check
+
+#### Response
+
+200 - application/json
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/api-reference/health/system-check.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/api-reference/health/system-check)
+
+[Health CheckPrevious](/serverless-training/api-reference/health/health-check)
+
+⌘I

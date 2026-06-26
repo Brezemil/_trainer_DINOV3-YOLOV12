@@ -1,0 +1,463 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/eval-results/eval-results-query
+---
+
+Eval Results Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/eval_results/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "evaluation_call_ids": [
+        "<string>"
+      ],
+      "evaluation_run_ids": [
+        "<string>"
+      ],
+      "require_intersection": false,
+      "include_raw_data_rows": false,
+      "resolve_row_refs": false,
+      "include_rows": true,
+      "include_summary": false,
+      "summary_require_intersection": true,
+      "include_predict_and_score_children": true,
+      "sort_by": [
+        {
+          "field": "<string>",
+          "evaluation_call_id": "<string>",
+          "mode": "value"
+        }
+      ],
+      "filters": [
+        {
+          "query": {
+            "$expr": {
+              "$and": [
+                {
+                  "$literal": "<string>"
+                }
+              ]
+            }
+          },
+          "evaluation_call_id": "<string>"
+        }
+      ],
+      "limit": 123,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "rows": [
+        {
+          "row_digest": "<string>",
+          "raw_data_row": null,
+          "evaluations": [
+            {
+              "evaluation_call_id": "<string>",
+              "trials": [
+                {
+                  "predict_and_score_call_id": "<string>",
+                  "predict_call_id": "<string>",
+                  "model_output": null,
+                  "scores": {},
+                  "model_latency_seconds": 123,
+                  "total_tokens": 123,
+                  "scorer_call_ids": {},
+                  "genai_span_ref": [
+                    {
+                      "trace_id": "<string>",
+                      "span_id": "<string>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_rows": 123,
+      "summary": {
+        "row_count": 0,
+        "evaluations": [
+          {
+            "evaluation_call_id": "<string>",
+            "trial_count": 0,
+            "scorer_stats": [
+              {
+                "scorer_key": "<string>",
+                "path": "<string>",
+                "trial_count": 0,
+                "numeric_count": 0,
+                "numeric_mean": 123,
+                "pass_true_count": 0,
+                "pass_known_count": 0,
+                "pass_rate": 123,
+                "pass_signal_coverage": 123
+              }
+            ],
+            "evaluation_ref": "<string>",
+            "model_ref": "<string>",
+            "display_name": "<string>",
+            "trace_id": "<string>",
+            "started_at": "<string>"
+          }
+        ]
+      },
+      "warnings": [
+        "<string>"
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Eval Results](/weave/reference/service-api/eval-results/eval-results-query)
+
+# Eval Results Query
+
+Read grouped evaluation result rows for one or more evaluations.
+
+POST
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+eval_results
+
+/
+
+query
+
+Eval Results Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/eval_results/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "evaluation_call_ids": [
+        "<string>"
+      ],
+      "evaluation_run_ids": [
+        "<string>"
+      ],
+      "require_intersection": false,
+      "include_raw_data_rows": false,
+      "resolve_row_refs": false,
+      "include_rows": true,
+      "include_summary": false,
+      "summary_require_intersection": true,
+      "include_predict_and_score_children": true,
+      "sort_by": [
+        {
+          "field": "<string>",
+          "evaluation_call_id": "<string>",
+          "mode": "value"
+        }
+      ],
+      "filters": [
+        {
+          "query": {
+            "$expr": {
+              "$and": [
+                {
+                  "$literal": "<string>"
+                }
+              ]
+            }
+          },
+          "evaluation_call_id": "<string>"
+        }
+      ],
+      "limit": 123,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "rows": [
+        {
+          "row_digest": "<string>",
+          "raw_data_row": null,
+          "evaluations": [
+            {
+              "evaluation_call_id": "<string>",
+              "trials": [
+                {
+                  "predict_and_score_call_id": "<string>",
+                  "predict_call_id": "<string>",
+                  "model_output": null,
+                  "scores": {},
+                  "model_latency_seconds": 123,
+                  "total_tokens": 123,
+                  "scorer_call_ids": {},
+                  "genai_span_ref": [
+                    {
+                      "trace_id": "<string>",
+                      "span_id": "<string>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "total_rows": 123,
+      "summary": {
+        "row_count": 0,
+        "evaluations": [
+          {
+            "evaluation_call_id": "<string>",
+            "trial_count": 0,
+            "scorer_stats": [
+              {
+                "scorer_key": "<string>",
+                "path": "<string>",
+                "trial_count": 0,
+                "numeric_count": 0,
+                "numeric_mean": 123,
+                "pass_true_count": 0,
+                "pass_known_count": 0,
+                "pass_rate": 123,
+                "pass_signal_coverage": 123
+              }
+            ],
+            "evaluation_ref": "<string>",
+            "model_ref": "<string>",
+            "display_name": "<string>",
+            "trace_id": "<string>",
+            "started_at": "<string>"
+          }
+        ]
+      },
+      "warnings": [
+        "<string>"
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Body
+
+application/json
+
+​
+
+evaluation_call_ids
+
+string[] | null
+
+Evaluation root call IDs to include.
+
+​
+
+evaluation_run_ids
+
+string[] | null
+
+Alias for evaluation call IDs from the Evaluation Runs API.
+
+​
+
+require_intersection
+
+boolean
+
+default:false
+
+When true, only include rows present in all requested evaluations.
+
+​
+
+include_raw_data_rows
+
+boolean
+
+default:false
+
+When true, populate raw_data_row on each result row. Inline rows are returned as their dict value; dataset-referenced rows are returned as the ref string unless resolve_row_refs is also true.
+
+​
+
+resolve_row_refs
+
+boolean
+
+default:false
+
+When true (requires include_raw_data_rows=True), resolve dataset-row reference strings to actual row data via a table lookup. When false, dataset-row refs are returned as-is.
+
+​
+
+include_rows
+
+boolean
+
+default:true
+
+When true, include grouped row/trial data in `rows` and compute `total_rows` for the requested row-level view.
+
+​
+
+include_summary
+
+boolean
+
+default:false
+
+When true, include aggregated scorer/evaluation summary data in `summary`.
+
+​
+
+summary_require_intersection
+
+boolean | null
+
+Optional intersection behavior for the summary section. When null, the value of `require_intersection` is used.
+
+​
+
+include_predict_and_score_children
+
+boolean
+
+default:true
+
+When true (default), fetch child calls (predict/score) of each predict_and_score call to populate predict_call_id, scorer_call_ids, and more precise latency/token data. When false, these fields are derived from the predict_and_score call itself (predict_call_id and scorer_call_ids will be null/empty).
+
+​
+
+sort_by
+
+EvalResultsSortBy · object[] | null
+
+Sort specification for result rows. Supported field prefixes: scores., inputs., outputs.. When null, rows are sorted by row_digest ASC.
+
+Show child attributes
+
+​
+
+filters
+
+EvalResultsFilter · object[] | null
+
+Filters applied to grouped rows. Multiple filters are AND'd together.
+
+Show child attributes
+
+​
+
+limit
+
+integer | null
+
+Optional row-level page size applied after grouping and intersection.
+
+​
+
+offset
+
+integer
+
+default:0
+
+Optional row-level page offset applied after grouping and intersection.
+
+#### Response
+
+Successful Response
+
+​
+
+rows
+
+EvalResultsRow · object[]
+
+required
+
+Show child attributes
+
+​
+
+total_rows
+
+integer
+
+required
+
+​
+
+summary
+
+EvalResultsSummaryRes · object
+
+Show child attributes
+
+​
+
+warnings
+
+string[]
+
+Non-fatal warnings (e.g. failed to resolve dataset row refs).
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/eval-results/eval-results-query.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/eval-results/eval-results-query)
+
+[Prediction FinishPrevious](/weave/reference/service-api/predictions/prediction-finish)[API overviewNext](/inference/api-reference)
+
+⌘I

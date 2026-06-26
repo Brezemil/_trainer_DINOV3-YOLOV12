@@ -1,0 +1,24 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/launch_support_parallelization_limit_resources_consumed_job
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# Does Launch support parallelization? How can I limit the resources consumed by a job?
+
+Launch supports scaling jobs across multiple GPUs and nodes. For details, see the [Volcano integration guide](/models/integrations). Each launch agent has a `max_jobs` parameter that sets the maximum number of simultaneous jobs the agent can run. Multiple agents can point to a single queue, as long as they connect to a launching infrastructure that supports them. You can set limits on CPU, GPU, memory, and other resources at the queue or job run level in the resource configuration. For information about setting up queues with resource limits on Kubernetes, see the [Kubernetes setup guide](/platform/launch/setup-launch-kubernetes). For sweeps, include the following block in the queue configuration to limit the number of concurrent runs:
+
+queue config
+    
+    
+      scheduler:
+        num_workers: 4
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/launch_support_parallelization_limit_resources_consumed_job.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/launch_support_parallelization_limit_resources_consumed_job)
+
+[Is `wandb launch -d` or `wandb job create image` uploading a whole Docker artifact and not pulling from a registry?Previous](/platform/launch/launch-faq/launch_d_wandb_job_create_image_uploading_whole_docker)[How to make W&B Launch work with TensorFlow on GPUNext](/platform/launch/launch-faq/launch_tensorflow_gpu)
+
+⌘I

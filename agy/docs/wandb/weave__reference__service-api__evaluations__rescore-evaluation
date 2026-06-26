@@ -1,0 +1,167 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/evaluations/rescore-evaluation
+---
+
+Rescore Evaluation
+    
+    
+    curl --request POST \
+      --url https://api.example.com/evaluations/rescore \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "source_evaluation_run_id": "<string>",
+      "scorer_refs": [
+        "<string>"
+      ],
+      "project_id": "<string>",
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "call_id": "<string>",
+      "evaluation_run_id": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Evaluations](/weave/reference/service-api/evaluations/evaluate-model)
+
+# Rescore Evaluation
+
+Rescore an existing evaluation run with different scorer(s).
+
+Applies the provided scorer(s) to the predictions from source_evaluation_run_id and returns a new evaluation_run_id. Original prediction call IDs are preserved.
+
+POST
+
+/
+
+evaluations
+
+/
+
+rescore
+
+Rescore Evaluation
+    
+    
+    curl --request POST \
+      --url https://api.example.com/evaluations/rescore \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "source_evaluation_run_id": "<string>",
+      "scorer_refs": [
+        "<string>"
+      ],
+      "project_id": "<string>",
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "call_id": "<string>",
+      "evaluation_run_id": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Full rescore request including server-set fields.
+
+​
+
+source_evaluation_run_id
+
+string
+
+required
+
+The evaluation run whose predictions will be rescored
+
+​
+
+scorer_refs
+
+string[]
+
+required
+
+Scorer references (weave:// URIs) to apply; must be non-empty
+
+Minimum array length: `1`
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+wb_user_id
+
+string | null
+
+Do not set directly. Server will automatically populate this field.
+
+#### Response
+
+Successful Response
+
+Response for a rescore request.
+
+​
+
+call_id
+
+string
+
+required
+
+Call ID for /evaluations/status polling
+
+​
+
+evaluation_run_id
+
+string
+
+required
+
+The newly created EvaluationRun ID
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/evaluations/rescore-evaluation.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/evaluations/rescore-evaluation)
+
+[Evaluation StatusPrevious](/weave/reference/service-api/evaluations/evaluation-status)[Evaluation ListNext](/weave/reference/service-api/evaluations/evaluation-list)
+
+⌘I

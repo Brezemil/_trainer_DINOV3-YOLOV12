@@ -1,0 +1,168 @@
+---
+source_url: https://docs.wandb.ai/platform/hosting/monitoring-usage/org_dashboard
+---
+
+[Platform Details](/platform/app/settings-page)
+
+[Monitoring & Usage](/platform/hosting/monitoring-usage/audit-logging)
+
+# View organization activity
+
+View user status, activity, and usage trends in the W&B organization dashboard across deployment types.
+
+This page describes how to view activity in your W&B organization, including user status, activity trends over time, and how to export user details as a CSV. Organization admins use this information to audit access, monitor adoption, and report on usage. Select your deployment type in each section to continue.
+
+## 
+
+​
+
+View user status and activity
+
+The following procedure shows how to open the dashboard that lists every user in your organization and interpret each user’s status.
+
+  * Dedicated Cloud / Self-Managed
+
+  * Multi-tenant Cloud
+
+
+
+
+  1. Navigate to the **Organization Dashboard** :
+     * **Dedicated Cloud** : `https://[ORG-NAME].io/org/dashboard/`. Replace `[ORG-NAME]` with your organization name.
+     * **Self-Managed** : `https://[YOUR-W&B-SERVER-IP]/org/dashboard`. Replace `[YOUR-W&B-SERVER-IP]` with your deployment’s IP address.
+The **Users** tab opens by default and lists every user in the organization.
+  2. To sort the list by user status, click the **Last Active** column header. Each user’s status is one of the following:
+     * **Invite pending** : An invitation was sent but not yet accepted.
+     * **A timestamp** : The user accepted the invitation and has signed in at least once. The timestamp indicates the most recent activity.
+     * **Deactivated** : An admin revoked the user’s access.
+     * **No status (hyphen)** : The user was previously active but hasn’t been active in the last six months.
+  3. Hover over a user’s **Last Active** field to see the date you added the user and their total active days.
+
+A user is _active_ if they do any of the following:
+
+  * Log in to W&B.
+  * Open any page in the W&B App.
+  * Log runs.
+  * Use the SDK to track an experiment.
+  * Interact with the W&B server in any way.
+
+
+
+  1. Open the [**Members** page](https://wandb.ai/account-settings/wandb/members/). The table lists every user in your organization.
+  2. Click the **Last Active** column header to sort by user status. Each user’s status is one of the following:
+     * **A timestamp** : The user has signed in at least once. The timestamp indicates the most recent activity.
+     * **No status (hyphen)** : The user hasn’t yet been active within the organization.
+
+A user is _active_ if they perform any auditable action scoped to the organization after May 8, 2025. For a full list, see [Actions](/platform/hosting/monitoring-usage/audit-logging#actions) in **Audit logging**.
+
+## 
+
+​
+
+View activity over time
+
+After you understand individual user status, use the activity views to track how usage in your organization changes over time.
+
+  * Dedicated Cloud / Self-Managed
+
+  * Multi-tenant Cloud
+
+
+
+
+Use the **Activity** tab to see how many users have been active during a given period.
+
+  1. Open the **Organization Dashboard**. See View user status and activity.
+  2. Click **Activity**.
+  3. Review the following plots:
+     * **Total active users** : Unique active users during the selected period (defaults to 3 months).
+     * **Users active over time** : Fluctuation of active users over the period (defaults to 6 months). Hover over a point to see the exact count on that date.
+
+To change the reporting period, use the drop-down above a plot. Options are **Last 30 days** , **Last 3 months** , **Last 6 months** , **Last 12 months** , and **All time**.
+
+Use the **Activity Dashboard** to view aggregate activity.
+
+  1. Click your user icon in the upper-right corner of the W&B App.
+  2. Under **Account** , click **Users**.
+  3. Above the table of users, review the Activity Panel:
+     * **Active user count** : Unique active users during the selected period (defaults to 3 months).
+     * **Weekly active users** : Users active per week.
+     * **Most active user** : Top-10 users ranked by active days and last-active date.
+  4. To change the date range, click the date picker in the upper-right corner and choose a new value: **7 days** , **30 days** (the default), **90 days** , **6 months** , or **12 months**. All plots update automatically.
+
+
+
+## 
+
+​
+
+Export user details
+
+When you need to share user details outside the dashboard or analyze them in another tool, export the user list as a CSV. From the **Users** tab you can download a CSV that lists each user’s details (username, email address, last-active time, roles, and more).
+
+  * Dedicated Cloud / Self-Managed
+
+  * Multi-tenant Cloud
+
+
+
+
+  1. In the **Users** tab, click the **action ()** menu next to **Invite new user**.
+  2. Click **Export as CSV**.
+
+
+
+### 
+
+​
+
+Export CSV schema
+
+The CSV export uses the comma (`,`) as the separator, encloses strings in double quotes, and includes a header row that defines these columns:
+
+  * `"Name"`
+  * `"Username"`
+  * `"Org Role"`
+  * `"Models Seat"`
+  * `"Weave Access"`
+  * `"Email"`
+  * `"Teams"`
+  * `"Last Active"`
+
+
+
+  1. In the **Users** tab, click the **action ()** menu in the upper-right corner.
+  2. Select **Export as CSV** to download the file.
+
+
+
+### 
+
+​
+
+Export CSV schema
+
+The CSV export uses the comma (`,`) as the separator, encloses strings in double quotes, and includes a header row that defines these columns:
+
+  * `"Name"`
+  * `"Username"`
+  * `"Last Active"`
+  * `"Role"`
+  * `"Email"`
+  * `"Teams"`
+  * `"Status"`
+  * `"Number of Reports"`
+  * `"Number of Runs"`
+  * `"Number of active days"`
+  * `"Models Seat"`
+  * `"Weave Access"`
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/hosting/monitoring-usage/org_dashboard.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/hosting/monitoring-usage/org_dashboard)
+
+[Configure Slack alertsPrevious](/platform/hosting/monitoring-usage/slack-alerts)[W&B Mobile App (iOS)Next](/platform/hosting/monitoring-usage/mobile-app)
+
+⌘I

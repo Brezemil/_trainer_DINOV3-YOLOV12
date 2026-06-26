@@ -1,0 +1,61 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/artifacts
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# Artifacts
+
+## 
+
+​
+
+`class` `Artifacts`
+
+An iterable collection of artifact versions associated with a project. Optionally pass in filters to narrow down the results based on specific criteria. **Args:**
+
+  * `service_api`: Interface to the wandb-core service that performs W&B API calls for these artifact versions.
+  * `entity`: The entity (user or team) that owns the project.
+  * `project`: The name of the project to query for artifacts.
+  * `collection_name`: The name of the artifact collection to query.
+  * `type`: The type of the artifacts to query. Common examples include “dataset” or “model”.
+  * `filters`: Optional mapping of filters to apply to the query.
+  * `order`: Optional string to specify the order of the results.
+  * `per_page`: The number of artifact versions to fetch per page. Default is 50.
+  * `tags`: Optional string or list of strings to filter artifacts by tags.
+
+
+
+### 
+
+​
+
+`property` Artifacts.cursor
+
+An opaque cursor that marks the start of the next page to fetch. This value may be saved and passed as `start=` to a later paginated query to resume iteration from where this paginator left off. **Returns:**
+
+  * `str | None`: The cursor property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Artifacts.more
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/artifacts.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/artifacts)
+
+[ArtifactFilesPrevious](/models/ref/python/public-api/artifactfiles)[ArtifactTypeNext](/models/ref/python/public-api/artifacttype)
+
+⌘I

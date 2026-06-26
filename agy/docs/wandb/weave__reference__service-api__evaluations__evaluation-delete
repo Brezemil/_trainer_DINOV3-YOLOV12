@@ -1,0 +1,133 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/evaluations/evaluation-delete
+---
+
+Evaluation Delete
+    
+    
+    curl --request DELETE \
+      --url https://api.example.com/v2/{entity}/{project}/evaluations/{object_id} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "num_deleted": 123
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Evaluations](/weave/reference/service-api/evaluations/evaluate-model)
+
+# Evaluation Delete
+
+Delete an evaluation object.
+
+DELETE
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+evaluations
+
+/
+
+{object_id}
+
+Evaluation Delete
+    
+    
+    curl --request DELETE \
+      --url https://api.example.com/v2/{entity}/{project}/evaluations/{object_id} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "num_deleted": 123
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+object_id
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+digests
+
+string[] | null
+
+List of digests to delete. If not provided, all digests for the evaluation will be deleted.
+
+#### Response
+
+Successful Response
+
+​
+
+num_deleted
+
+integer
+
+required
+
+Number of evaluation versions deleted
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/evaluations/evaluation-delete.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/evaluations/evaluation-delete)
+
+[Evaluation ReadPrevious](/weave/reference/service-api/evaluations/evaluation-read)[Calls ScoreNext](/weave/reference/service-api/scores/calls-score)
+
+⌘I

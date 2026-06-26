@@ -1,0 +1,503 @@
+---
+source_url: https://docs.voxel51.com/plugins/plugins_ecosystem/sam3_images.html
+---
+
+Note
+
+This is a **community plugin** , an external project maintained by its respective author. Community plugins are not part of FiftyOne core and may change independently. Please review each pluginâs documentation and license before use.
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](https://github.com/harpreetsahota204/sam3_images)
+
+# SAM3 Segment Plugin for FiftyOne#
+
+Integration of Metaâs SAM3 (Segment Anything Model 3) into FiftyOne, with full batching support and visual embeddings.
+
+![image](https://raw.githubusercontent.com/harpreetsahota204/sam3_images/main/sam3_images.gif)
+
+## Overview#
+
+The SAM3 segment plugin brings Metaâs powerful Segment Anything Model 3 to FiftyOne, providing advanced visual segmentation tools for computer vision workflows. Whether you need to install Segment Anything Model for interactive segmentation or extract visual embeddings for similarity search, this plugin delivers production-ready segmentation capabilities with full batching support.
+
+## Make sure you request access to the model#
+
+To install Segment Anything Model 3, sam3 is a gated model, so you will need to [request access from the model card](https://huggingface.co/facebook/sam3).
+
+Once you have done that you will need to ensure that your [Hugging Face Token](https://huggingface.co/docs/hub/en/security-tokens) is set.
+
+You can do that by opening the terminal and running `hf auth login`.
+
+## Features#
+
+### Three Segmentation Operations#
+
+  * **Concept Segmentation** : Find ALL matching instances using text prompts. Useful for automated dataset labeling and visual segmentation at scale.
+
+  * **Visual Segmentation** : Segment SPECIFIC instances using interactive prompts (boxes/points). Useful for refining existing detections with precise visual segmentation tools.
+
+  * **Automatic Segmentation** : Generate all masks without prompts (with quality filtering & deduplication). Useful for automatic data augmentation and exploratory analysis (includes quality filtering & deduplication).
+
+
+
+
+### Visual Embeddings#
+
+  * Extract 1024-dim visual embeddings for similarity search
+
+  * Three pooling strategies: mean, max, cls
+
+  * Independent of text prompts
+
+
+
+
+## Use cases for SAM3 Segment Plugin#
+
+This segment plugin excels across multiple computer vision applications:
+
+  * **Medical Imaging** : Automatic data augmentation for 3D medical image segmentation workflows, supporting radiology and pathology imaging workflows
+
+  * **Autonomous Vehicles & Robotics**: Real-time visual segmentation tools for object detection, scene understanding, and navigation
+
+  * **Manufacturing & Quality Control**: Defect detection and inspection using concept-based segmentation
+
+  * **Agriculture & Precision Farming**: Crop health monitoring, plant disease identification, and yield prediction with text prompts
+
+
+
+
+The pluginâs flexible architecture supports both interactive visual segmentation tools for precision work and fully automated segmentation for large-scale data processing.
+
+## How to Install Segment Anything Model 3 (SAM3)#
+
+**Important:** To install Segment Anything Model 3, SAM3 it is brand new since it was recently released, it and requires transformers from source (not yet on PyPI):
+    
+    
+    # Install transformers from source
+    pip install git+https://github.com/huggingface/transformers.git#egg=transformers
+    
+    # Install FiftyOne
+    pip install fiftyone
+    
+    # Install other dependencies
+    pip install torch torchvision huggingface-hub
+    
+
+## Loading as Remote Zoo Model#
+    
+    
+    import fiftyone.zoo as foz
+    
+    # Register the remote model source
+    foz.register_zoo_model_source(
+        "https://github.com/harpreetsahota204/sam3_images"
+    )
+    
+    # Load the model
+    model = foz.load_zoo_model("facebook/sam3")
+    
+
+## Quick Start Notebook#
+
+Try it instantly in Google Colab:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/harpreetsahota204/sam3_images/blob/main/sam3_quickstart.ipynb)
+
+The notebook covers:
+
+  * Visual embeddings & similarity search
+
+  * Concept segmentation (single & multi-concept)
+
+  * Visual segmentation with existing detections
+
+  * Automatic segmentation with quality filtering
+
+
+
+
+## Parameters#
+
+### Model Parameters#
+
+Parameter | Type | Default | Description  
+---|---|---|---  
+`operation` | str | âconcept_segmentationâ | Operation type  
+`prompt` | str | None | Default text prompt  
+`threshold` | float | 0.5 | Confidence threshold  
+`mask_threshold` | float | 0.5 | Mask binarization threshold  
+`points_mask_index` | int | 0 | Which mask for point prompts (0=best)  
+`auto_kwargs` | dict | `{}` | Automatic segmentation settings  
+`auto_kwargs.points_per_side` | int | 16 | Point grid density (16Â² = 256 points)  
+`auto_kwargs.points_per_batch` | int | 256 | Inference batch size  
+`auto_kwargs.quality_threshold` | float | 0.8 | Minimum quality score to keep (0-1)  
+`auto_kwargs.iou_threshold` | float | 0.85 | IoU threshold for deduplication (0-1)  
+`auto_kwargs.max_masks` | int | None | Maximum masks to return (None = unlimited)  
+`pooling_strategy` | str | âmeanâ | Embeddings pooling (mean/max/cls)  
+`return_semantic_seg` | bool | False | Include semantic segmentation mask  
+`device` | str | âautoâ | Device (cuda/cpu/mps/auto)  
+  
+### Operations#
+
+**concept_segmentation**
+
+  * Finds ALL matching instances
+
+  * Supports text prompts only (single string or list)
+
+  * Returns all objects matching the concept
+
+
+
+
+**visual_segmentation**
+
+  * Segments SPECIFIC instances
+
+  * Supports box or point prompts
+
+  * Returns one mask per prompt
+
+
+
+
+**automatic_segmentation**
+
+  * No prompts needed
+
+  * Generates all possible masks
+
+  * Memory intensive
+
+
+
+
+## Complete Example (All Operations)#
+    
+    
+    import fiftyone as fo
+    import fiftyone.zoo as foz
+    import fiftyone.brain as fob
+    
+    # Load dataset
+    dataset = foz.load_zoo_dataset("quickstart")
+    
+    # Register remote zoo model
+    foz.register_zoo_model_source(
+        "https://github.com/harpreetsahota204/sam3_images"
+    )
+    
+    # Load SAM3 model
+    model = foz.load_zoo_model("facebook/sam3")
+    
+    # ============================================================
+    # 1. Compute Embeddings for Similarity Search
+    # ============================================================
+    model.pooling_strategy = "max"  # or "mean", "cls"
+    
+    dataset.compute_embeddings(
+        model,
+        embeddings_field="sam_embeddings",
+        batch_size=32
+    )
+    
+    # Visualize with UMAP
+    fob.compute_visualization(
+        dataset,
+        method="umap",
+        brain_key="sam_viz",
+        embeddings="sam_embeddings",
+        num_dims=2
+    )
+    
+    # ============================================================
+    # 2. Automatic Segmentation (Segment Everything)
+    # ============================================================
+    model.operation = "automatic_segmentation"
+    model.threshold = 0.5
+    model.mask_threshold = 0.5
+    
+    dataset.apply_model(
+        model,
+        label_field="automatic_segmentation",
+        batch_size=4,
+        num_workers=4
+    )
+    
+    # ============================================================
+    # 3. Visual Segmentation (Refine Existing Detections)
+    # ============================================================
+    model.operation = "visual_segmentation"
+    
+    dataset.apply_model(
+        model,
+        label_field="visual_segmentation",
+        prompt_field="ground_truth",  # Use existing detections as prompts
+        batch_size=64,
+        num_workers=4
+    )
+    
+    # ============================================================
+    # 4. Concept Segmentation (Find Multiple Object Types)
+    # ============================================================
+    model.operation = "concept_segmentation"
+    model.prompt = [
+        "bird", "human", "land vehicle", "air vehicle",
+        "aquatic vehicle", "animal", "food", "utensils", "furniture"
+    ]
+    model.threshold = 0.5
+    model.mask_threshold = 0.5
+    
+    dataset.apply_model(
+        model,
+        label_field="concept_segmentation",
+        batch_size=8,
+        num_workers=4
+    )
+    
+    # Launch app
+    session = fo.launch_app(dataset)
+    
+
+## Quick Start#
+
+### Concept Segmentation (Text Prompts)#
+
+Find ALL instances matching text concepts:
+    
+    
+    import fiftyone as fo
+    import fiftyone.zoo as foz
+    
+    dataset = fo.load_dataset("quickstart")
+    
+    # Load model
+    model = foz.load_zoo_model("facebook/sam3")
+    
+    # Single concept
+    model.operation = "concept_segmentation"
+    model.prompt = "person"
+    model.threshold = 0.5
+    model.mask_threshold = 0.5
+    
+    dataset.apply_model(
+        model,
+        label_field="people",
+        batch_size=16,
+        num_workers=4
+    )
+    
+    # Multiple concepts (finds all in each image)
+    # Note: Runs one inference pass per concept, so 4 concepts = 4x slower
+    model.prompt = ["person", "car", "dog", "bird"]
+    model.threshold = 0.5
+    model.mask_threshold = 0.5
+    
+    dataset.apply_model(
+        model,
+        label_field="multiple_objects",
+        batch_size=8,
+        num_workers=4
+    )
+    
+    session = fo.launch_app(dataset)
+    
+
+### Visual Segmentation (Box or Point Prompts)#
+
+Segment SPECIFIC instances using existing detections or keypoints as prompts:
+    
+    
+    # Load model
+    model = foz.load_zoo_model("facebook/sam3")
+    
+    # Configure for visual segmentation
+    model.operation = "visual_segmentation"
+    
+    # Option 1: Use boxes as prompts
+    dataset.apply_model(
+        model,
+        label_field="box_segmentations",
+        prompt_field="ground_truth",  # Field with fo.Detections (boxes)
+        batch_size=64,
+        num_workers=4
+    )
+    
+    # Option 2: Use keypoints as prompts
+    dataset.apply_model(
+        model,
+        label_field="point_segmentations",
+        prompt_field="keypoints",  # Field with fo.Keypoints (points)
+        batch_size=64,
+        num_workers=4
+    )
+    
+
+### Automatic Segmentation#
+
+Generate all masks without prompts using point grid sampling with automatic filtering:
+    
+    
+    # Load model
+    model = foz.load_zoo_model("facebook/sam3")
+    
+    # Configure for automatic segmentation
+    model.operation = "automatic_segmentation"
+    model.auto_kwargs = {
+        "points_per_side": 16,       # Grid density (16x16 = 256 points)
+        "points_per_batch": 256,     # Inference batch size
+        "quality_threshold": 0.8,    # Keep masks with IoU score >= 0.8
+        "iou_threshold": 0.85,       # Remove duplicates with IoU > 0.85
+        "max_masks": 100             # Limit to top 100 masks by quality
+    }
+    
+    dataset.apply_model(
+        model,
+        label_field="auto_masks",
+        batch_size=4,
+        num_workers=2
+    )
+    
+
+**Quality of Life Features:**
+
+  * **Quality filtering** : Only keeps high-quality masks (configurable threshold)
+
+  * **Deduplication** : Removes overlapping/duplicate masks using NMS
+
+  * **Limit results** : Optionally cap at top N masks by quality score
+
+  * **Clear labeling** : Masks labeled as `object_0`, `object_1`, etc. for easy visualization
+
+
+
+
+### Visual Embeddings#
+
+Extract embeddings for similarity search and visualization:
+    
+    
+    import fiftyone.brain as fob
+    
+    # Load model
+    model = foz.load_zoo_model("facebook/sam3")
+    
+    # Configure pooling strategy
+    model.pooling_strategy = "max"  # or "mean", "cls"
+    
+    # Compute embeddings
+    dataset.compute_embeddings(
+        model,
+        embeddings_field="sam3_embeddings",
+        batch_size=32
+    )
+    
+    # Similarity search
+    fob.compute_similarity(dataset, embeddings="sam3_embeddings")
+    query = dataset.first()
+    similar = dataset.sort_by_similarity(query, k=10)
+    
+    # Visualize with UMAP
+    fob.compute_visualization(
+        dataset,
+        embeddings="sam3_embeddings",
+        method="umap",
+        num_dims=2
+    )
+    
+
+### Semantic Segmentation#
+
+SAM3 provides semantic segmentation alongside instance masks - a unified mask covering ALL instances:
+    
+    
+    # Load model
+    model = foz.load_zoo_model("facebook/sam3")
+    
+    # Configure
+    model.operation = "concept_segmentation"
+    model.prompt = "person"
+    model.return_semantic_seg = True  # Enable semantic segmentation
+    
+    dataset.apply_model(
+        model,
+        label_field="instance_masks",
+        batch_size=16,
+        num_workers=4
+    )
+    
+
+### Per-Sample Text Prompts#
+    
+    
+    # Load model
+    model = foz.load_zoo_model("facebook/sam3")
+    
+    # Configure
+    model.operation = "concept_segmentation"
+    
+    # Assumes dataset has field "my_prompt" with text values
+    dataset.apply_model(
+        model,
+        label_field="results",
+        prompt_field="my_prompt",  # Field with str or list values
+        batch_size=16,
+        num_workers=4
+    )
+    
+    # Examples of valid prompts in dataset field:
+    # - "cat" (single string - finds cats in that image)
+    # - ["cat", "dog", "bird"] (list - finds all three in that image, 3x slower)
+    
+
+### Batching Limitations for visual segmentation tools#
+
+**Visual Segmentation** : SAM3 Tracker cannot batch images with different numbers of prompts (boxes/points). The model automatically falls back to sequential processing when this occurs.
+    
+    
+    # This will batch efficiently (all images have 1 box)
+    dataset.apply_model(model, prompt_field="single_box", batch_size=16)
+    
+    # This will fall back to sequential (images have varying box counts)
+    # Performance will be slower but results are still correct
+    dataset.apply_model(model, prompt_field="multi_box", batch_size=16)
+    
+
+**Concept Segmentation** : No batching limitations - the segment plugin handles variable prompts naturally.
+
+## Model Details#
+
+  * **Model** : facebook/sam3
+
+  * **Embeddings** : 1024-dimensional visual features
+
+  * **Input** : RGB images (any size, resized to 1008x1008)
+
+  * **Output** : Instance masks with bounding boxes and scores
+
+
+
+
+## Citation#
+    
+    
+    @article{sam3,
+      title={SAM 3: Segment Anything Model 3},
+      author={Meta AI Research},
+      year={2024}
+    }
+    
+
+## Links#
+
+  * [Model Card](https://huggingface.co/facebook/sam3)
+
+  * [FiftyOne Docs](https://docs.voxel51.com/)
+
+  * [GitHub Issues](https://github.com/harpreetsahota204/sam3_images/issues)
+
+
+
+
+IN THIS ARTICLE 
+  *[*]: Keyword-only parameters separator (PEP 3102)
+  *[/]: Positional-only parameter separator (PEP 570)

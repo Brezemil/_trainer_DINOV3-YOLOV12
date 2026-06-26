@@ -1,0 +1,62 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/starttool
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# startTool
+
+TypeScript SDK reference
+
+# 
+
+​
+
+startTool
+
+▸ **startTool**(`opts`): [`Tool`](/weave/reference/typescript-sdk/classes/tool) Start a Tool span. Parent resolution (matches the design’s “flat by default, hierarchical if you nest”):
+
+  * If an LLM is active, the Tool nests under it.
+  * Otherwise, the Tool is a sibling under the current Turn.
+
+Throws if neither a Turn nor an LLM is active.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`ToolInit`](/weave/reference/typescript-sdk/interfaces/toolinit)  
+  
+#### 
+
+​
+
+Returns
+
+[`Tool`](/weave/reference/typescript-sdk/classes/tool)
+
+#### 
+
+​
+
+Defined in
+
+[genai/api.ts:50](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/api.ts#L50)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/starttool.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/starttool)
+
+[startSubagentPrevious](/weave/reference/typescript-sdk/functions/startsubagent)[startTurnNext](/weave/reference/typescript-sdk/functions/startturn)
+
+⌘I

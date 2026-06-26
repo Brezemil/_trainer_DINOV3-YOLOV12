@@ -1,0 +1,61 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/team-management
+---
+
+# Team Management
+
+## How can I be removed from a team?
+
+A team admin can remove you from a team from the Users tab of the team settings.
+
+## How do I delete a team from my account?
+
+As a team admin, you can permanently delete a team from your W&B account. Use this procedure when you need to remove a t …
+
+## How do I get added to a team on W&B?
+
+To join a team, follow these steps: 1. Request an invitation from a team administrator or someone with administrative pr …
+
+## How do I log metrics without saving my code?
+
+To keep proprietary source code or training data out of W&B for privacy or compliance reasons, limit what W&B captures s …
+
+## Is it possible to add the same service account to multiple teams?
+
+You can’t add a service account to multiple teams in W&B. Each service account is tied to a specific team.
+
+## Is there a monthly subscription option for the Teams plan?
+
+The Teams plan doesn’t offer a monthly subscription option. It’s billed annually.
+
+## What is a team and where can I find more information about it?
+
+For more information about teams, see the teams section.
+
+## What is the difference between team and entity? As a user - what does entity mean for me?
+
+A team is a collaborative workspace for users working on the same projects. An entity is either a username or a team nam …
+
+## What is the difference between team and organization?
+
+A team is a collaborative workspace for users on the same projects. An organization is a higher-level entity that can in …
+
+## What type of roles are available and what are the differences between them?
+
+Visit the Team roles and permissions page for an overview of the available roles and permissions.
+
+## When should I log to my personal entity versus my team entity?
+
+Personal entities are unavailable for accounts created after May 21, 2024. We recommend that you log new projects to a t …
+
+## Who can create a team? Who can add or delete people from a team? Who can delete projects?
+
+For details about roles and permissions, see Team roles and permissions.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/team-management.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/team-management)
+
+[TablesPrevious](/support/models/tags/tables)[TensorBoardNext](/support/models/tags/tensorboard)
+
+⌘I

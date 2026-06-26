@@ -1,0 +1,219 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/tool
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Classes](/weave/reference/typescript-sdk/classes/dataset)
+
+# Class: Tool
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / Tool A tool invocation. Emits an `execute_tool` span carrying the tool name, the JSON-encoded arguments, the tool-call id, and the result. Created by `weave.startTool()` (or `turn.startTool()`, or `llm.startTool()`) and terminated with `end()`. Assign `result` before calling `end()` to record the tool’s output on the span. `Example`
+    
+    
+    const tool = weave.startTool({
+      name: tc.function.name,
+      args: tc.function.arguments,
+      toolCallId: tc.id,
+    });
+    try {
+      tool.result = await wikipediaSearch(JSON.parse(tc.function.arguments));
+    } finally {
+      tool.end();
+    }
+    
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [args](/weave/reference/typescript-sdk/classes/tool#args)
+  * [name](/weave/reference/typescript-sdk/classes/tool#name)
+  * [result](/weave/reference/typescript-sdk/classes/tool#result)
+  * [toolCallId](/weave/reference/typescript-sdk/classes/tool#toolcallid)
+
+
+
+### 
+
+​
+
+Methods
+
+  * [end](/weave/reference/typescript-sdk/classes/tool#end)
+  * [create](/weave/reference/typescript-sdk/classes/tool#create)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+args
+
+• `Readonly` **args** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/tool.ts:52](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/tool.ts#L52)
+
+* * *
+
+### 
+
+​
+
+name
+
+• `Readonly` **name** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/tool.ts:51](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/tool.ts#L51)
+
+* * *
+
+### 
+
+​
+
+result
+
+• `Optional` **result** : `string` Tool output as a string. Recorded on `gen_ai.tool.call.result` at `end()`.
+
+#### 
+
+​
+
+Defined in
+
+[genai/tool.ts:45](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/tool.ts#L45)
+
+* * *
+
+### 
+
+​
+
+toolCallId
+
+• `Readonly` **toolCallId** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/tool.ts:53](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/tool.ts#L53)
+
+## 
+
+​
+
+Methods
+
+### 
+
+​
+
+end
+
+▸ **end**(`opts?`): `void` Flush `result` to the span and close it. Idempotent. Pass `error` to mark the span as failed.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts?`| `Object`  
+`opts.error?`| `Error`  
+  
+#### 
+
+​
+
+Returns
+
+`void`
+
+#### 
+
+​
+
+Defined in
+
+[genai/tool.ts:83](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/tool.ts#L83)
+
+* * *
+
+### 
+
+​
+
+create
+
+▸ **create**(`opts`): [`Tool`](/weave/reference/typescript-sdk/classes/tool)
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`ToolInit`](/weave/reference/typescript-sdk/interfaces/toolinit) & `ChildSpanContext`  
+  
+#### 
+
+​
+
+Returns
+
+[`Tool`](/weave/reference/typescript-sdk/classes/tool)
+
+#### 
+
+​
+
+Defined in
+
+[genai/tool.ts:56](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/tool.ts#L56)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/classes/tool.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/classes/tool)
+
+[Class: SubAgentPrevious](/weave/reference/typescript-sdk/classes/subagent)[Class: TurnNext](/weave/reference/typescript-sdk/classes/turn)
+
+⌘I

@@ -1,0 +1,46 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-purge-cache
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+# wandb purge-cache
+
+## 
+
+​
+
+Usage
+    
+    
+    purge-cache [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+Purges cached logs, run history, and artifacts from the local W&B cache.
+
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--age`| STR| Removes items older than the specified time period (e.g., ’10s’, ‘5m’, ‘8h’, ‘7d’, ‘6M’, ‘1y’). **Default** : 0d  
+`--force`| BOOL Flag| Do not prompt for confirmation when deleting files. **Default** : False  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-purge-cache.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-purge-cache)
+
+[wandb pullPrevious](/models/ref/cli/wandb-pull)[wandb restoreNext](/models/ref/cli/wandb-restore)
+
+⌘I

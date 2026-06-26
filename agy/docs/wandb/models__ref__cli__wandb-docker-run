@@ -1,0 +1,54 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-docker-run
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+# wandb docker-run
+
+## 
+
+​
+
+Usage
+    
+    
+    docker-run [OPTIONS] [DOCKER_RUN_ARGS]...
+    
+
+## 
+
+​
+
+Description
+
+Wrap `docker run` and inject W&B environment variables automatically. Pass all arguments through to `docker run` while injecting:
+
+  * WANDB_API_KEY: Inject the current API key if logged in so the container can authenticate with W&B.
+  * WANDB_DOCKER: Inject the resolved image ID if the image can be detected from the arguments so W&B can track which Docker image produced the run.
+
+Add `--runtime nvidia` automatically if `nvidia-docker` is detected on the host and `--runtime` is not already set. For example, to run the Python script train.py inside the “my-image” container:
+    
+    
+    wandb docker-run my-image python train.py
+    
+
+## 
+
+​
+
+Arguments
+
+Name| Default| Type  
+---|---|---  
+`docker_run_args`| STR| False  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-docker-run.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-docker-run)
+
+[wandb dockerPrevious](/models/ref/cli/wandb-docker)[wandb enabledNext](/models/ref/cli/wandb-enabled)
+
+⌘I

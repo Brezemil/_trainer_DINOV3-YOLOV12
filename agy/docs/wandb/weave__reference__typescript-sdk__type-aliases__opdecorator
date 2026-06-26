@@ -1,0 +1,49 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/type-aliases/opdecorator
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Type Aliases](/weave/reference/typescript-sdk/type-aliases/messagepart)
+
+# OpDecorator
+
+TypeScript SDK reference
+
+# 
+
+​
+
+OpDecorator
+
+Ƭ **OpDecorator** <`T`>: (`value`: `T`, `context`: `ClassMethodDecoratorContext`) => `T` | `void` & (`target`: `Object`, `propertyKey`: `string` | `symbol`, `descriptor`: `TypedPropertyDescriptor`<`T`>) => `TypedPropertyDescriptor`<`T`> | `void` Helper type for decorators This represents a decorator function that can be used with both legacy and Stage 3 decorators. For Stage 3 decorators: target: The function being decorated (T) context: MethodDecoratorContext For legacy decorators: target: The prototype (instance methods) or constructor (static methods) propertyKey: The method name descriptor: The property descriptor containing the method
+
+#### 
+
+​
+
+Type parameters
+
+Name| Type  
+---|---  
+`T`| extends (…`args`: `any`[]) => `any`  
+  
+#### 
+
+​
+
+Defined in
+
+[opType.ts:41](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/opType.ts#L41)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/type-aliases/opdecorator.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/type-aliases/opdecorator)
+
+[OpPrevious](/weave/reference/typescript-sdk/type-aliases/op)[RoleNext](/weave/reference/typescript-sdk/type-aliases/role)
+
+⌘I

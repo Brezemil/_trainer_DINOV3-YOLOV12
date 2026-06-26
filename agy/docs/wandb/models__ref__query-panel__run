@@ -1,0 +1,511 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/run
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# run
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`run-config`
+
+Returns the config _typedDict_ of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The config _typedDict_ of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-createdAt`
+
+Returns the created at datetime of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The created at datetime of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-heartbeatAt`
+
+Returns the last heartbeat datetime of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The last heartbeat datetime of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-history`
+
+Returns the log history of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The log history of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-jobType`
+
+Returns the job type of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The job type of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-loggedArtifactVersion`
+
+Returns the [artifactVersion](/models/ref/query-panel/artifact-version) logged by the [run](/models/ref/query-panel/run) for a given name and alias
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+`artifactVersionName`| The name:alias of the [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersion](/models/ref/query-panel/artifact-version) logged by the [run](/models/ref/query-panel/run) for a given name and alias
+
+### 
+
+​
+
+`run-loggedArtifactVersions`
+
+Returns all of the [artifactVersions](/models/ref/query-panel/artifact-version) logged by the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersions](/models/ref/query-panel/artifact-version) logged by the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-name`
+
+Returns the name of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-runtime`
+
+Returns the runtime in seconds of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The runtime in seconds of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-summary`
+
+Returns the summary _typedDict_ of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The summary _typedDict_ of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-usedArtifactVersions`
+
+Returns all of the [artifactVersions](/models/ref/query-panel/artifact-version) used by the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersions](/models/ref/query-panel/artifact-version) used by the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-user`
+
+Returns the [user](/models/ref/query-panel/user) of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The [user](/models/ref/query-panel/user) of the [run](/models/ref/query-panel/run)
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`run-config`
+
+Returns the config _typedDict_ of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The config _typedDict_ of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-createdAt`
+
+Returns the created at datetime of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The created at datetime of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-heartbeatAt`
+
+Returns the last heartbeat datetime of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The last heartbeat datetime of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-history`
+
+Returns the log history of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The log history of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-jobType`
+
+Returns the job type of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The job type of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-loggedArtifactVersion`
+
+Returns the [artifactVersion](/models/ref/query-panel/artifact-version) logged by the [run](/models/ref/query-panel/run) for a given name and alias
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+`artifactVersionName`| The name:alias of the [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersion](/models/ref/query-panel/artifact-version) logged by the [run](/models/ref/query-panel/run) for a given name and alias
+
+### 
+
+​
+
+`run-loggedArtifactVersions`
+
+Returns all of the [artifactVersions](/models/ref/query-panel/artifact-version) logged by the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersions](/models/ref/query-panel/artifact-version) logged by the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-name`
+
+Returns the name of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-runtime`
+
+Returns the runtime in seconds of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The runtime in seconds of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-summary`
+
+Returns the summary _typedDict_ of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The summary _typedDict_ of the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-usedArtifactVersions`
+
+Returns all of the [artifactVersions](/models/ref/query-panel/artifact-version) used by the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersions](/models/ref/query-panel/artifact-version) used by the [run](/models/ref/query-panel/run)
+
+### 
+
+​
+
+`run-user`
+
+Returns the [user](/models/ref/query-panel/user) of the [run](/models/ref/query-panel/run)
+
+Argument| Description  
+---|---  
+`run`| A [run](/models/ref/query-panel/run)  
+  
+#### 
+
+​
+
+Return Value
+
+The [user](/models/ref/query-panel/user) of the [run](/models/ref/query-panel/run)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/run.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/run)
+
+[pytorch-model-filePrevious](/models/ref/query-panel/pytorch-model-file)[stringNext](/models/ref/query-panel/string)
+
+⌘I

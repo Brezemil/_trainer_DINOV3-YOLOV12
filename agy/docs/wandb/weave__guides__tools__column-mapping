@@ -1,0 +1,63 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/tools/column-mapping
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Evaluate your agents and applications](/weave/guides/core-types/evaluations)
+
+# Map columns in datasets
+
+Map columns in datasets to different names. This helps you align the column names in your dataset with the column names expected by the scorer.
+
+  * Python
+
+  * TypeScript
+
+
+
+
+In the Weave Python SDK, use the `column_map` attribute on a scorer to map its expected parameter names to your dataset’s column names. The mapping format is `{scorer_parameter: dataset_column}`.The following example maps the `output` and `target` parameters to a dataset’s `model_output` and `answer` columns:
+    
+    
+    from weave.scorers import EmbeddingSimilarityScorer
+    
+    similarity_scorer = EmbeddingSimilarityScorer()
+    
+    similarity_scorer.column_map = {
+        "output": "model_output",  # The model's generated text
+        "target": "answer"         # The expected or reference response
+    }
+    
+
+For more information about scorer column mapping, see [Mapping Column Names with `column_map`](/weave/guides/evaluation/scorers#mapping-column-names-with-column_map).
+
+In the Weave TypeScript SDK, you configure column mapping on the `Evaluation` object using the `columnMapping` option, not on individual scorers. The mapping format is `{scorer_key: dataset_column}`.The following example maps `expectedOutputTimesTwo` (used by the scorer) to the `expected` column in the dataset:
+    
+    
+    import * as weave from 'weave';
+    
+    const myScorer = weave.op(
+      ({modelOutput, datasetRow}) => {
+        return modelOutput * 2 === datasetRow.expectedOutputTimesTwo;
+      },
+      {name: 'myScorer'}
+    );
+    
+    const myEval = new weave.Evaluation({
+      id: 'my-evaluation',
+      dataset: [{expected: 2}],
+      scorers: [myScorer],
+      columnMapping: {expectedOutputTimesTwo: 'expected'},
+    });
+    
+
+For more information about TypeScript scorer arguments, see [Scorer Keyword Arguments](/weave/guides/evaluation/scorers#scorer-keyword-arguments).
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/tools/column-mapping.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/tools/column-mapping)
+
+[Compare and rank modelsPrevious](/weave/guides/core-types/leaderboards)[Create dynamic Leaderboards in EvaluationsNext](/weave/guides/evaluation/dynamic_leaderboards)
+
+⌘I

@@ -1,0 +1,73 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/wrapopenai
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# wrapOpenAI
+
+TypeScript SDK reference
+
+# 
+
+​
+
+wrapOpenAI
+
+▸ **wrapOpenAI** <`T`>(`openai`): `T` Wraps the OpenAI API to enable function tracing for OpenAI calls.
+
+#### 
+
+​
+
+Type parameters
+
+Name| Type  
+---|---  
+`T`| extends `OpenAIAPI`  
+  
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`openai`| `T`  
+  
+#### 
+
+​
+
+Returns
+
+`T` `Example`
+    
+    
+    const openai = wrapOpenAI(new OpenAI());
+    const result = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages: [{ role: 'user', content: 'Hello, world!' }]
+    });
+    
+
+#### 
+
+​
+
+Defined in
+
+[integrations/openai.ts:703](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/integrations/openai.ts#L703)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/wrapopenai.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/wrapopenai)
+
+[wrapGoogleGenAIPrevious](/weave/reference/typescript-sdk/functions/wrapgooglegenai)[Interface: CallSchemaNext](/weave/reference/typescript-sdk/interfaces/callschema)
+
+⌘I

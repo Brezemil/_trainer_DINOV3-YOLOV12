@@ -1,0 +1,1015 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/weaveclient
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Classes](/weave/reference/typescript-sdk/classes/dataset)
+
+# Class: WeaveClient
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / WeaveClient
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Constructors
+
+  * [constructor](/weave/reference/typescript-sdk/classes/weaveclient#constructor)
+
+
+
+### 
+
+​
+
+Properties
+
+  * [projectId](/weave/reference/typescript-sdk/classes/weaveclient#projectid)
+  * [settings](/weave/reference/typescript-sdk/classes/weaveclient#settings)
+  * [traceServerApi](/weave/reference/typescript-sdk/classes/weaveclient#traceserverapi)
+
+
+
+### 
+
+​
+
+Methods
+
+  * [addScore](/weave/reference/typescript-sdk/classes/weaveclient#addscore)
+  * [createCall](/weave/reference/typescript-sdk/classes/weaveclient#createcall)
+  * [finishCall](/weave/reference/typescript-sdk/classes/weaveclient#finishcall)
+  * [finishCallWithException](/weave/reference/typescript-sdk/classes/weaveclient#finishcallwithexception)
+  * [get](/weave/reference/typescript-sdk/classes/weaveclient#get)
+  * [getCall](/weave/reference/typescript-sdk/classes/weaveclient#getcall)
+  * [getCallStack](/weave/reference/typescript-sdk/classes/weaveclient#getcallstack)
+  * [getCalls](/weave/reference/typescript-sdk/classes/weaveclient#getcalls)
+  * [getCallsIterator](/weave/reference/typescript-sdk/classes/weaveclient#getcallsiterator)
+  * [getCurrentAttributes](/weave/reference/typescript-sdk/classes/weaveclient#getcurrentattributes)
+  * [linkPromptToRegistry](/weave/reference/typescript-sdk/classes/weaveclient#linkprompttoregistry)
+  * [publish](/weave/reference/typescript-sdk/classes/weaveclient#publish)
+  * [pushNewCall](/weave/reference/typescript-sdk/classes/weaveclient#pushnewcall)
+  * [runWithAttributes](/weave/reference/typescript-sdk/classes/weaveclient#runwithattributes)
+  * [runWithCallStack](/weave/reference/typescript-sdk/classes/weaveclient#runwithcallstack)
+  * [saveCallEnd](/weave/reference/typescript-sdk/classes/weaveclient#savecallend)
+  * [saveCallStart](/weave/reference/typescript-sdk/classes/weaveclient#savecallstart)
+  * [saveOp](/weave/reference/typescript-sdk/classes/weaveclient#saveop)
+  * [serializeAudio](/weave/reference/typescript-sdk/classes/weaveclient#serializeaudio)
+  * [updateCall](/weave/reference/typescript-sdk/classes/weaveclient#updatecall)
+  * [waitForBatchProcessing](/weave/reference/typescript-sdk/classes/weaveclient#waitforbatchprocessing)
+
+
+
+## 
+
+​
+
+Constructors
+
+### 
+
+​
+
+constructor
+
+• **new WeaveClient**(`traceServerApi`, `wandbServerApi`, `projectId`, `settings?`): [`WeaveClient`](/weave/reference/typescript-sdk/classes/weaveclient)
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`traceServerApi`| `Api`<`any`>  
+`wandbServerApi`| `WandbServerApi`  
+`projectId`| `string`  
+`settings`| `Settings`  
+  
+#### 
+
+​
+
+Returns
+
+[`WeaveClient`](/weave/reference/typescript-sdk/classes/weaveclient)
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:190](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L190)
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+projectId
+
+• **projectId** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:193](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L193)
+
+* * *
+
+### 
+
+​
+
+settings
+
+• **settings** : `Settings`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:194](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L194)
+
+* * *
+
+### 
+
+​
+
+traceServerApi
+
+• **traceServerApi** : `Api`<`any`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:191](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L191)
+
+## 
+
+​
+
+Methods
+
+### 
+
+​
+
+addScore
+
+▸ **addScore**(`predictCallId`, `scorerCallId`, `runnableRefUri`, `scorerOutput`): `Promise`<`string`> Add a scorer result (e.g., scorer output) to a call. Used in imperative evaluation to attach scorer results to predict calls.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type| Description  
+---|---|---  
+`predictCallId`| `string`| ID of the predict call to attach feedback to  
+`scorerCallId`| `string`| ID of the scorer call that generated the feedback  
+`runnableRefUri`| `string`| URI of the scorer (Op or Object ref)  
+`scorerOutput`| `any`| Output of the scorer  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`string`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:1132](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L1132)
+
+* * *
+
+### 
+
+​
+
+createCall
+
+▸ **createCall**(`internalCall`, `opRef`, `params`, `parameterNames`, `thisArg`, `currentCall`, `parentCall`, `startTime`, `displayName?`, `attributes?`): `Promise`<`void`>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`internalCall`| `InternalCall`  
+`opRef`| `any`  
+`params`| `any`[]  
+`parameterNames`| `ParameterNamesOption`  
+`thisArg`| `any`  
+`currentCall`| `CallStackEntry`  
+`parentCall`| `undefined` | `CallStackEntry`  
+`startTime`| `Date`  
+`displayName?`| `string`  
+`attributes?`| `Record`<`string`, `any`>  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`void`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:979](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L979)
+
+* * *
+
+### 
+
+​
+
+finishCall
+
+▸ **finishCall**(`call`, `result`, `currentCall`, `parentCall`, `summarize`, `endTime`, `startCallPromise`): `Promise`<`void`>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`call`| `InternalCall`  
+`result`| `any`  
+`currentCall`| `CallStackEntry`  
+`parentCall`| `undefined` | `CallStackEntry`  
+`summarize`| `undefined` | (`result`: `any`) => `Record`<`string`, `any`>  
+`endTime`| `Date`  
+`startCallPromise`| `Promise`<`void`>  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`void`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:1039](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L1039)
+
+* * *
+
+### 
+
+​
+
+finishCallWithException
+
+▸ **finishCallWithException**(`call`, `error`, `currentCall`, `parentCall`, `endTime`, `startCallPromise`): `Promise`<`void`>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`call`| `InternalCall`  
+`error`| `any`  
+`currentCall`| `CallStackEntry`  
+`parentCall`| `undefined` | `CallStackEntry`  
+`endTime`| `Date`  
+`startCallPromise`| `Promise`<`void`>  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`void`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:1079](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L1079)
+
+* * *
+
+### 
+
+​
+
+get
+
+▸ **get**(`ref`): `Promise`<`any`>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`ref`| [`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref)  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`any`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:435](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L435)
+
+* * *
+
+### 
+
+​
+
+getCall
+
+▸ **getCall**(`callId`, `includeCosts?`): `Promise`<`Call`>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type| Default value  
+---|---|---  
+`callId`| `string`| `undefined`  
+`includeCosts`| `boolean`| `false`  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`Call`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:312](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L312)
+
+* * *
+
+### 
+
+​
+
+getCallStack
+
+▸ **getCallStack**(): `CallStack`
+
+#### 
+
+​
+
+Returns
+
+`CallStack`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:890](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L890)
+
+* * *
+
+### 
+
+​
+
+getCalls
+
+▸ **getCalls**(`options?`): `Promise`<`Call`[]>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`options?`| [`GetCallsOptions`](/weave/reference/typescript-sdk/interfaces/getcallsoptions)  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`Call`[]>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:345](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L345) ▸ **getCalls**(`options?`, `includeCosts?`, `limit?`): `Promise`<`Call`[]>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`options?`| [`CallsFilter`](/weave/reference/typescript-sdk/interfaces/callsfilter)  
+`includeCosts?`| `boolean`  
+`limit?`| `number`  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`Call`[]>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:346](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L346)
+
+* * *
+
+### 
+
+​
+
+getCallsIterator
+
+▸ **getCallsIterator**(`options?`, `includeCosts?`, `limit?`): `AsyncIterableIterator`<[`CallSchema`](/weave/reference/typescript-sdk/interfaces/callschema)>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`options?`| [`CallsFilter`](/weave/reference/typescript-sdk/interfaces/callsfilter)  
+`includeCosts?`| `boolean`  
+`limit?`| `number`  
+  
+#### 
+
+​
+
+Returns
+
+`AsyncIterableIterator`<[`CallSchema`](/weave/reference/typescript-sdk/interfaces/callschema)>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:367](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L367) ▸ **getCallsIterator**(`options?`): `AsyncIterableIterator`<[`CallSchema`](/weave/reference/typescript-sdk/interfaces/callschema)>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`options?`| [`GetCallsOptions`](/weave/reference/typescript-sdk/interfaces/getcallsoptions)  
+  
+#### 
+
+​
+
+Returns
+
+`AsyncIterableIterator`<[`CallSchema`](/weave/reference/typescript-sdk/interfaces/callschema)>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:372](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L372)
+
+* * *
+
+### 
+
+​
+
+getCurrentAttributes
+
+▸ **getCurrentAttributes**(): `Record`<`string`, `any`>
+
+#### 
+
+​
+
+Returns
+
+`Record`<`string`, `any`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:894](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L894)
+
+* * *
+
+### 
+
+​
+
+linkPromptToRegistry
+
+▸ **linkPromptToRegistry**(`prompt`, `options`): `Promise`<`LinkAssetToRegistryRes`> Link a published prompt version into a registry portfolio.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`prompt`| `RegistryLinkable`  
+`options`| `LinkPromptToRegistryOptions`  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`LinkAssetToRegistryRes`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:591](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L591)
+
+* * *
+
+### 
+
+​
+
+publish
+
+▸ **publish**(`obj`, `objId?`): `Promise`<[`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref)>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`obj`| `any`  
+`objId?`| `string`  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<[`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref)>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:300](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L300)
+
+* * *
+
+### 
+
+​
+
+pushNewCall
+
+▸ **pushNewCall**(): `Object`
+
+#### 
+
+​
+
+Returns
+
+`Object`
+
+Name| Type  
+---|---  
+`currentCall`| `CallStackEntry`  
+`newStack`| `CallStack`  
+`parentCall?`| `CallStackEntry`  
+  
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:898](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L898)
+
+* * *
+
+### 
+
+​
+
+runWithAttributes
+
+▸ **runWithAttributes** <`T`>(`attributes`, `fn`): `T`
+
+#### 
+
+​
+
+Type parameters
+
+Name  
+---  
+`T`  
+  
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`attributes`| `Record`<`string`, `any`>  
+`fn`| () => `T`  
+  
+#### 
+
+​
+
+Returns
+
+`T`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:906](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L906)
+
+* * *
+
+### 
+
+​
+
+runWithCallStack
+
+▸ **runWithCallStack** <`T`>(`callStack`, `fn`): `T`
+
+#### 
+
+​
+
+Type parameters
+
+Name  
+---  
+`T`  
+  
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`callStack`| `CallStack`  
+`fn`| () => `T`  
+  
+#### 
+
+​
+
+Returns
+
+`T`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:902](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L902)
+
+* * *
+
+### 
+
+​
+
+saveCallEnd
+
+▸ **saveCallEnd**(`callEnd`): `void`
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`callEnd`| `EndedCallSchemaForInsert`  
+  
+#### 
+
+​
+
+Returns
+
+`void`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:885](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L885)
+
+* * *
+
+### 
+
+​
+
+saveCallStart
+
+▸ **saveCallStart**(`callStart`): `void`
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`callStart`| `StartedCallSchemaForInsert`  
+  
+#### 
+
+​
+
+Returns
+
+`void`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:880](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L880)
+
+* * *
+
+### 
+
+​
+
+saveOp
+
+▸ **saveOp**(`op`, `objId?`): `Promise`<`OpRef`>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`op`| [`Op`](/weave/reference/typescript-sdk#op)<(…`args`: `any`[]) => `any`>  
+`objId?`| `string`  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`OpRef`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:945](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L945)
+
+* * *
+
+### 
+
+​
+
+serializeAudio
+
+▸ **serializeAudio**(`data`, `audioType?`): `Promise`<`SerializedFileBlob`> Upload raw audio bytes to the Weave content store and return the `CustomWeaveType` placeholder that can be embedded in a call output. Use this when building call outputs manually (e.g. via `saveCallEnd`) where the automatic serialization pipeline from `finishCall` is not used.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type| Default value| Description  
+---|---|---|---  
+`data`| `Buffer`| `undefined`| Raw audio bytes (WAV for best browser compatibility)  
+`audioType`| `"wav"`| `DEFAULT_AUDIO_TYPE`| File format — currently only ‘wav’ is supported  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`SerializedFileBlob`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:832](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L832)
+
+* * *
+
+### 
+
+​
+
+updateCall
+
+▸ **updateCall**(`callId`, `displayName`): `Promise`<`void`>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`callId`| `string`  
+`displayName`| `string`  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<`void`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:1115](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L1115)
+
+* * *
+
+### 
+
+​
+
+waitForBatchProcessing
+
+▸ **waitForBatchProcessing**(): `Promise`<`void`>
+
+#### 
+
+​
+
+Returns
+
+`Promise`<`void`>
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:211](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L211)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/classes/weaveclient.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/classes/weaveclient)
+
+[Class: TurnPrevious](/weave/reference/typescript-sdk/classes/turn)[Class: WeaveObjectNext](/weave/reference/typescript-sdk/classes/weaveobject)
+
+⌘I

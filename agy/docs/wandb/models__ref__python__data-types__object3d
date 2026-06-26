@@ -1,0 +1,58 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/data-types/object3d
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Data Types](/models/ref/python/data-types)
+
+# Object3D
+
+[GitHub source](https://github.com/wandb/wandb/blob/main/wandb/sdk/data_types/object_3d.py)
+
+## 
+
+​
+
+`class` `Object3D`
+
+W&B class for 3D point clouds.
+
+### 
+
+​
+
+`method` `Object3D.__init__`
+    
+    
+    __init__(
+        data_or_path: 'np.ndarray | str | pathlib.Path | TextIO | dict',
+        caption: 'str | None' = None,
+        **kwargs: 'str | FileFormat3D | None'
+    ) → None
+    
+
+Creates a W&B Object3D object. **Args:**
+
+  * `data_or_path`: Object3D can be initialized from a file or a numpy array.
+  * `caption`: Caption associated with the object for display.
+
+**Examples:** The shape of the numpy array must be one of either
+    
+    
+    [[x y z],       ...] nx3
+    [[x y z c],     ...] nx4 where c is a category with supported range [1, 14]
+    [[x y z r g b], ...] nx6 where is rgb is color
+    
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/data-types/object3d.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/data-types/object3d)
+
+[MoleculePrevious](/models/ref/python/data-types/molecule)[PlotlyNext](/models/ref/python/data-types/plotly)
+
+⌘I

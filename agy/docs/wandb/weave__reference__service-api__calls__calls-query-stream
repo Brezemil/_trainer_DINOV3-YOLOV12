@@ -1,0 +1,365 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/calls-query-stream
+---
+
+Calls Query Stream
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/stream_query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "op_names": [
+          "<string>"
+        ],
+        "input_refs": [
+          "<string>"
+        ],
+        "output_refs": [
+          "<string>"
+        ],
+        "parent_ids": [
+          "<string>"
+        ],
+        "trace_ids": [
+          "<string>"
+        ],
+        "call_ids": [
+          "<string>"
+        ],
+        "thread_ids": [
+          "<string>"
+        ],
+        "turn_ids": [
+          "<string>"
+        ],
+        "trace_roots_only": true,
+        "wb_user_ids": [
+          "<string>"
+        ],
+        "wb_run_ids": [
+          "<string>"
+        ]
+      },
+      "limit": 123,
+      "offset": 123,
+      "sort_by": [
+        {
+          "field": "<string>"
+        }
+      ],
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "include_costs": false,
+      "include_feedback": false,
+      "include_storage_size": false,
+      "include_total_storage_size": false,
+      "include_usernames": false,
+      "columns": [
+        "<string>"
+      ],
+      "expand_columns": [
+        "inputs.self.message",
+        "inputs.model.prompt"
+      ],
+      "return_expanded_column_values": true
+    }
+    '
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Calls Query Stream
+
+POST
+
+/
+
+calls
+
+/
+
+stream_query
+
+Calls Query Stream
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/stream_query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "op_names": [
+          "<string>"
+        ],
+        "input_refs": [
+          "<string>"
+        ],
+        "output_refs": [
+          "<string>"
+        ],
+        "parent_ids": [
+          "<string>"
+        ],
+        "trace_ids": [
+          "<string>"
+        ],
+        "call_ids": [
+          "<string>"
+        ],
+        "thread_ids": [
+          "<string>"
+        ],
+        "turn_ids": [
+          "<string>"
+        ],
+        "trace_roots_only": true,
+        "wb_user_ids": [
+          "<string>"
+        ],
+        "wb_run_ids": [
+          "<string>"
+        ]
+      },
+      "limit": 123,
+      "offset": 123,
+      "sort_by": [
+        {
+          "field": "<string>"
+        }
+      ],
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "include_costs": false,
+      "include_feedback": false,
+      "include_storage_size": false,
+      "include_total_storage_size": false,
+      "include_usernames": false,
+      "columns": [
+        "<string>"
+      ],
+      "expand_columns": [
+        "inputs.self.message",
+        "inputs.model.prompt"
+      ],
+      "return_expanded_column_values": true
+    }
+    '
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Headers
+
+​
+
+accept
+
+string
+
+default:application/jsonl
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+filter
+
+CallsFilter · object
+
+Show child attributes
+
+​
+
+limit
+
+integer | null
+
+​
+
+offset
+
+integer | null
+
+​
+
+sort_by
+
+SortBy · object[] | null
+
+Show child attributes
+
+​
+
+query
+
+Query · object
+
+Show child attributes
+
+​
+
+include_costs
+
+boolean | null
+
+default:false
+
+Beta, subject to change. If true, the response will include any model costs for each call.
+
+​
+
+include_feedback
+
+boolean | null
+
+default:false
+
+Beta, subject to change. If true, the response will include feedback for each call.
+
+​
+
+include_storage_size
+
+boolean | null
+
+default:false
+
+Beta, subject to change. If true, the response will include the storage size for a call.
+
+​
+
+include_total_storage_size
+
+boolean | null
+
+default:false
+
+Beta, subject to change. If true, the response will include the total storage size for a trace.
+
+​
+
+include_usernames
+
+boolean | null
+
+default:false
+
+If true, the response will attempt to resolve each call's wb_user_id to a username for the duration of this request.
+
+​
+
+columns
+
+string[] | null
+
+​
+
+expand_columns
+
+string[] | null
+
+Columns to expand, i.e. refs to other objects
+
+Example:
+    
+    
+    [  
+      "inputs.self.message",  
+      "inputs.model.prompt"  
+    ]
+
+​
+
+return_expanded_column_values
+
+boolean | null
+
+default:true
+
+If true, the response will include raw values for expanded columns. If false, the response expand_columns will only be used for filtering and ordering. This is useful for clients that want to resolve refs themselves, e.g. for performance reasons.
+
+#### Response
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/calls-query-stream.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/calls-query-stream)
+
+[Calls UsagePrevious](/weave/reference/service-api/calls/calls-usage)[Call StatsNext](/weave/reference/service-api/calls/call-stats)
+
+⌘I

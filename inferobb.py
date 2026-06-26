@@ -26,7 +26,6 @@ Examples:
 """
 
 import argparse
-from pathlib import Path
 
 from ultralytics import YOLO
 
@@ -164,7 +163,7 @@ def main():
         else:
             if args.verbose:
                 print(f"\nImage {i + 1}: {result.path}")
-                print(f"  Detections: 0")
+                print("  Detections: 0")
 
     print("\n" + "=" * 60)
     print(f"Total images processed: {len(results)}")

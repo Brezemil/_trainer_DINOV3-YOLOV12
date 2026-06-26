@@ -1,0 +1,41 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/workspaces
+---
+
+# Workspaces
+
+## How can I categorize runs without the Group feature?
+
+You can categorize runs by tags or custom metadata. To organize runs by these values, use the Group button in the projec …
+
+## How can I change the colors of each run in the same group?
+
+You can’t change the colors of individual runs within a group. All runs in the same group share a common color.
+
+## How do I enable dark mode?
+
+W&B provides a dark mode for the UI as a public preview feature. Dark mode is in beta and not optimized for accessibilit …
+
+## How do I fix the 'overflows maximum values of a signed 64 bits integer' error?
+
+To resolve this error, add ?workspace=clear to the end of the URL and press Enter. This loads a cleared version of the p …
+
+## Refreshing data
+
+Workspaces automatically load updated data. Auto-refresh doesn’t apply to reports. To refresh report data, reload the pa …
+
+## What features are hidden, and where can I find them?
+
+Some features are hidden under a feature flag in the Beta Features section of your team’s settings.
+
+## Why does my workspace load slowly?
+
+Workspaces can load slowly when a project has many metrics, runs, or panels. Common causes include high metric counts, e …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/workspaces.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/workspaces)
+
+[User ManagementPrevious](/support/models/tags/user-management)[WysiwygNext](/support/models/tags/wysiwyg)
+
+⌘I

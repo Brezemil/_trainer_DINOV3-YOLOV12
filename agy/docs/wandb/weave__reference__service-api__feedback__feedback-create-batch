@@ -1,0 +1,175 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/feedback/feedback-create-batch
+---
+
+Feedback Create Batch
+    
+    
+    curl --request POST \
+      --url https://api.example.com/feedback/batch/create \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "batch": [
+        {
+          "project_id": "<string>",
+          "weave_ref": "<string>",
+          "feedback_type": "<string>",
+          "payload": {},
+          "id": "018f1f2a-9c2b-7d3e-b5a1-8c9d2e4f6a7b",
+          "creator": "Jane Smith",
+          "annotation_ref": "weave:///entity/project/object/name:digest",
+          "runnable_ref": "weave:///entity/project/op/name:digest",
+          "call_ref": "weave:///entity/project/call/call_id",
+          "trigger_ref": "weave:///entity/project/object/name:digest",
+          "queue_id": "018f1f2a-9c2b-7d3e-b5a1-8c9d2e4f6a7b",
+          "scorer_tags": [
+            "<string>"
+          ],
+          "scorer_tag_reasons": {},
+          "scorer_tag_confidences": {},
+          "scorer_ratings": {},
+          "scorer_rating_reasons": {},
+          "scorer_rating_confidences": {},
+          "wb_user_id": "<string>"
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "res": [
+        {
+          "id": "<string>",
+          "created_at": "2023-11-07T05:31:56Z",
+          "wb_user_id": "<string>",
+          "payload": {}
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Feedback](/weave/reference/service-api/feedback/feedback-create)
+
+# Feedback Create Batch
+
+Add multiple feedback items to calls or objects.
+
+POST
+
+/
+
+feedback
+
+/
+
+batch
+
+/
+
+create
+
+Feedback Create Batch
+    
+    
+    curl --request POST \
+      --url https://api.example.com/feedback/batch/create \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "batch": [
+        {
+          "project_id": "<string>",
+          "weave_ref": "<string>",
+          "feedback_type": "<string>",
+          "payload": {},
+          "id": "018f1f2a-9c2b-7d3e-b5a1-8c9d2e4f6a7b",
+          "creator": "Jane Smith",
+          "annotation_ref": "weave:///entity/project/object/name:digest",
+          "runnable_ref": "weave:///entity/project/op/name:digest",
+          "call_ref": "weave:///entity/project/call/call_id",
+          "trigger_ref": "weave:///entity/project/object/name:digest",
+          "queue_id": "018f1f2a-9c2b-7d3e-b5a1-8c9d2e4f6a7b",
+          "scorer_tags": [
+            "<string>"
+          ],
+          "scorer_tag_reasons": {},
+          "scorer_tag_confidences": {},
+          "scorer_ratings": {},
+          "scorer_rating_reasons": {},
+          "scorer_rating_confidences": {},
+          "wb_user_id": "<string>"
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "res": [
+        {
+          "id": "<string>",
+          "created_at": "2023-11-07T05:31:56Z",
+          "wb_user_id": "<string>",
+          "payload": {}
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+batch
+
+FeedbackCreateReq · object[]
+
+required
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+​
+
+res
+
+FeedbackCreateRes · object[]
+
+required
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/feedback/feedback-create-batch.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/feedback/feedback-create-batch)
+
+[Feedback CreatePrevious](/weave/reference/service-api/feedback/feedback-create)[Feedback QueryNext](/weave/reference/service-api/feedback/feedback-query)
+
+⌘I

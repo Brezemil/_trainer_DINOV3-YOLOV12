@@ -1,0 +1,62 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/weaveimage
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# weaveImage
+
+TypeScript SDK reference
+
+# 
+
+​
+
+weaveImage
+
+▸ **weaveImage**(`options`): [`WeaveImage`](/weave/reference/typescript-sdk/interfaces/weaveimage) Create a new WeaveImage object
+
+#### 
+
+​
+
+Parameters
+
+Name| Type| Description  
+---|---|---  
+`options`| `WeaveImageInput`| The options for this media type - data: The raw image data as a Buffer - imageType: (Optional) The type of image file, currently only ‘png’ is supported  
+  
+#### 
+
+​
+
+Returns
+
+[`WeaveImage`](/weave/reference/typescript-sdk/interfaces/weaveimage) `Example`
+    
+    
+    const imageBuffer = fs.readFileSync('path/to/image.png');
+    const weaveImage = weaveImage({ data: imageBuffer });
+    
+
+#### 
+
+​
+
+Defined in
+
+[media.ts:28](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/media.ts#L28)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/weaveimage.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/weaveimage)
+
+[weaveAudioPrevious](/weave/reference/typescript-sdk/functions/weaveaudio)[withAttributesNext](/weave/reference/typescript-sdk/functions/withattributes)
+
+⌘I

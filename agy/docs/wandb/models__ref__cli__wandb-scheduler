@@ -1,0 +1,39 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-scheduler
+---
+
+# wandb scheduler
+
+## 
+
+​
+
+Usage
+    
+    
+    scheduler [OPTIONS] SWEEP_ID
+    
+
+## 
+
+​
+
+Description
+
+Run a W&B launch sweep scheduler (Experimental).
+
+## 
+
+​
+
+Arguments
+
+Name| Default| Type  
+---|---|---  
+`sweep_id`| STR| True  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-scheduler.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-scheduler)
+
+⌘I

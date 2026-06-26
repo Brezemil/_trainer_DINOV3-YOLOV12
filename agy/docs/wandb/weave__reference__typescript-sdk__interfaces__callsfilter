@@ -1,0 +1,213 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/callsfilter
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: CallsFilter
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / CallsFilter CallsFilter
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [call_ids](/weave/reference/typescript-sdk/interfaces/callsfilter#call_ids)
+  * [input_refs](/weave/reference/typescript-sdk/interfaces/callsfilter#input_refs)
+  * [op_names](/weave/reference/typescript-sdk/interfaces/callsfilter#op_names)
+  * [output_refs](/weave/reference/typescript-sdk/interfaces/callsfilter#output_refs)
+  * [parent_ids](/weave/reference/typescript-sdk/interfaces/callsfilter#parent_ids)
+  * [trace_ids](/weave/reference/typescript-sdk/interfaces/callsfilter#trace_ids)
+  * [trace_roots_only](/weave/reference/typescript-sdk/interfaces/callsfilter#trace_roots_only)
+  * [wb_run_ids](/weave/reference/typescript-sdk/interfaces/callsfilter#wb_run_ids)
+  * [wb_user_ids](/weave/reference/typescript-sdk/interfaces/callsfilter#wb_user_ids)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+call_ids
+
+• `Optional` **call_ids** : `null` | `string`[] Call Ids
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:198](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L198)
+
+* * *
+
+### 
+
+​
+
+input_refs
+
+• `Optional` **input_refs** : `null` | `string`[] Input Refs
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:190](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L190)
+
+* * *
+
+### 
+
+​
+
+op_names
+
+• `Optional` **op_names** : `null` | `string`[] Op Names
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:188](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L188)
+
+* * *
+
+### 
+
+​
+
+output_refs
+
+• `Optional` **output_refs** : `null` | `string`[] Output Refs
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:192](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L192)
+
+* * *
+
+### 
+
+​
+
+parent_ids
+
+• `Optional` **parent_ids** : `null` | `string`[] Parent Ids
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:194](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L194)
+
+* * *
+
+### 
+
+​
+
+trace_ids
+
+• `Optional` **trace_ids** : `null` | `string`[] Trace Ids
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:196](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L196)
+
+* * *
+
+### 
+
+​
+
+trace_roots_only
+
+• `Optional` **trace_roots_only** : `null` | `boolean` Trace Roots Only
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:200](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L200)
+
+* * *
+
+### 
+
+​
+
+wb_run_ids
+
+• `Optional` **wb_run_ids** : `null` | `string`[] Wb Run Ids
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:204](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L204)
+
+* * *
+
+### 
+
+​
+
+wb_user_ids
+
+• `Optional` **wb_user_ids** : `null` | `string`[] Wb User Ids
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:202](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L202)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/callsfilter.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/callsfilter)
+
+[Interface: CallSchemaPrevious](/weave/reference/typescript-sdk/interfaces/callschema)[Interface: GetCallsOptionsNext](/weave/reference/typescript-sdk/interfaces/getcallsoptions)
+
+⌘I

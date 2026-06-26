@@ -1,0 +1,71 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/service/server-info
+---
+
+Server Info
+    
+    
+    curl --request GET \
+      --url https://api.example.com/server_info
+    
+    
+    {
+      "min_required_weave_python_version": "<string>",
+      "trace_server_version": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Service](/weave/reference/service-api/service/read-root)
+
+# Server Info
+
+GET
+
+/
+
+server_info
+
+Server Info
+    
+    
+    curl --request GET \
+      --url https://api.example.com/server_info
+    
+    
+    {
+      "min_required_weave_python_version": "<string>",
+      "trace_server_version": "<string>"
+    }
+
+#### Response
+
+200 - application/json
+
+Successful Response
+
+​
+
+min_required_weave_python_version
+
+string
+
+required
+
+​
+
+trace_server_version
+
+string
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/service/server-info.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/service/server-info)
+
+[Get Caller LocationPrevious](/weave/reference/service-api/service/get-caller-location)[Projects InfoNext](/weave/reference/service-api/service/projects-info)
+
+⌘I

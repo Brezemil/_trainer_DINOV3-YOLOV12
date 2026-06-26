@@ -1,0 +1,34 @@
+---
+source_url: https://docs.wandb.ai/platform/hosting/hosting-options/dedicated-cloud/export-data
+---
+
+[Platform Details](/platform/app/settings-page)
+
+[Deployment Options](/platform/hosting)
+
+[Dedicated Cloud](/platform/hosting/hosting-options/dedicated-cloud)
+
+# Export data from Dedicated Cloud
+
+Export runs, metrics, artifacts, and reports from a W&B Dedicated Cloud instance using the Python SDK API.
+
+Export the data managed in your W&B Dedicated Cloud instance, such as runs, metrics, artifacts, and reports, when you need a portable copy for backup, migration, or external analysis. To extract this data, use the W&B SDK API with the [Import and Export API](/models/ref/python/public-api). The following table covers some key export use cases.
+
+Purpose| Documentation  
+---|---  
+Export project metadata| [Projects API](/models/ref/python/public-api/projects)  
+Export runs in a project| [Runs API](/models/ref/python/public-api/runs)  
+Export reports| [Report and Workspace API](/models/reports/clone-and-export-reports)  
+Export artifacts| [Explore artifact graphs](/models/artifacts/explore-and-traverse-an-artifact-graph), [Download and use artifacts](/models/artifacts/download-and-use-an-artifact#download-and-use-an-artifact-stored-on-wb)  
+  
+If you manage artifacts stored in the Dedicated Cloud with [Secure Storage Connector](/platform/app/settings-page/teams#secure-storage-connector), you might not need to export the artifacts using the W&B SDK API.
+
+Using the W&B SDK API to export all of your data can be slow if you have many runs, artifacts, and similar resources. W&B recommends running the export process in appropriately sized batches to avoid overwhelming your Dedicated Cloud instance.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/hosting/hosting-options/dedicated-cloud/export-data.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/hosting/hosting-options/dedicated-cloud/export-data)
+
+[Supported Dedicated Cloud regionsPrevious](/platform/hosting/hosting-options/dedicated-cloud/regions)[W&B Self-Managed deployment overviewNext](/platform/hosting/hosting-options/self-managed)
+
+⌘I

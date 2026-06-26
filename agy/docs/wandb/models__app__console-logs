@@ -1,0 +1,175 @@
+---
+source_url: https://docs.wandb.ai/models/app/console-logs
+---
+
+[Guides](/models/track)
+
+[W&B App UI](/models/app/features/cascade-settings)
+
+# Console logs
+
+View and debug console log messages including info, warnings, and errors from your W&B experiment runs.
+
+When you run an experiment, you might notice messages printed to your console. W&B captures console logs and displays them in the W&B App. Use these messages to debug and monitor the behavior of your experiment. The following sections describe how to view, configure, search, filter, download, and copy console logs for your runs.
+
+## 
+
+​
+
+View console logs
+
+Access console logs for a run in the W&B App to inspect messages produced during the run.
+
+  1. Navigate to your project in the W&B App.
+  2. Select a run within the **Runs** table.
+  3. Click the **Logs** tab in the project sidebar.
+
+
+
+W&B stores a maximum of 100,000 lines of your logs for a run. In the W&B App, a maximum of 10,000 lines of your logs display at once. To view all stored lines, scroll through the logs to display older lines.
+
+## 
+
+​
+
+Types of console logs
+
+W&B captures three types of console logs and adds a prefix to indicate each log’s severity. The prefix helps you scan logs and identify the messages most relevant to debugging. The following table summarizes each type, ordered from most to least severe.
+
+Severity| Prefix| Description| Example  
+---|---|---|---  
+Error| `ERROR`| Serious issues that might prevent the run from completing successfully.| `ERROR Failed to save notebook.`  
+Warning| `WARNING`| Potential issues that don’t stop execution.| `WARNING Found .wandb file, not streaming tensorboard metrics.`  
+Info| `wandb:`| Updates about the run’s progress and status.| `wandb: Starting Run: abc123`  
+  
+## 
+
+​
+
+Console log settings
+
+To control which types of console output W&B captures and displays, pass a `wandb.Settings` object to `wandb.init()` when you initialize a run. The relevant parameters are `show_errors`, `show_warnings`, `show_info`, and `silent`. For details on each parameter and its default value, see the [`wandb.Settings` reference](/models/ref/python/experiments/settings). The following example shows how to configure these settings:
+    
+    
+    import wandb
+    
+    settings = wandb.Settings(
+        show_errors=True,  # Show error messages in the W&B App
+        silent=False,      # Disable all W&B console output
+        show_warnings=True # Show warning messages in the W&B App
+    )
+    
+    with wandb.init(settings=settings) as run:
+        # Your training code here
+        run.log({"accuracy": 0.95})
+    
+
+## 
+
+​
+
+Custom logging
+
+If you already have your own logging setup, you can continue to use it alongside W&B. W&B captures console logs from your application, but it doesn’t interfere with your own logging setup. You can use Python’s built-in `print()` function or the `logging` module to log messages.
+    
+    
+    import wandb
+    
+    with wandb.init(project="my-project") as run:
+        for i in range(100, 1000, 100):
+            # Logs to W&B and prints to console
+            run.log({"epoch": i, "loss": 0.1 * i})
+            print(f"epoch: {i} loss: {0.1 * i}")
+    
+
+The console logs look similar to the following:
+    
+    
+    1 epoch:  100 loss: 1.3191105127334595
+    2 epoch:  200 loss: 0.8664389848709106
+    3 epoch:  300 loss: 0.6157898902893066
+    4 epoch:  400 loss: 0.4961796700954437
+    5 epoch:  500 loss: 0.42592573165893555
+    6 epoch:  600 loss: 0.3771176040172577
+    7 epoch:  700 loss: 0.3393910825252533
+    8 epoch:  800 loss: 0.3082585036754608
+    9 epoch:  900 loss: 0.28154927492141724
+    
+
+## 
+
+​
+
+Timestamps
+
+W&B automatically adds timestamps to each console log entry. This lets you track when each log message was generated. To show or hide timestamps in the console logs, select the **Timestamp visible** drop-down list on the console logs page.
+
+## 
+
+​
+
+Search console logs
+
+To quickly locate relevant entries, use the search bar on the console logs page to filter logs by keywords. You can search for specific terms, labels, or error messages.
+
+## 
+
+​
+
+Filter with custom labels
+
+Parameters prefixed by `x_` (such as `x_label`) are in public preview. Create a [GitHub issue in the W&B repository](https://github.com/wandb/wandb) to provide feedback.
+
+You can filter console logs based on the labels you pass as arguments for `x_label` in `wandb.Settings`. Enter the label in the search bar on the console logs page.
+    
+    
+    import wandb
+    
+    # Initialize a run in the primary node
+    with wandb.init(
+        entity="[ENTITY-NAME]",
+        project="[PROJECT-NAME]",
+        settings=wandb.Settings(
+            x_label="[CUSTOM-LABEL]"  # (Optional) Custom label for filtering logs
+        )
+    ) as run:
+        # Your code here
+    
+
+## 
+
+​
+
+Download console logs
+
+To save logs locally for offline analysis or sharing, download console logs for a run in the W&B App:
+
+  1. Navigate to your project in the W&B App.
+  2. Select a run within the **Runs** table.
+  3. Click the **Logs** tab in the project sidebar.
+  4. Click the download button on the console logs page.
+
+
+
+## 
+
+​
+
+Copy console logs
+
+To paste logs into another tool or message, copy console logs for a run in the W&B App:
+
+  1. Navigate to your project in the W&B App.
+  2. Select a run within the **Runs** table.
+  3. Click the **Logs** tab in the project sidebar.
+  4. Click the copy button on the console logs page.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/app/console-logs.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/app/console-logs)
+
+[Tutorial: Use custom chartsPrevious](/models/app/features/custom-charts/walkthrough)[Keyboard shortcutsNext](/models/app/keyboard-shortcuts)
+
+⌘I

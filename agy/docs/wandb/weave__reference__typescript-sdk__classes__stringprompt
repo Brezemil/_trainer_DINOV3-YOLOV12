@@ -1,0 +1,362 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/stringprompt
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Classes](/weave/reference/typescript-sdk/classes/dataset)
+
+# Class: StringPrompt
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / StringPrompt
+
+## 
+
+​
+
+Hierarchy
+
+  * `Prompt` ↳ `StringPrompt`
+
+
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Constructors
+
+  * [constructor](/weave/reference/typescript-sdk/classes/stringprompt#constructor)
+
+
+
+### 
+
+​
+
+Properties
+
+  * [__savedRef](/weave/reference/typescript-sdk/classes/stringprompt#__savedref)
+  * [content](/weave/reference/typescript-sdk/classes/stringprompt#content)
+
+
+
+### 
+
+​
+
+Accessors
+
+  * [description](/weave/reference/typescript-sdk/classes/stringprompt#description)
+  * [name](/weave/reference/typescript-sdk/classes/stringprompt#name)
+
+
+
+### 
+
+​
+
+Methods
+
+  * [format](/weave/reference/typescript-sdk/classes/stringprompt#format)
+  * [saveAttrs](/weave/reference/typescript-sdk/classes/stringprompt#saveattrs)
+  * [get](/weave/reference/typescript-sdk/classes/stringprompt#get)
+
+
+
+## 
+
+​
+
+Constructors
+
+### 
+
+​
+
+constructor
+
+• **new StringPrompt**(`parameters`): [`StringPrompt`](/weave/reference/typescript-sdk/classes/stringprompt)
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`parameters`| `StringPromptParameters`  
+  
+#### 
+
+​
+
+Returns
+
+[`StringPrompt`](/weave/reference/typescript-sdk/classes/stringprompt)
+
+#### 
+
+​
+
+Overrides
+
+Prompt.constructor
+
+#### 
+
+​
+
+Defined in
+
+[prompt.ts:17](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/prompt.ts#L17)
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+__savedRef
+
+• `Optional` **__savedRef** : [`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref) | `Promise`<[`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref)>
+
+#### 
+
+​
+
+Inherited from
+
+Prompt.__savedRef
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:73](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L73)
+
+* * *
+
+### 
+
+​
+
+content
+
+• **content** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[prompt.ts:15](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/prompt.ts#L15)
+
+## 
+
+​
+
+Accessors
+
+### 
+
+​
+
+description
+
+• `get` **description**(): `undefined` | `string`
+
+#### 
+
+​
+
+Returns
+
+`undefined` | `string`
+
+#### 
+
+​
+
+Inherited from
+
+Prompt.description
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:100](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L100)
+
+* * *
+
+### 
+
+​
+
+name
+
+• `get` **name**(): `string`
+
+#### 
+
+​
+
+Returns
+
+`string`
+
+#### 
+
+​
+
+Inherited from
+
+Prompt.name
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:96](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L96)
+
+## 
+
+​
+
+Methods
+
+### 
+
+​
+
+format
+
+▸ **format**(`values?`): `string`
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`values`| `Record`<`string`, `any`>  
+  
+#### 
+
+​
+
+Returns
+
+`string`
+
+#### 
+
+​
+
+Defined in
+
+[prompt.ts:22](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/prompt.ts#L22)
+
+* * *
+
+### 
+
+​
+
+saveAttrs
+
+▸ **saveAttrs**(): `Object`
+
+#### 
+
+​
+
+Returns
+
+`Object`
+
+#### 
+
+​
+
+Inherited from
+
+Prompt.saveAttrs
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:77](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L77)
+
+* * *
+
+### 
+
+​
+
+get
+
+▸ **get**(`client`, `uri`): `Promise`<[`StringPrompt`](/weave/reference/typescript-sdk/classes/stringprompt)>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`client`| [`WeaveClient`](/weave/reference/typescript-sdk/classes/weaveclient)  
+`uri`| `string`  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<[`StringPrompt`](/weave/reference/typescript-sdk/classes/stringprompt)>
+
+#### 
+
+​
+
+Defined in
+
+[prompt.ts:26](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/prompt.ts#L26)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/classes/stringprompt.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/classes/stringprompt)
+
+[Class: SessionPrevious](/weave/reference/typescript-sdk/classes/session)[Class: SubAgentNext](/weave/reference/typescript-sdk/classes/subagent)
+
+⌘I

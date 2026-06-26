@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/tables
+---
+
+# Tables
+
+## How do I add Plotly or Bokeh Charts into Tables?
+
+Direct integration of Plotly or Bokeh figures into tables isn’t supported. Instead, export the figures to HTML and inclu …
+
+## How do I insert a table?
+
+Tables are a Markdown feature without a direct what you see is what you get (WYSIWYG) equivalent. To add a table, insert …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/tables.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/tables)
+
+[SweepsPrevious](/support/models/tags/sweeps)[Team ManagementNext](/support/models/tags/team-management)
+
+⌘I

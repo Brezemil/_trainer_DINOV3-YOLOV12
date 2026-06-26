@@ -1,0 +1,69 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/user
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# user
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`user-username`
+
+Returns the username of the [user](/models/ref/query-panel/user)
+
+Argument| Description  
+---|---  
+`user`| A [user](/models/ref/query-panel/user)  
+  
+#### 
+
+​
+
+Return Value
+
+The username of the [user](/models/ref/query-panel/user)
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`user-username`
+
+Returns the username of the [user](/models/ref/query-panel/user)
+
+Argument| Description  
+---|---  
+`user`| A [user](/models/ref/query-panel/user)  
+  
+#### 
+
+​
+
+Return Value
+
+The username of the [user](/models/ref/query-panel/user)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/user.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/user)
+
+[tablePrevious](/models/ref/query-panel/table)[video-fileNext](/models/ref/query-panel/video-file)
+
+⌘I

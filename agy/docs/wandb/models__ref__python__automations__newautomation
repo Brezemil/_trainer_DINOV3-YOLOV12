@@ -1,0 +1,65 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/automations/newautomation
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Automations](/models/ref/python/automations)
+
+# NewAutomation
+
+## 
+
+​
+
+`class` `NewAutomation`
+
+A new automation to be created.
+
+### 
+
+​
+
+`method` `NewAutomation.__init__`
+    
+    
+    __init__(
+        name: 'str | None' = None,
+        description: 'str | None' = None,
+        enabled: 'bool | None' = None,
+        event: 'Annotated | None' = None,
+        action: 'Annotated | None' = None
+    ) → None
+    
+
+**Args:**
+
+  * `name` (str | None): The name of this automation.
+  * `description` (str | None): An optional description of this automation.
+  * `enabled` (bool | None): Whether this automation is enabled. Only enabled automations will trigger.
+  * `event` (Optional[Annotated]): The event that will trigger this automation.
+  * `action` (Optional[Annotated]): The action that will execute when this automation is triggered.
+
+**Returns:** An `NewAutomation` object.
+
+### 
+
+​
+
+`property` `NewAutomation.scope`
+
+The scope in which the triggering event must occur. **Returns:**
+
+  * `AutomationScope | None`: The scope property value.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/automations/newautomation.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/automations/newautomation)
+
+[MetricThresholdFilterPrevious](/models/ref/python/automations/metricthresholdfilter)[OnAddArtifactAliasNext](/models/ref/python/automations/onaddartifactalias)
+
+⌘I

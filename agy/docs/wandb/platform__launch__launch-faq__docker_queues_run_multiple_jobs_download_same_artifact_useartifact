@@ -1,0 +1,17 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/docker_queues_run_multiple_jobs_download_same_artifact_useartifact
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# When multiple jobs in a Docker queue download the same artifact, is any caching used, or is it re-downloaded every run?
+
+Launch jobs share no cache. Each launch job runs independently. To share a cache, configure the queue or agent to mount one with Docker arguments in the queue configuration. For specific use cases, you can also mount the W&B artifacts cache as a persistent volume.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/docker_queues_run_multiple_jobs_download_same_artifact_useartifact.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/docker_queues_run_multiple_jobs_download_same_artifact_useartifact)
+
+[How do I control who can push to a queue?Previous](/platform/launch/launch-faq/control_push_queue)[Can I specify a Dockerfile and let W&B build a Docker image for me?Next](/platform/launch/launch-faq/dockerfile_let_wb_build_docker_image_me)
+
+⌘I

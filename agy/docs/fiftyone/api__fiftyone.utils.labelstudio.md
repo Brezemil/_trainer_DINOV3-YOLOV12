@@ -1,0 +1,1869 @@
+---
+source_url: https://docs.voxel51.com/api/fiftyone.utils.labelstudio.html
+---
+
+# fiftyone.utils.labelstudio#
+
+Utilities for working with annotations in [Label Studio](https://labelstud.io).
+
+Copyright 2017-2026, Voxel51, Inc.
+
+[voxel51.com](https://voxel51.com/)
+
+  
+
+
+**Classes:**
+
+`LabelStudioBackendConfig`(name,Â label_schema) | Class for configuring `LabelStudioBackend` instances.  
+---|---  
+`LabelStudioBackend`(*args,Â **kwargs) | Class for interacting with the Label Studio annotation backend.  
+`LabelStudioAnnotationAPI`(url,Â api_key) | A class to upload tasks and predictions to and fetch annotations from Label Studio.  
+`LabelStudioAnnotationResults`(samples,Â ...[,Â ...]) | Class that stores all relevant information needed to monitor the progress of an annotation run sent to Label Studio and download the results.  
+  
+**Functions:**
+
+`generate_labeling_config`(label_schema,Â media) | Generates a labeling config for a Label Studio project.  
+---|---  
+`import_label_studio_annotation`(result) | Imports an annotation from Label Studio.  
+`export_label_to_label_studio`(label[,Â ...]) | Exports a label to the Label Studio format.  
+  
+class fiftyone.utils.labelstudio.LabelStudioBackendConfig(_name_ , _label_schema_ , _media_field ='filepath'_, _url =None_, _api_key =None_, _project_name =None_, _** kwargs_)#
+    
+
+Bases: [`AnnotationBackendConfig`](api__fiftyone.utils.annotations.md#fiftyone.utils.annotations.AnnotationBackendConfig "fiftyone.utils.annotations.AnnotationBackendConfig")
+
+Class for configuring `LabelStudioBackend` instances.
+
+Parameters:
+    
+
+  * **name** â the name of the backend
+
+  * **label_schema** â a dictionary containing the description of label fields, classes and attribute to annotate
+
+  * **media_field** (_"filepath"_) â string field name containing the paths to media files on disk to upload
+
+  * **url** (_None_) â the URL of the Label Studio server
+
+  * **api_key** (_None_) â the API key to use for authentication
+
+  * **project_name** (_None_) â the name of the project to use on the Label Studio server
+
+
+
+
+**Attributes:**
+
+`api_key` |   
+---|---  
+`cls` | The fully-qualified name of this `BaseRunConfig` class.  
+`method` | The name of the annotation backend.  
+`run_cls` | The `BaseRun` class associated with this config.  
+`type` | The type of run.  
+  
+**Methods:**
+
+`load_credentials`([url,Â api_key]) | Loads any necessary credentials from the given keyword arguments or the relevant FiftyOne config.  
+---|---  
+`attributes`() | Returns the list of class attributes that will be serialized by `serialize()`.  
+`base_config_cls`(type) | Returns the config class for the given run type.  
+`build`() | Builds the `BaseRun` instance associated with this config.  
+`builder`() | Returns a ConfigBuilder instance for this class.  
+`copy`() | Returns a deep copy of the object.  
+`custom_attributes`([dynamic,Â private]) | Returns a customizable list of class attributes.  
+`default`() | Returns the default config instance.  
+`from_dict`(d) | Constructs a `BaseRunConfig` from a serialized JSON dict representation of it.  
+`from_json`(path,Â *args,Â **kwargs) | Constructs a Serializable object from a JSON file.  
+`from_kwargs`(**kwargs) | Constructs a Config object from keyword arguments.  
+`from_str`(s,Â *args,Â **kwargs) | Constructs a Serializable object from a JSON string.  
+`get_class_name`() | Returns the fully-qualified class name string of this object.  
+`load_default`() | Loads the default config instance from file.  
+`parse_array`(d,Â key[,Â default]) | Parses a raw array attribute.  
+`parse_bool`(d,Â key[,Â default]) | Parses a boolean value.  
+`parse_categorical`(d,Â key,Â choices[,Â default]) | Parses a categorical JSON field, which must take a value from among the given choices.  
+`parse_dict`(d,Â key[,Â default]) | Parses a dictionary attribute.  
+`parse_int`(d,Â key[,Â default]) | Parses an integer attribute.  
+`parse_mutually_exclusive_fields`(fields) | Parses a mutually exclusive dictionary of pre-parsed fields, which must contain exactly one field with a truthy value.  
+`parse_number`(d,Â key[,Â default]) | Parses a number attribute.  
+`parse_object`(d,Â key,Â cls[,Â default]) | Parses an object attribute.  
+`parse_object_array`(d,Â key,Â cls[,Â default]) | Parses an array of objects.  
+`parse_object_dict`(d,Â key,Â cls[,Â default]) | Parses a dictionary whose values are objects.  
+`parse_path`(d,Â key[,Â default]) | Parses a path attribute.  
+`parse_raw`(d,Â key[,Â default]) | Parses a raw (arbitrary) JSON field.  
+`parse_string`(d,Â key[,Â default]) | Parses a string attribute.  
+`serialize`(*args,Â **kwargs) | Serializes the object into a dictionary.  
+`to_str`([pretty_print]) | Returns a string representation of this object.  
+`validate_all_or_nothing_fields`(fields) | Validates a dictionary of pre-parsed fields checking that either all or none of the fields have a truthy value.  
+`write_json`(path[,Â pretty_print]) | Serializes the object and writes it to disk.  
+  
+property api_key#
+    
+
+load_credentials(_url =None_, _api_key =None_)#
+    
+
+Loads any necessary credentials from the given keyword arguments or the relevant FiftyOne config.
+
+Parameters:
+    
+
+****kwargs** â subclass-specific credentials
+
+attributes()#
+    
+
+Returns the list of class attributes that will be serialized by `serialize()`.
+
+Returns:
+    
+
+a list of attributes
+
+static base_config_cls(_type_)#
+    
+
+Returns the config class for the given run type.
+
+Parameters:
+    
+
+**type** â a `BaseRunConfig.type`
+
+Returns:
+    
+
+a `BaseRunConfig` subclass
+
+build()#
+    
+
+Builds the `BaseRun` instance associated with this config.
+
+Returns:
+    
+
+a `BaseRun` instance
+
+classmethod builder()#
+    
+
+Returns a ConfigBuilder instance for this class.
+
+property cls#
+    
+
+The fully-qualified name of this `BaseRunConfig` class.
+
+copy()#
+    
+
+Returns a deep copy of the object.
+
+Returns:
+    
+
+a Serializable instance
+
+custom_attributes(_dynamic =False_, _private =False_)#
+    
+
+Returns a customizable list of class attributes.
+
+By default, all attributes in vars(self) are returned, minus private attributes (those starting with â_â).
+
+Parameters:
+    
+
+  * **dynamic** â whether to include dynamic properties, e.g., those defined by getter/setter methods or the @property decorator. By default, this is False
+
+  * **private** â whether to include private properties, i.e., those starting with â_â. By default, this is False
+
+
+
+Returns:
+    
+
+a list of class attributes
+
+classmethod default()#
+    
+
+Returns the default config instance.
+
+By default, this method instantiates the class from an empty dictionary, which will only succeed if all attributes are optional. Otherwise, subclasses should override this method to provide the desired default configuration.
+
+classmethod from_dict(_d_)#
+    
+
+Constructs a `BaseRunConfig` from a serialized JSON dict representation of it.
+
+Parameters:
+    
+
+**d** â a JSON dict
+
+Returns:
+    
+
+a `BaseRunConfig`
+
+classmethod from_json(_path_ , _* args_, _** kwargs_)#
+    
+
+Constructs a Serializable object from a JSON file.
+
+Subclasses may override this method, but, by default, this method simply reads the JSON and calls from_dict(), which subclasses must implement.
+
+Parameters:
+    
+
+  * **path** â the path to the JSON file on disk
+
+  * ***args** â optional positional arguments for self.from_dict()
+
+  * ****kwargs** â optional keyword arguments for self.from_dict()
+
+
+
+Returns:
+    
+
+an instance of the Serializable class
+
+classmethod from_kwargs(_** kwargs_)#
+    
+
+Constructs a Config object from keyword arguments.
+
+Parameters:
+    
+
+****kwargs** â keyword arguments that define the fields expected by cls
+
+Returns:
+    
+
+an instance of cls
+
+classmethod from_str(_s_ , _* args_, _** kwargs_)#
+    
+
+Constructs a Serializable object from a JSON string.
+
+Subclasses may override this method, but, by default, this method simply parses the string and calls from_dict(), which subclasses must implement.
+
+Parameters:
+    
+
+  * **s** â a JSON string representation of a Serializable object
+
+  * ***args** â optional positional arguments for self.from_dict()
+
+  * ****kwargs** â optional keyword arguments for self.from_dict()
+
+
+
+Returns:
+    
+
+an instance of the Serializable class
+
+classmethod get_class_name()#
+    
+
+Returns the fully-qualified class name string of this object.
+
+classmethod load_default()#
+    
+
+Loads the default config instance from file.
+
+Subclasses must implement this method if they intend to support default instances.
+
+property method#
+    
+
+The name of the annotation backend.
+
+static parse_array(_d_ , _key_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses a raw array attribute.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **default** â a default list to return if key is not present
+
+
+
+Returns:
+    
+
+a list of raw (untouched) values
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the field value was the wrong type or no default value was provided and the key was not found in the dictionary
+
+static parse_bool(_d_ , _key_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses a boolean value.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **default** â a default bool to return if key is not present
+
+
+
+Returns:
+    
+
+True/False
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the field value was the wrong type or no default value was provided and the key was not found in the dictionary
+
+static parse_categorical(_d_ , _key_ , _choices_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses a categorical JSON field, which must take a value from among the given choices.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **choices** â either an iterable of possible values or an enum-like class whose attributes define the possible values
+
+  * **default** â a default value to return if key is not present
+
+
+
+Returns:
+    
+
+the raw (untouched) value of the given field, which is equal to a value from choices
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the key was present in the dictionary but its value was not an allowed choice, or if no default value was provided and the key was not found in the dictionary
+
+static parse_dict(_d_ , _key_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses a dictionary attribute.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **default** â a default dict to return if key is not present
+
+
+
+Returns:
+    
+
+a dictionary
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the field value was the wrong type or no default value was provided and the key was not found in the dictionary
+
+static parse_int(_d_ , _key_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses an integer attribute.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **default** â a default integer value to return if key is not present
+
+
+
+Returns:
+    
+
+an int
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the field value was the wrong type or no default value was provided and the key was not found in the dictionary
+
+static parse_mutually_exclusive_fields(_fields_)#
+    
+
+Parses a mutually exclusive dictionary of pre-parsed fields, which must contain exactly one field with a truthy value.
+
+Parameters:
+    
+
+**fields** â a dictionary of pre-parsed fields
+
+Returns:
+    
+
+the (field, value) that was set
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if zero or more than one truthy value was found
+
+static parse_number(_d_ , _key_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses a number attribute.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **default** â a default numeric value to return if key is not present
+
+
+
+Returns:
+    
+
+a number (e.g. int, float)
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the field value was the wrong type or no default value was provided and the key was not found in the dictionary
+
+static parse_object(_d_ , _key_ , _cls_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses an object attribute.
+
+The value of d[key] can be either an instance of cls or a serialized dict from an instance of cls.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **cls** â the class of d[key]
+
+  * **default** â a default cls instance to return if key is not present
+
+
+
+Returns:
+    
+
+an instance of cls
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the field value was the wrong type or no default value was provided and the key was not found in the dictionary
+
+static parse_object_array(_d_ , _key_ , _cls_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses an array of objects.
+
+The values in d[key] can be either instances of cls or serialized dicts from instances of cls.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **cls** â the class of the elements of list d[key]
+
+  * **default** â the default list to return if key is not present
+
+
+
+Returns:
+    
+
+a list of cls instances
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the field value was the wrong type or no default value was provided and the key was not found in the dictionary
+
+static parse_object_dict(_d_ , _key_ , _cls_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses a dictionary whose values are objects.
+
+The values in d[key] can be either instances of cls or serialized dicts from instances of cls.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **cls** â the class of the values of dictionary d[key]
+
+  * **default** â the default dict of cls instances to return if key is not present
+
+
+
+Returns:
+    
+
+a dictionary whose values are cls instances
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the field value was the wrong type or no default value was provided and the key was not found in the dictionary
+
+static parse_path(_d_ , _key_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses a path attribute.
+
+The path is converted to an absolute path if necessary via `os.path.abspath(os.path.expanduser(value))`.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **default** â a default string to return if key is not present
+
+
+
+Returns:
+    
+
+a path string
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the field value was the wrong type or no default value was provided and the key was not found in the dictionary
+
+static parse_raw(_d_ , _key_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses a raw (arbitrary) JSON field.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **default** â a default value to return if key is not present
+
+
+
+Returns:
+    
+
+the raw (untouched) value of the given field
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if no default value was provided and the key was not found in the dictionary
+
+static parse_string(_d_ , _key_ , _default =<eta.core.config.NoDefault object>_)#
+    
+
+Parses a string attribute.
+
+Parameters:
+    
+
+  * **d** â a JSON dictionary
+
+  * **key** â the key to parse
+
+  * **default** â a default string to return if key is not present
+
+
+
+Returns:
+    
+
+a string
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if the field value was the wrong type or no default value was provided and the key was not found in the dictionary
+
+property run_cls#
+    
+
+The `BaseRun` class associated with this config.
+
+serialize(_* args_, _** kwargs_)#
+    
+
+Serializes the object into a dictionary.
+
+Serialization is applied recursively to all attributes in the object, including element-wise serialization of lists and dictionary values.
+
+Parameters:
+    
+
+**reflective** â whether to include reflective attributes when serializing the object. By default, this is False
+
+Returns:
+    
+
+a JSON dictionary representation of the object
+
+to_str(_pretty_print =True_, _** kwargs_)#
+    
+
+Returns a string representation of this object.
+
+Parameters:
+    
+
+  * **pretty_print** â whether to render the JSON in human readable format with newlines and indentations. By default, this is True
+
+  * ****kwargs** â optional keyword arguments for self.serialize()
+
+
+
+Returns:
+    
+
+a string representation of the object
+
+property type#
+    
+
+The type of run.
+
+static validate_all_or_nothing_fields(_fields_)#
+    
+
+Validates a dictionary of pre-parsed fields checking that either all or none of the fields have a truthy value.
+
+Parameters:
+    
+
+**fields** â a dictionary of pre-parsed fields
+
+Raises:
+    
+
+[**ConfigError**](api__fiftyone.zoo.md#fiftyone.zoo.ConfigError "fiftyone.zoo.ConfigError") â if some values are truth and some are not
+
+write_json(_path_ , _pretty_print =False_, _** kwargs_)#
+    
+
+Serializes the object and writes it to disk.
+
+Parameters:
+    
+
+  * **path** â the output path
+
+  * **pretty_print** â whether to render the JSON in human readable format with newlines and indentations. By default, this is False
+
+  * ****kwargs** â optional keyword arguments for self.serialize()
+
+
+
+
+class fiftyone.utils.labelstudio.LabelStudioBackend(_* args_, _** kwargs_)#
+    
+
+Bases: [`AnnotationBackend`](api__fiftyone.utils.annotations.md#fiftyone.utils.annotations.AnnotationBackend "fiftyone.utils.annotations.AnnotationBackend")
+
+Class for interacting with the Label Studio annotation backend.
+
+**Attributes:**
+
+`supported_media_types` | The list of media types that this backend supports.  
+---|---  
+`supported_label_types` | The list of label types supported by the backend.  
+`supported_scalar_types` | The list of scalar field types supported by the backend.  
+`supported_attr_types` | The list of attribute types supported by the backend.  
+`supports_keyframes` | Whether this backend supports uploading only keyframes when editing existing video track annotations.  
+`supports_video_sample_fields` | Whether this backend supports annotating video labels at a sample-level.  
+`requires_label_schema` | Whether this backend requires a pre-defined label schema for its annotation runs.  
+`supports_clips_views` | Whether this backend supports annotating clips views.  
+  
+**Methods:**
+
+`upload_annotations`(samples,Â anno_key[,Â ...]) | Uploads the samples and relevant existing labels from the label schema to the annotation backend.  
+---|---  
+`download_annotations`(results) | Downloads the annotations from the annotation backend for the given results.  
+`cleanup`(samples,Â key) | Cleans up the results of the run with the given key from the collection.  
+`connect_to_api`() | Returns an API instance connected to the annotation backend.  
+`delete_run`(samples,Â key[,Â cleanup]) | Deletes the results associated with the given run key from the collection.  
+`delete_runs`(samples[,Â cleanup]) | Deletes all runs from the collection.  
+`ensure_requirements`() | Ensures that any necessary packages to execute this run are installed.  
+`ensure_usage_requirements`() | Ensures that any necessary packages to use existing results for this run are installed.  
+`from_config`(config) | Instantiates a Configurable class from a <cls>Config instance.  
+`from_dict`(d) | Instantiates a Configurable class from a <cls>Config dict.  
+`from_json`(json_path) | Instantiates a Configurable class from a <cls>Config JSON file.  
+`from_kwargs`(**kwargs) | Instantiates a Configurable class from keyword arguments defining the attributes of a <cls>Config.  
+`get_fields`(samples,Â anno_key) | Gets the fields that were involved in the given run.  
+`get_run_info`(samples,Â key) | Gets the `BaseRunInfo` for the given key on the collection.  
+`has_cached_run_results`(samples,Â key) | Determines whether `BaseRunResults` for the given key are cached on the collection.  
+`list_runs`(samples[,Â type,Â method]) | Returns the list of run keys on the given collection.  
+`load_run_results`(samples,Â key[,Â cache,Â ...]) | Loads the `BaseRunResults` for the given key on the collection.  
+`load_run_view`(samples,Â key[,Â select_fields]) | Loads the view on which the specified run was performed.  
+`parse`(class_name[,Â module_name]) | Parses a Configurable subclass name string.  
+`recommend_attr_tool`(name,Â value) | Recommends an attribute tool for an attribute with the given name and value.  
+`register_run`(samples,Â key[,Â overwrite,Â cleanup]) | Registers a run of this method under the given key on the given collection.  
+`rename`(samples,Â key,Â new_key) | Performs any necessary operations required to rename this run's key.  
+`requires_attr_values`(attr_type) | Determines whether the list of possible values are required for attributes of the given type.  
+`run_info_cls`() | The `BaseRunInfo` class associated with this class.  
+`save_run_info`(samples,Â run_info[,Â ...]) | Saves the run information on the collection.  
+`save_run_results`(samples,Â key,Â run_results) | Saves the run results on the collection.  
+`update_run_config`(samples,Â key,Â config) | Updates the `BaseRunConfig` for the given run on the collection.  
+`update_run_key`(samples,Â key,Â new_key) | Replaces the key for the given run with a new key.  
+`use_api`(api) | Registers an API instance to use for subsequent operations.  
+`validate`(config) | Validates that the given config is an instance of <cls>Config.  
+`validate_run`(samples,Â key[,Â overwrite]) | Validates that the collection can accept this run.  
+  
+property supported_media_types#
+    
+
+The list of media types that this backend supports.
+
+For example, CVAT supports `["image", "video"]`.
+
+property supported_label_types#
+    
+
+The list of label types supported by the backend.
+
+Backends may support any subset of the following label types:
+
+  * `"classification"`
+
+  * `"classifications"`
+
+  * `"detection"`
+
+  * `"detections"`
+
+  * `"instance"`
+
+  * `"instances"`
+
+  * `"polyline"`
+
+  * `"polylines"`
+
+  * `"polygon"`
+
+  * `"polygons"`
+
+  * `"keypoint"`
+
+  * `"keypoints"`
+
+  * `"segmentation"`
+
+  * `"scalar"`
+
+
+
+
+property supported_scalar_types#
+    
+
+The list of scalar field types supported by the backend.
+
+For example, CVAT supports the following types:
+
+  * [`fiftyone.core.fields.IntField`](api__fiftyone.core.fields.md#fiftyone.core.fields.IntField "fiftyone.core.fields.IntField")
+
+  * [`fiftyone.core.fields.FloatField`](api__fiftyone.core.fields.md#fiftyone.core.fields.FloatField "fiftyone.core.fields.FloatField")
+
+  * [`fiftyone.core.fields.StringField`](api__fiftyone.core.fields.md#fiftyone.core.fields.StringField "fiftyone.core.fields.StringField")
+
+  * [`fiftyone.core.fields.BooleanField`](api__fiftyone.core.fields.md#fiftyone.core.fields.BooleanField "fiftyone.core.fields.BooleanField")
+
+
+
+
+property supported_attr_types#
+    
+
+The list of attribute types supported by the backend.
+
+This list defines the valid string values for the `type` field of an attributes dict of the label schema provided to the backend.
+
+For example, CVAT supports `["text", "select", "radio", "checkbox"]`.
+
+property supports_keyframes#
+    
+
+Whether this backend supports uploading only keyframes when editing existing video track annotations.
+
+property supports_video_sample_fields#
+    
+
+Whether this backend supports annotating video labels at a sample-level.
+
+property requires_label_schema#
+    
+
+Whether this backend requires a pre-defined label schema for its annotation runs.
+
+upload_annotations(_samples_ , _anno_key_ , _launch_editor =False_)#
+    
+
+Uploads the samples and relevant existing labels from the label schema to the annotation backend.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **anno_key** â the annotation key
+
+  * **launch_editor** (_False_) â whether to launch the annotation backendâs editor after uploading the samples
+
+
+
+Returns:
+    
+
+an `AnnotationResults`
+
+download_annotations(_results_)#
+    
+
+Downloads the annotations from the annotation backend for the given results.
+
+The returned labels should be represented as either scalar values or [`fiftyone.core.labels.Label`](https://docs.voxel51.com/api/fiftyone.core.labels.html#fiftyone.core.labels.Label "fiftyone.core.labels.Label") instances.
+
+For image datasets, the return dictionary should have the following nested structure:
+    
+    
+    # Scalar fields
+    results[label_type][sample_id] = scalar
+    
+    # Label fields
+    results[label_type][sample_id][label_id] = label
+    
+
+For video datasets, the returned labels dictionary should have the following nested structure:
+    
+    
+    # Scalar fields
+    results[label_type][sample_id][frame_id] = scalar
+    
+    # Label fields
+    results[label_type][sample_id][frame_id][label_id] = label
+    
+
+The valid values for `label_type` are:
+
+  * âclassificationsâ: single or multilabel classifications
+
+  * âdetectionsâ: detections or instance segmentations
+
+  * âpolylinesâ: polygons or polylines
+
+  * âsegmentationâ: semantic segmentations
+
+  * âscalarâ: scalar values
+
+
+
+
+Parameters:
+    
+
+**results** â an `AnnotationResults`
+
+Returns:
+    
+
+the labels results dict
+
+cleanup(_samples_ , _key_)#
+    
+
+Cleans up the results of the run with the given key from the collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+
+
+
+connect_to_api()#
+    
+
+Returns an API instance connected to the annotation backend.
+
+Existing API instances are reused, if available.
+
+Some annotation backends may not expose this functionality.
+
+Returns:
+    
+
+an `AnnotationAPI`, or `None` if the backend does not expose an API
+
+classmethod delete_run(_samples_ , _key_ , _cleanup =True_)#
+    
+
+Deletes the results associated with the given run key from the collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+  * **cleanup** (_True_) â whether to execute the runâs `BaseRun.cleanup()` method
+
+
+
+
+classmethod delete_runs(_samples_ , _cleanup =True_)#
+    
+
+Deletes all runs from the collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **cleanup** (_True_) â whether to execute the runâs `BaseRun.cleanup()` methods
+
+
+
+
+ensure_requirements()#
+    
+
+Ensures that any necessary packages to execute this run are installed.
+
+Runs should respect `fiftyone.config.requirement_error_level` when handling errors.
+
+ensure_usage_requirements()#
+    
+
+Ensures that any necessary packages to use existing results for this run are installed.
+
+Runs should respect `fiftyone.config.requirement_error_level` when handling errors.
+
+classmethod from_config(_config_)#
+    
+
+Instantiates a Configurable class from a <cls>Config instance.
+
+classmethod from_dict(_d_)#
+    
+
+Instantiates a Configurable class from a <cls>Config dict.
+
+Parameters:
+    
+
+**d** â a dict to construct a <cls>Config
+
+Returns:
+    
+
+an instance of cls
+
+classmethod from_json(_json_path_)#
+    
+
+Instantiates a Configurable class from a <cls>Config JSON file.
+
+Parameters:
+    
+
+**json_path** â path to a JSON file for type <cls>Config
+
+Returns:
+    
+
+an instance of cls
+
+classmethod from_kwargs(_** kwargs_)#
+    
+
+Instantiates a Configurable class from keyword arguments defining the attributes of a <cls>Config.
+
+Parameters:
+    
+
+****kwargs** â keyword arguments that define the fields of a <cls>Config dict
+
+Returns:
+    
+
+an instance of cls
+
+get_fields(_samples_ , _anno_key_)#
+    
+
+Gets the fields that were involved in the given run.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+
+
+Returns:
+    
+
+a list of fields
+
+classmethod get_run_info(_samples_ , _key_)#
+    
+
+Gets the `BaseRunInfo` for the given key on the collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+
+
+Returns:
+    
+
+a `BaseRunInfo`
+
+classmethod has_cached_run_results(_samples_ , _key_)#
+    
+
+Determines whether `BaseRunResults` for the given key are cached on the collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+
+
+Returns:
+    
+
+True/False
+
+classmethod list_runs(_samples_ , _type =None_, _method =None_, _** kwargs_)#
+    
+
+Returns the list of run keys on the given collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **type** (_None_) â 
+
+a specific run type to match, which can be:
+
+    * a string [`fiftyone.core.runs.BaseRunConfig.type`](api__fiftyone.core.runs.md#fiftyone.core.runs.BaseRunConfig.type "fiftyone.core.runs.BaseRunConfig.type")
+
+    * a [`fiftyone.core.runs.BaseRun`](api__fiftyone.core.runs.md#fiftyone.core.runs.BaseRun "fiftyone.core.runs.BaseRun") class or its fully-qualified class name string
+
+  * **method** (_None_) â a specific [`fiftyone.core.runs.BaseRunConfig.method`](api__fiftyone.core.runs.md#fiftyone.core.runs.BaseRunConfig.method "fiftyone.core.runs.BaseRunConfig.method") string to match
+
+  * ****kwargs** â optional config parameters to match
+
+
+
+Returns:
+    
+
+a list of run keys
+
+classmethod load_run_results(_samples_ , _key_ , _cache =True_, _load_view =True_, _** kwargs_)#
+    
+
+Loads the `BaseRunResults` for the given key on the collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+  * **cache** (_True_) â whether to cache the results on the collection
+
+  * **load_view** (_True_) â whether to load the run view in the results (True) or the full dataset (False)
+
+  * ****kwargs** â keyword arguments for the runâs `BaseRunConfig.load_credentials()` method
+
+
+
+Returns:
+    
+
+a `BaseRunResults`, or None if the run did not save results
+
+classmethod load_run_view(_samples_ , _key_ , _select_fields =False_)#
+    
+
+Loads the view on which the specified run was performed.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+  * **select_fields** (_False_) â whether to exclude fields involved in other runs of the same type
+
+
+
+Returns:
+    
+
+a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+static parse(_class_name_ , _module_name =None_)#
+    
+
+Parses a Configurable subclass name string.
+
+Assumes both the Configurable class and the Config class are defined in the same module. The module containing the classes will be loaded if necessary.
+
+Parameters:
+    
+
+  * **class_name** â a string containing the name of the Configurable class, e.g. âClassNameâ, or a fully-qualified class name, e.g. âeta.core.config.ClassNameâ
+
+  * **module_name** â a string containing the fully-qualified module name, e.g. âeta.core.configâ, or None if class_name includes the module name. Set module_name = __name__ to load a class from the calling module
+
+
+
+Returns:
+    
+
+the Configurable class config_cls: the Config class associated with cls
+
+Return type:
+    
+
+[cls](api__fiftyone.brain.internal.core.elasticsearch.md#fiftyone.brain.internal.core.elasticsearch.ElasticsearchSimilarityConfig.cls "fiftyone.brain.internal.core.elasticsearch.ElasticsearchSimilarityConfig.cls")
+
+recommend_attr_tool(_name_ , _value_)#
+    
+
+Recommends an attribute tool for an attribute with the given name and value.
+
+For example, a backend may recommend a tool as follows for a boolean value:
+    
+    
+    {
+        "type": "radio",
+        "values": [False, True],
+    }
+    
+
+or a tool as follows for a generic value:
+    
+    
+    {"type": "text"}
+    
+
+Parameters:
+    
+
+  * **name** â the name of the attribute
+
+  * **value** â the attribute value, which may be `None`
+
+
+
+Returns:
+    
+
+an attribute type dict
+
+register_run(_samples_ , _key_ , _overwrite =True_, _cleanup =True_)#
+    
+
+Registers a run of this method under the given key on the given collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+  * **overwrite** (_True_) â whether to allow overwriting an existing run of the same type
+
+  * **cleanup** (_True_) â whether to execute an existing runâs `BaseRun.cleanup()` method when overwriting it
+
+
+
+
+rename(_samples_ , _key_ , _new_key_)#
+    
+
+Performs any necessary operations required to rename this runâs key.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+  * **new_key** â a new run key
+
+
+
+
+requires_attr_values(_attr_type_)#
+    
+
+Determines whether the list of possible values are required for attributes of the given type.
+
+Parameters:
+    
+
+**attr_type** â the attribute type string
+
+Returns:
+    
+
+True/False
+
+classmethod run_info_cls()#
+    
+
+The `BaseRunInfo` class associated with this class.
+
+classmethod save_run_info(_samples_ , _run_info_ , _overwrite =True_, _cleanup =True_)#
+    
+
+Saves the run information on the collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **run_info** â a `BaseRunInfo`
+
+  * **overwrite** (_True_) â whether to overwrite an existing run with the same key
+
+  * **cleanup** (_True_) â whether to execute an existing runâs `BaseRun.cleanup()` method when overwriting it
+
+
+
+
+classmethod save_run_results(_samples_ , _key_ , _run_results_ , _overwrite =True_, _cache =True_)#
+    
+
+Saves the run results on the collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+  * **run_results** â a `BaseRunResults`, or None
+
+  * **overwrite** (_True_) â whether to overwrite an existing result with the same key
+
+  * **cache** (_True_) â whether to cache the results on the collection
+
+
+
+
+property supports_clips_views#
+    
+
+Whether this backend supports annotating clips views.
+
+classmethod update_run_config(_samples_ , _key_ , _config_)#
+    
+
+Updates the `BaseRunConfig` for the given run on the collection.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+  * **config** â a `BaseRunConfig`
+
+
+
+
+classmethod update_run_key(_samples_ , _key_ , _new_key_)#
+    
+
+Replaces the key for the given run with a new key.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+  * **new_key** â a new run key
+
+
+
+
+use_api(_api_)#
+    
+
+Registers an API instance to use for subsequent operations.
+
+Parameters:
+    
+
+**api** â an `AnnotationAPI`
+
+classmethod validate(_config_)#
+    
+
+Validates that the given config is an instance of <cls>Config.
+
+Raises:
+    
+
+**ConfigurableError** â if config is not an instance of <cls>Config
+
+validate_run(_samples_ , _key_ , _overwrite =True_)#
+    
+
+Validates that the collection can accept this run.
+
+The run may be invalid if, for example, a run of a different type has already been run under the same key and thus overwriting it would cause ambiguity on how to cleanup the results.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **key** â a run key
+
+  * **overwrite** (_True_) â whether to allow overwriting an existing run of the same type
+
+
+
+Raises:
+    
+
+**ValueError** â if the run is invalid
+
+class fiftyone.utils.labelstudio.LabelStudioAnnotationAPI(_url_ , _api_key_)#
+    
+
+Bases: [`AnnotationAPI`](api__fiftyone.utils.annotations.md#fiftyone.utils.annotations.AnnotationAPI "fiftyone.utils.annotations.AnnotationAPI")
+
+A class to upload tasks and predictions to and fetch annotations from Label Studio.
+
+On initialization, the class will check if the server is reachable.
+
+**Methods:**
+
+`upload_samples`(samples,Â anno_key,Â backend) | Uploads the given samples to Label Studio according to the given backend's annotation and server configuration.  
+---|---  
+`download_annotations`(results) | Downloads the annotations from the Label Studio server for the given results instance and parses them into the appropriate FiftyOne types.  
+`upload_predictions`(project,Â tasks,Â ...) | Uploads the given predictions to an existing Label Studio project.  
+`delete_tasks`(task_ids) | Deletes the given tasks from Label Studio.  
+`delete_project`(project_id) | Deletes the project from Label Studio.  
+`close`() | Closes the API session.  
+  
+upload_samples(_samples_ , _anno_key_ , _backend_)#
+    
+
+Uploads the given samples to Label Studio according to the given backendâs annotation and server configuration.
+
+Parameters:
+    
+
+  * **samples** â a [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection")
+
+  * **anno_key** â the annotation key
+
+  * **backend** â a `LabelStudioBackend` to use to perform the upload
+
+
+
+Returns:
+    
+
+a `LabelStudioAnnotationResults`
+
+download_annotations(_results_)#
+    
+
+Downloads the annotations from the Label Studio server for the given results instance and parses them into the appropriate FiftyOne types.
+
+Parameters:
+    
+
+**results** â a `LabelStudioAnnotationResults`
+
+Returns:
+    
+
+the annotations dict
+
+upload_predictions(_project_ , _tasks_ , _sample_labels_ , _label_type_)#
+    
+
+Uploads the given predictions to an existing Label Studio project.
+
+Parameters:
+    
+
+  * **project** â a `label_studio_sdk.Project`
+
+  * **tasks** â a list of task dicts
+
+  * **sample_labels** â a list or list of lists of [`fiftyone.core.labels.Label`](https://docs.voxel51.com/api/fiftyone.core.labels.html#fiftyone.core.labels.Label "fiftyone.core.labels.Label") instances
+
+  * **label_type** â the label type string
+
+
+
+
+delete_tasks(_task_ids_)#
+    
+
+Deletes the given tasks from Label Studio.
+
+Parameters:
+    
+
+**task_ids** â list of task ids
+
+delete_project(_project_id_)#
+    
+
+Deletes the project from Label Studio.
+
+Parameters:
+    
+
+**project_id** â project id
+
+close()#
+    
+
+Closes the API session.
+
+class fiftyone.utils.labelstudio.LabelStudioAnnotationResults(_samples_ , _config_ , _anno_key_ , _id_map_ , _project_id_ , _uploaded_tasks_ , _backend =None_)#
+    
+
+Bases: [`AnnotationResults`](api__fiftyone.utils.annotations.md#fiftyone.utils.annotations.AnnotationResults "fiftyone.utils.annotations.AnnotationResults")
+
+Class that stores all relevant information needed to monitor the progress of an annotation run sent to Label Studio and download the results.
+
+**Methods:**
+
+`launch_editor`() | Open a Label Studio tab in browser.  
+---|---  
+`cleanup`() | Deletes all information for this run from the annotation backend.  
+`attributes`() | Returns the list of class attributes that will be serialized by `serialize()`.  
+`base_results_cls`(type) | Returns the results class for the given run type.  
+`connect_to_api`() | Returns an API instance connected to the annotation backend.  
+`copy`() | Returns a deep copy of the object.  
+`custom_attributes`([dynamic,Â private]) | Returns a customizable list of class attributes.  
+`from_dict`(d,Â samples,Â config,Â key) | Builds a `BaseRunResults` from a JSON dict representation of it.  
+`from_json`(path,Â *args,Â **kwargs) | Constructs a Serializable object from a JSON file.  
+`from_str`(s,Â *args,Â **kwargs) | Constructs a Serializable object from a JSON string.  
+`get_class_name`() | Returns the fully-qualified class name string of this object.  
+`save`() | Saves the results to the database.  
+`save_config`() | Saves these results config to the database.  
+`serialize`([reflective]) | Serializes the object into a dictionary.  
+`to_str`([pretty_print]) | Returns a string representation of this object.  
+`use_api`(api) | Registers an API instance to use for subsequent operations.  
+`write_json`(path[,Â pretty_print]) | Serializes the object and writes it to disk.  
+  
+**Attributes:**
+
+`backend` | The `BaseRun` for these results.  
+---|---  
+`cls` | The fully-qualified name of this `BaseRunResults` class.  
+`config` | The `BaseRunConfig` for these results.  
+`key` | The run key for these results.  
+`samples` | The [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection") associated with these results.  
+  
+launch_editor()#
+    
+
+Open a Label Studio tab in browser.
+
+cleanup()#
+    
+
+Deletes all information for this run from the annotation backend.
+
+attributes()#
+    
+
+Returns the list of class attributes that will be serialized by `serialize()`.
+
+Returns:
+    
+
+a list of attributes
+
+property backend#
+    
+
+The `BaseRun` for these results.
+
+static base_results_cls(_type_)#
+    
+
+Returns the results class for the given run type.
+
+Parameters:
+    
+
+**type** â a `BaseRunConfig.type`
+
+Returns:
+    
+
+a `BaseRunResults` subclass
+
+property cls#
+    
+
+The fully-qualified name of this `BaseRunResults` class.
+
+property config#
+    
+
+The `BaseRunConfig` for these results.
+
+connect_to_api()#
+    
+
+Returns an API instance connected to the annotation backend.
+
+Existing API instances are reused, if available.
+
+Some annotation backends may not expose this functionality.
+
+Returns:
+    
+
+an `AnnotationAPI`, or `None` if the backend does not expose an API
+
+copy()#
+    
+
+Returns a deep copy of the object.
+
+Returns:
+    
+
+a Serializable instance
+
+custom_attributes(_dynamic =False_, _private =False_)#
+    
+
+Returns a customizable list of class attributes.
+
+By default, all attributes in vars(self) are returned, minus private attributes (those starting with â_â).
+
+Parameters:
+    
+
+  * **dynamic** â whether to include dynamic properties, e.g., those defined by getter/setter methods or the @property decorator. By default, this is False
+
+  * **private** â whether to include private properties, i.e., those starting with â_â. By default, this is False
+
+
+
+Returns:
+    
+
+a list of class attributes
+
+classmethod from_dict(_d_ , _samples_ , _config_ , _key_)#
+    
+
+Builds a `BaseRunResults` from a JSON dict representation of it.
+
+Parameters:
+    
+
+  * **d** â a JSON dict
+
+  * **samples** â the [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection") for the run
+
+  * **config** â the `BaseRunConfig` for the run
+
+  * **key** â the run key
+
+
+
+Returns:
+    
+
+a `BaseRunResults`
+
+classmethod from_json(_path_ , _* args_, _** kwargs_)#
+    
+
+Constructs a Serializable object from a JSON file.
+
+Subclasses may override this method, but, by default, this method simply reads the JSON and calls from_dict(), which subclasses must implement.
+
+Parameters:
+    
+
+  * **path** â the path to the JSON file on disk
+
+  * ***args** â optional positional arguments for self.from_dict()
+
+  * ****kwargs** â optional keyword arguments for self.from_dict()
+
+
+
+Returns:
+    
+
+an instance of the Serializable class
+
+classmethod from_str(_s_ , _* args_, _** kwargs_)#
+    
+
+Constructs a Serializable object from a JSON string.
+
+Subclasses may override this method, but, by default, this method simply parses the string and calls from_dict(), which subclasses must implement.
+
+Parameters:
+    
+
+  * **s** â a JSON string representation of a Serializable object
+
+  * ***args** â optional positional arguments for self.from_dict()
+
+  * ****kwargs** â optional keyword arguments for self.from_dict()
+
+
+
+Returns:
+    
+
+an instance of the Serializable class
+
+classmethod get_class_name()#
+    
+
+Returns the fully-qualified class name string of this object.
+
+property key#
+    
+
+The run key for these results.
+
+property samples#
+    
+
+The [`fiftyone.core.collections.SampleCollection`](api__fiftyone.core.collections.md#fiftyone.core.collections.SampleCollection "fiftyone.core.collections.SampleCollection") associated with these results.
+
+save()#
+    
+
+Saves the results to the database.
+
+save_config()#
+    
+
+Saves these results config to the database.
+
+serialize(_reflective =False_)#
+    
+
+Serializes the object into a dictionary.
+
+Serialization is applied recursively to all attributes in the object, including element-wise serialization of lists and dictionary values.
+
+Parameters:
+    
+
+**reflective** â whether to include reflective attributes when serializing the object. By default, this is False
+
+Returns:
+    
+
+a JSON dictionary representation of the object
+
+to_str(_pretty_print =True_, _** kwargs_)#
+    
+
+Returns a string representation of this object.
+
+Parameters:
+    
+
+  * **pretty_print** â whether to render the JSON in human readable format with newlines and indentations. By default, this is True
+
+  * ****kwargs** â optional keyword arguments for self.serialize()
+
+
+
+Returns:
+    
+
+a string representation of the object
+
+use_api(_api_)#
+    
+
+Registers an API instance to use for subsequent operations.
+
+Parameters:
+    
+
+**api** â an `AnnotationAPI`
+
+write_json(_path_ , _pretty_print =False_, _** kwargs_)#
+    
+
+Serializes the object and writes it to disk.
+
+Parameters:
+    
+
+  * **path** â the output path
+
+  * **pretty_print** â whether to render the JSON in human readable format with newlines and indentations. By default, this is False
+
+  * ****kwargs** â optional keyword arguments for self.serialize()
+
+
+
+
+fiftyone.utils.labelstudio.generate_labeling_config(_label_schema_ , _media_)#
+    
+
+Generates a labeling config for a Label Studio project.
+
+Parameters:
+    
+
+  * **label_shema** â dict defining each label type
+
+  * **media** â The media type to label
+
+
+
+Returns:
+    
+
+a labeling config
+
+fiftyone.utils.labelstudio.import_label_studio_annotation(_result_)#
+    
+
+Imports an annotation from Label Studio.
+
+Parameters:
+    
+
+**result** â the annotation result from Label Studio
+
+Returns:
+    
+
+a [`fiftyone.core.labels.Label`](https://docs.voxel51.com/api/fiftyone.core.labels.html#fiftyone.core.labels.Label "fiftyone.core.labels.Label")
+
+fiftyone.utils.labelstudio.export_label_to_label_studio(_label_ , _label_type =None_, _full_result =None_)#
+    
+
+Exports a label to the Label Studio format.
+
+Parameters:
+    
+
+  * **label** â a [`fiftyone.core.labels.Label`](https://docs.voxel51.com/api/fiftyone.core.labels.html#fiftyone.core.labels.Label "fiftyone.core.labels.Label") or list of [`fiftyone.core.labels.Label`](https://docs.voxel51.com/api/fiftyone.core.labels.html#fiftyone.core.labels.Label "fiftyone.core.labels.Label") instances
+
+  * **label_type** (_None_) â the label type to use when exporting the annotation. This argument is only used when exporting object detections. By default, only the bounding boxes are exported, but you can pass `label_type="instances"` to export them as brush labels encoding the instance masks instead
+
+  * **full_result** (_None_) â if non-empty, return the full Label Studio result
+
+
+
+Returns:
+    
+
+a dictionary or a list in Label Studio format
+
+IN THIS ARTICLE 
+  *[*]: Keyword-only parameters separator (PEP 3102)
+  *[/]: Positional-only parameter separator (PEP 570)

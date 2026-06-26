@@ -1,0 +1,241 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/evaluations/evaluation-create
+---
+
+Evaluation Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/evaluations \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "name": "<string>",
+      "dataset": "<string>",
+      "description": "<string>",
+      "scorers": [
+        "<string>"
+      ],
+      "trials": 1,
+      "evaluation_name": "<string>",
+      "eval_attributes": {}
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "object_id": "<string>",
+      "version_index": 123,
+      "evaluation_ref": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Evaluations](/weave/reference/service-api/evaluations/evaluate-model)
+
+# Evaluation Create
+
+Create an evaluation object.
+
+POST
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+evaluations
+
+Evaluation Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/evaluations \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "name": "<string>",
+      "dataset": "<string>",
+      "description": "<string>",
+      "scorers": [
+        "<string>"
+      ],
+      "trials": 1,
+      "evaluation_name": "<string>",
+      "eval_attributes": {}
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "object_id": "<string>",
+      "version_index": 123,
+      "evaluation_ref": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Body
+
+application/json
+
+​
+
+name
+
+string
+
+required
+
+The name of this evaluation. Evaluations with the same name will be versioned together.
+
+​
+
+dataset
+
+string
+
+required
+
+Reference to the dataset (weave:// URI)
+
+​
+
+description
+
+string | null
+
+A description of this evaluation
+
+​
+
+scorers
+
+string[] | null
+
+List of scorer references (weave:// URIs)
+
+​
+
+trials
+
+integer
+
+default:1
+
+Number of trials to run
+
+​
+
+evaluation_name
+
+string | null
+
+Name for the evaluation run
+
+​
+
+eval_attributes
+
+Eval Attributes · object
+
+Optional attributes for the evaluation
+
+#### Response
+
+Successful Response
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the created evaluation
+
+​
+
+object_id
+
+string
+
+required
+
+The ID of the created evaluation
+
+​
+
+version_index
+
+integer
+
+required
+
+The version index of the created evaluation
+
+​
+
+evaluation_ref
+
+string
+
+required
+
+Full reference to the created evaluation
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/evaluations/evaluation-create.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/evaluations/evaluation-create)
+
+[Evaluation ListPrevious](/weave/reference/service-api/evaluations/evaluation-list)[Evaluation ReadNext](/weave/reference/service-api/evaluations/evaluation-read)
+
+⌘I

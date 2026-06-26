@@ -1,0 +1,43 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/type-aliases/role
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Type Aliases](/weave/reference/typescript-sdk/type-aliases/messagepart)
+
+# Role
+
+TypeScript SDK reference
+
+# 
+
+​
+
+Role
+
+Ƭ **Role** : `"user"` | `"assistant"` | `"system"` | `"tool"` Public data types for the Weave GenAI session SDK.
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:5](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L5)
+
+## 
+
+​
+
+Functions
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/type-aliases/role.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/type-aliases/role)
+
+[OpDecoratorPrevious](/weave/reference/typescript-sdk/type-aliases/opdecorator)[Use the Weave Service API to traceNext](/weave/cookbooks/weave_via_service_api)
+
+⌘I

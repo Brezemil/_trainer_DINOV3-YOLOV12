@@ -1,0 +1,53 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/run-crashes
+---
+
+# Run Crashes
+
+## How can I fix an error like `AttributeError: module 'wandb' has no attribute ...`?
+
+If you encounter an error like AttributeError: module ‘wandb’ has no attribute ‘init’ or AttributeError: module ‘wandb’ …
+
+## How do I fix `Cuda out of memory` during a sweep?
+
+If you see Cuda out of memory during a sweep, refactor your code to use process-based execution. Rewrite your code as a …
+
+## How do I kill a job with wandb?
+
+To stop a script instrumented with W&B, press Ctrl+D. Use this method to cancel a training run you no longer need.
+
+## How do I resolve a run initialization timeout error in wandb?
+
+A run initialization timeout error means wandb.init() can’t establish a connection to the W&B service within the allotte …
+
+## If wandb crashes, will it possibly crash my training run?
+
+W&B runs in a separate process, so if W&B crashes, your training run continues. During an internet outage, W&B keeps ret …
+
+## InitStartError: Error communicating with wandb process
+
+This error indicates that the W&B library can’t launch the process that synchronizes data to the server. To resolve the …
+
+## My run's state is `crashed` on the UI but is still running on my machine. What do I do to get my data back?
+
+This state usually means you lost connection to your machine during training. To recover your data, run wandb sync PATH_ …
+
+## Why does my process stop responding when using Hydra with W&B?
+
+This page explains how to resolve unresponsive processes that occur when you start a process with Hydra alongside W&B. I …
+
+## Why does my training hang with distributed training?
+
+This article helps you resolve training hangs when you use W&B with distributed training frameworks, so your runs can st …
+
+## Why is a run marked crashed in W&B when it's training fine locally?
+
+A crashed status usually indicates a connection problem. If the server loses internet access and data stops syncing, W&B …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/run-crashes.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/run-crashes)
+
+[ResumingPrevious](/support/models/tags/resuming)[RunsNext](/support/models/tags/runs)
+
+⌘I

@@ -1,0 +1,67 @@
+---
+source_url: https://docs.wandb.ai/weave
+---
+
+# W&B Weave
+
+Track, test, and improve language model apps with W&B Weave
+
+W&B Weave is an observability and evaluation platform that helps you track, evaluate, and improve your LLM application. With Weave, you can:
+
+  * [Observe and debug](/weave/quickstart) your LLM application
+  * [Evaluate](/weave/tutorial-eval) your application’s responses using LLM judges and custom scorers
+
+
+
+## 
+
+​
+
+Get started
+
+The following docs guide you through the basics of how to use Weave’s suite of tools.
+
+## Quickstart: Track LLM inputs & outputs
+
+Start by tracing a basic call to an LLM and reviewing the data in your W&B account.
+
+## Get started evaluating your app
+
+Learn how to build an evaluation pipeline using Weave scorers to test and track your application’s performance.
+
+## Evaluate a RAG application
+
+Build and evaluate RAG applications using Weave with LLM judges to measure retrieval quality.
+
+## 
+
+​
+
+Install Weave
+
+W&B Weave provides Python and TypeScript libraries. To install the Weave library, run the following command:
+
+  * Python
+
+  * TypeScript
+
+
+
+    
+    
+    pip install weave
+    
+    
+    
+    pnpm install weave
+    
+
+To start using the Weave library, create a [Weights & Biases (W&B) account](https://wandb.ai) and an [API key at User Settings](https://wandb.ai/settings). The API key allows you to authenticate to your W&B account and start sending data to it.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave)
+
+[Quickstart: Trace an agentNext](/weave/agents-quickstart)
+
+⌘I

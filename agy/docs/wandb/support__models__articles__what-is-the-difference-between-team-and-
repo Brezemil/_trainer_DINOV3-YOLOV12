@@ -1,0 +1,17 @@
+---
+source_url: https://docs.wandb.ai/support/models/articles/what-is-the-difference-between-team-and-
+---
+
+# What is the difference between team and entity? As a user - what does entity mean for me?
+
+A team is a collaborative workspace for users working on the same projects. An entity is either a username or a team name. When you log runs in W&B, set the entity to a personal or team account using `wandb.init(entity="example-team")`.
+
+* * *
+
+[Team Management](/support/models/tags/team-management)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/articles/what-is-the-difference-between-team-and-.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/articles/what-is-the-difference-between-team-and-)
+
+⌘I

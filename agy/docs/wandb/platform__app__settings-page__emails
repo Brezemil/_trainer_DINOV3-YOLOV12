@@ -1,0 +1,69 @@
+---
+source_url: https://docs.wandb.ai/platform/app/settings-page/emails
+---
+
+[Platform Details](/platform/app/settings-page)
+
+[Configure W&B](/platform/app/settings-page)
+
+[Settings](/platform/app/settings-page)
+
+# Manage email settings
+
+Add, delete, and manage email addresses and login methods in your W&B profile settings page.
+
+In your W&B **Settings** page, the Emails dashboard lets you add, delete, and manage email types and primary email addresses. To open the Emails dashboard, follow these steps:
+
+  1. In the W&B dashboard, select your profile icon in the upper-right corner.
+  2. From the dropdown, select **Settings**.
+  3. Scroll down to the Emails dashboard.
+
+
+
+![Email management dashboard](https://mintcdn.com/wb-21fd5541/UhAQoGpm-LvpH3-8/images/app_ui/manage_emails.png?fit=max&auto=format&n=UhAQoGpm-LvpH3-8&q=85&s=36191f575b13a1e3d73d09c1c4e9e635)
+
+## 
+
+​
+
+Manage primary email
+
+A smiling-face-with-sunglasses icon marks your primary email. Your primary email defaults to the address you provided when you created your W&B account. To change the primary email associated with your W&B account, select the **action ()** menu.
+
+You can only set verified emails as primary.
+
+![Primary email dropdown](https://mintcdn.com/wb-21fd5541/UhAQoGpm-LvpH3-8/images/app_ui/primary_email.png?fit=max&auto=format&n=UhAQoGpm-LvpH3-8&q=85&s=eb64ad48a30858181664651f7e869444)
+
+## 
+
+​
+
+Add emails
+
+To add an email, select **\+ Add Email**. The Auth0 page opens, where you can enter credentials for the new email or connect using single sign-on (SSO).
+
+## 
+
+​
+
+Delete emails
+
+To delete an email registered to your W&B account, select the **action ()** menu and choose **Delete Emails**.
+
+You can’t delete a primary email. Set a different email as primary before deleting.
+
+## 
+
+​
+
+Login methods
+
+The **Log in Methods** column shows the login methods associated with your account. When you create a W&B account, W&B sends a verification email to your address. Your email account stays unverified until you verify the address, and unverified emails appear in red. If you no longer have the original verification email, attempt to log in with your email address again to receive a second one. For account login issues, contact [support@wandb.com](mailto:support@wandb.com).
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/app/settings-page/emails.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/app/settings-page/emails)
+
+[Manage billing settingsPrevious](/platform/app/settings-page/billing-settings)[Team settingsNext](/platform/app/settings-page/teams)
+
+⌘I

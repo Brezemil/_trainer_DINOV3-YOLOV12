@@ -1,0 +1,346 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/callschema
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: CallSchema
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / CallSchema CallSchema
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [attributes](/weave/reference/typescript-sdk/interfaces/callschema#attributes)
+  * [deleted_at](/weave/reference/typescript-sdk/interfaces/callschema#deleted_at)
+  * [display_name](/weave/reference/typescript-sdk/interfaces/callschema#display_name)
+  * [ended_at](/weave/reference/typescript-sdk/interfaces/callschema#ended_at)
+  * [exception](/weave/reference/typescript-sdk/interfaces/callschema#exception)
+  * [id](/weave/reference/typescript-sdk/interfaces/callschema#id)
+  * [inputs](/weave/reference/typescript-sdk/interfaces/callschema#inputs)
+  * [op_name](/weave/reference/typescript-sdk/interfaces/callschema#op_name)
+  * [output](/weave/reference/typescript-sdk/interfaces/callschema#output)
+  * [parent_id](/weave/reference/typescript-sdk/interfaces/callschema#parent_id)
+  * [project_id](/weave/reference/typescript-sdk/interfaces/callschema#project_id)
+  * [started_at](/weave/reference/typescript-sdk/interfaces/callschema#started_at)
+  * [summary](/weave/reference/typescript-sdk/interfaces/callschema#summary)
+  * [trace_id](/weave/reference/typescript-sdk/interfaces/callschema#trace_id)
+  * [wb_run_id](/weave/reference/typescript-sdk/interfaces/callschema#wb_run_id)
+  * [wb_user_id](/weave/reference/typescript-sdk/interfaces/callschema#wb_user_id)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+attributes
+
+• **attributes** : `object` Attributes
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:120](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L120)
+
+* * *
+
+### 
+
+​
+
+deleted_at
+
+• `Optional` **deleted_at** : `null` | `string` Deleted At
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:135](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L135)
+
+* * *
+
+### 
+
+​
+
+display_name
+
+• `Optional` **display_name** : `null` | `string` Display Name
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:109](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L109)
+
+* * *
+
+### 
+
+​
+
+ended_at
+
+• `Optional` **ended_at** : `null` | `string` Ended At
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:124](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L124)
+
+* * *
+
+### 
+
+​
+
+exception
+
+• `Optional` **exception** : `null` | `string` Exception
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:126](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L126)
+
+* * *
+
+### 
+
+​
+
+id
+
+• **id** : `string` Id
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:103](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L103)
+
+* * *
+
+### 
+
+​
+
+inputs
+
+• **inputs** : `object` Inputs
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:122](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L122)
+
+* * *
+
+### 
+
+​
+
+op_name
+
+• **op_name** : `string` Op Name
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:107](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L107)
+
+* * *
+
+### 
+
+​
+
+output
+
+• `Optional` **output** : `null` Output
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:128](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L128)
+
+* * *
+
+### 
+
+​
+
+parent_id
+
+• `Optional` **parent_id** : `null` | `string` Parent Id
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:113](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L113)
+
+* * *
+
+### 
+
+​
+
+project_id
+
+• **project_id** : `string` Project Id
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:105](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L105)
+
+* * *
+
+### 
+
+​
+
+started_at
+
+• **started_at** : `string` Started At `Format` date-time
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:118](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L118)
+
+* * *
+
+### 
+
+​
+
+summary
+
+• `Optional` **summary** : `object`
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:129](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L129)
+
+* * *
+
+### 
+
+​
+
+trace_id
+
+• **trace_id** : `string` Trace Id
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:111](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L111)
+
+* * *
+
+### 
+
+​
+
+wb_run_id
+
+• `Optional` **wb_run_id** : `null` | `string` Wb Run Id
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:133](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L133)
+
+* * *
+
+### 
+
+​
+
+wb_user_id
+
+• `Optional` **wb_user_id** : `null` | `string` Wb User Id
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:131](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L131)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/callschema.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/callschema)
+
+[wrapOpenAIPrevious](/weave/reference/typescript-sdk/functions/wrapopenai)[Interface: CallsFilterNext](/weave/reference/typescript-sdk/interfaces/callsfilter)
+
+⌘I

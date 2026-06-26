@@ -1,0 +1,416 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/agents/genai-spans-stats
+---
+
+Genai Spans Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/spans/stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "start": "2023-11-07T05:31:56Z",
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "end": "2023-11-07T05:31:56Z",
+      "granularity": 1,
+      "timezone": "UTC",
+      "group_by": [
+        {
+          "key": "<string>",
+          "source": "field",
+          "alias": "<string>"
+        }
+      ],
+      "metrics": [
+        {
+          "alias": "<string>",
+          "value": {
+            "key": "<string>",
+            "source": "field"
+          },
+          "aggregations": [],
+          "percentiles": [
+            123
+          ]
+        }
+      ],
+      "group_limit": 50,
+      "bucket_by": {
+        "type": "time"
+      },
+      "group_filters": [
+        {
+          "measure": {
+            "alias": "<string>",
+            "value": {
+              "key": "<string>",
+              "source": "field"
+            },
+            "filter": {
+              "$expr": {
+                "$and": [
+                  {
+                    "$literal": "<string>"
+                  }
+                ]
+              }
+            }
+          },
+          "group_by": [
+            {
+              "key": "<string>",
+              "source": "field",
+              "alias": "<string>"
+            }
+          ],
+          "min": 123,
+          "max": 123
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "timezone": "<string>",
+      "granularity": 123,
+      "bucket_type": "time",
+      "columns": [
+        {
+          "name": "<string>",
+          "metric": "<string>",
+          "aggregation": "<string>"
+        }
+      ],
+      "rows": [
+        {}
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Agents](/weave/reference/service-api/agents/export-genai-trace)
+
+# Genai Spans Stats
+
+Query chart-ready aggregations over agent spans.
+
+POST
+
+/
+
+agents
+
+/
+
+spans
+
+/
+
+stats
+
+Genai Spans Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/spans/stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "start": "2023-11-07T05:31:56Z",
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "end": "2023-11-07T05:31:56Z",
+      "granularity": 1,
+      "timezone": "UTC",
+      "group_by": [
+        {
+          "key": "<string>",
+          "source": "field",
+          "alias": "<string>"
+        }
+      ],
+      "metrics": [
+        {
+          "alias": "<string>",
+          "value": {
+            "key": "<string>",
+            "source": "field"
+          },
+          "aggregations": [],
+          "percentiles": [
+            123
+          ]
+        }
+      ],
+      "group_limit": 50,
+      "bucket_by": {
+        "type": "time"
+      },
+      "group_filters": [
+        {
+          "measure": {
+            "alias": "<string>",
+            "value": {
+              "key": "<string>",
+              "source": "field"
+            },
+            "filter": {
+              "$expr": {
+                "$and": [
+                  {
+                    "$literal": "<string>"
+                  }
+                ]
+              }
+            }
+          },
+          "group_by": [
+            {
+              "key": "<string>",
+              "source": "field",
+              "alias": "<string>"
+            }
+          ],
+          "min": 123,
+          "max": 123
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "timezone": "<string>",
+      "granularity": 123,
+      "bucket_type": "time",
+      "columns": [
+        {
+          "name": "<string>",
+          "metric": "<string>",
+          "aggregation": "<string>"
+        }
+      ],
+      "rows": [
+        {}
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request chart-ready aggregations over GenAI agent spans.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+start
+
+string<date-time>
+
+required
+
+​
+
+query
+
+Query · object
+
+Show child attributes
+
+​
+
+end
+
+string<date-time> | null
+
+​
+
+granularity
+
+integer | null
+
+Required range: `x > 0`
+
+​
+
+timezone
+
+string
+
+default:UTC
+
+​
+
+group_by
+
+AgentGroupByRef · object[]
+
+Show child attributes
+
+​
+
+metrics
+
+AgentSpanStatsMetricSpec · object[]
+
+Show child attributes
+
+​
+
+group_limit
+
+integer
+
+default:50
+
+Required range: `1 <= x <= 1000`
+
+​
+
+bucket_by
+
+AgentSpanStatsTimeBucketSpec · object
+
+Bucket stats rows by started_at time intervals.
+
+  * AgentSpanStatsTimeBucketSpec
+
+  * AgentSpanStatsNumericBucketSpec
+
+
+
+
+Show child attributes
+
+​
+
+group_filters
+
+AgentSpanGroupFilter · object[]
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+Response containing chart-ready agent span stats rows.
+
+​
+
+start
+
+string<date-time>
+
+required
+
+​
+
+end
+
+string<date-time>
+
+required
+
+​
+
+timezone
+
+string
+
+required
+
+​
+
+granularity
+
+integer | null
+
+​
+
+bucket_type
+
+enum<string>
+
+default:time
+
+Available options:
+
+`time`,
+
+`number`
+
+​
+
+columns
+
+AgentSpanStatsColumn · object[]
+
+Show child attributes
+
+​
+
+rows
+
+Rows · object[]
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/agents/genai-spans-stats.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/agents/genai-spans-stats)
+
+[Genai Spans QueryPrevious](/weave/reference/service-api/agents/genai-spans-query)[Genai Custom Attrs SchemaNext](/weave/reference/service-api/agents/genai-custom-attrs-schema)
+
+⌘I

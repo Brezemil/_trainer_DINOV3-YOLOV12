@@ -1,0 +1,225 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/agents/genai-custom-attrs-schema
+---
+
+Genai Custom Attrs Schema
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/spans/custom-attrs/schema \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "started_after": "2023-11-07T05:31:56Z",
+      "started_before": "2023-11-07T05:31:56Z",
+      "limit": 200,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "attributes": [
+        {
+          "key": "<string>",
+          "span_count": 123
+        }
+      ],
+      "limit": 200,
+      "offset": 0,
+      "has_more": false
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Agents](/weave/reference/service-api/agents/export-genai-trace)
+
+# Genai Custom Attrs Schema
+
+Discover typed custom attribute keys on matching agent spans.
+
+POST
+
+/
+
+agents
+
+/
+
+spans
+
+/
+
+custom-attrs
+
+/
+
+schema
+
+Genai Custom Attrs Schema
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/spans/custom-attrs/schema \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "started_after": "2023-11-07T05:31:56Z",
+      "started_before": "2023-11-07T05:31:56Z",
+      "limit": 200,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "attributes": [
+        {
+          "key": "<string>",
+          "span_count": 123
+        }
+      ],
+      "limit": 200,
+      "offset": 0,
+      "has_more": false
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request to discover typed custom attribute keys for matching spans.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+query
+
+Query · object
+
+Show child attributes
+
+​
+
+started_after
+
+string<date-time> | null
+
+​
+
+started_before
+
+string<date-time> | null
+
+​
+
+limit
+
+integer
+
+default:200
+
+Required range: `1 <= x <= 2000`
+
+​
+
+offset
+
+integer
+
+default:0
+
+Required range: `x >= 0`
+
+#### Response
+
+Successful Response
+
+Typed custom attribute keys available for spans query/group/stats APIs.
+
+​
+
+attributes
+
+AgentCustomAttrSchemaItem · object[]
+
+Show child attributes
+
+​
+
+limit
+
+integer
+
+default:200
+
+​
+
+offset
+
+integer
+
+default:0
+
+​
+
+has_more
+
+boolean
+
+default:false
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/agents/genai-custom-attrs-schema.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/agents/genai-custom-attrs-schema)
+
+[Genai Spans StatsPrevious](/weave/reference/service-api/agents/genai-spans-stats)[Genai Agents QueryNext](/weave/reference/service-api/agents/genai-agents-query)
+
+⌘I

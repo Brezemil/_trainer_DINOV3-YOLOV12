@@ -1,0 +1,63 @@
+---
+source_url: https://docs.wandb.ai/models/runs/run-colors
+---
+
+[Guides](/models/track)
+
+[Experiments](/models/track)
+
+[What are runs?](/models/runs)
+
+# Customize run colors
+
+Customize, randomize, and reset the colors assigned to individual runs in your W&B project workspace.
+
+W&B automatically assigns a color to each run that you create in your project. You can change the default color of a run to help you visually distinguish it from other runs in the table and graphs. Reset your project workspace to restore the default colors for all runs in the table. Run colors are locally scoped. On the project page, custom colors apply only to your own workspace. In reports, custom colors for runs apply only at the section level. You can visualize the same run in different sections, which can use different custom colors per section.
+
+## 
+
+​
+
+Edit default run colors
+
+  1. Click the **Runs** tab from the project sidebar.
+  2. Click the dot color next to the run name in the **Name** column.
+  3. Select a color from the color palette or the color picker, or enter a hex code.
+
+
+
+## 
+
+​
+
+Randomize run colors
+
+To randomize the colors of all runs in the table:
+
+  1. Click the **Runs** tab from the project sidebar.
+  2. Hover over the **Name** column header, click the **action ()** menu, and select **Randomize run colors** from the dropdown menu.
+
+
+
+The option to randomize run colors is available only after modify the run’s table in some way, such as by sorting, filtering, searching, or grouping.
+
+## 
+
+​
+
+Reset run colors
+
+To restore the default colors for all runs in the table:
+
+  1. Click the **Runs** tab from the project sidebar.
+  2. Hover over the **Name** column header, click the **action ()** menu, and select **Reset colors** from the dropdown menu.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/runs/run-colors.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/runs/run-colors)
+
+[Move a run to a different project or teamPrevious](/models/runs/manage-runs)[Semantic run plot legendsNext](/models/runs/color-code-runs)
+
+⌘I

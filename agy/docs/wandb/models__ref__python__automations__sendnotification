@@ -1,0 +1,72 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/automations/sendnotification
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Automations](/models/ref/python/automations)
+
+# SendNotification
+
+[GitHub source](https://github.com/wandb/wandb/blob/main/wandb/automations/actions.py)
+
+## 
+
+​
+
+`class` `SendNotification`
+
+Defines an automation action that sends a (Slack) notification.
+
+### 
+
+​
+
+`method` `SendNotification.__init__`
+    
+    
+    __init__(
+        integration_id: 'str',
+        message: 'str' = '',
+        severity: 'AlertSeverity' = <AlertSeverity.INFO: 'INFO'>,
+        title: 'str' = '',
+        action_type: 'Literal[NOTIFICATION]' = NOTIFICATION
+    ) → None
+    
+
+**Args:**
+
+  * `integration_id` (str): The ID of the Slack integration that will be used to send the notification.
+  * `message` (str): The message body of the sent notification.
+  * `severity` (AlertSeverity): The severity (`INFO`, `WARN`, `ERROR`) of the sent notification.
+  * `title` (str): The title of the sent notification.
+  * `action_type` (Literal[NOTIFICATION]):
+
+**Returns:** An `SendNotification` object.
+
+### 
+
+​
+
+`classmethod` `SendNotification.from_integration`
+    
+    
+    from_integration(
+        integration: 'SlackIntegration',
+        title: 'str' = '',
+        text: 'str' = '',
+        level: 'AlertSeverity' = <AlertSeverity.INFO: 'INFO'>
+    ) → Self
+    
+
+Define a notification action that sends to the given (Slack) integration.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/automations/sendnotification.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/automations/sendnotification)
+
+[RunStateFilterPrevious](/models/ref/python/automations/runstatefilter)[SendWebhookNext](/models/ref/python/automations/sendwebhook)
+
+⌘I

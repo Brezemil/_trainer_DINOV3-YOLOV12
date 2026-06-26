@@ -1,0 +1,255 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/trace-usage
+---
+
+Trace Usage
+    
+    
+    curl --request POST \
+      --url https://api.example.com/trace/usage \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "op_names": [
+          "<string>"
+        ],
+        "input_refs": [
+          "<string>"
+        ],
+        "output_refs": [
+          "<string>"
+        ],
+        "parent_ids": [
+          "<string>"
+        ],
+        "trace_ids": [
+          "<string>"
+        ],
+        "call_ids": [
+          "<string>"
+        ],
+        "thread_ids": [
+          "<string>"
+        ],
+        "turn_ids": [
+          "<string>"
+        ],
+        "trace_roots_only": true,
+        "wb_user_ids": [
+          "<string>"
+        ],
+        "wb_run_ids": [
+          "<string>"
+        ]
+      },
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "include_costs": false,
+      "limit": 10000
+    }
+    '
+    
+    
+    {
+      "call_usage": {},
+      "unfinished_call_ids": [
+        "<string>"
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Trace Usage
+
+Compute per-call usage for a trace, with descendant rollup.
+
+POST
+
+/
+
+trace
+
+/
+
+usage
+
+Trace Usage
+    
+    
+    curl --request POST \
+      --url https://api.example.com/trace/usage \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "op_names": [
+          "<string>"
+        ],
+        "input_refs": [
+          "<string>"
+        ],
+        "output_refs": [
+          "<string>"
+        ],
+        "parent_ids": [
+          "<string>"
+        ],
+        "trace_ids": [
+          "<string>"
+        ],
+        "call_ids": [
+          "<string>"
+        ],
+        "thread_ids": [
+          "<string>"
+        ],
+        "turn_ids": [
+          "<string>"
+        ],
+        "trace_roots_only": true,
+        "wb_user_ids": [
+          "<string>"
+        ],
+        "wb_run_ids": [
+          "<string>"
+        ]
+      },
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "include_costs": false,
+      "limit": 10000
+    }
+    '
+    
+    
+    {
+      "call_usage": {},
+      "unfinished_call_ids": [
+        "<string>"
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request to compute per-call usage for a trace, with descendant rollup.
+
+This endpoint returns usage metrics for each call in the trace, where each call's metrics include the sum of its own usage plus all descendants' usage. Use this for trace view where you want to see rolled-up metrics per call.
+
+Note: All matching calls are loaded into memory for aggregation. For very large result sets (>10k calls), consider using more specific filters or pagination at the application layer.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+filter
+
+CallsFilter · object
+
+Filter to select calls. Typically use trace_ids to get all calls in a trace.
+
+Show child attributes
+
+​
+
+query
+
+Query · object
+
+Additional query conditions for filtering calls.
+
+Show child attributes
+
+​
+
+include_costs
+
+boolean
+
+default:false
+
+If true, include cost calculations in the usage.
+
+​
+
+limit
+
+integer
+
+default:10000
+
+Maximum number of calls to process. Acts as a safety limit to prevent unbounded memory usage.
+
+#### Response
+
+Successful Response
+
+Response with per-call usage metrics (each includes descendant contributions).
+
+​
+
+call_usage
+
+Call Usage · object
+
+Show child attributes
+
+​
+
+unfinished_call_ids
+
+string[]
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/trace-usage.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/trace-usage)
+
+[Calls Query StatsPrevious](/weave/reference/service-api/calls/calls-query-stats)[Calls UsageNext](/weave/reference/service-api/calls/calls-usage)
+
+⌘I

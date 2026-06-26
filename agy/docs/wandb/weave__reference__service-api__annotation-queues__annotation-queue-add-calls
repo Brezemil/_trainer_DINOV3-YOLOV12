@@ -1,0 +1,179 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/annotation-queues/annotation-queue-add-calls
+---
+
+Annotation Queue Add Calls
+    
+    
+    curl --request POST \
+      --url https://api.example.com/annotation_queues/{queue_id}/items \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_ids": [
+        "<string>"
+      ],
+      "display_fields": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {
+      "added_count": 123,
+      "duplicates": 123
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Annotation Queues](/weave/reference/service-api/annotation-queues/annotation-queue-create)
+
+# Annotation Queue Add Calls
+
+Add calls to an annotation queue.
+
+POST
+
+/
+
+annotation_queues
+
+/
+
+{queue_id}
+
+/
+
+items
+
+Annotation Queue Add Calls
+    
+    
+    curl --request POST \
+      --url https://api.example.com/annotation_queues/{queue_id}/items \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_ids": [
+        "<string>"
+      ],
+      "display_fields": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {
+      "added_count": 123,
+      "duplicates": 123
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+queue_id
+
+string
+
+required
+
+#### Body
+
+application/json
+
+Request body for adding calls to an annotation queue (queue_id comes from path).
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+call_ids
+
+string[]
+
+required
+
+Example:
+    
+    
+    ["call-1", "call-2", "call-3"]
+
+​
+
+display_fields
+
+string[]
+
+required
+
+JSON paths to display to annotators
+
+Example:
+    
+    
+    ["input.prompt", "output.text"]
+
+#### Response
+
+Successful Response
+
+Response from adding calls to a queue.
+
+​
+
+added_count
+
+integer
+
+required
+
+​
+
+duplicates
+
+integer
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/annotation-queues/annotation-queue-add-calls.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/annotation-queues/annotation-queue-add-calls)
+
+[Annotation Queue DeletePrevious](/weave/reference/service-api/annotation-queues/annotation-queue-delete)[Annotation Queue Items QueryNext](/weave/reference/service-api/annotation-queues/annotation-queue-items-query)
+
+⌘I

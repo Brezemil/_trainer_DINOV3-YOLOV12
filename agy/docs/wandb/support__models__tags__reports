@@ -1,0 +1,73 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/reports
+---
+
+# Reports
+
+## Adding multiple authors to a report
+
+You can credit contributors by adding multiple authors to a report. This is useful when a report represents work from mo …
+
+## Embed reports
+
+This page describes how to share a W&B report by embedding it in another page, such as a blog post, internal wiki, or ex …
+
+## Filter and delete unwanted reports
+
+To keep a project organized, remove reports you no longer need. Use the search bar to filter the reports list, then do o …
+
+## How do I delete a panel grid?
+
+To select the panel grid, click the drag handle in its top-right corner. To remove it, press Delete or Backspace.
+
+## How do I insert a table?
+
+Tables are a Markdown feature without a direct what you see is what you get (WYSIWYG) equivalent. To add a table, insert …
+
+## How do I use Markdown in my reports?
+
+To insert a Markdown block, type /mark anywhere in the document and press Enter. The block lets you edit content in Mark …
+
+## How to get multiple charts with different selected runs?
+
+W&B Reports lets you display charts for different sets of runs side by side in the same report by using separate panel g …
+
+## I converted my report to WYSIWYG but want to revert back to Markdown
+
+If you converted a report from Markdown to WYSIWYG and want to undo the conversion, the available options depend on how …
+
+## Incorporating LaTeX
+
+You can include LaTeX equations in reports to document mathematical notation alongside your notes, custom visualizations …
+
+## My report is running slowly after the change to WYSIWYG
+
+Performance issues may arise on older hardware or with very large reports. To mitigate this, collapse sections of the re …
+
+## My report looks different after converting from Markdown
+
+The Markdown-to-WYSIWYG (what you see is what you get) conversion aims to maintain the original appearance of your repor …
+
+## Refreshing data
+
+Workspaces automatically load updated data. Auto-refresh doesn’t apply to reports. To refresh report data, reload the pa …
+
+## Upload a CSV to a report
+
+To upload a CSV file to a report, use the wandb.Table format. Load the CSV file in your Python script and log it as a wa …
+
+## Upload an image to a report
+
+To upload an image to a report: 1. On a new line, press /. 2. Scroll to the Image option. 3. Drag and drop an image into …
+
+## Who can edit and share reports?
+
+Reports created within an individual’s private project remain visible only to that user. The user can share their projec …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/reports.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/reports)
+
+[PythonPrevious](/support/models/tags/python)[ResumingNext](/support/models/tags/resuming)
+
+⌘I

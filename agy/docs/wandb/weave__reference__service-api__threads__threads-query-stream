@@ -1,0 +1,203 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/threads/threads-query-stream
+---
+
+Threads Query Stream
+    
+    
+    curl --request POST \
+      --url https://api.example.com/threads/stream_query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "after_datetime": "2024-01-01T00:00:00Z",
+        "before_datetime": "2024-12-31T23:59:59Z",
+        "thread_ids": [
+          "thread_1",
+          "thread_2",
+          "my_thread_id"
+        ]
+      },
+      "limit": 123,
+      "offset": 123,
+      "sort_by": [
+        {
+          "direction": "desc",
+          "field": "last_updated"
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Threads](/weave/reference/service-api/threads/threads-query-stream)
+
+# Threads Query Stream
+
+POST
+
+/
+
+threads
+
+/
+
+stream_query
+
+Threads Query Stream
+    
+    
+    curl --request POST \
+      --url https://api.example.com/threads/stream_query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "after_datetime": "2024-01-01T00:00:00Z",
+        "before_datetime": "2024-12-31T23:59:59Z",
+        "thread_ids": [
+          "thread_1",
+          "thread_2",
+          "my_thread_id"
+        ]
+      },
+      "limit": 123,
+      "offset": 123,
+      "sort_by": [
+        {
+          "direction": "desc",
+          "field": "last_updated"
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Query threads with aggregated statistics based on turn calls only.
+
+Turn calls are the immediate children of thread contexts (where call.id == turn_id). This provides meaningful conversation-level statistics rather than including all nested implementation details.
+
+​
+
+project_id
+
+string
+
+required
+
+The ID of the project
+
+Example:
+
+`"my_entity/my_project"`
+
+​
+
+filter
+
+ThreadsQueryFilter · object
+
+Filter criteria for the threads query
+
+Show child attributes
+
+​
+
+limit
+
+integer | null
+
+Maximum number of threads to return
+
+​
+
+offset
+
+integer | null
+
+Number of threads to skip
+
+​
+
+sort_by
+
+SortBy · object[] | null
+
+Sorting criteria for the threads. Supported fields: 'thread_id', 'turn_count', 'start_time', 'last_updated', 'p50_turn_duration_ms', 'p99_turn_duration_ms'.
+
+Show child attributes
+
+Example:
+    
+    
+    [  
+      {  
+        "direction": "desc",  
+        "field": "last_updated"  
+      }  
+    ]
+
+#### Response
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/threads/threads-query-stream.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/threads/threads-query-stream)
+
+[Feedback Payload SchemaPrevious](/weave/reference/service-api/feedback/feedback-payload-schema)[Annotation Queue CreateNext](/weave/reference/service-api/annotation-queues/annotation-queue-create)
+
+⌘I

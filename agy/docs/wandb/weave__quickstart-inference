@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/weave/quickstart-inference
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Experiment with prompts and models](/weave/guides/tools/playground)
+
+# Learn Weave with Serverless Inference
+
+Learn Weave fundamentals using Serverless Inference to trace model calls, compare outputs, and run evaluations.
+
+🚧 A parsing error occured. Please contact the owner of this website. They can use the Mintlify CLI to test this website locally and see the errors that occur.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/quickstart-inference.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/quickstart-inference)
+
+[Compare model performance using the Evaluation PlaygroundPrevious](/weave/guides/tools/evaluation_playground)[Tutorial: App versioningNext](/weave/tutorial-weave_models)
+
+⌘I

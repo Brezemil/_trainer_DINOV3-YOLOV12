@@ -1,0 +1,135 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/evaluations/evaluate-model
+---
+
+Evaluate Model
+    
+    
+    curl --request POST \
+      --url https://api.example.com/evaluations/evaluate_model \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "evaluation_ref": "<string>",
+      "model_ref": "<string>",
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "call_id": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Evaluations](/weave/reference/service-api/evaluations/evaluate-model)
+
+# Evaluate Model
+
+POST
+
+/
+
+evaluations
+
+/
+
+evaluate_model
+
+Evaluate Model
+    
+    
+    curl --request POST \
+      --url https://api.example.com/evaluations/evaluate_model \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "evaluation_ref": "<string>",
+      "model_ref": "<string>",
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "call_id": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+evaluation_ref
+
+string
+
+required
+
+​
+
+model_ref
+
+string
+
+required
+
+​
+
+wb_user_id
+
+string | null
+
+Do not set directly. Server will automatically populate this field.
+
+#### Response
+
+Successful Response
+
+​
+
+call_id
+
+string
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/evaluations/evaluate-model.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/evaluations/evaluate-model)
+
+[Annotation Queue Item Progress UpdatePrevious](/weave/reference/service-api/annotation-queues/annotation-queue-item-progress-update)[Evaluation StatusNext](/weave/reference/service-api/evaluations/evaluation-status)
+
+⌘I

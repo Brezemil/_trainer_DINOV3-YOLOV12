@@ -1,0 +1,85 @@
+---
+source_url: https://docs.wandb.ai/models/automations/project-automation-tutorial
+---
+
+[Guides](/models/track)
+
+[Automations](/models/automations)
+
+[Tutorials](/models/automations/tutorial)
+
+# Tutorial: Project run-failure alert automation
+
+Build a run-failure alert that sends a Slack notification when a run in your project fails.
+
+This tutorial walks you through building a **project** automation triggered by run status: when a run in your project transitions to **Failed** , W&B sends a Slack notification. This automation lets your team learn about failed runs in real time, so you can investigate and remediate them instead of discovering failures later.   
+  
+  
+
+
+For guidance creating a Registry automation, see [Tutorial: Registry artifact alias automation](/models/automations/registry-automation-tutorial).
+
+## 
+
+​
+
+Prerequisites
+
+  * A W&B project.
+  * A [Slack integration](/models/automations/create-automations/slack#add-a-slack-integration) configured in **Team Settings**.
+
+
+
+## 
+
+​
+
+Create a project automation
+
+Set up a project-scoped automation so that when a run in the project transitions to **Failed** , W&B sends a Slack notification.
+
+  1. Open the project and click the **Automations** tab in the sidebar, then click **Create automation**.
+  2. Choose the event **Run state change**. Set the state to **Failed**. Optionally add a run name or user filter to limit which runs trigger the automation.
+  3. Click **Next step**. Set **Action type** to **Slack notification** and select the Slack channel.
+  4. Click **Next step**. Give the automation a name (for example, “Run failure alert”) and an optional description, then click **Create automation**.
+
+Your project now has an active automation that posts to the Slack channel you selected when a run fails. For more detail, see [Create a Slack automation](/models/automations/create-automations/slack#create-an-automation) (Project tab).
+
+## 
+
+​
+
+Test the automation
+
+To confirm the automation is configured correctly, trigger it with a deliberately failed run. Create a run and log it to the project, explicitly marking it as failed:
+    
+    
+    import wandb
+    
+    with wandb.init(project="my-project") as run:
+        run.log({"loss": 1.23})
+        run.finish(exit_code=1)
+    
+
+Shortly after, you see a Slack message with the run link and status.
+
+## 
+
+​
+
+Go further
+
+To learn more about W&B automations beyond what this tutorial covers, see the following resources:
+
+  * [Automation events and scopes](/models/automations/automation-events) for all project and registry event types.
+  * [Create a Slack automation](/models/automations/create-automations/slack) and [Create a webhook automation](/models/automations/create-automations/webhook) for full UI and payload details.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/automations/project-automation-tutorial.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/automations/project-automation-tutorial)
+
+[Automation tutorial overviewPrevious](/models/automations/tutorial)[Tutorial: Registry artifact alias automationNext](/models/automations/registry-automation-tutorial)
+
+⌘I

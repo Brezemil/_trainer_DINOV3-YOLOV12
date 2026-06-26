@@ -1,0 +1,113 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/refs/refs-read-batch
+---
+
+Refs Read Batch
+    
+    
+    curl --request POST \
+      --url https://api.example.com/refs/read_batch \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "refs": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {
+      "vals": [
+        "<unknown>"
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Refs](/weave/reference/service-api/refs/refs-read-batch)
+
+# Refs Read Batch
+
+POST
+
+/
+
+refs
+
+/
+
+read_batch
+
+Refs Read Batch
+    
+    
+    curl --request POST \
+      --url https://api.example.com/refs/read_batch \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "refs": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {
+      "vals": [
+        "<unknown>"
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+refs
+
+string[]
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+vals
+
+any[]
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/refs/refs-read-batch.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/refs/refs-read-batch)
+
+[Table Query Stats BatchPrevious](/weave/reference/service-api/tables/table-query-stats-batch)[File CreateNext](/weave/reference/service-api/files/file-create)
+
+⌘I

@@ -1,0 +1,246 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/artifactcollection
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# ArtifactCollection
+
+## 
+
+​
+
+`class` `ArtifactCollection`
+
+An artifact collection that represents a group of related artifacts. **Args:**
+
+  * `service_api`: Interface to the wandb-core service that performs W&B API calls for this collection.
+  * `entity`: The entity (user or team) that owns the project.
+  * `project`: The name of the project to query for artifact collections.
+  * `name`: The name of the artifact collection.
+  * `type`: The type of the artifact collection (e.g., “dataset”, “model”).
+  * `organization`: Optional organization name if applicable.
+  * `attrs`: Optional mapping of attributes to initialize the artifact collection. If not provided, the object will load its attributes from W&B upon initialization.
+
+
+
+### 
+
+​
+
+`property` ArtifactCollection.aliases
+
+The aliases for all artifact versions contained in this collection. **Returns:**
+
+  * `list[str]`: The aliases property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactCollection.created_at
+
+The creation date of the artifact collection. **Returns:**
+
+  * `str`: The created_at property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactCollection.description
+
+A description of the artifact collection. **Returns:**
+
+  * `str | None`: The description property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactCollection.entity
+
+The entity (user or team) that owns the project. **Returns:**
+
+  * `str`: The entity property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactCollection.id
+
+The unique identifier of the artifact collection. **Returns:**
+
+  * `str`: The id property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactCollection.name
+
+The name of the artifact collection. **Returns:**
+
+  * `str`: The name property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactCollection.project
+
+The project that contains the artifact collection. **Returns:**
+
+  * `str`: The project property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactCollection.tags
+
+The tags associated with the artifact collection. **Returns:**
+
+  * `list[str]`: The tags property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactCollection.type
+
+Returns the type of the artifact collection.
+
+* * *
+
+### 
+
+​
+
+`property` ArtifactCollection.updated_at
+
+The date at which the artifact collection was last updated. **Returns:**
+
+  * `str | None`: The updated_at property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `ArtifactCollection.artifacts`
+    
+    
+    artifacts(per_page: 'int' = 50, start: 'str | None' = None) → Artifacts
+    
+
+Get all artifacts in the collection. **Args:**
+
+  * `per_page`: The number of artifacts to fetch per page.
+  * `start`: Pagination cursor for resuming a past query, captured from a previous paginator’s `.cursor` attribute.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `ArtifactCollection.change_type`
+    
+    
+    change_type(new_type: 'str') → None
+    
+
+Deprecated, change type directly with `save` instead.
+
+* * *
+
+### 
+
+​
+
+`method` `ArtifactCollection.delete`
+    
+    
+    delete() → None
+    
+
+Delete the entire artifact collection.
+
+* * *
+
+### 
+
+​
+
+`method` `ArtifactCollection.is_sequence`
+    
+    
+    is_sequence() → bool
+    
+
+Return whether the artifact collection is a sequence.
+
+* * *
+
+### 
+
+​
+
+`method` `ArtifactCollection.save`
+    
+    
+    save() → None
+    
+
+Persist any changes made to the artifact collection.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/artifactcollection.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/artifactcollection)
+
+[ApiPrevious](/models/ref/python/public-api/api)[ArtifactCollectionsNext](/models/ref/python/public-api/artifactcollections)
+
+⌘I

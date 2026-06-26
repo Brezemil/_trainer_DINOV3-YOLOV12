@@ -1,0 +1,127 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/inference/nvidia-hardware
+---
+
+Nvidia Hardware
+    
+    
+    curl --request GET \
+      --url https://api.example.com/inference/nvidia/v2/hardware \
+      --header 'Authorization: Bearer <token>'
+    
+    
+    {
+      "hardware": [
+        {
+          "id": "<string>",
+          "name": "<string>",
+          "type": "<string>",
+          "pricing": {
+            "cents_per_million_input_tokens": 123,
+            "cents_per_million_output_tokens": 123
+          },
+          "specs": {}
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Inference](/weave/reference/service-api/inference/inference-catalog-models)
+
+# Nvidia Hardware
+
+Returns available hardware and pricing for a given model.
+
+Called by NVIDIA to show users their options and redirect them based on what we support. Only serverless options are returned.
+
+GET
+
+/
+
+inference
+
+/
+
+nvidia
+
+/
+
+v2
+
+/
+
+hardware
+
+Nvidia Hardware
+    
+    
+    curl --request GET \
+      --url https://api.example.com/inference/nvidia/v2/hardware \
+      --header 'Authorization: Bearer <token>'
+    
+    
+    {
+      "hardware": [
+        {
+          "id": "<string>",
+          "name": "<string>",
+          "type": "<string>",
+          "pricing": {
+            "cents_per_million_input_tokens": 123,
+            "cents_per_million_output_tokens": 123
+          },
+          "specs": {}
+        }
+      ]
+    }
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+#### Query Parameters
+
+​
+
+model
+
+string
+
+required
+
+Model name without the publisher prefix
+
+#### Response
+
+Successful Response
+
+​
+
+hardware
+
+NvidiaHardwareOption · object[]
+
+required
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/inference/nvidia-hardware.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/inference/nvidia-hardware)
+
+[Inference Router Openrouter ModelsPrevious](/weave/reference/service-api/inference/inference-router-openrouter-models)[Obj CreateNext](/weave/reference/service-api/objects/obj-create)
+
+⌘I

@@ -1,0 +1,57 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/startsubagent
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# startSubagent
+
+TypeScript SDK reference
+
+# 
+
+​
+
+startSubagent
+
+▸ **startSubagent**(`opts`): [`SubAgent`](/weave/reference/typescript-sdk/classes/subagent) Start a SubAgent span. Same parent-resolution rules as `startTool`.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`SubAgentInit`](/weave/reference/typescript-sdk/interfaces/subagentinit)  
+  
+#### 
+
+​
+
+Returns
+
+[`SubAgent`](/weave/reference/typescript-sdk/classes/subagent)
+
+#### 
+
+​
+
+Defined in
+
+[genai/api.ts:66](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/api.ts#L66)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/startsubagent.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/startsubagent)
+
+[startSessionPrevious](/weave/reference/typescript-sdk/functions/startsession)[startToolNext](/weave/reference/typescript-sdk/functions/starttool)
+
+⌘I

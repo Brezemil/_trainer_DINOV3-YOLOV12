@@ -1,0 +1,137 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/message
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: Message
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / Message
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [content](/weave/reference/typescript-sdk/interfaces/message#content)
+  * [parts](/weave/reference/typescript-sdk/interfaces/message#parts)
+  * [role](/weave/reference/typescript-sdk/interfaces/message#role)
+  * [toolCallId](/weave/reference/typescript-sdk/interfaces/message#toolcallid)
+  * [toolName](/weave/reference/typescript-sdk/interfaces/message#toolname)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+content
+
+• `Optional` **content** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:11](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L11)
+
+* * *
+
+### 
+
+​
+
+parts
+
+• `Optional` **parts** : [`MessagePart`](/weave/reference/typescript-sdk#messagepart)[]
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:14](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L14)
+
+* * *
+
+### 
+
+​
+
+role
+
+• **role** : [`Role`](/weave/reference/typescript-sdk#role)
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:10](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L10)
+
+* * *
+
+### 
+
+​
+
+toolCallId
+
+• `Optional` **toolCallId** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:12](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L12)
+
+* * *
+
+### 
+
+​
+
+toolName
+
+• `Optional` **toolName** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:13](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L13)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/message.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/message)
+
+[Interface: LLMInitPrevious](/weave/reference/typescript-sdk/interfaces/llminit)[Interface: QueryNext](/weave/reference/typescript-sdk/interfaces/query)
+
+⌘I

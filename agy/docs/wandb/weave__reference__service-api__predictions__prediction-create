@@ -1,0 +1,197 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/predictions/prediction-create
+---
+
+Prediction Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/predictions \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "model": "<string>",
+      "inputs": {},
+      "output": "<unknown>",
+      "evaluation_run_id": "<string>",
+      "genai_span_ref": [
+        {
+          "trace_id": "<string>",
+          "span_id": "<string>"
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "prediction_id": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Predictions](/weave/reference/service-api/predictions/prediction-list)
+
+# Prediction Create
+
+Create a prediction.
+
+POST
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+predictions
+
+Prediction Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/predictions \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "model": "<string>",
+      "inputs": {},
+      "output": "<unknown>",
+      "evaluation_run_id": "<string>",
+      "genai_span_ref": [
+        {
+          "trace_id": "<string>",
+          "span_id": "<string>"
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "prediction_id": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Body
+
+application/json
+
+Request body for creating a Prediction via REST API.
+
+This model excludes project_id since it comes from the URL path in RESTful endpoints.
+
+​
+
+model
+
+string
+
+required
+
+The model reference (weave:// URI)
+
+​
+
+inputs
+
+Inputs · object
+
+required
+
+The inputs to the prediction
+
+​
+
+output
+
+any
+
+required
+
+The output of the prediction
+
+​
+
+evaluation_run_id
+
+string | null
+
+Optional evaluation run ID to link this prediction as a child call
+
+​
+
+genai_span_ref
+
+GenAISpanRef · object[] | null
+
+Optional GenAI span reference(s) produced by this prediction.
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+​
+
+prediction_id
+
+string
+
+required
+
+The prediction ID
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/predictions/prediction-create.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/predictions/prediction-create)
+
+[Prediction ListPrevious](/weave/reference/service-api/predictions/prediction-list)[Prediction DeleteNext](/weave/reference/service-api/predictions/prediction-delete)
+
+⌘I

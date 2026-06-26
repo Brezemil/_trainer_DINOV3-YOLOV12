@@ -1,0 +1,111 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/joined-table
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# joined-table
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`asset-file`
+
+Returns the _file_ of the asset
+
+Argument| Description  
+---|---  
+`asset`| The asset  
+  
+#### 
+
+​
+
+Return Value
+
+The _file_ of the asset
+
+### 
+
+​
+
+`joinedtable-file`
+
+Returns the _file_ of a _joined-table_
+
+Argument| Description  
+---|---  
+`joinedTable`| The _joined-table_  
+  
+#### 
+
+​
+
+Return Value
+
+The _file_ of a _joined-table_
+
+### 
+
+​
+
+`joinedtable-rows`
+
+Returns the rows of a _joined-table_
+
+Argument| Description  
+---|---  
+`joinedTable`| The _joined-table_  
+`leftOuter`| Whether to include rows from the left table that do not have a matching row in the right table  
+`rightOuter`| Whether to include rows from the right table that do not have a matching row in the left table  
+  
+#### 
+
+​
+
+Return Value
+
+The rows of the _joined-table_
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`asset-file`
+
+Returns the _file_ of the asset
+
+Argument| Description  
+---|---  
+`asset`| The asset  
+  
+#### 
+
+​
+
+Return Value
+
+The _file_ of the asset
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/joined-table.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/joined-table)
+
+[intPrevious](/models/ref/query-panel/int)[molecule-fileNext](/models/ref/query-panel/molecule-file)
+
+⌘I

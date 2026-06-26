@@ -1,0 +1,55 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-enabled
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+# wandb enabled
+
+## 
+
+​
+
+Usage
+    
+    
+    enabled [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+Re-enable W&B after it was deactivated with `wandb disabled`. Set the mode to `online` to restore full W&B functionality, including cloud syncing and artifact storage. Does not upload data logged while W&B was set to `disabled`, but allows new data to be logged and synced. To switch between online and offline modes without fully deactivating W&B, use `wandb online` or `wandb offline` instead. For example, to restore W&B functionality after deactivating it with `wandb disabled`:
+    
+    
+    wandb enabled
+    
+
+To run a training script with W&B logging and syncing restored:
+    
+    
+    python train.py # Log and sync data to W&B
+    
+
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--service`| BOOL Flag| No effect. Accepted for backwards compatibility. **Default** : True  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-enabled.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-enabled)
+
+[wandb docker-runPrevious](/models/ref/cli/wandb-docker-run)[wandb initNext](/models/ref/cli/wandb-init)
+
+⌘I

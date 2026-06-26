@@ -1,0 +1,240 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/sweep
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# Sweep
+
+## 
+
+​
+
+`class` `Sweep`
+
+The set of runs associated with the sweep. **Attributes:**
+
+  * `runs` (Runs): List of runs
+  * `id` (str): Sweep ID
+  * `project` (str): The name of the project the sweep belongs to
+  * `config` (dict): Dictionary containing the sweep configuration
+  * `state` (str): The state of the sweep. Can be “Finished”, “Failed”, “Crashed”, or “Running”.
+  * `expected_run_count` (int): The number of expected runs for the sweep
+
+
+
+### 
+
+​
+
+`method` `Sweep.__init__`
+    
+    
+    __init__(
+        service_api: 'ServiceApi',
+        entity: 'str',
+        project: 'str',
+        sweep_id: 'str',
+        attrs: 'Mapping[str, Any] | None' = None
+    )
+    
+
+* * *
+
+### 
+
+​
+
+`property` Sweep.config
+
+The sweep configuration used for the sweep.
+
+* * *
+
+### 
+
+​
+
+`property` Sweep.entity
+
+The entity associated with the sweep. **Returns:**
+
+  * `str`: The entity property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Sweep.expected_run_count
+
+Return the number of expected runs in the sweep or None for infinite runs. **Returns:**
+
+  * `int | None`: The expected_run_count property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Sweep.name
+
+The name of the sweep. Returns the first name that exists in the following priority order:
+
+  1. User-edited display name 2. Name configured at creation time 3. Sweep ID
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Sweep.order
+
+Return the order key for the sweep.
+
+* * *
+
+### 
+
+​
+
+`property` Sweep.path
+
+Returns the path of the project. The path is a list containing the entity, project name, and sweep ID.
+
+* * *
+
+### 
+
+​
+
+`property` Sweep.url
+
+The URL of the sweep. The sweep URL is generated from the entity, project, the term “sweeps”, and the sweep ID.run_id. For SaaS users, it takes the form of `https://wandb.ai/entity/project/sweeps/sweeps_ID`.
+
+* * *
+
+### 
+
+​
+
+`property` Sweep.username
+
+Deprecated. Use `Sweep.entity` instead. **Returns:**
+
+  * `str`: The username property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `Sweep.agent`
+    
+    
+    agent(agent_id: 'str') → Agent
+    
+
+Query an agent by ID for this sweep. **Args:**
+
+  * `agent_id`: The ID of the agent to look up.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `Sweep.agents`
+    
+    
+    agents() → list[Agent]
+    
+
+Query the list of all agents for this sweep.
+
+* * *
+
+### 
+
+​
+
+`method` `Sweep.best_run`
+    
+    
+    best_run(order=None)
+    
+
+Return the best run sorted by the metric defined in config or the order passed in.
+
+* * *
+
+### 
+
+​
+
+`classmethod` `Sweep.get`
+    
+    
+    get(
+        api: 'Api',
+        entity: 'str | None' = None,
+        project: 'str | None' = None,
+        sid: 'str | None' = None,
+        order: 'str | None' = None,
+        query: 'str | None' = None,
+        **kwargs
+    )
+    
+
+Execute a query against the cloud backend. **Args:**
+
+  * `api`: The W&B API instance.
+  * `entity`: The entity (username or team) that owns the project.
+  * `project`: The name of the project to fetch sweep from.
+  * `sid`: The sweep ID to query.
+  * `order`: The order in which the sweep’s runs are returned.
+  * `query`: The query to use to execute the query.
+  * `**kwargs`: Additional keyword arguments to pass to the query.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `Sweep.to_html`
+    
+    
+    to_html(height: 'int' = 420, hidden: 'bool' = False) → str
+    
+
+Generate HTML containing an iframe displaying this sweep.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/sweep.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/sweep)
+
+[RunsPrevious](/models/ref/python/public-api/runs)[SweepsNext](/models/ref/python/public-api/sweeps)
+
+⌘I

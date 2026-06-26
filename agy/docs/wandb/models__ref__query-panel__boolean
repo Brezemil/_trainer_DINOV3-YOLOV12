@@ -1,0 +1,193 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/boolean
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# boolean
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`and`
+
+Returns the logical `and` of the two values
+
+Argument| Description  
+---|---  
+`lhs`| First binary value  
+`rhs`| Second binary value  
+  
+#### 
+
+​
+
+Return Value
+
+The logical `and` of the two values
+
+### 
+
+​
+
+`or`
+
+Returns the logical `or` of the two values
+
+Argument| Description  
+---|---  
+`lhs`| First binary value  
+`rhs`| Second binary value  
+  
+#### 
+
+​
+
+Return Value
+
+The logical `or` of the two values
+
+### 
+
+​
+
+`boolean-not`
+
+Returns the logical inverse of the value
+
+Argument| Description  
+---|---  
+`bool`| The boolean value  
+  
+#### 
+
+​
+
+Return Value
+
+The logical inverse of the value
+
+### 
+
+​
+
+`boolean-not`
+
+Returns the logical inverse of the value
+
+Argument| Description  
+---|---  
+`bool`| The boolean value  
+  
+#### 
+
+​
+
+Return Value
+
+The logical inverse of the value
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`and`
+
+Returns the logical `and` of the two values
+
+Argument| Description  
+---|---  
+`lhs`| First binary value  
+`rhs`| Second binary value  
+  
+#### 
+
+​
+
+Return Value
+
+The logical `and` of the two values
+
+### 
+
+​
+
+`or`
+
+Returns the logical `or` of the two values
+
+Argument| Description  
+---|---  
+`lhs`| First binary value  
+`rhs`| Second binary value  
+  
+#### 
+
+​
+
+Return Value
+
+The logical `or` of the two values
+
+### 
+
+​
+
+`boolean-not`
+
+Returns the logical inverse of the value
+
+Argument| Description  
+---|---  
+`bool`| The boolean value  
+  
+#### 
+
+​
+
+Return Value
+
+The logical inverse of the value
+
+### 
+
+​
+
+`boolean-not`
+
+Returns the logical inverse of the value
+
+Argument| Description  
+---|---  
+`bool`| The boolean value  
+  
+#### 
+
+​
+
+Return Value
+
+The logical inverse of the value
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/boolean.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/boolean)
+
+[bokeh-filePrevious](/models/ref/query-panel/bokeh-file)[entityNext](/models/ref/query-panel/entity)
+
+⌘I

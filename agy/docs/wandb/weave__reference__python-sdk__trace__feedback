@@ -1,0 +1,239 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/python-sdk/trace/feedback
+---
+
+[W&B Weave](/weave/reference)
+
+[Python SDK](/weave/reference/python-sdk)
+
+[Core](/weave/reference/python-sdk/trace/feedback)
+
+# feedback
+
+Python SDK reference for weave.trace.feedback
+
+# 
+
+​
+
+API Overview
+
+* * *
+
+## 
+
+​
+
+`class` `FeedbackQuery`
+
+Lazy-loading object for fetching feedback from the server.
+
+### 
+
+​
+
+`method` `__init__`
+    
+    
+    __init__(
+        entity: 'str',
+        project: 'str',
+        query: 'Query',
+        offset: 'int | None' = None,
+        limit: 'int | None' = None,
+        show_refs: 'bool' = False
+    )
+    
+
+* * *
+
+### 
+
+​
+
+`method` `execute`
+    
+    
+    execute() → Feedbacks
+    
+
+* * *
+
+### 
+
+​
+
+`method` `refresh`
+    
+    
+    refresh() → Feedbacks
+    
+
+* * *
+
+### 
+
+​
+
+`method` `refs`
+    
+    
+    refs() → Refs
+    
+
+* * *
+
+## 
+
+​
+
+`class` `Feedbacks`
+
+A collection of Feedback objects with utilities.
+
+### 
+
+​
+
+`method` `__init__`
+    
+    
+    __init__(
+        show_refs: 'bool',
+        feedbacks: 'Iterable[Feedback] | None' = None
+    ) → None
+    
+
+* * *
+
+### 
+
+​
+
+`method` `refs`
+    
+    
+    refs() → Refs
+    
+
+Return the unique refs associated with these feedbacks.
+
+* * *
+
+## 
+
+​
+
+`class` `RefFeedbackQuery`
+
+Object for interacting with feedback associated with a particular ref.
+
+### 
+
+​
+
+`method` `__init__`
+    
+    
+    __init__(ref: 'str') → None
+    
+
+* * *
+
+### 
+
+​
+
+`method` `add`
+    
+    
+    add(
+        feedback_type: 'str',
+        payload: 'dict[str, Any] | None' = None,
+        creator: 'str | None' = None,
+        annotation_ref: 'str | None' = None,
+        **kwargs: 'dict[str, Any]'
+    ) → str
+    
+
+Add feedback to the ref. feedback_type: A string identifying the type of feedback. The “wandb.” prefix is reserved. creator: The name to display for the originator of the feedback.
+
+* * *
+
+### 
+
+​
+
+`method` `add_note`
+    
+    
+    add_note(note: 'str', creator: 'str | None' = None) → str
+    
+
+* * *
+
+### 
+
+​
+
+`method` `add_reaction`
+    
+    
+    add_reaction(emoji: 'str', creator: 'str | None' = None) → str
+    
+
+* * *
+
+### 
+
+​
+
+`method` `execute`
+    
+    
+    execute() → Feedbacks
+    
+
+* * *
+
+### 
+
+​
+
+`method` `purge`
+    
+    
+    purge(feedback_id: 'str') → None
+    
+
+* * *
+
+### 
+
+​
+
+`method` `refresh`
+    
+    
+    refresh() → Feedbacks
+    
+
+* * *
+
+### 
+
+​
+
+`method` `refs`
+    
+    
+    refs() → Refs
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/python-sdk/trace/feedback.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/python-sdk/trace/feedback)
+
+[weavePrevious](/weave/reference/python-sdk)[opNext](/weave/reference/python-sdk/trace/op)
+
+⌘I

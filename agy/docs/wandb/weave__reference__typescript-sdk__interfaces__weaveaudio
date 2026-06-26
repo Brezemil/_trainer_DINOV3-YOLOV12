@@ -1,0 +1,125 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/weaveaudio
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: WeaveAudio
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / WeaveAudio
+
+## 
+
+​
+
+Hierarchy
+
+  * `WeaveAudioInput` ↳ `WeaveAudio`
+
+
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [_weaveType](/weave/reference/typescript-sdk/interfaces/weaveaudio#_weavetype)
+  * [audioType](/weave/reference/typescript-sdk/interfaces/weaveaudio#audiotype)
+  * [data](/weave/reference/typescript-sdk/interfaces/weaveaudio#data)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+_weaveType
+
+• **_weaveType** : `"Audio"`
+
+#### 
+
+​
+
+Defined in
+
+[media.ts:48](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/media.ts#L48)
+
+* * *
+
+### 
+
+​
+
+audioType
+
+• `Optional` **audioType** : `"wav"`
+
+#### 
+
+​
+
+Inherited from
+
+WeaveAudioInput.audioType
+
+#### 
+
+​
+
+Defined in
+
+[media.ts:44](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/media.ts#L44)
+
+* * *
+
+### 
+
+​
+
+data
+
+• **data** : `Buffer`
+
+#### 
+
+​
+
+Inherited from
+
+WeaveAudioInput.data
+
+#### 
+
+​
+
+Defined in
+
+[media.ts:43](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/media.ts#L43)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/weaveaudio.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/weaveaudio)
+
+[Interface: UsagePrevious](/weave/reference/typescript-sdk/interfaces/usage)[Interface: WeaveImageNext](/weave/reference/typescript-sdk/interfaces/weaveimage)
+
+⌘I

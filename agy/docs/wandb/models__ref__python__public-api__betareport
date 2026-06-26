@@ -1,0 +1,168 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/betareport
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# BetaReport
+
+## 
+
+​
+
+`class` `BetaReport`
+
+BetaReport is a class associated with reports created in W&B. Provides access to report attributes (name, description, user, spec, timestamps) and methods for retrieving associated runs, sections, and for rendering the report as HTML. **Attributes:**
+
+  * `id` (string): Unique identifier of the report.
+  * `display_name` (string): Human-readable display name of the report.
+  * `name` (string): The name of the report. Use `display_name` for a more user-friendly name.
+  * `description` (string): Description of the report.
+  * `user` (User): Dictionary containing user info (username, email) who created the report.
+  * `spec` (dict): The spec of the report.
+  * `url` (string): The URL of the report.
+  * `updated_at` (string): Timestamp of last update.
+  * `created_at` (string): Timestamp when the report was created.
+
+
+
+### 
+
+​
+
+`method` `BetaReport.__init__`
+    
+    
+    __init__(
+        service_api: 'ServiceApi',
+        attrs: 'dict',
+        entity: 'str | None' = None,
+        project: 'str | None' = None
+    )
+    
+
+* * *
+
+### 
+
+​
+
+`property` BetaReport.created_at
+
+* * *
+
+### 
+
+​
+
+`property` BetaReport.description
+
+* * *
+
+### 
+
+​
+
+`property` BetaReport.display_name
+
+* * *
+
+### 
+
+​
+
+`property` BetaReport.id
+
+* * *
+
+### 
+
+​
+
+`property` BetaReport.name
+
+* * *
+
+### 
+
+​
+
+`property` BetaReport.sections
+
+Get the panel sections (groups) from the report.
+
+* * *
+
+### 
+
+​
+
+`property` BetaReport.spec
+
+* * *
+
+### 
+
+​
+
+`property` BetaReport.updated_at
+
+* * *
+
+### 
+
+​
+
+`property` BetaReport.url
+
+* * *
+
+### 
+
+​
+
+`property` BetaReport.user
+
+* * *
+
+### 
+
+​
+
+`method` `BetaReport.runs`
+    
+    
+    runs(
+        section: 'dict[str, Any]',
+        per_page: 'int' = 50,
+        only_selected: 'bool' = True
+    ) → public.Runs
+    
+
+Get runs associated with a section of the report.
+
+* * *
+
+### 
+
+​
+
+`method` `BetaReport.to_html`
+    
+    
+    to_html(height: 'int' = 1024, hidden: 'bool' = False) → str
+    
+
+Generate HTML containing an iframe displaying this report.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/betareport.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/betareport)
+
+[AutomationsPrevious](/models/ref/python/public-api/automations)[FileNext](/models/ref/python/public-api/file)
+
+⌘I

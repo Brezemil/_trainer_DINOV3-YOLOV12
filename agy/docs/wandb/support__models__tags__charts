@@ -1,0 +1,29 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/charts
+---
+
+# Charts
+
+## How do I add Plotly or Bokeh Charts into Tables?
+
+Direct integration of Plotly or Bokeh figures into tables isn’t supported. Instead, export the figures to HTML and inclu …
+
+## How do you delete a custom chart preset?
+
+To delete a custom chart preset: 1. Access the custom chart editor. 2. Click the currently selected chart type to open a …
+
+## How do you show a step slider in a custom chart?
+
+A step slider lets viewers scrub through logged steps in a custom chart. To enable it, open the Other settings page of t …
+
+## What is the difference between `.log()` and `.summary`?
+
+The summary displays in the table, while the log saves all values for future plotting. For example, call run.log() whene …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/charts.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/charts)
+
+[BillingPrevious](/support/models/tags/billing)[ConnectivityNext](/support/models/tags/connectivity)
+
+⌘I

@@ -1,0 +1,166 @@
+---
+source_url: https://docs.wandb.ai/inference/lora
+---
+
+# Use Serverless LoRA Inference
+
+Bring your own custom LoRA for serving fine-tuned models on Serverless Inference.
+
+This page explains how to serve your own custom LoRA adapters on W&B Serverless Inference. It’s for developers and ML practitioners who want to deploy fine-tuned variants of supported base models without managing infrastructure. LoRA (Low-Rank Adaptation) lets you customize large language models by training and storing only a lightweight add-on instead of a full new model. This reduces the size and cost of customization. You can train or upload a LoRA to give a base model new capabilities, such as specializing it for customer support, creative writing, or a particular technical field. This lets you adapt the model’s behavior without retraining or redeploying the entire model.
+
+## 
+
+​
+
+Why use Serverless Inference for LoRAs
+
+Serverless Inference for LoRAs offers the following benefits:
+
+  * Upload once, deploy without managing servers.
+  * Track which version is live with artifact versioning.
+  * Update models by swapping small LoRA files instead of full model weights.
+
+
+
+## 
+
+​
+
+Workflow
+
+At a high level, serving a custom LoRA involves three steps:
+
+  1. Upload your LoRA weights as a W&B artifact.
+  2. Reference the artifact URI as your model name in the API.
+  3. W&B dynamically loads your weights for inference.
+
+The following example shows how to call your custom LoRA model using Serverless Inference. The following sections describe how to upload or train the LoRA referenced here.
+    
+    
+    from openai import OpenAI
+    
+    model_name = f"wandb-artifact:///{WB_TEAM}/{WB_PROJECT}/qwen_lora:latest"
+    
+    client = OpenAI(
+        base_url="https://api.inference.wandb.ai/v1",
+        api_key=API_KEY,
+        project=f"{WB_TEAM}/{WB_PROJECT}",
+    )
+    
+    resp = client.chat.completions.create(
+        model=model_name,
+        messages=[{"role": "user", "content": "Say 'Hello World!'"}],
+    )
+    print(resp.choices[0].message.content)
+    
+
+See this [getting started notebook](https://wandb.me/lora_nb) for an interactive demonstration of how to create a LoRA and upload it to W&B as an artifact.
+
+## 
+
+​
+
+Prerequisites
+
+You need the following:
+
+  * A [W&B API key](/models/integrations/add-wandb-to-any-library#create-an-api-key).
+  * A [W&B project](/models/track/project-page).
+  * Python 3.8+ with the `openai` and `wandb` packages: `pip install wandb openai`.
+
+
+
+## 
+
+​
+
+Add and use LoRAs
+
+You can add LoRAs to your W&B account and start using them with two methods. Choose the tab that matches where your LoRA was trained:
+
+  * Upload a LoRA you trained elsewhere
+
+  * Train a new LoRA with W&B
+
+
+
+
+Upload your own custom LoRA directory as a W&B artifact. Use this method if you trained your LoRA elsewhere (local environment, cloud provider, or partner service).This Python code uploads your locally stored LoRA weights to W&B as a versioned artifact. It creates a `lora` type artifact with the required metadata (base model and storage region), adds your LoRA files from a local directory, and logs it to your W&B project for use with inference.
+    
+    
+    import wandb
+    
+    run = wandb.init(entity=WB_TEAM, project=WB_PROJECT)
+    
+    artifact = wandb.Artifact(
+        "qwen_lora",
+        type="lora",
+        metadata={"wandb.base_model": "OpenPipe/Qwen3-14B-Instruct"},
+        storage_region="coreweave-us",
+    )
+    
+    artifact.add_dir("[PATH-TO-LORA-WEIGHTS]")
+    run.log_artifact(artifact)
+    
+
+### 
+
+​
+
+Key requirements
+
+To use your own LoRAs with Inference, ensure the following:
+
+  * The LoRA must have been trained using one of the models listed in the Supported base models section.
+  * A LoRA saved in PEFT format as a `lora` type artifact in your W&B account.
+  * The LoRA must be stored in the `storage_region="coreweave-us"` for low latency.
+  * When you upload, include the name of the base model you trained it on (for example, `meta-llama/Llama-3.1-8B-Instruct`). This ensures W&B loads it with the correct model.
+
+
+
+Train a new LoRA with [Serverless RL](/serverless-training). Your LoRA automatically becomes a W&B artifact that you can use directly.For detailed information on how to train your own LoRA, see [OpenPipe’s ART quickstart](https://art.openpipe.ai/getting-started/quick-start).After training completes, your LoRA is automatically available as an artifact.
+
+After you add your LoRA to your project as an artifact, regardless of which method you used, you can reference it from any inference call by passing its URI as the model name:
+    
+    
+    # After training completes, use your artifact directly
+    model_name = f"wandb-artifact:///{WB_TEAM}/{WB_PROJECT}/your_trained_lora:latest"
+    
+
+## 
+
+​
+
+Supported base models
+
+Your LoRA must be trained against one of the following base models. Use the exact model ID string when setting `wandb.base_model` so W&B can pair your adapter with the correct base model at inference time.
+
+Model ID (for API usage)| Maximum LoRA Rank  
+---|---  
+`meta-llama/Llama-3.1-70B-Instruct`| 16  
+`meta-llama/Llama-3.1-8B-Instruct`| 16  
+`openai/gpt-oss-120b`| 64  
+`OpenPipe/Qwen3-14B-Instruct`| 16  
+`Qwen/Qwen3.6-27B`| 16  
+`Qwen/Qwen3-30B-A3B-Instruct-2507`| 16  
+  
+## 
+
+​
+
+Pricing
+
+You pay only for storage and the inference you run, rather than for always-on servers or dedicated GPU instances. Pricing has two components:
+
+  * [**Storage**](https://wandb.ai/site/pricing/): You’re billed for the storage that holds your LoRA weights.
+  * **Inference usage** : Calls that use LoRA artifacts are billed at the same rates as [standard model inference](/inference/usage-limits#account-tiers-and-default-usage-caps).
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/inference/lora.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /inference/lora)
+
+[Model lifecyclePrevious](/inference/lifecycle)[Enable JSON modeNext](/inference/response-settings/json-mode)
+
+⌘I

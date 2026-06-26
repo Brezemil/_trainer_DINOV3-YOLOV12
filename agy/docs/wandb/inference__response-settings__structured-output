@@ -1,0 +1,95 @@
+---
+source_url: https://docs.wandb.ai/inference/response-settings/structured-output
+---
+
+[Response Settings](/inference/response-settings/json-mode)
+
+# Enable structured output
+
+How to configure structured output in Serverless Inference responses
+
+Structured output constrains Serverless Inference responses to a specific JSON schema, ensuring that the model’s response adheres to the fields and types you define. Use structured output when your application needs to parse model responses into known fields, such as for data extraction, form filling, or downstream processing. Structured output is similar to [JSON mode](/inference/response-settings/json-mode), but also enforces the schema you specify. Use structured output instead of JSON mode when possible. To enable structured output, specify `json_schema` as the `response_format` type in the request. The following example extracts event details into a defined schema:
+
+  * Python
+
+  * Bash
+
+
+
+    
+    
+    import json
+    import openai
+    
+    client = openai.OpenAI(
+        base_url='https://api.inference.wandb.ai/v1',
+        api_key="[YOUR-API-KEY]",  # Create an API key at https://wandb.ai/settings
+    )
+    
+    response = client.chat.completions.create(
+        model="openai/gpt-oss-20b",
+        messages=[
+            {"role": "system", "content": "Extract the event information."},
+            {"role": "user", "content": "Alice and Bob are going to a science fair on Friday."},
+        ],
+        response_format={
+            "type": "json_schema",
+            "json_schema": {
+                "name": "CalendarEventResponse",
+                "strict": True,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "name": {"type": "string"},
+                        "date": {"type": "string"},
+                        "participants": {"type": "array", "items": {"type": "string"}},
+                    },
+                    "required": ["name", "date", "participants"],
+                    "additionalProperties": False,
+                },
+            },
+        },
+    )
+    
+    content = response.choices[0].message.content
+    parsed = json.loads(content)
+    print(parsed)
+    
+    
+    
+    curl https://api.inference.wandb.ai/v1/chat/completions \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer [YOUR-API-KEY]" \
+      -d '{
+        "model": "openai/gpt-oss-20b",
+        "messages": [
+            {"role": "system", "content": "Extract the event information."},
+            {"role": "user", "content": "Alice and Bob are going to a science fair on Friday."},
+        ],
+        "response_format": {
+            "type": "json_schema",
+            "json_schema": {
+                "name": "CalendarEventResponse",
+                "strict": True,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "name": {"type": "string"},
+                        "date": {"type": "string"},
+                        "participants": {"type": "array", "items": {"type": "string"}},
+                    },
+                    "required": ["name", "date", "participants"],
+                    "additionalProperties": False,
+                },
+            },
+        },
+      }'
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/inference/response-settings/structured-output.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /inference/response-settings/structured-output)
+
+[Enable streaming responsesPrevious](/inference/response-settings/streaming)[Call toolsNext](/inference/response-settings/tool-calling)
+
+⌘I

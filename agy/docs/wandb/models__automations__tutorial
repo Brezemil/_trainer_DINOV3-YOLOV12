@@ -1,0 +1,39 @@
+---
+source_url: https://docs.wandb.ai/models/automations/tutorial
+---
+
+[Guides](/models/track)
+
+[Automations](/models/automations)
+
+[Tutorials](/models/automations/tutorial)
+
+# Automation tutorial overview
+
+Learn to build a project run-failure alert or a registry alias automation.
+
+W&B Automations follow this pattern: when an **event** occurs and optional **conditions** are met, an **action** runs automatically. For example:
+
+  * When a run fails (event), notify a Slack channel (action).   
+  
+  
+
+  * When the `production` alias is added to an artifact (event), call a webhook to trigger deployment (action).   
+  
+  
+
+
+Events and available conditions differ for automations scoped to a [project](/models/automations/automation-events#project) or a [registry](/models/automations/automation-events#registry). See [Automation events and scopes](/models/automations/automation-events). This page links to two end-to-end tutorials that show you how to create an automation in W&B. Each tutorial walks through a different scenario, so you can follow the one that matches what you want to build. For detailed guidance, select a tutorial.
+
+  * **[Project automation tutorial](/models/automations/project-automation-tutorial)** : Alert when a run fails (Slack notification).
+  * **[Registry automation tutorial](/models/automations/registry-automation-tutorial)** : Trigger a webhook when an alias (for example, `production`) is added to an artifact.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/automations/tutorial.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/automations/tutorial)
+
+[Create a webhook automationPrevious](/models/automations/create-automations/webhook)[Tutorial: Project run-failure alert automationNext](/models/automations/project-automation-tutorial)
+
+⌘I

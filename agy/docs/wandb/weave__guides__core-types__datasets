@@ -1,0 +1,368 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/core-types/datasets
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Evaluate your agents and applications](/weave/guides/core-types/evaluations)
+
+# Collect and track datasets
+
+Organize, collect, track, and version examples for LLM application evaluation
+
+Weave datasets help you organize, collect, track, and version examples for LLM application evaluation and side-by-side comparison. By following this page, you can build reusable, versioned collections of examples that you and your teammates can use to evaluate, iterate on, and compare LLM application behavior over time. You can create and interact with `Dataset`s programmatically and through the UI. This page is for engineers and team members who want to manage evaluation data either in code or through the Weave UI. It describes:
+
+  * Basic `Dataset` operations in Python and TypeScript and how to get started.
+  * How to create a `Dataset` in Python and TypeScript from objects such as Weave [calls](/weave/guides/tracking/tracing).
+  * Available operations on a `Dataset` in the UI.
+
+
+
+## 
+
+​
+
+Dataset quickstart
+
+The following code samples demonstrate how to perform fundamental `Dataset` operations using Python and TypeScript. Using the SDKs, you can:
+
+  * Create a `Dataset`
+  * Publish the `Dataset`
+  * Retrieve the `Dataset`
+  * Access a specific example in the `Dataset`
+
+Select a tab to see Python and TypeScript-specific code.
+
+  * Python
+
+  * TypeScript
+
+
+
+    
+    
+    import weave
+    from weave import Dataset
+    # Initialize Weave
+    weave.init('intro-example')
+    
+    # Create a dataset
+    dataset = Dataset(
+        name='grammar',
+        rows=[
+            {'id': '0', 'sentence': "He no likes ice cream.", 'correction': "He doesn't like ice cream."},
+            {'id': '1', 'sentence': "She goed to the store.", 'correction': "She went to the store."},
+            {'id': '2', 'sentence': "They plays video games all day.", 'correction': "They play video games all day."}
+        ]
+    )
+    
+    # Publish the dataset
+    weave.publish(dataset)
+    
+    # Retrieve the dataset
+    dataset_ref = weave.ref('grammar').get()
+    
+    # Access a specific example
+    example_label = dataset_ref.rows[2]['sentence']
+    
+    
+    
+    import * as weave from 'weave';
+    
+    // Initialize Weave
+    const client = await weave.init('intro-example');
+    
+    // Create a dataset
+    const dataset = new weave.Dataset({
+        name: 'grammar',
+        rows: [
+            {id: '0', sentence: "He no likes ice cream.", correction: "He doesn't like ice cream."},
+            {id: '1', sentence: "She goed to the store.", correction: "She went to the store."},
+            {id: '2', sentence: "They plays video games all day.", correction: "They play video games all day."}
+        ]
+    });
+    
+    // Publish the dataset
+    const ref = await dataset.save();
+    
+    // Retrieve the dataset
+    const retrievedDataset = await client.get(ref);
+    
+    // Alternatively, retrieve using a URI string
+    const datasetUri = 'weave:///my-entity/intro-example/object/grammar:abc123def456';
+    const refFromUri = weave.ObjectRef.fromUri(datasetUri);
+    const retrievedDatasetFromUri = await client.get(refFromUri);
+    
+    // Access a specific example
+    const exampleLabel = retrievedDataset.getRow(2).sentence;
+    
+
+## 
+
+​
+
+Create a dataset from other objects
+
+This section shows how to build a `Dataset` from data you already have, such as recorded Weave calls or existing tabular data, so you don’t have to manually re-enter examples.
+
+  * Python
+
+  * TypeScript
+
+
+
+
+In Python, `Dataset`s can also be constructed from common Weave objects like [calls](/weave/guides/tracking/tracing), and Python objects like `pandas.DataFrame`s. This feature is useful if you want to create an example `Dataset` from specific examples.
+
+### 
+
+​
+
+Weave call
+
+To create a `Dataset` from one or more Weave calls, retrieve the call objects and add them to a list in the `from_calls` method.
+    
+    
+    @weave.op
+    def model(task: str) -> str:
+        return f"Now working on {task}"
+    
+    res1, call1 = model.call(task="fetch")
+    res2, call2 = model.call(task="parse")
+    
+    dataset = Dataset.from_calls([call1, call2])
+    # Now you can use the dataset to evaluate the model, etc.
+    
+
+### 
+
+​
+
+Pandas DataFrame
+
+To create a `Dataset` from a Pandas `DataFrame` object, use the `from_pandas` method. To convert the `Dataset` back, use `to_pandas`.
+    
+    
+    import pandas as pd
+    
+    df = pd.DataFrame([
+        {'id': '0', 'sentence': "He no likes ice cream.", 'correction': "He doesn't like ice cream."},
+        {'id': '1', 'sentence': "She goed to the store.", 'correction': "She went to the store."},
+        {'id': '2', 'sentence': "They plays video games all day.", 'correction': "They play video games all day."}
+    ])
+    dataset = Dataset.from_pandas(df)
+    df2 = dataset.to_pandas()
+    
+    assert df.equals(df2)
+    
+
+### 
+
+​
+
+Hugging Face Datasets
+
+To create a `Dataset` from a Hugging Face `datasets.Dataset` or `datasets.DatasetDict` object, first ensure you have the necessary dependencies installed:
+    
+    
+    pip install weave[huggingface]
+    
+
+Then, use the `from_hf` method. If you provide a `DatasetDict` with multiple splits (like `train`, `test`, `validation`), Weave automatically uses the `train` split and issues a warning. If the `train` split isn’t present, Weave raises an error. You can provide a specific split directly (for example, `hf_dataset_dict['test']`).To convert a `weave.Dataset` back to a Hugging Face `Dataset`, use the `to_hf` method.
+    
+    
+    # Ensure datasets is installed: pip install datasets
+    from datasets import Dataset as HFDataset, DatasetDict
+    
+    # Example with HF Dataset
+    hf_rows = [
+        {'id': '0', 'sentence': "He no likes ice cream.", 'correction': "He doesn't like ice cream."},
+        {'id': '1', 'sentence': "She goed to the store.", 'correction': "She went to the store."},
+    ]
+    hf_ds = HFDataset.from_list(hf_rows)
+    weave_ds_from_hf = Dataset.from_hf(hf_ds)
+    
+    # Convert back to HF Dataset
+    converted_hf_ds = weave_ds_from_hf.to_hf()
+    
+    # Example with HF DatasetDict (uses 'train' split by default)
+    hf_dict = DatasetDict({
+        'train': HFDataset.from_list(hf_rows),
+        'test': HFDataset.from_list([{'id': '2', 'sentence': "Test sentence", 'correction': "Test correction"}])
+    })
+    # This issues a warning and uses the 'train' split
+    weave_ds_from_dict = Dataset.from_hf(hf_dict)
+    
+    # Providing a specific split
+    weave_ds_from_test_split = Dataset.from_hf(hf_dict['test'])
+    
+    
+    
+     This feature isn't currently available in TypeScript yet.
+    
+
+## 
+
+​
+
+Create, edit, and delete a dataset in the UI
+
+You can create, edit, and delete `Dataset`s in the UI. Creating datasets in the Weave UI lets you and non-engineering members of your team develop and curate sharable datasets containing examples, questions, and other agent-testing data without editing code. The following procedures walk through each of these tasks in the UI. Use them when you want to manage evaluation data alongside the traces it came from, rather than from a notebook or script.
+
+### 
+
+​
+
+Create a new dataset
+
+The following procedure creates a new `Dataset` from one or more existing calls in your Weave project. After you complete it, you have a published `Dataset` you can reference in evaluations and share with your team.
+
+  1. Navigate to the Weave project you want to edit.
+  2. In the sidebar, select **Traces**.
+  3. Select one or more calls to create a new `Dataset` for.
+  4. In the upper right-hand menu, click the **Add selected rows to a dataset** icon (located next to the trashcan icon).
+  5. From the **Choose a dataset** dropdown, select **Create new**. The **Dataset name** field appears.
+  6. In the **Dataset name** field, enter a name for your dataset. Options to **Configure dataset fields** appear.
+
+Dataset names must start with a letter or number and can only contain letters, numbers, hyphens, and underscores.
+
+  7. Optional: In **Configure dataset fields** , select the fields from your calls to include in the dataset.
+     * You can customize the column names for each selected field.
+     * You can select a subset of fields to include in the new `Dataset`, or deselect all fields.
+  8. Once you’ve configured the dataset fields, click **Next**. A preview of your new `Dataset` appears.
+  9. Optional: Click any of the editable fields in your **Dataset** to edit the entry.
+  10. Click **Create dataset**. Weave creates your new dataset.
+  11. In the confirmation popup, click **View the dataset** to view the new `Dataset`. Alternatively, go to the **Datasets** tab.
+
+
+
+### 
+
+​
+
+Edit a dataset
+
+Use the following procedure to add new rows to an existing `Dataset` and publish a new version. Editing in the UI is helpful when you want to extend or correct evaluation data without changing code.
+
+  1. Navigate to the Weave project containing the `Dataset` you want to edit.
+  2. From the sidebar, select **Datasets**. Your available `Dataset`s display. ![Dataset UI](https://mintcdn.com/wb-21fd5541/6UHHO9Wn0FEtNKHz/weave/guides/core-types/imgs/datasetui.png?fit=max&auto=format&n=6UHHO9Wn0FEtNKHz&q=85&s=c011e3f981712ffdb9e7b3c8b62b6747)
+  3. In the **Object** column, click the name and version of the `Dataset` you want to edit. A pop-out modal showing `Dataset` information like name, version, author, and `Dataset` rows displays. ![View Dataset information](https://mintcdn.com/wb-21fd5541/6UHHO9Wn0FEtNKHz/weave/guides/core-types/imgs/datasetui-popout.png?fit=max&auto=format&n=6UHHO9Wn0FEtNKHz&q=85&s=19ad98ae1a82a808f6ce1a5812213062)
+  4. In the upper right-hand corner of the modal, click the **Edit dataset** button (the pencil icon). An **\+ Add row** button displays at the bottom of the modal. ![Dataset UI- Add row icon](https://mintcdn.com/wb-21fd5541/6UHHO9Wn0FEtNKHz/weave/guides/core-types/imgs/datasetui-popout-edit.png?fit=max&auto=format&n=6UHHO9Wn0FEtNKHz&q=85&s=8c58692bb63f9519592de60e90ea689b)
+  5. Click **\+ Add row**. A new row displays at the top of your existing `Dataset` rows, indicating that you can add a new row to the `Dataset`. ![Dataset UI](https://mintcdn.com/wb-21fd5541/6UHHO9Wn0FEtNKHz/weave/guides/core-types/imgs/datasetui-popout-edit-green.png?fit=max&auto=format&n=6UHHO9Wn0FEtNKHz&q=85&s=718d02330b3b1f1a7dc8eb282dcc6ac2)
+  6. To add data to a new row, click the desired column within that row. You can’t edit the default **id** column in a `Dataset` row, because Weave assigns it automatically upon creation. An editing modal appears with **Text** , **Code** , and **Diff** options for formatting. ![Dataset UI - Add data to a column and format.](https://mintcdn.com/wb-21fd5541/6UHHO9Wn0FEtNKHz/weave/guides/core-types/imgs/datasetui-popout-edit-addcol.png?fit=max&auto=format&n=6UHHO9Wn0FEtNKHz&q=85&s=e07cd4d2e808662d74658afae8082f5a)
+  7. Repeat step 6 for each column that you want to add data to in the new row. ![Dataset UI - Add data to all columns.](https://mintcdn.com/wb-21fd5541/6UHHO9Wn0FEtNKHz/weave/guides/core-types/imgs/datasetui-popout-edit-colsadded.png?fit=max&auto=format&n=6UHHO9Wn0FEtNKHz&q=85&s=16154c3e8bb487e193de7f8ade3499db)
+  8. Repeat step 5 for each row that you want to add to the `Dataset`.
+  9. When you’re done editing, publish your `Dataset` by clicking **Publish** in the upper right-hand corner of the modal. Alternatively, if you don’t want to publish your changes, click **Cancel**. ![Dataset UI - Publish or cancel.](https://mintcdn.com/wb-21fd5541/6UHHO9Wn0FEtNKHz/weave/guides/core-types/imgs/datasetui-popout-edit-publish.png?fit=max&auto=format&n=6UHHO9Wn0FEtNKHz&q=85&s=654cedabe596f017448ae93cc527d17b) Once published, the new version of the `Dataset` with updated rows is available in the UI. ![Dataset UI - Published metadata.](https://mintcdn.com/wb-21fd5541/6UHHO9Wn0FEtNKHz/weave/guides/core-types/imgs/datasetui-popout-edit-published-meta.png?fit=max&auto=format&n=6UHHO9Wn0FEtNKHz&q=85&s=f79f512ccf39735079c56b1daa790128) ![Dataset UI - Published rows.](https://mintcdn.com/wb-21fd5541/6UHHO9Wn0FEtNKHz/weave/guides/core-types/imgs/datasetui-popout-edit-published-rows.png?fit=max&auto=format&n=6UHHO9Wn0FEtNKHz&q=85&s=7fac2d9b7665b77a931df37361ba8827)
+
+
+
+### 
+
+​
+
+Delete a dataset
+
+Use the following procedure when you want to remove a `Dataset` you no longer need from your Weave project.
+
+  1. Navigate to the Weave project containing the `Dataset` you want to edit.
+  2. From the sidebar, select **Datasets**. Your available `Dataset`s display.
+  3. In the **Object** column, click the name and version of the `Dataset` you want to delete. A pop-out modal showing `Dataset` information like name, version, author, and `Dataset` rows displays.
+  4. In the upper right-hand corner of the modal, click the trashcan icon. A pop-up modal prompting you to confirm `Dataset` deletion displays. ![Dataset UI - Confirm deletion modal.](https://mintcdn.com/wb-21fd5541/6UHHO9Wn0FEtNKHz/weave/guides/core-types/imgs/datasetui-delete-modal.png?fit=max&auto=format&n=6UHHO9Wn0FEtNKHz&q=85&s=c1e87d12b76131cf9c0fa524e8ce9d56)
+  5. In the pop-up modal, click **Delete** to delete the `Dataset`. Alternatively, click **Cancel** if you don’t want to delete the `Dataset`. The `Dataset` is deleted and no longer visible in the **Datasets** tab in your Weave dashboard.
+
+
+
+### 
+
+​
+
+Add a new agent trace to a dataset
+
+To add agent traces such as sessions, turns, and tool calls to a `Dataset`:
+
+  1. Navigate to [wandb.ai](http://wandb.ai) and select your project.
+  2. In the Weave project sidebar, click **Agents**.
+  3. In the top tab bar, click **Conversations**.
+  4. In the Conversations table, select a conversation row to load the conversation details side panel. The conversation details side panel has a header with an agent name and a UUID.
+  5. In the conversation details side panel header, click the table icon to the right to open the **Add example to dataset** drawer. ![Agent conversation details panel header showing table icon to add items to a dataset.](https://mintcdn.com/wb-21fd5541/stpB5jBgBeVCTLoH/weave/guides/core-types/imgs/agent-conversation-details-header-add-dataset.png?fit=max&auto=format&n=stpB5jBgBeVCTLoH&q=85&s=fa403f715d9b64a81fa66c278b64279b)
+  6. In **Choose a dataset** , use the dropdown to choose the dataset you want to add traces to.
+  7. In **Select context** , select which messages to add to the dataset. Click **Next**.
+  8. Review your selections and click **Add to dataset**.
+
+
+
+### 
+
+​
+
+Add a new trace to a dataset
+
+To add traces generated from ops and calls to a `Dataset`:
+
+  1. Navigate to the Weave project you want to edit.
+  2. In the sidebar, select **Traces**.
+  3. Select one or more calls with `Datasets` for which you want to create new examples.
+  4. In the upper right-hand menu, click the **Add selected rows to a dataset** icon (located next to the trashcan icon). Optionally, toggle **Show latest versions** to off to display all versions of all available datasets.
+  5. From the **Choose a dataset** dropdown, select the `Dataset` you want to add examples to. Options to **Configure field mapping** display.
+  6. Optional: In **Configure field mapping** , you can adjust the mapping of fields from your calls to the corresponding dataset columns.
+  7. Once you’ve configured field mappings, click **Next**. A preview of your new `Dataset` appears.
+  8. In the empty row (green), add your new example values. The **id** field isn’t editable, and Weave creates it automatically.
+  9. Click **Add to dataset**. Alternatively, to return to the **Configure field mapping** screen, click **Back**.
+  10. In the confirmation popup, click **View the dataset** to see the changes. Alternatively, navigate to the **Datasets** tab to view the updates to your `Dataset`.
+
+
+
+## 
+
+​
+
+Other dataset operations
+
+This section covers additional SDK operations that are useful once you already have a `Dataset` to work with.
+
+  * Python
+
+  * TypeScript
+
+
+
+
+### 
+
+​
+
+Select rows
+
+You can select specific rows from a `Dataset` by their index using the `select` method. This is useful for creating subsets of your data, such as when you want to evaluate against a smaller slice of examples.
+    
+    
+    import weave
+    from weave import Dataset
+    
+    # Create a sample dataset
+    dataset = Dataset(rows=[
+        {'col_a': 1, 'col_b': 'x'},
+        {'col_a': 2, 'col_b': 'y'},
+        {'col_a': 3, 'col_b': 'z'},
+        {'col_a': 4, 'col_b': 'w'},
+    ])
+    
+    # Select rows at index 0 and 2
+    subset_dataset = dataset.select([0, 2])
+    
+    # Now subset_dataset contains only the first and third rows
+    # print(list(subset_dataset))
+    # Output: [{'col_a': 1, 'col_b': 'x'}, {'col_a': 3, 'col_b': 'z'}]
+    
+    
+    
+     This feature isn't currently available in TypeScript yet.
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/core-types/datasets.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/core-types/datasets)
+
+[Evaluate RAG applicationsPrevious](/weave/tutorial-rag)[Scoring overviewNext](/weave/guides/evaluation/scorers)
+
+⌘I

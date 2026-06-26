@@ -1,0 +1,195 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/scorers/scorer-create
+---
+
+Scorer Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/scorers \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "name": "<string>",
+      "op_source_code": "<string>",
+      "description": "<string>"
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "object_id": "<string>",
+      "version_index": 123,
+      "scorer": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Scorers](/weave/reference/service-api/scorers/scorer-list)
+
+# Scorer Create
+
+Create a scorer object.
+
+POST
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+scorers
+
+Scorer Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/scorers \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "name": "<string>",
+      "op_source_code": "<string>",
+      "description": "<string>"
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "object_id": "<string>",
+      "version_index": 123,
+      "scorer": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Body
+
+application/json
+
+​
+
+name
+
+string
+
+required
+
+The name of this scorer. Scorers with the same name will be versioned together.
+
+​
+
+op_source_code
+
+string
+
+required
+
+Complete source code for the Scorer.score op including imports
+
+​
+
+description
+
+string | null
+
+A description of this scorer
+
+#### Response
+
+Successful Response
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the created scorer
+
+​
+
+object_id
+
+string
+
+required
+
+The ID of the created scorer
+
+​
+
+version_index
+
+integer
+
+required
+
+The version index of the created scorer
+
+​
+
+scorer
+
+string
+
+required
+
+Full reference to the created scorer
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/scorers/scorer-create.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/scorers/scorer-create)
+
+[Scorer ListPrevious](/weave/reference/service-api/scorers/scorer-list)[Scorer ReadNext](/weave/reference/service-api/scorers/scorer-read)
+
+⌘I

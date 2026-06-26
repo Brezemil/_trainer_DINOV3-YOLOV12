@@ -1,0 +1,69 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/artifacts
+---
+
+# Artifacts
+
+## How can I fetch these Version IDs and ETags in W&B?
+
+If you log an artifact reference with W&B and enable versioning on the buckets, the version IDs appear in the Amazon S3 …
+
+## How can I find the artifacts logged or consumed by a run? How can I find the runs that produced or consumed an artifact?
+
+This page shows you how to trace the relationships between runs and artifacts in W&B. You can find which run produced or …
+
+## How do I best log models from runs in a sweep?
+
+To log models in a sweep, create a model artifact for the sweep. Each version represents a different run from the sweep. …
+
+## How do I disable W&B while testing my code?
+
+To configure W&B as a no-op for testing, use wandb.init(mode=“disabled”) or set WANDB_MODE=disabled. Even when you use w …
+
+## How do I find an artifact from the best run in a sweep?
+
+To retrieve artifacts from the best-performing run in a sweep, use the following code. It sorts the sweep’s runs by vali …
+
+## How do I log an artifact to an existing run?
+
+Sometimes you need to mark an artifact as the output of a previously logged run. For example, you might generate a new m …
+
+## How do I save code?‌
+
+Saving code with each run helps you reproduce experiments and track which version of your code produced a given result. …
+
+## How do I set a retention or expiration policy on my artifact?
+
+To manage artifacts that contain sensitive data or to schedule the deletion of artifact versions, set a TTL (time-to-liv …
+
+## How much storage does each artifact version use?
+
+Only files that change between two artifact versions incur storage costs. Consider an image artifact named animals that …
+
+## Is it possible to recover an artifact after it has been deleted with a run?
+
+No. When you delete a run, a prompt asks whether to delete the associated artifacts. If you choose this option, W&B perm …
+
+## Using artifacts with multiple architectures and runs?
+
+This article describes how to organize artifacts when a project explores multiple model architectures across many runs, …
+
+## Where are artifacts downloaded, and how can I control that?
+
+By default, W&B downloads artifacts to the artifacts/ folder. To change the location: Pass the path to wandb.Artifact(). …
+
+## Who has access to my artifacts?
+
+This page explains how W&B determines access to artifacts, so you can know who in your organization can read or modify t …
+
+## Why can't I link my artifact to the Registry?
+
+If you can’t link an artifact to a W&B Registry, the most common cause is that the artifact was logged with a personal e …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/artifacts.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/artifacts)
+
+[AnonymousPrevious](/support/models/tags/anonymous)[AWSNext](/support/models/tags/aws)
+
+⌘I

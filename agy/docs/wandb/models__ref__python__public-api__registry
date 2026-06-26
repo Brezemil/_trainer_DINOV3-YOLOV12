@@ -1,0 +1,500 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/registry
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# Registry
+
+## 
+
+​
+
+`class` `Registry`
+
+A single registry in the Registry.
+
+### 
+
+​
+
+`method` `Registry.__init__`
+    
+    
+    __init__(
+        service_api: 'ServiceApi',
+        organization: 'str',
+        entity: 'str',
+        name: 'str',
+        attrs: 'RegistryFragment | None' = None
+    )
+    
+
+* * *
+
+### 
+
+​
+
+`property` Registry.allow_all_artifact_types
+
+Return whether all artifact types are allowed in the registry. If `True`, artifacts of any type can be added. If `False`, artifacts are restricted to the types listed in `artifact_types`. **Returns:**
+
+  * `bool`: The allow_all_artifact_types property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Registry.artifact_types
+
+Returns the artifact types allowed in the registry. If `allow_all_artifact_types` is `True` then `artifact_types` reflects the types previously saved or currently used in the registry. If `allow_all_artifact_types` is `False` then artifacts are restricted to the types in `artifact_types`. **Note:**
+
+> Previously saved artifact types cannot be removed.
+
+**Example:**
+    
+    
+    import wandb
+    
+    registry = wandb.Api().create_registry()
+    registry.artifact_types.append("model")
+    registry.save()  # once saved, the artifact type `model` cannot be removed
+    registry.artifact_types.append("accidentally_added")
+    registry.artifact_types.remove(
+        "accidentally_added"
+    )  # Types can only be removed if it has not been saved yet
+    
+
+**Returns:**
+
+  * `AddOnlyArtifactTypesList`: The artifact_types property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Registry.created_at
+
+Timestamp of when the registry was created. **Returns:**
+
+  * `str`: The created_at property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Registry.description
+
+Description of the registry. **Returns:**
+
+  * `str | None`: The description property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Registry.entity
+
+Organization entity of the registry. **Returns:**
+
+  * `str`: The entity property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Registry.full_name
+
+Full name of the registry including the `wandb-registry-` prefix. **Returns:**
+
+  * `str`: The full_name property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Registry.id
+
+The unique ID for this registry. **Returns:**
+
+  * `str`: The id property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Registry.name
+
+Name of the registry without the `wandb-registry-` prefix. **Returns:**
+
+  * `str`: The name property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Registry.organization
+
+Organization name of the registry. **Returns:**
+
+  * `str`: The organization property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Registry.path
+
+* * *
+
+### 
+
+​
+
+`property` Registry.updated_at
+
+Timestamp of when the registry was last updated. **Returns:**
+
+  * `str`: The updated_at property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` Registry.visibility
+
+Visibility of the registry. **Returns:**
+
+  * `Literal["organization", "restricted"]`: The visibility level.
+    * “organization”: Anyone in the organization can view this registry. You can edit their roles later from the settings in the UI.
+    * “restricted”: Only invited members via the UI can access this registry. Public sharing is disabled.
+
+**Returns:**
+
+  * `Literal['organization', 'restricted']`: The visibility property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `Registry.add_members`
+    
+    
+    add_members(*members: 'User | UserMember | Team | TeamMember | str') → Self
+    
+
+Adds users or teams to this registry. **Args:**
+
+  * `members`: The users or teams to add to the registry. Accepts `User` objects, `Team` objects, or their string IDs.
+
+**Returns:** This registry for further method chaining, if needed. **Raises:**
+
+  * `TypeError`: If no members are passed as arguments.
+  * `ValueError`: If unable to infer or parse the user or team IDs.
+
+**Examples:**
+    
+    
+    import wandb
+    
+    api = wandb.Api()
+    
+    # Fetch an existing registry
+    registry = api.registry(name="my-registry", organization="my-org")
+    
+    user1 = api.user(username="some-user")
+    user2 = api.user(username="other-user")
+    registry.add_members(user1, user2)
+    
+    my_team = api.team(name="my-team")
+    registry.add_members(my_team)
+    
+
+* * *
+
+### 
+
+​
+
+`method` `Registry.collections`
+    
+    
+    collections(
+        filter: 'dict[str, Any] | None' = None,
+        per_page: 'PositiveInt' = 100,
+        start: 'str | None' = None
+    ) → Collections
+    
+
+Returns the collections belonging to the registry.
+
+* * *
+
+### 
+
+​
+
+`classmethod` `Registry.create`
+    
+    
+    create(
+        api: 'Api',
+        organization: 'str',
+        name: 'str',
+        visibility: "Literal['organization', 'restricted']",
+        description: 'str | None' = None,
+        artifact_types: 'list[str] | None' = None
+    ) → Self
+    
+
+Create a new registry. The registry name must be unique within the organization. This function should be called using `api.create_registry()` **Args:**
+
+  * `api`: The W&B API instance.
+  * `organization`: The name of the organization.
+  * `name`: The name of the registry (without the `wandb-registry-` prefix).
+  * `visibility`: The visibility level (‘organization’ or ‘restricted’).
+  * `description`: An optional description for the registry.
+  * `artifact_types`: An optional list of allowed artifact types.
+
+**Returns:**
+
+  * `Registry`: The newly created Registry object.
+
+**Raises:**
+
+  * `ValueError`: If a registry with the same name already exists in the organization or if the creation fails.
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `Registry.delete`
+    
+    
+    delete() → None
+    
+
+Delete the registry. This is irreversible.
+
+* * *
+
+### 
+
+​
+
+`method` `Registry.load`
+    
+    
+    load() → None
+    
+
+Load registry attributes from the backend.
+
+* * *
+
+### 
+
+​
+
+`method` `Registry.members`
+    
+    
+    members() → list[UserMember | TeamMember]
+    
+
+Returns the current members (users and teams) of this registry.
+
+* * *
+
+### 
+
+​
+
+`method` `Registry.remove_members`
+    
+    
+    remove_members(*members: 'User | UserMember | Team | TeamMember | str') → Self
+    
+
+Removes users or teams from this registry. **Args:**
+
+  * `members`: The users or teams to remove from the registry. Accepts `User` objects, `Team` objects, or their string IDs.
+
+**Returns:** This registry for further method chaining, if needed. **Raises:**
+
+  * `TypeError`: If no members are passed as arguments.
+  * `ValueError`: If unable to infer or parse the user or team IDs.
+
+**Examples:**
+    
+    
+    import wandb
+    
+    api = wandb.Api()
+    
+    # Fetch an existing registry
+    registry = api.registry(name="my-registry", organization="my-org")
+    
+    user1 = api.user(username="some-user")
+    user2 = api.user(username="other-user")
+    registry.remove_members(user1, user2)
+    
+    old_team = api.team(name="old-team")
+    registry.remove_members(old_team)
+    
+
+* * *
+
+### 
+
+​
+
+`method` `Registry.save`
+    
+    
+    save() → None
+    
+
+Save registry attributes to the backend.
+
+* * *
+
+### 
+
+​
+
+`method` `Registry.team_members`
+    
+    
+    team_members() → list[TeamMember]
+    
+
+Returns the current member teams of this registry.
+
+* * *
+
+### 
+
+​
+
+`method` `Registry.update_member`
+    
+    
+    update_member(
+        member: 'User | UserMember | Team | TeamMember | str',
+        role: 'MemberRole | str'
+    ) → Self
+    
+
+Updates the role of a member (user or team) within this registry. **Args:**
+
+  * `member`: The user or team to update the role of. Accepts a `User` object, `Team` object, or their string ID.
+  * `role`: The new role to assign to the member. May be one of:
+    * “admin”
+    * “member”
+    * “viewer”
+    * “restricted_viewer” (if supported by the W&B server)
+
+**Returns:** This registry for further method chaining, if needed. **Raises:**
+
+  * `ValueError`: If unable to infer the user or team ID.
+
+**Examples:** Make all users in the registry admins ```python import wandb api = wandb.Api()
+
+# 
+
+​
+
+Fetch an existing registry
+
+registry = api.registry(name=“my-registry”, organization=“my-org”) for member in registry.user_members(): registry.update_member(member.user, role=“admin”)
+    
+    
+    ---
+    
+    ### <kbd>method</kbd> `Registry.user_members`
+    
+    ```python
+    user_members() → list[UserMember]
+    
+
+Returns the current member users of this registry.
+
+* * *
+
+### 
+
+​
+
+`method` `Registry.versions`
+    
+    
+    versions(
+        filter: 'dict[str, Any] | None' = None,
+        per_page: 'PositiveInt' = 100,
+        start: 'str | None' = None
+    ) → Versions
+    
+
+Returns the versions belonging to the registry.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/registry.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/registry)
+
+[ProjectArtifactCollectionsPrevious](/models/ref/python/public-api/projectartifactcollections)[ReportsNext](/models/ref/python/public-api/reports)
+
+⌘I

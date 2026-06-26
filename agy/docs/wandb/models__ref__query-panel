@@ -1,0 +1,56 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# Query Expression Language overview
+
+A beta query language to select and aggregate data in W&B
+
+Use the query expressions to select and aggregate data across runs and projects. Learn more about [query panels](/models/app/features/panels/query-panels).
+
+See the public [Query panel examples report](https://wandb.ai/luis_team_test/weave_example_queries/reports/Query-Panel-Examples---Vmlldzo1NzIxOTY2) for interactive examples. For details about creating panels, stepping through run history, and configuration options such as **Concat** and **Paginate** , see the [Query panels overview](/models/app/features/panels/query-panels).
+
+## 
+
+​
+
+Data Types
+
+  * [artifact](/models/ref/query-panel/artifact)
+  * [artifactType](/models/ref/query-panel/artifact-type)
+  * [artifactVersion](/models/ref/query-panel/artifact-version)
+  * [audio-file](/models/ref/query-panel/audio-file)
+  * [bokeh-file](/models/ref/query-panel/bokeh-file)
+  * [boolean](/models/ref/query-panel/boolean)
+  * [entity](/models/ref/query-panel/entity)
+  * [file](/models/ref/query-panel/file)
+  * [float](/models/ref/query-panel/float)
+  * [html-file](/models/ref/query-panel/html-file)
+  * [image-file](/models/ref/query-panel/image-file)
+  * [int](/models/ref/query-panel/int)
+  * [joined-table](/models/ref/query-panel/joined-table)
+  * [molecule-file](/models/ref/query-panel/molecule-file)
+  * [number](/models/ref/query-panel/number)
+  * [object3D-file](/models/ref/query-panel/object-3-d-file)
+  * [partitioned-table](/models/ref/query-panel/partitioned-table)
+  * [project](/models/ref/query-panel/project)
+  * [pytorch-model-file](/models/ref/query-panel/pytorch-model-file)
+  * [run](/models/ref/query-panel/run)
+  * [string](/models/ref/query-panel/string)
+  * [table](/models/ref/query-panel/table)
+  * [user](/models/ref/query-panel/user)
+  * [video-file](/models/ref/query-panel/video-file)
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel)
+
+[wandb verifyPrevious](/models/ref/cli/wandb-verify)[artifactNext](/models/ref/query-panel/artifact)
+
+⌘I

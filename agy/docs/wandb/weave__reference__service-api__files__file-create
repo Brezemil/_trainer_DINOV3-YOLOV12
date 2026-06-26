@@ -1,0 +1,107 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/files/file-create
+---
+
+File Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/file/create \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: multipart/form-data' \
+      --form 'project_id=<string>' \
+      --form file='@example-file'
+    
+    
+    {
+      "digest": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Files](/weave/reference/service-api/files/file-create)
+
+# File Create
+
+POST
+
+/
+
+file
+
+/
+
+create
+
+File Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/file/create \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: multipart/form-data' \
+      --form 'project_id=<string>' \
+      --form file='@example-file'
+    
+    
+    {
+      "digest": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+multipart/form-data
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+file
+
+file
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+digest
+
+string
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/files/file-create.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/files/file-create)
+
+[Refs Read BatchPrevious](/weave/reference/service-api/refs/refs-read-batch)[File ContentNext](/weave/reference/service-api/files/file-content)
+
+⌘I

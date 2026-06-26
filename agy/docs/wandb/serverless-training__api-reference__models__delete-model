@@ -1,0 +1,119 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/api-reference/models/delete-model
+---
+
+Delete Model
+    
+    
+    curl --request DELETE \
+      --url https://api.example.com/v1/preview/models/{model_id} \
+      --header 'Authorization: Bearer <token>'
+    
+    
+    {
+      "model_id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+      "deleted_checkpoints": 123,
+      "deleted_run": true
+    }
+
+[Serverless Training](/serverless-training/api-reference)
+
+[models](/serverless-training/api-reference/models/create-model)
+
+# Delete Model
+
+Delete a model, all its checkpoints, artifacts, and the associated W&B run.
+
+DELETE
+
+/
+
+v1
+
+/
+
+preview
+
+/
+
+models
+
+/
+
+{model_id}
+
+Delete Model
+    
+    
+    curl --request DELETE \
+      --url https://api.example.com/v1/preview/models/{model_id} \
+      --header 'Authorization: Bearer <token>'
+    
+    
+    {
+      "model_id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+      "deleted_checkpoints": 123,
+      "deleted_run": true
+    }
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+#### Path Parameters
+
+​
+
+model_id
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+Schema for delete model response.
+
+​
+
+model_id
+
+string<uuid>
+
+required
+
+​
+
+deleted_checkpoints
+
+integer
+
+required
+
+​
+
+deleted_run
+
+boolean
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/api-reference/models/delete-model.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/api-reference/models/delete-model)
+
+[Delete Model CheckpointsPrevious](/serverless-training/api-reference/models/delete-model-checkpoints)[LogNext](/serverless-training/api-reference/models/log)
+
+⌘I

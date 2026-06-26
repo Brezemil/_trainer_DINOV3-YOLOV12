@@ -1,0 +1,357 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/project
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# project
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`project-artifact`
+
+Returns the [artifact](/models/ref/query-panel/artifact) for a given name within a [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+`artifactName`| The name of the [artifact](/models/ref/query-panel/artifact)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifact](/models/ref/query-panel/artifact) for a given name within a [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-artifactType`
+
+Returns the [artifactType](/models/ref/query-panel/artifact-type) for a given name within a [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+`artifactType`| The name of the [artifactType](/models/ref/query-panel/artifact-type)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactType](/models/ref/query-panel/artifact-type) for a given name within a [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-artifactTypes`
+
+Returns the [artifactTypes](/models/ref/query-panel/artifact-type) for a [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactTypes](/models/ref/query-panel/artifact-type) for a [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-artifactVersion`
+
+Returns the [artifactVersion](/models/ref/query-panel/artifact-version) for a given name and version within a [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+`artifactName`| The name of the [artifactVersion](/models/ref/query-panel/artifact-version)  
+`artifactVersionAlias`| The version alias of the [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersion](/models/ref/query-panel/artifact-version) for a given name and version within a [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-createdAt`
+
+Returns the creation time of the [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+  
+#### 
+
+​
+
+Return Value
+
+The creation time of the [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-name`
+
+Returns the name of the [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-runs`
+
+Returns the [runs](/models/ref/query-panel/run) from a [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+  
+#### 
+
+​
+
+Return Value
+
+The [runs](/models/ref/query-panel/run) from a [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-updatedAt`
+
+Returns the update time of the [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+  
+#### 
+
+​
+
+Return Value
+
+The update time of the [project](/models/ref/query-panel/project)
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`project-artifact`
+
+Returns the [artifact](/models/ref/query-panel/artifact) for a given name within a [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+`artifactName`| The name of the [artifact](/models/ref/query-panel/artifact)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifact](/models/ref/query-panel/artifact) for a given name within a [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-artifactType`
+
+Returns the [artifactType](/models/ref/query-panel/artifact-type) for a given name within a [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+`artifactType`| The name of the [artifactType](/models/ref/query-panel/artifact-type)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactType](/models/ref/query-panel/artifact-type) for a given name within a [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-artifactTypes`
+
+Returns the [artifactTypes](/models/ref/query-panel/artifact-type) for a [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactTypes](/models/ref/query-panel/artifact-type) for a [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-artifactVersion`
+
+Returns the [artifactVersion](/models/ref/query-panel/artifact-version) for a given name and version within a [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+`artifactName`| The name of the [artifactVersion](/models/ref/query-panel/artifact-version)  
+`artifactVersionAlias`| The version alias of the [artifactVersion](/models/ref/query-panel/artifact-version)  
+  
+#### 
+
+​
+
+Return Value
+
+The [artifactVersion](/models/ref/query-panel/artifact-version) for a given name and version within a [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-createdAt`
+
+Returns the creation time of the [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+  
+#### 
+
+​
+
+Return Value
+
+The creation time of the [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-name`
+
+Returns the name of the [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-runs`
+
+Returns the [runs](/models/ref/query-panel/run) from a [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+  
+#### 
+
+​
+
+Return Value
+
+The [runs](/models/ref/query-panel/run) from a [project](/models/ref/query-panel/project)
+
+### 
+
+​
+
+`project-updatedAt`
+
+Returns the update time of the [project](/models/ref/query-panel/project)
+
+Argument| Description  
+---|---  
+`project`| A [project](/models/ref/query-panel/project)  
+  
+#### 
+
+​
+
+Return Value
+
+The update time of the [project](/models/ref/query-panel/project)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/project.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/project)
+
+[partitioned-tablePrevious](/models/ref/query-panel/partitioned-table)[pytorch-model-fileNext](/models/ref/query-panel/pytorch-model-file)
+
+⌘I

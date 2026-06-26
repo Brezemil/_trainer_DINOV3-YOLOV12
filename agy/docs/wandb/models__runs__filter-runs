@@ -1,0 +1,119 @@
+---
+source_url: https://docs.wandb.ai/models/runs/filter-runs
+---
+
+[Guides](/models/track)
+
+[Experiments](/models/track)
+
+[What are runs?](/models/runs)
+
+# Filter runs
+
+Learn how to filter runs in the Runs table using the expression editor.
+
+Filter runs based on their name, state, tags, or other properties with the expression editor in the Runs table. When you add a filter, you first choose a field (for example, tags, timestamp, or entity). Each field has an underlying type, such as text, time, or ID. The list of operators you see (for example, is, in, ≥, within last) depends on this type. After you choose a field, the UI only shows operators that are valid for that field’s type.
+
+## 
+
+​
+
+Common operators by type
+
+Filter type| Example fields| Common operators| Example usage  
+---|---|---|---  
+Tags| `tags`| is, is not, in, not in| `tags is "baseline"`  
+Time| `created timestamp`| ≤, ≥, within last| `created timestamp` ≥ `01/16/2026`  
+String| `state`| =, ≠, IN, NOT IN| `state = "finished"`  
+  
+The above table shows only a subset of available fields and operators. The expression editor shows all available fields and operators.
+
+## 
+
+​
+
+Create a filter expression
+
+  1. Navigate to the **Runs** tab from the project sidebar.
+  2. Select the **Filter** button, which looks like a funnel, above the runs table.
+  3. From left to right, select a column name, a logical operator, and a filter value to create a filter expression. The filter is applied as soon as you select a filter value.
+  4. Optionally select **New Filter** to apply additional AND or OR conditions.
+  5. Optionally select **New group** to group filters together with parentheses. This allows you to create complex filter expressions such as A AND (B OR C).
+  6. Close the filter expression editor by clicking the **x** icon in the top right corner.
+
+The following image filters runs based on loss values less than or equal to `1`:
+
+![Incorrect predictions filter](https://mintcdn.com/wb-21fd5541/c4hF-DGziNBrnJja/images/data_vis/filter.png?fit=max&auto=format&n=c4hF-DGziNBrnJja&q=85&s=6e38aeae624b957c7393c75f5a0b9ee2)
+
+The following sections show some examples of how to filter runs in the Runs table.
+
+### 
+
+​
+
+Example: Filter runs with tags
+
+Filter runs based on their tags:
+
+  1. Click on the **Runs** tab from the project sidebar.
+  2. Select the **Filter** button, which looks like a funnel, above the runs table.
+  3. From left to right, select `"Tags"` from the dropdown menu select a logic operator.
+  4. Select is, is not, in, or not in from the second dropdown menu.
+  5. Enter the tag name you want to filter by from the third dropdown menu.
+
+
+
+![Filter runs by tags](https://mintcdn.com/wb-21fd5541/ZDqxXQYvQVF43fU1/images/app_ui/filter_runs.gif?s=ed74c1eb9c3cb38819502f84190008ac)
+
+### 
+
+​
+
+Example: Combine filters with AND and OR conditions
+
+This section describes how to create a complex filter expression like `A AND (B OR C)`. In this example, A is `loss` ≤ `1`, B is `State` = `finished`, and C is `State` = `crashed`.
+
+  1. Click on the **Runs** tab from the project sidebar.
+  2. Select the **Filter** button, which looks like a funnel, above the runs table.
+  3. From left to right, select `loss` from the first dropdown menu, select ≤ from the second dropdown menu, and enter `1` in the third dropdown menu. This creates filter A.
+  4. Click **New Filter** and select **New group** to create a new group for filters B and C.
+  5. For filter B, select `State` from the first dropdown menu, select `=` from the second dropdown menu, and select `finished` from the third dropdown menu.
+  6. Click **New Filter** to create filter C, and select `State` from the first dropdown menu, select `=` from the second dropdown menu, and select `crashed` from the third dropdown menu.
+
+The following image demonstrates how the resulting filter expression appears in the filter expression editor:
+
+![Combine filters with AND and OR conditions](https://mintcdn.com/wb-21fd5541/c4hF-DGziNBrnJja/images/runs/run_expressions_and_or.png?fit=max&auto=format&n=c4hF-DGziNBrnJja&q=85&s=afccbb0ae974c09af2cde8fb72d303a5)
+
+## 
+
+​
+
+Default filters
+
+By default, W&B provides the following filters:
+
+  * **Show only my works** : Shows only runs created by the current user.
+  * **Hide crashed runs** : Hides runs with the `crashed` state.
+
+Default filters appear as toggles below the **New filter** button in the filter expression editor.
+
+## 
+
+​
+
+Remove a filter
+
+To remove a filter from the Runs table:
+
+  1. Click on the **Filter** button, which looks like a funnel, above the runs table.
+  2. Select the `x` icon next to the filter you want to remove.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/runs/filter-runs.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/runs/filter-runs)
+
+[Organize runsPrevious](/models/runs/grouping)[Search runsNext](/models/runs/search-runs)
+
+⌘I

@@ -1,0 +1,130 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+# weave
+
+TypeScript SDK reference
+
+weave
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Classes
+
+  * [Dataset](/weave/reference/typescript-sdk/classes/dataset)
+  * [Evaluation](/weave/reference/typescript-sdk/classes/evaluation)
+  * [EvaluationLogger](/weave/reference/typescript-sdk/classes/evaluationlogger)
+  * [LLM](/weave/reference/typescript-sdk/classes/llm)
+  * [MessagesPrompt](/weave/reference/typescript-sdk/classes/messagesprompt)
+  * [ObjectRef](/weave/reference/typescript-sdk/classes/objectref)
+  * [ScoreLogger](/weave/reference/typescript-sdk/classes/scorelogger)
+  * [Session](/weave/reference/typescript-sdk/classes/session)
+  * [StringPrompt](/weave/reference/typescript-sdk/classes/stringprompt)
+  * [SubAgent](/weave/reference/typescript-sdk/classes/subagent)
+  * [Tool](/weave/reference/typescript-sdk/classes/tool)
+  * [Turn](/weave/reference/typescript-sdk/classes/turn)
+  * [WeaveClient](/weave/reference/typescript-sdk/classes/weaveclient)
+  * [WeaveObject](/weave/reference/typescript-sdk/classes/weaveobject)
+
+
+
+### 
+
+​
+
+Interfaces
+
+  * [CallSchema](/weave/reference/typescript-sdk/interfaces/callschema)
+  * [CallsFilter](/weave/reference/typescript-sdk/interfaces/callsfilter)
+  * [GetCallsOptions](/weave/reference/typescript-sdk/interfaces/getcallsoptions)
+  * [LLMInit](/weave/reference/typescript-sdk/interfaces/llminit)
+  * [Message](/weave/reference/typescript-sdk/interfaces/message)
+  * [Query](/weave/reference/typescript-sdk/interfaces/query)
+  * [Reasoning](/weave/reference/typescript-sdk/interfaces/reasoning)
+  * [SessionInit](/weave/reference/typescript-sdk/interfaces/sessioninit)
+  * [SortBy](/weave/reference/typescript-sdk/interfaces/sortby)
+  * [SubAgentInit](/weave/reference/typescript-sdk/interfaces/subagentinit)
+  * [ToolInit](/weave/reference/typescript-sdk/interfaces/toolinit)
+  * [TurnInit](/weave/reference/typescript-sdk/interfaces/turninit)
+  * [Usage](/weave/reference/typescript-sdk/interfaces/usage)
+  * [WeaveAudio](/weave/reference/typescript-sdk/interfaces/weaveaudio)
+  * [WeaveImage](/weave/reference/typescript-sdk/interfaces/weaveimage)
+
+
+
+### 
+
+​
+
+Type Aliases
+
+  * [MessagePart](/weave/reference/typescript-sdk/type-aliases/messagepart)
+  * [Modality](/weave/reference/typescript-sdk/type-aliases/modality)
+  * [OpDecorator](/weave/reference/typescript-sdk/type-aliases/opdecorator)
+  * [Op](/weave/reference/typescript-sdk/type-aliases/op)
+  * [Role](/weave/reference/typescript-sdk/type-aliases/role)
+
+
+
+### 
+
+​
+
+Functions
+
+  * [createOpenAIAgentsTracingProcessor](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+  * [createOtelExtension](/weave/reference/typescript-sdk/functions/createotelextension)
+  * [endLLM](/weave/reference/typescript-sdk/functions/endllm)
+  * [endSession](/weave/reference/typescript-sdk/functions/endsession)
+  * [endTurn](/weave/reference/typescript-sdk/functions/endturn)
+  * [flushOTel](/weave/reference/typescript-sdk/functions/flushotel)
+  * [getCurrentLLM](/weave/reference/typescript-sdk/functions/getcurrentllm)
+  * [getCurrentSession](/weave/reference/typescript-sdk/functions/getcurrentsession)
+  * [getCurrentTurn](/weave/reference/typescript-sdk/functions/getcurrentturn)
+  * [init](/weave/reference/typescript-sdk/functions/init)
+  * [instrumentOpenAIAgents](/weave/reference/typescript-sdk/functions/instrumentopenaiagents)
+  * [login](/weave/reference/typescript-sdk/functions/login)
+  * [op](/weave/reference/typescript-sdk/functions/op)
+  * [patchRealtimeSession](/weave/reference/typescript-sdk/functions/patchrealtimesession)
+  * [requireCurrentCallStackEntry](/weave/reference/typescript-sdk/functions/requirecurrentcallstackentry)
+  * [requireCurrentChildSummary](/weave/reference/typescript-sdk/functions/requirecurrentchildsummary)
+  * [runIsolated](/weave/reference/typescript-sdk/functions/runisolated)
+  * [startLLM](/weave/reference/typescript-sdk/functions/startllm)
+  * [startSession](/weave/reference/typescript-sdk/functions/startsession)
+  * [startSubagent](/weave/reference/typescript-sdk/functions/startsubagent)
+  * [startTool](/weave/reference/typescript-sdk/functions/starttool)
+  * [startTurn](/weave/reference/typescript-sdk/functions/startturn)
+  * [weaveAudio](/weave/reference/typescript-sdk/functions/weaveaudio)
+  * [weaveImage](/weave/reference/typescript-sdk/functions/weaveimage)
+  * [withAttributes](/weave/reference/typescript-sdk/functions/withattributes)
+  * [wrapGoogleGenAI](/weave/reference/typescript-sdk/functions/wrapgooglegenai)
+  * [wrapOpenAI](/weave/reference/typescript-sdk/functions/wrapopenai)
+
+
+
+## 
+
+​
+
+Type Aliases
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk)
+
+[remote_http_trace_serverPrevious](/weave/reference/python-sdk/trace_server_bindings/remote_http_trace_server)[Class: Dataset<R>Next](/weave/reference/typescript-sdk/classes/dataset)
+
+⌘I

@@ -1,0 +1,93 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/objects/tags-list
+---
+
+Tags List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/tags \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "tags": [
+        "<string>"
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Objects](/weave/reference/service-api/objects/obj-create)
+
+# Tags List
+
+List all tags in a project.
+
+GET
+
+/
+
+tags
+
+Tags List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/tags \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "tags": [
+        "<string>"
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Query Parameters
+
+​
+
+project_id
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+tags
+
+string[]
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/objects/tags-list.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/objects/tags-list)
+
+[Obj Remove AliasesPrevious](/weave/reference/service-api/objects/obj-remove-aliases)[Aliases ListNext](/weave/reference/service-api/objects/aliases-list)
+
+⌘I

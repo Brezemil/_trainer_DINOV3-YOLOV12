@@ -1,0 +1,23 @@
+---
+source_url: https://docs.wandb.ai/support/models/articles/how-do-i-run-wandb-offline
+---
+
+# How do I run W&B offline?
+
+To train on a machine without internet access and upload your results to W&B later, follow these steps:
+
+  1. Set the environment variable `WANDB_MODE=offline` to save metrics locally without an internet connection.
+  2. When you’re ready to upload, run `wandb init` in your directory to set the project name.
+  3. Run `wandb sync [RUN-DIRECTORY]` to transfer your metrics to W&B and view your results in the web app. Replace `[RUN-DIRECTORY]` with the path to your local run directory.
+
+To confirm a run is offline, check `run.settings._offline` or `run.settings.mode` after you call `wandb.init()`.
+
+* * *
+
+[Experiments](/support/models/tags/experiments) [Environment Variables](/support/models/tags/environment-variables)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/articles/how-do-i-run-wandb-offline.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/articles/how-do-i-run-wandb-offline)
+
+⌘I

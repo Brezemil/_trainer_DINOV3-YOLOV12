@@ -1,0 +1,1421 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/python-sdk/trace_server_bindings/remote_http_trace_server
+---
+
+[W&B Weave](/weave/reference)
+
+[Python SDK](/weave/reference/python-sdk)
+
+[Trace Server Bindings](/weave/reference/python-sdk/trace_server_bindings/remote_http_trace_server)
+
+# remote_http_trace_server
+
+Python SDK reference for weave.trace_server_bindings.remote_http_trace_server
+
+# 
+
+​
+
+API Overview
+
+* * *
+
+## 
+
+​
+
+`class` `RemoteHTTPTraceServer`
+
+### 
+
+​
+
+`method` `__init__`
+    
+    
+    __init__(
+        trace_server_url: str,
+        should_batch: bool = False,
+        remote_request_bytes_limit: int = 32505856,
+        auth: tuple[str, str] | None = None,
+        extra_headers: dict[str, str] | None = None
+    )
+    
+
+* * *
+
+### 
+
+​
+
+`method` `actions_execute_batch`
+    
+    
+    actions_execute_batch(req: ActionsExecuteBatchReq) → ActionsExecuteBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `aliases_list`
+    
+    
+    aliases_list(req: AliasesListReq) → AliasesListRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_add_calls`
+    
+    
+    annotation_queue_add_calls(
+        req: AnnotationQueueAddCallsReq
+    ) → AnnotationQueueAddCallsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_create`
+    
+    
+    annotation_queue_create(
+        req: AnnotationQueueCreateReq
+    ) → AnnotationQueueCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_delete`
+    
+    
+    annotation_queue_delete(
+        req: AnnotationQueueDeleteReq
+    ) → AnnotationQueueDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_items_query`
+    
+    
+    annotation_queue_items_query(
+        req: AnnotationQueueItemsQueryReq
+    ) → AnnotationQueueItemsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_read`
+    
+    
+    annotation_queue_read(req: AnnotationQueueReadReq) → AnnotationQueueReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queue_update`
+    
+    
+    annotation_queue_update(
+        req: AnnotationQueueUpdateReq
+    ) → AnnotationQueueUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queues_query_stream`
+    
+    
+    annotation_queues_query_stream(
+        req: AnnotationQueuesQueryReq
+    ) → Iterator[AnnotationQueueSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotation_queues_stats`
+    
+    
+    annotation_queues_stats(
+        req: AnnotationQueuesStatsReq
+    ) → AnnotationQueuesStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `annotator_queue_items_progress_update`
+    
+    
+    annotator_queue_items_progress_update(
+        req: AnnotatorQueueItemsProgressUpdateReq
+    ) → AnnotatorQueueItemsProgressUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_end`
+    
+    
+    call_end(req: CallEndReq) → CallEndRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_end_v2`
+    
+    
+    call_end_v2(req: CallEndV2Req) → CallEndV2Res
+    
+
+Single call end endpoint (v2). This endpoint is used for eager ops that need their end sent separately.
+
+* * *
+
+### 
+
+​
+
+`method` `call_read`
+    
+    
+    call_read(req: CallReadReq) → CallReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_start`
+    
+    
+    call_start(req: CallStartReq) → CallStartRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_start_batch`
+    
+    
+    call_start_batch(req: CallCreateBatchReq) → CallCreateBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `call_start_v2`
+    
+    
+    call_start_v2(req: CallStartV2Req) → CallStartV2Res
+    
+
+Single call start endpoint (v2). This endpoint is used for eager ops that need their start visible immediately.
+
+* * *
+
+### 
+
+​
+
+`method` `call_update`
+    
+    
+    call_update(req: CallUpdateReq) → CallUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_complete`
+    
+    
+    calls_complete(req: CallsUpsertCompleteReq) → CallsUpsertCompleteRes
+    
+
+Batch complete calls endpoint (v2). This endpoint is used when use_calls_complete is enabled to send complete calls (with both start and end information) in batches.
+
+* * *
+
+### 
+
+​
+
+`method` `calls_delete`
+    
+    
+    calls_delete(req: CallsDeleteReq) → CallsDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_query`
+    
+    
+    calls_query(req: CallsQueryReq) → CallsQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_query_stats`
+    
+    
+    calls_query_stats(req: CallsQueryStatsReq) → CallsQueryStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_query_stream`
+    
+    
+    calls_query_stream(req: CallsQueryReq) → Iterator[CallSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `calls_usage`
+    
+    
+    calls_usage(req: CallsUsageReq) → CallsUsageRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `completions_create`
+    
+    
+    completions_create(req: CompletionsCreateReq) → CompletionsCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `completions_create_stream`
+    
+    
+    completions_create_stream(req: CompletionsCreateReq) → Iterator[dict[str, Any]]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `cost_create`
+    
+    
+    cost_create(req: CostCreateReq) → CostCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `cost_purge`
+    
+    
+    cost_purge(req: CostPurgeReq) → CostPurgeRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `cost_query`
+    
+    
+    cost_query(req: CostQueryReq) → CostQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_create`
+    
+    
+    dataset_create(req: DatasetCreateReq) → DatasetCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_delete`
+    
+    
+    dataset_delete(req: DatasetDeleteReq) → DatasetDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_list`
+    
+    
+    dataset_list(req: DatasetListReq) → Iterator[DatasetReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `dataset_read`
+    
+    
+    dataset_read(req: DatasetReadReq) → DatasetReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `delete`
+    
+    
+    delete(url: str, *args: Any, **kwargs: Any) → Response
+    
+
+* * *
+
+### 
+
+​
+
+`method` `ensure_project_exists`
+    
+    
+    ensure_project_exists(entity: str, project: str) → EnsureProjectExistsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluate_model`
+    
+    
+    evaluate_model(req: EvaluateModelReq) → EvaluateModelRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_create`
+    
+    
+    evaluation_create(req: EvaluationCreateReq) → EvaluationCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_delete`
+    
+    
+    evaluation_delete(req: EvaluationDeleteReq) → EvaluationDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_list`
+    
+    
+    evaluation_list(req: EvaluationListReq) → Iterator[EvaluationReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_read`
+    
+    
+    evaluation_read(req: EvaluationReadReq) → EvaluationReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_create`
+    
+    
+    evaluation_run_create(req: EvaluationRunCreateReq) → EvaluationRunCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_delete`
+    
+    
+    evaluation_run_delete(req: EvaluationRunDeleteReq) → EvaluationRunDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_finish`
+    
+    
+    evaluation_run_finish(req: EvaluationRunFinishReq) → EvaluationRunFinishRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_list`
+    
+    
+    evaluation_run_list(req: EvaluationRunListReq) → Iterator[EvaluationRunReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_run_read`
+    
+    
+    evaluation_run_read(req: EvaluationRunReadReq) → EvaluationRunReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `evaluation_status`
+    
+    
+    evaluation_status(req: EvaluationStatusReq) → EvaluationStatusRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_create`
+    
+    
+    feedback_create(req: FeedbackCreateReq) → FeedbackCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_create_batch`
+    
+    
+    feedback_create_batch(req: FeedbackCreateBatchReq) → FeedbackCreateBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_payload_schema`
+    
+    
+    feedback_payload_schema(
+        req: FeedbackPayloadSchemaReq
+    ) → FeedbackPayloadSchemaRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_purge`
+    
+    
+    feedback_purge(req: FeedbackPurgeReq) → FeedbackPurgeRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_query`
+    
+    
+    feedback_query(req: FeedbackQueryReq) → FeedbackQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_replace`
+    
+    
+    feedback_replace(req: FeedbackReplaceReq) → FeedbackReplaceRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `feedback_stats`
+    
+    
+    feedback_stats(req: FeedbackStatsReq) → FeedbackStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `file_content_read`
+    
+    
+    file_content_read(req: FileContentReadReq) → FileContentReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `file_create`
+    
+    
+    file_create(req: FileCreateReq) → FileCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `files_stats`
+    
+    
+    files_stats(req: FilesStatsReq) → FilesStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`classmethod` `from_env`
+    
+    
+    from_env(should_batch: bool = False) → Self
+    
+
+* * *
+
+### 
+
+​
+
+`method` `get`
+    
+    
+    get(url: str, *args: Any, **kwargs: Any) → Response
+    
+
+* * *
+
+### 
+
+​
+
+`method` `get_call_processor`
+    
+    
+    get_call_processor() → AsyncBatchProcessor | CallBatchProcessor | None
+    
+
+Custom method not defined on the formal TraceServerInterface to expose the underlying call processor. Should be formalized in a client-side interface.
+
+* * *
+
+### 
+
+​
+
+`method` `get_feedback_processor`
+    
+    
+    get_feedback_processor() → AsyncBatchProcessor | None
+    
+
+Custom method not defined on the formal TraceServerInterface to expose the underlying feedback processor. Should be formalized in a client-side interface.
+
+* * *
+
+### 
+
+​
+
+`method` `image_create`
+    
+    
+    image_create(req: ImageGenerationCreateReq) → ImageGenerationCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_create`
+    
+    
+    model_create(req: ModelCreateReq) → ModelCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_delete`
+    
+    
+    model_delete(req: ModelDeleteReq) → ModelDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_list`
+    
+    
+    model_list(req: ModelListReq) → Iterator[ModelReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `model_read`
+    
+    
+    model_read(req: ModelReadReq) → ModelReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_add_tags`
+    
+    
+    obj_add_tags(req: ObjAddTagsReq) → ObjAddTagsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_create`
+    
+    
+    obj_create(req: ObjCreateReq) → ObjCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_delete`
+    
+    
+    obj_delete(req: ObjDeleteReq) → ObjDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_read`
+    
+    
+    obj_read(req: ObjReadReq) → ObjReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_remove_aliases`
+    
+    
+    obj_remove_aliases(req: ObjRemoveAliasesReq) → ObjRemoveAliasesRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_remove_tags`
+    
+    
+    obj_remove_tags(req: ObjRemoveTagsReq) → ObjRemoveTagsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `obj_set_aliases`
+    
+    
+    obj_set_aliases(req: ObjSetAliasesReq) → ObjSetAliasesRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `objs_query`
+    
+    
+    objs_query(req: ObjQueryReq) → ObjQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_create`
+    
+    
+    op_create(req: OpCreateReq) → OpCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_delete`
+    
+    
+    op_delete(req: OpDeleteReq) → OpDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_list`
+    
+    
+    op_list(req: OpListReq) → Iterator[OpReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `op_read`
+    
+    
+    op_read(req: OpReadReq) → OpReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `otel_export`
+    
+    
+    otel_export(req: OTelExportReq) → OTelExportRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `post`
+    
+    
+    post(url: str, *args: Any, **kwargs: Any) → Response
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_create`
+    
+    
+    prediction_create(req: PredictionCreateReq) → PredictionCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_delete`
+    
+    
+    prediction_delete(req: PredictionDeleteReq) → PredictionDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_finish`
+    
+    
+    prediction_finish(req: PredictionFinishReq) → PredictionFinishRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_list`
+    
+    
+    prediction_list(req: PredictionListReq) → Iterator[PredictionReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `prediction_read`
+    
+    
+    prediction_read(req: PredictionReadReq) → PredictionReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `project_stats`
+    
+    
+    project_stats(req: ProjectStatsReq) → ProjectStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `project_ttl_settings_read`
+    
+    
+    project_ttl_settings_read(
+        req: ProjectTTLSettingsReadReq
+    ) → ProjectTTLSettingsReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `project_ttl_settings_update`
+    
+    
+    project_ttl_settings_update(
+        req: ProjectTTLSettingsUpdateReq
+    ) → ProjectTTLSettingsUpdateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `projects_info`
+    
+    
+    projects_info(req: ProjectsInfoReq) → list[ProjectsInfoRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `put`
+    
+    
+    put(url: str, *args: Any, **kwargs: Any) → Response
+    
+
+* * *
+
+### 
+
+​
+
+`method` `refs_read_batch`
+    
+    
+    refs_read_batch(req: RefsReadBatchReq) → RefsReadBatchRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `rescore`
+    
+    
+    rescore(req: RescoreReq) → RescoreRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_create`
+    
+    
+    score_create(req: ScoreCreateReq) → ScoreCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_delete`
+    
+    
+    score_delete(req: ScoreDeleteReq) → ScoreDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_list`
+    
+    
+    score_list(req: ScoreListReq) → Iterator[ScoreReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `score_read`
+    
+    
+    score_read(req: ScoreReadReq) → ScoreReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_create`
+    
+    
+    scorer_create(req: ScorerCreateReq) → ScorerCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_delete`
+    
+    
+    scorer_delete(req: ScorerDeleteReq) → ScorerDeleteRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_list`
+    
+    
+    scorer_list(req: ScorerListReq) → Iterator[ScorerReadRes]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `scorer_read`
+    
+    
+    scorer_read(req: ScorerReadReq) → ScorerReadRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `server_info`
+    
+    
+    server_info() → ServerInfoRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `set_auth`
+    
+    
+    set_auth(auth: tuple[str, str]) → None
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_create`
+    
+    
+    table_create(req: TableCreateReq) → TableCreateRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_create_from_digests`
+    
+    
+    table_create_from_digests(
+        req: TableCreateFromDigestsReq
+    ) → TableCreateFromDigestsRes
+    
+
+Create a table by specifying row digests instead of actual rows.
+
+* * *
+
+### 
+
+​
+
+`method` `table_query`
+    
+    
+    table_query(req: TableQueryReq) → TableQueryRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query_stats`
+    
+    
+    table_query_stats(req: TableQueryStatsReq) → TableQueryStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query_stats_batch`
+    
+    
+    table_query_stats_batch(req: TableQueryStatsReq) → TableQueryStatsRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_query_stream`
+    
+    
+    table_query_stream(req: TableQueryReq) → Iterator[TableRowSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `table_update`
+    
+    
+    table_update(req: TableUpdateReq) → TableUpdateRes
+    
+
+Similar to `calls/batch_upsert`, we can dynamically adjust the payload size due to the property that table updates can be decomposed into a series of updates.
+
+* * *
+
+### 
+
+​
+
+`method` `tags_list`
+    
+    
+    tags_list(req: TagsListReq) → TagsListRes
+    
+
+* * *
+
+### 
+
+​
+
+`method` `threads_query_stream`
+    
+    
+    threads_query_stream(req: ThreadsQueryReq) → Iterator[ThreadSchema]
+    
+
+* * *
+
+### 
+
+​
+
+`method` `trace_usage`
+    
+    
+    trace_usage(req: TraceUsageReq) → TraceUsageRes
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/python-sdk/trace_server_bindings/remote_http_trace_server.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/python-sdk/trace_server_bindings/remote_http_trace_server)
+
+[trace_server_interfacePrevious](/weave/reference/python-sdk/trace_server/trace_server_interface)[weaveNext](/weave/reference/typescript-sdk)
+
+⌘I

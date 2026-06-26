@@ -1,0 +1,29 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/projects
+---
+
+# Projects
+
+## How can I change the privacy of my project?
+
+A project’s privacy setting controls who can view, edit, or submit runs to the project. To change a project’s privacy (v …
+
+## How can I delete multiple runs in bulk instead of one at a time?
+
+From the Runs tab in your Workspace, select the checkbox next to each run to delete, then click Delete. To filter runs b …
+
+## How do I rename a project?
+
+To rename a project: 1. Navigate to the Project overview. 2. Click Edit Project. If the project name is protected, such …
+
+## How many runs can I create per project?
+
+For optimal performance, limit each project to approximately 10,000 runs.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/projects.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/projects)
+
+[PrivacyPrevious](/support/models/tags/privacy)[PythonNext](/support/models/tags/python)
+
+⌘I

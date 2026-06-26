@@ -1,0 +1,31 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/launch_build_images
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# How W&B Launch builds images
+
+This page explains how W&B Launch builds container images for your jobs, so you can predict which build actions Launch performs and configure your queue or job accordingly. The steps for building an image depend on the job source and the specified accelerator base image in the resource configuration.
+
+When configuring a queue or submitting a job, include a base accelerator image in the queue or job resource configuration:
+    
+    
+    {
+        "builder": {
+            "accelerator": {
+                "base_image": "[IMAGE-NAME]"
+            }
+        }
+    }
+    
+
+The build process includes the following actions based on the job type and provided accelerator base image: | | Install Python using apt | Install Python packages | Create a user and workdir | Copy code into image | Set entrypoint | |
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/launch_build_images.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/launch_build_images)
+
+[Can Launch automatically provision (and spin down) compute resources for me in the target environment?Previous](/platform/launch/launch-faq/launch_automatically_provision_spin_compute_resources_target_environment)[Is `wandb launch -d` or `wandb job create image` uploading a whole Docker artifact and not pulling from a registry?Next](/platform/launch/launch-faq/launch_d_wandb_job_create_image_uploading_whole_docker)
+
+⌘I

@@ -1,0 +1,133 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/models/model-delete
+---
+
+Model Delete
+    
+    
+    curl --request DELETE \
+      --url https://api.example.com/v2/{entity}/{project}/models/{object_id} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "num_deleted": 123
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Models](/weave/reference/service-api/models/model-list)
+
+# Model Delete
+
+Delete a model object. If digests are provided, only those versions are deleted. Otherwise, all versions are deleted.
+
+DELETE
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+models
+
+/
+
+{object_id}
+
+Model Delete
+    
+    
+    curl --request DELETE \
+      --url https://api.example.com/v2/{entity}/{project}/models/{object_id} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "num_deleted": 123
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+object_id
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+digests
+
+string[] | null
+
+List of digests to delete. If not provided, all digests for the model will be deleted.
+
+#### Response
+
+Successful Response
+
+​
+
+num_deleted
+
+integer
+
+required
+
+Number of model versions deleted
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/models/model-delete.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/models/model-delete)
+
+[Model ReadPrevious](/weave/reference/service-api/models/model-read)[Evaluation Run ListNext](/weave/reference/service-api/evaluation-runs/evaluation-run-list)
+
+⌘I

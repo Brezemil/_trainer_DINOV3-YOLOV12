@@ -1,0 +1,80 @@
+---
+source_url: https://docs.wandb.ai/models/reports/create-a-report
+---
+
+[Guides](/models/track)
+
+[Reports](/models/reports)
+
+# Create a report
+
+Create a W&B Report with the W&B App or programmatically.
+
+W&B Report and Workspace API is in Public Preview.
+
+W&B Reports let you share findings, results, and visualizations from your runs with collaborators. Create a report from a project workspace, from the **Reports** tab, or programmatically with the Report and Workspace API. Select a tab to get started. For a programmatic example, see the [Report API Quickstart Google Colab](https://colab.research.google.com/github/wandb/examples/blob/master/colabs/intro/Report_API_Quickstart.ipynb).
+
+  * W&B App
+
+  * Report tab
+
+  * Report and Workspace API
+
+
+
+
+  1. Navigate to your project workspace in the W&B App.
+  2. In the upper-right corner of your workspace, click **Create report**.
+
+![Create report button](https://mintcdn.com/wb-21fd5541/uqPGOvf46GQ1vVUB/images/reports/create_a_report_button.png?fit=max&auto=format&n=uqPGOvf46GQ1vVUB&q=85&s=45ede188f3d7c839f54dae2397f7907d)
+
+  3. A modal appears. Select the charts you want to start with. You can add or remove charts later from the report interface.
+
+![Create report modal with chart selection options](https://mintcdn.com/wb-21fd5541/uqPGOvf46GQ1vVUB/images/reports/create_a_report_modal.png?fit=max&auto=format&n=uqPGOvf46GQ1vVUB&q=85&s=1cbc7a3366b472bd9da4aeb3ef8b602a)
+
+  4. To prevent W&B from adding more runs to your report, select **Filter run sets**. W&B saves a draft report automatically. Access it in the **Reports** tab.
+
+
+
+  1. Navigate to your project workspace in the W&B App.
+  2. Select the **Reports** tab in your project.
+  3. Click **Create report**.
+
+![Create report button](https://mintcdn.com/wb-21fd5541/uqPGOvf46GQ1vVUB/images/reports/create_report_button.png?fit=max&auto=format&n=uqPGOvf46GQ1vVUB&q=85&s=2c71a7c7f3d091e481aed0a0c0a07938)
+
+
+
+
+Create a report programmatically:
+
+  1. Install the W&B SDK (`wandb`) and the Report and Workspace API (`wandb-workspaces`):
+         
+         pip install wandb wandb-workspaces
+         
+
+  2. Import the W&B Python SDK and the Report and Workspace API:
+         
+         import wandb
+         import wandb_workspaces.reports.v2 as wr
+         
+
+  3. Create a report instance with `wandb_workspaces.reports.v2.Report` or with the Report Class Public API ([`wandb.apis.reports`](/models/ref/python/public-api/api#reports)). Specify the project to associate with the report:
+         
+         report = wr.Report(project="report_standard")
+         
+
+  4. Save the report. W&B doesn’t upload reports until you call the `.save()` method:
+         
+         report.save()
+         
+
+
+For more information, see [Edit a report](/models/reports/edit-a-report).
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/reports/create-a-report.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/reports/create-a-report)
+
+[Reports overviewPrevious](/models/reports)[Edit a reportNext](/models/reports/edit-a-report)
+
+⌘I

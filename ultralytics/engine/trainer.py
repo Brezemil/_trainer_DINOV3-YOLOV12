@@ -471,10 +471,10 @@ class BaseTrainer:
             self.final_eval()
             if self.args.plots:
                 self.plot_metrics()
-            
+
             # Clean up all epoch checkpoints at training end (keep only last.pt and best.pt)
             self._cleanup_epoch_checkpoints()
-            
+
             self.run_callbacks("on_train_end")
         self._clear_memory()
         self.run_callbacks("teardown")
@@ -548,7 +548,7 @@ class BaseTrainer:
         if (self.save_period > 0) and (self.epoch % self.save_period == 0):
             epoch_ckpt = self.wdir / f"epoch{self.epoch}.pt"
             epoch_ckpt.write_bytes(serialized_ckpt)  # save epoch, i.e. 'epoch3.pt'
-            
+
             # Clean up previous epoch checkpoint to save disk space
             prev_epoch = self.epoch - self.save_period
             if prev_epoch > 0:
@@ -609,11 +609,11 @@ class BaseTrainer:
     def _cleanup_epoch_checkpoints(self):
         """Clean up all epoch checkpoint files to save disk space (keep only last.pt and best.pt)."""
         import glob
-        
+
         # Find all epoch checkpoint files
         epoch_pattern = str(self.wdir / "epoch*.pt")
         epoch_files = glob.glob(epoch_pattern)
-        
+
         removed_count = 0
         for epoch_file in epoch_files:
             try:
@@ -621,7 +621,7 @@ class BaseTrainer:
                 removed_count += 1
             except Exception as e:
                 LOGGER.warning(f"Failed to remove {epoch_file}: {e}")
-        
+
         if removed_count > 0:
             LOGGER.info(f"Cleaned up {removed_count} epoch checkpoint(s) to save disk space")
             LOGGER.info(f"Kept: last.pt and best.pt in {self.wdir}")
@@ -710,7 +710,7 @@ class BaseTrainer:
         """Performs final evaluation and displays comprehensive mAP results from validation, test data, and last training."""
         ckpt = {}
         results_summary = {"best_val": None, "test_data": None, "last_train": None}
-        
+
         for f in self.last, self.best:
             if f.exists():
                 if f is self.last:
@@ -720,58 +720,58 @@ class BaseTrainer:
                     self.validator.args.plots = False  # Don't create plots for last checkpoint
                     self.validator.args.split = "val"
                     last_metrics = self.validator(model=f)
-                    if hasattr(last_metrics.get('metrics', {}), 'map50'):
+                    if hasattr(last_metrics.get("metrics", {}), "map50"):
                         results_summary["last_train"] = {
-                            'map50': last_metrics['metrics'].map50,
-                            'map75': last_metrics['metrics'].map75, 
-                            'map': last_metrics['metrics'].map,
-                            'source': 'Last Training Checkpoint'
+                            "map50": last_metrics["metrics"].map50,
+                            "map75": last_metrics["metrics"].map75,
+                            "map": last_metrics["metrics"].map,
+                            "source": "Last Training Checkpoint",
                         }
                 elif f is self.best:
                     k = "train_results"  # update best.pt train_metrics from last.pt
                     strip_optimizer(f, updates={k: ckpt[k]} if k in ckpt else None)
-                    
+
                     # Evaluate best model on validation data
                     LOGGER.info(f"\n🏆 Evaluating BEST model {f} on validation data...")
                     self.validator.args.plots = self.args.plots
                     self.validator.args.split = "val"
                     val_metrics = self.validator(model=f)
-                    if 'metrics/mAP50(B)' in val_metrics:
+                    if "metrics/mAP50(B)" in val_metrics:
                         results_summary["best_val"] = {
-                            'map50': val_metrics['metrics/mAP50(B)'],
-                            'map75': val_metrics.get('metrics/mAP75(B)', 0.0),
-                            'map': val_metrics['metrics/mAP50-95(B)'],
-                            'source': 'Best Model on Validation Data'
+                            "map50": val_metrics["metrics/mAP50(B)"],
+                            "map75": val_metrics.get("metrics/mAP75(B)", 0.0),
+                            "map": val_metrics["metrics/mAP50-95(B)"],
+                            "source": "Best Model on Validation Data",
                         }
-                    
+
                     # Check if test data exists and evaluate
                     if "test" in self.data and self.data["test"] and self.data["test"] != self.data.get("val"):
                         try:
                             LOGGER.info(f"\n🧪 Evaluating BEST model {f} on test data...")
-                            
-                            # Create test data loader  
+
+                            # Create test data loader
                             batch_size = self.batch_size
                             test_dataset = self.data["test"]
                             test_loader = self.get_dataloader(
-                                test_dataset, 
-                                batch_size=batch_size if self.args.task == "obb" else batch_size * 2, 
-                                rank=-1, 
-                                mode="val"
+                                test_dataset,
+                                batch_size=batch_size if self.args.task == "obb" else batch_size * 2,
+                                rank=-1,
+                                mode="val",
                             )
-                            
+
                             # Create test validator with test data loader
                             test_validator = self.get_validator()
                             test_validator.dataloader = test_loader
                             test_validator.args.plots = self.args.plots
                             test_validator.args.split = "test"
-                            
+
                             test_metrics = test_validator(model=f)
-                            if 'metrics/mAP50(B)' in test_metrics:
+                            if "metrics/mAP50(B)" in test_metrics:
                                 results_summary["test_data"] = {
-                                    'map50': test_metrics['metrics/mAP50(B)'],
-                                    'map75': test_metrics.get('metrics/mAP75(B)', 0.0),
-                                    'map': test_metrics['metrics/mAP50-95(B)'],
-                                    'source': 'Best Model on Test Data'
+                                    "map50": test_metrics["metrics/mAP50(B)"],
+                                    "map75": test_metrics.get("metrics/mAP75(B)", 0.0),
+                                    "map": test_metrics["metrics/mAP50-95(B)"],
+                                    "source": "Best Model on Test Data",
                                 }
                             self.metrics = test_metrics
                         except Exception as e:
@@ -780,50 +780,50 @@ class BaseTrainer:
                     else:
                         LOGGER.warning("Test dataset not found - only validation and training results available")
                         self.metrics = val_metrics
-                    
+
                     self.metrics.pop("fitness", None)
                     self.run_callbacks("on_fit_epoch_end")
-        
+
         # Display comprehensive mAP summary
         self._display_map_summary(results_summary)
 
     def _display_map_summary(self, results_summary):
         """Display a comprehensive summary of mAP results from different data sources."""
-        LOGGER.info("\n" + "="*80)
+        LOGGER.info("\n" + "=" * 80)
         LOGGER.info("📊 TRAINING COMPLETE - COMPREHENSIVE mAP RESULTS SUMMARY")
-        LOGGER.info("="*80)
-        
+        LOGGER.info("=" * 80)
+
         # Display results in order: best validation, test data, last training
         display_order = [
             ("best_val", "🏆 BEST MODEL - VALIDATION DATA"),
-            ("test_data", "🧪 BEST MODEL - TEST DATA"), 
-            ("last_train", "📈 LAST TRAINING CHECKPOINT")
+            ("test_data", "🧪 BEST MODEL - TEST DATA"),
+            ("last_train", "📈 LAST TRAINING CHECKPOINT"),
         ]
-        
+
         for key, title in display_order:
             if results_summary[key]:
                 result = results_summary[key]
                 LOGGER.info(f"\n{title}:")
                 LOGGER.info(f"  mAP@0.5      : {result['map50']:.4f}")
-                LOGGER.info(f"  mAP@0.75     : {result['map75']:.4f}")  
+                LOGGER.info(f"  mAP@0.75     : {result['map75']:.4f}")
                 LOGGER.info(f"  mAP@0.5:0.95 : {result['map']:.4f}")
             else:
                 if key == "test_data":
-                    LOGGER.info(f"\n🧪 BEST MODEL - TEST DATA: Not available (no test dataset)")
+                    LOGGER.info("\n🧪 BEST MODEL - TEST DATA: Not available (no test dataset)")
                 elif key == "last_train":
-                    LOGGER.info(f"\n📈 LAST TRAINING CHECKPOINT: Not available")
-        
+                    LOGGER.info("\n📈 LAST TRAINING CHECKPOINT: Not available")
+
         # Summary comparison if multiple results available
         available_results = [v for v in results_summary.values() if v is not None]
         if len(available_results) >= 2:
-            LOGGER.info(f"\n📋 COMPARISON SUMMARY:")
-            best_map50 = max(available_results, key=lambda x: x['map50'])
-            best_map = max(available_results, key=lambda x: x['map'])
-            
+            LOGGER.info("\n📋 COMPARISON SUMMARY:")
+            best_map50 = max(available_results, key=lambda x: x["map50"])
+            best_map = max(available_results, key=lambda x: x["map"])
+
             LOGGER.info(f"  Best mAP@0.5      : {best_map50['map50']:.4f} ({best_map50['source']})")
             LOGGER.info(f"  Best mAP@0.5:0.95 : {best_map['map']:.4f} ({best_map['source']})")
-        
-        LOGGER.info("="*80 + "\n")
+
+        LOGGER.info("=" * 80 + "\n")
 
     def check_resume(self, overrides):
         """Check if resume checkpoint exists and update arguments accordingly."""

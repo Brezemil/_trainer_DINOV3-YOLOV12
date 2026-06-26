@@ -1,0 +1,137 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/usage
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: Usage
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / Usage
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [cacheCreationInputTokens](/weave/reference/typescript-sdk/interfaces/usage#cachecreationinputtokens)
+  * [cacheReadInputTokens](/weave/reference/typescript-sdk/interfaces/usage#cachereadinputtokens)
+  * [inputTokens](/weave/reference/typescript-sdk/interfaces/usage#inputtokens)
+  * [outputTokens](/weave/reference/typescript-sdk/interfaces/usage#outputtokens)
+  * [reasoningTokens](/weave/reference/typescript-sdk/interfaces/usage#reasoningtokens)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+cacheCreationInputTokens
+
+• `Optional` **cacheCreationInputTokens** : `number`
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:35](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L35)
+
+* * *
+
+### 
+
+​
+
+cacheReadInputTokens
+
+• `Optional` **cacheReadInputTokens** : `number`
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:36](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L36)
+
+* * *
+
+### 
+
+​
+
+inputTokens
+
+• `Optional` **inputTokens** : `number`
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:32](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L32)
+
+* * *
+
+### 
+
+​
+
+outputTokens
+
+• `Optional` **outputTokens** : `number`
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:33](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L33)
+
+* * *
+
+### 
+
+​
+
+reasoningTokens
+
+• `Optional` **reasoningTokens** : `number`
+
+#### 
+
+​
+
+Defined in
+
+[genai/types.ts:34](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/types.ts#L34)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/usage.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/usage)
+
+[Interface: TurnInitPrevious](/weave/reference/typescript-sdk/interfaces/turninit)[Interface: WeaveAudioNext](/weave/reference/typescript-sdk/interfaces/weaveaudio)
+
+⌘I

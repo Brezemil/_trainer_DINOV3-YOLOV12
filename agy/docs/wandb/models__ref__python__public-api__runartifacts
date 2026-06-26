@@ -1,0 +1,47 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/runartifacts
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# RunArtifacts
+
+## 
+
+​
+
+`class` `RunArtifacts`
+
+An iterable collection of artifacts associated with a specific run.
+
+### 
+
+​
+
+`property` RunArtifacts.cursor
+
+An opaque cursor that marks the start of the next page to fetch. This value may be saved and passed as `start=` to a later paginated query to resume iteration from where this paginator left off. **Returns:**
+
+  * `str | None`: The cursor property value.
+
+
+
+* * *
+
+### 
+
+​
+
+`property` RunArtifacts.more
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/runartifacts.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/runartifacts)
+
+[RunPrevious](/models/ref/python/public-api/run)[RunsNext](/models/ref/python/public-api/runs)
+
+⌘I

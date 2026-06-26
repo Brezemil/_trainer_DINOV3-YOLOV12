@@ -1,0 +1,149 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/call-start
+---
+
+Call Start
+    
+    
+    curl --request POST \
+      --url https://api.example.com/call/start \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "start": {
+        "project_id": "<string>",
+        "op_name": "<string>",
+        "started_at": "2023-11-07T05:31:56Z",
+        "attributes": {},
+        "inputs": {},
+        "id": "<string>",
+        "display_name": "<string>",
+        "trace_id": "<string>",
+        "parent_id": "<string>",
+        "thread_id": "<string>",
+        "turn_id": "<string>",
+        "otel_dump": {},
+        "wb_user_id": "<string>",
+        "wb_run_id": "<string>",
+        "wb_run_step": 123
+      }
+    }
+    '
+    
+    
+    {
+      "id": "<string>",
+      "trace_id": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Call Start
+
+POST
+
+/
+
+call
+
+/
+
+start
+
+Call Start
+    
+    
+    curl --request POST \
+      --url https://api.example.com/call/start \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "start": {
+        "project_id": "<string>",
+        "op_name": "<string>",
+        "started_at": "2023-11-07T05:31:56Z",
+        "attributes": {},
+        "inputs": {},
+        "id": "<string>",
+        "display_name": "<string>",
+        "trace_id": "<string>",
+        "parent_id": "<string>",
+        "thread_id": "<string>",
+        "turn_id": "<string>",
+        "otel_dump": {},
+        "wb_user_id": "<string>",
+        "wb_run_id": "<string>",
+        "wb_run_step": 123
+      }
+    }
+    '
+    
+    
+    {
+      "id": "<string>",
+      "trace_id": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+start
+
+StartedCallSchemaForInsert · object
+
+required
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+​
+
+id
+
+string
+
+required
+
+​
+
+trace_id
+
+string
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/call-start.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/call-start)
+
+[Genai Conversation ChatPrevious](/weave/reference/service-api/agents/genai-conversation-chat)[Call EndNext](/weave/reference/service-api/calls/call-end)
+
+⌘I

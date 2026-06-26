@@ -1,0 +1,223 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/api-reference/models/create-model
+---
+
+Create Model
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v1/preview/models \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project": "<string>",
+      "name": "<string>",
+      "base_model": "<string>",
+      "entity": "my-team",
+      "return_existing": false
+    }
+    '
+    
+    
+    {
+      "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+      "entity": "<string>",
+      "project": "<string>",
+      "name": "<string>",
+      "base_model": "<string>",
+      "run_id": "<string>"
+    }
+
+[Serverless Training](/serverless-training/api-reference)
+
+[models](/serverless-training/api-reference/models/create-model)
+
+# Create Model
+
+Create a new model.
+
+POST
+
+/
+
+v1
+
+/
+
+preview
+
+/
+
+models
+
+Create Model
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v1/preview/models \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project": "<string>",
+      "name": "<string>",
+      "base_model": "<string>",
+      "entity": "my-team",
+      "return_existing": false
+    }
+    '
+    
+    
+    {
+      "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+      "entity": "<string>",
+      "project": "<string>",
+      "name": "<string>",
+      "base_model": "<string>",
+      "run_id": "<string>"
+    }
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+#### Body
+
+application/json
+
+Schema for creating a new Model.
+
+​
+
+project
+
+string
+
+required
+
+Project name in W&B where the model will be stored
+
+Example:
+
+`"my-awesome-project"`
+
+​
+
+name
+
+string
+
+required
+
+Unique name for the model within the project
+
+Example:
+
+`"my-awesome-model"`
+
+​
+
+base_model
+
+string
+
+required
+
+Base model identifier or HuggingFace model path to fine-tune from
+
+Example:
+
+`"OpenPipe/Qwen3-14B-Instruct"`
+
+​
+
+entity
+
+string | null
+
+Team or username of the developer whose W&B API key is being used
+
+Example:
+
+`"my-team"`
+
+​
+
+return_existing
+
+boolean
+
+default:false
+
+If true, return existing model if one with the same name already exists instead of creating a new one
+
+#### Response
+
+Successful Response
+
+Schema for Model response.
+
+​
+
+id
+
+string<uuid>
+
+required
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+name
+
+string
+
+required
+
+​
+
+base_model
+
+string
+
+required
+
+​
+
+run_id
+
+string | null
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/api-reference/models/create-model.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/api-reference/models/create-model)
+
+[Create Chat CompletionPrevious](/serverless-training/api-reference/chat-completions/create-chat-completion-1)[List Model CheckpointsNext](/serverless-training/api-reference/models/list-model-checkpoints)
+
+⌘I

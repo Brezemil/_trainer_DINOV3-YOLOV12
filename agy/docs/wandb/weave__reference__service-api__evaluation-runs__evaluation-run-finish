@@ -1,0 +1,151 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/evaluation-runs/evaluation-run-finish
+---
+
+Evaluation Run Finish
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/evaluation_runs/{evaluation_run_id}/finish \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '{
+      "summary": {}
+    }'
+    
+    
+    {
+      "success": true
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Evaluation Runs](/weave/reference/service-api/evaluation-runs/evaluation-run-list)
+
+# Evaluation Run Finish
+
+Finish an evaluation run.
+
+POST
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+evaluation_runs
+
+/
+
+{evaluation_run_id}
+
+/
+
+finish
+
+Evaluation Run Finish
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/evaluation_runs/{evaluation_run_id}/finish \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '{
+      "summary": {}
+    }'
+    
+    
+    {
+      "success": true
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+evaluation_run_id
+
+string
+
+required
+
+#### Body
+
+application/json
+
+Request body for finishing an evaluation run via REST API.
+
+This model excludes project_id and evaluation_run_id since they come from the URL path in RESTful endpoints.
+
+​
+
+summary
+
+Summary · object
+
+Optional summary dictionary for the evaluation run
+
+#### Response
+
+Successful Response
+
+​
+
+success
+
+boolean
+
+required
+
+Whether the evaluation run was finished successfully
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/evaluation-runs/evaluation-run-finish.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/evaluation-runs/evaluation-run-finish)
+
+[Evaluation Run ReadPrevious](/weave/reference/service-api/evaluation-runs/evaluation-run-read)[Prediction ListNext](/weave/reference/service-api/predictions/prediction-list)
+
+⌘I

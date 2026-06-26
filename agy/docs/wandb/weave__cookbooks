@@ -1,0 +1,124 @@
+---
+source_url: https://docs.wandb.ai/weave/cookbooks
+---
+
+[Cookbooks](/weave/cookbooks)
+
+# Overview
+
+Practical guides and examples for building with Weights & Biases Weave
+
+Welcome to the W&B Weave cookbook collection. These hands-on guides provide practical examples and best practices for building applications with Weave. Use this page to browse cookbooks by topic and jump into the example that matches what you’re trying to build.
+
+## Getting started
+
+Start with Weave through practical, hands-on examples covering tracing and evaluation basics.
+
+## Evaluations and datasets
+
+Learn how to create evaluations, work with datasets, and build leaderboards for model comparison.
+
+## Models and prompts
+
+Explore model management, prompt engineering, and optimization techniques with real-world examples.
+
+## Advanced topics
+
+Explore complex use cases including multi-agent systems, code generation, and specialized pipelines.
+
+## Production and monitoring
+
+Implement production-ready patterns for monitoring, feedback collection, and safety guardrails.
+
+## API and integration
+
+Learn how to integrate Weave using the service API and connect with external systems.
+
+## 
+
+​
+
+Featured cookbooks
+
+The following sections list featured cookbooks grouped by topic, from getting started through production and API integration.
+
+### 
+
+​
+
+Getting started
+
+  * [Hello Trace](/weave/cookbooks/Intro_to_Weave_Hello_Trace) \- Take your first steps with Weave tracing.
+  * [Hello Eval](/weave/cookbooks/Intro_to_Weave_Hello_Eval) \- Get introduced to evaluation concepts.
+
+
+
+### 
+
+​
+
+Evaluations and datasets
+
+  * [Leaderboard Quickstart](/weave/cookbooks/leaderboard_quickstart) \- Build model comparison leaderboards.
+  * [Hugging Face Datasets](/weave/cookbooks/hf_dataset_evals) \- Evaluate models using Hugging Face datasets.
+  * [Import from CSV](/weave/cookbooks/import_from_csv) \- Load and work with CSV data.
+
+
+
+### 
+
+​
+
+Models and prompts
+
+  * [Models and Weave Integration](/weave/cookbooks/Models_and_Weave_Integration_Demo) \- Integrate models with Weave.
+  * [Chain of Density](/weave/cookbooks/chain_of_density) \- Apply advanced prompting techniques.
+  * [DSPy Prompt Optimization](/weave/cookbooks/dspy_prompt_optimization) \- Optimize prompts programmatically.
+  * [NotDiamond Custom Routing](/weave/cookbooks/notdiamond_custom_routing) \- Implement intelligent model routing.
+
+
+
+### 
+
+​
+
+Advanced topics
+
+  * [Multi-Agent Structured Output](/weave/cookbooks/multi-agent-structured-output) \- Build complex multi-agent systems.
+  * [Code Generation](/weave/cookbooks/codegen) \- Build code generation pipelines.
+  * [OCR Pipeline](/weave/cookbooks/ocr-pipeline) \- Process documents with OCR.
+  * [Audio Processing](/weave/cookbooks/audio_with_weave) \- Work with audio data in Weave.
+
+
+
+### 
+
+​
+
+Production and monitoring
+
+  * [Online Monitoring](/weave/cookbooks/online_monitoring) \- Monitor systems in real time.
+  * [Production Feedback](/weave/cookbooks/feedback_prod) \- Collect and analyze user feedback.
+  * [Scorers as Guardrails](/weave/cookbooks/scorers_as_guardrails) \- Implement safety measures.
+  * [Custom Model Costs](/weave/cookbooks/custom_model_cost) \- Track and optimize costs.
+  * [PII Protection](/weave/cookbooks/pii) \- Handle sensitive data safely.
+
+
+
+### 
+
+​
+
+API and integration
+
+  * [Service API Usage](/weave/cookbooks/weave_via_service_api) \- Integrate directly with the service API.
+
+
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/cookbooks.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/cookbooks)
+
+[Configure Weave environment variablesPrevious](/weave/guides/core-types/env-vars)[Introduction to TracesNext](/weave/cookbooks/Intro_to_Weave_Hello_Trace)
+
+⌘I

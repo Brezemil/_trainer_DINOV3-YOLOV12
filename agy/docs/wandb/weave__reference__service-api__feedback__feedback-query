@@ -1,0 +1,204 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/feedback/feedback-query
+---
+
+Feedback Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/feedback/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "fields": [
+        "id",
+        "feedback_type",
+        "payload.note"
+      ],
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "sort_by": [
+        {
+          "field": "<string>"
+        }
+      ],
+      "limit": 10,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "result": [
+        {}
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Feedback](/weave/reference/service-api/feedback/feedback-create)
+
+# Feedback Query
+
+Query for feedback.
+
+POST
+
+/
+
+feedback
+
+/
+
+query
+
+Feedback Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/feedback/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "fields": [
+        "id",
+        "feedback_type",
+        "payload.note"
+      ],
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "sort_by": [
+        {
+          "field": "<string>"
+        }
+      ],
+      "limit": 10,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "result": [
+        {}
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+fields
+
+string[] | null
+
+Example:
+    
+    
+    ["id", "feedback_type", "payload.note"]
+
+​
+
+query
+
+Query · object
+
+Show child attributes
+
+​
+
+sort_by
+
+SortBy · object[] | null
+
+Show child attributes
+
+​
+
+limit
+
+integer | null
+
+Example:
+
+`10`
+
+​
+
+offset
+
+integer | null
+
+Example:
+
+`0`
+
+#### Response
+
+Successful Response
+
+​
+
+result
+
+Result · object[]
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/feedback/feedback-query.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/feedback/feedback-query)
+
+[Feedback Create BatchPrevious](/weave/reference/service-api/feedback/feedback-create-batch)[Feedback PurgeNext](/weave/reference/service-api/feedback/feedback-purge)
+
+⌘I

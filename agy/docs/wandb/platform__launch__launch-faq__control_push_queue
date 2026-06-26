@@ -1,0 +1,17 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/control_push_queue
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# How do I control who can push to a queue?
+
+Queues are specific to a user team. Define the owning entity when you create the queue. To restrict access, modify team membership.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/control_push_queue.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/control_push_queue)
+
+[I don't like clicking, can I use Launch without going through the UI?Previous](/platform/launch/launch-faq/clicking_launch_without_going_ui)[When multiple jobs in a Docker queue download the same artifact, is any caching used, or is it re-downloaded every run?Next](/platform/launch/launch-faq/docker_queues_run_multiple_jobs_download_same_artifact_useartifact)
+
+⌘I

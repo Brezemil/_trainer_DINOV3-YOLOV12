@@ -1,0 +1,133 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/annotation-queues/annotation-queue-read
+---
+
+Annotation Queue Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/annotation_queues/{queue_id} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "queue": {
+        "id": "<string>",
+        "project_id": "<string>",
+        "name": "<string>",
+        "description": "<string>",
+        "scorer_refs": [
+          "<string>"
+        ],
+        "created_at": "2023-11-07T05:31:56Z",
+        "created_by": "<string>",
+        "updated_at": "2023-11-07T05:31:56Z",
+        "deleted_at": "2023-11-07T05:31:56Z"
+      }
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Annotation Queues](/weave/reference/service-api/annotation-queues/annotation-queue-create)
+
+# Annotation Queue Read
+
+Read a specific annotation queue.
+
+GET
+
+/
+
+annotation_queues
+
+/
+
+{queue_id}
+
+Annotation Queue Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/annotation_queues/{queue_id} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "queue": {
+        "id": "<string>",
+        "project_id": "<string>",
+        "name": "<string>",
+        "description": "<string>",
+        "scorer_refs": [
+          "<string>"
+        ],
+        "created_at": "2023-11-07T05:31:56Z",
+        "created_by": "<string>",
+        "updated_at": "2023-11-07T05:31:56Z",
+        "deleted_at": "2023-11-07T05:31:56Z"
+      }
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+queue_id
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+project_id
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+Response from reading an annotation queue.
+
+​
+
+queue
+
+AnnotationQueueSchema · object
+
+required
+
+Schema for annotation queue responses.
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/annotation-queues/annotation-queue-read.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/annotation-queues/annotation-queue-read)
+
+[Annotation Queues Query StreamPrevious](/weave/reference/service-api/annotation-queues/annotation-queues-query-stream)[Annotation Queue UpdateNext](/weave/reference/service-api/annotation-queues/annotation-queue-update)
+
+⌘I

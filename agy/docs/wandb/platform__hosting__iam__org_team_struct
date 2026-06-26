@@ -1,0 +1,47 @@
+---
+source_url: https://docs.wandb.ai/platform/hosting/iam/org_team_struct
+---
+
+[Platform Details](/platform/app/settings-page)
+
+[Configure W&B](/platform/app/settings-page)
+
+[Identity and access management (IAM)](/platform/hosting/iam/org_team_struct)
+
+# Identity and access management (IAM)
+
+Understand the three IAM scopes in W&B (organizations, teams, and projects) and how they map to your company.
+
+W&B Platform has three IAM scopes within W&B: Organizations, Teams, and Projects. Understanding how these scopes nest helps you plan how to structure access, group users, and organize AI work across your company. The following sections describe each scope and how it maps to your company’s structure, and link to detailed management guides.
+
+## 
+
+​
+
+Organization
+
+An _Organization_ is the root scope in your W&B account or instance. All actions in your account or instance take place within the context of that root scope, including managing users, managing teams, managing projects within teams, and tracking usage. If you use [Multi-tenant Cloud](/platform/hosting/hosting-options/multi_tenant_cloud), you may have more than one organization where each may correspond to a business unit, a personal user, or a joint partnership with another business. If you use [Dedicated Cloud](/platform/hosting/hosting-options/dedicated-cloud) or a [Self-Managed instance](/platform/hosting/hosting-options/self-managed), it corresponds to one organization. Your company may have more than one Dedicated Cloud or Self-Managed instance to map to different business units or departments, though that’s strictly an optional way to manage AI practitioners across your businesses or departments. For more information, see [Manage organizations](/platform/hosting/iam/access-management/manage-organization).
+
+## 
+
+​
+
+Team
+
+A _Team_ is a subscope within an organization that may map to a business unit, function, department, or project team in your company. You may have more than one team in your organization depending on your deployment type and pricing plan. AI projects are organized within the context of a team. Team admins govern access control within a team, and they may or may not be admins at the parent organization level. For more information, see [Add and manage teams](/platform/hosting/iam/access-management/manage-organization#add-and-manage-teams).
+
+## 
+
+​
+
+Project
+
+A _Project_ is a subscope within a team that maps to an AI project with specific intended outcomes. You may have more than one project within a team. Each project has a visibility mode that determines who can access it. Within each project, your team’s work is organized into the following building blocks. Every project comprises [Workspaces](/models/track/workspaces) and [Reports](/models/reports), and links to relevant [Artifacts](/models/artifacts), [Sweeps](/models/sweeps), and [Automations](/models/automations).
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/hosting/iam/org_team_struct.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/hosting/iam/org_team_struct)
+
+[Manage storagePrevious](/platform/app/settings-page/storage)[Configure SSO with LDAPNext](/platform/hosting/iam/ldap)
+
+⌘I

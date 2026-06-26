@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/automations
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# Automations
+
+[GitHub source](https://github.com/wandb/wandb/blob/main/wandb/apis/public/automations.py)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/automations.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/automations)
+
+[ArtifactTypesPrevious](/models/ref/python/public-api/artifacttypes)[BetaReportNext](/models/ref/python/public-api/betareport)
+
+⌘I

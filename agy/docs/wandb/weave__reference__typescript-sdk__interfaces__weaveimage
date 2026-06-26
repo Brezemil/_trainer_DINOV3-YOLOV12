@@ -1,0 +1,125 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/weaveimage
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: WeaveImage
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / WeaveImage
+
+## 
+
+​
+
+Hierarchy
+
+  * `WeaveImageInput` ↳ `WeaveImage`
+
+
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [_weaveType](/weave/reference/typescript-sdk/interfaces/weaveimage#_weavetype)
+  * [data](/weave/reference/typescript-sdk/interfaces/weaveimage#data)
+  * [imageType](/weave/reference/typescript-sdk/interfaces/weaveimage#imagetype)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+_weaveType
+
+• **_weaveType** : `"Image"`
+
+#### 
+
+​
+
+Defined in
+
+[media.ts:14](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/media.ts#L14)
+
+* * *
+
+### 
+
+​
+
+data
+
+• **data** : `Buffer`
+
+#### 
+
+​
+
+Inherited from
+
+WeaveImageInput.data
+
+#### 
+
+​
+
+Defined in
+
+[media.ts:9](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/media.ts#L9)
+
+* * *
+
+### 
+
+​
+
+imageType
+
+• `Optional` **imageType** : `"png"`
+
+#### 
+
+​
+
+Inherited from
+
+WeaveImageInput.imageType
+
+#### 
+
+​
+
+Defined in
+
+[media.ts:10](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/media.ts#L10)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/weaveimage.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/weaveimage)
+
+[Interface: WeaveAudioPrevious](/weave/reference/typescript-sdk/interfaces/weaveaudio)[MessagePartNext](/weave/reference/typescript-sdk/type-aliases/messagepart)
+
+⌘I

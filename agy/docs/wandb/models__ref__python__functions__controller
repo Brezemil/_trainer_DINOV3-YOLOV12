@@ -1,0 +1,47 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/functions/controller
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Global Functions](/models/ref/python/functions)
+
+# controller()
+
+[GitHub source](https://github.com/wandb/wandb/blob/main/wandb/sdk/wandb_sweep.py)
+
+### 
+
+​
+
+`function` `controller`
+    
+    
+    controller(
+        sweep_id_or_config: 'str | dict | None' = None,
+        entity: 'str | None' = None,
+        project: 'str | None' = None
+    ) → _WandbController
+    
+
+Public sweep controller constructor. **Examples:**
+    
+    
+    import wandb
+    
+    tuner = wandb.controller(...)
+    print(tuner.sweep_config)
+    print(tuner.sweep_id)
+    tuner.configure_search(...)
+    tuner.configure_stopping(...)
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/functions/controller.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/functions/controller)
+
+[agent()Previous](/models/ref/python/functions/agent)[finish()Next](/models/ref/python/functions/finish)
+
+⌘I

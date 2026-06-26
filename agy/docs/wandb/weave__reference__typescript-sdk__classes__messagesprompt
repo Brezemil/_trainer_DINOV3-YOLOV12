@@ -1,0 +1,362 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/messagesprompt
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Classes](/weave/reference/typescript-sdk/classes/dataset)
+
+# Class: MessagesPrompt
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / MessagesPrompt
+
+## 
+
+​
+
+Hierarchy
+
+  * `Prompt` ↳ `MessagesPrompt`
+
+
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Constructors
+
+  * [constructor](/weave/reference/typescript-sdk/classes/messagesprompt#constructor)
+
+
+
+### 
+
+​
+
+Properties
+
+  * [__savedRef](/weave/reference/typescript-sdk/classes/messagesprompt#__savedref)
+  * [messages](/weave/reference/typescript-sdk/classes/messagesprompt#messages)
+
+
+
+### 
+
+​
+
+Accessors
+
+  * [description](/weave/reference/typescript-sdk/classes/messagesprompt#description)
+  * [name](/weave/reference/typescript-sdk/classes/messagesprompt#name)
+
+
+
+### 
+
+​
+
+Methods
+
+  * [format](/weave/reference/typescript-sdk/classes/messagesprompt#format)
+  * [saveAttrs](/weave/reference/typescript-sdk/classes/messagesprompt#saveattrs)
+  * [get](/weave/reference/typescript-sdk/classes/messagesprompt#get)
+
+
+
+## 
+
+​
+
+Constructors
+
+### 
+
+​
+
+constructor
+
+• **new MessagesPrompt**(`parameters`): [`MessagesPrompt`](/weave/reference/typescript-sdk/classes/messagesprompt)
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`parameters`| `MessagesPromptParameters`  
+  
+#### 
+
+​
+
+Returns
+
+[`MessagesPrompt`](/weave/reference/typescript-sdk/classes/messagesprompt)
+
+#### 
+
+​
+
+Overrides
+
+Prompt.constructor
+
+#### 
+
+​
+
+Defined in
+
+[prompt.ts:40](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/prompt.ts#L40)
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+__savedRef
+
+• `Optional` **__savedRef** : [`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref) | `Promise`<[`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref)>
+
+#### 
+
+​
+
+Inherited from
+
+Prompt.__savedRef
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:73](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L73)
+
+* * *
+
+### 
+
+​
+
+messages
+
+• **messages** : `Record`<`string`, `any`>[]
+
+#### 
+
+​
+
+Defined in
+
+[prompt.ts:38](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/prompt.ts#L38)
+
+## 
+
+​
+
+Accessors
+
+### 
+
+​
+
+description
+
+• `get` **description**(): `undefined` | `string`
+
+#### 
+
+​
+
+Returns
+
+`undefined` | `string`
+
+#### 
+
+​
+
+Inherited from
+
+Prompt.description
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:100](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L100)
+
+* * *
+
+### 
+
+​
+
+name
+
+• `get` **name**(): `string`
+
+#### 
+
+​
+
+Returns
+
+`string`
+
+#### 
+
+​
+
+Inherited from
+
+Prompt.name
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:96](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L96)
+
+## 
+
+​
+
+Methods
+
+### 
+
+​
+
+format
+
+▸ **format**(`values?`): `Record`<`string`, `any`>[]
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`values`| `Record`<`string`, `any`>  
+  
+#### 
+
+​
+
+Returns
+
+`Record`<`string`, `any`>[]
+
+#### 
+
+​
+
+Defined in
+
+[prompt.ts:67](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/prompt.ts#L67)
+
+* * *
+
+### 
+
+​
+
+saveAttrs
+
+▸ **saveAttrs**(): `Object`
+
+#### 
+
+​
+
+Returns
+
+`Object`
+
+#### 
+
+​
+
+Inherited from
+
+Prompt.saveAttrs
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:77](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L77)
+
+* * *
+
+### 
+
+​
+
+get
+
+▸ **get**(`client`, `uri`): `Promise`<[`MessagesPrompt`](/weave/reference/typescript-sdk/classes/messagesprompt)>
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`client`| [`WeaveClient`](/weave/reference/typescript-sdk/classes/weaveclient)  
+`uri`| `string`  
+  
+#### 
+
+​
+
+Returns
+
+`Promise`<[`MessagesPrompt`](/weave/reference/typescript-sdk/classes/messagesprompt)>
+
+#### 
+
+​
+
+Defined in
+
+[prompt.ts:73](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/prompt.ts#L73)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/classes/messagesprompt.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/classes/messagesprompt)
+
+[Class: LLMPrevious](/weave/reference/typescript-sdk/classes/llm)[Class: ObjectRefNext](/weave/reference/typescript-sdk/classes/objectref)
+
+⌘I

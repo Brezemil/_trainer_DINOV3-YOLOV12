@@ -1,0 +1,251 @@
+---
+source_url: https://docs.wandb.ai/models/ref/sdk-coding-cheat-sheet/registry
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[SDK Coding Cheat Sheet](/models/ref/sdk-coding-cheat-sheet)
+
+# Registry
+
+Work with W&B Model Registry to organize and manage model versions.
+
+Work with W&B Model Registry to organize and manage model versions.
+
+## 
+
+​
+
+Add a description to a collection in a registry
+    
+    
+    """
+    Add an description to a collection in a registry.
+    """
+    import wandb
+    
+    # Define registry and collection details
+    collection_type = "<collection_type>"
+    registry_name = "<registry_name>"
+    collection_name = "<collection_name>"
+    
+    # Construct the full registry path
+    registry_path = f"wandb-registry-{registry_name}/{collection_name}"
+    
+    # Initialize W&B API
+    api = wandb.Api()
+    
+    # Retrieve the artifact collection
+    collection = api.artifact_collection(
+      type_name = collection_type, 
+      name = registry_path
+      )
+    
+    # Add description annotation to the collection object
+    collection.description = "<description>"
+    
+    # Save the updated collection
+    collection.save()
+    
+
+## 
+
+​
+
+Create a new registry
+    
+    
+    """
+    Create a new registry in W&B. If the registry does not exist, W&B creates it.
+    """
+    import wandb
+    
+    # Initialize W&B API
+    api = wandb.Api()
+    
+    # Create a new registry
+    registry = api.create_registry(
+        name="<registry_name>",
+        visibility="<visibility>",  # e.g., "public" or "private"
+    )
+    
+
+## 
+
+​
+
+Delete a registry
+    
+    
+    """
+    Delete a registry from W&B.
+    """
+    import wandb
+    
+    # Define registry and collection details
+    registry_name = "<registry_name>"
+    collection_name = "<collection_name>"
+    
+    # Construct the full registry path
+    registry_path = f"wandb-registry-{registry_name}/{collection_name}"
+    
+    # Initialize the W&B API
+    api = wandb.Api()
+    
+    # Fetch the registry you want to delete
+    fetched_registry = api.registry("<registry_name>")
+    
+    # Deleting a registry
+    fetched_registry.delete()
+    
+
+## 
+
+​
+
+Create an artifact and link it to a collection in a registry
+    
+    
+    """
+    Create a W&B artifact and link it to a collection in a registry. If the
+    collection does not exist, W&B creates it.
+    """
+    import wandb
+    
+    # Create an artifact object
+    artifact = wandb.Artifact(name = "<artifact_name>", type = "<artifact_type>")
+    
+    # Define registry and collection names
+    registry_name = "<registry_name>"
+    collection_name = "<collection_name>"
+    target_path = f"wandb-registry-{registry_name}/{collection_name}"
+    
+    # Initialize a run
+    with wandb.init(entity = "<entity>", project = "<project>") as run:
+      # Link the artifact to a collection. If the collection does not exist, W&B creates it.
+      run.link_artifact(artifact = artifact, target_path = target_path)
+    
+
+## 
+
+​
+
+Retrieve a specific version of an artifact from a registry collection
+    
+    
+    """
+    Retrieve a specific version of an artifact from a registry collection.
+    """
+    
+    import wandb
+    
+    # Define registry, collection, and artifact version details
+    registry = "<registry_name>"
+    collection = "<collection_name>"
+    version = "<version>"
+    
+    # Construct the full artifact name with version
+    artifact_name = f"wandb-registry-{registry}/{collection}:{version}"
+    
+    # Initialize W&B API
+    api = wandb.Api()
+    
+    # Retrieve the artifact from the specified registry collection and version
+    artifact = api.artifact(name = artifact_name)
+    
+
+## 
+
+​
+
+Create a registry collection and link an artifact to it
+    
+    
+    """
+    Ceates a W&B registry collection and links an artifact to it.
+    """
+    import wandb
+    
+    # Create an artifact object
+    artifact = wandb.Artifact(name = "<artifact_name>", type = "<artifact_type>")
+    
+    registry_name = "<registry_name>"
+    collection_name = "<collection_name>"
+    registry_path = f"wandb-registry-{registry_name}/{collection_name}"
+    
+    # Initialize a run
+    with wandb.init(entity = "<entity>", project = "<project>") as run:
+    
+      # Link the artifact to a collection. If the collection does not exist, W&B creates it.
+      run.link_artifact(artifact = artifact, target_path = registry_path)
+    
+
+## 
+
+​
+
+Add tags to a collection in a registry
+    
+    
+    """
+    Add tags to a collection in a registry.
+    """
+    import wandb
+    
+    # Define registry and collection details
+    collection_name = "<collection_name>"
+    collection_type = "<collection_type>"
+    registry_name = "<registry_name>"
+    
+    # Construct the full registry path
+    registry_path = f"wandb-registry-{registry_name}/{collection_name}"
+    
+    # Retrieve the artifact collection
+    collection = wandb.Api().artifact_collection(
+      type_name = collection_type, 
+      name = registry_path
+      )
+    
+    collection.tags = ["<tag>"]
+    collection.save()
+    
+
+## 
+
+​
+
+Remove a tag from a collection in a registry
+    
+    
+    """
+    Remove a tag from a collection in a registry.
+    """
+    import wandb
+    
+    # Define registry and collection details
+    collection_name = "<collection_name>"
+    collection_type = "<collection_type>"
+    registry_name = "<registry_name>"
+    
+    # Construct the full registry path
+    registry_path = f"wandb-registry-{registry_name}/{collection_name}"
+    
+    # Retrieve the artifact collection
+    collection = wandb.Api().artifact_collection(
+      type_name = collection_type, 
+      name = registry_path
+      )
+    
+    collection.tags.remove("<tag>")
+    collection.save()
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/sdk-coding-cheat-sheet/registry.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/sdk-coding-cheat-sheet/registry)
+
+[ArtifactsPrevious](/models/ref/sdk-coding-cheat-sheet/artifacts)[Python SDK 0.27.1Next](/models/ref/python)
+
+⌘I

@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/aws
+---
+
+# AWS
+
+## How do I use W&B Sweeps with SageMaker?
+
+You can use W&B Sweeps with Amazon SageMaker to run hyperparameter searches on SageMaker training jobs. To authenticate …
+
+## How do I use W&B Sweeps with cloud infrastructure?
+
+To run a W&B Sweep on cloud infrastructure such as AWS Batch or ECS, publish the sweep_id so that any W&B Sweep agent ca …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/aws.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/aws)
+
+[ArtifactsPrevious](/support/models/tags/artifacts)[BillingNext](/support/models/tags/billing)
+
+⌘I

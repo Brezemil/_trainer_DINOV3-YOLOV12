@@ -1,0 +1,37 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/python
+---
+
+# Python
+
+## Does the W&B client support Python 2?
+
+The W&B client library supported both Python 2.7 and Python 3 through version 0.10. Version 0.11 removed Python 2.7 supp …
+
+## Does the W&B client support Python 3.5?
+
+The W&B client library supported Python 3.5 until version 0.11. Support for Python 3.5 ended with version 0.12, which al …
+
+## Does this only work for Python?
+
+The library supports Python 2.7 and later, as well as Python 3.6 and later. The architecture allows integration with oth …
+
+## How can I resume a sweep using Python code?
+
+To resume a sweep, pass the sweep_id to the wandb.agent() function.
+
+## How do I install the wandb Python library in environments without gcc?
+
+This page is for users who want to install the wandb Python library in environments without gcc, such as minimal contain …
+
+## Is there an anaconda package for Weights and Biases?
+
+An Anaconda package is available, and you can install it with either pip or conda. For conda, get the package from the c …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/python.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/python)
+
+[ProjectsPrevious](/support/models/tags/projects)[ReportsNext](/support/models/tags/reports)
+
+⌘I

@@ -1,0 +1,25 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/notebooks
+---
+
+# Notebooks
+
+## Do 'Run Finished' alerts work in notebooks?
+
+No. Run Finished alerts only work with Python scripts. Even if you’ve enabled the Run Finished setting in User Settings, …
+
+## How do I handle the 'Failed to query for notebook' error?
+
+If you encounter the error message “Failed to query for notebook name, you can set it manually with the WANDB_NOTEBOOK_N …
+
+## How do I silence W&B info messages?
+
+W&B emits info-level log messages by default, which can clutter notebook output. This page describes two ways to reduce …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/notebooks.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/notebooks)
+
+[MetricsPrevious](/support/models/tags/metrics)[OutageNext](/support/models/tags/outage)
+
+⌘I

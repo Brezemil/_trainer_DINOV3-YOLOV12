@@ -1,0 +1,207 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/agents/genai-agent-versions-query
+---
+
+Genai Agent Versions Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/agent-versions/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "agent_name": "<string>",
+      "sort_by": [
+        {
+          "field": "<string>",
+          "direction": "desc"
+        }
+      ],
+      "limit": 100,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "versions": [
+        {
+          "project_id": "<string>",
+          "agent_name": "<string>",
+          "invocation_count": 123,
+          "span_count": 123,
+          "total_input_tokens": 123,
+          "total_output_tokens": 123,
+          "total_duration_ms": 123,
+          "error_count": 123,
+          "first_seen": "2023-11-07T05:31:56Z",
+          "last_seen": "2023-11-07T05:31:56Z",
+          "agent_version": "<string>"
+        }
+      ],
+      "total_count": 0
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Agents](/weave/reference/service-api/agents/export-genai-trace)
+
+# Genai Agent Versions Query
+
+POST
+
+/
+
+agents
+
+/
+
+agent-versions
+
+/
+
+query
+
+Genai Agent Versions Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/agents/agent-versions/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "agent_name": "<string>",
+      "sort_by": [
+        {
+          "field": "<string>",
+          "direction": "desc"
+        }
+      ],
+      "limit": 100,
+      "offset": 0
+    }
+    '
+    
+    
+    {
+      "versions": [
+        {
+          "project_id": "<string>",
+          "agent_name": "<string>",
+          "invocation_count": 123,
+          "span_count": 123,
+          "total_input_tokens": 123,
+          "total_output_tokens": 123,
+          "total_duration_ms": 123,
+          "error_count": 123,
+          "first_seen": "2023-11-07T05:31:56Z",
+          "last_seen": "2023-11-07T05:31:56Z",
+          "agent_version": "<string>"
+        }
+      ],
+      "total_count": 0
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request to list versions for an agent.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+agent_name
+
+string
+
+required
+
+​
+
+sort_by
+
+AgentSortBy · object[] | null
+
+Show child attributes
+
+​
+
+limit
+
+integer
+
+default:100
+
+Required range: `0 <= x <= 10000`
+
+​
+
+offset
+
+integer
+
+default:0
+
+Required range: `x >= 0`
+
+#### Response
+
+Successful Response
+
+Response containing agent version stats.
+
+​
+
+versions
+
+AgentVersionSchema · object[]
+
+required
+
+Show child attributes
+
+​
+
+total_count
+
+integer
+
+default:0
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/agents/genai-agent-versions-query.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/agents/genai-agent-versions-query)
+
+[Genai Agents QueryPrevious](/weave/reference/service-api/agents/genai-agents-query)[Genai SearchNext](/weave/reference/service-api/agents/genai-search)
+
+⌘I

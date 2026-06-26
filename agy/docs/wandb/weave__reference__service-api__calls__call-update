@@ -1,0 +1,123 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/call-update
+---
+
+Call Update
+    
+    
+    curl --request POST \
+      --url https://api.example.com/call/update \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_id": "<string>",
+      "display_name": "<string>",
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {}
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Call Update
+
+POST
+
+/
+
+call
+
+/
+
+update
+
+Call Update
+    
+    
+    curl --request POST \
+      --url https://api.example.com/call/update \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_id": "<string>",
+      "display_name": "<string>",
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {}
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+call_id
+
+string
+
+required
+
+​
+
+display_name
+
+string | null
+
+​
+
+wb_user_id
+
+string | null
+
+Do not set directly. Server will automatically populate this field.
+
+#### Response
+
+Successful Response
+
+The response is of type `CallUpdateRes · object`.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/call-update.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/call-update)
+
+[Calls DeletePrevious](/weave/reference/service-api/calls/calls-delete)[Call ReadNext](/weave/reference/service-api/calls/call-read)
+
+⌘I

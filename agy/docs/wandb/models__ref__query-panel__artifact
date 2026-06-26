@@ -1,0 +1,149 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/artifact
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# artifact
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`artifact-link`
+
+Returns the url for a [artifact](/models/ref/query-panel/artifact)
+
+Argument| Description  
+---|---  
+`artifact`| An [artifact](/models/ref/query-panel/artifact)  
+  
+#### 
+
+​
+
+Return Value
+
+The url for a [artifact](/models/ref/query-panel/artifact)
+
+### 
+
+​
+
+`artifact-name`
+
+Returns the name of the [artifact](/models/ref/query-panel/artifact)
+
+Argument| Description  
+---|---  
+`artifact`| An [artifact](/models/ref/query-panel/artifact)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [artifact](/models/ref/query-panel/artifact)
+
+### 
+
+​
+
+`artifact-versions`
+
+Returns the versions of the [artifact](/models/ref/query-panel/artifact)
+
+Argument| Description  
+---|---  
+`artifact`| An [artifact](/models/ref/query-panel/artifact)  
+  
+#### 
+
+​
+
+Return Value
+
+The versions of the [artifact](/models/ref/query-panel/artifact)
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`artifact-link`
+
+Returns the url for a [artifact](/models/ref/query-panel/artifact)
+
+Argument| Description  
+---|---  
+`artifact`| An [artifact](/models/ref/query-panel/artifact)  
+  
+#### 
+
+​
+
+Return Value
+
+The url for a [artifact](/models/ref/query-panel/artifact)
+
+### 
+
+​
+
+`artifact-name`
+
+Returns the name of the [artifact](/models/ref/query-panel/artifact)
+
+Argument| Description  
+---|---  
+`artifact`| An [artifact](/models/ref/query-panel/artifact)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [artifact](/models/ref/query-panel/artifact)
+
+### 
+
+​
+
+`artifact-versions`
+
+Returns the versions of the [artifact](/models/ref/query-panel/artifact)
+
+Argument| Description  
+---|---  
+`artifact`| An [artifact](/models/ref/query-panel/artifact)  
+  
+#### 
+
+​
+
+Return Value
+
+The versions of the [artifact](/models/ref/query-panel/artifact)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/artifact.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/artifact)
+
+[Query Expression Language overviewPrevious](/models/ref/query-panel)[artifactTypeNext](/models/ref/query-panel/artifact-type)
+
+⌘I

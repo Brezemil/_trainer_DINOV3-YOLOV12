@@ -1,0 +1,175 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/scores/score-create
+---
+
+Score Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/scores \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "prediction_id": "<string>",
+      "scorer": "<string>",
+      "value": "<unknown>",
+      "evaluation_run_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "score_id": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Scores](/weave/reference/service-api/scores/calls-score)
+
+# Score Create
+
+Create a score.
+
+POST
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+scores
+
+Score Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/scores \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "prediction_id": "<string>",
+      "scorer": "<string>",
+      "value": "<unknown>",
+      "evaluation_run_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "score_id": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Body
+
+application/json
+
+Request body for creating a Score via REST API.
+
+This model excludes project_id since it comes from the URL path in RESTful endpoints.
+
+​
+
+prediction_id
+
+string
+
+required
+
+The prediction ID
+
+​
+
+scorer
+
+string
+
+required
+
+The scorer reference (weave:// URI)
+
+​
+
+value
+
+any
+
+required
+
+The raw output of the scorer
+
+​
+
+evaluation_run_id
+
+string | null
+
+Optional evaluation run ID to link this score as a child call
+
+#### Response
+
+Successful Response
+
+​
+
+score_id
+
+string
+
+required
+
+The score ID
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/scores/score-create.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/scores/score-create)
+
+[Score ListPrevious](/weave/reference/service-api/scores/score-list)[Score DeleteNext](/weave/reference/service-api/scores/score-delete)
+
+⌘I

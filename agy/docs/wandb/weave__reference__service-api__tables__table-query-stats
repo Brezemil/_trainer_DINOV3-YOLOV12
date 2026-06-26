@@ -1,0 +1,123 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/tables/table-query-stats
+---
+
+Table Query Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/table/query_stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "digest": "<string>"
+    }
+    '
+    
+    
+    {
+      "count": 123
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Tables](/weave/reference/service-api/tables/table-create)
+
+# Table Query Stats
+
+POST
+
+/
+
+table
+
+/
+
+query_stats
+
+Table Query Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/table/query_stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "digest": "<string>"
+    }
+    '
+    
+    
+    {
+      "count": 123
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+The ID of the project
+
+Example:
+
+`"my_entity/my_project"`
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the table to query
+
+#### Response
+
+Successful Response
+
+​
+
+count
+
+integer
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/tables/table-query-stats.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/tables/table-query-stats)
+
+[Table QueryPrevious](/weave/reference/service-api/tables/table-query)[Table Query Stats BatchNext](/weave/reference/service-api/tables/table-query-stats-batch)
+
+⌘I

@@ -1,0 +1,109 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/table
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# table
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`asset-file`
+
+Returns the _file_ of the asset
+
+Argument| Description  
+---|---  
+`asset`| The asset  
+  
+#### 
+
+​
+
+Return Value
+
+The _file_ of the asset
+
+### 
+
+​
+
+`table-rows`
+
+Returns the rows of a _table_
+
+Argument| Description  
+---|---  
+`table`| A _table_  
+  
+#### 
+
+​
+
+Return Value
+
+The rows of the _table_
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`asset-file`
+
+Returns the _file_ of the asset
+
+Argument| Description  
+---|---  
+`asset`| The asset  
+  
+#### 
+
+​
+
+Return Value
+
+The _file_ of the asset
+
+### 
+
+​
+
+`table-rows`
+
+Returns the rows of a _table_
+
+Argument| Description  
+---|---  
+`table`| A _table_  
+  
+#### 
+
+​
+
+Return Value
+
+The rows of the _table_
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/table.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/table)
+
+[stringPrevious](/models/ref/query-panel/string)[userNext](/models/ref/query-panel/user)
+
+⌘I

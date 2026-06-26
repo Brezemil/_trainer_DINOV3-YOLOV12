@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/anonymous
+---
+
+# Anonymous
+
+## Features not available to anonymous users
+
+Anonymous accounts let you try W&B without signing up, but several features are restricted. Review the following limitat …
+
+## How does someone without an account see run results?
+
+W&B supports anonymous runs so that people without an account can view experiment results and optionally claim them late …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/anonymous.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/anonymous)
+
+[AlertsPrevious](/support/models/tags/alerts)[ArtifactsNext](/support/models/tags/artifacts)
+
+⌘I

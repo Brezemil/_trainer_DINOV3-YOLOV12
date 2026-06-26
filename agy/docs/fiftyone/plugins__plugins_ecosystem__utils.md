@@ -1,0 +1,265 @@
+---
+source_url: https://docs.voxel51.com/plugins/plugins_ecosystem/utils.html
+---
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/utils)
+
+# Utilities Plugin#
+
+A plugin that contains common utilities for working with FiftyOne.
+
+## Installation#
+    
+    
+    fiftyone plugins download \
+        https://github.com/voxel51/fiftyone-plugins \
+        --plugin-names @voxel51/utils
+    
+
+Refer to the [main README](https://github.com/voxel51/fiftyone-plugins) for more information about managing downloaded plugins and developing plugins locally.
+
+## Usage#
+
+  1. Launch the App:
+
+
+
+    
+    
+    import fiftyone as fo
+    import fiftyone.zoo as foz
+    
+    dataset = foz.load_zoo_dataset("quickstart")
+    session = fo.launch_app(dataset)
+    
+
+  2. Press ``` or click the `Browse operations` action to open the Operators list
+
+  3. Select any of the operators listed below!
+
+
+
+
+## Operators#
+
+### create_dataset#
+
+You can use this operator to create a new dataset from within the App.
+
+This operator is essentially a wrapper around the [Dataset()](https://docs.voxel51.com/api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset) constructor:
+    
+    
+    dataset = fo.Dataset(name, persistent=persistent)
+    
+
+where the operatorâs form allows you to configure the name and persistence of the dataset.
+
+### load_dataset#
+
+You can use this operator to switch to a different dataset in the App.
+
+This operator is essentially a wrapper around the [load_dataset()](https://docs.voxel51.com/api/fiftyone.core.dataset.html#fiftyone.core.dataset.load_dataset) method:
+    
+    
+    session.dataset = fo.load_dataset(name)
+    
+
+where the operatorâs form allows you to configure the name of the dataset to load.
+
+### edit_dataset_info#
+
+You can use this operator to edit dataset-level metadata in the App.
+
+This operator is essentially a wrapper around the various dataset properties described in [this section](https://docs.voxel51.com/user_guide/using_datasets.html#datasets) of the docs:
+    
+    
+    # Basic
+    dataset.name = ...
+    dataset.description = ...
+    dataset.persistent = ...
+    dataset.tags = ...
+    
+    # Info
+    dataset.info = ...
+    
+    # App config
+    dataset.app_config = ...
+    
+    # Classes
+    dataset.classes = ...
+    dataset.default_classes = ...
+    
+    # Mask targets
+    dataset.mask_targets = ...
+    dataset.default_mask_targets = ...
+    
+    # Keypoint skeletons
+    dataset.skeletons = ...
+    dataset.default_skeleton = ...
+    
+
+where the operatorâs form allows you to edit any of the above properties.
+
+### rename_dataset#
+
+You can use this operator to rename a dataset in the App.
+
+This operator is essentially a wrapper around setting the datasetâs [name](https://docs.voxel51.com/api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.name) property:
+    
+    
+    dataset.name = new_name
+    
+
+where the operatorâs form allows you to configure the new name for the dataset.
+
+### clone_dataset#
+
+You can use this operator to clone a dataset or your current view in the App.
+
+This operator is essentially a wrapper around the [clone()](https://docs.voxel51.com/api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.clone) method:
+    
+    
+    new_dataset = dataset.clone(new_name)
+    
+    view = dataset.filter_labels(...)
+    new_dataset = view.clone(new_name)
+    
+
+where the operatorâs form allows you to configure what dataset/view to clone.
+
+### delete_dataset#
+
+You can use this operator to delete a dataset in the App.
+
+This operator is essentially a wrapper around the [delete_dataset()](https://docs.voxel51.com/api/fiftyone.core.dataset.html#fiftyone.core.dataset.delete_dataset) method:
+    
+    
+    fo.delete_dataset(name)
+    
+
+where the operatorâs form allows you to configure the name of the dataset to delete.
+
+### delete_samples#
+
+You can use this operator to delete samples from a dataset in the App.
+
+This operator is essentially a wrapper around the [delete_samples()](https://docs.voxel51.com/api/fiftyone.core.dataset.html#fiftyone.core.dataset.delete_samples) method:
+    
+    
+    # Delete the currently selected samples
+    dataset.delete_samples(session.selected)
+    
+    # Delete the current view
+    datast.delete_samples(session.view)
+    
+    # Delete all samples
+    dataset.clear()
+    
+
+where the operatorâs form allows you to choose which samples to delete.
+
+### apply_saved_view#
+
+You can use this operator to apply a saved view from another dataset to your current dataset (assuming the view is applicable to both).
+
+This operator is essentially a wrapper around the following code snippet:
+    
+    
+    src_view = src_dataset.load_saved_view(name)
+    
+    # Apply source view to current dataset
+    view = fo.DatasetView._build(dataset, src_view._serialize())
+    
+
+where the operatorâs form allows you to choose the source dataset and view to apply.
+
+### compute_metadata#
+
+You can use this operator to populate the `metadata` field of a collection.
+
+This operator is essentially a wrapper around the [compute_metadata()](https://docs.voxel51.com/api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.compute_metadata) method:
+    
+    
+    dataset_or_view.compute_metadata(...)
+    
+
+where the operatorâs form allows you to configure any applicable optional arguments for `compute_metadata()`.
+
+### generate_thumbnails#
+
+You can use this operator to generate thumbnails for the media in a collection.
+
+This operator is essentially a wrapper around the [following pattern](https://docs.voxel51.com/user_guide/app.html#multiple-media-fields):
+    
+    
+    import fiftyone.utils.image as foui
+    
+    foui.transform_images(
+        dataset_or_view,
+        size=(width, height),
+        output_field="thumbnail_path",
+        output_dir="/path/for/thumbnails",
+        skip_failures=True,
+    )
+    
+    dataset.app_config.media_fields.append("thumbnail_path")
+    dataset.app_config.grid_media_field = "thumbnail_path"
+    dataset.save()
+    
+
+where the operatorâs form allows you to configure the `(width, height)` for the thumbnails, the field in which to store their paths, and the directory in which to store the thumbnail images.
+
+### delegate (SDK-only)#
+
+You can use this operator to programmatically [delegate execution](https://docs.voxel51.com/plugins/using_plugins.html#delegated-operations) of an arbitrary function call that can be expressed in any of the following forms:
+
+  * Execute an arbitrary function: `fcn(*args, **kwargs)`
+
+  * Apply a function to a dataset or view: `fcn(dataset_or_view, *args, **kwargs)`
+
+  * Call an instance method of a dataset or view: `dataset_or_view.fcn(*args, **kwargs)`
+
+
+
+    
+    
+    import fiftyone as fo
+    import fiftyone.operators as foo
+    import fiftyone.zoo as foz
+    
+    dataset = foz.load_zoo_dataset("quickstart")
+    delegate = foo.get_operator("@voxel51/utils/delegate")
+    
+    # Compute metadata
+    delegate("compute_metadata", dataset=dataset)
+    
+    # Compute visualization
+    delegate(
+        "fiftyone.brain.compute_visualization",
+        dataset=dataset,
+        brain_key="img_viz",
+    )
+    
+    # Export a view
+    delegate(
+        "export",
+        view=dataset.to_patches("ground_truth"),
+        export_dir="/tmp/patches",
+        dataset_type="fiftyone.types.ImageClassificationDirectoryTree",
+        label_field="ground_truth",
+    )
+    
+    # Load the exported patches into a new dataset
+    delegate(
+        "fiftyone.Dataset.from_dir",
+        dataset_dir="/tmp/patches",
+        dataset_type="fiftyone.types.ImageClassificationDirectoryTree",
+        label_field="ground_truth",
+        name="patches",
+        persistent=True,
+    )
+    
+
+IN THIS ARTICLE 
+  *[*]: Keyword-only parameters separator (PEP 3102)
+  *[/]: Positional-only parameter separator (PEP 570)

@@ -1,0 +1,129 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/objects/obj-delete
+---
+
+Obj Delete
+    
+    
+    curl --request POST \
+      --url https://api.example.com/obj/delete \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "object_id": "<string>",
+      "digests": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {
+      "num_deleted": 123
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Objects](/weave/reference/service-api/objects/obj-create)
+
+# Obj Delete
+
+POST
+
+/
+
+obj
+
+/
+
+delete
+
+Obj Delete
+    
+    
+    curl --request POST \
+      --url https://api.example.com/obj/delete \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "object_id": "<string>",
+      "digests": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {
+      "num_deleted": 123
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+object_id
+
+string
+
+required
+
+​
+
+digests
+
+string[] | null
+
+List of digests to delete. If not provided, all digests for the object will be deleted.
+
+#### Response
+
+Successful Response
+
+​
+
+num_deleted
+
+integer
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/objects/obj-delete.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/objects/obj-delete)
+
+[Objs QueryPrevious](/weave/reference/service-api/objects/objs-query)[Obj Add TagsNext](/weave/reference/service-api/objects/obj-add-tags)
+
+⌘I

@@ -1,0 +1,201 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/api-reference/models/log
+---
+
+Log
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v1/preview/models/{model_id}/log \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "split": "<string>",
+      "trajectory_groups": [
+        {
+          "trajectories": [
+            {
+              "messages_and_choices": [],
+              "tools": [
+                {
+                  "function": {
+                    "name": "<string>",
+                    "description": "<string>",
+                    "parameters": {},
+                    "strict": true
+                  },
+                  "type": "<string>"
+                }
+              ],
+              "additional_histories": [],
+              "reward": 0,
+              "initial_policy_version": 123,
+              "final_policy_version": 123,
+              "metrics": {},
+              "metadata": {},
+              "logs": [],
+              "start_time": "2023-11-07T05:31:56Z"
+            }
+          ]
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+[Serverless Training](/serverless-training/api-reference)
+
+[models](/serverless-training/api-reference/models/create-model)
+
+# Log
+
+Log trajectories and calculate metrics.
+
+POST
+
+/
+
+v1
+
+/
+
+preview
+
+/
+
+models
+
+/
+
+{model_id}
+
+/
+
+log
+
+Log
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v1/preview/models/{model_id}/log \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "split": "<string>",
+      "trajectory_groups": [
+        {
+          "trajectories": [
+            {
+              "messages_and_choices": [],
+              "tools": [
+                {
+                  "function": {
+                    "name": "<string>",
+                    "description": "<string>",
+                    "parameters": {},
+                    "strict": true
+                  },
+                  "type": "<string>"
+                }
+              ],
+              "additional_histories": [],
+              "reward": 0,
+              "initial_policy_version": 123,
+              "final_policy_version": 123,
+              "metrics": {},
+              "metadata": {},
+              "logs": [],
+              "start_time": "2023-11-07T05:31:56Z"
+            }
+          ]
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+#### Path Parameters
+
+​
+
+model_id
+
+string
+
+required
+
+#### Body
+
+application/json
+
+Schema for logging trajectories.
+
+​
+
+split
+
+string
+
+required
+
+​
+
+trajectory_groups
+
+TrajectoryGroup · object[]
+
+required
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/api-reference/models/log.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/api-reference/models/log)
+
+[Delete ModelPrevious](/serverless-training/api-reference/models/delete-model)[Create Rl Training JobNext](/serverless-training/api-reference/training-jobs/create-rl-training-job)
+
+⌘I

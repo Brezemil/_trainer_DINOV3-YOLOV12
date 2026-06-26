@@ -1,0 +1,129 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/tables/table-create-from-digests
+---
+
+Table Create From Digests
+    
+    
+    curl --request POST \
+      --url https://api.example.com/table/create_from_digests \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "row_digests": [
+        "<string>"
+      ],
+      "expected_digest": "<string>"
+    }
+    '
+    
+    
+    {
+      "digest": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Tables](/weave/reference/service-api/tables/table-create)
+
+# Table Create From Digests
+
+POST
+
+/
+
+table
+
+/
+
+create_from_digests
+
+Table Create From Digests
+    
+    
+    curl --request POST \
+      --url https://api.example.com/table/create_from_digests \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "row_digests": [
+        "<string>"
+      ],
+      "expected_digest": "<string>"
+    }
+    '
+    
+    
+    {
+      "digest": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+row_digests
+
+string[]
+
+required
+
+​
+
+expected_digest
+
+string | null
+
+Client-computed table digest for server-side validation.
+
+#### Response
+
+Successful Response
+
+​
+
+digest
+
+string
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/tables/table-create-from-digests.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/tables/table-create-from-digests)
+
+[Table UpdatePrevious](/weave/reference/service-api/tables/table-update)[Table QueryNext](/weave/reference/service-api/tables/table-query)
+
+⌘I

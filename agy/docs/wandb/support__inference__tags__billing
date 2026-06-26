@@ -1,0 +1,17 @@
+---
+source_url: https://docs.wandb.ai/support/inference/tags/billing
+---
+
+# Billing
+
+## API error code 402 - You exceeded your current quota
+
+A 402 error with the message You exceeded your current quota, please check your plan and billing details means you’ve ru …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/inference/tags/billing.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/inference/tags/billing)
+
+[Authentication & AccessPrevious](/support/inference/tags/authentication-access)[Quotas & Rate LimitsNext](/support/inference/tags/quotas-rate-limits)
+
+⌘I

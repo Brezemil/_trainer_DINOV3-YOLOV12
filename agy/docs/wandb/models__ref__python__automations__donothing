@@ -1,0 +1,47 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/automations/donothing
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Automations](/models/ref/python/automations)
+
+# DoNothing
+
+## 
+
+​
+
+`class` `DoNothing`
+
+Defines an automation action that intentionally does nothing.
+
+### 
+
+​
+
+`method` `DoNothing.__init__`
+    
+    
+    __init__(
+        no_op: 'bool' = True,
+        action_type: 'Literal[NO_OP]' = NO_OP
+    ) → None
+    
+
+**Args:**
+
+  * `no_op` (bool): Placeholder field which exists only to satisfy backend schema requirements. There should never be a need to set this field explicitly, as its value is ignored.
+  * `action_type` (Literal[NO_OP]):
+
+**Returns:** An `DoNothing` object.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/automations/donothing.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/automations/donothing)
+
+[AutomationPrevious](/models/ref/python/automations/automation)[DownloadHistoryResultNext](/models/ref/python/public-api/downloadhistoryresult)
+
+⌘I

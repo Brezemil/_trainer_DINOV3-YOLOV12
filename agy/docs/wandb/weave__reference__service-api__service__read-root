@@ -1,0 +1,43 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/service/read-root
+---
+
+Read Root
+    
+    
+    curl --request GET \
+      --url https://api.example.com/health
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Service](/weave/reference/service-api/service/read-root)
+
+# Read Root
+
+GET
+
+/
+
+health
+
+Read Root
+    
+    
+    curl --request GET \
+      --url https://api.example.com/health
+
+#### Response
+
+200 - application/json
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/service/read-root.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/service/read-root)
+
+[Service API overviewPrevious](/weave/reference/service-api)[Read VersionNext](/weave/reference/service-api/service/read-version)
+
+⌘I

@@ -1,0 +1,166 @@
+---
+source_url: https://docs.voxel51.com/plugins/plugins_ecosystem/rerun_plugin.html
+---
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](https://github.com/voxel51/fiftyone-rerun-plugin)
+
+# FiftyOne Rerun Plugin#
+
+[![Discord](https://img.shields.io/badge/Discord-7289DA?logo=discord&logoColor=white)](https://discord.gg/fiftyone-community) [![Hugging Face](https://img.shields.io/badge/Hugging_Face-purple?style=flat&logo=huggingface)](https://huggingface.co/Voxel51) [![Voxel51 Blog](https://img.shields.io/badge/Voxel51_Blog-ff6d04?style=flat)](https://voxel51.com/blog) [![Newsletter](https://img.shields.io/badge/Newsletter-BE5B25?logo=mail.ru&logoColor=white)](https://share.hsforms.com/1zpJ60ggaQtOoVeBqIZdaaA2ykyk) [![LinkedIn](https://img.shields.io/badge/In-white?style=flat&label=Linked&labelColor=blue)](https://www.linkedin.com/company/voxel51) [![Twitter](https://img.shields.io/badge/Twitter-000000?logo=x&logoColor=white)](https://x.com/voxel51) [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/voxel51)
+
+A plugin that enables users to visualize [Rerun](https://rerun.io/) data files (`.rrd`) inside the [FiftyOne App](https://docs.voxel51.com/user_guide/app.html).
+
+![rerun-fo-nuscenes-small](https://github.com/user-attachments/assets/d93e86bb-ae59-493b-9028-4b9c677afca9)
+
+## Release artifacts and Rerun version compatibility#
+
+Prebuilt plugin artifacts are published on the repositoryâs [GitHub Releases](https://github.com/voxel51/fiftyone-rerun-plugin/releases) page. Each release includes a zip file named like:
+
+`fiftyone-rerun-plugin-<version>.zip`
+
+The zip contains:
+
+  * `dist/` (the built plugin bundle)
+
+  * `fiftyone.yaml` (plugin metadata with the matching plugin version)
+
+
+
+
+Version coupling:
+
+  * Plugin release version `vX.Y.Z` is paired with exact `@rerun-io/web-viewer` version `X.Y.Z`
+
+  * Choose a plugin release that matches the Rerun web viewer version you want to use.
+
+
+
+
+## Local versioned build#
+
+To build a versioned plugin artifact locally:
+    
+    
+    ./scripts/build-release-local.sh 0.29.2
+    
+
+This produces:
+
+  * `dist_artifacts/fiftyone-rerun-plugin-0.29.2/`
+
+
+
+
+To also generate a zip:
+    
+    
+    ./scripts/build-release-local.sh --zip 0.29.2
+    
+
+This additionally produces:
+
+  * `dist/fiftyone-rerun-plugin-0.29.2.zip`
+
+
+
+
+## Usage#
+
+This plugin supports two dataset construction patterns:
+
+  1. Samples that contain a `fiftyone.utils.rerun.RrdFile` field
+
+  2. Samples whose primary media filepath ends in `.rrd`
+
+
+
+
+### Pattern 1: `RrdFile` sample fields#
+
+Use this pattern when the `.rrd` file is auxiliary media attached to another sample, such as an image, video, or grouped sample. In the FiftyOne App, these samples show a **Rerun** affordance in the sample modal as a modal panel. Open the sample in the modal, click the **â+â** button, and select **âRerunâ**.
+    
+    
+    import fiftyone as fo
+    from fiftyone.utils.rerun import RrdFile
+    
+    dataset = fo.Dataset("rerun-field-dataset")
+    
+    dataset.add_sample(
+        fo.Sample(
+            filepath="/path/to/cover-image.png",
+            rerun_recording=RrdFile(
+                filepath="/path/to/recording.rrd"
+            ),
+        )
+    )
+    
+
+### Pattern 2: direct `.rrd` samples#
+
+Use this pattern when the `.rrd` file itself is the primary sample media. In the FiftyOne App, opening one of these samples in the modal will launch the Rerun renderer directly, without requiring a separate modal panel selection.
+    
+    
+    import fiftyone as fo
+    
+    dataset = fo.Dataset("rerun-direct-dataset")
+    
+    dataset.add_sample(
+        fo.Sample(
+            filepath="/path/to/recording.rrd",
+        )
+    )
+    
+
+In this mode, grid rendering remains disabled, and the custom Rerun renderer is activated only in the modal for `.rrd` samples.
+
+## Example usage with NuScenes dataset#
+
+Install the required dependencies:
+    
+    
+    pip install nuscenes-devkit rerun-sdk open3d matplotlib Pillow
+    
+
+We have a Python script in the examples folder that:
+
+  1. Creates RRD files with a timeline containing lidar points of each scene in the NuScenes mini dataset
+
+  2. Creates a grouped FiftyOne dataset with all camera images, lidar, radar, as well as references to the RRD files from (1)
+
+
+
+
+This example uses the `RrdFile` sample field pattern described above.
+
+Before you run the script, make sure you have the NuScenes mini split dataset downloaded and extracted. You can download it from [here](https://www.nuscenes.org/data/v1.0-mini.tgz).
+
+After downloading, extract the dataset to a folder. Youâll need the path of the extracted dataset to run the script.
+    
+    
+    # download the NuScenes mini dataset
+    wget https://www.nuscenes.org/data/v1.0-mini.tgz
+    
+    # extract the dataset to a folder named nuscenes-mini
+    tar -xvf v1.0-mini.tgz
+    
+
+Run the script to prepare the dataset:
+    
+    
+    # show help
+    python examples/load-nuscenes.py -h
+    
+    # create rrd files as well as create a fiftyone dataset with references to the RRD files
+    python examples/load-nuscenes.py --nuscenes-data-dir /path/to/nuscenes --rrd --fiftyone
+    
+
+Then launch the App:
+    
+    
+    # start fiftyone app
+    fiftyone app launch
+    
+
+IN THIS ARTICLE 
+  *[*]: Keyword-only parameters separator (PEP 3102)
+  *[/]: Positional-only parameter separator (PEP 570)

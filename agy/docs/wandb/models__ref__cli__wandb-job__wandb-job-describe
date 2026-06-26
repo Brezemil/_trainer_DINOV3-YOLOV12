@@ -1,0 +1,47 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-job/wandb-job-describe
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb job](/models/ref/cli/wandb-job)
+
+# wandb job describe
+
+## 
+
+​
+
+Usage
+    
+    
+    describe [OPTIONS] JOB
+    
+
+## 
+
+​
+
+Description
+
+Describe a launch job. Provide the launch job in the form of: entity/project/job-name:alias-or-version.
+
+## 
+
+​
+
+Arguments
+
+Name| Default| Type  
+---|---|---  
+`job`| STR| True  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-job/wandb-job-describe.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-job/wandb-job-describe)
+
+[wandb job createPrevious](/models/ref/cli/wandb-job/wandb-job-create)[wandb job listNext](/models/ref/cli/wandb-job/wandb-job-list)
+
+⌘I

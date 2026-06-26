@@ -171,6 +171,9 @@ split_before_first_argument = false
 [tool.ruff]
 line-length = 120
 
+[tool.ruff.lint]
+ignore = ["E402"]
+
 [tool.ruff.format]
 docstring-code-format = true
 
@@ -184,3 +187,38 @@ in-place = true
 [tool.codespell]
 ignore-words-list = "crate,nd,ned,strack,dota,ane,segway,fo,gool,winn,commend,bloc,nam,afterall"
 skip = '*.pt,*.pth,*.torchscript,*.onnx,*.tflite,*.pb,*.bin,*.param,*.mlmodel,*.engine,*.npy,*.data*,*.csv,*pnnx*,*venv*,*translat*,__pycache__*,*.ico,*.jpg,*.png,*.mp4,*.mov,/runs,/.git,./docs/??/*.md,./docs/mkdocs_??.yml'
+    
+# --- Pixi Project Environment Configuration ---
+[tool.pixi.workspace]
+channels = ["conda-forge", "pytorch", "nvidia"]
+platforms = ["win-64", "linux-64", "osx-arm64"] # Add your matching platforms here
+
+[tool.pixi.dependencies]
+python = ">=3.10,<3.13"  # <-- Add this line to force a compatible Python version
+pydantic = ">=2.0"
+typer = ">=0.9.0"
+rich = ">=13.0.0,<14.0.0"
+ruff = ">=0.3.0"
+pyright = ">=1.1.350"
+
+[tool.pixi.pypi-dependencies]
+transformers = "*"
+huggingface-hub = "*"
+timm = "==1.0.14"
+thop = ">=0.1.0"
+safetensors = "==0.4.3"
+pycocotools = ">=2.0.7"
+pandas = "*"
+pytz = "*"
+wandb = "*" 
+
+[tool.pixi.tasks]
+ide = "antigravity-ide"
+cli = "agy"
+yolo = "yolo"  # Maps the ultralytics CLI natively as well
+lint = "ruff check --fix ."
+format = "ruff format ."
+check-types = "pyright"
+check-gpu = "python -c \"import torch; print('CUDA available:', torch.cuda.is_available())\""
+qa = "ruff check . && ruff format --check . && pyright"
+benchmark = "python run_benchmark.py"

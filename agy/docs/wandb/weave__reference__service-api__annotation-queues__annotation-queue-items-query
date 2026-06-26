@@ -1,0 +1,265 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/annotation-queues/annotation-queue-items-query
+---
+
+Annotation Queue Items Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/annotation_queues/{queue_id}/items/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "id": "<string>",
+        "call_id": "<string>",
+        "call_op_name": "<string>",
+        "call_trace_id": "<string>",
+        "added_by": "<string>",
+        "annotation_states": [
+          "unstarted",
+          "in_progress"
+        ]
+      },
+      "sort_by": [
+        {
+          "field": "<string>"
+        }
+      ],
+      "limit": 50,
+      "offset": 0,
+      "include_position": false
+    }
+    '
+    
+    
+    {
+      "items": [
+        {
+          "id": "<string>",
+          "project_id": "<string>",
+          "queue_id": "<string>",
+          "call_id": "<string>",
+          "call_started_at": "2023-11-07T05:31:56Z",
+          "call_op_name": "<string>",
+          "call_trace_id": "<string>",
+          "display_fields": [
+            "<string>"
+          ],
+          "created_at": "2023-11-07T05:31:56Z",
+          "created_by": "<string>",
+          "updated_at": "2023-11-07T05:31:56Z",
+          "call_ended_at": "2023-11-07T05:31:56Z",
+          "added_by": "<string>",
+          "annotator_user_id": "<string>",
+          "deleted_at": "2023-11-07T05:31:56Z",
+          "position_in_queue": 123
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Annotation Queues](/weave/reference/service-api/annotation-queues/annotation-queue-create)
+
+# Annotation Queue Items Query
+
+Query items in an annotation queue with pagination and sorting.
+
+POST
+
+/
+
+annotation_queues
+
+/
+
+{queue_id}
+
+/
+
+items
+
+/
+
+query
+
+Annotation Queue Items Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/annotation_queues/{queue_id}/items/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "id": "<string>",
+        "call_id": "<string>",
+        "call_op_name": "<string>",
+        "call_trace_id": "<string>",
+        "added_by": "<string>",
+        "annotation_states": [
+          "unstarted",
+          "in_progress"
+        ]
+      },
+      "sort_by": [
+        {
+          "field": "<string>"
+        }
+      ],
+      "limit": 50,
+      "offset": 0,
+      "include_position": false
+    }
+    '
+    
+    
+    {
+      "items": [
+        {
+          "id": "<string>",
+          "project_id": "<string>",
+          "queue_id": "<string>",
+          "call_id": "<string>",
+          "call_started_at": "2023-11-07T05:31:56Z",
+          "call_op_name": "<string>",
+          "call_trace_id": "<string>",
+          "display_fields": [
+            "<string>"
+          ],
+          "created_at": "2023-11-07T05:31:56Z",
+          "created_by": "<string>",
+          "updated_at": "2023-11-07T05:31:56Z",
+          "call_ended_at": "2023-11-07T05:31:56Z",
+          "added_by": "<string>",
+          "annotator_user_id": "<string>",
+          "deleted_at": "2023-11-07T05:31:56Z",
+          "position_in_queue": 123
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+queue_id
+
+string
+
+required
+
+#### Body
+
+application/json
+
+Request body for querying items in an annotation queue (queue_id comes from path).
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+filter
+
+AnnotationQueueItemsFilter · object
+
+Filter queue items by call metadata and annotation state
+
+Show child attributes
+
+​
+
+sort_by
+
+SortBy · object[] | null
+
+Sort by multiple fields (e.g., created_at, updated_at)
+
+Show child attributes
+
+​
+
+limit
+
+integer | null
+
+Example:
+
+`50`
+
+​
+
+offset
+
+integer | null
+
+Example:
+
+`0`
+
+​
+
+include_position
+
+boolean
+
+default:false
+
+Include position_in_queue field (1-based index in full queue)
+
+#### Response
+
+Successful Response
+
+Response from querying annotation queue items.
+
+​
+
+items
+
+AnnotationQueueItemSchema · object[]
+
+required
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/annotation-queues/annotation-queue-items-query.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/annotation-queues/annotation-queue-items-query)
+
+[Annotation Queue Add CallsPrevious](/weave/reference/service-api/annotation-queues/annotation-queue-add-calls)[Annotation Queues StatsNext](/weave/reference/service-api/annotation-queues/annotation-queues-stats)
+
+⌘I

@@ -1,0 +1,167 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/calls-usage
+---
+
+Calls Usage
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/usage \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_ids": [
+        "<string>"
+      ],
+      "include_costs": false,
+      "limit": 10000
+    }
+    '
+    
+    
+    {
+      "call_usage": {},
+      "unfinished_call_ids": [
+        "<string>"
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Calls Usage
+
+Compute aggregated usage for multiple root calls, with descendant rollup.
+
+POST
+
+/
+
+calls
+
+/
+
+usage
+
+Calls Usage
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/usage \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_ids": [
+        "<string>"
+      ],
+      "include_costs": false,
+      "limit": 10000
+    }
+    '
+    
+    
+    {
+      "call_usage": {},
+      "unfinished_call_ids": [
+        "<string>"
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request to compute aggregated usage for multiple root calls.
+
+This endpoint returns usage metrics for each requested root call, where each root's metrics include the sum of its own usage plus all descendants' usage.
+
+Note: All matching calls are loaded into memory for aggregation. For very large result sets (>10k calls), consider batching root call IDs or using narrower filters at the application layer.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+call_ids
+
+string[]
+
+required
+
+Root call IDs to aggregate. Each result key corresponds to one input call ID.
+
+​
+
+include_costs
+
+boolean
+
+default:false
+
+If true, include cost calculations in the usage.
+
+​
+
+limit
+
+integer
+
+default:10000
+
+Maximum number of calls to process across all traces. Acts as a safety limit to prevent unbounded memory usage.
+
+#### Response
+
+Successful Response
+
+Response with aggregated usage metrics per root call.
+
+​
+
+call_usage
+
+Call Usage · object
+
+Show child attributes
+
+​
+
+unfinished_call_ids
+
+string[]
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/calls-usage.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/calls-usage)
+
+[Trace UsagePrevious](/weave/reference/service-api/calls/trace-usage)[Calls Query StreamNext](/weave/reference/service-api/calls/calls-query-stream)
+
+⌘I

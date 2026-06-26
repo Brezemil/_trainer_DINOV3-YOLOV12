@@ -1,0 +1,68 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-artifact/wandb-artifact-get
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb artifact](/models/ref/cli/wandb-artifact)
+
+# wandb artifact get
+
+## 
+
+​
+
+Usage
+    
+    
+    get [OPTIONS] PATH
+    
+
+## 
+
+​
+
+Description
+
+Download an artifact from W&B by its path. The PATH format is entity/project/artifact_name:version. If the version is omitted, use the “latest” alias. For example, to download the latest version of an artifact called “processed-training-set” from the “foobar” project under the “team-awesome” entity:
+    
+    
+    wandb artifact get team-awesome/foobar/processed-training-set:latest
+    
+
+To download a specific version (v2) of the “processed-training-set” artifact to a local directory (./data):
+    
+    
+    wandb artifact get --root ./data team-awesome/foobar/processed-training-set:v2
+    
+
+## 
+
+​
+
+Arguments
+
+Name| Default| Type  
+---|---|---  
+`path`| STR| True  
+  
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--root`| STR| Directory to download the artifact to. Uses the default artifact cache if not set. **Default** : None  
+`--type`| STR| Expected artifact type. Fails if the artifact does not match. **Default** : None  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-artifact/wandb-artifact-get.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-artifact/wandb-artifact-get)
+
+[wandb artifact cache cleanupPrevious](/models/ref/cli/wandb-artifact/wandb-artifact-cache/wandb-artifact-cache-cleanup)[wandb artifact lsNext](/models/ref/cli/wandb-artifact/wandb-artifact-ls)
+
+⌘I

@@ -1,0 +1,316 @@
+---
+source_url: https://docs.wandb.ai/models/ref/sdk-coding-cheat-sheet/logging
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[SDK Coding Cheat Sheet](/models/ref/sdk-coding-cheat-sheet)
+
+# Logging
+
+Log metrics, hyperparameters, tables, and custom data to W&B.
+
+Log metrics, hyperparameters, tables, and custom data to W&B.
+
+## 
+
+​
+
+Log a CSV file to as a table
+    
+    
+    """
+    Log a CSV file to W&B as a table.
+    
+    Replace:
+    - values enclosed in angle brackets with your own
+    - <name>.csv in pd.read_csv() with the name of your CSV file
+    """
+    
+    import wandb
+    import pandas as pd
+    
+    # Read CSV as a DataFrame object (pandas)
+    dataframe = pd.read_csv("<name>.csv")
+    
+    # Convert the DataFrame into a W&B Table
+    table = wandb.Table(dataframe=dataframe)
+    
+    # Start a W&B run to log data
+    with wandb.init(project="<project>") as run:
+    
+        # Log the table to visualize it in the W&B UI
+        run.log({"<table_name>": table})
+    
+
+## 
+
+​
+
+Log a custom summary metric
+    
+    
+    """
+    Log a custom summary metric to W&B.
+    """
+    import wandb
+    import random 
+    
+    with wandb.init(project="<project>") as run:
+        # Log a custom summary metric with a random integer value between 1 and 10
+        run.summary["<metric_name>"] = random.randint(1, 10)
+    
+
+## 
+
+​
+
+Log a custom summary metric
+    
+    
+    """
+    Log a custom summary metric to W&B.
+    
+    Replace:
+    - values enclosed in angle brackets with your own
+    - <summary_function_a> and <summary_function_b> in run.define_metric() with
+        one of "max", "min", "last", "mean", "best", or "none".
+    """
+    import wandb
+    import random
+    
+    with wandb.init() as run:
+        # summary_function_a and summary_function_b summary values for metric_name_a
+        run.define_metric(name="<metric_name_a>", summary="<summary_function_a>")
+        run.define_metric(name="<metric_name_a>", summary="<summary_function_b>")
+    
+        for i in range(10):
+            log_dict = {
+                "metric_name_a": random.uniform(0, 1 / (i + 1)),
+            }
+            run.log(log_dict)
+    
+
+## 
+
+​
+
+Download and log an existing artifact from a registry collection
+    
+    
+    """
+    Download and log an existing artifact from a W&B registry collection.
+    Replace the placeholders with actual registry, collection names, entity,
+    project, and version.
+    """
+    import wandb
+    
+    # Construct the full artifact name with version
+    registry_name = "<registry_name>"  # Specify the registry name
+    collection_name = "<collection_name>" # Specify the collection name
+    version = 0 # Specify the version of the artifact to use
+    artifact_name_registry = f"wandb-registry-{registry_name}/{collection_name}:v{version}"
+    
+    # Initialize a W&B run in the different team and project
+    with wandb.init(entity="<entity>", project="<project>") as run:
+        # Use the model artifact from the registry
+        registry_model = run.use_artifact(artifact_or_name=artifact_name_registry)
+    
+        # Download the model to a local directory
+        local_model_path = registry_model.download()
+    
+
+## 
+
+​
+
+Log a histogram plot
+    
+    
+    """
+    Log a histogram plot to W&B. 
+    
+    Replace:
+    - values enclosed in angle brackets with your own
+    - [[1, 2], [2, 3]] in wandb.Table(data=) with your own 2D row-oriented array of values to plot
+    
+    Pass a 2D row-oriented array of values to data (wandb.Table(data=)), with
+    column names specified in the `columns` parameter.
+    """
+    import wandb
+    
+    # Start a new run
+    with wandb.init(entity="<entity>", project="<project>") as run:
+            
+        # Create a table with the columns to plot
+        table = wandb.Table(data=[[1, 2], [2, 3]] , columns=["<a_column>", "<b_column>"])
+    
+        # Use the table to populate various custom charts
+        histogram = wandb.plot.histogram(table, value='<b_column>', title='Histogram')
+    
+        # Log custom tables, which will show up in customizable charts in the UI
+        run.log({'histogram_1': histogram})
+    
+
+## 
+
+​
+
+Initialize a run and log hyperparameters
+    
+    
+    """Initializes a W&B run and logs hyperparameters."""
+    import wandb
+    
+    config = {
+        "learning_rate": 0.01,
+        "batch_size": 32,
+        "optimizer": "adam",
+    }
+    
+    with wandb.init(project="<project>", config=config) as run:
+        # Training and logging code goes here
+        pass
+    
+
+## 
+
+​
+
+Log a line plot
+    
+    
+    """
+    Log a line plot to W&B. 
+    
+    Replace:
+    - values enclosed in angle brackets with your own
+    - [[1, 2], [2, 3]] in wandb.Table(data=) with your own 2D row-oriented array of values to plot
+    
+    Pass a 2D row-oriented array of values to data (wandb.Table(data=)), with
+    column names specified in the `columns` parameter.
+    
+    Column names must match the x and y parameters in the `wandb.plot.line()` plotting function.
+    """
+    import wandb
+    
+    # Start a new run
+    with wandb.init(entity="<entity>", project="<project>") as run:
+            
+        # Create a table with the columns to plot
+        table = wandb.Table(data=[[1, 2], [2, 3]], columns=["<column_a>", "<column_b>"])
+    
+        # Use the table to populate various custom charts
+        line_plot = wandb.plot.line(table, x='<column_a>', y='<column_b>', title='<title>')
+        
+        # Log custom tables, which will show up in customizable charts in the UI
+        run.log({'<line_plot>': line_plot})
+    
+
+## 
+
+​
+
+Initialize a run and log a metric
+    
+    
+    """Initializes a W&B run and logs a metric."""
+    import wandb
+    
+    with wandb.init(project="<project>") as run:
+        # Training and logging code goes here
+    
+        # Example of logging a metric
+        run.log({"accuracy": 0.95})
+    
+
+## 
+
+​
+
+Log a scatter plot
+    
+    
+    """
+    Log a scatter plot to W&B. 
+    
+    Replace:
+    - values enclosed in angle brackets with your own
+    - [[1, 2], [2, 3]] in wandb.Table(data=) with your own 2D row-oriented array of values to plot
+    
+    Pass a 2D row-oriented array of values to data (wandb.Table(data=)), with
+    column names specified in the `columns` parameter.
+    
+    Column names must match the x and y parameters in the `wandb.plot.scatter()` plotting function.
+    """
+    import wandb
+    
+    # Start a new run
+    with wandb.init(entity="<entity>", project="<project>") as run:
+            
+        # Create a table with the columns to plot
+        table = wandb.Table(data=[[1, 2], [2, 3]], columns=["<a_column>", "<b_column>"])
+    
+        # Use the table to populate various custom charts
+        scatter = wandb.plot.scatter(table, x='<a_column>', y='<b_column>', title='<title>')
+    
+        # Log custom tables, which will show up in customizable charts in the UI
+        run.log({'scatter_1': scatter})
+    
+
+## 
+
+​
+
+Explicitly log a summary metric
+    
+    
+    """
+    Explicitly log a summary metric to W&B.
+    """
+    import wandb
+    import random 
+    
+    with wandb.init(project="<project>") as run:
+        # Log a custom summary metric with a random integer value between 1 and 10
+        run.summary["<metric_name>"] = random.randint(1, 10)
+    
+
+## 
+
+​
+
+Log a table
+    
+    
+    """
+    Log a table to W&B.
+    
+    Replace: 
+    - values enclosed in angle brackets with your own
+    - [[1, 2], [2, 3]] in wandb.Table(data=) with your own 2D row-oriented array of values to log
+    """
+    import wandb
+    
+    # Create a table object with two columns and two rows of data
+    my_table = wandb.Table(
+        columns=["<a_column>", "<b_column>"],
+        data=[[1, 2], [2, 3]],
+        log_mode="<log_mode>"
+        )
+    
+    # Start a new run
+    with wandb.init(entity="<entity>", project="<project>") as run:
+        # Log the table to W&B
+        run.log({"<table_name>": my_table})
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/sdk-coding-cheat-sheet/logging.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/sdk-coding-cheat-sheet/logging)
+
+[RunsPrevious](/models/ref/sdk-coding-cheat-sheet/runs)[ArtifactsNext](/models/ref/sdk-coding-cheat-sheet/artifacts)
+
+⌘I

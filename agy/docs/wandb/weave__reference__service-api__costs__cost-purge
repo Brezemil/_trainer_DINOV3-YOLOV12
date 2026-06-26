@@ -1,0 +1,127 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/costs/cost-purge
+---
+
+Cost Purge
+    
+    
+    curl --request POST \
+      --url https://api.example.com/cost/purge \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      }
+    }
+    '
+    
+    
+    {}
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Costs](/weave/reference/service-api/costs/cost-create)
+
+# Cost Purge
+
+POST
+
+/
+
+cost
+
+/
+
+purge
+
+Cost Purge
+    
+    
+    curl --request POST \
+      --url https://api.example.com/cost/purge \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      }
+    }
+    '
+    
+    
+    {}
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+query
+
+Query · object
+
+required
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+The response is of type `CostPurgeRes · object`.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/costs/cost-purge.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/costs/cost-purge)
+
+[Cost QueryPrevious](/weave/reference/service-api/costs/cost-query)[Feedback CreateNext](/weave/reference/service-api/feedback/feedback-create)
+
+⌘I

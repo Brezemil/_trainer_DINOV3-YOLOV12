@@ -1,0 +1,185 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/datasets/dataset-create
+---
+
+Dataset Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/datasets \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "rows": [
+        {}
+      ],
+      "name": "<string>",
+      "description": "<string>"
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "object_id": "<string>",
+      "version_index": 123
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Datasets](/weave/reference/service-api/datasets/dataset-list)
+
+# Dataset Create
+
+Create a dataset object.
+
+POST
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+datasets
+
+Dataset Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/datasets \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "rows": [
+        {}
+      ],
+      "name": "<string>",
+      "description": "<string>"
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "object_id": "<string>",
+      "version_index": 123
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Body
+
+application/json
+
+​
+
+rows
+
+Rows · object[]
+
+required
+
+Dataset rows
+
+​
+
+name
+
+string | null
+
+The name of this dataset. Datasets with the same name will be versioned together.
+
+​
+
+description
+
+string | null
+
+A description of this dataset
+
+#### Response
+
+Successful Response
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the created dataset
+
+​
+
+object_id
+
+string
+
+required
+
+The ID of the created dataset
+
+​
+
+version_index
+
+integer
+
+required
+
+The version index of the created dataset
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/datasets/dataset-create.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/datasets/dataset-create)
+
+[Dataset ListPrevious](/weave/reference/service-api/datasets/dataset-list)[Dataset ReadNext](/weave/reference/service-api/datasets/dataset-read)
+
+⌘I

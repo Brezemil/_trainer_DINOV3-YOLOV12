@@ -1,0 +1,56 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/integrations/together_ai
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Integrate with your LLM provider and frameworks](/weave/guides/integrations)
+
+[LLM Providers](/weave/guides/integrations/bedrock)
+
+# Together AI
+
+Track Together AI’s open-source LLMs with Weave using OpenAI SDK compatibility for seamless tracing and evaluation of model calls.
+
+Together AI is a platform for building and fine-tuning generative AI models. It focuses on open-source LLMs and lets customers fine-tune and host their own models. This guide shows you how to trace and evaluate Together AI model calls in Weave by using Together’s OpenAI SDK compatibility. You can monitor inputs, outputs, and performance of open-source LLMs alongside your other Weave-tracked work.
+
+Full Weave support for the `together` Python package is in development.
+
+In the meantime, Together supports [OpenAI SDK compatibility](https://docs.together.ai/docs/openai-api-compatibility), which Weave automatically detects and integrates with. You can use the standard OpenAI client to call Together AI models and get automatic Weave tracing without any additional setup. To switch to the Together API, set `api_key` to your [Together API](https://docs.together.ai/docs/quickstart) key, `base_url` to `https://api.together.xyz/v1`, and `model` to one of the [chat models](https://docs.together.ai/docs/inference-models#chat-models). The following example initializes Weave and then makes a chat completion call against a Together-hosted model. Once it runs, the call appears as a trace in your Weave project.
+    
+    
+    import os
+    import openai
+    import weave
+    
+    weave.init('together-weave')
+    
+    system_content = "You are a travel agent. Be descriptive and helpful."
+    user_content = "Tell me about San Francisco"
+    
+    client = openai.OpenAI(
+        api_key=os.environ.get("TOGETHER_API_KEY"),
+        base_url="https://api.together.xyz/v1",
+    )
+    chat_completion = client.chat.completions.create(
+        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
+        messages=[
+            {"role": "system", "content": system_content},
+            {"role": "user", "content": user_content},
+        ],
+        temperature=0.7,
+        max_tokens=1024,
+    )
+    response = chat_completion.choices[0].message.content
+    print("Together response:\n", response)
+    
+
+This example gets you started. For more details on how to integrate Weave with your own functions for more complex use cases, see the [OpenAI](/weave/guides/integrations/openai#track-your-own-ops) guide.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/integrations/together_ai.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/integrations/together_ai)
+
+[OpenRouterPrevious](/weave/guides/integrations/openrouter)[OpenAI Agents SDKNext](/weave/guides/integrations/openai_agents)
+
+⌘I

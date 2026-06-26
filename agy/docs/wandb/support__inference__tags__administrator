@@ -1,0 +1,17 @@
+---
+source_url: https://docs.wandb.ai/support/inference/tags/administrator
+---
+
+# Administrator
+
+## API error code 403: The inference gateway is not enabled for your organization
+
+A 403 error with the message The inference gateway is not enabled for your organization means your organization doesn’t …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/inference/tags/administrator.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/inference/tags/administrator)
+
+[Support: Serverless InferencePrevious](/support/inference)[Authentication & AccessNext](/support/inference/tags/authentication-access)
+
+⌘I

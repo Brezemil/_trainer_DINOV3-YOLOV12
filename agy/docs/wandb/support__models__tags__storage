@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/storage
+---
+
+# Storage
+
+## How much storage does each artifact version use?
+
+Only files that change between two artifact versions incur storage costs. Consider an image artifact named animals that …
+
+## Why does the storage meter not update after deleting runs?
+
+The storage meter doesn’t update immediately after you delete runs. The backend takes time to process the deletion and u …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/storage.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/storage)
+
+[SecurityPrevious](/support/models/tags/security)[SweepsNext](/support/models/tags/sweeps)
+
+⌘I

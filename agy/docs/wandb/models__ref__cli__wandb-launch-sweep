@@ -1,0 +1,53 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-launch-sweep
+---
+
+# wandb launch-sweep
+
+## 
+
+​
+
+Usage
+    
+    
+    launch-sweep [OPTIONS] [CONFIG]
+    
+
+## 
+
+​
+
+Description
+
+Run a W&B launch sweep (Experimental).
+
+## 
+
+​
+
+Arguments
+
+Name| Default| Type  
+---|---|---  
+`config`| PATH| False  
+  
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--queue, -q`| STR| The name of a queue to push the sweep to **Default** : None  
+`--project, -p`| STR| Name of the project which the agent will watch. If passed in, will override the project value passed in using a config file. **Default** : None  
+`--entity, -e`| STR| The entity to use. Defaults to current logged-in user. **Default** : None  
+`--resume_id, -r`| STR| Resume a launch sweep by passing an 8-char sweep id. Queue required. **Default** : None  
+`--prior_run, -R`| STR| ID of an existing run to add to this sweep. **Default** : None  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-launch-sweep.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-launch-sweep)
+
+⌘I

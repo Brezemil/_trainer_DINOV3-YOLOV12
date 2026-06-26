@@ -1,0 +1,143 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/scores/calls-score
+---
+
+Calls Score
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/score \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_ids": [
+        "<string>"
+      ],
+      "scorer_refs": [
+        "<string>"
+      ],
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {}
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Scores](/weave/reference/service-api/scores/calls-score)
+
+# Calls Score
+
+POST
+
+/
+
+calls
+
+/
+
+score
+
+Calls Score
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/score \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "call_ids": [
+        "<string>"
+      ],
+      "scorer_refs": [
+        "<string>"
+      ],
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {}
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request to enqueue scoring jobs for a list of calls.
+
+Scoring is performed asynchronously by the call_scoring_worker, which consumes messages from Kafka and applies each scorer_ref to each call_id.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+call_ids
+
+string[]
+
+required
+
+List of call IDs to score
+
+​
+
+scorer_refs
+
+string[]
+
+required
+
+List of scorer refs to apply
+
+​
+
+wb_user_id
+
+string | null
+
+Do not set directly. Server will automatically populate this field.
+
+#### Response
+
+Successful Response
+
+Empty response for calls_score.
+
+Defined as a model (rather than returning None) to follow the convention used throughout this interface and to allow fields to be added later without a breaking change.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/scores/calls-score.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/scores/calls-score)
+
+[Evaluation DeletePrevious](/weave/reference/service-api/evaluations/evaluation-delete)[Score ListNext](/weave/reference/service-api/scores/score-list)
+
+⌘I

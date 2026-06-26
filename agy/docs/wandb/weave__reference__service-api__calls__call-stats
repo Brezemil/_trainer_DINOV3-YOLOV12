@@ -1,0 +1,337 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/call-stats
+---
+
+Call Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "granularity": 123,
+      "usage_metrics": [
+        {
+          "aggregations": [
+            "sum"
+          ],
+          "percentiles": []
+        }
+      ],
+      "call_metrics": [
+        {
+          "aggregations": [
+            "sum"
+          ],
+          "percentiles": []
+        }
+      ],
+      "filter": {
+        "op_names": [
+          "<string>"
+        ],
+        "input_refs": [
+          "<string>"
+        ],
+        "output_refs": [
+          "<string>"
+        ],
+        "parent_ids": [
+          "<string>"
+        ],
+        "trace_ids": [
+          "<string>"
+        ],
+        "call_ids": [
+          "<string>"
+        ],
+        "thread_ids": [
+          "<string>"
+        ],
+        "turn_ids": [
+          "<string>"
+        ],
+        "trace_roots_only": true,
+        "wb_user_ids": [
+          "<string>"
+        ],
+        "wb_run_ids": [
+          "<string>"
+        ]
+      },
+      "timezone": "UTC"
+    }
+    '
+    
+    
+    {
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "granularity": 123,
+      "timezone": "<string>",
+      "usage_buckets": [],
+      "call_buckets": []
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Call Stats
+
+POST
+
+/
+
+calls
+
+/
+
+stats
+
+Call Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "granularity": 123,
+      "usage_metrics": [
+        {
+          "aggregations": [
+            "sum"
+          ],
+          "percentiles": []
+        }
+      ],
+      "call_metrics": [
+        {
+          "aggregations": [
+            "sum"
+          ],
+          "percentiles": []
+        }
+      ],
+      "filter": {
+        "op_names": [
+          "<string>"
+        ],
+        "input_refs": [
+          "<string>"
+        ],
+        "output_refs": [
+          "<string>"
+        ],
+        "parent_ids": [
+          "<string>"
+        ],
+        "trace_ids": [
+          "<string>"
+        ],
+        "call_ids": [
+          "<string>"
+        ],
+        "thread_ids": [
+          "<string>"
+        ],
+        "turn_ids": [
+          "<string>"
+        ],
+        "trace_roots_only": true,
+        "wb_user_ids": [
+          "<string>"
+        ],
+        "wb_run_ids": [
+          "<string>"
+        ]
+      },
+      "timezone": "UTC"
+    }
+    '
+    
+    
+    {
+      "start": "2023-11-07T05:31:56Z",
+      "end": "2023-11-07T05:31:56Z",
+      "granularity": 123,
+      "timezone": "<string>",
+      "usage_buckets": [],
+      "call_buckets": []
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request for aggregated call statistics over a time range.
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+start
+
+string<date-time>
+
+required
+
+Inclusive start time (UTC, ISO 8601).
+
+​
+
+end
+
+string<date-time> | null
+
+Exclusive end time (UTC, ISO 8601). Defaults to now if omitted.
+
+​
+
+granularity
+
+integer | null
+
+Bucket size in seconds (e.g., 3600 for 1 hour). If omitted, auto-selected based on time range. Will be adjusted if it would produce more than 10,000 buckets.
+
+​
+
+usage_metrics
+
+UsageMetricSpec · object[] | null
+
+Usage metrics (tokens, cost) to compute. Grouped by timestamp and model.
+
+Show child attributes
+
+​
+
+call_metrics
+
+CallMetricSpec · object[] | null
+
+Call-level metrics (latency, counts) to compute. Grouped by timestamp only.
+
+Show child attributes
+
+​
+
+filter
+
+CallsFilter · object
+
+Show child attributes
+
+​
+
+timezone
+
+string
+
+default:UTC
+
+IANA timezone for bucket alignment (e.g., 'America/New_York')
+
+#### Response
+
+Successful Response
+
+Response containing time-series call statistics.
+
+​
+
+start
+
+string<date-time>
+
+required
+
+Resolved start time (UTC)
+
+​
+
+end
+
+string<date-time>
+
+required
+
+Resolved end time (UTC)
+
+​
+
+granularity
+
+integer
+
+required
+
+Bucket size used (in seconds)
+
+​
+
+timezone
+
+string
+
+required
+
+Timezone used for bucket alignment
+
+​
+
+usage_buckets
+
+Usage Buckets · object[]
+
+Usage metrics by model. Each bucket contains 'timestamp', 'model', and aggregated metric values.
+
+​
+
+call_buckets
+
+Call Buckets · object[]
+
+Call-level metrics. Each bucket contains 'timestamp' and aggregated metric values.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/call-stats.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/call-stats)
+
+[Calls Query StreamPrevious](/weave/reference/service-api/calls/calls-query-stream)[Inference Catalog ModelsNext](/weave/reference/service-api/inference/inference-catalog-models)
+
+⌘I

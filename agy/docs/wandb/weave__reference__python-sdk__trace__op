@@ -1,0 +1,315 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/python-sdk/trace/op
+---
+
+[W&B Weave](/weave/reference)
+
+[Python SDK](/weave/reference/python-sdk)
+
+[Core](/weave/reference/python-sdk/trace/feedback)
+
+# op
+
+Python SDK reference for weave.trace.op
+
+# 
+
+​
+
+API Overview
+
+* * *
+
+## 
+
+​
+
+`class` `DisplayNameFuncError`
+
+* * *
+
+## 
+
+​
+
+`class` `OpCallError`
+
+* * *
+
+## 
+
+​
+
+`class` `OpKwargs`
+
+TypedDict for op() keyword arguments.
+
+* * *
+
+## 
+
+​
+
+`class` `Sentinel`
+
+Sentinel(package: ‘str’, path: ‘str’, name: ‘str’)
+
+### 
+
+​
+
+`method` `__init__`
+    
+    
+    __init__(package: 'str', path: 'str', name: 'str') → None
+    
+
+* * *
+
+## 
+
+​
+
+`class` `WeaveKwargs`
+
+* * *
+
+### 
+
+​
+
+`function` `as_op`
+    
+    
+    as_op(fn: 'Callable[P, R]') → Op[P, R]
+    
+
+Given a @weave.op decorated function, return its Op. @weave.op decorated functions are instances of Op already, so this function should be a no-op at runtime. But you can use it to satisfy type checkers if you need to access OpDef attributes in a typesafe way. **Args:**
+
+  * **`fn`** : A weave.op decorated function. **Returns:** The Op of the function.
+
+
+
+* * *
+
+### 
+
+​
+
+`function` `call`
+    
+    
+    call(
+        op: 'Op',
+        *args: 'Any',
+        __weave: 'WeaveKwargs | None' = None,
+        __should_raise: 'bool' = False,
+        __require_explicit_finish: 'bool' = False,
+        **kwargs: 'Any'
+    ) → tuple[Any, Call] | Coroutine[Any, Any, tuple[Any, Call]]
+    
+
+Executes the op and returns both the result and a Call representing the execution. This function will never raise. Any errors are captured in the Call object. This method is automatically bound to any function decorated with `@weave.op`, allowing for usage like:
+    
+    
+    @weave.op
+    def add(a: int, b: int) -> int:
+         return a + b
+    
+    result, call = add.call(1, 2)
+    
+
+* * *
+
+### 
+
+​
+
+`function` `calls`
+    
+    
+    calls(op: 'Op') → CallsIter
+    
+
+Get an iterator over all calls to this op. This method is automatically bound to any function decorated with `@weave.op`, allowing for usage like:
+    
+    
+    @weave.op
+    def add(a: int, b: int) -> int:
+         return a + b
+    
+    calls = add.calls()
+    for call in calls:
+         print(call)
+    
+
+* * *
+
+### 
+
+​
+
+`function` `get_captured_code`
+    
+    
+    get_captured_code(op: 'Op') → str
+    
+
+Get the captured code of the op. This only works when you get an op back from a ref. The pattern is: ref = weave.publish(func) op = ref.get() captured_code = op.get_captured_code()
+
+* * *
+
+### 
+
+​
+
+`function` `is_op`
+    
+    
+    is_op(obj: 'Any') → TypeIs[Op]
+    
+
+Check if an object is an Op.
+
+* * *
+
+### 
+
+​
+
+`function` `is_placeholder_call`
+    
+    
+    is_placeholder_call(call: 'Call') → TypeIs[NoOpCall]
+    
+
+* * *
+
+### 
+
+​
+
+`function` `is_tracing_setting_disabled`
+    
+    
+    is_tracing_setting_disabled() → bool
+    
+
+* * *
+
+### 
+
+​
+
+`function` `maybe_bind_method`
+    
+    
+    maybe_bind_method(func: 'Callable', self: 'Any' = None) → Callable | MethodType
+    
+
+Bind a function to any object (even if it’s not a class). If self is None, return the function as is.
+
+* * *
+
+### 
+
+​
+
+`function` `maybe_unbind_method`
+    
+    
+    maybe_unbind_method(oplike: 'Op | MethodType | partial') → Op
+    
+
+Unbind an Op-like method or partial to a plain Op function. For:
+
+  * methods, remove set `self` param
+  * partials, remove any preset params
+
+
+
+* * *
+
+### 
+
+​
+
+`function` `op`
+    
+    
+    op(
+        func: 'Callable[P, R] | None' = None,
+        name: 'str | None' = None,
+        call_display_name: 'str | CallDisplayNameFunc | None' = None,
+        postprocess_inputs: 'PostprocessInputsFunc | None' = None,
+        postprocess_output: 'PostprocessOutputFunc | None' = None,
+        tracing_sample_rate: 'float' = 1.0,
+        enable_code_capture: 'bool' = True,
+        accumulator: 'Callable[[Any | None, Any], Any] | None' = None,
+        kind: 'OpKind | None' = None,
+        color: 'OpColor | None' = None,
+        eager_call_start: 'bool' = False
+    ) → Callable[[Callable[P, R]], Op[P, R]] | Op[P, R]
+    
+
+A decorator to weave op-ify a function or method. Works for both sync and async. Automatically detects iterator functions and applies appropriate behavior. **Args:**
+
+* * *
+
+### 
+
+​
+
+`function` `placeholder_call`
+    
+    
+    placeholder_call() → Call
+    
+
+* * *
+
+### 
+
+​
+
+`function` `setup_dunder_weave_dict`
+    
+    
+    setup_dunder_weave_dict(op: 'Op', d: 'WeaveKwargs | None' = None) → WeaveKwargs
+    
+
+Sets up a __weave dict used to pass WeaveKwargs to ops.
+
+  * **`func`** : The function to decorate.
+  * **`name`** : Custom name for the op. Defaults to the function name.
+  * **`call_display_name`** : Display name for calls, can be a string or callable.
+  * **`postprocess_inputs`** : Function to transform inputs before logging.
+  * **`postprocess_output`** : Function to transform output before logging.
+  * **`tracing_sample_rate`** : Fraction of calls to trace (0.0 to 1.0).
+  * **`enable_code_capture`** : Whether to capture source code for this op.
+  * **`accumulator`** : Function to accumulate results for streaming ops.
+  * **`eager_call_start`** : If True, call starts are sent immediately rather than batched. Useful for long-running operations like evaluations that should be visible in the UI immediately. **Args:**
+  * **`d`** : Optional existing WeaveKwargs dict to update.
+  * **`op`** : Op to extract kind and color from. **Returns:** WeaveKwargs dict with attributes, display_name, and optionally kind/color set.
+
+
+
+* * *
+
+### 
+
+​
+
+`function` `should_skip_tracing_for_op`
+    
+    
+    should_skip_tracing_for_op(op: 'Op') → bool
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/python-sdk/trace/op.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/python-sdk/trace/op)
+
+[feedbackPrevious](/weave/reference/python-sdk/trace/feedback)[utilNext](/weave/reference/python-sdk/trace/util)
+
+⌘I

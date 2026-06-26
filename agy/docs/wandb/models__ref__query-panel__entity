@@ -1,0 +1,109 @@
+---
+source_url: https://docs.wandb.ai/models/ref/query-panel/entity
+---
+
+[W&B Models](/models/ref)
+
+[Query Expression Language](/models/ref/query-panel)
+
+# entity
+
+## 
+
+​
+
+Chainable Ops
+
+### 
+
+​
+
+`entity-link`
+
+Returns the link of the [entity](/models/ref/query-panel/entity)
+
+Argument| Description  
+---|---  
+`entity`| An [entity](/models/ref/query-panel/entity)  
+  
+#### 
+
+​
+
+Return Value
+
+The link of the [entity](/models/ref/query-panel/entity)
+
+### 
+
+​
+
+`entity-name`
+
+Returns the name of the [entity](/models/ref/query-panel/entity)
+
+Argument| Description  
+---|---  
+`entity`| An [entity](/models/ref/query-panel/entity)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [entity](/models/ref/query-panel/entity)
+
+## 
+
+​
+
+List Ops
+
+### 
+
+​
+
+`entity-link`
+
+Returns the link of the [entity](/models/ref/query-panel/entity)
+
+Argument| Description  
+---|---  
+`entity`| An [entity](/models/ref/query-panel/entity)  
+  
+#### 
+
+​
+
+Return Value
+
+The link of the [entity](/models/ref/query-panel/entity)
+
+### 
+
+​
+
+`entity-name`
+
+Returns the name of the [entity](/models/ref/query-panel/entity)
+
+Argument| Description  
+---|---  
+`entity`| An [entity](/models/ref/query-panel/entity)  
+  
+#### 
+
+​
+
+Return Value
+
+The name of the [entity](/models/ref/query-panel/entity)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/query-panel/entity.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/query-panel/entity)
+
+[booleanPrevious](/models/ref/query-panel/boolean)[fileNext](/models/ref/query-panel/file)
+
+⌘I

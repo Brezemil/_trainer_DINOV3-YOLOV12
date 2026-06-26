@@ -1,0 +1,48 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-server
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb server](/models/ref/cli/wandb-server)
+
+# wandb server
+
+## 
+
+​
+
+Usage
+    
+    
+    server [OPTIONS] COMMAND [ARGS]...
+    
+
+## 
+
+​
+
+Description
+
+Commands for operating a local W&B server
+
+## 
+
+​
+
+Subcommands
+
+Command| Description  
+---|---  
+`wandb server start`| Start a local W&B Server instance in a Docker container.  
+`wandb server stop`| Stop a running local W&B server.  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-server.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-server)
+
+[wandb restorePrevious](/models/ref/cli/wandb-restore)[wandb server startNext](/models/ref/cli/wandb-server/wandb-server-start)
+
+⌘I

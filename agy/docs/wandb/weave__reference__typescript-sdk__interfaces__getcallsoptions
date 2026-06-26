@@ -1,0 +1,213 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/getcallsoptions
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: GetCallsOptions
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / GetCallsOptions
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [columns](/weave/reference/typescript-sdk/interfaces/getcallsoptions#columns)
+  * [expandColumns](/weave/reference/typescript-sdk/interfaces/getcallsoptions#expandcolumns)
+  * [filter](/weave/reference/typescript-sdk/interfaces/getcallsoptions#filter)
+  * [includeCosts](/weave/reference/typescript-sdk/interfaces/getcallsoptions#includecosts)
+  * [includeFeedback](/weave/reference/typescript-sdk/interfaces/getcallsoptions#includefeedback)
+  * [limit](/weave/reference/typescript-sdk/interfaces/getcallsoptions#limit)
+  * [offset](/weave/reference/typescript-sdk/interfaces/getcallsoptions#offset)
+  * [query](/weave/reference/typescript-sdk/interfaces/getcallsoptions#query)
+  * [sortBy](/weave/reference/typescript-sdk/interfaces/getcallsoptions#sortby)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+columns
+
+• `Optional` **columns** : `string`[]
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:84](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L84)
+
+* * *
+
+### 
+
+​
+
+expandColumns
+
+• `Optional` **expandColumns** : `string`[]
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:85](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L85)
+
+* * *
+
+### 
+
+​
+
+filter
+
+• `Optional` **filter** : [`CallsFilter`](/weave/reference/typescript-sdk/interfaces/callsfilter)
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:77](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L77)
+
+* * *
+
+### 
+
+​
+
+includeCosts
+
+• `Optional` **includeCosts** : `boolean`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:79](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L79)
+
+* * *
+
+### 
+
+​
+
+includeFeedback
+
+• `Optional` **includeFeedback** : `boolean`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:80](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L80)
+
+* * *
+
+### 
+
+​
+
+limit
+
+• `Optional` **limit** : `number`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:81](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L81)
+
+* * *
+
+### 
+
+​
+
+offset
+
+• `Optional` **offset** : `number`
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:82](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L82)
+
+* * *
+
+### 
+
+​
+
+query
+
+• `Optional` **query** : [`Query`](/weave/reference/typescript-sdk/interfaces/query)
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:78](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L78)
+
+* * *
+
+### 
+
+​
+
+sortBy
+
+• `Optional` **sortBy** : [`SortBy`](/weave/reference/typescript-sdk/interfaces/sortby)[]
+
+#### 
+
+​
+
+Defined in
+
+[weaveClient.ts:83](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveClient.ts#L83)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/getcallsoptions.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/getcallsoptions)
+
+[Interface: CallsFilterPrevious](/weave/reference/typescript-sdk/interfaces/callsfilter)[Interface: LLMInitNext](/weave/reference/typescript-sdk/interfaces/llminit)
+
+⌘I

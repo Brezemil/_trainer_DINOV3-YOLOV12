@@ -1,0 +1,147 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/api-reference/models/delete-model-checkpoints
+---
+
+Delete Model Checkpoints
+    
+    
+    curl --request DELETE \
+      --url https://api.example.com/v1/preview/models/{model_id}/checkpoints \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "steps": [
+        123
+      ]
+    }
+    '
+    
+    
+    {
+      "deleted_count": 123,
+      "not_found_steps": [
+        123
+      ]
+    }
+
+[Serverless Training](/serverless-training/api-reference)
+
+[models](/serverless-training/api-reference/models/create-model)
+
+# Delete Model Checkpoints
+
+Delete specific checkpoints for a model.
+
+DELETE
+
+/
+
+v1
+
+/
+
+preview
+
+/
+
+models
+
+/
+
+{model_id}
+
+/
+
+checkpoints
+
+Delete Model Checkpoints
+    
+    
+    curl --request DELETE \
+      --url https://api.example.com/v1/preview/models/{model_id}/checkpoints \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "steps": [
+        123
+      ]
+    }
+    '
+    
+    
+    {
+      "deleted_count": 123,
+      "not_found_steps": [
+        123
+      ]
+    }
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+#### Path Parameters
+
+​
+
+model_id
+
+string
+
+required
+
+#### Body
+
+application/json
+
+Schema for deleting checkpoints.
+
+​
+
+steps
+
+integer[]
+
+required
+
+#### Response
+
+Successful Response
+
+Schema for delete checkpoints response.
+
+​
+
+deleted_count
+
+integer
+
+required
+
+​
+
+not_found_steps
+
+integer[]
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/api-reference/models/delete-model-checkpoints.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/api-reference/models/delete-model-checkpoints)
+
+[List Model CheckpointsPrevious](/serverless-training/api-reference/models/list-model-checkpoints)[Delete ModelNext](/serverless-training/api-reference/models/delete-model)
+
+⌘I

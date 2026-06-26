@@ -1,0 +1,153 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/annotation-queues/annotation-queues-stats
+---
+
+Annotation Queues Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/annotation_queues/stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "queue_ids": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {
+      "stats": [
+        {
+          "queue_id": "<string>",
+          "total_items": 123,
+          "completed_items": 123
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Annotation Queues](/weave/reference/service-api/annotation-queues/annotation-queue-create)
+
+# Annotation Queues Stats
+
+Get stats for multiple annotation queues.
+
+POST
+
+/
+
+annotation_queues
+
+/
+
+stats
+
+Annotation Queues Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/annotation_queues/stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "queue_ids": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {
+      "stats": [
+        {
+          "queue_id": "<string>",
+          "total_items": 123,
+          "completed_items": 123
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request to get stats for multiple annotation queues.
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+queue_ids
+
+string[]
+
+required
+
+List of queue IDs to get stats for
+
+Example:
+    
+    
+    [  
+      "550e8400-e29b-41d4-a716-446655440000",  
+      "550e8400-e29b-41d4-a716-446655440001"  
+    ]
+
+#### Response
+
+Successful Response
+
+Response with stats for multiple annotation queues.
+
+​
+
+stats
+
+AnnotationQueueStatsSchema · object[]
+
+required
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/annotation-queues/annotation-queues-stats.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/annotation-queues/annotation-queues-stats)
+
+[Annotation Queue Items QueryPrevious](/weave/reference/service-api/annotation-queues/annotation-queue-items-query)[Annotation Queue Item Progress UpdateNext](/weave/reference/service-api/annotation-queues/annotation-queue-item-progress-update)
+
+⌘I

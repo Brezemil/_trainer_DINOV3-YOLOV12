@@ -1,0 +1,152 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/objects/obj-add-tags
+---
+
+Obj Add Tags
+    
+    
+    curl --request PUT \
+      --url https://api.example.com/objs/{object_id}/versions/{digest}/tags \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "tags": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {}
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Objects](/weave/reference/service-api/objects/obj-create)
+
+# Obj Add Tags
+
+Add tags to an object version.
+
+PUT
+
+/
+
+objs
+
+/
+
+{object_id}
+
+/
+
+versions
+
+/
+
+{digest}
+
+/
+
+tags
+
+Obj Add Tags
+    
+    
+    curl --request PUT \
+      --url https://api.example.com/objs/{object_id}/versions/{digest}/tags \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "tags": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {}
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+object_id
+
+string
+
+required
+
+​
+
+digest
+
+string
+
+required
+
+#### Body
+
+application/json
+
+Request body for adding/removing tags (object_id and digest come from path).
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+tags
+
+string[]
+
+required
+
+Example:
+    
+    
+    ["production", "reviewed"]
+
+#### Response
+
+Successful Response
+
+The response is of type `ObjAddTagsRes · object`.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/objects/obj-add-tags.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/objects/obj-add-tags)
+
+[Obj DeletePrevious](/weave/reference/service-api/objects/obj-delete)[Obj Remove TagsNext](/weave/reference/service-api/objects/obj-remove-tags)
+
+⌘I

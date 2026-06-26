@@ -1,0 +1,277 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/evaluations/evaluation-read
+---
+
+Evaluation Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/evaluations/{object_id}/versions/{digest} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "object_id": "<string>",
+      "digest": "<string>",
+      "version_index": 123,
+      "created_at": "2023-11-07T05:31:56Z",
+      "name": "<string>",
+      "dataset": "<string>",
+      "scorers": [
+        "<string>"
+      ],
+      "trials": 123,
+      "description": "<string>",
+      "evaluation_name": "<string>",
+      "evaluate_op": "<string>",
+      "predict_and_score_op": "<string>",
+      "summarize_op": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Evaluations](/weave/reference/service-api/evaluations/evaluate-model)
+
+# Evaluation Read
+
+Get an evaluation object.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+evaluations
+
+/
+
+{object_id}
+
+/
+
+versions
+
+/
+
+{digest}
+
+Evaluation Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/evaluations/{object_id}/versions/{digest} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "object_id": "<string>",
+      "digest": "<string>",
+      "version_index": 123,
+      "created_at": "2023-11-07T05:31:56Z",
+      "name": "<string>",
+      "dataset": "<string>",
+      "scorers": [
+        "<string>"
+      ],
+      "trials": 123,
+      "description": "<string>",
+      "evaluation_name": "<string>",
+      "evaluate_op": "<string>",
+      "predict_and_score_op": "<string>",
+      "summarize_op": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+object_id
+
+string
+
+required
+
+​
+
+digest
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+object_id
+
+string
+
+required
+
+The evaluation ID
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the evaluation
+
+​
+
+version_index
+
+integer
+
+required
+
+The version index of the evaluation
+
+​
+
+created_at
+
+string<date-time>
+
+required
+
+When the evaluation was created
+
+​
+
+name
+
+string
+
+required
+
+The name of the evaluation
+
+​
+
+dataset
+
+string
+
+required
+
+Dataset reference (weave:// URI)
+
+​
+
+scorers
+
+string[]
+
+required
+
+List of scorer references (weave:// URIs)
+
+​
+
+trials
+
+integer
+
+required
+
+Number of trials
+
+​
+
+description
+
+string | null
+
+A description of the evaluation
+
+​
+
+evaluation_name
+
+string | null
+
+Name for the evaluation run
+
+​
+
+evaluate_op
+
+string | null
+
+Evaluate op reference (weave:// URI)
+
+​
+
+predict_and_score_op
+
+string | null
+
+Predict and score op reference (weave:// URI)
+
+​
+
+summarize_op
+
+string | null
+
+Summarize op reference (weave:// URI)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/evaluations/evaluation-read.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/evaluations/evaluation-read)
+
+[Evaluation CreatePrevious](/weave/reference/service-api/evaluations/evaluation-create)[Evaluation DeleteNext](/weave/reference/service-api/evaluations/evaluation-delete)
+
+⌘I

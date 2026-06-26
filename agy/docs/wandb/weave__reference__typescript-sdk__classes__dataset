@@ -1,0 +1,443 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/dataset
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Classes](/weave/reference/typescript-sdk/classes/dataset)
+
+# Class: Dataset<R>
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / Dataset Dataset object with easy saving and automatic versioning `Example`
+    
+    
+    // Create a dataset
+    const dataset = new Dataset({
+      id: 'grammar-dataset',
+      rows: [
+        { id: '0', sentence: "He no likes ice cream.", correction: "He doesn't like ice cream." },
+        { id: '1', sentence: "She goed to the store.", correction: "She went to the store." },
+        { id: '2', sentence: "They plays video games all day.", correction: "They play video games all day." }
+      ]
+    })
+    
+    // Access a specific example
+    const exampleLabel = dataset.getRow(2).sentence;
+    
+    // Save the dataset
+    const ref = await dataset.save()
+    
+
+## 
+
+​
+
+Type parameters
+
+Name| Type  
+---|---  
+`R`| extends `DatasetRow`  
+  
+## 
+
+​
+
+Hierarchy
+
+  * [`WeaveObject`](/weave/reference/typescript-sdk/classes/weaveobject) ↳ `Dataset`
+
+
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Constructors
+
+  * [constructor](/weave/reference/typescript-sdk/classes/dataset#constructor)
+
+
+
+### 
+
+​
+
+Properties
+
+  * [__savedRef](/weave/reference/typescript-sdk/classes/dataset#__savedref)
+  * [rows](/weave/reference/typescript-sdk/classes/dataset#rows)
+
+
+
+### 
+
+​
+
+Accessors
+
+  * [description](/weave/reference/typescript-sdk/classes/dataset#description)
+  * [length](/weave/reference/typescript-sdk/classes/dataset#length)
+  * [name](/weave/reference/typescript-sdk/classes/dataset#name)
+
+
+
+### 
+
+​
+
+Methods
+
+  * [[asyncIterator]](/weave/reference/typescript-sdk/classes/dataset#%5Basynciterator%5D)
+  * [getRow](/weave/reference/typescript-sdk/classes/dataset#getrow)
+  * [save](/weave/reference/typescript-sdk/classes/dataset#save)
+  * [saveAttrs](/weave/reference/typescript-sdk/classes/dataset#saveattrs)
+
+
+
+## 
+
+​
+
+Constructors
+
+### 
+
+​
+
+constructor
+
+• **new Dataset** <`R`>(`parameters`): [`Dataset`](/weave/reference/typescript-sdk/classes/dataset)<`R`>
+
+#### 
+
+​
+
+Type parameters
+
+Name| Type  
+---|---  
+`R`| extends `DatasetRow`  
+  
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`parameters`| `DatasetParameters`<`R`>  
+  
+#### 
+
+​
+
+Returns
+
+[`Dataset`](/weave/reference/typescript-sdk/classes/dataset)<`R`>
+
+#### 
+
+​
+
+Overrides
+
+[WeaveObject](/weave/reference/typescript-sdk/classes/weaveobject).[constructor](/weave/reference/typescript-sdk/classes/weaveobject#constructor)
+
+#### 
+
+​
+
+Defined in
+
+[dataset.ts:51](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/dataset.ts#L51)
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+__savedRef
+
+• `Optional` **__savedRef** : [`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref) | `Promise`<[`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref)>
+
+#### 
+
+​
+
+Inherited from
+
+[WeaveObject](/weave/reference/typescript-sdk/classes/weaveobject).[__savedRef](/weave/reference/typescript-sdk/classes/weaveobject#__savedref)
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:73](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L73)
+
+* * *
+
+### 
+
+​
+
+rows
+
+• **rows** : `Table`<`R`>
+
+#### 
+
+​
+
+Defined in
+
+[dataset.ts:49](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/dataset.ts#L49)
+
+## 
+
+​
+
+Accessors
+
+### 
+
+​
+
+description
+
+• `get` **description**(): `undefined` | `string`
+
+#### 
+
+​
+
+Returns
+
+`undefined` | `string`
+
+#### 
+
+​
+
+Inherited from
+
+WeaveObject.description
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:100](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L100)
+
+* * *
+
+### 
+
+​
+
+length
+
+• `get` **length**(): `number`
+
+#### 
+
+​
+
+Returns
+
+`number`
+
+#### 
+
+​
+
+Defined in
+
+[dataset.ts:64](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/dataset.ts#L64)
+
+* * *
+
+### 
+
+​
+
+name
+
+• `get` **name**(): `string`
+
+#### 
+
+​
+
+Returns
+
+`string`
+
+#### 
+
+​
+
+Inherited from
+
+WeaveObject.name
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:96](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L96)
+
+## 
+
+​
+
+Methods
+
+### 
+
+​
+
+[asyncIterator]
+
+▸ **[asyncIterator]**(): `AsyncIterator`<`any`, `any`, `undefined`>
+
+#### 
+
+​
+
+Returns
+
+`AsyncIterator`<`any`, `any`, `undefined`>
+
+#### 
+
+​
+
+Defined in
+
+[dataset.ts:68](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/dataset.ts#L68)
+
+* * *
+
+### 
+
+​
+
+getRow
+
+▸ **getRow**(`index`): `R`
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`index`| `number`  
+  
+#### 
+
+​
+
+Returns
+
+`R`
+
+#### 
+
+​
+
+Defined in
+
+[dataset.ts:74](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/dataset.ts#L74)
+
+* * *
+
+### 
+
+​
+
+save
+
+▸ **save**(): `Promise`<[`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref)>
+
+#### 
+
+​
+
+Returns
+
+`Promise`<[`ObjectRef`](/weave/reference/typescript-sdk/classes/objectref)>
+
+#### 
+
+​
+
+Defined in
+
+[dataset.ts:60](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/dataset.ts#L60)
+
+* * *
+
+### 
+
+​
+
+saveAttrs
+
+▸ **saveAttrs**(): `Object`
+
+#### 
+
+​
+
+Returns
+
+`Object`
+
+#### 
+
+​
+
+Inherited from
+
+[WeaveObject](/weave/reference/typescript-sdk/classes/weaveobject).[saveAttrs](/weave/reference/typescript-sdk/classes/weaveobject#saveattrs)
+
+#### 
+
+​
+
+Defined in
+
+[weaveObject.ts:77](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/weaveObject.ts#L77)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/classes/dataset.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/classes/dataset)
+
+[weavePrevious](/weave/reference/typescript-sdk)[Class: Evaluation<R, E, M>Next](/weave/reference/typescript-sdk/classes/evaluation)
+
+⌘I

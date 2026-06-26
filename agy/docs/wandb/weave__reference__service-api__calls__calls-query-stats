@@ -1,0 +1,265 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/calls-query-stats
+---
+
+Calls Query Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/query_stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "op_names": [
+          "<string>"
+        ],
+        "input_refs": [
+          "<string>"
+        ],
+        "output_refs": [
+          "<string>"
+        ],
+        "parent_ids": [
+          "<string>"
+        ],
+        "trace_ids": [
+          "<string>"
+        ],
+        "call_ids": [
+          "<string>"
+        ],
+        "thread_ids": [
+          "<string>"
+        ],
+        "turn_ids": [
+          "<string>"
+        ],
+        "trace_roots_only": true,
+        "wb_user_ids": [
+          "<string>"
+        ],
+        "wb_run_ids": [
+          "<string>"
+        ]
+      },
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "limit": 123,
+      "include_total_storage_size": false,
+      "expand_columns": [
+        "inputs.self.message",
+        "inputs.model.prompt"
+      ]
+    }
+    '
+    
+    
+    {
+      "count": 123,
+      "has_more": false,
+      "total_storage_size_bytes": 123
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Calls Query Stats
+
+POST
+
+/
+
+calls
+
+/
+
+query_stats
+
+Calls Query Stats
+    
+    
+    curl --request POST \
+      --url https://api.example.com/calls/query_stats \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "op_names": [
+          "<string>"
+        ],
+        "input_refs": [
+          "<string>"
+        ],
+        "output_refs": [
+          "<string>"
+        ],
+        "parent_ids": [
+          "<string>"
+        ],
+        "trace_ids": [
+          "<string>"
+        ],
+        "call_ids": [
+          "<string>"
+        ],
+        "thread_ids": [
+          "<string>"
+        ],
+        "turn_ids": [
+          "<string>"
+        ],
+        "trace_roots_only": true,
+        "wb_user_ids": [
+          "<string>"
+        ],
+        "wb_run_ids": [
+          "<string>"
+        ]
+      },
+      "query": {
+        "$expr": {
+          "$and": [
+            {
+              "$literal": "<string>"
+            }
+          ]
+        }
+      },
+      "limit": 123,
+      "include_total_storage_size": false,
+      "expand_columns": [
+        "inputs.self.message",
+        "inputs.model.prompt"
+      ]
+    }
+    '
+    
+    
+    {
+      "count": 123,
+      "has_more": false,
+      "total_storage_size_bytes": 123
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+filter
+
+CallsFilter · object
+
+Show child attributes
+
+​
+
+query
+
+Query · object
+
+Show child attributes
+
+​
+
+limit
+
+integer | null
+
+​
+
+include_total_storage_size
+
+boolean | null
+
+default:false
+
+​
+
+expand_columns
+
+string[] | null
+
+Columns with refs to objects or table rows that require expansion during filtering or ordering.
+
+Example:
+    
+    
+    [  
+      "inputs.self.message",  
+      "inputs.model.prompt"  
+    ]
+
+#### Response
+
+Successful Response
+
+​
+
+count
+
+integer
+
+required
+
+​
+
+has_more
+
+boolean
+
+default:false
+
+​
+
+total_storage_size_bytes
+
+integer | null
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/calls-query-stats.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/calls-query-stats)
+
+[Call ReadPrevious](/weave/reference/service-api/calls/call-read)[Trace UsageNext](/weave/reference/service-api/calls/trace-usage)
+
+⌘I

@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/tensorboard
+---
+
+# TensorBoard
+
+## How is W&B different from TensorBoard?
+
+If you’re evaluating experiment tracking tools or migrating from TensorBoard, this page summarizes the key differences t …
+
+## What formula do you use for your smoothing algorithm?
+
+The exponential moving average formula aligns with the one used in TensorBoard. Refer to this explanation on Stack Overf …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/tensorboard.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/tensorboard)
+
+[Team ManagementPrevious](/support/models/tags/team-management)[User ManagementNext](/support/models/tags/user-management)
+
+⌘I

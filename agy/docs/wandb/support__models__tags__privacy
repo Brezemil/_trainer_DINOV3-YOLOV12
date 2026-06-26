@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/privacy
+---
+
+# Privacy
+
+## Can W&B team members see my data?
+
+Key engineers and support staff at W&B access logged values for debugging purposes with user permission. All data stores …
+
+## How can I change the privacy of my project?
+
+A project’s privacy setting controls who can view, edit, or submit runs to the project. To change a project’s privacy (v …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/privacy.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/privacy)
+
+[OutagePrevious](/support/models/tags/outage)[ProjectsNext](/support/models/tags/projects)
+
+⌘I

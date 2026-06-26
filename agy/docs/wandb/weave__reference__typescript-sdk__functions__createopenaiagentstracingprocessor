@@ -1,0 +1,55 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# createOpenAIAgentsTracingProcessor
+
+TypeScript SDK reference
+
+# 
+
+​
+
+createOpenAIAgentsTracingProcessor
+
+▸ **createOpenAIAgentsTracingProcessor**(): `TracingProcessor` Create a new Weave tracing processor for OpenAI Agents.
+
+#### 
+
+​
+
+Returns
+
+`TracingProcessor` A TracingProcessor instance that can be registered with OpenAI Agents `Example`
+    
+    
+    import { addTraceProcessor } from '@openai/agents';
+    import { createOpenAIAgentsTracingProcessor } from 'weave';
+    
+    const processor = createOpenAIAgentsTracingProcessor();
+    addTraceProcessor(processor);
+    
+
+#### 
+
+​
+
+Defined in
+
+[integrations/openai.agent.ts:665](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/integrations/openai.agent.ts#L665)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+[Class: WeaveObjectPrevious](/weave/reference/typescript-sdk/classes/weaveobject)[createOtelExtensionNext](/weave/reference/typescript-sdk/functions/createotelextension)
+
+⌘I

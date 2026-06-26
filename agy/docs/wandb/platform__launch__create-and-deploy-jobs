@@ -1,0 +1,17 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/create-and-deploy-jobs
+---
+
+[Create and deploy jobs](/platform/launch/create-and-deploy-jobs)
+
+# Create and deploy jobs
+
+Create and deploy machine learning jobs using W&B Launch to run workloads on your target compute resources.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/create-and-deploy-jobs.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/create-and-deploy-jobs)
+
+[Set up launch agentPrevious](/platform/launch/setup-agent-advanced)[Create a launch jobNext](/platform/launch/create-launch-job)
+
+⌘I

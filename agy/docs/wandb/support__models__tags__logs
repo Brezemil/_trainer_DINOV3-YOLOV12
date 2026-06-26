@@ -1,0 +1,41 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/logs
+---
+
+# Logs
+
+## Does logging block my training?
+
+“Is the logging function lazy? I don’t want to depend on the network to send results to your servers while executing loc …
+
+## How can I overwrite the logs from previous steps?
+
+To overwrite logs from previous steps, use forking and rewind. The ability to fork or rewind a run is in active developm …
+
+## How do I log a list of values?
+
+You can log a list of values, such as per-step losses, with wandb.Run.log(). The following examples show two common appr …
+
+## How do I log runs launched by continuous integration or internal tools?
+
+To launch automated tests or internal tools that log to W&B, create a Service Account on the team settings page. This ac …
+
+## How do I log to the right wandb user on a shared machine?
+
+When multiple users share a machine, runs can log to the wrong W&B account if you don’t explicitly set credentials. To e …
+
+## How do I turn off logging?
+
+You can stop W&B from logging data to the remote server, or keep logging enabled but suppress its warning messages. Use …
+
+## Which files should I check when my code crashes?
+
+For the affected run, check debug.log and debug-internal.log in wandb/run- DATE _ TIME - RUN-ID /logs in the directory w …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/logs.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/logs)
+
+[InferencePrevious](/support/models/tags/inference)[MetricsNext](/support/models/tags/metrics)
+
+⌘I

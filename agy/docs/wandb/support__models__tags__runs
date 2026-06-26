@@ -1,0 +1,89 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/runs
+---
+
+# Runs
+
+## Best practices to organize hyperparameter searches
+
+When you run many hyperparameter searches, tag your runs so you can group and find related experiments later. Tag runs i …
+
+## Can you group runs by tags?
+
+A run can have multiple tags, so grouping by tags isn’t supported. Instead, add a value to the config object for these r …
+
+## How can I categorize runs without the Group feature?
+
+You can categorize runs by tags or custom metadata. To organize runs by these values, use the Group button in the projec …
+
+## How can I change how frequently to log system metrics?
+
+To configure the frequency to log system metrics, set _stats_sampling_interval to a number of seconds, expressed as a fl …
+
+## How can I change the colors of each run in the same group?
+
+You can’t change the colors of individual runs within a group. All runs in the same group share a common color.
+
+## How can I delete multiple runs in bulk instead of one at a time?
+
+From the Runs tab in your Workspace, select the checkbox next to each run to delete, then click Delete. To filter runs b …
+
+## How can I disable logging of system metrics to W&B?
+
+To disable logging of system metrics, set _disable_stats to True:
+
+## How can I log a metric that doesn't change over time such as a final evaluation accuracy?
+
+To record a single, unchanging value such as a final evaluation accuracy, log it once with run.log. For example, run.log …
+
+## How can I log additional metrics after a run completes?
+
+To add metrics to a run that has already finished, W&B offers several approaches depending on the complexity of your wor …
+
+## How can I recover deleted runs?
+
+Learn how to recover recently deleted runs in the W&B App for up to 7 days.
+
+## How do I change the group of a completed run?
+
+You can change the group assigned to a completed run using the API. This feature doesn’t appear in the web UI. To update …
+
+## How do I fix `CommError, Run does not exist` during a sweep?
+
+If you see both CommError, Run does not exist and ERROR Error uploading during a sweep, the most likely cause is that yo …
+
+## How do I fix the error `resume='must' but run ([RUN-ID]) doesn't exist`?
+
+If you encounter the error resume=‘must’ but run ( RUN-ID ) doesn’t exist, the run you’re attempting to resume doesn’t e …
+
+## How do I log runs launched by continuous integration or internal tools?
+
+To launch automated tests or internal tools that log to W&B, create a Service Account on the team settings page. This ac …
+
+## How do I move a run to another project?
+
+You can move a run from one project to another to reorganize your work, consolidate related experiments, or relocate a r …
+
+## How do I rerun a grid search?
+
+If a grid search completes but some W&B Runs crashed, delete those runs to rerun them. Then select the Resume button on …
+
+## How do I resolve permission errors when logging a run?
+
+Permission errors when logging a run typically indicate a mismatch between your code, your credentials, or your deployme …
+
+## How many runs can I create per project?
+
+For optimal performance, limit each project to approximately 10,000 runs.
+
+## Why are steps missing from a CSV metric export?
+
+Export limits can prevent you from exporting the entire run history as a CSV or with the run.history API. To access the …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/runs.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/runs)
+
+[Run CrashesPrevious](/support/models/tags/run-crashes)[SecurityNext](/support/models/tags/security)
+
+⌘I

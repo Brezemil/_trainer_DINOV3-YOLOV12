@@ -1,0 +1,38 @@
+---
+source_url: https://docs.wandb.ai/platform/app/settings-page
+---
+
+[Platform Details](/platform/app/settings-page)
+
+[Configure W&B](/platform/app/settings-page)
+
+[Settings](/platform/app/settings-page)
+
+# Settings
+
+Use the W&B Settings page to customize your individual user profile or team settings.
+
+Use the W&B Settings page to customize your individual user profile and manage settings for the teams you belong to. The following sections summarize what you can configure at each level, with links to the detailed pages. The user settings page supports the following actions:
+
+  * [Edit your profile](/platform/app/settings-page/user-settings#profile), including your profile picture, display name, geographic location, biography information, and email addresses associated with your account.
+  * [Configure API keys](/platform/app/settings-page/user-settings#api-keys).
+  * [Configure alerts](/platform/app/settings-page/user-settings#alerts) for runs.
+  * [Link your GitHub repository](/platform/app/settings-page/user-settings#personal-github-integration).
+  * [Delete your account](/platform/app/settings-page/user-settings#delete-your-account).
+
+For more information, see [User settings](/platform/app/settings-page/user-settings). If you belong to one or more teams, the team settings page supports the following actions:
+
+  * [Invite or remove members](/platform/app/settings-page/teams#members) from a team.
+  * [Manage alerts](/platform/app/settings-page/teams#alerts) for team runs.
+  * [Change privacy settings](/platform/app/settings-page/teams#privacy).
+  * [View and manage team storage](/platform/app/settings-page/teams#usage) usage.
+
+For more information about team settings, see [Team settings](/platform/app/settings-page/teams).
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/app/settings-page.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/app/settings-page)
+
+[Serverless SandboxesPrevious](/product-sandboxes)[Manage user settingsNext](/platform/app/settings-page/user-settings)
+
+⌘I

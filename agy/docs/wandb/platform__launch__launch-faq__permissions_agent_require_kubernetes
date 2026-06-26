@@ -1,0 +1,17 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/permissions_agent_require_kubernetes
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# What permissions does the agent require in Kubernetes?
+
+This page describes the Kubernetes permissions that the W&B Launch agent requires to run jobs in your cluster. Use this information to configure role-based access control (RBAC) for the agent before you deploy it. The following Kubernetes manifest creates a Role named `wandb-launch-agent` in the `wandb` namespace. This Role lets the agent create Pods, ConfigMaps, and Secrets, and access Pod logs in the `wandb` namespace. The `wandb-cluster-role` lets the agent create Pods, access Pod logs, create Secrets and Jobs, and check Job status across any specified namespace.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/permissions_agent_require_kubernetes.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/permissions_agent_require_kubernetes)
+
+[How do I fix a "permission denied" error in Launch?Previous](/platform/launch/launch-faq/launcherror_permission_denied)[What requirements does the accelerator base image have?Next](/platform/launch/launch-faq/requirements_accelerator_base_image)
+
+⌘I

@@ -1,0 +1,289 @@
+---
+source_url: https://docs.wandb.ai/pricing
+---
+
+# Pricing that works for everyone
+
+## The best tools for AI developers
+
+Cloud-hosted
+
+Privately-hosted
+
+## Free
+
+Designed for personal development of AI applications and models
+
+$0/mo
+
+[ GET STARTED ](https://app.wandb.ai/login?signup=true)
+
+### Includes
+
+  * AI application evaluations
+  * AI application tracing
+  * AI application scorers
+  * AI model experiment tracking
+  * AI assets registry & lineage tracking
+  * Community Support
+
+
+
+VIEW MORE FEATURES
+
+↓
+
+## Pro
+
+Professionals working to optimize AI applications and models
+
+Starts at $60/month, billed monthly
+
+[ START YOUR 30 DAY FREE TRIAL ](https://app.wandb.ai/login?signup=true)
+
+### All features from Free +
+
+  * Unlimited teams for collaboration
+  * Team-based access controls
+  * Service Accounts
+  * Priority email & chat support
+  * CI/CD automations
+  * Slack and email alerts
+
+
+
+For early-stage teams fewer than 50 employees. Customers who exceed these guidelines will be required to transition to W&B Enterprise. Learn more
+
+VIEW MORE FEATURES
+
+↓
+
+## Enterprise
+
+Companies prioritizing security and compliance for AI applications and models
+
+Custom plans
+
+[ CONTACT US ](https://wandb.ai/site/contact/)
+
+### All features from Pro +
+
+  * Single tenant option with choice of region
+  * HIPAA compliant option
+  * Secure private connectivity
+  * Customer-managed encryption key
+  * Single Sign On
+  * Automated user provisioning
+  * Custom roles
+  * Audit logs
+  * Enterprise support package
+
+
+
+VIEW MORE FEATURES
+
+↓
+
+## Personal
+
+Corporate use is not allowed
+
+$0/mo
+
+1
+
+2
+    
+    
+    pip install wandb
+    wandb server start
+
+[Try now](https://docs.wandb.ai/guides/hosting/hosting-options/self-managed/) with two lines of code
+
+### Includes
+
+[ GET STARTED ](https://app.wandb.ai/login?signup=true)
+
+  * 1 user seat
+  * Experiment tracking
+  * Registry & lineage tracking
+  * Run a W&B server locally on any machine with Docker and Python installed
+  * For personal projects only. Corporate use is not allowed.
+
+
+
+## Advanced Enterprise
+
+Maximum control and privacy
+
+Custom plan
+
+1
+
+2
+    
+    
+    pip install wandb
+    wandb server start
+
+Try with two lines of code & a free [Enterprise Trial license](https://deploy.wandb.ai/deploy)
+
+### All features from Personal +
+
+[ CONTACT US ](https://wandb.ai/site/contact/)
+
+  * [Flexible deployment options](https://wandb.ai/site/for-enterprise/deployment-options/)
+  * HIPAA compliant option
+  * Secure private connectivity
+  * Customer-managed encryption key
+  * Single Sign On
+  * Automated user provisioning
+  * Custom roles
+  * Audit logs
+  * Enterprise support package
+  * Run a W&B server locally on your own infrastructure with a [free enterprise trial license](https://deploy.wandb.ai/deploy)
+
+
+
+## Emergent Foundation Model Program
+
+Exclusive 12-month plan with enterprise support for newly founded foundation model builders. Access the full W&B platform to accelerate your next breakthrough.
+
+[ APPLY NOW ](/site/emergent-foundation-model-program)
+
+## Free forever for academic research
+
+Coordinate projects remotely. Unlimited projects, teams, and 200GB free cloud storage.
+
+[ APPLY NOW ](https://wandb.ai/create-team)
+
+## Compare plans
+
+| 
+
+## Free
+
+Personal development / small projects [ GET STARTED ![](https://site.wandb.ai/wp-content/uploads/2023/11/Arrow-Right.svg) ](https://app.wandb.ai/login?signup=true) | 
+
+## Pro
+
+Professionals and small teams [ 30 DAY FREE TRIAL ![](https://site.wandb.ai/wp-content/uploads/2023/11/Arrow-Right.svg) ](https://app.wandb.ai/login?signup=true) | 
+
+## Enterprise
+
+Prioritizing security and compliance [ CONTACT US ![](https://site.wandb.ai/wp-content/uploads/2023/11/Arrow-Right.svg) ](https://wandb.ai/site/contact/)  
+---|---|---|---  
+  
+The basics |  |  |   
+---|---|---|---  
+Model seats i Train and fine-tune AI models |  Up to 5 |  Up to 10 |  Customizable  
+Weave seats i Develop GenAI applications |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Storage |  5 GB/mo |  100 GB/mo Additional storage $0.03/GB |  Customizable  
+Weave data ingestion i Volume discounts available with annual commitments |  1 GB/mo |  1.5 GB/mo Additional data ingestion $0.10/MB |  Customizable  
+Inference [Per model pricing](http://wandb.ai/site/pricing/inference) i Run open source AI models. View per model pricing. |  Free credits for a limited time. Additional inference billed monthly. |  $5/mo Free credit for a limited time |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Dedicated scalable deployment |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  Available  
+Weave |  |  |   
+Tracing i Monitor and analyze the performance of your GenAI models during development and in production, capturing inputs, outputs, and metadata for each inference. |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Evaluation |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Production monitoring i Compare different recipes including fine-tuning, RAG, LLMs, and datasets, side-by-side for accuracy, latency, and token usage. |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+LLM-as-a-judge metrics i Monitor the Performance, Cost, and Health of Your LLM Applications. |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+PII data redaction |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+CoreWeave Sandboxes |  |  |   
+Sandboxes  Public preview |  $10/mo Credit for a limited time |  $25/mo Credit for a limited time |  Customizable   
+Core features |  |  |   
+Dataset and model versioning i W&B Artifacts |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Interactive data visualization i W&B Tables |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Collaborative dashboards i W&B Reports |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Access Controls & Permissions |  |  |   
+Public projects |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Private projects |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Team-based access controls |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Project-level access controls |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Custom Roles i Not available with Weave |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Service accounts |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Security & Compliance |  |  |   
+SOC 2 Type II |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Customizable data retention i Artifacts TTL |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Single sign-on |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+User and role management using SCIM API |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Audit Logs |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Bring your own bucket i Not available with Weave |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+HIPAA compliance i Possible with ByoB |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+IP allowlisting |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  Available with private hosting  
+Secure private connectivity i Inbound and outbound |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  Available with private hosting  
+Customer-managed encryption key (CMEK) i AWS & GCP |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  Available with private hosting  
+Support |  |  |   
+Email support |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+Chat support |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/12/courses-list-checkmark.svg)  
+First response time i During business hours: 2am – 5pm PT M-F |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  4 – 24 hours depending on severity |  1 – 4 hours depending on severity and support package  
+Dedicated Slack/MS Teams support channel |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  [Included with Premium Support](https://wandb.ai/site/support/)  
+Dedicated AI solution engineer |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  ![](https://site.wandb.ai/wp-content/uploads/2024/04/feature-cross.svg) |  [Included with Premium Support](https://wandb.ai/site/support/)  
+  
+## Frequently asked questions
+
+When will I be billed? 
+
+The Pro plan is billed monthly or annually upfront, depending on your selection. Model seats are prorated if added mid-term, though we don’t issue credits for removed seats. Weave data ingestion, W&B Inference, and storage are billed monthly in arrears based on your usage. Enterprise plans are invoiced annually upfront.
+
+How is Weave data ingestion calculated? 
+
+We define ingested bytes as bytes that we receive, process, and store on your behalf. This includes trace metadata, LLM inputs/outputs, and any other information you explicitly log to Weave, but does not include communication overhead (e.g., HTTP headers) or any other data that is not placed in long term storage. We count bytes as “ingested” only once at the time they are received and stored.
+
+How much Weave data ingestion do I need? 
+
+We recommend using the free trial to estimate the monthly data ingestion you can expect to use. Data ingestion varies depending on the use case and type of data sent.
+
+How much does Inference cost? 
+
+Each inference API has different costs for input and output tokens. [Explore detailed pricing](https://wandb.ai/site/pricing/inference/).
+
+How is storage calculated? 
+
+Storage includes both artifacts and data logged to runs.
+
+Weights & Biases calculates your storage usage over the last 30 days. For example, if you use 100 GB of storage for 15 days of March, 200 GB for 1 day of March, and 300GB over 14 days of March your storage usage would be:
+
+100 GB x 15 days = 1500 GB-days  
+200 GB x 1 day x = 200 GB-days  
+300 GB x 14 days x = 4200 GB-days  
+5900 GB-days / (30 days) = 196.6 GB
+
+At the end of 30 days, Weights & Biases rounds your storage to the nearest MB. Therefore, your storage usage for March would be 197 GB.
+
+Does tracked data stored on an external server count against my storage quota? 
+
+Absolutely not. Only the size of the metadata that you actually store in Weights & Biases counts against your storage quota. Reference artifacts and data stored in an external storage bucket will not count.
+
+Who qualifies as an academic? 
+
+Weights & Biases provides a free Pro license to academic institutions pursuing research not connected to a for-profit entity. This license is intended for students, professors, and postdoctoral researchers. An active email address affiliated with an academic institution is required.
+
+What does the academic license include? 
+
+The free academic license comes with all the product features included on Pro, unlimited tracked hours, 200GB of cloud storage, up to 25GB/mo of Weave data ingestion, and up to 100 seats. Additional cloud storage can be purchased for $0.03 per GB, billed monthly. If you host Weights & Biases locally, cloud storage limits do not apply.
+
+Who qualifies for a Pro Plan? 
+
+W&B Pro is designed for early-stage teams and organizations with fewer than 50 employees. Customers who exceed these guidelines will be required to transition to W&B Enterprise, as W&B Pro is designed with rate limits and performance constraints that may not support higher levels of usage.
+
+## Frequently asked questions
+
+What are the system requirements for self-hosting? 
+
+To self-host W&B, you’ll need Docker and Python installed on your machine. The server can run on Linux, macOS, or Windows systems that meet these requirements.
+
+How do I get started with self-hosting? 
+
+To get started with self-hosting, you’ll need to install Docker and Python on your machine. You can then use the command line to start the server. The server can run on Linux, macOS, or Windows systems that meet these requirements.
+
+What is the difference between self-hosting and cloud-hosted? 
+
+Self-hosting allows you to run Weights & Biases on your own infrastructure, giving you full control over your data and privacy. Cloud-hosted is a fully managed service that provides you with a scalable and reliable platform.
+
+How do I manage my data in self-hosted mode? 
+
+In self-hosted mode, you’re responsible for managing your data. You can use our platform to track your experiments and models, but you’ll need to manage your data storage and backup.
+
+How do I get support for self-hosting? 
+
+You can get support for self-hosting by contacting our support team. We’ll be happy to help you with any questions or issues you have.

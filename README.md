@@ -29,6 +29,73 @@
 
 ---
 
+## 🏗️ Repository Architecture & Workflow Overview
+
+The diagram below details the structure of the repository, the relationships between the configuration, execution entry points, core integration modules, and output artifacts:
+
+```mermaid
+graph TD
+    %% Configuration
+    subgraph Config [Unified Config]
+        C["config.py<br/>(BenchmarkConfig)"]
+    end
+
+    %% Entrypoints
+    subgraph CLI [Execution Scripts]
+        RB["run_benchmark.py<br/>(Orchestration Runner)"]
+        T["train_yolov12_dino.py<br/>(Training Loop)"]
+        E["coco_evaluate.py<br/>(Strict COCO Evaluation)"]
+        P["plot_results.py<br/>(Aggregation & Plotting)"]
+    end
+
+    %% Internal architecture
+    subgraph Core [YOLOv12-DINO3 Core Integration]
+        U_M["ultralytics/nn/modules/block.py<br/>(DINO3Backbone & Preprocessor)"]
+        U_C["ultralytics/cfg/models/v12/yolov12*-dino3*.yaml<br/>(Model Definitions)"]
+        FC["Floptest/flopcal.py<br/>(FLOPs & Parameter Calculator)"]
+    end
+
+    %% External Resources
+    subgraph External [External Resources]
+        HF["Hugging Face / Meta<br/>(facebook/dinov3-* Weights)"]
+        WB["Weights & Biases<br/>(Run/Sweep Tracking)"]
+    end
+
+    %% Data flow connections
+    C -->|Provides defaults| RB
+    C -->|Provides defaults| P
+    RB -->|Triggers run-by-run| T
+    RB -->|Triggers evaluation| E
+    RB -->|Triggers aggregation| P
+    
+    T -->|Initializes backbone & preprocessor| U_M
+    T -->|Loads config structures| U_C
+    T -->|Measures model complexity| FC
+    T -->|Logs runs dynamically| WB
+    
+    U_M -->|Downloads & caches weights| HF
+    
+    E -->|Runs inference & strict COCOeval| T
+    E -->|Generates local GT JSON| E_GT["results/coco_gt_*.json"]
+    E -->|Outputs run metrics| E_M["results/*_coco_metrics.json"]
+    
+    P -->|Reads metrics| E_M
+    P -->|Generates summary table| P_MD["results/benchmark_summary.md"]
+    P -->|Generates comparison charts| P_IMG["results/*.png"]
+    
+    classDef config fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef runner fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef core fill:#dfd,stroke:#333,stroke-width:2px;
+    classDef ext fill:#fdd,stroke:#333,stroke-width:2px;
+    
+    class C config;
+    class RB,T,E,P runner;
+    class U_M,U_C,FC core;
+    class HF,WB ext;
+```
+
+---
+
 ## 📊 Model Performance Comparison
 
 ### 🧬 **DINO Pre-trained Weights: Game Changer for Object Detection**
@@ -700,6 +767,19 @@ yolov12{size}-dino{version}-{variant}-{integration}.yaml
 | `dinov3_convnext_base` | 89M | 1024 | ~8GB | 🏋️ Medium | Robust hybrid | Production hybrid |
 | `dinov3_convnext_large` | 198M | 1536 | ~16GB | 🐌 Slower | Maximum hybrid | Research hybrid |
 
+#### **🌍 Satellite Pre-trained Models**
+
+| Variant | Parameters | Embed Dim | Memory | Speed | Use Case | Recommended For |
+|:--------|:-----------|:----------|:-------|:------|:---------|:----------------|
+| `vitl16_sat493m` | 300M | 1024 | ~14GB | 🏋️ Slower | Satellite imagery pretraining (SAT-493M) | Geospatial / Remote Sensing CV |
+
+**ViT-L/16 Satellite (300M Parameters)**
+- **Full Name**: ViT-Large/16 pre-trained on SAT-493M (493M satellite images)
+- **Parameters**: 300M
+- **Embed Dimension**: 1024
+- **Training**: Self-supervised learning on remote sensing domain (Meta's official SAT-493M model)
+- **Usage**: `--dinoversion 3 --dino-variant vitl16_sat493m --integration <single/dual/dualp0p3/triple>`
+
 #### **📊 Quick Selection Guide**
 
 **For Beginners:**
@@ -739,6 +819,9 @@ yolov12{size}-dino{version}-{variant}-{integration}.yaml
 
 # Experimental research (100GB+ VRAM) - ViT-7B/16 Ultra
 --dinoversion 3 --dino-variant vit7b16
+
+# Geospatial / Remote Sensing (14GB+ VRAM) - ViT-L/16 Satellite pre-trained
+--dinoversion 3 --dino-variant vitl16_sat493m --integration single
 
 # Hybrid CNN-ViT approach (8GB VRAM)
 --dinoversion 3 --dino-variant convnext_base
@@ -831,6 +914,9 @@ python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-variant vitb1
 
 # ✅ CORRECT: DINO variant with integration
 python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-variant vitb16 --integration single
+
+# ✅ CORRECT: DINO variant with integration (e.g., Satellite pre-trained ViT-L)
+python train_yolov12_dino.py --data data.yaml --yolo-size s --dino-variant vitl16_sat493m --integration single
 
 # ✅ CORRECT: Pure YOLOv12 (no DINO arguments needed)
 python train_yolov12_dino.py --data data.yaml --yolo-size s
@@ -2002,6 +2088,146 @@ For complete OBB documentation including:
 - Dataset format and conversion
 
 **See: [README_OBB.md](README_OBB.md)**
+
+---
+
+## 📊 **Benchmarking & Strict COCO Evaluation**
+
+We provide a dedicated evaluation and benchmarking module to assess model variants (e.g., comparing standard DINOv3 with our Satellite-pretrained backbone) using standardized COCO metrics via `pycocotools`.
+
+### 1. Unified Configuration (`config.py`)
+
+A single source of truth configuration dataclass (`BenchmarkConfig`) is defined in [config.py](file:///C:/Users/emilb/_trainer_DINOV3-YOLOV12/config.py) containing W&B properties, dataset configurations, model lists, seed lists, and general training constraints (batch size, image size, epochs, device, etc.).
+
+It also includes a static method `BenchmarkConfig.get_best_sweep_config(sweep_path)` to retrieve the configuration of the best-performing finished run from a W&B sweep using the W&B API, sorted by a target metric (default: `metrics/mAP50-95(B)`).
+
+**Python Usage:**
+```python
+from config import BenchmarkConfig
+
+# Load unified configurations
+cfg = BenchmarkConfig()
+print(f"Running benchmark on: {cfg.model_variants} with seeds: {cfg.seeds}")
+
+# Programmatically fetch the best config from a finished W&B Sweep
+best_config = BenchmarkConfig.get_best_sweep_config("emilb/trainer_DINOV3-YOLOV12/sweep_id")
+print("Best Sweep Configuration:", best_config)
+```
+
+---
+
+### 2. Run Strict COCO Evaluation (`coco_evaluate.py`)
+
+This script parses the dataset YAML, auto-generates a valid COCO format Ground Truth JSON for the target split (e.g., `val`), maps prediction bounding boxes to those integer IDs, and runs strict `COCOeval` to compute standardized AP/AR metrics.
+
+**Command Example:**
+```bash
+# Evaluate a trained YOLOv12s with standard DINOv3 (vitb16)
+pixi run python coco_evaluate.py \
+    --model runs/detect/train_standard_seed_1/weights/best.pt \
+    --data data.yaml \
+    --split val \
+    --name yolov12s_standard_seed_1 \
+    --device 0
+
+# Evaluate a trained YOLOv12s with DINOv3 Satellite (vitl16_sat493m)
+pixi run python coco_evaluate.py \
+    --model runs/detect/train_satellite_seed_1/weights/best.pt \
+    --data data.yaml \
+    --split val \
+    --name yolov12s_satellite_seed_1 \
+    --device 0
+```
+
+The script will:
+* Save a COCO Ground Truth JSON file at `results/coco_gt_val.json`.
+* Run prediction on the split with `conf=0.001` (COCO standard) and map coordinates.
+* Run `pycocotools` COCOeval box metrics (mAP@0.5:0.95, AP50, AP75, Scale-wise AP, Recall metrics).
+* Output a results JSON matching `{run_name}_coco_metrics.json` inside the `results/` folder.
+* Automatically clear the GPU cache after every run to avoid memory leaks in loop execution.
+
+#### 🧪 Dataset Fractioning for Smoketests (`--fraction`)
+
+Both training and evaluation scripts support a `--fraction` parameter to facilitate lightweight, rapid debugging and smoketests on a subset of your dataset:
+
+1. **Training Smoketest (`train_yolov12_dino.py`)**:
+   Pass the `--fraction` parameter (a float value between `0.0` and `1.0`) to train on only a subset of the training images. The script automatically ensures that at least one labeled image is included, adjusting the fraction if necessary.
+   
+   ```bash
+   pixi run python train_yolov12_dino.py \
+       --data DOTAv1.yaml \
+       --fraction 0.05 \
+       --epochs 2 \
+       --batch-size 2 \
+       --name yolov12s_dino3_smoketest
+   ```
+
+2. **Evaluation Smoketest (`coco_evaluate.py`)**:
+   Pass `--fraction <float>` to evaluate the checkpoint on a deterministic, random subset (using seed `42` for reproducibility) of the target validation/test split. This generates a dedicated ground truth file named `coco_gt_{split}_frac_{fraction}.json` (avoiding penalties for missing predictions on excluded images) and runs inference only on the sampled images to maximize execution speed.
+   
+   ```bash
+   pixi run python coco_evaluate.py \
+       --model runs/detect/yolov12s_dino3_smoketest/weights/best.pt \
+       --data DOTAv1.yaml \
+       --split val \
+       --fraction 0.1 \
+       --name yolov12s_dino3_smoketest_eval
+   ```
+
+---
+
+### 3. Aggregate & Plot Results (`plot_results.py`)
+
+Once you have run evaluation across multiple models and/or multiple seeds (e.g. `_seed_1`, `_seed_2`, etc.), you can group results, calculate **Mean ± Standard Deviation** statistics, and generate publication-quality plots.
+
+**Command Example:**
+```bash
+pixi run python plot_results.py --results-dir results --output-dir results
+```
+
+This will automatically scan the `results` folder, parse all `*_coco_metrics.json` files, and generate:
+* **`ap_metrics_comparison.png`**: AP, AP50, and AP75 side-by-side grouped comparison.
+* **`ap_scale_comparison.png`**: Scale-wise comparison showing AP Small, AP Medium, and AP Large.
+* **`ar_metrics_comparison.png`**: Recall metrics comparison (AR@1, AR@10, AR@100).
+* **`ap_seed_distribution.png`**: Swarm plot overlaying a box plot showing the exact distribution and variance of `mAP@0.50:0.95` across different seeds/runs.
+* **`benchmark_summary.md`**: A markdown file containing a formatted table of all 12 metrics:
+
+| Model Variant | Runs | mAP@0.50:0.95 | mAP@0.50 | mAP@0.75 | AP (Small) | AP (Medium) | AP (Large) | AR@100 |
+| :--- | :---: | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| model_a | 3 | 0.3542 ± 0.0012 | 0.5421 ± 0.0023 | ... | ... | ... | ... | ... |
+
+---
+
+### 4. Benchmark Example: Web vs. Satellite DINOv3 ViT-L
+
+We provide an automated orchestrator script, `run_benchmark.py`, that manages the end-to-end evaluation pipeline. It trains and evaluates YOLOv12s with standard DINOv3 ViT-L (`vitl16`) and YOLOv12s with DINOv3 ViT-L Satellite (`vitl16_sat493m`) across three seeds (default: `42, 100, 999`), handles Weights & Biases (W&B) logging configuration, performs strict `pycocotools` evaluations, and triggers plotting automatically.
+
+#### 🧪 Step A: Run a Preliminary Smoketest
+
+To ensure your environment, dataset loaders, Hugging Face weight cache, and W&B API logins are fully configured and functional before starting long-running production tasks, execute a quick smoketest run. This uses a small dataset fraction and restricts training to 2 epochs:
+
+```bash
+# Run a default smoketest (uses 5% dataset fraction and 2 epochs)
+pixi run benchmark --smoketest --device 0
+
+# Or customize the dataset fraction and epochs via the CLI
+pixi run benchmark --fraction 0.02 --epochs 1 --device 0
+```
+
+#### 🚀 Step B: Run the Full Production Benchmark
+
+Once the smoketest succeeds, execute the full comparative benchmark pipeline. The script will automatically train and evaluate all 6 runs (2 models × 3 seeds) and aggregate the results:
+
+```bash
+# Run the complete comparison benchmark (uses 100% of dataset and production epoch limits)
+pixi run benchmark --device 0
+```
+
+Each run in the benchmark is:
+1. Trained via `train_yolov12_dino.py`, with W&B logging active (automatically configuring project namespaces from `BenchmarkConfig`).
+2. Evaluated on the target split (e.g. `val`) using `coco_evaluate.py` via `pycocotools` strict evaluation.
+3. Automatically cleaned up from GPU VRAM cache between runs.
+4. Aggregated and charted using `plot_results.py` once all runs finish, generating plots (`ap_metrics_comparison.png`, `ap_scale_comparison.png`, `ar_metrics_comparison.png`, `ap_seed_distribution.png`) and the summary table `benchmark_summary.md` inside your results directory.
 
 ---
 

@@ -1,0 +1,80 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/sortby
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: SortBy
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / SortBy SortBy
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [direction](/weave/reference/typescript-sdk/interfaces/sortby#direction)
+  * [field](/weave/reference/typescript-sdk/interfaces/sortby#field)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+direction
+
+• **direction** : `"asc"` | `"desc"` Direction
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:851](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L851)
+
+* * *
+
+### 
+
+​
+
+field
+
+• **field** : `string` Field
+
+#### 
+
+​
+
+Defined in
+
+[generated/traceServerApi.ts:849](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/generated/traceServerApi.ts#L849)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/sortby.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/sortby)
+
+[Interface: SessionInitPrevious](/weave/reference/typescript-sdk/interfaces/sessioninit)[Interface: SubAgentInitNext](/weave/reference/typescript-sdk/interfaces/subagentinit)
+
+⌘I

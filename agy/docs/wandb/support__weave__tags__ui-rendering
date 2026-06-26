@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/weave/tags/ui-rendering
+---
+
+# UI Rendering
+
+## How do I render Markdown in the UI?
+
+Before saving, wrap your string with weave.Markdown(…), then use weave.publish(…) to store it. The object’s type det …
+
+## How do I render Python datetime values in the UI?
+
+Use Python’s datetime.datetime with timezone information, and publish the object using weave.publish(…). Weave recogni …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/weave/tags/ui-rendering.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/weave/tags/ui-rendering)
+
+[Trace DataPrevious](/support/weave/tags/trace-data)
+
+⌘I

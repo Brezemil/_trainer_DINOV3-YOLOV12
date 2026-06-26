@@ -1,0 +1,205 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/models/model-create
+---
+
+Model Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/models \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "name": "<string>",
+      "source_code": "<string>",
+      "description": "<string>",
+      "attributes": {}
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "object_id": "<string>",
+      "version_index": 123,
+      "model_ref": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Models](/weave/reference/service-api/models/model-list)
+
+# Model Create
+
+Create a model object.
+
+POST
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+models
+
+Model Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/models \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "name": "<string>",
+      "source_code": "<string>",
+      "description": "<string>",
+      "attributes": {}
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "object_id": "<string>",
+      "version_index": 123,
+      "model_ref": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Body
+
+application/json
+
+​
+
+name
+
+string
+
+required
+
+The name of this model. Models with the same name will be versioned together.
+
+​
+
+source_code
+
+string
+
+required
+
+Complete source code for the Model class including imports
+
+​
+
+description
+
+string | null
+
+A description of this model
+
+​
+
+attributes
+
+Attributes · object
+
+Additional attributes to be stored with the model
+
+#### Response
+
+Successful Response
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the created model
+
+​
+
+object_id
+
+string
+
+required
+
+The ID of the created model
+
+​
+
+version_index
+
+integer
+
+required
+
+The version index of the created model
+
+​
+
+model_ref
+
+string
+
+required
+
+Full reference to the created model
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/models/model-create.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/models/model-create)
+
+[Model ListPrevious](/weave/reference/service-api/models/model-list)[Model ReadNext](/weave/reference/service-api/models/model-read)
+
+⌘I

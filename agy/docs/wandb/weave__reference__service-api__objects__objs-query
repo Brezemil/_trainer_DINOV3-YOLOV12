@@ -1,0 +1,283 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/objects/objs-query
+---
+
+Objs Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/objs/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "latest_only": true,
+        "object_ids": [
+          "my_favorite_model"
+        ]
+      },
+      "limit": 100,
+      "offset": 0,
+      "sort_by": [
+        {
+          "direction": "desc",
+          "field": "created_at"
+        }
+      ],
+      "metadata_only": false,
+      "include_storage_size": false,
+      "include_tags_and_aliases": false
+    }
+    '
+    
+    
+    {
+      "objs": [
+        {
+          "project_id": "<string>",
+          "object_id": "<string>",
+          "created_at": "2023-11-07T05:31:56Z",
+          "digest": "<string>",
+          "version_index": 123,
+          "is_latest": 123,
+          "kind": "<string>",
+          "base_object_class": "<string>",
+          "val": "<unknown>",
+          "deleted_at": "2023-11-07T05:31:56Z",
+          "leaf_object_class": "<string>",
+          "wb_user_id": "<string>",
+          "size_bytes": 123,
+          "tags": [
+            "<string>"
+          ],
+          "aliases": [
+            "<string>"
+          ]
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Objects](/weave/reference/service-api/objects/obj-create)
+
+# Objs Query
+
+POST
+
+/
+
+objs
+
+/
+
+query
+
+Objs Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/objs/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "filter": {
+        "latest_only": true,
+        "object_ids": [
+          "my_favorite_model"
+        ]
+      },
+      "limit": 100,
+      "offset": 0,
+      "sort_by": [
+        {
+          "direction": "desc",
+          "field": "created_at"
+        }
+      ],
+      "metadata_only": false,
+      "include_storage_size": false,
+      "include_tags_and_aliases": false
+    }
+    '
+    
+    
+    {
+      "objs": [
+        {
+          "project_id": "<string>",
+          "object_id": "<string>",
+          "created_at": "2023-11-07T05:31:56Z",
+          "digest": "<string>",
+          "version_index": 123,
+          "is_latest": 123,
+          "kind": "<string>",
+          "base_object_class": "<string>",
+          "val": "<unknown>",
+          "deleted_at": "2023-11-07T05:31:56Z",
+          "leaf_object_class": "<string>",
+          "wb_user_id": "<string>",
+          "size_bytes": 123,
+          "tags": [
+            "<string>"
+          ],
+          "aliases": [
+            "<string>"
+          ]
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+The ID of the project to query
+
+Example:
+
+`"user/project"`
+
+​
+
+filter
+
+ObjectVersionFilter · object
+
+Filter criteria for the query. See `ObjectVersionFilter`
+
+Show child attributes
+
+Example:
+    
+    
+    {  
+      "latest_only": true,  
+      "object_ids": ["my_favorite_model"]  
+    }
+
+​
+
+limit
+
+integer | null
+
+Maximum number of results to return
+
+Example:
+
+`100`
+
+​
+
+offset
+
+integer | null
+
+Number of results to skip before returning
+
+Example:
+
+`0`
+
+​
+
+sort_by
+
+SortBy · object[] | null
+
+Sorting criteria for the query results. Currently only supports 'object_id' and 'created_at'.
+
+Show child attributes
+
+Example:
+    
+    
+    [  
+      {  
+        "direction": "desc",  
+        "field": "created_at"  
+      }  
+    ]
+
+​
+
+metadata_only
+
+boolean | null
+
+default:false
+
+If true, the `val` column is not read from the database and is empty.All other fields are returned.
+
+​
+
+include_storage_size
+
+boolean | null
+
+default:false
+
+If true, the `size_bytes` column is returned.
+
+​
+
+include_tags_and_aliases
+
+boolean | null
+
+default:false
+
+If true, tags and aliases are fetched and included in the response.
+
+#### Response
+
+Successful Response
+
+​
+
+objs
+
+ObjSchema · object[]
+
+required
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/objects/objs-query.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/objects/objs-query)
+
+[Obj ReadPrevious](/weave/reference/service-api/objects/obj-read)[Obj DeleteNext](/weave/reference/service-api/objects/obj-delete)
+
+⌘I

@@ -1,0 +1,127 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/predictions/prediction-finish
+---
+
+Prediction Finish
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/predictions/{prediction_id}/finish \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "success": true
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Predictions](/weave/reference/service-api/predictions/prediction-list)
+
+# Prediction Finish
+
+Finish a prediction.
+
+POST
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+predictions
+
+/
+
+{prediction_id}
+
+/
+
+finish
+
+Prediction Finish
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v2/{entity}/{project}/predictions/{prediction_id}/finish \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "success": true
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+prediction_id
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+success
+
+boolean
+
+required
+
+Whether the prediction was finished successfully
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/predictions/prediction-finish.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/predictions/prediction-finish)
+
+[Prediction ReadPrevious](/weave/reference/service-api/predictions/prediction-read)[Eval Results QueryNext](/weave/reference/service-api/eval-results/eval-results-query)
+
+⌘I

@@ -1,0 +1,52 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/data-types/molecule
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Data Types](/models/ref/python/data-types)
+
+# Molecule
+
+[GitHub source](https://github.com/wandb/wandb/blob/main/wandb/sdk/data_types/molecule.py)
+
+## 
+
+​
+
+`class` `Molecule`
+
+W&B class for 3D Molecular data.
+
+### 
+
+​
+
+`method` `Molecule.__init__`
+    
+    
+    __init__(
+        data_or_path: 'str | pathlib.Path | TextIO',
+        caption: 'str | None' = None,
+        **kwargs: 'str'
+    ) → None
+    
+
+Initialize a Molecule object. **Args:**
+
+  * `data_or_path`: Molecule can be initialized from a file name or an io object.
+  * `caption`: Caption associated with the molecule for display.
+
+
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/data-types/molecule.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/data-types/molecule)
+
+[ImagePrevious](/models/ref/python/data-types/image)[Object3DNext](/models/ref/python/data-types/object3d)
+
+⌘I

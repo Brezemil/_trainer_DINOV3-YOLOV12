@@ -1,0 +1,230 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/tables/table-query
+---
+
+Table Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/table/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "digest": "<string>",
+      "filter": {
+        "row_digests": [
+          "aonareimsvtl13apimtalpa4435rpmgnaemrpgmarltarstaorsnte134avrims",
+          "aonareimsvtl13apimtalpa4435rpmgnaemrpgmarltarstaorsnte134avrims"
+        ]
+      },
+      "limit": 100,
+      "offset": 10,
+      "sort_by": [
+        {
+          "field": "col_a.prop_b",
+          "order": "desc"
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "rows": [
+        {
+          "digest": "<string>",
+          "val": "<unknown>",
+          "original_index": 123
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Tables](/weave/reference/service-api/tables/table-create)
+
+# Table Query
+
+POST
+
+/
+
+table
+
+/
+
+query
+
+Table Query
+    
+    
+    curl --request POST \
+      --url https://api.example.com/table/query \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "digest": "<string>",
+      "filter": {
+        "row_digests": [
+          "aonareimsvtl13apimtalpa4435rpmgnaemrpgmarltarstaorsnte134avrims",
+          "aonareimsvtl13apimtalpa4435rpmgnaemrpgmarltarstaorsnte134avrims"
+        ]
+      },
+      "limit": 100,
+      "offset": 10,
+      "sort_by": [
+        {
+          "field": "col_a.prop_b",
+          "order": "desc"
+        }
+      ]
+    }
+    '
+    
+    
+    {
+      "rows": [
+        {
+          "digest": "<string>",
+          "val": "<unknown>",
+          "original_index": 123
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+The ID of the project
+
+Example:
+
+`"my_entity/my_project"`
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the table to query
+
+Example:
+
+`"aonareimsvtl13apimtalpa4435rpmgnaemrpgmarltarstaorsnte134avrims"`
+
+​
+
+filter
+
+TableRowFilter · object
+
+Optional filter to apply to the query. See `TableRowFilter` for more details.
+
+Show child attributes
+
+Example:
+    
+    
+    {  
+      "row_digests": [  
+        "aonareimsvtl13apimtalpa4435rpmgnaemrpgmarltarstaorsnte134avrims",  
+        "aonareimsvtl13apimtalpa4435rpmgnaemrpgmarltarstaorsnte134avrims"  
+      ]  
+    }
+
+​
+
+limit
+
+integer | null
+
+Maximum number of rows to return
+
+Example:
+
+`100`
+
+​
+
+offset
+
+integer | null
+
+Number of rows to skip before starting to return rows
+
+Example:
+
+`10`
+
+​
+
+sort_by
+
+SortBy · object[] | null
+
+List of fields to sort by. Fields can be dot-separated to access dictionary values. No sorting uses the default table order (insertion order).
+
+Show child attributes
+
+Example:
+    
+    
+    [  
+      { "field": "col_a.prop_b", "order": "desc" }  
+    ]
+
+#### Response
+
+Successful Response
+
+​
+
+rows
+
+TableRowSchema · object[]
+
+required
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/tables/table-query.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/tables/table-query)
+
+[Table Create From DigestsPrevious](/weave/reference/service-api/tables/table-create-from-digests)[Table Query StatsNext](/weave/reference/service-api/tables/table-query-stats)
+
+⌘I

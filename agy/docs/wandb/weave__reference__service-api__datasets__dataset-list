@@ -1,0 +1,135 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/datasets/dataset-list
+---
+
+Dataset List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/datasets \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Datasets](/weave/reference/service-api/datasets/dataset-list)
+
+# Dataset List
+
+List dataset objects.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+datasets
+
+Dataset List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/datasets \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+limit
+
+integer | null
+
+Maximum number of datasets to return
+
+​
+
+offset
+
+integer | null
+
+Number of datasets to skip
+
+#### Response
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/datasets/dataset-list.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/datasets/dataset-list)
+
+[Op DeletePrevious](/weave/reference/service-api/ops/op-delete)[Dataset CreateNext](/weave/reference/service-api/datasets/dataset-create)
+
+⌘I

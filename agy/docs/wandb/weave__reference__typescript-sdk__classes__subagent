@@ -1,0 +1,177 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/subagent
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Classes](/weave/reference/typescript-sdk/classes/dataset)
+
+# Class: SubAgent
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / SubAgent A nested agent invocation — used when the current agent hands work to another named agent (e.g. a planner calling a researcher). Emits an `invoke_agent` span tagged with the sub-agent’s name and (optionally) its model. Created by `weave.startSubagent()` (or `turn.startAgent()`, or `llm.startAgent()`) and terminated with `end()`. `Example`
+    
+    
+    const sub = weave.startSubagent({name: 'researcher', model: 'gpt-4o'});
+    try {
+      // ... orchestrate the sub-agent's LLM/Tool calls ...
+    } finally {
+      sub.end();
+    }
+    
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [model](/weave/reference/typescript-sdk/classes/subagent#model)
+  * [name](/weave/reference/typescript-sdk/classes/subagent#name)
+
+
+
+### 
+
+​
+
+Methods
+
+  * [end](/weave/reference/typescript-sdk/classes/subagent#end)
+  * [create](/weave/reference/typescript-sdk/classes/subagent#create)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+model
+
+• `Readonly` **model** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/subagent.ts:41](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/subagent.ts#L41)
+
+* * *
+
+### 
+
+​
+
+name
+
+• `Readonly` **name** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/subagent.ts:40](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/subagent.ts#L40)
+
+## 
+
+​
+
+Methods
+
+### 
+
+​
+
+end
+
+▸ **end**(`opts?`): `void` Close the SubAgent span. Idempotent. Pass `error` to mark it as failed.
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts?`| `Object`  
+`opts.error?`| `Error`  
+  
+#### 
+
+​
+
+Returns
+
+`void`
+
+#### 
+
+​
+
+Defined in
+
+[genai/subagent.ts:65](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/subagent.ts#L65)
+
+* * *
+
+### 
+
+​
+
+create
+
+▸ **create**(`opts`): [`SubAgent`](/weave/reference/typescript-sdk/classes/subagent)
+
+#### 
+
+​
+
+Parameters
+
+Name| Type  
+---|---  
+`opts`| [`SubAgentInit`](/weave/reference/typescript-sdk/interfaces/subagentinit) & `ChildSpanContext`  
+  
+#### 
+
+​
+
+Returns
+
+[`SubAgent`](/weave/reference/typescript-sdk/classes/subagent)
+
+#### 
+
+​
+
+Defined in
+
+[genai/subagent.ts:44](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/subagent.ts#L44)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/classes/subagent.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/classes/subagent)
+
+[Class: StringPromptPrevious](/weave/reference/typescript-sdk/classes/stringprompt)[Class: ToolNext](/weave/reference/typescript-sdk/classes/tool)
+
+⌘I

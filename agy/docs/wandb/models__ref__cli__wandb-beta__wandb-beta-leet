@@ -1,0 +1,51 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-beta/wandb-beta-leet
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb beta](/models/ref/cli/wandb-beta)
+
+[beta leet](/models/ref/cli/wandb-beta/wandb-beta-leet)
+
+# wandb beta leet
+
+## 
+
+​
+
+Usage
+    
+    
+    leet [PATH] | COMMAND [ARGS]...
+    
+
+## 
+
+​
+
+Description
+
+W&B LEET: the Lightweight Experiment Exploration Tool. A terminal UI for viewing your W&B runs locally.
+
+## 
+
+​
+
+Subcommands
+
+Command| Description  
+---|---  
+`wandb beta leet config`| Edit LEET configuration.  
+`wandb beta leet run`| Launch the LEET TUI.  
+`wandb beta leet symon`| Launch the standalone system monitor.  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-beta/wandb-beta-leet.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-beta/wandb-beta-leet)
+
+[wandb beta core stopPrevious](/models/ref/cli/wandb-beta/wandb-beta-core/wandb-beta-core-stop)[wandb beta leet configNext](/models/ref/cli/wandb-beta/wandb-beta-leet/wandb-beta-leet-config)
+
+⌘I

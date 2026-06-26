@@ -1,0 +1,171 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/annotation-queues/annotation-queue-create
+---
+
+Annotation Queue Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/annotation_queues \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "name": "<string>",
+      "scorer_refs": [
+        "<string>"
+      ],
+      "description": "",
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "id": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Annotation Queues](/weave/reference/service-api/annotation-queues/annotation-queue-create)
+
+# Annotation Queue Create
+
+Create a new annotation queue.
+
+POST
+
+/
+
+annotation_queues
+
+Annotation Queue Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/annotation_queues \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "name": "<string>",
+      "scorer_refs": [
+        "<string>"
+      ],
+      "description": "",
+      "wb_user_id": "<string>"
+    }
+    '
+    
+    
+    {
+      "id": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+Request to create a new annotation queue.
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+name
+
+string
+
+required
+
+Example:
+
+`"Error Review Queue"`
+
+​
+
+scorer_refs
+
+string[]
+
+required
+
+Example:
+    
+    
+    [  
+      "weave:///entity/project/scorer/error_severity:abc123",  
+      "weave:///entity/project/scorer/resolution_quality:def456"  
+    ]
+
+​
+
+description
+
+string
+
+default:""
+
+Example:
+
+`"Review calls with exceptions"`
+
+​
+
+wb_user_id
+
+string | null
+
+Do not set directly. Server will automatically populate this field.
+
+#### Response
+
+Successful Response
+
+Response from creating an annotation queue.
+
+​
+
+id
+
+string
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/annotation-queues/annotation-queue-create.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/annotation-queues/annotation-queue-create)
+
+[Threads Query StreamPrevious](/weave/reference/service-api/threads/threads-query-stream)[Annotation Queues Query StreamNext](/weave/reference/service-api/annotation-queues/annotation-queues-query-stream)
+
+⌘I

@@ -1,0 +1,140 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/objects/obj-remove-aliases
+---
+
+Obj Remove Aliases
+    
+    
+    curl --request POST \
+      --url https://api.example.com/objs/{object_id}/aliases/remove \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "aliases": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {}
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Objects](/weave/reference/service-api/objects/obj-create)
+
+# Obj Remove Aliases
+
+Remove aliases from an object.
+
+POST
+
+/
+
+objs
+
+/
+
+{object_id}
+
+/
+
+aliases
+
+/
+
+remove
+
+Obj Remove Aliases
+    
+    
+    curl --request POST \
+      --url https://api.example.com/objs/{object_id}/aliases/remove \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "aliases": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {}
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+object_id
+
+string
+
+required
+
+#### Body
+
+application/json
+
+Request body for removing aliases (object_id comes from path).
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+aliases
+
+string[]
+
+required
+
+Example:
+    
+    
+    ["staging"]
+
+#### Response
+
+Successful Response
+
+The response is of type `ObjRemoveAliasesRes · object`.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/objects/obj-remove-aliases.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/objects/obj-remove-aliases)
+
+[Obj Set AliasesPrevious](/weave/reference/service-api/objects/obj-set-aliases)[Tags ListNext](/weave/reference/service-api/objects/tags-list)
+
+⌘I

@@ -1,0 +1,68 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+# Python SDK 0.27.1
+
+Browse the W&B Python SDK API reference including installation instructions, classes, and function documentation.
+
+The W&B Python SDK, accessible at `wandb`, enables you to train and fine-tune models, and manage models from experimentation to production.
+
+> After performing your training and fine-tuning operations with this SDK, you can use [the Public API](/models/ref/python/public-api) to query and analyze the data that was logged, and [the Reports and Workspaces API](/models/ref/wandb_workspaces) to generate a web-publishable [report](/models/reports) summarizing your work.
+
+## 
+
+​
+
+Installation and setup
+
+### 
+
+​
+
+Sign up and create an API key
+
+To authenticate your machine with W&B, you must first generate an API key at [User Settings](https://wandb.ai/settings).
+
+### 
+
+​
+
+Install and import packages
+
+Install the W&B library.
+    
+    
+    pip install wandb
+    
+
+### 
+
+​
+
+Import W&B Python SDK:
+    
+    
+    import wandb
+    
+    # Specify your team entity
+    entity = "<team_entity>"
+    
+    # Project that the run is recorded to
+    project = "my-awesome-project"
+    
+    with wandb.init(entity=entity, project=project) as run:
+       run.log({"accuracy": 0.9, "loss": 0.1})
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python)
+
+[RegistryPrevious](/models/ref/sdk-coding-cheat-sheet/registry)[Global Functions overviewNext](/models/ref/python/functions)
+
+⌘I

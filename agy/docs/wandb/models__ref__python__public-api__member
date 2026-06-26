@@ -1,0 +1,59 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/member
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# Member
+
+## 
+
+​
+
+`class` `Member`
+
+A member of a team.
+
+### 
+
+​
+
+`method` `Member.__init__`
+    
+    
+    __init__(service_api: 'ServiceApi', team: 'str', attrs: 'Mapping[str, Any]')
+    
+
+**Args:**
+
+  * `service_api`: The service API instance to use for querying W&B.
+  * `team` (str): The name of the team this member belongs to
+  * `attrs` (dict): The member attributes
+
+
+
+* * *
+
+### 
+
+​
+
+`method` `Member.delete`
+    
+    
+    delete()
+    
+
+Remove a member from a team. **Returns:** Boolean indicating success
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/member.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/member)
+
+[FilesPrevious](/models/ref/python/public-api/files)[ProjectNext](/models/ref/python/public-api/project)
+
+⌘I

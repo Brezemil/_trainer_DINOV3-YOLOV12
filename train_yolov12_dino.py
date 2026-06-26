@@ -81,13 +81,11 @@ ROOT = FILE.parent
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 
-import os
 import tempfile
 
 import yaml
 
 from ultralytics import YOLO
-from ultralytics.data.utils import check_det_dataset
 from ultralytics.nn.modules.block import DINO3Backbone, DINO3Preprocessor
 from ultralytics.utils import LOGGER
 
@@ -361,7 +359,7 @@ def create_model_config_path(yolo_size, dinoversion=None, dino_variant=None, int
             print(f"   📄 Using size-specific config: yolov12{yolo_size}-dino3-preprocess.yaml")
             return size_specific_config
         else:
-            print(f"   📄 Using generic config: yolov12-dino3-preprocess.yaml")
+            print("   📄 Using generic config: yolov12-dino3-preprocess.yaml")
             return "ultralytics/cfg/models/v12/yolov12-dino3-preprocess.yaml"
 
     elif integration == "dual":
@@ -439,7 +437,7 @@ def create_model_config_path(yolo_size, dinoversion=None, dino_variant=None, int
                 print(
                     f"   📄 Using variant-matched dual config as dualp0p3 fallback: yolov12{yolo_size}-dino3-{dino_variant}-dual.yaml"
                 )
-                print(f"   ⚠️  WARNING: This is dual (P3+P4) integration, not true dualp0p3 (P0+P3)!")
+                print("   ⚠️  WARNING: This is dual (P3+P4) integration, not true dualp0p3 (P0+P3)!")
                 return fallback_config
             # Last resort: Use vitb16 dual config as base template, but will be modified with user's variant via --dino-input
             # This ensures user's specified variant (e.g., vits16) is respected through dynamic config modification
@@ -531,6 +529,7 @@ def parse_arguments():
             "vits16",
             "vitb16",
             "vitl16",
+            "vitl16_sat493m",
             "vith16_plus",
             "vit7b16",
             "convnext_tiny",
@@ -740,7 +739,7 @@ def validate_arguments(args):
         # No DINO requested - use pure YOLOv12
         if args.integration:
             LOGGER.warning(
-                f"⚠️  --integration specified but no DINO arguments provided. Ignoring --integration and using pure YOLOv12"
+                "⚠️  --integration specified but no DINO arguments provided. Ignoring --integration and using pure YOLOv12"
             )
             args.integration = None
 
@@ -828,10 +827,10 @@ def setup_training_parameters(args):
     if args.amp is None:
         if has_dino:
             args.amp = False  # Disable AMP for DINO models to avoid memory issues
-            LOGGER.info(f"Auto-determined AMP: False (disabled for DINO models)")
+            LOGGER.info("Auto-determined AMP: False (disabled for DINO models)")
         else:
             args.amp = True  # Enable AMP for pure YOLO models
-            LOGGER.info(f"Auto-determined AMP: True (enabled for pure YOLO)")
+            LOGGER.info("Auto-determined AMP: True (enabled for pure YOLO)")
 
     # Adjust augmentation parameters for different model sizes
     if args.yolo_size in ["s", "m", "l", "x"]:
@@ -897,7 +896,7 @@ def modify_yaml_config_for_custom_dino(config_path, dino_input, yolo_size="s", u
                             print(
                                 f"   🔧 DINO weights {'trainable' if unfreeze_dino else 'frozen'}: freeze_backbone={not unfreeze_dino}"
                             )
-                            print(f"   🔧 DINO3Preprocessor outputs: 3 channels (enhanced RGB)")
+                            print("   🔧 DINO3Preprocessor outputs: 3 channels (enhanced RGB)")
                             break  # Only replace first occurrence
 
     # Handle integrated approach (DINO inside backbone) OR any config with DINO3Backbone
@@ -1066,11 +1065,11 @@ def load_partial_yolo_weights(target_model, weight_path, integration=None, yolo_
     if integration == "single":
         # Single integration: P0 preprocessing only, start loading after DINO3Preprocessor
         trigger_after = "DINO3Preprocessor"
-        print(f"   📐 Strategy: Load weights after DINO3Preprocessor (P0 input preprocessing)")
+        print("   📐 Strategy: Load weights after DINO3Preprocessor (P0 input preprocessing)")
     elif integration == "dualp0p3":
         # DualP0P3: P0+P3, start loading after DINO3Backbone
         trigger_after = "DINO3Backbone"
-        print(f"   📐 Strategy: Load weights after DINO3Backbone (P0+P3 integration)")
+        print("   📐 Strategy: Load weights after DINO3Backbone (P0+P3 integration)")
     elif integration in ["dual", "triple"]:
         # Dual/Triple: Multiple backbones, start loading after last DINO3Backbone
         trigger_after = "last_DINO3Backbone"
@@ -1096,15 +1095,15 @@ def load_partial_yolo_weights(target_model, weight_path, integration=None, yolo_
             # Check if we should start loading weights after this DINO layer
             if trigger_after == "DINO3Preprocessor" and isinstance(layer, DINO3Preprocessor):
                 should_load_weights = True
-                print(f"   ✅ Trigger reached: Starting weight loading after DINO3Preprocessor")
+                print("   ✅ Trigger reached: Starting weight loading after DINO3Preprocessor")
             elif trigger_after == "DINO3Backbone" and isinstance(layer, DINO3Backbone):
                 should_load_weights = True
-                print(f"   ✅ Trigger reached: Starting weight loading after DINO3Backbone")
+                print("   ✅ Trigger reached: Starting weight loading after DINO3Backbone")
             elif trigger_after == "last_DINO3Backbone" and isinstance(layer, DINO3Backbone):
                 # For dual/triple, only trigger after the LAST backbone
                 if dino_layers_passed == total_dino_backbones:
                     should_load_weights = True
-                    print(f"   ✅ Trigger reached: Starting weight loading after last DINO3Backbone")
+                    print("   ✅ Trigger reached: Starting weight loading after last DINO3Backbone")
 
             continue
 
@@ -1194,14 +1193,14 @@ def main():
     experiment_name = create_experiment_name(args)
 
     # Print configuration summary
-    print(f"📊 Training Configuration:")
+    print("📊 Training Configuration:")
     print(f"   Model: YOLOv12{args.yolo_size}")
     if args.dinoversion:
         print(f"   DINO: DINOv{args.dinoversion} + {args.dino_variant}")
         print(f"   Integration: {args.integration}")
         print(f"   DINO Weights: {'Trainable' if args.unfreeze_dino else 'Frozen'}")
     else:
-        print(f"   DINO: None (Base YOLOv12)")
+        print("   DINO: None (Base YOLOv12)")
     print(f"   Config: {model_config}")
     print(f"   Dataset: {args.data}")
     print(f"   Validation: {'Enabled' if args.val else 'Disabled'}")
@@ -1212,7 +1211,7 @@ def main():
     print(f"   Experiment: {experiment_name}")
     print()
 
-    print(f"🎛️  Hyperparameters:")
+    print("🎛️  Hyperparameters:")
     print(f"   Learning Rate: {args.lr} (final: {args.lr * args.lrf})")
     print(f"   Optimizer: {args.optimizer}")
     print(f"   Weight Decay: {args.weight_decay}")
@@ -1225,7 +1224,7 @@ def main():
         print(f"   Gradient Clipping: {args.grad_clip}")
     print()
 
-    print(f"🎨 Data Augmentation:")
+    print("🎨 Data Augmentation:")
     print(f"   Scale: {args.scale}")
     print(f"   Mosaic: {args.mosaic}")
     print(f"   Mixup: {args.mixup}")
@@ -1247,9 +1246,9 @@ def main():
             if temp_config_path != model_config:
                 model_config = temp_config_path
         elif args.pretrain and args.dino_input:
-            print(f"⚠️  --dino-input ignored when using --pretrain (checkpoint architecture takes precedence)")
+            print("⚠️  --dino-input ignored when using --pretrain (checkpoint architecture takes precedence)")
         elif args.pretrain:
-            print(f"🔧 Using checkpoint's preserved DINO configuration")
+            print("🔧 Using checkpoint's preserved DINO configuration")
 
         # Load model
         if args.pretrain:
@@ -1259,11 +1258,11 @@ def main():
             # This ensures DINO layers are created in the architecture
             if args.dinoversion and args.integration:
                 print(f"🔧 DINO requested - loading architecture from config: {model_config}")
-                print(f"   Then transferring weights from pretrained checkpoint...")
+                print("   Then transferring weights from pretrained checkpoint...")
 
                 # Load the DINO-enhanced architecture
                 model = YOLO(model_config)
-                print(f"✅ Loaded DINO architecture from config")
+                print("✅ Loaded DINO architecture from config")
 
                 # Now transfer compatible weights from the pretrained checkpoint
                 pretrain_model = YOLO(args.pretrain)
@@ -1291,9 +1290,9 @@ def main():
 
             else:
                 # No DINO - use standard checkpoint loading
-                print(f"🔧 Using YOLO's built-in checkpoint loading for standard model...")
+                print("🔧 Using YOLO's built-in checkpoint loading for standard model...")
                 model = YOLO(args.pretrain)
-                print(f"✅ Loaded model directly from checkpoint")
+                print("✅ Loaded model directly from checkpoint")
 
             # Verify the model loaded properly
             checkpoint = torch.load(args.pretrain, map_location="cpu")
@@ -1309,7 +1308,7 @@ def main():
 
             # Re-freeze DINO layers if they should be frozen
             if not args.unfreeze_dino and args.dinoversion:
-                print(f"🧊 Re-freezing DINO layers to maintain frozen state...")
+                print("🧊 Re-freezing DINO layers to maintain frozen state...")
                 frozen_count = 0
                 for name, param in model.model.named_parameters():
                     if "dino_model" in name or "dino_backbone" in name:
@@ -1317,7 +1316,7 @@ def main():
                         frozen_count += 1
                 print(f"🧊 Frozen {frozen_count} DINO parameters")
 
-            print(f"🎯 Model loading complete!")
+            print("🎯 Model loading complete!")
 
         else:
             print(f"🔧 Loading model: {model_config}")
@@ -1434,7 +1433,7 @@ def main():
         # Print final metrics
         if hasattr(results, "results_dict"):
             metrics = results.results_dict
-            print(f"📊 Final Metrics:")
+            print("📊 Final Metrics:")
             for key, value in metrics.items():
                 if "map" in key.lower():
                     print(f"   {key}: {value:.4f}")
@@ -1454,7 +1453,7 @@ def main():
         if "temp_config_path" in locals() and temp_config_path and os.path.exists(temp_config_path):
             try:
                 os.unlink(temp_config_path)
-                print(f"🗑️  Cleaned up temporary config file")
+                print("🗑️  Cleaned up temporary config file")
             except Exception:
                 pass  # Ignore cleanup errors
 

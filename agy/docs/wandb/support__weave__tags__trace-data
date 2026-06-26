@@ -1,0 +1,29 @@
+---
+source_url: https://docs.wandb.ai/support/weave/tags/trace-data
+---
+
+# Trace Data
+
+## Trace data is truncated
+
+Sometimes, large trace data is cut off in the Weave UI. This happens because the default trace output is a raw, custom P …
+
+## Trace data loss in worker processes
+
+Weave uploads trace data in background threads to minimize impact on your application’s performance. However, you might …
+
+## Trace pages load slowly
+
+If trace pages load slowly, reduce the number of rows displayed to improve load time. The default value is 50. You can r …
+
+## Why doesn't `.call()` raise exceptions?
+
+By default, Weave’s .call() method captures exceptions and stores them in call.exception instead of raising them. This i …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/weave/tags/trace-data.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/weave/tags/trace-data)
+
+[System InfoPrevious](/support/weave/tags/system-info)[UI RenderingNext](/support/weave/tags/ui-rendering)
+
+⌘I

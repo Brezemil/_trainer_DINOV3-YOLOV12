@@ -1,0 +1,135 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/models/model-list
+---
+
+Model List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/models \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Models](/weave/reference/service-api/models/model-list)
+
+# Model List
+
+List model objects.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+models
+
+Model List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/models \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+limit
+
+integer | null
+
+Maximum number of models to return
+
+​
+
+offset
+
+integer | null
+
+Number of models to skip
+
+#### Response
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/models/model-list.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/models/model-list)
+
+[Scorer DeletePrevious](/weave/reference/service-api/scorers/scorer-delete)[Model CreateNext](/weave/reference/service-api/models/model-create)
+
+⌘I

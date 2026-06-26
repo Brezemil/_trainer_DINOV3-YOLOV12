@@ -1,0 +1,23 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/integrations/vercel_ai_sdk
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Integrate with your LLM provider and frameworks](/weave/guides/integrations)
+
+[Frameworks](/weave/guides/integrations/openai_agents)
+
+# Vercel AI SDK
+
+Trace Vercel AI SDK calls in Weave using OpenTelemetry
+
+🚧 A parsing error occured. Please contact the owner of this website. They can use the Mintlify CLI to test this website locally and see the errors that occur.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/integrations/vercel_ai_sdk.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/integrations/vercel_ai_sdk)
+
+[Google Agent Development Kit (ADK)Previous](/weave/guides/integrations/google_adk)[HaystackNext](/weave/guides/integrations/haystack)
+
+⌘I

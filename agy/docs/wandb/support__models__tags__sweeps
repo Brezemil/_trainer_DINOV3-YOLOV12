@@ -1,0 +1,89 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/sweeps
+---
+
+# Sweeps
+
+## Best practices to organize hyperparameter searches
+
+When you run many hyperparameter searches, tag your runs so you can group and find related experiments later. Tag runs i …
+
+## How can I change the directory my sweep logs to locally?
+
+Set the logging directory for run data by configuring the WANDB_DIR environment variable. For example:
+
+## How can I resume a sweep using Python code?
+
+To resume a sweep, pass the sweep_id to the wandb.agent() function.
+
+## How do I best log models from runs in a sweep?
+
+To log models in a sweep, create a model artifact for the sweep. Each version represents a different run from the sweep. …
+
+## How do I enable code logging with Sweeps?
+
+To enable code logging for sweeps, add wandb.log_code() after initializing the W&B Run. This step is necessary even when …
+
+## How do I fix `CommError, Run does not exist` during a sweep?
+
+If you see both CommError, Run does not exist and ERROR Error uploading during a sweep, the most likely cause is that yo …
+
+## How do I fix `Cuda out of memory` during a sweep?
+
+If you see Cuda out of memory during a sweep, refactor your code to use process-based execution. Rewrite your code as a …
+
+## How do I fix an `anaconda 400 error` during a sweep?
+
+An anaconda 400 error during a sweep often means you didn’t log the metric you’re optimizing. You might see: The sweep c …
+
+## How do I flag boolean variables as hyperparameters?
+
+To pass hyperparameters as boolean flags, use the macro in the command section of your sweep configuration. The macro au …
+
+## How do I rerun a grid search?
+
+If a grid search completes but some W&B Runs crashed, delete those runs to rerun them. Then select the Resume button on …
+
+## How do I set default hyperparameter values in a sweep?
+
+You don’t need to provide values for every hyperparameter in a W&B Sweep. You can set defaults and let the sweep overrid …
+
+## How do I use W&B Sweeps with SageMaker?
+
+You can use W&B Sweeps with Amazon SageMaker to run hyperparameter searches on SageMaker training jobs. To authenticate …
+
+## How do I use W&B Sweeps with cloud infrastructure?
+
+To run a W&B Sweep on cloud infrastructure such as AWS Batch or ECS, publish the sweep_id so that any W&B Sweep agent ca …
+
+## How do I use custom CLI commands with sweeps?
+
+You can use W&B Sweeps with custom CLI commands if training configuration passes command-line arguments. This lets you r …
+
+## How should I run sweeps on SLURM?
+
+To use sweeps with the SLURM scheduling system, run wandb agent —count 1 SWEEP_ID in each scheduled job. This command e …
+
+## Is there a way to add extra values to a sweep, or do I need to start a new one?
+
+Once a W&B Sweep starts, you can’t change the sweep configuration. However, you can navigate to any table view, select r …
+
+## Optimizing multiple metrics
+
+W&B Sweeps optimize a single objective metric. To optimize multiple metrics in a single run, combine them into a weighte …
+
+## What happens if I edit my Python files while a sweep is running?
+
+The behavior depends on which file you edit. While a sweep is running: If the train.py script that the sweep uses change …
+
+## What is the `Est. Runs` column?
+
+W&B provides an estimated number of runs generated when creating a W&B Sweep with a discrete search space. This total re …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/sweeps.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/sweeps)
+
+[StoragePrevious](/support/models/tags/storage)[TablesNext](/support/models/tags/tables)
+
+⌘I

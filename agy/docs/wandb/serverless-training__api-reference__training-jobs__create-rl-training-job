@@ -1,0 +1,231 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/api-reference/training-jobs/create-rl-training-job
+---
+
+Create Rl Training Job
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v1/preview/training-jobs \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "model_id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+      "trajectory_groups": [
+        {
+          "trajectories": [
+            {
+              "messages_and_choices": [],
+              "tools": [
+                {
+                  "function": {
+                    "name": "<string>",
+                    "description": "<string>",
+                    "parameters": {},
+                    "strict": true
+                  },
+                  "type": "<string>"
+                }
+              ],
+              "additional_histories": [],
+              "reward": 0,
+              "initial_policy_version": 123,
+              "final_policy_version": 123,
+              "metrics": {},
+              "metadata": {},
+              "logs": [],
+              "start_time": "2023-11-07T05:31:56Z"
+            }
+          ]
+        }
+      ],
+      "experimental_config": {
+        "advantage_balance": 123,
+        "allow_training_without_logprobs": true,
+        "epsilon": 123,
+        "epsilon_high": 123,
+        "kimi_k2_tau": 123,
+        "kl_penalty_coef": 123,
+        "kl_ref_adapter_path": "<string>",
+        "learning_rate": 123,
+        "logprob_calculation_chunk_size": 123,
+        "mask_prob_ratio": true,
+        "max_negative_advantage_importance_sampling_weight": 123,
+        "normalize_advantages": true,
+        "num_trajectories_learning_rate_multiplier_power": 123,
+        "packed_sequence_length": 123,
+        "plot_tensors": true,
+        "ppo": true,
+        "precalculate_logprobs": true,
+        "scale_learning_rate_by_reward_std_dev": true,
+        "scale_rewards": true,
+        "truncated_importance_sampling": 123
+      }
+    }
+    '
+    
+    
+    {
+      "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+    }
+
+[Serverless Training](/serverless-training/api-reference)
+
+[training-jobs](/serverless-training/api-reference/training-jobs/create-rl-training-job)
+
+# Create Rl Training Job
+
+Create a new RL (Reinforcement Learning) training job.
+
+POST
+
+/
+
+v1
+
+/
+
+preview
+
+/
+
+training-jobs
+
+Create Rl Training Job
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v1/preview/training-jobs \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "model_id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+      "trajectory_groups": [
+        {
+          "trajectories": [
+            {
+              "messages_and_choices": [],
+              "tools": [
+                {
+                  "function": {
+                    "name": "<string>",
+                    "description": "<string>",
+                    "parameters": {},
+                    "strict": true
+                  },
+                  "type": "<string>"
+                }
+              ],
+              "additional_histories": [],
+              "reward": 0,
+              "initial_policy_version": 123,
+              "final_policy_version": 123,
+              "metrics": {},
+              "metadata": {},
+              "logs": [],
+              "start_time": "2023-11-07T05:31:56Z"
+            }
+          ]
+        }
+      ],
+      "experimental_config": {
+        "advantage_balance": 123,
+        "allow_training_without_logprobs": true,
+        "epsilon": 123,
+        "epsilon_high": 123,
+        "kimi_k2_tau": 123,
+        "kl_penalty_coef": 123,
+        "kl_ref_adapter_path": "<string>",
+        "learning_rate": 123,
+        "logprob_calculation_chunk_size": 123,
+        "mask_prob_ratio": true,
+        "max_negative_advantage_importance_sampling_weight": 123,
+        "normalize_advantages": true,
+        "num_trajectories_learning_rate_multiplier_power": 123,
+        "packed_sequence_length": 123,
+        "plot_tensors": true,
+        "ppo": true,
+        "precalculate_logprobs": true,
+        "scale_learning_rate_by_reward_std_dev": true,
+        "scale_rewards": true,
+        "truncated_importance_sampling": 123
+      }
+    }
+    '
+    
+    
+    {
+      "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+    }
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+#### Body
+
+application/json
+
+Schema for creating a new TrainingJob.
+
+​
+
+model_id
+
+string<uuid>
+
+required
+
+​
+
+trajectory_groups
+
+TrajectoryGroup · object[]
+
+required
+
+Show child attributes
+
+​
+
+experimental_config
+
+ExperimentalTrainingConfig · object
+
+Schema for experimental training config.
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+Schema for TrainingJob response.
+
+​
+
+id
+
+string<uuid>
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/api-reference/training-jobs/create-rl-training-job.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/api-reference/training-jobs/create-rl-training-job)
+
+[LogPrevious](/serverless-training/api-reference/models/log)[Create Sft Training JobNext](/serverless-training/api-reference/training-jobs/create-sft-training-job)
+
+⌘I

@@ -1,0 +1,29 @@
+---
+source_url: https://docs.wandb.ai/platform/hosting/data-security/data-encryption
+---
+
+[Platform Details](/platform/app/settings-page)
+
+[Configure W&B](/platform/app/settings-page)
+
+[Data security](/platform/hosting/data-security/secure-storage-connector)
+
+# Data encryption in Dedicated Cloud
+
+Learn how W&B encrypts data in Dedicated Cloud using cloud-native keys and the customer-managed encryption key policy.
+
+This page describes how W&B encrypts the W&B-managed database and object storage in [Dedicated Cloud](/platform/hosting/hosting-options/dedicated-cloud), and explains W&B’s policy on customer-managed encryption keys. This page is intended for security and compliance teams evaluating Dedicated Cloud for use with sensitive AI workloads. W&B uses a W&B-managed cloud-native key to encrypt the W&B-managed database and object storage in every Dedicated Cloud instance, using the customer-managed encryption key (CMEK) capability in each cloud. In this case, W&B acts as a customer of the cloud provider while providing the W&B platform as a service to you. Using a W&B-managed key means that W&B controls the keys that encrypt the data in each cloud, reinforcing its commitment to provide a secure platform to its customers. W&B uses a unique key to encrypt the data in each customer instance, providing another layer of isolation between Dedicated Cloud tenants. The capability is available on AWS, Azure, and Google Cloud.
+
+Dedicated Cloud instances on AWS have used the W&B-managed cloud-native key for encryption since before August 2024.On Google Cloud and Azure, Dedicated Cloud instances that W&B created in August 2024 or later use the W&B-managed cloud-native key to encrypt the W&B-managed database and object storage. Instances that W&B provisioned before August 2024 use the default cloud provider managed key.
+
+W&B doesn’t generally allow customers to bring their own cloud-native key to encrypt the W&B-managed database and object storage in their Dedicated Cloud instance. Multiple teams in an organization often have access to its cloud infrastructure, and some teams might not know that W&B is a critical component in the organization’s technology stack. They might remove the cloud-native key or revoke W&B’s access to it, which could corrupt all data in the organization’s W&B instance and leave it in an unrecoverable state. If your organization needs to use its own cloud-native key to encrypt the W&B-managed database and object storage as a condition for adopting Dedicated Cloud, W&B can review the request on an exception basis. If approved, use of your cloud-native key for encryption conforms to the shared responsibility model of W&B Dedicated Cloud.
+
+If any user in your organization removes your key or revokes W&B’s access to it at any point when your Dedicated Cloud instance is live, W&B isn’t liable for any resulting data loss or corruption and isn’t responsible for recovery of the data.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/hosting/data-security/data-encryption.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/hosting/data-security/data-encryption)
+
+[Configure private connectivity to Dedicated CloudPrevious](/platform/hosting/data-security/private-connectivity)[Manage bucket storage and costsNext](/platform/hosting/managing-bucket-storage)
+
+⌘I

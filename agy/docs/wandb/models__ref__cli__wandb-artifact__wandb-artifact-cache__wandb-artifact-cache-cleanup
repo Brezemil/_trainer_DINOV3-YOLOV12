@@ -1,0 +1,69 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-artifact/wandb-artifact-cache/wandb-artifact-cache-cleanup
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb artifact](/models/ref/cli/wandb-artifact)
+
+[artifact cache](/models/ref/cli/wandb-artifact/wandb-artifact-cache)
+
+# wandb artifact cache cleanup
+
+## 
+
+​
+
+Usage
+    
+    
+    cleanup [OPTIONS] TARGET_SIZE
+    
+
+## 
+
+​
+
+Description
+
+Reduce the local artifact cache size. Remove the least recently accessed files first until the cache is at or below the TARGET_SIZE. TARGET_SIZE accepts human-readable formats (for example, 10GB or 500MB). For example, to reduce the artifact cache to 10 GB:
+    
+    
+    wandb artifact cache cleanup 10GB
+    
+
+To remove temporary files and reduce the artifact cache to 5 GB:
+    
+    
+    wandb artifact cache cleanup --remove-temp 5GB
+    
+
+## 
+
+​
+
+Arguments
+
+Name| Default| Type  
+---|---|---  
+`target_size`| STR| True  
+  
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--remove-temp`| BOOL Flag| Also remove temporary files from the cache. **Default** : False  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-artifact/wandb-artifact-cache/wandb-artifact-cache-cleanup.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-artifact/wandb-artifact-cache/wandb-artifact-cache-cleanup)
+
+[wandb artifact cachePrevious](/models/ref/cli/wandb-artifact/wandb-artifact-cache)[wandb artifact getNext](/models/ref/cli/wandb-artifact/wandb-artifact-get)
+
+⌘I

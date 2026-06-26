@@ -1,0 +1,80 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/interfaces/turninit
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Interfaces](/weave/reference/typescript-sdk/interfaces/callschema)
+
+# Interface: TurnInit
+
+TypeScript SDK reference
+
+[weave](/weave/reference/typescript-sdk) / TurnInit
+
+## 
+
+​
+
+Table of contents
+
+### 
+
+​
+
+Properties
+
+  * [agentName](/weave/reference/typescript-sdk/interfaces/turninit#agentname)
+  * [model](/weave/reference/typescript-sdk/interfaces/turninit#model)
+
+
+
+## 
+
+​
+
+Properties
+
+### 
+
+​
+
+agentName
+
+• `Optional` **agentName** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:27](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L27)
+
+* * *
+
+### 
+
+​
+
+model
+
+• `Optional` **model** : `string`
+
+#### 
+
+​
+
+Defined in
+
+[genai/turn.ts:28](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/turn.ts#L28)
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/interfaces/turninit.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/interfaces/turninit)
+
+[Interface: ToolInitPrevious](/weave/reference/typescript-sdk/interfaces/toolinit)[Interface: UsageNext](/weave/reference/typescript-sdk/interfaces/usage)
+
+⌘I

@@ -1,0 +1,209 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/scorers/scorer-read
+---
+
+Scorer Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/scorers/{object_id}/versions/{digest} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "object_id": "<string>",
+      "digest": "<string>",
+      "version_index": 123,
+      "created_at": "2023-11-07T05:31:56Z",
+      "name": "<string>",
+      "score_op": "<string>",
+      "description": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Scorers](/weave/reference/service-api/scorers/scorer-list)
+
+# Scorer Read
+
+Get a scorer object.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+scorers
+
+/
+
+{object_id}
+
+/
+
+versions
+
+/
+
+{digest}
+
+Scorer Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/scorers/{object_id}/versions/{digest} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "object_id": "<string>",
+      "digest": "<string>",
+      "version_index": 123,
+      "created_at": "2023-11-07T05:31:56Z",
+      "name": "<string>",
+      "score_op": "<string>",
+      "description": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+object_id
+
+string
+
+required
+
+​
+
+digest
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+object_id
+
+string
+
+required
+
+The scorer ID
+
+​
+
+digest
+
+string
+
+required
+
+The digest of the scorer
+
+​
+
+version_index
+
+integer
+
+required
+
+The version index of the object
+
+​
+
+created_at
+
+string<date-time>
+
+required
+
+When the scorer was created
+
+​
+
+name
+
+string
+
+required
+
+The name of the scorer
+
+​
+
+score_op
+
+string
+
+required
+
+The Scorer.score op reference
+
+​
+
+description
+
+string | null
+
+Description of the scorer
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/scorers/scorer-read.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/scorers/scorer-read)
+
+[Scorer CreatePrevious](/weave/reference/service-api/scorers/scorer-create)[Scorer DeleteNext](/weave/reference/service-api/scorers/scorer-delete)
+
+⌘I

@@ -1,0 +1,47 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/typescript-sdk/functions/getcurrentsession
+---
+
+[W&B Weave](/weave/reference)
+
+[TypeScript SDK](/weave/reference/typescript-sdk)
+
+[Functions](/weave/reference/typescript-sdk/functions/createopenaiagentstracingprocessor)
+
+# getCurrentSession
+
+TypeScript SDK reference
+
+# 
+
+​
+
+getCurrentSession
+
+▸ **getCurrentSession**(): [`Session`](/weave/reference/typescript-sdk/classes/session) | `undefined` Returns the current Session, or undefined.
+
+#### 
+
+​
+
+Returns
+
+[`Session`](/weave/reference/typescript-sdk/classes/session) | `undefined`
+
+#### 
+
+​
+
+Defined in
+
+[genai/context.ts:95](https://github.com/wandb/weave/blob/6538626556c93d6f31ae725fdefe4e6b8b71bc2c/sdks/node/src/genai/context.ts#L95)
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/typescript-sdk/functions/getcurrentsession.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/typescript-sdk/functions/getcurrentsession)
+
+[getCurrentLLMPrevious](/weave/reference/typescript-sdk/functions/getcurrentllm)[getCurrentTurnNext](/weave/reference/typescript-sdk/functions/getcurrentturn)
+
+⌘I

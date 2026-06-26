@@ -1,0 +1,133 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/tables/table-create
+---
+
+Table Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/table/create \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "table": {
+        "project_id": "<string>",
+        "rows": [
+          {}
+        ],
+        "expected_digest": "<string>"
+      }
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "row_digests": [
+        "<string>"
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Tables](/weave/reference/service-api/tables/table-create)
+
+# Table Create
+
+POST
+
+/
+
+table
+
+/
+
+create
+
+Table Create
+    
+    
+    curl --request POST \
+      --url https://api.example.com/table/create \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "table": {
+        "project_id": "<string>",
+        "rows": [
+          {}
+        ],
+        "expected_digest": "<string>"
+      }
+    }
+    '
+    
+    
+    {
+      "digest": "<string>",
+      "row_digests": [
+        "<string>"
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+table
+
+TableSchemaForInsert · object
+
+required
+
+Show child attributes
+
+#### Response
+
+Successful Response
+
+​
+
+digest
+
+string
+
+required
+
+​
+
+row_digests
+
+string[]
+
+The digests of the rows that were created
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/tables/table-create.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/tables/table-create)
+
+[Aliases ListPrevious](/weave/reference/service-api/objects/aliases-list)[Table UpdateNext](/weave/reference/service-api/tables/table-update)
+
+⌘I

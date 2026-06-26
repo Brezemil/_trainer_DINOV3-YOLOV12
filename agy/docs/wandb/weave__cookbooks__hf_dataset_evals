@@ -1,0 +1,168 @@
+---
+source_url: https://docs.wandb.ai/weave/cookbooks/hf_dataset_evals
+---
+
+[Cookbooks](/weave/cookbooks)
+
+[Evaluations & Datasets](/weave/cookbooks/leaderboard_quickstart)
+
+# HuggingFace Dataset Evaluations
+
+Learn how to use HuggingFace dataset evaluations with W&B Weave
+
+This is an interactive notebook. You can run it locally or use the links below:
+
+  * [Open in Google Colab](https://colab.research.google.com/github/wandb/docs/blob/main/weave/cookbooks/source/hf_dataset_evals.ipynb)
+  * [View source on GitHub](https://github.com/wandb/docs/blob/main/weave/cookbooks/source/hf_dataset_evals.ipynb)
+
+
+
+This notebook shows you how to use a HuggingFace dataset as the input source for a Weave `Evaluation`. By the end, you’ll have a working evaluation pipeline that references rows in a HuggingFace dataset by index, preprocesses each row into the format your model expects, and tracks the scored results in Weave. This pattern is useful when you want to evaluate models against existing HuggingFace datasets without first converting them into a Weave-native dataset.
+
+This guide demonstrates a workaround for using HuggingFace datasets with Weave evaluations. The approach works today, and more seamless integrations for external datasets are in development.
+
+## 
+
+​
+
+Setup and imports
+
+First, initialize Weave and connect to W&B so that Weave tracks the evaluation runs and their results in your Weave project.
+    
+    
+    !pip install datasets wandb weave
+    
+    # Initialize variables
+    HUGGINGFACE_DATASET = "wandb/ragbench-test-sample"
+    WANDB_KEY = ""
+    WEAVE_TEAM = ""
+    WEAVE_PROJECT = ""
+    
+    # Init weave and required libraries
+    import asyncio
+    
+    import nest_asyncio
+    import wandb
+    from datasets import load_dataset
+    
+    import weave
+    from weave import Evaluation
+    
+    # Login to wandb and initialize weave
+    wandb.login(key=WANDB_KEY)
+    client = weave.init(f"{WEAVE_TEAM}/{WEAVE_PROJECT}")
+    
+    # Apply nest_asyncio to allow nested event loops (needed for some notebook environments)
+    nest_asyncio.apply()
+    
+
+## 
+
+​
+
+Load and prepare HuggingFace dataset
+
+Next, load the HuggingFace dataset and build a lightweight index that the evaluation iterates over. Rather than passing the dataset rows directly to Weave, pass a list of index references and resolve them to full rows during preprocessing. This approach keeps the evaluation tied to the original HuggingFace dataset and maintains references to it.
+
+In the index, encode the `hf_hub_name` along with the `hf_id` to ensure each row has a unique identifier. Weave uses this unique digest value to track and reference specific dataset entries during evaluations.
+    
+    
+    # Load the HuggingFace dataset
+    ds = load_dataset(HUGGINGFACE_DATASET)
+    row_count = ds["train"].num_rows
+    
+    # Create an index mapping for the dataset
+    # This creates a list of dictionaries with HF dataset indices
+    # Example: [{"hf_id": 0}, {"hf_id": 1}, {"hf_id": 2}, ...]
+    hf_index = [{"hf_id": i, "hf_hub_name": HUGGINGFACE_DATASET} for i in range(row_count)]
+    
+
+## 
+
+​
+
+Define processing and evaluation functions
+
+With the index in place, define the three functions that make up the evaluation pipeline: one to turn each index reference into a usable example, one to score the model’s output, and one representing the model being evaluated. The processing pipeline uses the following functions:
+
+  * `preprocess_example`: Transforms the index reference into the actual data needed for evaluation.
+  * `hf_eval`: Defines how to score the model outputs.
+  * `function_to_evaluate`: The actual function or model being evaluated.
+
+
+    
+    
+    @weave.op()
+    def preprocess_example(example):
+        """
+        Preprocesses each example before evaluation.
+        Args:
+            example: Dict containing hf_id
+        Returns:
+            Dict containing the prompt from the HF dataset
+        """
+        hf_row = ds["train"][example["hf_id"]]
+        return {"prompt": hf_row["question"], "answer": hf_row["response"]}
+    
+    @weave.op()
+    def hf_eval(hf_id: int, output: dict) -> dict:
+        """
+        Scoring function for evaluating model outputs.
+        Args:
+            hf_id: Index in the HF dataset
+            output: The output from the model to evaluate
+        Returns:
+            Dict containing evaluation scores
+        """
+        hf_row = ds["train"][hf_id]
+        return {"scorer_value": True}
+    
+    @weave.op()
+    def function_to_evaluate(prompt: str):
+        """
+        The function that will be evaluated (e.g., your model or pipeline).
+        Args:
+            prompt: Input prompt from the dataset
+        Returns:
+            Dict containing model output
+        """
+        return {"generated_text": "testing "}
+    
+
+## 
+
+​
+
+Create and run the evaluation
+
+Finally, wire the index, scorer, and preprocessing function into a Weave `Evaluation` and run it against the model. For each entry in `hf_index`, Weave performs the following steps:
+
+  1. `preprocess_example` gets the corresponding data from the HuggingFace dataset.
+  2. Weave passes the preprocessed data to `function_to_evaluate`.
+  3. `hf_eval` scores the output.
+  4. Weave tracks the results.
+
+After the evaluation finishes, the run and its per-row scores are available in your Weave project for inspection.
+    
+    
+    # Create evaluation object
+    evaluation = Evaluation(
+        dataset=hf_index,  # Use our index mapping
+        scorers=[hf_eval],  # List of scoring functions
+        preprocess_model_input=preprocess_example,  # Function to prepare inputs
+    )
+    
+    # Run evaluation asynchronously
+    async def main():
+        await evaluation.evaluate(function_to_evaluate)
+    
+    asyncio.run(main())
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/cookbooks/hf_dataset_evals.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/cookbooks/hf_dataset_evals)
+
+[Leaderboard QuickstartPrevious](/weave/cookbooks/leaderboard_quickstart)[Import from CSVNext](/weave/cookbooks/import_from_csv)
+
+⌘I

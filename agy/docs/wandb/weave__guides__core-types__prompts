@@ -1,0 +1,313 @@
+---
+source_url: https://docs.wandb.ai/weave/guides/core-types/prompts
+---
+
+[Guides](/weave/concepts/what-is-weave)
+
+[Version your work](/weave/tutorial-weave_models)
+
+# Create prompt objects
+
+Create, publish, and use prompt objects for LLM applications
+
+Creating, evaluating, and refining prompts is a core activity for AI engineers. Small changes to a prompt can have big impacts on your application’s behavior. W&B Weave lets you create prompts, publish them, and evolve them over time. This page is for AI engineers who want to create reusable prompt objects in Weave and publish them so application code can reference them. By following this guide, you learn how to create single-string and multi-turn prompts, parameterize them with runtime values, and publish them to your Weave project. For referencing, retrieving, and managing versions of published prompts, see [Store and track versions of prompts](/weave/guides/core-types/prompts-version.mdx). If your prompt needs are simple, you can use the built-in `weave.StringPrompt` or `weave.MessagesPrompt` classes. If your needs are more complex, you can subclass those or the base class `weave.Prompt` and override the `format` method. When you publish a prompt with `weave.publish`, it appears in your Weave project on the [Prompts page](/weave/guides/core-types/prompts-version.mdx#view-prompts), where you and your collaborators can browse and reuse it.
+
+## 
+
+​
+
+StringPrompt
+
+`StringPrompt` logs single-string prompts that you might use for system messages, user queries, or any standalone text input to an LLM. Use `StringPrompt` to manage individual prompt strings that don’t require the complexity of multi-message conversations.
+
+  * Python
+
+  * TypeScript
+
+
+
+    
+    
+    import weave
+    weave.init('intro-example')
+    
+    system_prompt = weave.StringPrompt("You speak like a pirate")
+    weave.publish(system_prompt, name="pirate_prompt")
+    
+    from openai import OpenAI
+    client = OpenAI()
+    
+    response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=[
+        {
+          "role": "system",
+          "content": system_prompt.format()
+        },
+        {
+          "role": "user",
+          "content": "Explain general relativity in one paragraph."
+        }
+      ],
+    )
+    
+    
+    
+    import * as weave from 'weave';
+    import OpenAI from 'openai';
+    
+    async function main() {
+      // weave.init returns a client instance
+      const weaveClient = await weave.init('wandb/prompt-examples');
+    
+      const systemPrompt = new weave.StringPrompt({
+        content: 'You speak like a pirate',
+        name: 'your-prompt',
+        description: 'A helpful description of your prompt',
+      });
+      
+      // Use the client returned from init
+      await weaveClient.publish(systemPrompt, 'pirate_prompt');
+    
+      // Wrap OpenAI client to track calls in Weave
+      const client = weave.wrapOpenAI(new OpenAI());
+    
+      const response = await client.chat.completions.create({
+        model: "gpt-4o",
+        messages: [
+          {
+            role: "system",
+            content: systemPrompt.content
+          },
+          {
+            role: "user",
+            content: "Explain general relativity in one paragraph."
+          }
+        ],
+      });
+    }
+    
+    main();
+    
+
+## 
+
+​
+
+MessagesPrompt
+
+`MessagesPrompt` lets you log multi-turn conversations and chat-based prompts. It stores an array of message objects (with roles like `system`, `user`, and `assistant`) that represent a complete conversation flow. Use `MessagesPrompt` for chat-based LLMs where you need to maintain context across multiple messages, define specific conversation patterns, or create reusable conversation templates.
+
+  * Python
+
+  * TypeScript
+
+
+
+    
+    
+    import weave
+    weave.init('intro-example')
+    
+    prompt = weave.MessagesPrompt([
+        {
+            "role": "system",
+            "content": "You are a stegosaurus, but don't be too obvious about it."
+        },
+        {
+            "role": "user",
+            "content": "What's good to eat around here?"
+        }
+    ])
+    weave.publish(prompt, name="dino_prompt")
+    
+    from openai import OpenAI
+    client = OpenAI()
+    
+    response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=prompt.format(),
+    )
+    
+    
+    
+    import * as weave from 'weave';
+    import OpenAI from 'openai';
+    
+    async function main() {
+      // weave.init returns a client instance
+      const weaveClient = await weave.init('wandb/prompt-examples');
+    
+      const prompt = new weave.MessagesPrompt({
+        messages: [
+          {
+            "role": "system",
+            "content": "You are a stegosaurus, but don't be too obvious about it."
+          },
+          {
+            "role": "user",
+            "content": "What's good to eat around here?"
+          }
+        ],
+      });
+      
+      // Use the client returned from init
+      await weaveClient.publish(prompt, 'dino_prompt');
+    
+      // Wrap OpenAI client to track calls in Weave
+      const client = weave.wrapOpenAI(new OpenAI());
+    
+      const response = await client.chat.completions.create({
+        model: "gpt-4o",
+        messages: prompt.messages,
+      });
+    }
+    
+    main();
+    
+
+## 
+
+​
+
+Parameterize prompts
+
+Once you can create static prompts, the next step is to make them reusable across different inputs. Both `StringPrompt` and `MessagesPrompt` support dynamic content through parameterization. This lets you create reusable prompt templates with placeholders (using `{variable}` syntax) that you fill with different values at runtime. Parameterization is useful when your prompts must adapt to different inputs, user data, or contexts while maintaining a consistent structure. The `format()` method accepts key-value pairs to replace these placeholders with actual values.
+
+  * Python
+
+  * TypeScript
+
+
+
+    
+    
+    import weave
+    weave.init('intro-example')
+    
+    prompt = weave.StringPrompt("Solve the equation {equation}")
+    weave.publish(prompt, name="calculator_prompt")
+    
+    from openai import OpenAI
+    client = OpenAI()
+    
+    response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=[
+        {
+          "role": "user",
+          "content": prompt.format(equation="1 + 1 = ?")
+        }
+      ],
+    )
+    
+    
+    
+    import * as weave from 'weave';
+    import OpenAI from 'openai';
+    
+    async function main() {
+      // weave.init returns a client instance
+      const weaveClient = await weave.init('wandb/prompt-examples');
+    
+      const prompt = new weave.StringPrompt({
+        content: 'Solve the equation {equation}',
+      });
+      
+      // Use the client returned from init
+      await weaveClient.publish(prompt, 'calculator_prompt');
+    
+      // Wrap OpenAI client to track calls in Weave
+      const client = weave.wrapOpenAI(new OpenAI());
+    
+      const response = await client.chat.completions.create({
+        model: "gpt-4o",
+        messages: [
+          {
+            role: "user",
+            content: prompt.format({ equation: "1 + 1 = ?" })
+          }
+        ],
+      });
+    }
+    
+    main();
+    
+
+The same parameterization pattern also works with `MessagesPrompt` when you need placeholders inside a multi-turn conversation.
+
+  * Python
+
+  * TypeScript
+
+
+
+    
+    
+    import weave
+    weave.init('intro-example')
+    
+    prompt = weave.MessagesPrompt([
+    {
+        "role": "system",
+        "content": "You will be provided with a description of a scene and your task is to provide a single word that best describes an associated emotion."
+    },
+    {
+        "role": "user",
+        "content": "{scene}"
+    }
+    ])
+    weave.publish(prompt, name="emotion_prompt")
+    
+    from openai import OpenAI
+    client = OpenAI()
+    
+    response = client.chat.completions.create(
+      model="gpt-4o",
+      messages=prompt.format(scene="A dog is lying on a dock next to a fisherman."),
+    )
+    
+    
+    
+    import * as weave from 'weave';
+    import OpenAI from 'openai';
+    
+    async function main() {
+      // weave.init returns a client instance
+      const weaveClient = await weave.init('wandb/prompt-examples');
+    
+      const prompt = new weave.MessagesPrompt({
+        messages: [
+          {
+            "role": "system",
+            "content": "You will be provided with a description of a scene and your task is to provide a single word that best describes an associated emotion."
+          },
+          {
+            "role": "user",
+            "content": "{scene}"
+          }
+        ]
+      });
+      
+      // Use the client returned from init
+      await weaveClient.publish(prompt, 'emotion_prompt');
+    
+      // Wrap OpenAI client to track calls in Weave
+      const client = weave.wrapOpenAI(new OpenAI());
+    
+      const response = await client.chat.completions.create({
+        model: "gpt-4o",
+        messages: prompt.format({ scene: "A dog is lying on a dock next to a fisherman." }),
+      });
+    }
+    
+    main();
+    
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/guides/core-types/prompts.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/guides/core-types/prompts)
+
+[Track application versions with modelsPrevious](/weave/guides/core-types/models)[Store and track versions of promptsNext](/weave/guides/core-types/prompts-version)
+
+⌘I

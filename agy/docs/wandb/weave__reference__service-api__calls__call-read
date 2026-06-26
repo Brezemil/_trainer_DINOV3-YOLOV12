@@ -1,0 +1,197 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/calls/call-read
+---
+
+Call Read
+    
+    
+    curl --request POST \
+      --url https://api.example.com/call/read \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "id": "<string>",
+      "include_costs": false,
+      "include_storage_size": false,
+      "include_total_storage_size": false
+    }
+    '
+    
+    
+    {
+      "call": {
+        "id": "<string>",
+        "project_id": "<string>",
+        "op_name": "<string>",
+        "trace_id": "<string>",
+        "started_at": "2023-11-07T05:31:56Z",
+        "attributes": {},
+        "inputs": {},
+        "display_name": "<string>",
+        "parent_id": "<string>",
+        "thread_id": "<string>",
+        "turn_id": "<string>",
+        "ended_at": "2023-11-07T05:31:56Z",
+        "exception": "<string>",
+        "output": null,
+        "summary": {},
+        "wb_user_id": "<string>",
+        "wb_username": "<string>",
+        "wb_run_id": "<string>",
+        "wb_run_step": 123,
+        "wb_run_step_end": 123,
+        "deleted_at": "2023-11-07T05:31:56Z",
+        "expire_at": "2023-11-07T05:31:56Z",
+        "storage_size_bytes": 123,
+        "total_storage_size_bytes": 123
+      }
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Calls](/weave/reference/service-api/calls/call-start)
+
+# Call Read
+
+POST
+
+/
+
+call
+
+/
+
+read
+
+Call Read
+    
+    
+    curl --request POST \
+      --url https://api.example.com/call/read \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "id": "<string>",
+      "include_costs": false,
+      "include_storage_size": false,
+      "include_total_storage_size": false
+    }
+    '
+    
+    
+    {
+      "call": {
+        "id": "<string>",
+        "project_id": "<string>",
+        "op_name": "<string>",
+        "trace_id": "<string>",
+        "started_at": "2023-11-07T05:31:56Z",
+        "attributes": {},
+        "inputs": {},
+        "display_name": "<string>",
+        "parent_id": "<string>",
+        "thread_id": "<string>",
+        "turn_id": "<string>",
+        "ended_at": "2023-11-07T05:31:56Z",
+        "exception": "<string>",
+        "output": null,
+        "summary": {},
+        "wb_user_id": "<string>",
+        "wb_username": "<string>",
+        "wb_run_id": "<string>",
+        "wb_run_step": 123,
+        "wb_run_step_end": 123,
+        "deleted_at": "2023-11-07T05:31:56Z",
+        "expire_at": "2023-11-07T05:31:56Z",
+        "storage_size_bytes": 123,
+        "total_storage_size_bytes": 123
+      }
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Body
+
+application/json
+
+​
+
+project_id
+
+string
+
+required
+
+​
+
+id
+
+string
+
+required
+
+​
+
+include_costs
+
+boolean | null
+
+default:false
+
+​
+
+include_storage_size
+
+boolean | null
+
+default:false
+
+​
+
+include_total_storage_size
+
+boolean | null
+
+default:false
+
+#### Response
+
+Successful Response
+
+​
+
+call
+
+CallSchema · object
+
+required
+
+Show child attributes
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/calls/call-read.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/calls/call-read)
+
+[Call UpdatePrevious](/weave/reference/service-api/calls/call-update)[Calls Query StatsNext](/weave/reference/service-api/calls/calls-query-stats)
+
+⌘I

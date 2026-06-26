@@ -1,0 +1,17 @@
+---
+source_url: https://docs.wandb.ai/platform/launch/launch-faq/restrict_access_modify_example
+---
+
+[Launch FAQ](/platform/launch/launch-faq)
+
+# How can admins restrict which users have modify access?
+
+Control access to certain queue fields for users who aren’t team administrators through [queue config templates](/platform/launch/setup-queue-advanced). Team administrators define which fields non-admin users can view, and set the editing limits. Only team administrators can create or edit queues.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/platform/launch/launch-faq/restrict_access_modify_example.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /platform/launch/launch-faq/restrict_access_modify_example)
+
+[What requirements does the accelerator base image have?Previous](/platform/launch/launch-faq/requirements_accelerator_base_image)[Can you specify secrets for jobs or automations? For instance, an API key which you do not wish to be directly visible to users?Next](/platform/launch/launch-faq/secrets_jobsautomations_instance_api_key_wish_directly_visible)
+
+⌘I

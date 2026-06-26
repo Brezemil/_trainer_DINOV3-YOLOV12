@@ -1,0 +1,21 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/resuming
+---
+
+# Resuming
+
+## How do I fix the error `resume='must' but run ([RUN-ID]) doesn't exist`?
+
+If you encounter the error resume=‘must’ but run ( RUN-ID ) doesn’t exist, the run you’re attempting to resume doesn’t e …
+
+## How do I use the resume parameter when resuming a run in W&B?
+
+To use the resume parameter in W&B, set the resume argument in wandb.init() with entity, project, and id specified. The …
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/resuming.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/resuming)
+
+[ReportsPrevious](/support/models/tags/reports)[Run CrashesNext](/support/models/tags/run-crashes)
+
+⌘I

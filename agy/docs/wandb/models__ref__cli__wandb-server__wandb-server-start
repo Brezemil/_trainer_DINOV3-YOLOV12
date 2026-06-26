@@ -1,0 +1,65 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-server/wandb-server-start
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb server](/models/ref/cli/wandb-server)
+
+# wandb server start
+
+## 
+
+​
+
+Usage
+    
+    
+    start [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+Start a local W&B Server instance in a Docker container. Pull and run the wandb/local Docker image. Map the specified host port to port 8080 in the container and mount a persistent Docker volume named “wandb” to store data. Configure the “base_url” setting to point to the local server so that subsequent W&B client calls use it. Prompt for login if no API key is found. Requires Docker to be installed and running on the host machine. This command starts only the W&B Models UI. It is provided only for local testing. In production, the W&B Kubernetes Operator is the recommended way to deploy W&B Server. See <https://docs.wandb.ai/platform/hosting/self-managed/operator>. For example, to start a local W&B server on the default port (8080):
+    
+    
+    wandb server start
+    
+
+To start the server on port 9090:
+    
+    
+    wandb server start -p 9090
+    
+
+To start the server in the foreground:
+    
+    
+    wandb server start --no-daemon
+    
+
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--port, -p`| STR| The host port to bind W&B server on. **Default** : 8080  
+`--env, -e`| STR| Environment variables to pass to wandb/local Docker image. **Default** : []  
+`--daemon`| BOOL Flag| Run the server in the background. Use —no-daemon to run in the foreground. **Default** : True  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-server/wandb-server-start.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-server/wandb-server-start)
+
+[wandb serverPrevious](/models/ref/cli/wandb-server)[wandb server stopNext](/models/ref/cli/wandb-server/wandb-server-stop)
+
+⌘I

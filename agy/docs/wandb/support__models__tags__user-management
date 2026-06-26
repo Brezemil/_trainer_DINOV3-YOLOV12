@@ -1,0 +1,69 @@
+---
+source_url: https://docs.wandb.ai/support/models/tags/user-management
+---
+
+# User Management
+
+## Can I get an academic plan as a student?
+
+Students can apply for an academic plan by following these steps: Visit the Pricing page on wandb.com and apply for the …
+
+## How can I change my account from corporate to academic?
+
+If you signed up for W&B with a corporate email but qualify for an academic plan, you can switch your account. Link your …
+
+## How can I delete my user account?
+
+To delete your user account, go to your user settings and click Delete account. This action is irreversible and takes ef …
+
+## How can I log in to W&B Server?
+
+Set the login URL in one of these ways: Set the environment variable WANDB_BASE_URL to the Server URL. Set the —host fl …
+
+## How can I regain access to my account if I cannot receive a password reset email?
+
+If you can’t receive a password reset email, try the following steps to regain access to your account: 1. Check spam or …
+
+## How can I resolve sign-in issues with my account?
+
+If you can’t sign in to your W&B account, the following steps help you identify and resolve common sign-in issues: Accou …
+
+## How do I add more seats to my account?
+
+If you’re an administrator who needs to expand your team’s access to W&B, you can request additional seats for your acco …
+
+## How do I export a list of users from my W&B organization?
+
+To export a list of users from a W&B organization as an administrator, use the SCIM API with the following code: Modify …
+
+## How do I find my API key?
+
+import ApiKeyFind from “/snippets/_includes/api-key-find.mdx”;
+
+## How do I log in to W&B Self-Managed?
+
+To authenticate to a W&B Self-Managed instance, point the CLI and SDK at your instance URL before you log in: Set WANDB_ …
+
+## How do I request the complete deletion of my W&B account?
+
+To delete a W&B account, go to the User settings page, scroll to the bottom, and click Delete Account.
+
+## Is it possible to change the username?
+
+You can’t change the username after account creation. Create a new account with the desired username instead.
+
+## Is it possible to create a new account with an email that was previously used for a deleted account?
+
+Yes. You can create a new account with an email previously associated with a deleted account.
+
+## What type of roles are available and what are the differences between them?
+
+Visit the Team roles and permissions page for an overview of the available roles and permissions.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models/tags/user-management.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models/tags/user-management)
+
+[TensorBoardPrevious](/support/models/tags/tensorboard)[WorkspacesNext](/support/models/tags/workspaces)
+
+⌘I

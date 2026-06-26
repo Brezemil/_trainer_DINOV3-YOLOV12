@@ -1,0 +1,151 @@
+---
+source_url: https://docs.wandb.ai/serverless-training/api-reference/training-jobs/create-sft-training-job
+---
+
+Create Sft Training Job
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v1/preview/sft-training-jobs \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "model_id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+      "training_data_url": "<string>",
+      "config": {
+        "batch_size": 123,
+        "learning_rate": 123
+      },
+      "experimental_config": {}
+    }
+    '
+    
+    
+    {
+      "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+    }
+
+[Serverless Training](/serverless-training/api-reference)
+
+[training-jobs](/serverless-training/api-reference/training-jobs/create-rl-training-job)
+
+# Create Sft Training Job
+
+Create a new SFT (Supervised Fine-Tuning) training job.
+
+POST
+
+/
+
+v1
+
+/
+
+preview
+
+/
+
+sft-training-jobs
+
+Create Sft Training Job
+    
+    
+    curl --request POST \
+      --url https://api.example.com/v1/preview/sft-training-jobs \
+      --header 'Authorization: Bearer <token>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "model_id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+      "training_data_url": "<string>",
+      "config": {
+        "batch_size": 123,
+        "learning_rate": 123
+      },
+      "experimental_config": {}
+    }
+    '
+    
+    
+    {
+      "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+    }
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form `Bearer <token>`, where `<token>` is your auth token.
+
+#### Body
+
+application/json
+
+Schema for creating a new SFT (Supervised Fine-Tuning) TrainingJob.
+
+The client should upload the training data (trajectories.jsonl and metadata.json) to W&B Artifacts and provide the artifact URL.
+
+​
+
+model_id
+
+string<uuid>
+
+required
+
+​
+
+training_data_url
+
+string
+
+required
+
+W&B artifact path for training data (e.g., 'wandb-artifact:///entity/project/artifact-name:version')
+
+​
+
+config
+
+SFTTrainingConfig · object
+
+Schema for SFT training config.
+
+Show child attributes
+
+​
+
+experimental_config
+
+Experimental Config · object
+
+#### Response
+
+Successful Response
+
+Schema for TrainingJob response.
+
+​
+
+id
+
+string<uuid>
+
+required
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/serverless-training/api-reference/training-jobs/create-sft-training-job.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /serverless-training/api-reference/training-jobs/create-sft-training-job)
+
+[Create Rl Training JobPrevious](/serverless-training/api-reference/training-jobs/create-rl-training-job)[Get Training JobNext](/serverless-training/api-reference/training-jobs/get-training-job)
+
+⌘I

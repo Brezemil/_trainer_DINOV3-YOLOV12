@@ -1,0 +1,156 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/objects/obj-remove-tags
+---
+
+Obj Remove Tags
+    
+    
+    curl --request POST \
+      --url https://api.example.com/objs/{object_id}/versions/{digest}/tags/remove \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "tags": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {}
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Objects](/weave/reference/service-api/objects/obj-create)
+
+# Obj Remove Tags
+
+Remove tags from an object version.
+
+POST
+
+/
+
+objs
+
+/
+
+{object_id}
+
+/
+
+versions
+
+/
+
+{digest}
+
+/
+
+tags
+
+/
+
+remove
+
+Obj Remove Tags
+    
+    
+    curl --request POST \
+      --url https://api.example.com/objs/{object_id}/versions/{digest}/tags/remove \
+      --header 'Authorization: Basic <encoded-value>' \
+      --header 'Content-Type: application/json' \
+      --data '
+    {
+      "project_id": "<string>",
+      "tags": [
+        "<string>"
+      ]
+    }
+    '
+    
+    
+    {}
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+object_id
+
+string
+
+required
+
+​
+
+digest
+
+string
+
+required
+
+#### Body
+
+application/json
+
+Request body for adding/removing tags (object_id and digest come from path).
+
+​
+
+project_id
+
+string
+
+required
+
+Example:
+
+`"entity/project"`
+
+​
+
+tags
+
+string[]
+
+required
+
+Example:
+    
+    
+    ["production", "reviewed"]
+
+#### Response
+
+Successful Response
+
+The response is of type `ObjRemoveTagsRes · object`.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/objects/obj-remove-tags.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/objects/obj-remove-tags)
+
+[Obj Add TagsPrevious](/weave/reference/service-api/objects/obj-add-tags)[Obj Set AliasesNext](/weave/reference/service-api/objects/obj-set-aliases)
+
+⌘I

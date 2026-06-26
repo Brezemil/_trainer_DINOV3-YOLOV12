@@ -1,0 +1,117 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/scorers/scorer-list
+---
+
+Scorer List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/scorers \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Scorers](/weave/reference/service-api/scorers/scorer-list)
+
+# Scorer List
+
+List scorer objects.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+scorers
+
+Scorer List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/scorers \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "detail": [
+        {
+          "loc": [
+            "<string>"
+          ],
+          "msg": "<string>",
+          "type": "<string>"
+        }
+      ]
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/scorers/scorer-list.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/scorers/scorer-list)
+
+[Dataset DeletePrevious](/weave/reference/service-api/datasets/dataset-delete)[Scorer CreateNext](/weave/reference/service-api/scorers/scorer-create)
+
+⌘I

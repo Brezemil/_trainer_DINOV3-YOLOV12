@@ -1,0 +1,173 @@
+---
+source_url: https://docs.wandb.ai/support/models
+---
+
+# Support: W&B Models
+
+## 
+
+​
+
+Featured articles
+
+## How can I configure the name of the run in my training code?
+
+At the beginning of the training script, call wandb.init with a run name. For example: wandb.init(name=“my_awesome_run”) …[Experiments](/support/models/tags/experiments)
+
+## How do I use custom CLI commands with sweeps?
+
+You can use W&B Sweeps with custom CLI commands if training configuration passes command-line arguments. This lets you r …[Sweeps](/support/models/tags/sweeps)
+
+## Is it possible to save metrics offline and sync them to W&B later?
+
+By default, wandb.init starts a process that syncs metrics in real time to the cloud. If you need to run experiments wit …[Experiments](/support/models/tags/experiments)[Environment Variables](/support/models/tags/environment-variables)[Metrics](/support/models/tags/metrics)
+
+## What does wandb.init do to my training process?
+
+When wandb.init() runs in a training script, an API call creates a run object on the W&B servers. A new process starts t …[Environment Variables](/support/models/tags/environment-variables)[Experiments](/support/models/tags/experiments)
+
+## 
+
+​
+
+Browse by category
+
+## AWS
+
+2 articles
+
+## Academic
+
+2 articles
+
+## Administrator
+
+25 articles
+
+## Alerts
+
+2 articles
+
+## Anonymous
+
+2 articles
+
+## Artifacts
+
+14 articles
+
+## Billing
+
+4 articles
+
+## Charts
+
+4 articles
+
+## Connectivity
+
+4 articles
+
+## Environment Variables
+
+12 articles
+
+## Experiments
+
+39 articles
+
+## Hyperparameter
+
+3 articles
+
+## Inference
+
+5 articles
+
+## Logs
+
+7 articles
+
+## Metrics
+
+19 articles
+
+## Notebooks
+
+3 articles
+
+## Outage
+
+3 articles
+
+## Privacy
+
+2 articles
+
+## Projects
+
+4 articles
+
+## Python
+
+6 articles
+
+## Reports
+
+15 articles
+
+## Resuming
+
+2 articles
+
+## Run Crashes
+
+10 articles
+
+## Runs
+
+19 articles
+
+## Security
+
+7 articles
+
+## Storage
+
+2 articles
+
+## Sweeps
+
+19 articles
+
+## Tables
+
+2 articles
+
+## Team Management
+
+12 articles
+
+## TensorBoard
+
+2 articles
+
+## User Management
+
+14 articles
+
+## Workspaces
+
+7 articles
+
+## Wysiwyg
+
+5 articles
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/support/models.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /support/models)
+
+[AcademicNext](/support/models/tags/academic)
+
+⌘I

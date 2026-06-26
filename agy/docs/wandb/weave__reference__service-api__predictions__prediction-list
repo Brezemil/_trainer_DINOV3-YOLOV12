@@ -1,0 +1,197 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/predictions/prediction-list
+---
+
+Prediction List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/predictions \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    [
+      {
+        "prediction_id": "<string>",
+        "model": "<string>",
+        "inputs": {},
+        "output": "<unknown>",
+        "evaluation_run_id": "<string>",
+        "wb_user_id": "<string>"
+      }
+    ]
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Predictions](/weave/reference/service-api/predictions/prediction-list)
+
+# Prediction List
+
+List predictions.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+predictions
+
+Prediction List
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/predictions \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    [
+      {
+        "prediction_id": "<string>",
+        "model": "<string>",
+        "inputs": {},
+        "output": "<unknown>",
+        "evaluation_run_id": "<string>",
+        "wb_user_id": "<string>"
+      }
+    ]
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+#### Query Parameters
+
+​
+
+evaluation_run_id
+
+string | null
+
+Filter by evaluation run ID
+
+​
+
+limit
+
+integer | null
+
+Maximum number of predictions to return
+
+​
+
+offset
+
+integer | null
+
+Number of predictions to skip
+
+#### Response
+
+Stream of data in JSONL format
+
+​
+
+prediction_id
+
+string
+
+required
+
+The prediction ID
+
+​
+
+model
+
+string
+
+required
+
+The model reference (weave:// URI)
+
+​
+
+inputs
+
+Inputs · object
+
+required
+
+The inputs to the prediction
+
+​
+
+output
+
+any
+
+required
+
+The output of the prediction
+
+​
+
+evaluation_run_id
+
+string | null
+
+Evaluation run ID if this prediction is linked to one
+
+​
+
+wb_user_id
+
+string | null
+
+Do not set directly. Server will automatically populate this field.
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/predictions/prediction-list.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/predictions/prediction-list)
+
+[Evaluation Run FinishPrevious](/weave/reference/service-api/evaluation-runs/evaluation-run-finish)[Prediction CreateNext](/weave/reference/service-api/predictions/prediction-create)
+
+⌘I

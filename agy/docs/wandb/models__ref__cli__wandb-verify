@@ -1,0 +1,55 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-verify
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+# wandb verify
+
+## 
+
+​
+
+Usage
+    
+    
+    verify [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+Run integration checks against a self-hosted W&B instance. Validate that a self-hosted or dedicated cloud W&B deployment is configured and operating correctly. Do not run this command against the public W&B cloud at api.wandb.ai. Exits with `code 1` if any critical check fails. For example, to verify the currently configured W&B instance:
+    
+    
+    wandb verify --host https://my-wandb-instance.com
+    
+
+To verify a specific self-hosted instance:
+    
+    
+    wandb verify --host https://my-wandb-server.example.com
+    
+
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--host`| STR| Target a specific W&B instance URL. Default to configured base URL. **Default** : None  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-verify.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-verify)
+
+[wandb syncPrevious](/models/ref/cli/wandb-sync)[Query Expression Language overviewNext](/models/ref/query-panel)
+
+⌘I

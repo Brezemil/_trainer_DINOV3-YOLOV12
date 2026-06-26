@@ -1,0 +1,48 @@
+---
+source_url: https://docs.wandb.ai/models/ref/cli/wandb-job/wandb-job-list
+---
+
+[W&B Models](/models/ref)
+
+[Command Line Interface (CLI)](/models/ref/cli)
+
+[wandb job](/models/ref/cli/wandb-job)
+
+# wandb job list
+
+## 
+
+​
+
+Usage
+    
+    
+    list [OPTIONS]
+    
+
+## 
+
+​
+
+Description
+
+List jobs in a project.
+
+## 
+
+​
+
+Options
+
+Flag| Type| Description  
+---|---|---  
+`--project, -p`| STR| The project you want to list jobs from. **Default** : None  
+`--entity, -e`| STR| The entity the jobs belong to. **Default** : models  
+  
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/cli/wandb-job/wandb-job-list.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/cli/wandb-job/wandb-job-list)
+
+[wandb job describePrevious](/models/ref/cli/wandb-job/wandb-job-describe)[wandb loginNext](/models/ref/cli/wandb-login)
+
+⌘I

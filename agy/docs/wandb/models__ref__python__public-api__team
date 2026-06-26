@@ -1,0 +1,110 @@
+---
+source_url: https://docs.wandb.ai/models/ref/python/public-api/team
+---
+
+[W&B Models](/models/ref)
+
+[Python](/models/ref/sdk-coding-cheat-sheet)
+
+[Public API](/models/ref/python/public-api)
+
+# Team
+
+## 
+
+​
+
+`class` `Team`
+
+A class that represents a W&B team. This class provides methods to manage W&B teams, including creating teams, inviting members, and managing service accounts. It inherits from Attrs to handle team attributes.
+
+### 
+
+​
+
+`method` `Team.__init__`
+    
+    
+    __init__(
+        service_api: 'ServiceApi',
+        name: 'str',
+        attrs: 'Mapping[str, Any] | None' = None
+    )
+    
+
+**Args:**
+
+  * `service_api`: The service API instance to use for querying W&B.
+  * `name` (str): The name of the team
+  * `attrs` (dict): Optional dictionary of team attributes
+
+**Note:**
+
+> Team management requires appropriate permissions.
+
+* * *
+
+### 
+
+​
+
+`classmethod` `Team.create`
+    
+    
+    create(api: 'Api', team: 'str', admin_username: 'str | None' = None) → Team
+    
+
+Create a new team. **Args:**
+
+  * `api`: (`Api`) The api instance to use
+  * `team`: (str) The name of the team
+  * `admin_username`: (str) optional username of the admin user of the team, defaults to the current user.
+
+**Returns:** A `Team` object
+
+* * *
+
+### 
+
+​
+
+`method` `Team.create_service_account`
+    
+    
+    create_service_account(description: 'str') → Member | None
+    
+
+Create a service account for the team. **Args:**
+
+  * `description`: (str) A description for this service account
+
+**Returns:** The service account `Member` object, or None on failure
+
+* * *
+
+### 
+
+​
+
+`method` `Team.invite`
+    
+    
+    invite(username_or_email: 'str', admin: 'bool' = False) → bool
+    
+
+Invite a user to a team. **Args:**
+
+  * `username_or_email`: (str) The username or email address of the user you want to invite.
+  * `admin`: (bool) Whether to make this user a team admin. Defaults to `False`.
+
+**Returns:** `True` on success, `False` if user was already invited or didn’t exist.
+
+* * *
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/models/ref/python/public-api/team.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /models/ref/python/public-api/team)
+
+[SweepsPrevious](/models/ref/python/public-api/sweeps)[UserNext](/models/ref/python/public-api/user)
+
+⌘I

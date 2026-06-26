@@ -1,0 +1,197 @@
+---
+source_url: https://docs.wandb.ai/weave/reference/service-api/evaluation-runs/evaluation-run-read
+---
+
+Evaluation Run Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/evaluation_runs/{evaluation_run_id} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "evaluation_run_id": "<string>",
+      "evaluation": "<string>",
+      "model": "<string>",
+      "status": "<string>",
+      "started_at": "2023-11-07T05:31:56Z",
+      "finished_at": "2023-11-07T05:31:56Z",
+      "summary": {},
+      "source_evaluation_run_id": "<string>"
+    }
+
+[W&B Weave](/weave/reference)
+
+[Service API](/weave/cookbooks/weave_via_service_api)
+
+[Evaluation Runs](/weave/reference/service-api/evaluation-runs/evaluation-run-list)
+
+# Evaluation Run Read
+
+Read an evaluation run.
+
+GET
+
+/
+
+v2
+
+/
+
+{entity}
+
+/
+
+{project}
+
+/
+
+evaluation_runs
+
+/
+
+{evaluation_run_id}
+
+Evaluation Run Read
+    
+    
+    curl --request GET \
+      --url https://api.example.com/v2/{entity}/{project}/evaluation_runs/{evaluation_run_id} \
+      --header 'Authorization: Basic <encoded-value>'
+    
+    
+    {
+      "evaluation_run_id": "<string>",
+      "evaluation": "<string>",
+      "model": "<string>",
+      "status": "<string>",
+      "started_at": "2023-11-07T05:31:56Z",
+      "finished_at": "2023-11-07T05:31:56Z",
+      "summary": {},
+      "source_evaluation_run_id": "<string>"
+    }
+
+#### Authorizations
+
+HTTPBasicHTTPBearerHTTPBasicHTTPBearer
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Basic authentication header of the form `Basic <encoded-value>`, where `<encoded-value>` is the base64-encoded string `username:password`.
+
+#### Path Parameters
+
+​
+
+entity
+
+string
+
+required
+
+​
+
+project
+
+string
+
+required
+
+​
+
+evaluation_run_id
+
+string
+
+required
+
+#### Response
+
+Successful Response
+
+​
+
+evaluation_run_id
+
+string
+
+required
+
+The evaluation run ID
+
+​
+
+evaluation
+
+string
+
+required
+
+Reference to the evaluation (weave:// URI)
+
+​
+
+model
+
+string
+
+required
+
+Reference to the model (weave:// URI)
+
+​
+
+status
+
+string | null
+
+Status of the evaluation run
+
+​
+
+started_at
+
+string<date-time> | null
+
+When the evaluation run started
+
+​
+
+finished_at
+
+string<date-time> | null
+
+When the evaluation run finished
+
+​
+
+summary
+
+Summary · object
+
+Summary data for the evaluation run
+
+​
+
+source_evaluation_run_id
+
+string | null
+
+Source evaluation run ID if this run was created by rescoring
+
+Was this page helpful?
+
+[Suggest edits](https://github.com/wandb/docs/edit/main/weave/reference/service-api/evaluation-runs/evaluation-run-read.mdx)[Raise issue](https://github.com/wandb/docs/issues/new?title=Issue on docs&body=Path: /weave/reference/service-api/evaluation-runs/evaluation-run-read)
+
+[Evaluation Run DeletePrevious](/weave/reference/service-api/evaluation-runs/evaluation-run-delete)[Evaluation Run FinishNext](/weave/reference/service-api/evaluation-runs/evaluation-run-finish)
+
+⌘I
