@@ -2093,7 +2093,7 @@ For complete OBB documentation including:
 
 ## 📊 **Benchmarking & Strict COCO Evaluation**
 
-We provide a dedicated evaluation and benchmarking module to assess model variants (e.g., comparing standard DINOv3 with our Satellite-pretrained backbone) using standardized COCO metrics via `pycocotools`.
+We provide a dedicated evaluation and benchmarking module to assess model variants (e.g., comparing standard DINOv3 with our Satellite-pretrained backbone) using standardized COCO metrics via `pycocotools` with optional Sliced-Aided Hyper Inference (SAHI) and automated Weights & Biases (W&B) API synchronization.
 
 ### 1. Unified Configuration (`config.py`)
 
@@ -2118,33 +2118,43 @@ print("Best Sweep Configuration:", best_config)
 
 ### 2. Run Strict COCO Evaluation (`coco_evaluate.py`)
 
-This script parses the dataset YAML, auto-generates a valid COCO format Ground Truth JSON for the target split (e.g., `val`), maps prediction bounding boxes to those integer IDs, and runs strict `COCOeval` to compute standardized AP/AR metrics.
+This script parses the dataset YAML, auto-generates a valid COCO format Ground Truth JSON with folder path hash isolation, maps prediction bounding boxes to those integer IDs, and runs strict `COCOeval` to compute standardized AP/AR metrics. It supports both standard inference and Sliced-Aided Hyper Inference (SAHI) for high-resolution aerial datasets.
 
-**Command Example:**
+**Command Example (Standard Evaluation):**
 ```bash
 # Evaluate a trained YOLOv12s with standard DINOv3 (vitb16)
 pixi run python coco_evaluate.py \
     --model runs/detect/train_standard_seed_1/weights/best.pt \
-    --data data.yaml \
+    --data DOTAv1.yaml \
     --split val \
     --name yolov12s_standard_seed_1 \
     --device 0
+```
 
-# Evaluate a trained YOLOv12s with DINOv3 Satellite (vitl16_sat493m)
+**Command Example (SAHI Sliced Evaluation):**
+```bash
+# Evaluate with SAHI tiled inference (512x512 windows with 20% overlap)
 pixi run python coco_evaluate.py \
     --model runs/detect/train_satellite_seed_1/weights/best.pt \
-    --data data.yaml \
+    --data DOTAv1.yaml \
     --split val \
     --name yolov12s_satellite_seed_1 \
-    --device 0
+    --device 0 \
+    --sahi \
+    --slice-height 512 \
+    --slice-width 512 \
+    --overlap-height-ratio 0.2 \
+    --overlap-width-ratio 0.2 \
+    --postprocess-match-threshold 0.5
 ```
 
 The script will:
-* Save a COCO Ground Truth JSON file at `results/coco_gt_val.json`.
-* Run prediction on the split with `conf=0.001` (COCO standard) and map coordinates.
-* Run `pycocotools` COCOeval box metrics (mAP@0.5:0.95, AP50, AP75, Scale-wise AP, Recall metrics).
-* Output a results JSON matching `{run_name}_coco_metrics.json` inside the `results/` folder.
-* Automatically clear the GPU cache after every run to avoid memory leaks in loop execution.
+* **Isolate Ground Truth Caches**: Automatically hashes the absolute split path to build a unique cache file `results/coco_gt_{split}_{path_hash}.json` (or with fraction: `coco_gt_{split}_{path_hash}_frac_{fraction}.json`), preventing split cross-contamination.
+* **Support Sliced Inference**: If `--sahi` is enabled, runs tiled inference using `sahi` and combines predictions using GreedyNMM/IOS.
+* **Run pycocotools**: Calculates COCOeval box metrics (mAP@0.5:0.95, AP50, AP75, Scale-wise AP, Recall metrics).
+* **Output Results**: Saves metrics inside the `results/` folder under `{run_name}_coco_metrics.json`.
+* **Sync with W&B**: Connects to the W&B API, locates the active/completed run matching `--name`, and logs the strict COCO evaluation metrics directly to its summary dashboard.
+* **GPU Memory Management**: Clears the GPU VRAM cache automatically after completion.
 
 #### 🧪 Dataset Fractioning for Smoketests (`--fraction`)
 
@@ -2163,7 +2173,7 @@ Both training and evaluation scripts support a `--fraction` parameter to facilit
    ```
 
 2. **Evaluation Smoketest (`coco_evaluate.py`)**:
-   Pass `--fraction <float>` to evaluate the checkpoint on a deterministic, random subset (using seed `42` for reproducibility) of the target validation/test split. This generates a dedicated ground truth file named `coco_gt_{split}_frac_{fraction}.json` (avoiding penalties for missing predictions on excluded images) and runs inference only on the sampled images to maximize execution speed.
+   Pass `--fraction <float>` to evaluate the checkpoint on a deterministic, random subset (using seed `42` for reproducibility) of the target validation/test split. This generates a dedicated ground truth file named `coco_gt_{split}_{path_hash}_frac_{fraction}.json` (avoiding penalties for missing predictions on excluded images) and runs inference only on the sampled images to maximize execution speed.
    
    ```bash
    pixi run python coco_evaluate.py \
@@ -2178,18 +2188,22 @@ Both training and evaluation scripts support a `--fraction` parameter to facilit
 
 ### 3. Aggregate & Plot Results (`plot_results.py`)
 
-Once you have run evaluation across multiple models and/or multiple seeds (e.g. `_seed_1`, `_seed_2`, etc.), you can group results, calculate **Mean ± Standard Deviation** statistics, and generate publication-quality plots.
+Once you have run evaluation across multiple models and seeds (e.g., `_seed_42`, `_seed_100`, `_seed_999`), you can aggregate results, compute **Mean ± Standard Error of the Mean (SEM)** or **Mean ± Standard Deviation (SD)**, and generate publication-quality charts.
 
 **Command Example:**
 ```bash
-pixi run python plot_results.py --results-dir results --output-dir results
+# Aggregate metrics and generate plots using SEM (default) for error bars
+pixi run python plot_results.py --results-dir results --output-dir results --error-metric sem
+
+# Or aggregate metrics using Standard Deviation (SD)
+pixi run python plot_results.py --results-dir results --output-dir results --error-metric std
 ```
 
-This will automatically scan the `results` folder, parse all `*_coco_metrics.json` files, and generate:
-* **`ap_metrics_comparison.png`**: AP, AP50, and AP75 side-by-side grouped comparison.
+This will scan the `results` folder, parse all `*_coco_metrics.json` files, and generate:
+* **`ap_metrics_comparison.png`**: AP, AP50, and AP75 side-by-side grouped comparison charts with error bars.
 * **`ap_scale_comparison.png`**: Scale-wise comparison showing AP Small, AP Medium, and AP Large.
 * **`ar_metrics_comparison.png`**: Recall metrics comparison (AR@1, AR@10, AR@100).
-* **`ap_seed_distribution.png`**: Swarm plot overlaying a box plot showing the exact distribution and variance of `mAP@0.50:0.95` across different seeds/runs.
+* **`ap_seed_distribution.png`**: Jittered stripplot overlaying box plots displaying the exact distribution and stability of `mAP@0.50:0.95` across different seeds.
 * **`benchmark_summary.md`**: A markdown file containing a formatted table of all 12 metrics:
 
 | Model Variant | Runs | mAP@0.50:0.95 | mAP@0.50 | mAP@0.75 | AP (Small) | AP (Medium) | AP (Large) | AR@100 |
@@ -2200,34 +2214,32 @@ This will automatically scan the `results` folder, parse all `*_coco_metrics.jso
 
 ### 4. Benchmark Example: Web vs. Satellite DINOv3 ViT-L
 
-We provide an automated orchestrator script, `run_benchmark.py`, that manages the end-to-end evaluation pipeline. It trains and evaluates YOLOv12s with standard DINOv3 ViT-L (`vitl16`) and YOLOv12s with DINOv3 ViT-L Satellite (`vitl16_sat493m`) across three seeds (default: `42, 100, 999`), handles Weights & Biases (W&B) logging configuration, performs strict `pycocotools` evaluations, and triggers plotting automatically.
+We provide an automated orchestrator script, `run_benchmark.py`, that manages the end-to-end evaluation pipeline. It trains and evaluates YOLOv12s with standard DINOv3 ViT-L (`vitl16`) and YOLOv12s with DINOv3 ViT-L Satellite (`vitl16_sat493m`) across three seeds (default: `42, 100, 999`), handles Weights & Biases (W&B) logging configuration, performs strict `pycocotools` evaluations (with optional SAHI), and triggers plotting automatically.
 
 #### 🧪 Step A: Run a Preliminary Smoketest
 
 To ensure your environment, dataset loaders, Hugging Face weight cache, and W&B API logins are fully configured and functional before starting long-running production tasks, execute a quick smoketest run. This uses a small dataset fraction and restricts training to 2 epochs:
 
 ```bash
-# Run a default smoketest (uses 5% dataset fraction and 2 epochs)
-pixi run benchmark --smoketest --device 0
-
-# Or customize the dataset fraction and epochs via the CLI
-pixi run benchmark --fraction 0.02 --epochs 1 --device 0
+# Run a default smoketest (uses 5% dataset fraction, 2 epochs, and SAHI evaluation)
+pixi run benchmark --smoketest --sahi --device 0
 ```
 
 #### 🚀 Step B: Run the Full Production Benchmark
 
-Once the smoketest succeeds, execute the full comparative benchmark pipeline. The script will automatically train and evaluate all 6 runs (2 models × 3 seeds) and aggregate the results:
+Once the smoketest succeeds, execute the complete comparative benchmark pipeline. You can choose whether to enable SAHI and select which error metric to calculate (`sem` vs `std`):
 
 ```bash
-# Run the complete comparison benchmark (uses 100% of dataset and production epoch limits)
-pixi run benchmark --device 0
+# Run the complete comparison benchmark with SAHI and SEM error bars (recommended)
+pixi run benchmark --sahi --error-metric sem --device 0
 ```
 
 Each run in the benchmark is:
 1. Trained via `train_yolov12_dino.py`, with W&B logging active (automatically configuring project namespaces from `BenchmarkConfig`).
-2. Evaluated on the target split (e.g. `val`) using `coco_evaluate.py` via `pycocotools` strict evaluation.
-3. Automatically cleaned up from GPU VRAM cache between runs.
-4. Aggregated and charted using `plot_results.py` once all runs finish, generating plots (`ap_metrics_comparison.png`, `ap_scale_comparison.png`, `ar_metrics_comparison.png`, `ap_seed_distribution.png`) and the summary table `benchmark_summary.md` inside your results directory.
+2. Evaluated on the target split (e.g. `val`) using `coco_evaluate.py` (with optional `--sahi` slicing arguments).
+3. Automatically updated in the W&B run summary using the W&B public API.
+4. Cleaned up from GPU VRAM cache between runs.
+5. Aggregated and charted using `plot_results.py` once all runs finish, generating plots (`ap_metrics_comparison.png`, `ap_scale_comparison.png`, `ar_metrics_comparison.png`, `ap_seed_distribution.png`) and the summary table `benchmark_summary.md` inside your results directory.
 
 #### 🌍 DINOv3 Satellite Model Integration & Recommendation Details
 

@@ -10,6 +10,8 @@ from pycocotools, saves the metrics to a JSON file, and performs GPU memory clea
 import argparse
 import json
 import sys
+import os
+import hashlib
 from pathlib import Path
 
 # Add project root to path
@@ -69,13 +71,17 @@ def generate_coco_ground_truth(data_yaml, split="val", output_dir="results", fra
     print(f"   Image folder: {img_dir}")
     print(f"   Label folder: {lbl_dir}")
 
-    # Save path for the GT JSON
+    # Save path for the GT JSON with path hash isolation to prevent split contamination
     output_dir_path = Path(output_dir)
     output_dir_path.mkdir(parents=True, exist_ok=True)
+
+    full_split_path = os.path.abspath(img_dir)
+    path_hash = hashlib.md5(full_split_path.encode("utf-8")).hexdigest()[:8]
+
     if fraction is not None:
-        gt_json_path = output_dir_path / f"coco_gt_{split}_frac_{fraction}.json"
+        gt_json_path = output_dir_path / f"coco_gt_{split}_{path_hash}_frac_{fraction}.json"
     else:
-        gt_json_path = output_dir_path / f"coco_gt_{split}.json"
+        gt_json_path = output_dir_path / f"coco_gt_{split}_{path_hash}.json"
 
     # Find image files
     img_extensions = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".webp"}
@@ -173,7 +179,20 @@ def generate_coco_ground_truth(data_yaml, split="val", output_dir="results", fra
 
 
 def run_evaluation(
-    model_path, data_yaml, split="val", run_name=None, imgsz=640, device="0", output_dir="results", fraction=None
+    model_path,
+    data_yaml,
+    split="val",
+    run_name=None,
+    imgsz=640,
+    device="0",
+    output_dir="results",
+    fraction=None,
+    sahi_enabled=False,
+    sahi_slice_height=512,
+    sahi_slice_width=512,
+    sahi_overlap_height_ratio=0.2,
+    sahi_overlap_width_ratio=0.2,
+    sahi_postprocess_match_threshold=0.5,
 ):
     """
     Run evaluation, map predictions, execute COCOeval, and save results.
@@ -198,42 +217,106 @@ def run_evaluation(
     print(f"[INFO] Loading model checkpoint: {model_path}")
     model = YOLO(model_path)
 
-    print(f"[INFO] Running inference on {split} images...")
-    # Use list of sampled filepaths if fraction is specified to save time (smoketest)
-    predict_source = [str(f) for f in img_files]
-    results = model.predict(
-        source=predict_source,
-        conf=0.001,  # Standard low threshold for COCO PR curves
-        iou=0.6,
-        imgsz=imgsz,
-        device=device,
-        verbose=False,
-        stream=True,  # Stream mode to optimize memory
-    )
-
-    # 3. Match prediction boxes to GT integer IDs
     predictions = []
-    for result in results:
-        img_name = Path(result.path).name
-        if img_name not in filename_to_id:
-            continue
-        img_id = filename_to_id[img_name]
 
-        boxes = result.boxes
-        if boxes is None or len(boxes) == 0:
-            continue
-
-        for box in boxes:
-            cls_id = int(box.cls[0].item())
-            score = float(box.conf[0].item())
-            # xyxy coordinate format: x_min, y_min, x_max, y_max
-            xyxy = box.xyxy[0].tolist()
-            w_box = xyxy[2] - xyxy[0]
-            h_box = xyxy[3] - xyxy[1]
-
-            predictions.append(
-                {"image_id": img_id, "category_id": cls_id, "bbox": [xyxy[0], xyxy[1], w_box, h_box], "score": score}
+    if sahi_enabled:
+        print(f"[INFO] Running SAHI sliced inference on {len(img_files)} images...")
+        try:
+            from sahi.predict import get_sliced_prediction
+            from sahi import AutoDetectionModel
+        except ImportError:
+            print(
+                "[ERROR] sahi library is required for SAHI evaluation. Please install it or use the Pixi environment."
             )
+            sys.exit(1)
+
+        sahi_device = device
+        if isinstance(sahi_device, int):
+            sahi_device = f"cuda:{sahi_device}"
+        elif isinstance(sahi_device, str):
+            if sahi_device.isdigit():
+                sahi_device = f"cuda:{sahi_device}"
+
+        sahi_model_type = "rtdetr" if "rtdetr" in str(model_path).lower() else "ultralytics"
+        sahi_model = AutoDetectionModel.from_pretrained(
+            model_type=sahi_model_type,
+            model=model,
+            model_path=str(model_path),
+            confidence_threshold=0.001,  # Low threshold for standard COCO PR curves
+            device=sahi_device,
+        )
+
+        for img_file in img_files:
+            img_name = img_file.name
+            if img_name not in filename_to_id:
+                continue
+            img_id = filename_to_id[img_name]
+
+            try:
+                result = get_sliced_prediction(
+                    str(img_file),
+                    sahi_model,
+                    slice_height=sahi_slice_height,
+                    slice_width=sahi_slice_width,
+                    overlap_height_ratio=sahi_overlap_height_ratio,
+                    overlap_width_ratio=sahi_overlap_width_ratio,
+                    perform_standard_pred=True,
+                    postprocess_type="GREEDYNMM",
+                    postprocess_match_metric="IOS",
+                    postprocess_match_threshold=sahi_postprocess_match_threshold,
+                    verbose=0,
+                )
+
+                for obj_pred in result.object_prediction_list:
+                    bbox = obj_pred.bbox.to_coco_bbox()
+                    cls = obj_pred.category.id
+                    score = obj_pred.score.value
+
+                    predictions.append(
+                        {"image_id": img_id, "category_id": int(cls), "bbox": bbox, "score": float(score)}
+                    )
+            except Exception as e:
+                print(f"   [WARNING] Error SAHI predicting on {img_file.name}: {e}")
+                continue
+    else:
+        print(f"[INFO] Running standard inference on {split} images...")
+        predict_source = [str(f) for f in img_files]
+        results = model.predict(
+            source=predict_source,
+            conf=0.001,  # Standard low threshold for COCO PR curves
+            iou=0.6,
+            imgsz=imgsz,
+            device=device,
+            verbose=False,
+            stream=True,  # Stream mode to optimize memory
+        )
+
+        # Match prediction boxes to GT integer IDs
+        for result in results:
+            img_name = Path(result.path).name
+            if img_name not in filename_to_id:
+                continue
+            img_id = filename_to_id[img_name]
+
+            boxes = result.boxes
+            if boxes is None or len(boxes) == 0:
+                continue
+
+            for box in boxes:
+                cls_id = int(box.cls[0].item())
+                score = float(box.conf[0].item())
+                xyxy = box.xyxy[0].tolist()
+                w_box = xyxy[2] - xyxy[0]
+                h_box = xyxy[3] - xyxy[1]
+
+                predictions.append(
+                    {
+                        "image_id": img_id,
+                        "category_id": cls_id,
+                        "bbox": [xyxy[0], xyxy[1], w_box, h_box],
+                        "score": score,
+                    }
+                )
 
     dt_json_path = output_path / f"{run_name}_predictions.json"
     with open(dt_json_path, "w") as f:
@@ -268,7 +351,6 @@ def run_evaluation(
         coco_eval.accumulate()
         coco_eval.summarize()
 
-        # Save standard COCO evaluation stats
         stats = coco_eval.stats.tolist()
         metrics = {
             "mAP_50_95": stats[0],
@@ -296,7 +378,41 @@ def run_evaluation(
 
     print(f"[SUCCESS] Saved metrics to: {metrics_json_path}")
 
-    # 5. Clear GPU Cache
+    # 5. Log strict metrics to Weights & Biases
+    try:
+        import wandb
+        from config import BenchmarkConfig
+
+        cfg = BenchmarkConfig()
+
+        # Connect to W&B API to log/update summary metrics
+        print(f"[INFO] Connecting to W&B API to log strict metrics to: {run_name}")
+        api = wandb.Api()
+        runs = api.runs(f"{cfg.wandb_entity}/{cfg.wandb_project}")
+        target_run = None
+        for r in runs:
+            if r.name == run_name:
+                target_run = r
+                break
+
+        if target_run is not None:
+            print(f"[INFO] Found active/finished run {run_name} (ID: {target_run.id}). Updating W&B summary...")
+            for k, v in metrics.items():
+                target_run.summary[f"metrics/{k}"] = v
+            target_run.update()
+            print("[SUCCESS] Successfully logged evaluation metrics to W&B via public API.")
+        else:
+            print(f"[WARNING] Run name '{run_name}' not found on W&B. Initializing a standalone evaluation logger...")
+            run = wandb.init(
+                project=cfg.wandb_project, entity=cfg.wandb_entity, name=run_name, job_type="evaluation", resume="allow"
+            )
+            wandb.log({f"metrics/{k}": v for k, v in metrics.items()})
+            run.finish()
+            print("[SUCCESS] Logged metrics to new/resumed standalone W&B run.")
+    except Exception as exc:
+        print(f"[WARNING] Failed to log strict metrics to W&B: {exc}")
+
+    # 6. Clear GPU Cache
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
         print("[INFO] Cleared GPU memory cache.")
@@ -313,10 +429,17 @@ if __name__ == "__main__":
     parser.add_argument("--imgsz", type=int, default=640, help="Image size for inference (default: 640)")
     parser.add_argument("--device", type=str, default="0", help="CUDA device or 'cpu' (default: 0)")
     parser.add_argument("--output-dir", type=str, default="results", help="Directory to save evaluation files")
-
     parser.add_argument(
         "--fraction", type=float, default=None, help="Fraction of dataset split to evaluate (smoketest)"
     )
+
+    # SAHI parameters
+    parser.add_argument("--sahi", action="store_true", help="Enable Sliced Aided Hyper Inference (SAHI) evaluation")
+    parser.add_argument("--slice-height", type=int, default=512, help="SAHI slice height")
+    parser.add_argument("--slice-width", type=int, default=512, help="SAHI slice width")
+    parser.add_argument("--overlap-height-ratio", type=float, default=0.2, help="SAHI overlap height ratio")
+    parser.add_argument("--overlap-width-ratio", type=float, default=0.2, help="SAHI overlap width ratio")
+    parser.add_argument("--postprocess-match-threshold", type=float, default=0.5, help="SAHI NMS match threshold")
 
     args = parser.parse_args()
 
@@ -329,4 +452,10 @@ if __name__ == "__main__":
         device=args.device,
         output_dir=args.output_dir,
         fraction=args.fraction,
+        sahi_enabled=args.sahi,
+        sahi_slice_height=args.slice_height,
+        sahi_slice_width=args.slice_width,
+        sahi_overlap_height_ratio=args.overlap_height_ratio,
+        sahi_overlap_width_ratio=args.overlap_width_ratio,
+        sahi_postprocess_match_threshold=args.postprocess_match_threshold,
     )

@@ -21,6 +21,13 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Aggregate and Plot COCO evaluation results")
     parser.add_argument("--results-dir", type=str, default="results", help="Directory containing metric JSON files")
     parser.add_argument("--output-dir", type=str, default="results", help="Directory to save generated plots")
+    parser.add_argument(
+        "--error-metric",
+        type=str,
+        choices=["std", "sem"],
+        default="sem",
+        help="Error bar metric: 'std' (Standard Deviation) or 'sem' (Standard Error of the Mean, default).",
+    )
     return parser.parse_args()
 
 
@@ -111,8 +118,10 @@ def main():
                 mean_val = float(group[metric].mean())
                 raw_std = group[metric].std()
                 std_val = 0.0 if bool(pd.isna(raw_std)) else float(raw_std)
+                sem_val = std_val / np.sqrt(len(group)) if len(group) > 0 else 0.0
                 model_summary[f"{metric}_mean"] = mean_val
                 model_summary[f"{metric}_std"] = std_val
+                model_summary[f"{metric}_sem"] = sem_val
         summary_data.append(model_summary)
 
     df_summary = pd.DataFrame(summary_data)
@@ -147,6 +156,7 @@ def main():
 
     ap_metrics = ["mAP_50_95", "mAP_50", "mAP_75"]
     plot_data = []
+    err_metric = args.error_metric
 
     for metric in ap_metrics:
         for idx, row in df_summary.iterrows():
@@ -157,7 +167,7 @@ def main():
                     .replace("mAP_75", "mAP@0.75"),
                     "Model Variant": row["Model Variant"],
                     "Value": row[f"{metric}_mean"],
-                    "Error": row[f"{metric}_std"],
+                    "Error": row[f"{metric}_{err_metric}"],
                 }
             )
 
@@ -208,7 +218,7 @@ def main():
                     "Metric": metric.replace("AP_", "AP "),
                     "Model Variant": row["Model Variant"],
                     "Value": row[f"{metric}_mean"],
-                    "Error": row[f"{metric}_std"],
+                    "Error": row[f"{metric}_{err_metric}"],
                 }
             )
 
@@ -254,7 +264,7 @@ def main():
                     "Metric": metric.replace("AR_", "AR@"),
                     "Model Variant": row["Model Variant"],
                     "Value": row[f"{metric}_mean"],
-                    "Error": row[f"{metric}_std"],
+                    "Error": row[f"{metric}_{err_metric}"],
                 }
             )
 
@@ -324,9 +334,8 @@ def main():
     md_lines = []
     md_lines.append("# Model Performance Benchmark Summary")
     md_lines.append("")
-    md_lines.append(
-        "This document summarizes the performance evaluation results across seeds (Mean ± Standard Deviation)."
-    )
+    err_label = "SEM" if err_metric == "sem" else "Standard Deviation"
+    md_lines.append(f"This document summarizes the performance evaluation results across seeds (Mean ± {err_label}).")
     md_lines.append("")
     md_lines.append(
         "| Model Variant | Runs | mAP@0.50:0.95 | mAP@0.50 | mAP@0.75 | AP (Small) | AP (Medium) | AP (Large) | AR@100 |"
@@ -337,13 +346,13 @@ def main():
         name = row["Model Variant"]
         runs = int(row["Runs"])
 
-        m_ap_50_95 = f"{row['mAP_50_95_mean']:.4f} ± {row['mAP_50_95_std']:.4f}"
-        m_ap_50 = f"{row['mAP_50_mean']:.4f} ± {row['mAP_50_std']:.4f}"
-        m_ap_75 = f"{row['mAP_75_mean']:.4f} ± {row['mAP_75_std']:.4f}"
-        ap_s = f"{row['AP_small_mean']:.4f} ± {row['AP_small_std']:.4f}"
-        ap_m = f"{row['AP_medium_mean']:.4f} ± {row['AP_medium_std']:.4f}"
-        ap_l = f"{row['AP_large_mean']:.4f} ± {row['AP_large_std']:.4f}"
-        ar_100 = f"{row['AR_100_mean']:.4f} ± {row['AR_100_std']:.4f}"
+        m_ap_50_95 = f"{row['mAP_50_95_mean']:.4f} ± {row[f'mAP_50_95_{err_metric}']:.4f}"
+        m_ap_50 = f"{row['mAP_50_mean']:.4f} ± {row[f'mAP_50_{err_metric}']:.4f}"
+        m_ap_75 = f"{row['mAP_75_mean']:.4f} ± {row[f'mAP_75_{err_metric}']:.4f}"
+        ap_s = f"{row['AP_small_mean']:.4f} ± {row[f'AP_small_{err_metric}']:.4f}"
+        ap_m = f"{row['AP_medium_mean']:.4f} ± {row[f'AP_medium_{err_metric}']:.4f}"
+        ap_l = f"{row['AP_large_mean']:.4f} ± {row[f'AP_large_{err_metric}']:.4f}"
+        ar_100 = f"{row['AR_100_mean']:.4f} ± {row[f'AR_100_{err_metric}']:.4f}"
 
         md_lines.append(
             f"| {name} | {runs} | {m_ap_50_95} | {m_ap_50} | {m_ap_75} | {ap_s} | {ap_m} | {ap_l} | {ar_100} |"

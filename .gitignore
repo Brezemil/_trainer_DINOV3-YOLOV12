@@ -1,3 +1,18 @@
 # pixi environments
 .pixi/*
 !.pixi/config.toml
+
+# Environments / Sensitive credentials
+.env
+.venv
+env/
+venv/
+
+# PyTorch checkpoints and training outputs
+*.pt
+*.pth
+runs/
+results/
+evaluation_results/
+__pycache__/
+

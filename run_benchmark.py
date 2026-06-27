@@ -56,6 +56,23 @@ def main():
     parser.add_argument("--split", type=str, default="val", help="Dataset split for evaluation (default: val)")
     parser.add_argument("--smoketest", action="store_true", help="Quick test run (sets fraction=0.05, epochs=2)")
 
+    # SAHI parameters
+    parser.add_argument("--sahi", action="store_true", help="Enable Sliced Aided Hyper Inference (SAHI) evaluation")
+    parser.add_argument("--slice-height", type=int, default=512, help="SAHI slice height")
+    parser.add_argument("--slice-width", type=int, default=512, help="SAHI slice width")
+    parser.add_argument("--overlap-height-ratio", type=float, default=0.2, help="SAHI overlap height ratio")
+    parser.add_argument("--overlap-width-ratio", type=float, default=0.2, help="SAHI overlap width ratio")
+    parser.add_argument("--postprocess-match-threshold", type=float, default=0.5, help="SAHI NMS match threshold")
+
+    # Error metric
+    parser.add_argument(
+        "--error-metric",
+        type=str,
+        choices=["std", "sem"],
+        default="sem",
+        help="Error bar metric: 'std' (Standard Deviation) or 'sem' (Standard Error of the Mean, default).",
+    )
+
     args = parser.parse_args()
 
     # Load unified configurations
@@ -181,6 +198,22 @@ def main():
                 "--output-dir",
                 cfg.results_dir,
             ]
+            if args.sahi:
+                eval_cmd.extend(
+                    [
+                        "--sahi",
+                        "--slice-height",
+                        str(args.slice_height),
+                        "--slice-width",
+                        str(args.slice_width),
+                        "--overlap-height-ratio",
+                        str(args.overlap_height_ratio),
+                        "--overlap-width-ratio",
+                        str(args.overlap_width_ratio),
+                        "--postprocess-match-threshold",
+                        str(args.postprocess_match_threshold),
+                    ]
+                )
 
             eval_ok = run_command(eval_cmd)
             if not eval_ok:
@@ -194,7 +227,16 @@ def main():
     print("📊 AGGREGATING RESULTS & GENERATING COMPARISONS")
     print("=" * 70)
 
-    plot_cmd = [sys.executable, "plot_results.py", "--results-dir", cfg.results_dir, "--output-dir", cfg.results_dir]
+    plot_cmd = [
+        sys.executable,
+        "plot_results.py",
+        "--results-dir",
+        cfg.results_dir,
+        "--output-dir",
+        cfg.results_dir,
+        "--error-metric",
+        args.error_metric,
+    ]
 
     plot_ok = run_command(plot_cmd)
 
