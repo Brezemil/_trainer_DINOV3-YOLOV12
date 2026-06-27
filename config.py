@@ -21,11 +21,11 @@ class BenchmarkConfig:
     # Benchmarking constraints
     seeds: List[int] = field(default_factory=lambda: [42, 100, 999])
     model_variants: List[str] = field(default_factory=lambda: ["vits16", "vitb16", "vitl16", "vitl16_sat493m"])
-    dataset_yaml: str = "DOTAv1.yaml"
-    results_dir: str = "results"
+    dataset_yaml: str = "C:/Users/emilb/_data/_smoketest/dataset.yaml"
+    results_dir: str = "results/benchmark"
 
     # Global training constraints
-    imgsz: int = 640
+    imgsz: int = 1280
     batch_size: int = 16
     epochs_sweep: int = 50
     epochs_production: int = 100

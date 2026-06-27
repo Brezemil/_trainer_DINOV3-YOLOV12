@@ -1156,6 +1156,11 @@ def main():
     args = validate_arguments(args)
     args = setup_training_parameters(args)
 
+    # Initialize random seeds early to guarantee model initialization determinism
+    from ultralytics.utils.torch_utils import init_seeds
+
+    init_seeds(args.seed, args.deterministic)
+
     if args.fraction < 1.0:
         adjusted_fraction = adjust_training_fraction_for_labels(args.data, args.fraction)
         if adjusted_fraction != args.fraction:

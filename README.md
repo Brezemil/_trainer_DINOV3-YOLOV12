@@ -2257,6 +2257,57 @@ Each run in the benchmark is:
   * **Image Size (`--imgsz`):**
     * Use at least `640`. However, for satellite tiles (e.g. `800` or `1024`), increasing `imgsz` allows DINOv3 to extract richer spatial context.
 
+#### 🧪 Step-by-Step Guide for Reproducible Scientific Benchmarking
+
+To execute a scientifically rigorous, reproducible comparative benchmark between the stock settings of **YOLOv12-DINOv3-Web** (`vitl16`) and **YOLOv12-DINOv3-Satellite** (`vitl16_sat493m`) on a custom dataset, follow these exact steps:
+
+##### Step 1: Prepare the Dataset Directory
+Organize your dataset at a target folder path (e.g. `C:/Users/emilb/_data/my_dataset`) into isolated, standard training/validation/testing splits:
+```
+C:/Users/emilb/_data/my_dataset/
+├── images/
+│   ├── train/     # Training split images
+│   ├── val/       # Validation split images
+│   └── test/      # Testing split images (held-out, unseen)
+└── labels/
+    ├── train/     # Training label files
+    ├── val/       # Validation label files
+    └── test/      # Testing label files
+```
+
+##### Step 2: Configure the Dataset YAML
+Create a `dataset.yaml` file pointing to this directory path:
+```yaml
+path: C:/Users/emilb/_data/my_dataset
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: class_0  # Replace with your actual class names
+  1: class_1
+```
+
+##### Step 3: Update config.py Defaults
+Modify [config.py](file:///C:/Users/emilb/_trainer_DINOV3-YOLOV12/config.py) to declare your dataset path and set the benchmark resolution to **1280**:
+* Set `dataset_yaml = "C:/Users/emilb/_data/my_dataset/dataset.yaml"`
+* Set `imgsz = 1280`
+
+##### Step 4: Run the Benchmark (Stock Settings)
+Run the orchestrator script [run_benchmark.py](file:///C:/Users/emilb/_trainer_DINOV3-YOLOV12/run_benchmark.py) to train and evaluate both models across the three benchmark seeds (`42`, `100`, `999`).
+* Ensure you evaluate on the `test` split.
+* Do **NOT** pass `--sahi` (keeps standard full-frame evaluation).
+* Do **NOT** pass any W&B HPO options (locks parameters to stock baselines).
+```bash
+pixi run benchmark --device 0 --split test
+```
+
+##### Step 5: Aggregate and Plot Rigorous Statistics
+To calculate the Standard Error of the Mean (SEM) for maximum scientific validity, run [plot_results.py](file:///C:/Users/emilb/_trainer_DINOV3-YOLOV12/plot_results.py) pointing to the isolated baseline results directory:
+```bash
+pixi run python plot_results.py --results-dir results/benchmark --output-dir results/benchmark --error-metric sem
+```
+This produces the formatted summary table (`results/benchmark/benchmark_summary.md`) showing **Mean ± SEM** across the independent seed iterations, alongside comparison plots.
+
 ---
 
 ## Acknowledgement

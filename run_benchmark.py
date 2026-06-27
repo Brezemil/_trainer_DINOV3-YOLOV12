@@ -53,7 +53,7 @@ def main():
     parser.add_argument("--epochs", type=int, default=None, help="Number of training epochs (overrides config)")
     parser.add_argument("--batch-size", type=int, default=None, help="Batch size for training")
     parser.add_argument("--device", type=str, default=None, help="CUDA device or 'cpu'")
-    parser.add_argument("--split", type=str, default="val", help="Dataset split for evaluation (default: val)")
+    parser.add_argument("--split", type=str, default="test", help="Dataset split for evaluation (default: test)")
     parser.add_argument("--smoketest", action="store_true", help="Quick test run (sets fraction=0.05, epochs=2)")
 
     # SAHI parameters
