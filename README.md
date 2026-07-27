@@ -2328,43 +2328,37 @@ This section outlines the optimized setup and execution commands for detecting i
   * `vitl16_sat493m` was pre-trained by Meta on **SAT-493M** (493 million satellite/aerial images), which contains optimal visual priors for top-down forestry canopy feature extraction.
 * **`dualp0p3` Injection:** Injects DINO features at both the input preprocessing level (`P0`) and the high-resolution backbone level-3 layer (`P3` at $80 \times 80$). This is highly optimized for small/medium canopy segments while remaining memory-efficient.
 
-### 🚀 Execution Command Chain (Windows CMD)
-To train both models sequentially in Windows Command Prompt, copy and run the following command chain:
+### 🚀 Option 1: Automated 3-Seed Benchmark & Evaluation (Recommended)
+You can run our updated [run_benchmark.py](file:///C:/Users/emil_brezovsky/Documents/GitHub/_trainer_DINOV3-YOLOV12/run_benchmark.py) orchestrator to automatically train both models (standard DINOv3 ViT-L vs. Satellite DINOv3 ViT-L) sequentially across **all three seeds** (42, 100, 999), perform strict COCO evaluations on the test split, and generate comparative summary charts:
+
+```cmd
+pixi run python run_benchmark.py --data dataset.yaml --yolo-size s --integration dualp0p3 --imgsz 1280 --epochs 150 --patience 30 --batch-size 8 --amp --device 0 --split test
+```
+
+### 🚀 Option 2: Direct Manual Execution Command Chain (Single Seed)
+If you want to run single-seed training manually for both models sequentially:
 
 ```cmd
 pixi run python train_yolov12_dino.py --data dataset.yaml --yolo-size s --dinoversion 3 --dino-variant vitl16 --integration dualp0p3 --imgsz 1280 --epochs 150 --patience 30 --batch-size 8 --amp --name yolov12s_dino3_vitl_dualp0p3_150e && pixi run python train_yolov12_dino.py --data dataset.yaml --yolo-size s --dinoversion 3 --dino-variant vitl16_sat493m --integration dualp0p3 --imgsz 1280 --epochs 150 --patience 30 --batch-size 8 --amp --name yolov12s_dino3_vitlsat_dualp0p3_150e
 ```
 
-If you prefer a multi-line format using the Windows CMD caret `^` line-continuation syntax, execute them as follows:
+*Note: If you run into an Out-Of-Memory (OOM) error on your 16GB GPU, reduce `--batch-size 8` to `--batch-size 4` (or `--batch-size 12` to `--batch-size 8` for Nano configurations).*
 
+### ⚙️ Benchmark Orchestrator Custom CLI Arguments
+The [run_benchmark.py](file:///C:/Users/emil_brezovsky/Documents/GitHub/_trainer_DINOV3-YOLOV12/run_benchmark.py) orchestrator supports several dynamic command line options. You can use these to customize the benchmark runs without editing the configuration files:
+
+| Argument | Type | Default | Choices | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| `--integration` | `str` | `"single"` | `["single", "dual", "triple", "dualp0p3"]` | DINOv3 model integration type. |
+| `--patience` | `int` | `30` | *Any integer* | Epoch early-stopping patience. |
+| `--amp` | `flag` | *Disabled* | `action="store_true"` | Enables Automatic Mixed Precision (AMP) for VRAM conservation. |
+| `--yolo-size` | `str` | `"s"` | `["n", "s", "m", "l", "x"]` | YOLOv12 model size variant. |
+| `--imgsz` | `int` | `1280` | *Any integer* | Training and evaluation resolution. |
+
+Example:
 ```cmd
-pixi run python train_yolov12_dino.py ^
-    --data dataset.yaml ^
-    --yolo-size s ^
-    --dinoversion 3 ^
-    --dino-variant vitl16 ^
-    --integration dualp0p3 ^
-    --imgsz 1280 ^
-    --epochs 150 ^
-    --patience 30 ^
-    --batch-size 8 ^
-    --amp ^
-    --name yolov12s_dino3_vitl_dualp0p3_150e && ^
-pixi run python train_yolov12_dino.py ^
-    --data dataset.yaml ^
-    --yolo-size s ^
-    --dinoversion 3 ^
-    --dino-variant vitl16_sat493m ^
-    --integration dualp0p3 ^
-    --imgsz 1280 ^
-    --epochs 150 ^
-    --patience 30 ^
-    --batch-size 8 ^
-    --amp ^
-    --name yolov12s_dino3_vitlsat_dualp0p3_150e
+pixi run python run_benchmark.py --data dataset.yaml --yolo-size n --integration dualp0p3 --imgsz 1280 --epochs 150 --patience 30 --batch-size 12 --amp
 ```
-
-*Note: If you run into an Out-Of-Memory (OOM) error on your 16GB GPU, modify `--batch-size 8` to `--batch-size 4`.*
 
 ---
 

@@ -73,6 +73,21 @@ def main():
         help="Error bar metric: 'std' (Standard Deviation) or 'sem' (Standard Error of the Mean, default).",
     )
 
+    # DINO custom arguments
+    parser.add_argument(
+        "--integration",
+        type=str,
+        default="single",
+        choices=["single", "dual", "triple", "dualp0p3"],
+        help="DINOv3 integration type (default: single)",
+    )
+    parser.add_argument("--patience", type=int, default=30, help="Early stopping patience (default: 30)")
+    parser.add_argument("--amp", action="store_true", help="Enable Automatic Mixed Precision (AMP) training")
+    parser.add_argument(
+        "--yolo-size", type=str, default="s", choices=["n", "s", "m", "l", "x"], help="YOLOv12 size variant (default: s)"
+    )
+    parser.add_argument("--imgsz", type=int, default=1280, help="Image size (default: 1280)")
+
     args = parser.parse_args()
 
     # Load unified configurations
@@ -127,7 +142,7 @@ def main():
     for variant in variants:
         variant_display = "DINOv3-Web (vitl16)" if variant == "vitl16" else "DINOv3-Sat (vitl16_sat493m)"
         for seed in cfg.seeds:
-            run_name = f"yolov12s_dino3_{variant}_seed_{seed}"
+            run_name = f"yolov12{args.yolo_size}_dino3_{variant}_seed_{seed}"
             if fraction < 1.0:
                 run_name += f"_frac_{fraction}"
 
@@ -142,13 +157,13 @@ def main():
                 "--data",
                 dataset_yaml,
                 "--yolo-size",
-                "s",
+                args.yolo_size,
                 "--dinoversion",
                 "3",
                 "--dino-variant",
                 variant,
                 "--integration",
-                "single",
+                args.integration,
                 "--epochs",
                 str(epochs),
                 "--batch-size",
@@ -161,7 +176,13 @@ def main():
                 run_name,
                 "--fraction",
                 str(fraction),
+                "--imgsz",
+                str(args.imgsz),
+                "--patience",
+                str(args.patience),
             ]
+            if args.amp:
+                train_cmd.append("--amp")
 
             train_ok = run_command(train_cmd, env=wandb_env)
             if not train_ok:
