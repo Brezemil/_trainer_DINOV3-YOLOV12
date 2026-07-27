@@ -4,14 +4,15 @@ Simple YOLOv12-DINO Streamlit Object Detection App
 A simplified version with better compatibility across Streamlit versions.
 """
 
-import streamlit as st
-import cv2
-import numpy as np
-from pathlib import Path
-import tempfile
 import os
 import sys
+import tempfile
 import time
+from pathlib import Path
+
+import cv2
+import numpy as np
+import streamlit as st
 from PIL import Image
 
 # Add the current directory to the Python path
@@ -58,7 +59,7 @@ def load_model(weights_path: str, device: str = "cpu"):
         return True, model_info
 
     except Exception as e:
-        return False, f"❌ Error loading model: {str(e)}"
+        return False, f"❌ Error loading model: {e!s}"
 
 
 def perform_detection(image_np, conf_threshold, iou_threshold, image_size):
@@ -108,7 +109,7 @@ def perform_detection(image_np, conf_threshold, iou_threshold, image_size):
                 os.unlink(tmp_path)
 
     except Exception as e:
-        return None, f"❌ Error during detection: {str(e)}"
+        return None, f"❌ Error during detection: {e!s}"
 
 
 def generate_summary(result, inference_time):
@@ -239,7 +240,7 @@ def main():
                         st.error("❌ Please load a model first")
 
             except Exception as e:
-                st.error(f"❌ Error loading image: {str(e)}")
+                st.error(f"❌ Error loading image: {e!s}")
 
     with col2:
         st.header("🎯 Detection Results")

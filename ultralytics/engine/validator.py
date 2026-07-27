@@ -288,15 +288,12 @@ class BaseValidator:
 
     def init_metrics(self, model):
         """Initialize performance metrics for the YOLO model."""
-        pass
 
     def update_metrics(self, preds, batch):
         """Updates metrics based on predictions and batch."""
-        pass
 
     def finalize_metrics(self, *args, **kwargs):
         """Finalizes and returns all metrics."""
-        pass
 
     def get_stats(self):
         """Returns statistics about the model's performance."""
@@ -304,15 +301,12 @@ class BaseValidator:
 
     def check_stats(self, stats):
         """Checks statistics."""
-        pass
 
     def print_results(self):
         """Prints the results of the model's predictions."""
-        pass
 
     def get_desc(self):
         """Get description of the YOLO model."""
-        pass
 
     @property
     def metric_keys(self):
@@ -326,16 +320,12 @@ class BaseValidator:
     # TODO: may need to put these following functions into callback
     def plot_val_samples(self, batch, ni):
         """Plots validation samples during training."""
-        pass
 
     def plot_predictions(self, batch, preds, ni):
         """Plots YOLO model predictions on batch images."""
-        pass
 
     def pred_to_json(self, preds, batch):
         """Convert predictions to JSON format."""
-        pass
 
     def eval_json(self, stats):
         """Evaluate and return JSON format of prediction statistics."""
-        pass

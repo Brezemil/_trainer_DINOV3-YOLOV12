@@ -239,17 +239,7 @@ def check_version(
         if not op:
             op = ">="  # assume >= if no op passed
         v = parse_version(version)  # '1.2.3' -> (1, 2, 3)
-        if op == "==" and c != v:
-            result = False
-        elif op == "!=" and c == v:
-            result = False
-        elif op == ">=" and not (c >= v):
-            result = False
-        elif op == "<=" and not (c <= v):
-            result = False
-        elif op == ">" and not (c > v):
-            result = False
-        elif op == "<" and not (c < v):
+        if op == "==" and c != v or op == "!=" and c == v or op == ">=" and not (c >= v) or op == "<=" and not (c <= v) or op == ">" and not (c > v) or op == "<" and not (c < v):
             result = False
     if not result:
         warning = f"WARNING ⚠️ {name}{op}{version} is required, but {name}=={current} is currently installed {msg}"

@@ -318,8 +318,8 @@ class DetectionValidator(BaseValidator):
                     assert x.is_file(), f"{x} file not found"
                 check_requirements("pycocotools>=2.0.6" if self.is_coco else "lvis>=0.5.3")
                 if self.is_coco:
-                    from pycocotools.coco import COCO  # noqa
-                    from pycocotools.cocoeval import COCOeval  # noqa
+                    from pycocotools.coco import COCO
+                    from pycocotools.cocoeval import COCOeval
 
                     anno = COCO(str(anno_json))  # init annotations api
                     pred = anno.loadRes(str(pred_json))  # init predictions api (must pass string, not Path)

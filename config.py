@@ -8,7 +8,7 @@ It also includes a utility method to query the W&B API for the best sweep config
 """
 
 from dataclasses import dataclass, field
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 
 @dataclass
@@ -21,7 +21,7 @@ class BenchmarkConfig:
     # Benchmarking constraints
     seeds: List[int] = field(default_factory=lambda: [42, 100, 999])
     model_variants: List[str] = field(default_factory=lambda: ["vits16", "vitb16", "vitl16", "vitl16_sat493m"])
-    dataset_yaml: str = "C:/Users/emilb/_data/_smoketest/dataset.yaml"
+    dataset_yaml: str = "C:/Users/emil_brezovsky/Documents/GitHub/_dataset_ail/dataset.yaml"
     results_dir: str = "results/benchmark"
 
     # Global training constraints

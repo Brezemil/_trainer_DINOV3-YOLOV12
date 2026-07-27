@@ -3,10 +3,12 @@
 Proper checkpoint resuming for DINO-YOLO models
 """
 
-import torch
-from ultralytics import YOLO
 import sys
 from pathlib import Path
+
+import torch
+
+from ultralytics import YOLO
 
 
 def analyze_checkpoint_architecture(checkpoint_path):

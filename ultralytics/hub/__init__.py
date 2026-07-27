@@ -9,17 +9,17 @@ from ultralytics.hub.utils import HUB_API_ROOT, HUB_WEB_ROOT, PREFIX, events
 from ultralytics.utils import LOGGER, SETTINGS, checks
 
 __all__ = (
-    "PREFIX",
     "HUB_WEB_ROOT",
+    "PREFIX",
     "HUBTrainingSession",
-    "login",
-    "logout",
-    "reset_model",
+    "check_dataset",
+    "events",
     "export_fmts_hub",
     "export_model",
     "get_export",
-    "check_dataset",
-    "events",
+    "login",
+    "logout",
+    "reset_model",
 )
 
 

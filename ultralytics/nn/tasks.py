@@ -9,7 +9,7 @@ from pathlib import Path
 
 import thop
 import torch
-import torch.nn as nn
+from torch import nn
 
 from ultralytics.nn.modules import (
     AIFI,
@@ -24,6 +24,7 @@ from ultralytics.nn.modules import (
     SPP,
     SPPELAN,
     SPPF,
+    A2C2f,
     AConv,
     ADown,
     Bottleneck,
@@ -43,6 +44,8 @@ from ultralytics.nn.modules import (
     Conv2,
     ConvTranspose,
     Detect,
+    DINO3Backbone,
+    DINO3Preprocessor,
     DWConv,
     DWConvTranspose2d,
     Focus,
@@ -64,9 +67,6 @@ from ultralytics.nn.modules import (
     TorchVision,
     WorldDetect,
     v10Detect,
-    A2C2f,
-    DINO3Backbone,
-    DINO3Preprocessor,
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -762,11 +762,9 @@ class SafeClass:
 
     def __init__(self, *args, **kwargs):
         """Initialize SafeClass instance, ignoring all arguments."""
-        pass
 
     def __call__(self, *args, **kwargs):
         """Run SafeClass instance, ignoring all arguments."""
-        pass
 
 
 class SafeUnpickler(pickle.Unpickler):
@@ -1079,7 +1077,7 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
         m_.np = sum(x.numel() for x in m_.parameters())  # number params
         m_.i, m_.f, m_.type = i, f, t  # attach index, 'from' index, type
         if verbose:
-            LOGGER.info(f"{i:>3}{str(f):>20}{n_:>3}{m_.np:10.0f}  {t:<45}{str(args):<30}")  # print
+            LOGGER.info(f"{i:>3}{f!s:>20}{n_:>3}{m_.np:10.0f}  {t:<45}{args!s:<30}")  # print
         save.extend(x % i for x in ([f] if isinstance(f, int) else f) if x != -1 and i != 0)  # append to savelist
         layers.append(m_)
         if i == 0:

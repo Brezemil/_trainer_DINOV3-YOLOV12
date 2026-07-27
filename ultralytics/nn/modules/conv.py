@@ -5,23 +5,23 @@ import math
 
 import numpy as np
 import torch
-import torch.nn as nn
+from torch import nn
 
 __all__ = (
+    "CBAM",
+    "ChannelAttention",
+    "Concat",
     "Conv",
     "Conv2",
-    "LightConv",
+    "ConvTranspose",
     "DWConv",
     "DWConvTranspose2d",
-    "ConvTranspose",
     "Focus",
     "GhostConv",
-    "ChannelAttention",
-    "SpatialAttention",
-    "CBAM",
-    "Concat",
-    "RepConv",
     "Index",
+    "LightConv",
+    "RepConv",
+    "SpatialAttention",
 )
 
 

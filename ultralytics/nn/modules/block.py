@@ -4,8 +4,8 @@
 import warnings
 
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
+from torch import nn
 
 from ultralytics.utils.torch_utils import fuse_conv_and_bn
 
@@ -60,46 +60,46 @@ def deterministic_interpolate(input_tensor, size, mode="bilinear", align_corners
 
 
 __all__ = (
-    "DFL",
-    "HGBlock",
-    "HGStem",
-    "SPP",
-    "SPPF",
     "C1",
     "C2",
+    "C2PSA",
     "C3",
-    "C2f",
-    "C2fAttn",
-    "ImagePoolingAttn",
-    "ContrastiveHead",
-    "BNContrastiveHead",
-    "C3x",
     "C3TR",
-    "C3Ghost",
-    "GhostBottleneck",
+    "CIB",
+    "DFL",
+    "ELAN1",
+    "PSA",
+    "SPP",
+    "SPPELAN",
+    "SPPF",
+    "AConv",
+    "ADown",
+    "Attention",
+    "BNContrastiveHead",
     "Bottleneck",
     "BottleneckCSP",
-    "Proto",
-    "RepC3",
-    "ResNetLayer",
-    "RepNCSPELAN4",
-    "ELAN1",
-    "ADown",
-    "AConv",
-    "SPPELAN",
+    "C2f",
+    "C2fAttn",
+    "C2fCIB",
+    "C2fPSA",
+    "C3Ghost",
+    "C3k2",
+    "C3x",
     "CBFuse",
     "CBLinear",
-    "C3k2",
-    "C2fPSA",
-    "C2PSA",
+    "ContrastiveHead",
+    "DINO3Backbone",
+    "GhostBottleneck",
+    "HGBlock",
+    "HGStem",
+    "ImagePoolingAttn",
+    "Proto",
+    "RepC3",
+    "RepNCSPELAN4",
     "RepVGGDW",
-    "CIB",
-    "C2fCIB",
-    "Attention",
-    "PSA",
+    "ResNetLayer",
     "SCDown",
     "TorchVision",
-    "DINO3Backbone",
 )
 
 
@@ -1402,7 +1402,7 @@ class A2C2f(nn.Module):
         self.cv2 = Conv((1 + n) * c_, c2, 1)  # optional act=FReLU(c2)
 
         init_values = 0.01  # or smaller
-        self.gamma = nn.Parameter(init_values * torch.ones((c2)), requires_grad=True) if a2 and residual else None
+        self.gamma = nn.Parameter(init_values * torch.ones(c2), requires_grad=True) if a2 and residual else None
 
         self.m = nn.ModuleList(
             nn.Sequential(*(ABlock(c_, num_heads, mlp_ratio, area) for _ in range(2)))
@@ -2077,7 +2077,7 @@ class DINO3Backbone(nn.Module):
 
     def _create_minimal_wrapper(self, state_dict, embed_dim):
         """Create minimal model wrapper for custom weights."""
-        import torch.nn as nn
+        from torch import nn
 
         class CustomDINOWrapper(nn.Module):
             def __init__(self, embed_dim):

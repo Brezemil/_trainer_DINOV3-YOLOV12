@@ -73,6 +73,28 @@ import sys
 import warnings
 from pathlib import Path
 
+
+def load_env():
+    """Load environment variables from local .env file if it exists."""
+    os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+    env_path = Path(__file__).resolve().parent / ".env"
+    if env_path.exists():
+        with open(env_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if "=" in line:
+                    key, value = line.split("=", 1)
+                    key = key.strip()
+                    value = value.strip().strip("'\"")
+                    os.environ[key] = value
+                    if key == "HF_TOKEN" and "HUGGINGFACE_HUB_TOKEN" not in os.environ:
+                        os.environ["HUGGINGFACE_HUB_TOKEN"] = value
+
+
+load_env()
+
 import torch
 
 # Add ultralytics to path
@@ -885,7 +907,7 @@ def modify_yaml_config_for_custom_dino(config_path, dino_input, yolo_size="s", u
                     if len(layer) >= 4 and isinstance(layer[3], list) and len(layer[3]) > 0:
                         if layer[3][0] == "DINO_MODEL_NAME":
                             if os.path.exists(str(dino_input)):
-                                config["backbone"][i][3][0] = f"'{str(dino_input)}'"
+                                config["backbone"][i][3][0] = f"'{dino_input!s}'"
                             else:
                                 config["backbone"][i][3][0] = str(dino_input)
                             # Set freeze_backbone parameter (inverted logic: unfreeze_dino=True means freeze_backbone=False)
@@ -922,7 +944,7 @@ def modify_yaml_config_for_custom_dino(config_path, dino_input, yolo_size="s", u
                     # Handle CUSTOM_DINO_INPUT replacement
                     if len(layer[3]) > 0 and layer[3][0] == "CUSTOM_DINO_INPUT":
                         if os.path.exists(str(dino_input)):
-                            config["backbone"][i][3][0] = f"'{str(dino_input)}'"
+                            config["backbone"][i][3][0] = f"'{dino_input!s}'"
                         else:
                             config["backbone"][i][3][0] = str(dino_input)
                         # Set freeze_backbone parameter (inverted logic: unfreeze_dino=True means freeze_backbone=False)
@@ -951,7 +973,7 @@ def modify_yaml_config_for_custom_dino(config_path, dino_input, yolo_size="s", u
                         # Ensure the dino_input is treated as a string in YAML - use quotes for paths
                         if os.path.exists(str(dino_input)):
                             # For file paths, wrap in quotes to ensure proper YAML parsing
-                            config["backbone"][i][3][0] = f"'{str(dino_input)}'"
+                            config["backbone"][i][3][0] = f"'{dino_input!s}'"
                         else:
                             config["backbone"][i][3][0] = str(dino_input)
 

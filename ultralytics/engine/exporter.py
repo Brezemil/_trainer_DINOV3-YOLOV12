@@ -490,7 +490,7 @@ class Exporter:
         if self.args.simplify:
             requirements += ["onnxslim", "onnxruntime" + ("-gpu" if torch.cuda.is_available() else "")]
         check_requirements(requirements)
-        import onnx  # noqa
+        import onnx
 
         opset_version = self.args.opset or get_latest_opset()
         LOGGER.info(f"\n{prefix} starting export with onnx {onnx.__version__} opset {opset_version}...")
@@ -616,8 +616,8 @@ class Exporter:
     def export_paddle(self, prefix=colorstr("PaddlePaddle:")):
         """YOLO Paddle export."""
         check_requirements(("paddlepaddle-gpu" if torch.cuda.is_available() else "paddlepaddle", "x2paddle"))
-        import x2paddle  # noqa
-        from x2paddle.convert import pytorch2paddle  # noqa
+        import x2paddle
+        from x2paddle.convert import pytorch2paddle
 
         LOGGER.info(f"\n{prefix} starting export with X2Paddle {x2paddle.__version__}...")
         f = str(self.file).replace(self.file.suffix, f"_paddle_model{os.sep}")
@@ -632,7 +632,7 @@ class Exporter:
         f_onnx, _ = self.export_onnx()  # get onnx model first
 
         check_requirements("MNN>=2.9.6")
-        import MNN  # noqa
+        import MNN
         from MNN.tools import mnnconvert
 
         # Setup and checks
@@ -655,7 +655,7 @@ class Exporter:
     def export_ncnn(self, prefix=colorstr("NCNN:")):
         """YOLO NCNN export using PNNX https://github.com/pnnx/pnnx."""
         check_requirements("ncnn")
-        import ncnn  # noqa
+        import ncnn
 
         LOGGER.info(f"\n{prefix} starting export with NCNN {ncnn.__version__}...")
         f = Path(str(self.file).replace(self.file.suffix, f"_ncnn_model{os.sep}"))
@@ -724,7 +724,7 @@ class Exporter:
         """YOLO CoreML export."""
         mlmodel = self.args.format.lower() == "mlmodel"  # legacy *.mlmodel export format requested
         check_requirements("coremltools>=6.0,<=6.2" if mlmodel else "coremltools>=7.0")
-        import coremltools as ct  # noqa
+        import coremltools as ct
 
         LOGGER.info(f"\n{prefix} starting export with coremltools {ct.__version__}...")
         assert not WINDOWS, "CoreML export is not supported on Windows, please run on macOS or Linux."
@@ -803,11 +803,11 @@ class Exporter:
         f_onnx, _ = self.export_onnx()  # run before TRT import https://github.com/ultralytics/ultralytics/issues/7016
 
         try:
-            import tensorrt as trt  # noqa
+            import tensorrt as trt
         except ImportError:
             if LINUX:
                 check_requirements("tensorrt>7.0.0,!=10.1.0")
-            import tensorrt as trt  # noqa
+            import tensorrt as trt
         check_version(trt.__version__, ">=7.0.0", hard=True)
         check_version(trt.__version__, "!=10.1.0", msg="https://github.com/ultralytics/ultralytics/pull/14239")
 
@@ -949,12 +949,12 @@ class Exporter:
         """YOLO TensorFlow SavedModel export."""
         cuda = torch.cuda.is_available()
         try:
-            import tensorflow as tf  # noqa
+            import tensorflow as tf
         except ImportError:
             suffix = "-macos" if MACOS else "-aarch64" if ARM64 else "" if cuda else "-cpu"
             version = ">=2.0.0"
             check_requirements(f"tensorflow{suffix}{version}")
-            import tensorflow as tf  # noqa
+            import tensorflow as tf
         check_requirements(
             (
                 "keras",  # required by 'onnx2tf' package
@@ -1038,8 +1038,8 @@ class Exporter:
     @try_export
     def export_pb(self, keras_model, prefix=colorstr("TensorFlow GraphDef:")):
         """YOLO TensorFlow GraphDef *.pb export https://github.com/leimao/Frozen_Graph_TensorFlow."""
-        import tensorflow as tf  # noqa
-        from tensorflow.python.framework.convert_to_constants import convert_variables_to_constants_v2  # noqa
+        import tensorflow as tf
+        from tensorflow.python.framework.convert_to_constants import convert_variables_to_constants_v2
 
         LOGGER.info(f"\n{prefix} starting export with tensorflow {tf.__version__}...")
         f = self.file.with_suffix(".pb")
@@ -1055,7 +1055,7 @@ class Exporter:
     def export_tflite(self, keras_model, nms, agnostic_nms, prefix=colorstr("TensorFlow Lite:")):
         """YOLO TensorFlow Lite export."""
         # BUG https://github.com/ultralytics/ultralytics/issues/13436
-        import tensorflow as tf  # noqa
+        import tensorflow as tf
 
         LOGGER.info(f"\n{prefix} starting export with tensorflow {tf.__version__}...")
         saved_model = Path(str(self.file).replace(self.file.suffix, "_saved_model"))
@@ -1112,7 +1112,7 @@ class Exporter:
             # Fix error: `np.object` was a deprecated alias for the builtin `object` when exporting to TF.js on ARM64
             check_requirements("numpy==1.23.5")
         import tensorflow as tf
-        import tensorflowjs as tfjs  # noqa
+        import tensorflowjs as tfjs
 
         LOGGER.info(f"\n{prefix} starting export with tensorflowjs {tfjs.__version__}...")
         f = str(self.file).replace(self.file.suffix, "_web_model")  # js dir
@@ -1282,11 +1282,11 @@ class Exporter:
 
         try:
             # TFLite Support bug https://github.com/tensorflow/tflite-support/issues/954#issuecomment-2108570845
-            from tensorflow_lite_support.metadata import metadata_schema_py_generated as schema  # noqa
-            from tensorflow_lite_support.metadata.python import metadata  # noqa
+            from tensorflow_lite_support.metadata import metadata_schema_py_generated as schema
+            from tensorflow_lite_support.metadata.python import metadata
         except ImportError:  # ARM64 systems may not have the 'tensorflow_lite_support' package available
-            from tflite_support import metadata  # noqa
-            from tflite_support import metadata_schema_py_generated as schema  # noqa
+            from tflite_support import metadata
+            from tflite_support import metadata_schema_py_generated as schema
 
         # Create model info
         model_meta = schema.ModelMetadataT()
@@ -1342,7 +1342,7 @@ class Exporter:
 
     def _pipeline_coreml(self, model, weights_dir=None, prefix=colorstr("CoreML Pipeline:")):
         """YOLO CoreML pipeline."""
-        import coremltools as ct  # noqa
+        import coremltools as ct
 
         LOGGER.info(f"{prefix} starting pipeline with coremltools {ct.__version__}...")
         _, _, h, w = list(self.im.shape)  # BCHW

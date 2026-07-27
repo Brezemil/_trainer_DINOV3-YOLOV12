@@ -74,7 +74,7 @@ MODELS = {TASK2MODEL[task] for task in TASKS}
 
 ARGV = sys.argv or ["", ""]  # sometimes sys.argv = []
 SOLUTIONS_HELP_MSG = f"""
-    Arguments received: {str(["yolo"] + ARGV[1:])}. Ultralytics 'yolo solutions' usage overview:
+    Arguments received: {["yolo"] + ARGV[1:]!s}. Ultralytics 'yolo solutions' usage overview:
 
         yolo solutions SOLUTION ARGS
 
@@ -104,7 +104,7 @@ SOLUTIONS_HELP_MSG = f"""
         yolo streamlit-predict
     """
 CLI_HELP_MSG = f"""
-    Arguments received: {str(["yolo"] + ARGV[1:])}. Ultralytics 'yolo' commands use the following syntax:
+    Arguments received: {["yolo"] + ARGV[1:]!s}. Ultralytics 'yolo' commands use the following syntax:
 
         yolo TASK MODE ARGS
 

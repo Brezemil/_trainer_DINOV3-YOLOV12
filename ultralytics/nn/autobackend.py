@@ -10,8 +10,8 @@ from pathlib import Path
 import cv2
 import numpy as np
 import torch
-import torch.nn as nn
 from PIL import Image
+from torch import nn
 
 from ultralytics.utils import ARM64, IS_JETSON, IS_RASPBERRYPI, LINUX, LOGGER, ROOT, yaml_load
 from ultralytics.utils.checks import check_requirements, check_suffix, check_version, check_yaml
@@ -263,11 +263,11 @@ class AutoBackend(nn.Module):
         elif engine:
             LOGGER.info(f"Loading {w} for TensorRT inference...")
             try:
-                import tensorrt as trt  # noqa https://developer.nvidia.com/nvidia-tensorrt-download
+                import tensorrt as trt
             except ImportError:
                 if LINUX:
                     check_requirements("tensorrt>7.0.0,!=10.1.0")
-                import tensorrt as trt  # noqa
+                import tensorrt as trt
             check_version(trt.__version__, ">=7.0.0", hard=True)
             check_version(trt.__version__, "!=10.1.0", msg="https://github.com/ultralytics/ultralytics/pull/14239")
             if device.type == "cpu":
@@ -408,7 +408,7 @@ class AutoBackend(nn.Module):
         elif paddle:
             LOGGER.info(f"Loading {w} for PaddlePaddle inference...")
             check_requirements("paddlepaddle-gpu" if cuda else "paddlepaddle")
-            import paddle.inference as pdi  # noqa
+            import paddle.inference as pdi
 
             w = Path(w)
             if not w.is_file():  # if not *.pdmodel

@@ -76,8 +76,7 @@ def test_predict_txt():
     """Tests YOLO predictions with file, directory, and pattern sources listed in a text file."""
     file = TMP / "sources_multi_row.txt"
     with open(file, "w") as f:
-        for src in SOURCES_LIST:
-            f.write(f"{src}\n")
+        f.writelines(f"{src}\n" for src in SOURCES_LIST)
     results = YOLO(MODEL)(source=file, imgsz=32)
     assert len(results) == 7  # 1 + 2 + 2 + 2 = 7 images
 
@@ -250,7 +249,7 @@ def test_predict_callback_and_setup():
     model.add_callback("on_predict_batch_end", on_predict_batch_end)
 
     dataset = load_inference_source(source=SOURCE)
-    bs = dataset.bs  # noqa access predictor properties
+    bs = dataset.bs
     results = model.predict(dataset, stream=True, imgsz=160)  # source already setup
     for r, im0, bs in results:
         print("test_callback", im0.shape)
@@ -461,9 +460,8 @@ def test_utils_patches_torch_save():
 
     mock = MagicMock(side_effect=RuntimeError)
 
-    with patch("ultralytics.utils.patches._torch_save", new=mock):
-        with pytest.raises(RuntimeError):
-            torch_save(torch.zeros(1), TMP / "test.pt")
+    with patch("ultralytics.utils.patches._torch_save", new=mock), pytest.raises(RuntimeError):
+        torch_save(torch.zeros(1), TMP / "test.pt")
 
     assert mock.call_count == 4, "torch_save was not attempted the expected number of times"
 

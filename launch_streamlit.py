@@ -5,8 +5,8 @@ Configures environment for large file uploads before starting Streamlit
 """
 
 import os
-import sys
 import subprocess
+import sys
 from pathlib import Path
 
 

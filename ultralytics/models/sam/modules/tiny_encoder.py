@@ -13,9 +13,9 @@ import itertools
 from typing import Tuple
 
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
-import torch.utils.checkpoint as checkpoint
+from torch import nn
+from torch.utils import checkpoint
 
 from ultralytics.nn.modules import LayerNorm2d
 from ultralytics.utils.instance import to_2tuple

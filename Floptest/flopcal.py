@@ -20,9 +20,10 @@ Usage:
 """
 
 import argparse
-import sys
 import os
+import sys
 from pathlib import Path
+
 import torch
 
 # Add project root to path FIRST (before any ultralytics imports)
@@ -31,11 +32,10 @@ ROOT = FILE.parent.parent  # Go up one level to project root
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))  # Insert at beginning to prioritize local ultralytics
 
-from ultralytics import YOLO
-from ultralytics.utils import LOGGER
-
 # Import the helper functions from train_yolov12_dino
 from train_yolov12_dino import create_model_config_path, modify_yaml_config_for_custom_dino
+from ultralytics import YOLO
+from ultralytics.utils import LOGGER
 
 
 def calculate_flops_thop(model, input_size=(1, 3, 640, 640)):

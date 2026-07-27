@@ -346,11 +346,10 @@ def safe_download(
                             unit="B",
                             unit_scale=True,
                             unit_divisor=1024,
-                        ) as pbar:
-                            with open(f, "wb") as f_opened:
-                                for data in response:
-                                    f_opened.write(data)
-                                    pbar.update(len(data))
+                        ) as pbar, open(f, "wb") as f_opened:
+                            for data in response:
+                                f_opened.write(data)
+                                pbar.update(len(data))
 
                 if f.exists():
                     if f.stat().st_size > min_bytes:

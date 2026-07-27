@@ -82,7 +82,7 @@ class _RepeatSampler:
             yield from iter(self.sampler)
 
 
-def seed_worker(worker_id):  # noqa
+def seed_worker(worker_id):
     """Set dataloader worker seed https://pytorch.org/docs/stable/notes/randomness.html#dataloader."""
     worker_seed = torch.initial_seed() % 2**32
     np.random.seed(worker_seed)
@@ -210,6 +210,6 @@ def load_inference_source(source=None, batch=1, vid_stride=1, buffer=False):
         dataset = LoadImagesAndVideos(source, batch=batch, vid_stride=vid_stride)
 
     # Attach source types to the dataset
-    setattr(dataset, "source_type", source_type)
+    dataset.source_type = source_type
 
     return dataset

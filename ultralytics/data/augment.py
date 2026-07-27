@@ -52,7 +52,6 @@ class BaseTransform:
         Examples:
             >>> transform = BaseTransform()
         """
-        pass
 
     def apply_image(self, labels):
         """
@@ -75,7 +74,6 @@ class BaseTransform:
             >>> print(transformed_labels)
             [1, 2, 3]
         """
-        pass
 
     def apply_instances(self, labels):
         """
@@ -96,7 +94,6 @@ class BaseTransform:
             >>> labels = {"instances": Instances(xyxy=torch.rand(5, 4), cls=torch.randint(0, 80, (5,)))}
             >>> transformed_labels = transform.apply_instances(labels)
         """
-        pass
 
     def apply_semantic(self, labels):
         """
@@ -116,7 +113,6 @@ class BaseTransform:
             >>> semantic_mask = np.zeros((100, 100), dtype=np.uint8)
             >>> transformed_mask = transform.apply_semantic(semantic_mask)
         """
-        pass
 
     def __call__(self, labels):
         """

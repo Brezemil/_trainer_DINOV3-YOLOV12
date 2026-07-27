@@ -530,7 +530,7 @@ class BaseTrainer:
                 "updates": self.ema.updates,
                 "optimizer": convert_optimizer_state_dict_to_fp16(deepcopy(self.optimizer.state_dict())),
                 "train_args": vars(self.args),  # save as dict
-                "train_metrics": {**self.metrics, **{"fitness": self.fitness}},
+                "train_metrics": {**self.metrics, "fitness": self.fitness},
                 "train_results": self.read_results_csv(),
                 "date": datetime.now().isoformat(),
                 "version": __version__,
@@ -673,7 +673,6 @@ class BaseTrainer:
 
     def build_targets(self, preds, targets):
         """Builds target tensors for training YOLO model."""
-        pass
 
     def progress_string(self):
         """Returns a string describing training progress."""
@@ -682,11 +681,9 @@ class BaseTrainer:
     # TODO: may need to put these following functions into callback
     def plot_training_samples(self, batch, ni):
         """Plots training samples during YOLO training."""
-        pass
 
     def plot_training_labels(self):
         """Plots training labels for YOLO model."""
-        pass
 
     def save_metrics(self, metrics):
         """Saves training metrics to a CSV file."""
@@ -699,7 +696,6 @@ class BaseTrainer:
 
     def plot_metrics(self):
         """Plot and display metrics visually."""
-        pass
 
     def on_plot(self, name, data=None):
         """Registers plots (e.g. to be consumed in callbacks)."""

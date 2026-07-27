@@ -20,9 +20,9 @@ Features:
 
 import argparse
 import sys
+import time
 from pathlib import Path
 from typing import List, Union
-import time
 
 # Add the current directory to the Python path
 current_dir = Path(__file__).parent

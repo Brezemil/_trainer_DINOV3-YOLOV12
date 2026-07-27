@@ -192,7 +192,7 @@ results = model.train(
     batch=16,
     device="0",
     project="runs/obb",
-    name="yolov12-dino3-obb"
+    name="yolov12-dino3-obb",
 )
 ```
 
@@ -203,11 +203,7 @@ from ultralytics import YOLO
 
 model = YOLO("runs/obb/yolov12-dino3-obb/weights/best.pt")
 
-metrics = model.val(
-    data="path/to/obb_dataset.yaml",
-    imgsz=640,
-    batch=16
-)
+metrics = model.val(data="path/to/obb_dataset.yaml", imgsz=640, batch=16)
 
 print(f"mAP50: {metrics.box.map50}")
 print(f"mAP50-95: {metrics.box.map}")
@@ -220,13 +216,7 @@ from ultralytics import YOLO
 
 model = YOLO("runs/obb/yolov12-dino3-obb/weights/best.pt")
 
-results = model.predict(
-    source="path/to/images",
-    conf=0.25,
-    iou=0.7,
-    save=True,
-    save_txt=True
-)
+results = model.predict(source="path/to/images", conf=0.25, iou=0.7, save=True, save_txt=True)
 
 # Process results
 for result in results:
@@ -234,12 +224,12 @@ for result in results:
         boxes = result.obb.xywhr  # [N, 5] - x, y, w, h, rotation
         confidences = result.obb.conf
         classes = result.obb.cls
-        
+
         for box, conf, cls in zip(boxes, confidences, classes):
             x, y, w, h, r = box.tolist()
-            print(f"Class: {int(cls)}, Conf: {conf:.2f}, "
-                  f"Box: ({x:.1f}, {y:.1f}, {w:.1f}, {h:.1f}), "
-                  f"Rotation: {r:.2f} rad")
+            print(
+                f"Class: {int(cls)}, Conf: {conf:.2f}, Box: ({x:.1f}, {y:.1f}, {w:.1f}, {h:.1f}), Rotation: {r:.2f} rad"
+            )
 ```
 
 #### 5. Export Model
@@ -301,10 +291,7 @@ DOTA is a popular benchmark for OBB detection. Convert it to YOLO format:
 ```python
 from ultralytics.data.converter import convert_dota_to_yolo_obb
 
-convert_dota_to_yolo_obb(
-    dota_root_path="/path/to/DOTA",
-    save_dir="/path/to/DOTA-YOLO"
-)
+convert_dota_to_yolo_obb(dota_root_path="/path/to/DOTA", save_dir="/path/to/DOTA-YOLO")
 ```
 
 DOTA dataset configuration:
@@ -343,19 +330,17 @@ model.train(
     epochs=100,
     imgsz=640,
     batch=16,
-    
     # Optimizer
     optimizer="AdamW",
     lr0=0.001,
     lrf=0.01,
     momentum=0.937,
     weight_decay=0.0005,
-    
     # Augmentation
     hsv_h=0.015,
     hsv_s=0.7,
     hsv_v=0.4,
-    degrees=0.0,      # Keep low for OBB
+    degrees=0.0,  # Keep low for OBB
     translate=0.1,
     scale=0.5,
     shear=0.0,
@@ -364,7 +349,6 @@ model.train(
     fliplr=0.5,
     mosaic=1.0,
     mixup=0.0,
-    
     # Early stopping
     patience=50,
 )
@@ -391,7 +375,7 @@ model.train(
     data="obb_dataset.yaml",
     epochs=100,
     device="0,1,2,3",  # Use multiple GPUs
-    batch=64           # Increase batch size accordingly
+    batch=64,  # Increase batch size accordingly
 )
 ```
 
@@ -574,10 +558,7 @@ DOTA/
 from ultralytics.data.converter import convert_dota_to_yolo_obb
 
 # Convert DOTA dataset to YOLO OBB format
-convert_dota_to_yolo_obb(
-    dota_root_path="/path/to/DOTA",
-    save_dir="/path/to/DOTA-YOLO"
-)
+convert_dota_to_yolo_obb(dota_root_path="/path/to/DOTA", save_dir="/path/to/DOTA-YOLO")
 ```
 
 This will create:
@@ -673,19 +654,16 @@ results = model.train(
     device="0",
     project="runs/dota",
     name="yolov12m-dino3-dota",
-    
     # Recommended settings for DOTA
     optimizer="AdamW",
     lr0=0.001,
     lrf=0.01,
-    
     # Augmentation (careful with rotation for OBB)
     degrees=0.0,
     translate=0.1,
     scale=0.5,
     fliplr=0.5,
     mosaic=1.0,
-    
     # Early stopping
     patience=50,
 )
@@ -754,7 +732,7 @@ results = model.predict(
     save_txt=True,
     save_conf=True,
     project="runs/dota/predict",
-    name="dota_results"
+    name="dota_results",
 )
 
 # Process results
@@ -762,13 +740,15 @@ for result in results:
     if result.obb is not None:
         print(f"\nImage: {result.path}")
         print(f"Detections: {len(result.obb)}")
-        
+
         for i, (box, conf, cls) in enumerate(zip(result.obb.xywhr, result.obb.conf, result.obb.cls)):
             x, y, w, h, r = box.tolist()
             cls_name = result.names[int(cls)]
-            print(f"  [{i}] {cls_name}: conf={conf:.3f}, "
-                  f"center=({x:.1f}, {y:.1f}), size=({w:.1f}x{h:.1f}), "
-                  f"rotation={r:.2f} rad ({r * 180 / 3.14159:.1f} deg)")
+            print(
+                f"  [{i}] {cls_name}: conf={conf:.3f}, "
+                f"center=({x:.1f}, {y:.1f}), size=({w:.1f}x{h:.1f}), "
+                f"rotation={r:.2f} rad ({r * 180 / 3.14159:.1f} deg)"
+            )
 ```
 
 ### Step 7: Export Results for DOTA Evaluation
@@ -791,7 +771,7 @@ results = model.predict(
     save_txt=True,
     save_conf=True,
     project="runs/dota/submit",
-    name="dota_submission"
+    name="dota_submission",
 )
 
 # Results are saved in YOLO format
@@ -808,13 +788,8 @@ results = model.predict(
    ```python
    # Use sliding window for large images
    from ultralytics.data.split_dota import split_trainval, split_test
-   
-   split_trainval(
-       data_root="/path/to/DOTA",
-       save_dir="/path/to/DOTA-split",
-       split_size=1024,
-       gap=200
-   )
+
+   split_trainval(data_root="/path/to/DOTA", save_dir="/path/to/DOTA-split", split_size=1024, gap=200)
    ```
 
 4. **Multi-scale Training**: Enable multi-scale for better performance:

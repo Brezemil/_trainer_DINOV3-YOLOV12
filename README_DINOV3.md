@@ -266,16 +266,10 @@ python train_yolov12_dino.py \
 from ultralytics import YOLO
 
 # Load YOLOv12 + DINOv3 model
-model = YOLO('ultralytics/cfg/models/v12/yolov12-dino3.yaml')
+model = YOLO("ultralytics/cfg/models/v12/yolov12-dino3.yaml")
 
 # Train on your dataset
-model.train(
-    data='coco.yaml',
-    epochs=100,
-    batch=16,
-    imgsz=640,
-    device=0
-)
+model.train(data="coco.yaml", epochs=100, batch=16, imgsz=640, device=0)
 ```
 
 ### ⚡ **Quick Training Examples**
@@ -300,16 +294,16 @@ python train.py --cfg ultralytics/cfg/models/v12/yolov12-dino3-convnext.yaml --d
 from ultralytics import YOLO
 
 # Load trained model
-model = YOLO('path/to/trained/yolov12-dino3.pt')
+model = YOLO("path/to/trained/yolov12-dino3.pt")
 
 # Single image
-results = model('image.jpg')
+results = model("image.jpg")
 
 # Batch processing
-results = model(['image1.jpg', 'image2.jpg'])
+results = model(["image1.jpg", "image2.jpg"])
 
 # Video
-results = model('video.mp4')
+results = model("video.mp4")
 ```
 
 ### 🧪 **Test Integration**
@@ -335,7 +329,7 @@ from ultralytics import YOLO
 from ultralytics.nn.modules.block import DINO3Backbone
 
 # Create custom model with specific DINOv3 variant
-model = YOLO('ultralytics/cfg/models/v12/yolov12-dino3.yaml')
+model = YOLO("ultralytics/cfg/models/v12/yolov12-dino3.yaml")
 
 # Access DINO3Backbone for fine-tuning
 for module in model.model.modules():
@@ -352,10 +346,10 @@ for module in model.model.modules():
 ```python
 # Keep DINOv3 weights frozen during initial training
 model.train(
-    data='dataset.yaml',
+    data="dataset.yaml",
     epochs=100,
     batch=16,
-    freeze=[0, 1, 2, 3, 4, 5, 6, 7]  # Freeze backbone including DINO
+    freeze=[0, 1, 2, 3, 4, 5, 6, 7],  # Freeze backbone including DINO
 )
 ```
 
@@ -367,10 +361,10 @@ for module in model.model.modules():
         module.unfreeze_backbone()
 
 model.train(
-    data='dataset.yaml',
+    data="dataset.yaml",
     epochs=50,
-    batch=8,     # Reduce batch size
-    lr=1e-5      # Lower learning rate
+    batch=8,  # Reduce batch size
+    lr=1e-5,  # Lower learning rate
 )
 ```
 
@@ -379,12 +373,12 @@ model.train(
 ```python
 # Memory-efficient training
 model.train(
-    data='dataset.yaml',
+    data="dataset.yaml",
     epochs=100,
-    batch=8,           # Smaller batch size
-    amp=True,          # Mixed precision
-    cache=True,        # Cache images
-    device=0
+    batch=8,  # Smaller batch size
+    amp=True,  # Mixed precision
+    cache=True,  # Cache images
+    device=0,
 )
 ```
 
@@ -482,7 +476,7 @@ pip install transformers
 #### 2. **Memory Errors**
 ```python
 # Use smaller variant
-model = YOLO('ultralytics/cfg/models/v12/yolov12-dino3-small.yaml')
+model = YOLO("ultralytics/cfg/models/v12/yolov12-dino3-small.yaml")
 
 # Or reduce batch size
 model.train(batch=8)  # Instead of 16
@@ -510,10 +504,11 @@ model.train(amp=True)
 
 ```python
 import logging
+
 logging.basicConfig(level=logging.INFO)
 
 # This will show detailed loading information
-model = YOLO('ultralytics/cfg/models/v12/yolov12-dino3.yaml')
+model = YOLO("ultralytics/cfg/models/v12/yolov12-dino3.yaml")
 ```
 
 ## 📚 Documentation

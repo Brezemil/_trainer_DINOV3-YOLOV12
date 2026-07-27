@@ -19,9 +19,10 @@ Usage Examples:
 
 import argparse
 import sys
-from pathlib import Path
-import torch
 import warnings
+from pathlib import Path
+
+import torch
 
 # Add ultralytics to path
 FILE = Path(__file__).resolve()
@@ -153,9 +154,9 @@ def restore_exact_training_state(checkpoint_path):
         print(f"   EMA State: {'Available' if training_state['ema_state'] else 'Not Available'}")
 
         # Get final metrics for reference
-        if "train_results" in checkpoint and checkpoint["train_results"]:
+        if checkpoint.get("train_results"):
             results = checkpoint["train_results"]
-            if "lr/pg0" in results and results["lr/pg0"]:
+            if results.get("lr/pg0"):
                 final_lr = results["lr/pg0"][-1]
                 print(f"   Final Learning Rate: {final_lr}")
 
@@ -169,7 +170,7 @@ def restore_exact_training_state(checkpoint_path):
                 "val/cls_loss",
                 "val/dfl_loss",
             ]:
-                if key in results and results[key]:
+                if results.get(key):
                     expected_losses[key.split("/")[-1]] = results[key][-1]
 
             if expected_losses:
@@ -762,9 +763,9 @@ def resume_training(args, analysis, model, training_state):
         print(f"   Checkpoint: {args.checkpoint}")
         print(f"   Starting from epoch: {training_state['epoch'] + 1}")
 
-        if "train_results" in training_state and training_state["train_results"]:
+        if training_state.get("train_results"):
             results_data = training_state["train_results"]
-            if "val/box_loss" in results_data and results_data["val/box_loss"]:
+            if results_data.get("val/box_loss"):
                 expected_box_loss = results_data["val/box_loss"][-1]
                 print(f"   Expected starting box loss: ~{expected_box_loss:.6f}")
 

@@ -6,18 +6,19 @@ A Streamlit-based web interface for YOLOv12-DINO object detection.
 Upload images and get real-time object detection results with interactive controls.
 """
 
-import streamlit as st
+import os
+import sys
+import tempfile
+import time
+from pathlib import Path
+from typing import Dict, Tuple
+
 import cv2
 import numpy as np
 import pandas as pd
-from pathlib import Path
-import tempfile
-import os
-import sys
-from typing import Dict, Tuple
-import time
-from PIL import Image
 import plotly.express as px
+import streamlit as st
+from PIL import Image
 
 # Add the current directory to the Python path
 current_dir = Path(__file__).parent
@@ -128,7 +129,7 @@ def load_model(weights_path: str, device: str = "cpu") -> Tuple[bool, str]:
         return True, model_info
 
     except Exception as e:
-        return False, f"❌ Error loading model: {str(e)}"
+        return False, f"❌ Error loading model: {e!s}"
 
 
 def perform_detection(
@@ -191,7 +192,7 @@ def perform_detection(
                 os.unlink(tmp_path)
 
     except Exception as e:
-        return None, {}, f"❌ Error during detection: {str(e)}"
+        return None, {}, f"❌ Error during detection: {e!s}"
 
 
 def process_detection_results(result, inference_time: float) -> Dict:
@@ -386,7 +387,7 @@ def main():
                     status_text.empty()
 
                 except Exception as e:
-                    st.error(f"❌ Error processing file: {str(e)}")
+                    st.error(f"❌ Error processing file: {e!s}")
                     progress_bar.empty()
                     status_text.empty()
 
@@ -445,7 +446,7 @@ def main():
                 st.info(f"📊 Image size: {image.width} × {image.height} pixels")
 
             except Exception as e:
-                st.error(f"❌ Error loading image: {str(e)}")
+                st.error(f"❌ Error loading image: {e!s}")
                 return
 
             # Detection button
@@ -486,7 +487,7 @@ def main():
                 try:
                     st.image(detection_result["annotated_img"], caption="Detection Results", width=None)
                 except Exception as e:
-                    st.error(f"Error displaying result image: {str(e)}")
+                    st.error(f"Error displaying result image: {e!s}")
 
             # Display summary
             st.markdown(f'<div class="detection-box">{detection_result["summary_text"]}</div>', unsafe_allow_html=True)

@@ -3,9 +3,10 @@
 Check DINO checkpoint configuration to ensure proper resuming
 """
 
-import torch
 import sys
 from pathlib import Path
+
+import torch
 
 
 def check_checkpoint_config(checkpoint_path):

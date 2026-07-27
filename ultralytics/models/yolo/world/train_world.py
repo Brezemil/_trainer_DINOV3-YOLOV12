@@ -99,7 +99,6 @@ class WorldTrainerFromScratch(WorldTrainer):
 
     def plot_training_labels(self):
         """DO NOT plot labels."""
-        pass
 
     def final_eval(self):
         """Performs final evaluation and validation for object detection YOLO-World model."""

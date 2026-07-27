@@ -35,9 +35,7 @@ class AIGym(BaseSolution):
     def __init__(self, **kwargs):
         """Initializes AIGym for workout monitoring using pose estimation and predefined angles."""
         # Check if the model name ends with '-pose'
-        if "model" in kwargs and "-pose" not in kwargs["model"]:
-            kwargs["model"] = "yolo11n-pose.pt"
-        elif "model" not in kwargs:
+        if "model" in kwargs and "-pose" not in kwargs["model"] or "model" not in kwargs:
             kwargs["model"] = "yolo11n-pose.pt"
 
         super().__init__(**kwargs)

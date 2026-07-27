@@ -11,6 +11,7 @@
 **Old Method:**
 ```python
 import sys
+
 sys.path.insert(0, str(Path(__file__).parent))
 from inference import YOLOInference
 ```

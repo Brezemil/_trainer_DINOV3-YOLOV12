@@ -3,9 +3,10 @@
 Robust checkpoint analyzer for DINO-YOLOv12 models
 """
 
-import torch
 import sys
 from pathlib import Path
+
+import torch
 
 
 def safe_get_value(obj, key, default="unknown"):

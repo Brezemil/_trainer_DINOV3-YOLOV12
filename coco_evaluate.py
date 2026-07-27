@@ -8,10 +8,10 @@ from pycocotools, saves the metrics to a JSON file, and performs GPU memory clea
 """
 
 import argparse
-import json
-import sys
-import os
 import hashlib
+import json
+import os
+import sys
 from pathlib import Path
 
 # Add project root to path
@@ -222,8 +222,8 @@ def run_evaluation(
     if sahi_enabled:
         print(f"[INFO] Running SAHI sliced inference on {len(img_files)} images...")
         try:
-            from sahi.predict import get_sliced_prediction
             from sahi import AutoDetectionModel
+            from sahi.predict import get_sliced_prediction
         except ImportError:
             print(
                 "[ERROR] sahi library is required for SAHI evaluation. Please install it or use the Pixi environment."
@@ -381,6 +381,7 @@ def run_evaluation(
     # 5. Log strict metrics to Weights & Biases
     try:
         import wandb
+
         from config import BenchmarkConfig
 
         cfg = BenchmarkConfig()

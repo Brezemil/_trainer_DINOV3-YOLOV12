@@ -70,7 +70,7 @@ def test_triton():
     See https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver.
     """
     check_requirements("tritonclient[all]")
-    from tritonclient.http import InferenceServerClient  # noqa
+    from tritonclient.http import InferenceServerClient
 
     # Create variables
     model_name = "yolo"

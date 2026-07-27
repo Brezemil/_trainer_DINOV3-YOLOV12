@@ -46,7 +46,7 @@ class Profile(contextlib.ContextDecorator):
         self.start = self.time()
         return self
 
-    def __exit__(self, type, value, traceback):  # noqa
+    def __exit__(self, type, value, traceback):
         """Stop timing."""
         self.dt = self.time() - self.start  # delta-time
         self.t += self.dt  # accumulate dt

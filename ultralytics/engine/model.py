@@ -6,9 +6,8 @@ from typing import Any, Dict, List, Union
 
 import numpy as np
 import torch
-from PIL import Image
-
 from huggingface_hub import PyTorchModelHubMixin
+from PIL import Image
 
 from ultralytics.cfg import TASK2DATA, get_cfg, get_save_dir
 from ultralytics.engine.results import Results

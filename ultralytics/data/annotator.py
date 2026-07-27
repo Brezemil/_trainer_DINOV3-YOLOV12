@@ -57,11 +57,11 @@ def auto_annotate(
     )
 
     for result in det_results:
-        class_ids = result.boxes.cls.int().tolist()  # noqa
+        class_ids = result.boxes.cls.int().tolist()
         if len(class_ids):
             boxes = result.boxes.xyxy  # Boxes object for bbox outputs
             sam_results = sam_model(result.orig_img, bboxes=boxes, verbose=False, save=False, device=device)
-            segments = sam_results[0].masks.xyn  # noqa
+            segments = sam_results[0].masks.xyn
 
             with open(f"{Path(output_dir) / Path(result.path).stem}.txt", "w") as f:
                 for i in range(len(segments)):

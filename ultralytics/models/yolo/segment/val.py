@@ -262,7 +262,7 @@ class SegmentationValidator(DetectionValidator):
         Examples:
              >>> result = {"image_id": 42, "category_id": 18, "bbox": [258.15, 41.29, 348.26, 243.78], "score": 0.236}
         """
-        from pycocotools.mask import encode  # noqa
+        from pycocotools.mask import encode
 
         def single_encode(x):
             """Encode predicted masks as RLE and append results to jdict."""
@@ -296,8 +296,8 @@ class SegmentationValidator(DetectionValidator):
             LOGGER.info(f"\nEvaluating pycocotools mAP using {pred_json} and {anno_json}...")
             try:  # https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocoEvalDemo.ipynb
                 check_requirements("pycocotools>=2.0.6")
-                from pycocotools.coco import COCO  # noqa
-                from pycocotools.cocoeval import COCOeval  # noqa
+                from pycocotools.coco import COCO
+                from pycocotools.cocoeval import COCOeval
 
                 for x in anno_json, pred_json:
                     assert x.is_file(), f"{x} file not found"

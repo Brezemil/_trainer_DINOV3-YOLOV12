@@ -3,8 +3,8 @@
 from typing import List, Optional, Tuple, Type
 
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
+from torch import nn
 
 from ultralytics.nn.modules import LayerNorm2d
 

@@ -15,8 +15,8 @@ import numpy as np
 import thop
 import torch
 import torch.distributed as dist
-import torch.nn as nn
 import torch.nn.functional as F
+from torch import nn
 
 from ultralytics.utils import (
     DEFAULT_CFG_DICT,
@@ -308,8 +308,8 @@ def model_info(model, detailed=False, verbose=True, imgsz=640):
         for i, (name, p) in enumerate(model.named_parameters()):
             name = name.replace("module_list.", "")
             LOGGER.info(
-                f"{i:>5g}{name:>40s}{p.requires_grad!r:>10}{p.numel():>12g}{str(list(p.shape)):>20s}"
-                f"{p.mean():>10.3g}{p.std():>10.3g}{str(p.dtype):>15s}"
+                f"{i:>5g}{name:>40s}{p.requires_grad!r:>10}{p.numel():>12g}{list(p.shape)!s:>20s}"
+                f"{p.mean():>10.3g}{p.std():>10.3g}{p.dtype!s:>15s}"
             )
 
     flops = get_flops(model, imgsz)  # imgsz may be int or list, i.e. imgsz=640 or imgsz=[640, 320]
@@ -705,7 +705,7 @@ def profile(input, ops, n=10, device=None, max_num_obj=0):
                         mem += cuda_info["memory"] / 1e9  # (GB)
                 s_in, s_out = (tuple(x.shape) if isinstance(x, torch.Tensor) else "list" for x in (x, y))  # shapes
                 p = sum(x.numel() for x in m.parameters()) if isinstance(m, nn.Module) else 0  # parameters
-                LOGGER.info(f"{p:12}{flops:12.4g}{mem:>14.3f}{tf:14.4g}{tb:14.4g}{str(s_in):>24s}{str(s_out):>24s}")
+                LOGGER.info(f"{p:12}{flops:12.4g}{mem:>14.3f}{tf:14.4g}{tb:14.4g}{s_in!s:>24s}{s_out!s:>24s}")
                 results.append([p, flops, mem, tf, tb, s_in, s_out])
             except Exception as e:
                 LOGGER.info(e)

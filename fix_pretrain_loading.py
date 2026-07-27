@@ -4,6 +4,7 @@ Enhanced pretrain loading logic for DINO+YOLO models
 """
 
 import torch
+
 from ultralytics.utils import LOGGER
 
 

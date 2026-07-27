@@ -190,8 +190,9 @@ skip = '*.pt,*.pth,*.torchscript,*.onnx,*.tflite,*.pb,*.bin,*.param,*.mlmodel,*.
     
 # --- Pixi Project Environment Configuration ---
 [tool.pixi.workspace]
-channels = ["conda-forge", "pytorch", "nvidia"]
+channels = ["pytorch", "nvidia", "conda-forge"]
 platforms = ["win-64", "linux-64", "osx-arm64"] # Add your matching platforms here
+pypi-options = { index-url = "https://pypi.org/simple", extra-index-urls = ["https://download.pytorch.org/whl/cu130"], index-strategy = "unsafe-best-match" }
 
 [tool.pixi.dependencies]
 python = ">=3.10,<3.13"  # <-- Add this line to force a compatible Python version
@@ -200,8 +201,18 @@ typer = ">=0.9.0"
 rich = ">=13.0.0,<14.0.0"
 ruff = ">=0.3.0"
 pyright = ">=1.1.350"
+numpy = "*"
+
+[tool.pixi.target.win-64.dependencies]
+
+[tool.pixi.target.linux-64.dependencies]
+
+[tool.pixi.target.osx-arm64.dependencies]
+numpy = "<2.0.0"
 
 [tool.pixi.pypi-dependencies]
+torch = ">=2.6.0"
+torchvision = ">=0.21.0"
 transformers = "*"
 huggingface-hub = "*"
 timm = "==1.0.14"
@@ -221,6 +232,6 @@ yolo = "yolo"  # Maps the ultralytics CLI natively as well
 lint = "ruff check --fix ."
 format = "ruff format ."
 check-types = "pyright"
-check-gpu = "python -c \"import torch; print('CUDA available:', torch.cuda.is_available())\""
+check-gpu = "python -c \"import os; os.environ['KMP_DUPLICATE_LIB_OK']='TRUE'; import torch; print('CUDA available:', torch.cuda.is_available())\""
 qa = "ruff check . && ruff format --check . && pyright"
 benchmark = "python run_benchmark.py"

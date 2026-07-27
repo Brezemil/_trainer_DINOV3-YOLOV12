@@ -13,7 +13,30 @@ import os
 import subprocess
 import sys
 from pathlib import Path
+
 from config import BenchmarkConfig
+
+
+def load_env():
+    """Load environment variables from local .env file if it exists."""
+    os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+    env_path = Path(__file__).resolve().parent / ".env"
+    if env_path.exists():
+        with open(env_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if "=" in line:
+                    key, value = line.split("=", 1)
+                    key = key.strip()
+                    value = value.strip().strip("'\"")
+                    os.environ[key] = value
+                    if key == "HF_TOKEN" and "HUGGINGFACE_HUB_TOKEN" not in os.environ:
+                        os.environ["HUGGINGFACE_HUB_TOKEN"] = value
+
+
+load_env()
 
 
 def run_command(cmd, env=None):
@@ -25,7 +48,16 @@ def run_command(cmd, env=None):
     if env:
         run_env.update(env)
 
-    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, env=run_env)
+    process = subprocess.Popen(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        bufsize=1,
+        env=run_env,
+    )
 
     assert process.stdout is not None, "Subprocess stdout was not piped"
 
@@ -84,7 +116,11 @@ def main():
     parser.add_argument("--patience", type=int, default=30, help="Early stopping patience (default: 30)")
     parser.add_argument("--amp", action="store_true", help="Enable Automatic Mixed Precision (AMP) training")
     parser.add_argument(
-        "--yolo-size", type=str, default="s", choices=["n", "s", "m", "l", "x"], help="YOLOv12 size variant (default: s)"
+        "--yolo-size",
+        type=str,
+        default="s",
+        choices=["n", "s", "m", "l", "x"],
+        help="YOLOv12 size variant (default: s)",
     )
     parser.add_argument("--imgsz", type=int, default=1280, help="Image size (default: 1280)")
 
