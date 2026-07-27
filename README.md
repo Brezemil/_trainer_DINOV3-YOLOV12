@@ -2310,6 +2310,64 @@ This produces the formatted summary table (`results/benchmark/benchmark_summary.
 
 ---
 
+## 🌲 Case Study: UAV Forestry Object Detection (Ailanthus altissima)
+
+This section outlines the optimized setup and execution commands for detecting invasive tree species (specifically *Ailanthus altissima* / Tree of Heaven) in aerial/UAV imagery. 
+
+### 📊 Dataset & VRAM Configuration
+* **Dataset Size:** ~3,500 total images.
+  * **50% Labeled Trees:** ~1,750 positive/annotated target images.
+  * **50% Background/Negative Images:** ~1,750 negative samples. This ratio is crucial in forestry/aerial tasks to penalize and reduce false positives across complex vegetation canopies.
+* **VRAM Constraint:** Tailored to fit comfortably within a **16 GB VRAM GPU** limit (using a frozen DINO backbone, low batch size, and Mixed Precision).
+* **Training Duration:** **150 Epochs with a Patience of 30**. 
+  * Due to DINOv3's highly representative pre-trained feature representation, the model converges 50–70% faster than standard COCO/ImageNet pre-trained networks, making 300 epochs unnecessary and prone to overfitting on a small labeled dataset.
+  * Early stopping will dynamically terminate training once the validation metrics plateau.
+
+### 🧬 Integration Architecture: `dualp0p3`
+* **Variant Comparison:** The commands compare standard DINOv3 ViT-Large (`vitl16`) against the satellite-pre-trained DINOv3 ViT-Large (`vitl16_sat493m`).
+  * `vitl16_sat493m` was pre-trained by Meta on **SAT-493M** (493 million satellite/aerial images), which contains optimal visual priors for top-down forestry canopy feature extraction.
+* **`dualp0p3` Injection:** Injects DINO features at both the input preprocessing level (`P0`) and the high-resolution backbone level-3 layer (`P3` at $80 \times 80$). This is highly optimized for small/medium canopy segments while remaining memory-efficient.
+
+### 🚀 Execution Command Chain (Windows CMD)
+To train both models sequentially in Windows Command Prompt, copy and run the following command chain:
+
+```cmd
+pixi run python train_yolov12_dino.py --data dataset.yaml --yolo-size s --dinoversion 3 --dino-variant vitl16 --integration dualp0p3 --imgsz 1280 --epochs 150 --patience 30 --batch-size 8 --amp --name yolov12s_dino3_vitl_dualp0p3_150e && pixi run python train_yolov12_dino.py --data dataset.yaml --yolo-size s --dinoversion 3 --dino-variant vitl16_sat493m --integration dualp0p3 --imgsz 1280 --epochs 150 --patience 30 --batch-size 8 --amp --name yolov12s_dino3_vitlsat_dualp0p3_150e
+```
+
+If you prefer a multi-line format using the Windows CMD caret `^` line-continuation syntax, execute them as follows:
+
+```cmd
+pixi run python train_yolov12_dino.py ^
+    --data dataset.yaml ^
+    --yolo-size s ^
+    --dinoversion 3 ^
+    --dino-variant vitl16 ^
+    --integration dualp0p3 ^
+    --imgsz 1280 ^
+    --epochs 150 ^
+    --patience 30 ^
+    --batch-size 8 ^
+    --amp ^
+    --name yolov12s_dino3_vitl_dualp0p3_150e && ^
+pixi run python train_yolov12_dino.py ^
+    --data dataset.yaml ^
+    --yolo-size s ^
+    --dinoversion 3 ^
+    --dino-variant vitl16_sat493m ^
+    --integration dualp0p3 ^
+    --imgsz 1280 ^
+    --epochs 150 ^
+    --patience 30 ^
+    --batch-size 8 ^
+    --amp ^
+    --name yolov12s_dino3_vitlsat_dualp0p3_150e
+```
+
+*Note: If you run into an Out-Of-Memory (OOM) error on your 16GB GPU, modify `--batch-size 8` to `--batch-size 4`.*
+
+---
+
 ## Acknowledgement
 
 **Made by AI Research Group, Department of Civil Engineering, KMUTT** 🏛️
