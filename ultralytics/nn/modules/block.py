@@ -1289,17 +1289,14 @@ class AAttn(nn.Module):
 
             x = flash_attn_func(q.contiguous().half(), k.contiguous().half(), v.contiguous().half()).to(q.dtype)
         else:
-            q = q.transpose(1, 2).view(B, self.num_heads, self.head_dim, N)
-            k = k.transpose(1, 2).view(B, self.num_heads, self.head_dim, N)
-            v = v.transpose(1, 2).view(B, self.num_heads, self.head_dim, N)
+            q = q.view(B, N, self.num_heads, self.head_dim).transpose(1, 2)
+            k = k.view(B, N, self.num_heads, self.head_dim).transpose(1, 2)
+            v = v.view(B, N, self.num_heads, self.head_dim).transpose(1, 2)
 
-            attn = (q.transpose(-2, -1) @ k) * (self.head_dim**-0.5)
-            max_attn = attn.max(dim=-1, keepdim=True).values
-            exp_attn = torch.exp(attn - max_attn)
-            attn = exp_attn / exp_attn.sum(dim=-1, keepdim=True)
-            x = v @ attn.transpose(-2, -1)
-
-            x = x.permute(0, 3, 1, 2)
+            x = torch.nn.functional.scaled_dot_product_attention(
+                q.contiguous(), k.contiguous(), v.contiguous()
+            )
+            x = x.transpose(1, 2).contiguous()
 
         if self.area > 1:
             x = x.reshape(B // self.area, N * self.area, C)
