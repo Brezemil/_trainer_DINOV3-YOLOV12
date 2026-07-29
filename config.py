@@ -14,8 +14,8 @@ from typing import Any, Dict, List
 @dataclass
 class BenchmarkConfig:
     # W&B Configuration
-    wandb_entity: str = "emilb"
-    wandb_project: str = "trainer_DINOV3-YOLOV12"
+    wandb_entity: str = "brezo-boku-vienna"
+    wandb_project: str = "_baseline"
     wandb_dir: str = "runs/wandb"
 
     # Benchmarking constraints
