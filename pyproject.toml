@@ -192,7 +192,7 @@ skip = '*.pt,*.pth,*.torchscript,*.onnx,*.tflite,*.pb,*.bin,*.param,*.mlmodel,*.
 [tool.pixi.workspace]
 channels = ["pytorch", "nvidia", "conda-forge"]
 platforms = ["win-64", "linux-64", "osx-arm64"] # Add your matching platforms here
-pypi-options = { index-url = "https://pypi.org/simple", extra-index-urls = ["https://download.pytorch.org/whl/cu130"], index-strategy = "unsafe-best-match" }
+pypi-options = { index-url = "https://pypi.org/simple", extra-index-urls = ["https://download.pytorch.org/whl/cu124"], index-strategy = "unsafe-best-match" }
 
 [tool.pixi.dependencies]
 python = ">=3.10,<3.13"  # <-- Add this line to force a compatible Python version
