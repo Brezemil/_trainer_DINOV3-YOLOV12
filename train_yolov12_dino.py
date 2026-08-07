@@ -1418,6 +1418,7 @@ def main():
             "mask_ratio": args.mask_ratio,
             # Additional parameters
             "verbose": True,
+            "exist_ok": True,
         }
 
         print("🏋️  Starting training...")

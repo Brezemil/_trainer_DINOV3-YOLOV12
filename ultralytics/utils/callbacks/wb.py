@@ -110,8 +110,9 @@ def _log_plots(plots, step):
 def on_pretrain_routine_start(trainer):
     """Initiate and start project if module is present."""
     if not wb.run:
+        import os
         wb.init(
-            project=str(trainer.args.project).replace("/", "-") if trainer.args.project else "Ultralytics",
+            project=os.getenv("WANDB_PROJECT") or (str(trainer.args.project).replace("/", "-") if trainer.args.project else "Ultralytics"),
             name=str(trainer.args.name).replace("/", "-"),
             config=vars(trainer.args),
         )
