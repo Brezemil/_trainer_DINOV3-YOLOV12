@@ -2263,24 +2263,24 @@ class DINO3Backbone(nn.Module):
         )
 
         # Forward through DINOv3
-        with torch.set_grad_enabled(not self.freeze_backbone):
-            outputs = self.dino_model(pseudo_rgb_resized)
+        # We must allow gradients to propagate back through dino_model to train input_projection
+        outputs = self.dino_model(pseudo_rgb_resized)
 
-            # Handle different output formats
-            if hasattr(outputs, "last_hidden_state"):
-                # Hugging Face transformers format
-                features = outputs.last_hidden_state
-            elif isinstance(outputs, torch.Tensor):
-                # Direct tensor output from torch.hub models
-                features = outputs
-            elif isinstance(outputs, (list, tuple)):
-                # Multiple outputs, take the first one
-                features = outputs[0]
-            elif hasattr(outputs, "hidden_states"):
-                # Alternative transformers format
-                features = outputs.hidden_states[-1]
-            else:
-                raise ValueError(f"Unsupported DINOv3 output format: {type(outputs)}")
+        # Handle different output formats
+        if hasattr(outputs, "last_hidden_state"):
+            # Hugging Face transformers format
+            features = outputs.last_hidden_state
+        elif isinstance(outputs, torch.Tensor):
+            # Direct tensor output from torch.hub models
+            features = outputs
+        elif isinstance(outputs, (list, tuple)):
+            # Multiple outputs, take the first one
+            features = outputs[0]
+        elif hasattr(outputs, "hidden_states"):
+            # Alternative transformers format
+            features = outputs.hidden_states[-1]
+        else:
+            raise ValueError(f"Unsupported DINOv3 output format: {type(outputs)}")
 
         # Extract features maintaining spatial structure
         dino_features = self.extract_features(features, (dino_size, dino_size))
