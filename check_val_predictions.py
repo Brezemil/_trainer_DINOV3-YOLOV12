@@ -15,22 +15,24 @@ def check_val_predictions():
     print("🔍 Diagnostic: Checking Validation Set Predictions & Confidences")
     print("=" * 60)
     
-    # Path to the best model checkpoint from the 20-epoch smoketest
-    model_path = ROOT / "runs/detect/yolov12m_dino3_vitl16_seed_42_frac_0.1/weights/best.pt"
-    print(f"Checking checkpoint path: {model_path}")
+    # Resolve checkpoint path: prefer last.pt to get the actual active training weights
+    model_path = ROOT / "runs/detect/yolov12m_dino3_vitl16_seed_42/weights/last.pt"
     
     if not model_path.exists():
-        # Search for any best.pt in runs/detect/
-        print("⚠️  best.pt not found at standard path. Searching in runs/detect/...")
+        # Search for any last.pt or best.pt in runs/detect/
+        print("⚠️  last.pt not found at standard path. Searching in runs/detect/...")
         runs_dir = ROOT / "runs/detect"
-        best_checkpoints = list(runs_dir.glob("**/best.pt"))
-        if len(best_checkpoints) > 0:
+        checkpoints = list(runs_dir.glob("**/last.pt"))
+        if not checkpoints:
+            checkpoints = list(runs_dir.glob("**/best.pt"))
+            
+        if len(checkpoints) > 0:
             # Pick the most recent one
-            best_checkpoints.sort(key=lambda p: p.stat().st_mtime, reverse=True)
-            model_path = best_checkpoints[0]
+            checkpoints.sort(key=lambda p: p.stat().st_mtime, reverse=True)
+            model_path = checkpoints[0]
             print(f"✅ Found checkpoint: {model_path}")
         else:
-            print("❌ No best.pt checkpoints found in runs/detect/.")
+            print("❌ No last.pt or best.pt checkpoints found in runs/detect/.")
             return
         
     try:
@@ -139,14 +141,21 @@ def check_val_predictions():
             
         print(f"Raw output structure: {type(preds)}")
         if isinstance(preds, (list, tuple)):
-            print(f"Number of output tensors: {len(preds)}")
+            print(f"Number of primary outputs: {len(preds)}")
             for i, p in enumerate(preds):
-                print(f"   Tensor {i} shape: {p.shape}")
-                print(f"      Min:  {p.min().item():.8f}")
-                print(f"      Max:  {p.max().item():.8f}")
-                print(f"      Mean: {p.mean().item():.8f}")
-                print(f"      NaN count: {torch.isnan(p).sum().item()}")
-                print(f"      Inf count: {torch.isinf(p).sum().item()}")
+                if isinstance(p, torch.Tensor):
+                    print(f"   Tensor {i} shape: {p.shape}")
+                    print(f"      Min:  {p.min().item():.8f}, Max: {p.max().item():.8f}, Mean: {p.mean().item():.8f}")
+                    print(f"      NaN count: {torch.isnan(p).sum().item()}, Inf count: {torch.isinf(p).sum().item()}")
+                elif isinstance(p, (list, tuple)):
+                    print(f"   Nested container {i} length: {len(p)}")
+                    for j, sub_p in enumerate(p):
+                        if isinstance(sub_p, torch.Tensor):
+                            print(f"      - Sub-tensor {j} shape: {sub_p.shape}")
+                            print(f"        Min:  {sub_p.min().item():.8f}, Max: {sub_p.max().item():.8f}")
+                            print(f"        NaN count: {torch.isnan(sub_p).sum().item()}")
+                else:
+                    print(f"   Item {i}: {type(p)}")
                 
     except Exception as e:
         print(f"❌ Diagnostic failed: {e}")
