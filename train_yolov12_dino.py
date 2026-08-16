@@ -902,22 +902,27 @@ def modify_yaml_config_for_custom_dino(config_path, dino_input, yolo_size="s", u
                 # Check if this is a DINO3Preprocessor layer
                 if len(layer) >= 3 and layer[2] == "DINO3Preprocessor":
                     print(f"   🔍 Found DINO3Preprocessor at layer {i}: {layer}")
-                    if len(layer) >= 4 and isinstance(layer[3], list) and len(layer[3]) > 0:
-                        if layer[3][0] == "DINO_MODEL_NAME":
-                            if os.path.exists(str(dino_input)):
-                                config["backbone"][i][3][0] = f"'{dino_input!s}'"
-                            else:
-                                config["backbone"][i][3][0] = str(dino_input)
-                            # Set freeze_backbone parameter (inverted logic: unfreeze_dino=True means freeze_backbone=False)
-                            config["backbone"][i][3][1] = not unfreeze_dino
-                            # Preprocessing always outputs 3 channels (enhanced RGB)
-                            config["backbone"][i][3][2] = 3
-                            print(f"   ✅ Replaced DINO_MODEL_NAME with {dino_input}")
-                            print(
-                                f"   🔧 DINO weights {'trainable' if unfreeze_dino else 'frozen'}: freeze_backbone={not unfreeze_dino}"
-                            )
-                            print("   🔧 DINO3Preprocessor outputs: 3 channels (enhanced RGB)")
-                            break  # Only replace first occurrence
+                    if (
+                        len(layer) >= 4
+                        and isinstance(layer[3], list)
+                        and len(layer[3]) > 0
+                        and layer[3][0] == "DINO_MODEL_NAME"
+                    ):
+                        if os.path.exists(str(dino_input)):
+                            config["backbone"][i][3][0] = f"'{dino_input!s}'"
+                        else:
+                            config["backbone"][i][3][0] = str(dino_input)
+                        # Set freeze_backbone parameter (inverted logic: unfreeze_dino=True means freeze_backbone=False)
+                        config["backbone"][i][3][1] = not unfreeze_dino
+                        # Preprocessing always outputs 3 channels (enhanced RGB)
+                        config["backbone"][i][3][2] = 3
+                        print(f"   ✅ Replaced DINO_MODEL_NAME with {dino_input}")
+                        print(
+                            f"   🔧 DINO weights {'trainable' if unfreeze_dino else 'frozen'}: freeze_backbone={not unfreeze_dino}"
+                        )
+                        print("   🔧 DINO3Preprocessor outputs: 3 channels (enhanced RGB)")
+                        break  # Only replace first occurrence
+
 
     # Handle integrated approach (DINO inside backbone) OR any config with DINO3Backbone
     else:
@@ -1114,9 +1119,9 @@ def load_partial_yolo_weights(target_model, weight_path, integration=None, yolo_
             total_target_params += v.numel()
             if k in s_sd:
                 # Do not transfer the final classification projection if shape differs (COCO 80-class != custom nc)
-                if "cv3" in k and any(x in k for x in [".2.weight", ".2.bias"]):
-                    if s_sd[k].shape != v.shape:
-                        continue
+                if "cv3" in k and any(x in k for x in [".2.weight", ".2.bias"]) and s_sd[k].shape != v.shape:
+                    continue
+
                 if s_sd[k].shape == v.shape:
                     t_sd[k] = s_sd[k].clone()
                     total_params += v.numel()

@@ -7,8 +7,11 @@ W&B settings, datasets paths, model lists, seed lists, and training hyperparamet
 It also includes a utility method to query the W&B API for the best sweep configuration.
 """
 
+from __future__ import annotations
+
 from dataclasses import dataclass, field
 from typing import Any, Dict, List
+
 
 
 @dataclass

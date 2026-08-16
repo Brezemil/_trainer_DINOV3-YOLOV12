@@ -116,13 +116,16 @@ def main():
         model_summary = {"Model Variant": model_name, "Runs": len(group)}
         for metric in metrics_to_agg:
             if metric in group.columns:
-                mean_val = float(group[metric].mean())
-                raw_std = group[metric].std()
-                std_val = 0.0 if bool(pd.isna(raw_std)) else float(raw_std)
-                sem_val = std_val / np.sqrt(len(group)) if len(group) > 0 else 0.0
+                vals = [float(v) for v in group[metric] if pd.notna(v)]
+                arr = np.array(vals, dtype=float)
+                mean_val = float(np.mean(arr)) if len(arr) > 0 else 0.0
+                std_val = float(np.std(arr, ddof=1)) if len(arr) > 1 else 0.0
+                sem_val = float(std_val / np.sqrt(len(arr))) if len(arr) > 0 else 0.0
                 model_summary[f"{metric}_mean"] = mean_val
                 model_summary[f"{metric}_std"] = std_val
                 model_summary[f"{metric}_sem"] = sem_val
+
+
         summary_data.append(model_summary)
 
     df_summary = pd.DataFrame(summary_data)
@@ -299,7 +302,8 @@ def main():
     # Plot 4: Seed spread distribution (ap_seed_distribution.png)
     # =========================================================================
     print("[INFO] Generating seed spread distribution plot...")
-    fig, ax = plt.subplots(figsize=(8, 6))
+    _fig, ax = plt.subplots(figsize=(8, 6))
+
 
     # Strip plot (jittered scatter points) overlaying a box/violin plot
     sns.boxplot(
@@ -344,8 +348,9 @@ def main():
     md_lines.append("| :--- | :---: | :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
 
     for idx, row in df_summary.iterrows():
-        name = row["Model Variant"]
-        runs = int(row["Runs"])
+        name = str(row["Model Variant"])
+        runs = int(str(row["Runs"]))
+
 
         m_ap_50_95 = f"{row['mAP_50_95_mean']:.4f} ± {row[f'mAP_50_95_{err_metric}']:.4f}"
         m_ap_50 = f"{row['mAP_50_mean']:.4f} ± {row[f'mAP_50_{err_metric}']:.4f}"
