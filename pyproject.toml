@@ -202,17 +202,28 @@ rich = ">=13.0.0,<14.0.0"
 ruff = ">=0.3.0"
 pyright = ">=1.1.350"
 numpy = "*"
+pip = "*"
 
 [tool.pixi.target.win-64.dependencies]
 
+[tool.pixi.target.win-64.pypi-dependencies]
+torch = "==2.6.0+cu124"
+torchvision = "==0.21.0+cu124"
+
 [tool.pixi.target.linux-64.dependencies]
+
+[tool.pixi.target.linux-64.pypi-dependencies]
+torch = "==2.6.0+cu124"
+torchvision = "==0.21.0+cu124"
 
 [tool.pixi.target.osx-arm64.dependencies]
 numpy = "<2.0.0"
 
-[tool.pixi.pypi-dependencies]
+[tool.pixi.target.osx-arm64.pypi-dependencies]
 torch = ">=2.6.0"
 torchvision = ">=0.21.0"
+
+[tool.pixi.pypi-dependencies]
 transformers = "*"
 huggingface-hub = "*"
 timm = "==1.0.14"

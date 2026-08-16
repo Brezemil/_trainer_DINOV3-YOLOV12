@@ -1,0 +1,74 @@
+_wandb:
+    value:
+        cli_version: 0.28.2
+        e:
+            qje4r21j1kl7akxn6y8u9imaipxx7nkb:
+                args:
+                    - --model
+                    - runs\detect\yolov12m_dino3_vitl16_seed_42_frac_0.05\weights\best.pt
+                    - --data
+                    - C:/Users/emilb/Documents/GitHub/sliced_split_dataset/dataset.yaml
+                    - --split
+                    - test
+                    - --fraction
+                    - "0.05"
+                    - --name
+                    - yolov12m_dino3_vitl16_seed_42_frac_0.05
+                    - --device
+                    - "0"
+                    - --output-dir
+                    - results/benchmark
+                codePath: coco_evaluate.py
+                codePathLocal: coco_evaluate.py
+                cpu_count: 6
+                cpu_count_logical: 12
+                cudaVersion: "13.1"
+                disk:
+                    /:
+                        total: "628346916864"
+                        used: "548438151168"
+                email: e.brezovsky@students.boku.ac.at
+                executable: C:\Users\emilb\Documents\GitHub\_trainer_DINOV3-YOLOV12\.pixi\envs\default\python.exe
+                git:
+                    commit: d90ca61bb49c278b894d3ac706ffbecbfc4b4eb6
+                    remote: https://github.com/Brezemil/_trainer_DINOV3-YOLOV12.git
+                gpu: NVIDIA GeForce RTX 3060 Ti
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 4864
+                      memoryTotal: "8589934592"
+                      name: NVIDIA GeForce RTX 3060 Ti
+                      uuid: GPU-c5fe1c90-23d3-4db3-c71d-2183e20eb813
+                host: Goldaline
+                memory:
+                    total: "17102688256"
+                os: Windows-11-10.0.26200-SP0
+                program: C:\Users\emilb\Documents\GitHub\_trainer_DINOV3-YOLOV12\coco_evaluate.py
+                python: CPython 3.12.13
+                root: C:\Users\emilb\Documents\GitHub\_trainer_DINOV3-YOLOV12
+                startedAt: "2026-08-15T08:37:04.681358Z"
+                writerId: qje4r21j1kl7akxn6y8u9imaipxx7nkb
+        m: []
+        python_version: 3.12.13
+        t:
+            "1":
+                - 1
+                - 11
+                - 41
+                - 49
+            "2":
+                - 1
+                - 11
+                - 41
+                - 49
+            "3":
+                - 2
+                - 13
+            "4": 3.12.13
+            "5": 0.28.2
+            "6": 5.12.1
+            "8":
+                - 3
+            "12": 0.28.2
+            "13": windows-amd64

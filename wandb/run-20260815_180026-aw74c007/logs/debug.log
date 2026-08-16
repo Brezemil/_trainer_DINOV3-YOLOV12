@@ -1,0 +1,24 @@
+2026-08-15 18:00:26,248 INFO    MainThread:9064 [wandb_setup.py:_flush():81] Current SDK version is 0.28.2
+2026-08-15 18:00:26,248 INFO    MainThread:9064 [wandb_setup.py:_flush():81] Configure stats pid to 9064
+2026-08-15 18:00:26,248 INFO    MainThread:9064 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-08-15 18:00:26,248 INFO    MainThread:9064 [wandb_init.py:setup_run_log_directory():739] Logging user logs to C:\Users\emilb\Documents\GitHub\_trainer_DINOV3-YOLOV12\wandb\run-20260815_180026-aw74c007\logs\debug.log
+2026-08-15 18:00:26,248 INFO    MainThread:9064 [wandb_init.py:setup_run_log_directory():740] Logging internal logs to C:\Users\emilb\Documents\GitHub\_trainer_DINOV3-YOLOV12\wandb\run-20260815_180026-aw74c007\logs\debug-internal.log
+2026-08-15 18:00:26,248 INFO    MainThread:9064 [wandb_init.py:init():783] calling init triggers
+2026-08-15 18:00:26,248 INFO    MainThread:9064 [wandb_init.py:init():788] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2026-08-15 18:00:26,248 INFO    MainThread:9064 [wandb_init.py:init():831] starting backend
+2026-08-15 18:00:26,248 INFO    MainThread:9064 [wandb_init.py:init():846] sending inform_init request
+2026-08-15 18:00:26,907 INFO    MainThread:9064 [wandb_init.py:init():851] backend started and connected
+2026-08-15 18:00:26,908 INFO    MainThread:9064 [wandb_init.py:init():921] updated telemetry
+2026-08-15 18:00:26,978 INFO    MainThread:9064 [wandb_init.py:init():944] communicating run to backend with 90.0 second timeout
+2026-08-15 18:00:27,998 INFO    MainThread:9064 [wandb_init.py:init():981] starting run threads in backend
+2026-08-15 18:00:28,144 INFO    MainThread:9064 [wandb_run.py:_console_start():2626] atexit reg
+2026-08-15 18:00:28,144 INFO    MainThread:9064 [wandb_run.py:_redirect():2476] redirect: wrap_raw
+2026-08-15 18:00:28,144 INFO    MainThread:9064 [wandb_run.py:_redirect():2545] Wrapping output streams.
+2026-08-15 18:00:28,145 INFO    MainThread:9064 [wandb_run.py:_redirect():2568] Redirects installed.
+2026-08-15 18:00:28,148 INFO    MainThread:9064 [wandb_init.py:init():1019] run started, returning control to user process
+2026-08-15 18:00:28,150 INFO    MainThread:9064 [wandb_run.py:_finish():2397] finishing run brezo-boku-vienna/_baseline/aw74c007
+2026-08-15 18:00:28,150 INFO    MainThread:9064 [wandb_run.py:_atexit_cleanup():2593] got exitcode: 0
+2026-08-15 18:00:28,151 INFO    MainThread:9064 [wandb_run.py:_restore():2575] restore
+2026-08-15 18:00:28,151 INFO    MainThread:9064 [wandb_run.py:_restore():2581] restore done
+2026-08-15 18:00:29,486 INFO    MainThread:9064 [wandb_run.py:_footer_sync_info():4025] logging synced files

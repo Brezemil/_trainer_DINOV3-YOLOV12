@@ -279,17 +279,20 @@ def run_evaluation(
                 print(f"   [WARNING] Error SAHI predicting on {img_file.name}: {e}")
                 continue
     else:
-        print(f"[INFO] Running standard inference on {split} images...")
         predict_source = [str(f) for f in img_files]
-        results = model.predict(
-            source=predict_source,
-            conf=0.001,  # Standard low threshold for COCO PR curves
-            iou=0.6,
-            imgsz=imgsz,
-            device=device,
-            verbose=False,
-            stream=True,  # Stream mode to optimize memory
-        )
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        with torch.inference_mode():
+            results = model.predict(
+                source=predict_source,
+                conf=0.001,  # Standard low threshold for COCO PR curves
+                iou=0.6,
+                imgsz=imgsz,
+                device=device,
+                verbose=False,
+                stream=True,  # Stream mode to optimize memory
+            )
+
 
         # Match prediction boxes to GT integer IDs
         for result in results:
@@ -381,7 +384,6 @@ def run_evaluation(
     # 5. Log strict metrics to Weights & Biases
     try:
         import wandb
-
         from config import BenchmarkConfig
 
         cfg = BenchmarkConfig()

@@ -1,0 +1,33 @@
+{
+  "os":  "Windows-11-10.0.26200-SP0",
+  "python":  "CPython 3.12.13",
+  "startedAt":  "2026-08-15T16:00:26.245475Z",
+  "args":  [
+    "--model",
+    "runs\\detect\\yolov12m_dino3_vitl16_seed_42_frac_0.25\\weights\\best.pt",
+    "--data",
+    "C:/Users/emilb/Documents/GitHub/sliced_split_dataset/dataset.yaml",
+    "--split",
+    "test",
+    "--fraction",
+    "0.25",
+    "--name",
+    "yolov12m_dino3_vitl16_seed_42_frac_0.25",
+    "--device",
+    "0",
+    "--output-dir",
+    "results/benchmark"
+  ],
+  "program":  "C:\\Users\\emilb\\Documents\\GitHub\\_trainer_DINOV3-YOLOV12\\coco_evaluate.py",
+  "codePath":  "coco_evaluate.py",
+  "codePathLocal":  "coco_evaluate.py",
+  "git":  {
+    "remote":  "https://github.com/Brezemil/_trainer_DINOV3-YOLOV12.git",
+    "commit":  "d90ca61bb49c278b894d3ac706ffbecbfc4b4eb6"
+  },
+  "email":  "e.brezovsky@students.boku.ac.at",
+  "root":  "C:\\Users\\emilb\\Documents\\GitHub\\_trainer_DINOV3-YOLOV12",
+  "host":  "Goldaline",
+  "executable":  "C:\\Users\\emilb\\Documents\\GitHub\\_trainer_DINOV3-YOLOV12\\.pixi\\envs\\default\\python.exe",
+  "writerId":  "4k1y9e27t331ytckjbornmaxhhe3f3xr"
+}

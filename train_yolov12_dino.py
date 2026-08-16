@@ -602,7 +602,7 @@ def parse_arguments():
     )
 
     # Learning rate and optimization
-    parser.add_argument("--lr", type=float, default=0.01, help="Initial learning rate (default: 0.01)")
+    parser.add_argument("--lr", type=float, default=None, help="Initial learning rate (default: auto, 0.001 for AdamW/Adam, 0.01 for SGD)")
     parser.add_argument(
         "--lrf", type=float, default=0.01, help="Final OneCycleLR learning rate (lr0 * lrf) (default: 0.01)"
     )
@@ -779,11 +779,8 @@ def validate_arguments(args):
     if args.pretrainyolo:
         if not os.path.exists(args.pretrainyolo):
             raise FileNotFoundError(f"YOLO pretraining weights not found: {args.pretrainyolo}")
-        if args.integration != "dualp0p3":
-            LOGGER.warning("⚠️  --pretrainyolo is currently optimized for dualp0p3 integration. Proceeding anyway.")
-        if args.yolo_size.lower() != "l":
-            LOGGER.warning("⚠️  --pretrainyolo support is tuned for YOLOv12l; ensure weight compatibility.")
-        LOGGER.info(f"Using base YOLO pretraining weights: {args.pretrainyolo}")
+        LOGGER.info(f"Using base YOLO pretraining weights: {args.pretrainyolo} (size: {args.yolo_size})")
+
 
     if not 0.0 <= args.fitness <= 1.0:
         raise ValueError("--fitness must be between 0.0 and 1.0 (inclusive)")
@@ -845,14 +842,15 @@ def setup_training_parameters(args):
         args.epochs = get_recommended_epochs(has_dino)
         LOGGER.info(f"Auto-determined epochs: {args.epochs}")
 
-    # Auto-determine AMP setting if not specified
-    if args.amp is None:
-        if has_dino:
-            args.amp = False  # Disable AMP for DINO models to avoid memory issues
-            LOGGER.info("Auto-determined AMP: False (disabled for DINO models)")
+    # Auto-determine learning rate based on optimizer if not explicitly specified
+    if args.lr is None:
+        if args.optimizer in ["Adam", "AdamW", "Adamax", "NAdam", "RAdam"]:
+            args.lr = 0.001
+            LOGGER.info(f"Auto-determined lr: {args.lr} for optimizer {args.optimizer}")
         else:
-            args.amp = True  # Enable AMP for pure YOLO models
-            LOGGER.info("Auto-determined AMP: True (enabled for pure YOLO)")
+            args.lr = 0.01
+            LOGGER.info(f"Auto-determined lr: {args.lr} for optimizer {args.optimizer}")
+
 
     # Adjust augmentation parameters for different model sizes
     if args.yolo_size in ["s", "m", "l", "x"]:
@@ -1041,21 +1039,17 @@ def load_partial_yolo_weights(target_model, weight_path, integration=None, yolo_
     """
     Load base YOLO weights into a model with DINO integration.
 
-    Strategy:
-    - single: Load weights starting after DINO3Preprocessor (P0 input preprocessing)
-    - dualp0p3: Load weights starting after DINO3Backbone (P0+P3 integration)
-    - dual: Load weights starting after last DINO3Backbone (P3+P4 integration)
-    - triple: Load weights starting after last DINO3Backbone (P0+P3+P4 integration)
-
-    This preserves randomly initialized weights for layers that interact with DINO.
+    Uses structural layer mapping to account for inserted DINO modules:
+    - single: DINO3Preprocessor at 0 -> source[0..N] -> target[1..N+1]
+    - dualp0p3: DINO at 0 and 6 -> source[0..4] -> target[1..5], source[5..21] -> target[7..23]
+    - dual: DINO at P3 and P4 -> source[0..4] -> target[0..4], source[5..] -> target offset
+    - triple: DINO at P0, P3, and P4 -> mapped accordingly
     """
     if not weight_path:
         return
 
-    print(f"🧩 Applying partial YOLO pretraining from: {weight_path}")
+    print(f"🧩 Applying structural YOLO pretraining from: {weight_path}")
     print(f"   🔧 Integration type: {integration}")
-    if yolo_size and yolo_size.lower() != "l":
-        print(f"   ⚠️  Base weights from size '{yolo_size}' may differ from expected YOLOv12l. Ensure compatibility.")
 
     try:
         source_model = YOLO(weight_path)
@@ -1063,108 +1057,84 @@ def load_partial_yolo_weights(target_model, weight_path, integration=None, yolo_
         print(f"   ❌ Failed to load base YOLO weights from {weight_path}: {exc}")
         return
 
-    target_layers = list(target_model.model.model)
-    source_layers = list(source_model.model.model)
-    base_idx = 0
+    target_m = getattr(target_model, "model", None)
+    source_m = getattr(source_model, "model", None)
+    if not isinstance(target_m, torch.nn.Module) or not isinstance(source_m, torch.nn.Module):
+        print("   ❌ Model does not contain a valid PyTorch nn.Module attribute.")
+        return
+
+    target_layers = list(getattr(target_m, "model", []))
+    source_layers = list(getattr(source_m, "model", []))
+
+    # Build layer mapping based on integration type
+    mapping = {}
+    if integration == "dualp0p3":
+        for s_idx in range(5):
+            if s_idx + 1 < len(target_layers):
+                mapping[s_idx] = s_idx + 1
+        for s_idx in range(5, len(source_layers)):
+            if s_idx + 2 < len(target_layers):
+                mapping[s_idx] = s_idx + 2
+    elif integration == "single":
+        for s_idx in range(len(source_layers)):
+            if s_idx + 1 < len(target_layers):
+                mapping[s_idx] = s_idx + 1
+    elif integration in ["dual", "triple"]:
+        # Dynamic mapping by skipping DINO layers
+        t_idx = 0
+        for s_idx in range(len(source_layers)):
+            while t_idx < len(target_layers) and isinstance(target_layers[t_idx], (DINO3Preprocessor, DINO3Backbone)):
+                t_idx += 1
+            if t_idx < len(target_layers):
+                mapping[s_idx] = t_idx
+                t_idx += 1
+    else:
+        # Default sequential non-DINO mapping
+        t_idx = 0
+        for s_idx in range(len(source_layers)):
+            while t_idx < len(target_layers) and isinstance(target_layers[t_idx], (DINO3Preprocessor, DINO3Backbone)):
+                t_idx += 1
+            if t_idx < len(target_layers):
+                mapping[s_idx] = t_idx
+                t_idx += 1
+
     loaded_layers = 0
-    skipped_layers = 0
     total_params = 0
+    total_target_params = 0
     mismatched_layers = []
 
-    # Determine when to start loading weights based on integration type
-    should_load_weights = False
-    dino_layers_passed = 0
+    for s_idx, t_idx in mapping.items():
+        s_layer = source_layers[s_idx]
+        t_layer = target_layers[t_idx]
+        s_sd = s_layer.state_dict()
+        t_sd = t_layer.state_dict()
 
-    # Count total DINO layers for reference
-    total_dino_preprocessors = sum(1 for layer in target_layers if isinstance(layer, DINO3Preprocessor))
-    total_dino_backbones = sum(1 for layer in target_layers if isinstance(layer, DINO3Backbone))
+        layer_updated = False
+        for k, v in t_sd.items():
+            total_target_params += v.numel()
+            if k in s_sd:
+                # Do not transfer the final classification projection if shape differs (COCO 80-class != custom nc)
+                if "cv3" in k and any(x in k for x in [".2.weight", ".2.bias"]):
+                    if s_sd[k].shape != v.shape:
+                        continue
+                if s_sd[k].shape == v.shape:
+                    t_sd[k] = s_sd[k].clone()
+                    total_params += v.numel()
+                    layer_updated = True
+                else:
+                    mismatched_layers.append(f"Layer {t_idx} ({k})")
 
+
+        if layer_updated:
+            t_layer.load_state_dict(t_sd, strict=False)
+            loaded_layers += 1
+
+    print(f"   ✅ Successfully mapped and loaded weights into {loaded_layers} layers")
     print(
-        f"   📊 Target model has {total_dino_preprocessors} DINO3Preprocessor(s) and {total_dino_backbones} DINO3Backbone(s)"
+        f"   📦 Parameters transferred: {total_params:,} / {total_target_params:,} ({total_params / max(1, total_target_params) * 100:.1f}%)"
     )
-
-    # Define strategy for each integration type
-    if integration == "single":
-        # Single integration: P0 preprocessing only, start loading after DINO3Preprocessor
-        trigger_after = "DINO3Preprocessor"
-        print("   📐 Strategy: Load weights after DINO3Preprocessor (P0 input preprocessing)")
-    elif integration == "dualp0p3":
-        # DualP0P3: P0+P3, start loading after DINO3Backbone
-        trigger_after = "DINO3Backbone"
-        print("   📐 Strategy: Load weights after DINO3Backbone (P0+P3 integration)")
-    elif integration in ["dual", "triple"]:
-        # Dual/Triple: Multiple backbones, start loading after last DINO3Backbone
-        trigger_after = "last_DINO3Backbone"
-        print(f"   📐 Strategy: Load weights after last DINO3Backbone ({integration} integration)")
-    else:
-        # Unknown integration, use conservative approach
-        trigger_after = "DINO3Backbone"
-        print(f"   ⚠️  Unknown integration '{integration}', using DINO3Backbone as trigger")
-
-    for layer in target_layers:
-        # Track DINO layers
-        is_dino_layer = isinstance(layer, (DINO3Preprocessor, DINO3Backbone))
-
-        if is_dino_layer:
-            if isinstance(layer, DINO3Preprocessor):
-                print(f"   🔍 Layer {len(target_layers[: target_layers.index(layer)])}: DINO3Preprocessor (skipping)")
-            elif isinstance(layer, DINO3Backbone):
-                dino_layers_passed += 1
-                print(
-                    f"   🔍 Layer {len(target_layers[: target_layers.index(layer)])}: DINO3Backbone #{dino_layers_passed} (skipping)"
-                )
-
-            # Check if we should start loading weights after this DINO layer
-            if trigger_after == "DINO3Preprocessor" and isinstance(layer, DINO3Preprocessor):
-                should_load_weights = True
-                print("   ✅ Trigger reached: Starting weight loading after DINO3Preprocessor")
-            elif trigger_after == "DINO3Backbone" and isinstance(layer, DINO3Backbone):
-                should_load_weights = True
-                print("   ✅ Trigger reached: Starting weight loading after DINO3Backbone")
-            elif trigger_after == "last_DINO3Backbone" and isinstance(layer, DINO3Backbone):
-                # For dual/triple, only trigger after the LAST backbone
-                if dino_layers_passed == total_dino_backbones:
-                    should_load_weights = True
-                    print("   ✅ Trigger reached: Starting weight loading after last DINO3Backbone")
-
-            continue
-
-        if base_idx >= len(source_layers):
-            break
-
-        source_layer = source_layers[base_idx]
-
-        if should_load_weights:
-            source_state = source_layer.state_dict()
-            target_state = layer.state_dict()
-
-            if not source_state or not target_state:
-                base_idx += 1
-                continue
-
-            compatible = {
-                k: v for k, v in source_state.items() if k in target_state and v.shape == target_state[k].shape
-            }
-
-            if not compatible:
-                mismatched_layers.append(layer.i if hasattr(layer, "i") else base_idx)
-            else:
-                for key, tensor in compatible.items():
-                    target_state[key] = tensor.clone()
-                    total_params += tensor.numel()
-                layer.load_state_dict(target_state, strict=True)
-                loaded_layers += 1
-        else:
-            skipped_layers += 1
-
-        base_idx += 1
-
-    print(f"   ✅ Loaded weights into {loaded_layers} layers (skipped {skipped_layers} DINO + pre-DINO layers)")
-    print(f"   📦 Total parameters updated: {total_params:,}")
     if mismatched_layers:
-        print(f"   ⚠️  Layers with shape mismatches (skipped): {mismatched_layers}")
-    if base_idx < len(source_layers):
-        print(f"   ℹ️  Source model has {len(source_layers) - base_idx} additional layers that were not mapped.")
+        print(f"   ⚠️  Partial tensor shape mismatches in: {len(mismatched_layers)} submodules")
     del source_model
 
 
@@ -1259,19 +1229,16 @@ def main():
     print(f"   HSV: H={args.hsv_h}, S={args.hsv_s}, V={args.hsv_v}")
     print(f"   Geometric: degrees={args.degrees}, translate={args.translate}, shear={args.shear}")
     print(f"   Flip: LR={args.fliplr}, UD={args.flipud}")
-    print()
-
+    temp_config_path = None
+    temp_pt_path = None
     try:
         # Modify config for custom DINO input if needed (but NOT when using --pretrain)
-        original_config = model_config
-        temp_config_path = None
-        if args.dino_input and not args.pretrain:
-            print(f"Using custom DINO input: {args.dino_input}")
+        if needs_variant_replacement or (args.dino_input and not args.pretrain):
             temp_config_path = modify_yaml_config_for_custom_dino(
                 model_config, args.dino_input, args.yolo_size, args.unfreeze_dino, args.dinoversion
             )
-            if temp_config_path != model_config:
-                model_config = temp_config_path
+            model_config = temp_config_path
+            print(f"📄 Using modified config file: {temp_config_path}")
         elif args.pretrain and args.dino_input:
             print("⚠️  --dino-input ignored when using --pretrain (checkpoint architecture takes precedence)")
         elif args.pretrain:
@@ -1281,42 +1248,11 @@ def main():
         if args.pretrain:
             print(f"🔧 Loading from pretrained checkpoint: {args.pretrain}")
 
-            # CRITICAL FIX FOR DINO: Load the DINO config FIRST, then transfer weights from pretrain
-            # This ensures DINO layers are created in the architecture
             if args.dinoversion and args.integration:
                 print(f"🔧 DINO requested - loading architecture from config: {model_config}")
-                print("   Then transferring weights from pretrained checkpoint...")
-
-                # Load the DINO-enhanced architecture
                 model = YOLO(model_config)
-                print("✅ Loaded DINO architecture from config")
-
-                # Now transfer compatible weights from the pretrained checkpoint
-                pretrain_model = YOLO(args.pretrain)
-                print(f"✅ Loaded pretrained weights from: {args.pretrain}")
-
-                # Transfer weights: match layers by name where possible
-                pretrain_state = pretrain_model.model.state_dict()
-                model_state = model.model.state_dict()
-
-                transferred = 0
-                skipped = 0
-                for name, param in model_state.items():
-                    if name in pretrain_state:
-                        pretrain_param = pretrain_state[name]
-                        if param.shape == pretrain_param.shape:
-                            model_state[name] = pretrain_param.clone()
-                            transferred += 1
-                        else:
-                            skipped += 1
-                    else:
-                        skipped += 1
-
-                model.model.load_state_dict(model_state)
-                print(f"📊 Weight transfer: {transferred} layers transferred, {skipped} new DINO layers initialized")
-
+                load_partial_yolo_weights(model, args.pretrain, args.integration, args.yolo_size)
             else:
-                # No DINO - use standard checkpoint loading
                 print("🔧 Using YOLO's built-in checkpoint loading for standard model...")
                 model = YOLO(args.pretrain)
                 print("✅ Loaded model directly from checkpoint")
@@ -1324,24 +1260,26 @@ def main():
             # Verify the model loaded properly
             checkpoint = torch.load(args.pretrain, map_location="cpu")
 
-            if "epoch" in checkpoint:
+            if isinstance(checkpoint, dict) and "epoch" in checkpoint:
                 print(f"📅 Checkpoint from epoch: {checkpoint['epoch']}")
-            if "best_fitness" in checkpoint and checkpoint["best_fitness"] is not None:
+            if isinstance(checkpoint, dict) and "best_fitness" in checkpoint and checkpoint["best_fitness"] is not None:
                 print(f"🏆 Checkpoint best fitness: {checkpoint['best_fitness']:.4f}")
 
             # Verify model parameters
-            total_params = sum(p.numel() for p in model.model.parameters())
-            print(f"📊 Model has {total_params:,} total parameters")
+            m_obj = getattr(model, "model", None)
+            if isinstance(m_obj, torch.nn.Module):
+                total_params = sum(p.numel() for p in m_obj.parameters())
+                print(f"📊 Model has {total_params:,} total parameters")
 
-            # Re-freeze DINO layers if they should be frozen
-            if not args.unfreeze_dino and args.dinoversion:
-                print("🧊 Re-freezing DINO layers to maintain frozen state...")
-                frozen_count = 0
-                for name, param in model.model.named_parameters():
-                    if "dino_model" in name or "dino_backbone" in name:
-                        param.requires_grad = False
-                        frozen_count += 1
-                print(f"🧊 Frozen {frozen_count} DINO parameters")
+                # Re-freeze DINO layers if they should be frozen
+                if not args.unfreeze_dino and args.dinoversion:
+                    print("🧊 Re-freezing DINO layers to maintain frozen state...")
+                    frozen_count = 0
+                    for name, param in m_obj.named_parameters():
+                        if "dino_model" in name or "dino_backbone" in name:
+                            param.requires_grad = False
+                            frozen_count += 1
+                    print(f"🧊 Frozen {frozen_count} DINO parameters")
 
             print("🎯 Model loading complete!")
 
@@ -1350,6 +1288,17 @@ def main():
             model = YOLO(model_config)
             if args.pretrainyolo:
                 load_partial_yolo_weights(model, args.pretrainyolo, args.integration, args.yolo_size)
+                # CRITICAL: Save initialized checkpoint so Ultralytics trainer retains the transferred weights
+                temp_pt_path = f"temp_init_{experiment_name}.pt"
+                ckpt = {
+                    "model": model.model,
+                    "yaml": getattr(model.model, "yaml", {}),
+                    "epoch": -1,
+                    "train_args": {},
+                }
+                torch.save(ckpt, temp_pt_path)
+                model = YOLO(temp_pt_path)
+                print(f"💾 Bridged preloaded weights via checkpoint: {temp_pt_path}")
 
         # Note: DINO freezing is now handled automatically in the YAML config
         # The freeze_backbone parameter is set during config modification
@@ -1459,8 +1408,8 @@ def main():
         print(f"📁 Results saved in: runs/detect/{experiment_name}")
 
         # Print final metrics
-        if hasattr(results, "results_dict"):
-            metrics = results.results_dict
+        metrics = getattr(results, "results_dict", None) if results is not None else None
+        if isinstance(metrics, dict):
             print("📊 Final Metrics:")
             for key, value in metrics.items():
                 if "map" in key.lower():
@@ -1478,10 +1427,18 @@ def main():
 
     finally:
         # Cleanup temporary config file if created
-        if "temp_config_path" in locals() and temp_config_path and os.path.exists(temp_config_path):
+        if temp_config_path is not None and os.path.exists(temp_config_path):
             try:
                 os.unlink(temp_config_path)
                 print("🗑️  Cleaned up temporary config file")
+            except Exception:
+                pass  # Ignore cleanup errors
+
+        # Cleanup temporary checkpoint file if created
+        if temp_pt_path is not None and os.path.exists(temp_pt_path):
+            try:
+                os.unlink(temp_pt_path)
+                print("🗑️  Cleaned up temporary initialized checkpoint")
             except Exception:
                 pass  # Ignore cleanup errors
 

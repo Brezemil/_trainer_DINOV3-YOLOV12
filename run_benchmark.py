@@ -123,6 +123,21 @@ def main():
         help="YOLOv12 size variant (default: s)",
     )
     parser.add_argument("--imgsz", type=int, default=1280, help="Image size (default: 1280)")
+    parser.add_argument("--workers", type=int, default=None, help="Dataloader workers (default: from config.py)")
+    parser.add_argument(
+        "--pretrainyolo",
+        type=str,
+        default=None,
+        help="Path to pretrained YOLO checkpoint (e.g. yolo12m.pt) for partial weight loading",
+    )
+    parser.add_argument(
+        "--optimizer",
+        type=str,
+        default=None,
+        choices=["SGD", "Adam", "AdamW", "NAdam", "RAdam", "RMSProp", "auto"],
+        help="Optimizer for training (e.g. AdamW, SGD)",
+    )
+    parser.add_argument("--lr", type=float, default=None, help="Initial learning rate (e.g. 0.001)")
 
     args = parser.parse_args()
 
@@ -133,6 +148,7 @@ def main():
     dataset_yaml = args.data if args.data is not None else cfg.dataset_yaml
     device = args.device if args.device is not None else cfg.device
     batch_size = args.batch_size if args.batch_size is not None else cfg.batch_size
+    workers = args.workers if args.workers is not None else cfg.workers
     split = args.split
 
     # Determine fraction and epochs based on smoketest flag or CLI inputs
@@ -151,6 +167,7 @@ def main():
     print(f"Dataset fraction:    {fraction}")
     print(f"Epochs per run:      {epochs}")
     print(f"Batch size:          {batch_size}")
+    print(f"Workers:             {workers}")
     print(f"Device:              {device}")
     print(f"Evaluation split:    {split}")
     print(f"Target seeds:        {cfg.seeds}")
@@ -204,6 +221,8 @@ def main():
                 str(epochs),
                 "--batch-size",
                 str(batch_size),
+                "--workers",
+                str(workers),
                 "--device",
                 device,
                 "--seed",
@@ -219,6 +238,12 @@ def main():
             ]
             if args.amp:
                 train_cmd.append("--amp")
+            if args.pretrainyolo:
+                train_cmd.extend(["--pretrainyolo", args.pretrainyolo])
+            if args.optimizer:
+                train_cmd.extend(["--optimizer", args.optimizer])
+            if args.lr is not None:
+                train_cmd.extend(["--lr", str(args.lr)])
 
             train_ok = run_command(train_cmd, env=wandb_env)
             if not train_ok:

@@ -1,0 +1,57 @@
+_wandb:
+    value:
+        cli_version: 0.28.2
+        e:
+            1gu6h3cawfzl1i72m0useotqlx7ilgkr:
+                args:
+                    - --model
+                    - runs\detect\yolov12m_dino3_vitl16_seed_100_frac_0.05\weights\best.pt
+                    - --data
+                    - C:/Users/emilb/Documents/GitHub/sliced_split_dataset/dataset.yaml
+                    - --split
+                    - test
+                    - --fraction
+                    - "0.05"
+                    - --name
+                    - yolov12m_dino3_vitl16_seed_100_frac_0.05
+                    - --device
+                    - "0"
+                    - --output-dir
+                    - results/benchmark
+                codePath: coco_evaluate.py
+                codePathLocal: coco_evaluate.py
+                email: e.brezovsky@students.boku.ac.at
+                executable: C:\Users\emilb\Documents\GitHub\_trainer_DINOV3-YOLOV12\.pixi\envs\default\python.exe
+                git:
+                    commit: d90ca61bb49c278b894d3ac706ffbecbfc4b4eb6
+                    remote: https://github.com/Brezemil/_trainer_DINOV3-YOLOV12.git
+                host: Goldaline
+                os: Windows-11-10.0.26200-SP0
+                program: C:\Users\emilb\Documents\GitHub\_trainer_DINOV3-YOLOV12\coco_evaluate.py
+                python: CPython 3.12.13
+                root: C:\Users\emilb\Documents\GitHub\_trainer_DINOV3-YOLOV12
+                startedAt: "2026-08-15T09:19:50.420301Z"
+                writerId: 1gu6h3cawfzl1i72m0useotqlx7ilgkr
+        m: []
+        python_version: 3.12.13
+        t:
+            "1":
+                - 1
+                - 11
+                - 41
+                - 49
+            "2":
+                - 1
+                - 11
+                - 41
+                - 49
+            "3":
+                - 2
+                - 13
+            "4": 3.12.13
+            "5": 0.28.2
+            "6": 5.12.1
+            "8":
+                - 3
+            "12": 0.28.2
+            "13": windows-amd64

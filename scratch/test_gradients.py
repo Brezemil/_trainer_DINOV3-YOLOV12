@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+
 import torch
 
 # Add root directory to path
@@ -10,45 +11,46 @@ if str(ROOT) not in sys.path:
 
 from ultralytics import YOLO
 
+
 def test_gradients():
     print("🤖 Autograd & Gradient Flow Diagnostic Test")
     print("=" * 60)
-    
+
     config_path = ROOT / "ultralytics/cfg/models/v12/yolov12m-dualp0p3-dino3-vitl16.yaml"
     print(f"Loading model config: {config_path}")
-    
+
     try:
         # Load YOLO model
         model = YOLO(str(config_path))
         pytorch_model = model.model
         pytorch_model.train()  # Put in training mode
-        
+
         # Create a mock input tensor with gradients enabled
         dummy_input = torch.randn(2, 3, 640, 640, requires_grad=True)
-        
+
         # Print info about model parameters
         total_params = 0
         trainable_params = 0
         frozen_params = 0
-        
+
         for name, param in pytorch_model.named_parameters():
             total_params += param.numel()
             if param.requires_grad:
                 trainable_params += param.numel()
             else:
                 frozen_params += param.numel()
-                
+
         print(f"📊 Total parameters:     {total_params:,}")
         print(f"📊 Trainable parameters: {trainable_params:,}")
         print(f"📊 Frozen parameters:    {frozen_params:,}")
-        
+
         # Forward pass
         print("\n🏃 Running forward pass...")
         outputs = pytorch_model(dummy_input)
-        
+
         # Check output structure
         print("✅ Forward pass complete.")
-        
+
         # We need to compute a dummy loss to check gradients.
         # YOLOv12 model in training mode returns loss components or raw detections.
         # Let's see what outputs contains:
@@ -77,18 +79,18 @@ def test_gradients():
         else:
             print(f"   Unexpected output type: {type(outputs)}")
             loss = torch.tensor(1.0, requires_grad=True)
-            
+
         print(f"🎯 Dummy Loss value: {loss.item():.4f}")
-        
+
         # Backward pass
         print("\n🏃 Running backward pass...")
         loss.backward()
         print("✅ Backward pass complete.")
-        
+
         # Check gradients for key modules
         print("\n🔍 Checking gradient status of custom components:")
         print("-" * 60)
-        
+
         modules_to_check = [
             ("Preprocessor (layer 0)", "model.0"),
             ("Preprocessor feature_processor", "model.0.feature_processor"),
@@ -98,9 +100,9 @@ def test_gradients():
             ("Backbone P3 feature_adapter", "model.6.feature_adapter"),
             ("Backbone P3 dino_model", "model.6.dino_model"),
             ("YOLO Conv layer (layer 1)", "model.1"),
-            ("YOLO Detect Head (layer 23)", "model.23")
+            ("YOLO Detect Head (layer 23)", "model.23"),
         ]
-        
+
         for label, prefix in modules_to_check:
             found = False
             has_grads = []
@@ -114,7 +116,7 @@ def test_gradients():
                             has_grads.append((name, grad_norm))
                         else:
                             no_grads.append(name)
-            
+
             if not found:
                 print(f"❓ {label}: Not found in model named parameters.")
             else:
@@ -131,15 +133,19 @@ def test_gradients():
                         short_name = name.replace(prefix + ".", "")
                         print(f"      - {short_name}")
                 # Check for parameters with requires_grad=False (should have no grads)
-                non_trainable = [n for n, p in pytorch_model.named_parameters() if n.startswith(prefix) and not p.requires_grad]
+                non_trainable = [
+                    n for n, p in pytorch_model.named_parameters() if n.startswith(prefix) and not p.requires_grad
+                ]
                 if non_trainable:
                     print(f"   🧊 Frozen parameters (requires_grad=False): {len(non_trainable)}")
             print()
-            
+
     except Exception as e:
         print(f"❌ Diagnostic failed: {e}")
         import traceback
+
         traceback.print_exc()
+
 
 if __name__ == "__main__":
     test_gradients()

@@ -1293,9 +1293,7 @@ class AAttn(nn.Module):
             k = k.view(B, N, self.num_heads, self.head_dim).transpose(1, 2)
             v = v.view(B, N, self.num_heads, self.head_dim).transpose(1, 2)
 
-            x = torch.nn.functional.scaled_dot_product_attention(
-                q.contiguous(), k.contiguous(), v.contiguous()
-            )
+            x = torch.nn.functional.scaled_dot_product_attention(q.contiguous(), k.contiguous(), v.contiguous())
             x = x.transpose(1, 2).contiguous()
 
         if self.area > 1:
@@ -2138,68 +2136,40 @@ class DINO3Backbone(nn.Module):
         B, N_total, D = features.shape
         H, W = input_size
 
-        # Remove CLS token and keep patch tokens
-        patch_features = features[:, 1:, :]  # [B, N_patches, embed_dim]
-        N_patches = patch_features.shape[1]
+        # Compute exact patch grid dimensions
+        patch_size = getattr(self, "patch_size", 16) or 16
+        num_patches_h = H // patch_size
+        num_patches_w = W // patch_size
+        expected_patches = num_patches_h * num_patches_w
 
-        # Calculate patch grid dimensions with better handling
-        patch_h = int(N_patches**0.5)
-        patch_w = patch_h
+        # Slice patch tokens: In DINOv3/v2, token 0 is [CLS], followed by spatial patches, then trailing registers
+        if N_total >= 1 + expected_patches:
+            patch_features = features[:, 1 : 1 + expected_patches, :]
+        elif N_total == expected_patches:
+            patch_features = features
+        else:
+            patch_features = features[:, 1:, :]
+            if patch_features.shape[1] > expected_patches:
+                patch_features = patch_features[:, :expected_patches, :]
+            elif patch_features.shape[1] < expected_patches:
+                pad_len = expected_patches - patch_features.shape[1]
+                last_patch = patch_features[:, -1:, :].expand(-1, pad_len, -1)
+                patch_features = torch.cat([patch_features, last_patch], dim=1)
 
-        # Handle non-perfect square patch counts
-        if patch_h * patch_w != N_patches:
-            # Try to find best rectangular arrangement
-            for h in range(patch_h, 0, -1):
-                if N_patches % h == 0:
-                    patch_h = h
-                    patch_w = N_patches // h
-                    break
-            else:
-                # Fallback: pad or truncate to nearest square
-                patch_h = patch_w = int(N_patches**0.5)
-                if patch_h * patch_w < N_patches:
-                    patch_h += 1
-                    patch_w = patch_h
-
-        # Ensure minimum dimensions for 3x3 convolutions
-        min_dim = 4  # Minimum size to safely use 3x3 conv with padding=1
-        if patch_h < min_dim or patch_w < min_dim:
-            # Calculate target dimensions maintaining aspect ratio
-            aspect_ratio = patch_w / patch_h if patch_h > 0 else 1
-            if aspect_ratio >= 1:
-                patch_h = min_dim
-                patch_w = max(min_dim, int(patch_h * aspect_ratio))
-            else:
-                patch_w = min_dim
-                patch_h = max(min_dim, int(patch_w / aspect_ratio))
-
-        # Adjust patch_features to match target dimensions
-        target_patches = patch_h * patch_w
-        if target_patches != N_patches:
-            if target_patches < N_patches:
-                # Truncate
-                patch_features = patch_features[:, :target_patches, :]
-            else:
-                # Pad with zeros or repeat last patches
-                pad_size = target_patches - N_patches
-                if pad_size > 0:
-                    # Repeat last patch to fill missing slots
-                    last_patch = patch_features[:, -1:, :].expand(-1, pad_size, -1)
-                    patch_features = torch.cat([patch_features, last_patch], dim=1)
-
-        # Reshape to spatial feature map
-        features_2d = patch_features.view(B, patch_h, patch_w, D)
-        features_2d = features_2d.permute(0, 3, 1, 2)  # [B, D, H, W]
+        # Reshape directly to true 2D spatial feature map
+        features_2d = patch_features.view(B, num_patches_h, num_patches_w, D)
+        features_2d = features_2d.permute(0, 3, 1, 2)  # [B, D, num_patches_h, num_patches_w]
 
         # Adapt channel dimensions
-        adapted_features = features_2d.permute(0, 2, 3, 1)  # [B, H, W, D]
-        adapted_features = self.feature_adapter(adapted_features)  # [B, H, W, target_channels]
-        adapted_features = adapted_features.permute(0, 3, 1, 2)  # [B, target_channels, H, W]
+        adapted_features = features_2d.permute(0, 2, 3, 1)  # [B, num_patches_h, num_patches_w, D]
+        adapted_features = self.feature_adapter(adapted_features)  # [B, num_patches_h, num_patches_w, target_channels]
+        adapted_features = adapted_features.permute(0, 3, 1, 2)  # [B, target_channels, num_patches_h, num_patches_w]
 
-        # Apply spatial projection (now safe with minimum size guaranteed)
+        # Apply spatial projection
         adapted_features = self.spatial_projection(adapted_features)
 
         return adapted_features
+
 
     def _create_projection_layers(self, input_channels):
         """Create projection layers based on actual input channels."""
@@ -2665,12 +2635,18 @@ class DINO3Preprocessor(nn.Module):
         original_input = x
 
         try:
+            # Normalize to ImageNet stats expected by DINOv3 ViT
+            mean = torch.tensor([0.485, 0.456, 0.406], device=x.device, dtype=x.dtype).view(1, 3, 1, 1)
+            std = torch.tensor([0.229, 0.224, 0.225], device=x.device, dtype=x.dtype).view(1, 3, 1, 1)
+            norm_x = (x - mean) / std
+
             # Extract DINO features (works in both training and inference)
             # DINO weights are frozen, so gradients won't be computed through the model
             with torch.set_grad_enabled(not self.freeze_backbone):
                 # Use transformers model directly
-                outputs = self.dino_model(x)
-            
+                outputs = self.dino_model(norm_x)
+
+
             if hasattr(outputs, "last_hidden_state"):
                 dino_features = outputs.last_hidden_state  # (B, num_tokens, embed_dim)
 
@@ -2705,9 +2681,7 @@ class DINO3Preprocessor(nn.Module):
                 # Normalize to [0, 1] for addition with input
                 enhanced_features = (enhanced_features + 1) / 2
 
-                enhanced_image = (
-                    original_input * (1 - self.residual_weight) + enhanced_features * self.residual_weight
-                )
+                enhanced_image = original_input * (1 - self.residual_weight) + enhanced_features * self.residual_weight
 
                 return torch.clamp(enhanced_image, 0, 1)
             else:

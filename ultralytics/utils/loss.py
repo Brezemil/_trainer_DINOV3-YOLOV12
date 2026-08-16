@@ -198,18 +198,22 @@ class v8DetectionLoss:
         """Decode predicted object bounding box coordinates from anchor points and distribution."""
         if self.use_dfl:
             b, a, c = pred_dist.shape  # batch, anchors, channels
-            pred_dist = pred_dist.view(b, a, 4, c // 4).softmax(3).matmul(self.proj.type(pred_dist.dtype))
+            if self.proj.device != pred_dist.device:
+                self.proj = self.proj.to(pred_dist.device)
+            pred_dist = pred_dist.view(b, a, 4, c // 4).softmax(3).matmul(self.proj.to(pred_dist.dtype))
             # pred_dist = pred_dist.view(b, a, c // 4, 4).transpose(2,3).softmax(3).matmul(self.proj.type(pred_dist.dtype))
             # pred_dist = (pred_dist.view(b, a, c // 4, 4).softmax(2) * self.proj.type(pred_dist.dtype).view(1, 1, -1, 1)).sum(2)
         return dist2bbox(pred_dist, anchor_points, xywh=False)
 
     def __call__(self, preds, batch):
         """Calculate the sum of the loss for box, cls and dfl multiplied by batch size."""
-        loss = torch.zeros(3, device=self.device)  # box, cls, dfl
         feats = preds[1] if isinstance(preds, tuple) else preds
+        device = feats[0].device
+        loss = torch.zeros(3, device=device)  # box, cls, dfl
         pred_distri, pred_scores = torch.cat([xi.view(feats[0].shape[0], self.no, -1) for xi in feats], 2).split(
             (self.reg_max * 4, self.nc), 1
         )
+
 
         pred_scores = pred_scores.permute(0, 2, 1).contiguous()
         pred_distri = pred_distri.permute(0, 2, 1).contiguous()
@@ -253,9 +257,14 @@ class v8DetectionLoss:
                 pred_distri, pred_bboxes, anchor_points, target_bboxes, target_scores, target_scores_sum, fg_mask
             )
 
-        loss[0] *= self.hyp.box  # box gain
-        loss[1] *= self.hyp.cls  # cls gain
-        loss[2] *= self.hyp.dfl  # dfl gain
+        box_gain = self.hyp.box if hasattr(self.hyp, "box") else (self.hyp.get("box", 7.5) if isinstance(self.hyp, dict) else 7.5)
+        cls_gain = self.hyp.cls if hasattr(self.hyp, "cls") else (self.hyp.get("cls", 0.5) if isinstance(self.hyp, dict) else 0.5)
+        dfl_gain = self.hyp.dfl if hasattr(self.hyp, "dfl") else (self.hyp.get("dfl", 1.5) if isinstance(self.hyp, dict) else 1.5)
+
+        loss[0] *= box_gain  # box gain
+        loss[1] *= cls_gain  # cls gain
+        loss[2] *= dfl_gain  # dfl gain
+
 
         return loss.sum() * batch_size, loss.detach()  # loss(box, cls, dfl)
 
