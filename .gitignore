@@ -1,0 +1,27 @@
+# Pixi environment
+.pixi/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# PyTorch / Models / Checkpoints / Weights
+*.pt
+*.pth
+*.onnx
+*.engine
+*.tflite
+runs/
+*.log
+
+# Streamlit & Gradio cache
+.streamlit/
+.gradio/
+
+# OS specific
+.DS_Store
+Thumbs.db
