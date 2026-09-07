@@ -1,0 +1,28 @@
+{
+    "model_variant": "C:\\Users\\emil_brezovsky\\Documents\\GitHub\\DINOV3-YOLOV12\\export\\weights\\yolo12s_triple_dino3_vitb16_seed_999_best.pt",
+    "run_name": "yolo12s_triple_dino3_vitb16_seed_999_VAL",
+    "split": "val",
+    "metrics": {
+        "AP": 0.31281182388691414,
+        "AP50": 0.5770970203462381,
+        "AP75": 0.29142008134634173,
+        "AP30": 0.6307358261360003,
+        "AP40": 0.6057602706143221,
+        "AP_small": -1.0,
+        "AP_medium": 0.13976068568251132,
+        "AP_large": 0.3646066142589986,
+        "AR_max1": 0.27534722222222224,
+        "AR_max10": 0.5161458333333333,
+        "AR_max100": 0.585763888888889,
+        "AR_small": -1.0,
+        "AR_medium": 0.47205882352941186,
+        "AR_large": 0.620909090909091
+    },
+    "ultralytics_metrics": {
+        "mAP50": 0.5797409759011526,
+        "mAP75": 0.2938079634921031,
+        "mAP50-95": 0.31453635174265115,
+        "precision": 0.6857357724339783,
+        "recall": 0.5399305555555556
+    }
+}

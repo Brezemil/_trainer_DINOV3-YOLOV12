@@ -1,0 +1,222 @@
+{
+    "model_architecture": "yolo12s_triple_dino3_vitb16",
+    "backbone": "YOLOv12s + Meta DINOv3 ViT-B/16 (Triple Scale P3/P4/P5)",
+    "dataset": "Ailanthus altissima aerial benchmark (510 val, 510 test, 1024x1024)",
+    "num_runs": 3,
+    "seeds": [
+        42,
+        100,
+        999
+    ],
+    "test_holdout_metrics": {
+        "mAP50_mean": 0.46096750520340496,
+        "mAP50_std": 0.0017201250107771009,
+        "mAP50_95_mean": 0.22774097998132362,
+        "mAP50_95_std": 0.0032743121585306796,
+        "mAP75_mean": 0.1991462810684279,
+        "mAP75_std": 0.0037179190344430644,
+        "mAP30_mean": 0.5784169353040592,
+        "mAP30_std": 0.0022883144656605037,
+        "mAP40_mean": 0.5232652365797098,
+        "mAP40_std": 0.003723651976689005,
+        "AR_max100_mean": 0.5203703703703703,
+        "AR_max100_std": 0.006362057014959191
+    },
+    "validation_metrics": {
+        "mAP50_mean": 0.578238486331767,
+        "mAP50_std": 0.011256088596350942,
+        "mAP50_95_mean": 0.30874341046362147,
+        "mAP50_95_std": 0.008480590242140599,
+        "mAP75_mean": 0.28792033405723494,
+        "mAP75_std": 0.010573124781309945,
+        "mAP30_mean": 0.6391384520553914,
+        "mAP30_std": 0.014296347479284608,
+        "mAP40_mean": 0.6097336498038985,
+        "mAP40_std": 0.007886022653296309
+    },
+    "individual_runs": [
+        {
+            "seed": 42,
+            "name": "yolo12s_triple_dino3_vitb16_seed_42",
+            "wandb_id": "ovdgoz21",
+            "val_metrics": {
+                "model_variant": "C:\\Users\\emil_brezovsky\\Documents\\GitHub\\DINOV3-YOLOV12\\export\\weights\\yolo12s_triple_dino3_vitb16_seed_42_best.pt",
+                "run_name": "yolo12s_triple_dino3_vitb16_seed_42_VAL",
+                "split": "val",
+                "metrics": {
+                    "AP": 0.3164799061548484,
+                    "AP50": 0.5925595679487031,
+                    "AP75": 0.29876014977128046,
+                    "AP30": 0.6592653807054379,
+                    "AP40": 0.6207449293225744,
+                    "AP_small": -1.0,
+                    "AP_medium": 0.13749566281979575,
+                    "AP_large": 0.37041404689105634,
+                    "AR_max1": 0.27899305555555554,
+                    "AR_max10": 0.5050347222222223,
+                    "AR_max100": 0.5760416666666667,
+                    "AR_small": -1.0,
+                    "AR_medium": 0.4632352941176471,
+                    "AR_large": 0.610909090909091
+                },
+                "ultralytics_metrics": {
+                    "mAP50": 0.5951717163282664,
+                    "mAP75": 0.3021466567320501,
+                    "mAP50-95": 0.3186523822358406,
+                    "precision": 0.6818649376143417,
+                    "recall": 0.5503472222222222
+                }
+            },
+            "test_metrics": {
+                "model_variant": "C:\\Users\\emil_brezovsky\\Documents\\GitHub\\DINOV3-YOLOV12\\export\\weights\\yolo12s_triple_dino3_vitb16_seed_42_best.pt",
+                "run_name": "yolo12s_triple_dino3_vitb16_seed_42_TEST",
+                "split": "test",
+                "metrics": {
+                    "AP": 0.23081409514645632,
+                    "AP50": 0.4615821880260845,
+                    "AP75": 0.20218515613550558,
+                    "AP30": 0.58052657655308,
+                    "AP40": 0.522725056937744,
+                    "AP_small": 0.0,
+                    "AP_medium": 0.10932718287156973,
+                    "AP_large": 0.29389903753696,
+                    "AR_max1": 0.1954861111111111,
+                    "AR_max10": 0.4296875,
+                    "AR_max100": 0.5293402777777778,
+                    "AR_small": 0.0,
+                    "AR_medium": 0.41050000000000003,
+                    "AR_large": 0.5957219251336898
+                },
+                "ultralytics_metrics": {
+                    "mAP50": 0.4631603551236733,
+                    "mAP75": 0.2035650892839598,
+                    "mAP50-95": 0.23163935370574187,
+                    "precision": 0.5347117377124077,
+                    "recall": 0.4583333333333333
+                }
+            }
+        },
+        {
+            "seed": 100,
+            "name": "yolo12s_triple_dino3_vitb16_seed_100",
+            "wandb_id": "p96dlaj5",
+            "val_metrics": {
+                "model_variant": "C:\\Users\\emil_brezovsky\\Documents\\GitHub\\DINOV3-YOLOV12\\export\\weights\\yolo12s_triple_dino3_vitb16_seed_100_best.pt",
+                "run_name": "yolo12s_triple_dino3_vitb16_seed_100_VAL",
+                "split": "val",
+                "metrics": {
+                    "AP": 0.29693850134910177,
+                    "AP50": 0.5650588707003595,
+                    "AP75": 0.2735807710540827,
+                    "AP30": 0.6274141493247359,
+                    "AP40": 0.6026957494747991,
+                    "AP_small": -1.0,
+                    "AP_medium": 0.12315946136466557,
+                    "AP_large": 0.3509131266964868,
+                    "AR_max1": 0.27152777777777776,
+                    "AR_max10": 0.49444444444444446,
+                    "AR_max100": 0.5520833333333334,
+                    "AR_small": -1.0,
+                    "AR_medium": 0.39485294117647063,
+                    "AR_large": 0.6006818181818182
+                },
+                "ultralytics_metrics": {
+                    "mAP50": 0.5678742460653451,
+                    "mAP75": 0.2771719503751217,
+                    "mAP50-95": 0.29924381183397664,
+                    "precision": 0.6480542117129612,
+                    "recall": 0.5607638888888888
+                }
+            },
+            "test_metrics": {
+                "model_variant": "C:\\Users\\emil_brezovsky\\Documents\\GitHub\\DINOV3-YOLOV12\\export\\weights\\yolo12s_triple_dino3_vitb16_seed_100_best.pt",
+                "run_name": "yolo12s_triple_dino3_vitb16_seed_100_TEST",
+                "split": "test",
+                "metrics": {
+                    "AP": 0.22320464698155912,
+                    "AP50": 0.45862181425146165,
+                    "AP75": 0.19391088986657842,
+                    "AP30": 0.5752368770479064,
+                    "AP40": 0.5189988596554101,
+                    "AP_small": 0.0,
+                    "AP_medium": 0.11052770254766985,
+                    "AP_large": 0.28242346830924075,
+                    "AR_max1": 0.18906249999999997,
+                    "AR_max10": 0.4192708333333333,
+                    "AR_max100": 0.5152777777777778,
+                    "AR_small": 0.0,
+                    "AR_medium": 0.39599999999999996,
+                    "AR_large": 0.5818181818181818
+                },
+                "ultralytics_metrics": {
+                    "mAP50": 0.4605533541241357,
+                    "mAP75": 0.19613127431289445,
+                    "mAP50-95": 0.2239989169279378,
+                    "precision": 0.5226953541347927,
+                    "recall": 0.4635416666666667
+                }
+            }
+        },
+        {
+            "seed": 999,
+            "name": "yolo12s_triple_dino3_vitb16_seed_999",
+            "wandb_id": "ftxj3r9n",
+            "val_metrics": {
+                "model_variant": "C:\\Users\\emil_brezovsky\\Documents\\GitHub\\DINOV3-YOLOV12\\export\\weights\\yolo12s_triple_dino3_vitb16_seed_999_best.pt",
+                "run_name": "yolo12s_triple_dino3_vitb16_seed_999_VAL",
+                "split": "val",
+                "metrics": {
+                    "AP": 0.31281182388691414,
+                    "AP50": 0.5770970203462381,
+                    "AP75": 0.29142008134634173,
+                    "AP30": 0.6307358261360003,
+                    "AP40": 0.6057602706143221,
+                    "AP_small": -1.0,
+                    "AP_medium": 0.13976068568251132,
+                    "AP_large": 0.3646066142589986,
+                    "AR_max1": 0.27534722222222224,
+                    "AR_max10": 0.5161458333333333,
+                    "AR_max100": 0.585763888888889,
+                    "AR_small": -1.0,
+                    "AR_medium": 0.47205882352941186,
+                    "AR_large": 0.620909090909091
+                },
+                "ultralytics_metrics": {
+                    "mAP50": 0.5797409759011526,
+                    "mAP75": 0.2938079634921031,
+                    "mAP50-95": 0.31453635174265115,
+                    "precision": 0.6857357724339783,
+                    "recall": 0.5399305555555556
+                }
+            },
+            "test_metrics": {
+                "model_variant": "C:\\Users\\emil_brezovsky\\Documents\\GitHub\\DINOV3-YOLOV12\\export\\weights\\yolo12s_triple_dino3_vitb16_seed_999_best.pt",
+                "run_name": "yolo12s_triple_dino3_vitb16_seed_999_TEST",
+                "split": "test",
+                "metrics": {
+                    "AP": 0.2292041978159554,
+                    "AP50": 0.4626985133326686,
+                    "AP75": 0.2013427972031997,
+                    "AP30": 0.5794873523111912,
+                    "AP40": 0.5280717931459752,
+                    "AP_small": 0.0,
+                    "AP_medium": 0.12923315614548705,
+                    "AP_large": 0.2871755421563921,
+                    "AR_max1": 0.20798611111111112,
+                    "AR_max10": 0.42517361111111107,
+                    "AR_max100": 0.5164930555555555,
+                    "AR_small": 0.0,
+                    "AR_medium": 0.39,
+                    "AR_large": 0.5868983957219251
+                },
+                "ultralytics_metrics": {
+                    "mAP50": 0.4649789969994767,
+                    "mAP75": 0.20338971923838114,
+                    "mAP50-95": 0.23043103663207276,
+                    "precision": 0.5512997282698727,
+                    "recall": 0.4305555555555556
+                }
+            }
+        }
+    ]
+}

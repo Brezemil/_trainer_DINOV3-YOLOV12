@@ -1,0 +1,6 @@
+{
+    "run_id": "z55wlb4g",
+    "run_name": "run-20260827_233639-z55wlb4g",
+    "state": "aborted",
+    "note": "Early test run aborted at epoch 1 batch 4 (batch_size=8, workers=4)"
+}

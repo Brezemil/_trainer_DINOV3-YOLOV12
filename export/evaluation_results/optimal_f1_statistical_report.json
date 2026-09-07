@@ -1,0 +1,164 @@
+{
+    "title": "YOLOv12s-Triple-DINOv3 Optimal F1 Operating Point Benchmark Analysis",
+    "description": "Evaluation of 3-seed models at calibrated optimal confidence thresholds from validation F1 curves",
+    "seeds": [
+        42,
+        100,
+        999
+    ],
+    "metrics_summary": {
+        "test_precision_mean": 0.610595943643537,
+        "test_precision_std": 0.011782293194552306,
+        "test_recall_mean": 0.3744212962962963,
+        "test_recall_std": 0.010254655756174397,
+        "test_f1_mean": 0.4640754232687652,
+        "test_f1_std": 0.008594390170316487,
+        "test_mAP50_mean": 0.3087341491204409,
+        "test_mAP50_std": 0.00701763569655294,
+        "test_mAP50_95_mean": 0.16338974344133897,
+        "test_mAP50_95_std": 0.004423878658967981,
+        "test_mAP75_mean": 0.1545841370587784,
+        "test_mAP75_std": 0.00569678511674867,
+        "test_mAP30_mean": 0.40991525888518493,
+        "test_mAP30_std": 0.01173819230958969,
+        "test_mAP40_mean": 0.36136559530216444,
+        "test_mAP40_std": 0.011474975351894076
+    },
+    "individual_runs": [
+        {
+            "model_variant": "yolo12s_triple_dino3_vitb16_seed_42_best.pt",
+            "run_name": "yolo12s_triple_dino3_vitb16_seed_42_opt_f1_TEST",
+            "split": "test",
+            "operating_point": {
+                "optimal_confidence_threshold": 0.273,
+                "validation_max_f1": 0.611,
+                "validation_precision_at_opt": 0.668,
+                "validation_recall_at_opt": 0.562
+            },
+            "test_point_metrics_iou50": {
+                "true_positives": 211,
+                "false_positives": 127,
+                "false_negatives": 365,
+                "ground_truth_count": 576,
+                "predictions_count": 338,
+                "point_precision": 0.6242603550295858,
+                "point_recall": 0.3663194444444444,
+                "point_f1_score": 0.46170678336980303
+            },
+            "coco_metrics": {
+                "AP": 0.16391273189955133,
+                "AP50": 0.30450829491442805,
+                "AP75": 0.1549407549902199,
+                "AP30": 0.405342075190399,
+                "AP40": 0.35705521513715593,
+                "AP_small": 0.0,
+                "AP_medium": 0.05416075014051138,
+                "AP_large": 0.2231305796834494,
+                "AR_max1": 0.1578125,
+                "AR_max10": 0.2248263888888889,
+                "AR_max100": 0.2248263888888889,
+                "AR_small": 0.0,
+                "AR_medium": 0.086,
+                "AR_large": 0.3002673796791444
+            },
+            "ultralytics_metrics_at_conf": {
+                "precision": 0.6242603550295858,
+                "recall": 0.3663194444444444,
+                "f1": 0.46170678336980303,
+                "mAP50": 0.501156422363856,
+                "mAP75": 0.3056127660904179,
+                "mAP50-95": 0.2982493270331988
+            }
+        },
+        {
+            "model_variant": "yolo12s_triple_dino3_vitb16_seed_100_best.pt",
+            "run_name": "yolo12s_triple_dino3_vitb16_seed_100_opt_f1_TEST",
+            "split": "test",
+            "operating_point": {
+                "optimal_confidence_threshold": 0.273,
+                "validation_max_f1": 0.605,
+                "validation_precision_at_opt": 0.667,
+                "validation_recall_at_opt": 0.553
+            },
+            "test_point_metrics_iou50": {
+                "true_positives": 212,
+                "false_positives": 144,
+                "false_negatives": 364,
+                "ground_truth_count": 576,
+                "predictions_count": 356,
+                "point_precision": 0.5955056179775281,
+                "point_recall": 0.3680555555555556,
+                "point_f1_score": 0.4549356223175966
+            },
+            "coco_metrics": {
+                "AP": 0.1577290903992008,
+                "AP50": 0.303070352406412,
+                "AP75": 0.1474355584614118,
+                "AP30": 0.3983818568391034,
+                "AP40": 0.3499716874030801,
+                "AP_small": 0.0,
+                "AP_medium": 0.059618361972688105,
+                "AP_large": 0.21035767172633235,
+                "AR_max1": 0.15677083333333333,
+                "AR_max10": 0.21718749999999995,
+                "AR_max100": 0.21718749999999995,
+                "AR_small": 0.0,
+                "AR_medium": 0.094,
+                "AR_large": 0.28422459893048124
+            },
+            "ultralytics_metrics_at_conf": {
+                "precision": 0.5955056179775281,
+                "recall": 0.3680555555555556,
+                "f1": 0.4549356223175966,
+                "mAP50": 0.49107650969019956,
+                "mAP75": 0.2883603240065482,
+                "mAP50-95": 0.2804004074357665
+            }
+        },
+        {
+            "model_variant": "yolo12s_triple_dino3_vitb16_seed_999_best.pt",
+            "run_name": "yolo12s_triple_dino3_vitb16_seed_999_opt_f1_TEST",
+            "split": "test",
+            "operating_point": {
+                "optimal_confidence_threshold": 0.303,
+                "validation_max_f1": 0.606,
+                "validation_precision_at_opt": 0.689,
+                "validation_recall_at_opt": 0.54
+            },
+            "test_point_metrics_iou50": {
+                "true_positives": 224,
+                "false_positives": 142,
+                "false_negatives": 352,
+                "ground_truth_count": 576,
+                "predictions_count": 366,
+                "point_precision": 0.6120218579234973,
+                "point_recall": 0.3888888888888889,
+                "point_f1_score": 0.475583864118896
+            },
+            "coco_metrics": {
+                "AP": 0.16852740802526478,
+                "AP50": 0.3186238000404826,
+                "AP75": 0.16137609772470352,
+                "AP30": 0.42602184462605247,
+                "AP40": 0.37706988336625746,
+                "AP_small": 0.0,
+                "AP_medium": 0.08018888883630094,
+                "AP_large": 0.22180880404208964,
+                "AR_max1": 0.1734375,
+                "AR_max10": 0.2338541666666667,
+                "AR_max100": 0.2338541666666667,
+                "AR_small": 0.0,
+                "AR_medium": 0.1055,
+                "AR_large": 0.3037433155080214
+            },
+            "ultralytics_metrics_at_conf": {
+                "precision": 0.6120218579234973,
+                "recall": 0.3888888888888889,
+                "f1": 0.475583864118896,
+                "mAP50": 0.5061918562227055,
+                "mAP75": 0.3030742512463027,
+                "mAP50-95": 0.29587241474642423
+            }
+        }
+    ]
+}

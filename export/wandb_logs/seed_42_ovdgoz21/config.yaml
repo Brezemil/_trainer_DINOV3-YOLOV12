@@ -1,0 +1,430 @@
+_wandb:
+    value:
+        cli_version: 0.28.2
+        e:
+            adv539cww143vt9qgf0cgbuhp7u4kngm:
+                args:
+                    - --data
+                    - C:/Users/emil_brezovsky/Documents/GitHub/_dataset_ail/dataset.yaml
+                    - --yolo-size
+                    - s
+                    - --dinoversion
+                    - "3"
+                    - --dino-variant
+                    - vitb16
+                    - --integration
+                    - triple
+                    - --batch-size
+                    - "4"
+                    - --epochs
+                    - "300"
+                    - --patience
+                    - "50"
+                    - --imgsz
+                    - "1024"
+                    - --seed
+                    - "42"
+                    - --workers
+                    - "4"
+                    - --project
+                    - _baseline
+                    - --name
+                    - triple_dino3_vitb16_seed42
+                codePath: train_yolov12_dino.py
+                codePathLocal: train_yolov12_dino.py
+                cpu_count: 16
+                cpu_count_logical: 32
+                cudaVersion: "13.3"
+                disk:
+                    /:
+                        total: "3999134642176"
+                        used: "522929741824"
+                email: e.brezovsky@students.boku.ac.at
+                executable: C:\Users\emil_brezovsky\Documents\GitHub\DINOV3-YOLOV12\.pixi\envs\default\python.exe
+                git:
+                    commit: afd01ccec06c199390624011c360a826ff040f75
+                    remote: https://github.com/Brezemil/_trainer_DINOV3-YOLOV12.git
+                gpu: NVIDIA GeForce RTX 5080
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Blackwell
+                      cudaCores: 10752
+                      memoryTotal: "17094934528"
+                      name: NVIDIA GeForce RTX 5080
+                      uuid: GPU-1f2177d1-9609-f5c5-c288-200e2c2f74a2
+                host: CF-LILA-004-D
+                memory:
+                    total: "66207113216"
+                os: Windows-10-10.0.26200-SP0
+                program: C:\Users\emil_brezovsky\Documents\GitHub\DINOV3-YOLOV12\train_yolov12_dino.py
+                python: CPython 3.11.16
+                root: C:\Users\emil_brezovsky\Documents\GitHub\DINOV3-YOLOV12
+                startedAt: "2026-08-27T21:40:11.085431Z"
+                writerId: adv539cww143vt9qgf0cgbuhp7u4kngm
+        m: []
+        python_version: 3.11.16
+        t:
+            "1":
+                - 1
+                - 11
+                - 41
+                - 49
+            "2":
+                - 1
+                - 11
+                - 41
+                - 49
+            "3":
+                - 2
+                - 13
+                - 16
+                - 61
+                - 78
+            "4": 3.11.16
+            "5": 0.28.2
+            "6": 5.16.1
+            "8":
+                - 3
+            "12": 0.28.2
+            "13": windows-amd64
+        visualize:
+            curves/F1-Confidence(B):
+                panel_config:
+                    fieldSettings:
+                        class: class
+                        x: x
+                        "y": "y"
+                    panelDefId: wandb/area-under-curve/v0
+                    stringSettings:
+                        title: F1-Confidence(B)
+                        x-axis-title: Confidence
+                        y-axis-title: F1
+                    transform:
+                        name: tableWithLeafColNames
+                    userQuery:
+                        queryFields:
+                            - args:
+                                - name: runSets
+                                  value: ${runSets}
+                              fields:
+                                - fields: []
+                                  name: id
+                                - fields: []
+                                  name: name
+                                - fields: []
+                                  name: _defaultColorIndex
+                                - args:
+                                    - name: tableKey
+                                      value: curves/F1-Confidence(B)_table
+                                  fields: []
+                                  name: summaryTable
+                              name: runSets
+                panel_type: Vega2
+            curves/Precision-Confidence(B):
+                panel_config:
+                    fieldSettings:
+                        class: class
+                        x: x
+                        "y": "y"
+                    panelDefId: wandb/area-under-curve/v0
+                    stringSettings:
+                        title: Precision-Confidence(B)
+                        x-axis-title: Confidence
+                        y-axis-title: Precision
+                    transform:
+                        name: tableWithLeafColNames
+                    userQuery:
+                        queryFields:
+                            - args:
+                                - name: runSets
+                                  value: ${runSets}
+                              fields:
+                                - fields: []
+                                  name: id
+                                - fields: []
+                                  name: name
+                                - fields: []
+                                  name: _defaultColorIndex
+                                - args:
+                                    - name: tableKey
+                                      value: curves/Precision-Confidence(B)_table
+                                  fields: []
+                                  name: summaryTable
+                              name: runSets
+                panel_type: Vega2
+            curves/Precision-Recall(B):
+                panel_config:
+                    fieldSettings:
+                        class: class
+                        x: x
+                        "y": "y"
+                    panelDefId: wandb/area-under-curve/v0
+                    stringSettings:
+                        title: Precision-Recall(B)
+                        x-axis-title: Recall
+                        y-axis-title: Precision
+                    transform:
+                        name: tableWithLeafColNames
+                    userQuery:
+                        queryFields:
+                            - args:
+                                - name: runSets
+                                  value: ${runSets}
+                              fields:
+                                - fields: []
+                                  name: id
+                                - fields: []
+                                  name: name
+                                - fields: []
+                                  name: _defaultColorIndex
+                                - args:
+                                    - name: tableKey
+                                      value: curves/Precision-Recall(B)_table
+                                  fields: []
+                                  name: summaryTable
+                              name: runSets
+                panel_type: Vega2
+            curves/Recall-Confidence(B):
+                panel_config:
+                    fieldSettings:
+                        class: class
+                        x: x
+                        "y": "y"
+                    panelDefId: wandb/area-under-curve/v0
+                    stringSettings:
+                        title: Recall-Confidence(B)
+                        x-axis-title: Confidence
+                        y-axis-title: Recall
+                    transform:
+                        name: tableWithLeafColNames
+                    userQuery:
+                        queryFields:
+                            - args:
+                                - name: runSets
+                                  value: ${runSets}
+                              fields:
+                                - fields: []
+                                  name: id
+                                - fields: []
+                                  name: name
+                                - fields: []
+                                  name: _defaultColorIndex
+                                - args:
+                                    - name: tableKey
+                                      value: curves/Recall-Confidence(B)_table
+                                  fields: []
+                                  name: summaryTable
+                              name: runSets
+                panel_type: Vega2
+agnostic_nms:
+    value: false
+amp:
+    value: false
+augment:
+    value: false
+auto_augment:
+    value: randaugment
+batch:
+    value: 4
+bgr:
+    value: 0
+box:
+    value: 7.5
+cache:
+    value: null
+cfg:
+    value: null
+classes:
+    value: null
+close_mosaic:
+    value: 10
+cls:
+    value: 0.5
+conf:
+    value: null
+copy_paste:
+    value: 0
+copy_paste_mode:
+    value: flip
+cos_lr:
+    value: false
+crop_fraction:
+    value: 1
+data:
+    value: C:/Users/emil_brezovsky/Documents/GitHub/_dataset_ail/dataset.yaml
+degrees:
+    value: 0
+deterministic:
+    value: false
+device:
+    value: "0"
+dfl:
+    value: 1.5
+dnn:
+    value: false
+dropout:
+    value: 0
+dynamic:
+    value: false
+embed:
+    value: null
+epochs:
+    value: 300
+erasing:
+    value: 0.4
+exist_ok:
+    value: false
+fliplr:
+    value: 0.5
+flipud:
+    value: 0
+format:
+    value: torchscript
+fraction:
+    value: 1
+freeze:
+    value: null
+half:
+    value: false
+hsv_h:
+    value: 0.015
+hsv_s:
+    value: 0.7
+hsv_v:
+    value: 0.4
+imgsz:
+    value: 1024
+int8:
+    value: false
+iou:
+    value: 0.7
+keras:
+    value: false
+kobj:
+    value: 1
+line_width:
+    value: null
+lr0:
+    value: 0.01
+lrf:
+    value: 0.01
+mask_ratio:
+    value: 4
+max_det:
+    value: 300
+mixup:
+    value: 0.05
+mode:
+    value: train
+model:
+    value: ultralytics\cfg\models\v12\yolov12s-triple-dino3-vitb16.yaml
+momentum:
+    value: 0.937
+mosaic:
+    value: 1
+multi_scale:
+    value: false
+name:
+    value: triple_dino3_vitb16_seed422
+nbs:
+    value: 64
+nms:
+    value: false
+opset:
+    value: null
+optimize:
+    value: false
+optimizer:
+    value: SGD
+overlap_mask:
+    value: false
+patience:
+    value: 50
+perspective:
+    value: 0
+plots:
+    value: true
+pose:
+    value: 12
+pretrained:
+    value: true
+profile:
+    value: false
+project:
+    value: _baseline
+rect:
+    value: false
+resume:
+    value: null
+retina_masks:
+    value: false
+save:
+    value: true
+save_conf:
+    value: false
+save_crop:
+    value: false
+save_dir:
+    value: _baseline\triple_dino3_vitb16_seed422
+save_frames:
+    value: false
+save_hybrid:
+    value: false
+save_json:
+    value: false
+save_period:
+    value: -1
+save_txt:
+    value: false
+scale:
+    value: 0.9
+seed:
+    value: 42
+shear:
+    value: 0
+show:
+    value: false
+show_boxes:
+    value: true
+show_conf:
+    value: true
+show_labels:
+    value: true
+simplify:
+    value: true
+single_cls:
+    value: false
+source:
+    value: null
+split:
+    value: val
+stream_buffer:
+    value: false
+task:
+    value: detect
+time:
+    value: null
+tracker:
+    value: botsort.yaml
+translate:
+    value: 0.1
+val:
+    value: true
+verbose:
+    value: true
+vid_stride:
+    value: 1
+visualize:
+    value: false
+warmup_bias_lr:
+    value: 0.1
+warmup_epochs:
+    value: 3
+warmup_momentum:
+    value: 0.8
+weight_decay:
+    value: 0.0005
+workers:
+    value: 4
+workspace:
+    value: null

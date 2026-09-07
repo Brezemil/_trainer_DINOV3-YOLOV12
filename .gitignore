@@ -16,7 +16,15 @@ build/
 *.engine
 *.tflite
 runs/
+_baseline/
+temp_eval/
+temp_opt_eval/
 *.log
+
+# Weights & Biases (local cache & binary run databases)
+wandb/
+*.wandb
+*.wandb.syncstate
 
 # Streamlit & Gradio cache
 .streamlit/
@@ -25,3 +33,4 @@ runs/
 # OS specific
 .DS_Store
 Thumbs.db
+

@@ -1,0 +1,102 @@
+{
+    "project": "https://wandb.ai/brezo-boku-vienna/_baseline?nw=nwuserbrezo",
+    "model_architecture": "yolo12s_triple_dino3_vitb16",
+    "runs": [
+        {
+            "seed": 42,
+            "run_id": "ovdgoz21",
+            "name": "yolo12s_triple_dino3_vitb16_seed_42",
+            "url": "https://wandb.ai/brezo-boku-vienna/_baseline/runs/ovdgoz21",
+            "state": "finished",
+            "epochs_logged": 300,
+            "tags": [
+                "completed",
+                "dino3",
+                "evaluated_coco",
+                "triple",
+                "vitb16",
+                "yolo12s"
+            ],
+            "summary_metrics": {
+                "mAP50": 0.46317226924378513,
+                "mAP50_95": 0.23165471709534646,
+                "precision": 0.5347852686180342,
+                "recall": 0.4583333333333333,
+                "train_loss": 4.41314,
+                "val_loss": 4.73842,
+                "train_box_loss": 1.34356,
+                "train_cls_loss": 1.53311,
+                "train_dfl_loss": 1.53647,
+                "val_box_loss": 1.44598,
+                "val_cls_loss": 1.54222,
+                "val_dfl_loss": 1.75022,
+                "best_val_loss": 4.73842,
+                "best_val_loss_epoch": 300
+            }
+        },
+        {
+            "seed": 100,
+            "run_id": "p96dlaj5",
+            "name": "yolo12s_triple_dino3_vitb16_seed_100",
+            "url": "https://wandb.ai/brezo-boku-vienna/_baseline/runs/p96dlaj5",
+            "state": "finished",
+            "epochs_logged": 300,
+            "tags": [
+                "completed",
+                "dino3",
+                "evaluated_coco",
+                "triple",
+                "vitb16",
+                "yolo12s"
+            ],
+            "summary_metrics": {
+                "mAP50": 0.4605083699376142,
+                "mAP50_95": 0.2240190337974556,
+                "precision": 0.5224848296327399,
+                "recall": 0.4635416666666667,
+                "train_loss": 4.39235,
+                "val_loss": 4.90486,
+                "train_box_loss": 1.3298,
+                "train_cls_loss": 1.54064,
+                "train_dfl_loss": 1.52191,
+                "val_box_loss": 1.48539,
+                "val_cls_loss": 1.6218,
+                "val_dfl_loss": 1.79767,
+                "best_val_loss": 4.90486,
+                "best_val_loss_epoch": 300
+            }
+        },
+        {
+            "seed": 999,
+            "run_id": "ftxj3r9n",
+            "name": "yolo12s_triple_dino3_vitb16_seed_999",
+            "url": "https://wandb.ai/brezo-boku-vienna/_baseline/runs/ftxj3r9n",
+            "state": "finished",
+            "epochs_logged": 300,
+            "tags": [
+                "completed",
+                "dino3",
+                "evaluated_coco",
+                "triple",
+                "vitb16",
+                "yolo12s"
+            ],
+            "summary_metrics": {
+                "mAP50": 0.4650259707953829,
+                "mAP50_95": 0.23044108042221553,
+                "precision": 0.5512780450939727,
+                "recall": 0.4305555555555556,
+                "train_loss": 4.37549,
+                "val_loss": 4.78719,
+                "train_box_loss": 1.33694,
+                "train_cls_loss": 1.51523,
+                "train_dfl_loss": 1.52332,
+                "val_box_loss": 1.46956,
+                "val_cls_loss": 1.54163,
+                "val_dfl_loss": 1.776,
+                "best_val_loss": 4.78719,
+                "best_val_loss_epoch": 300
+            }
+        }
+    ]
+}

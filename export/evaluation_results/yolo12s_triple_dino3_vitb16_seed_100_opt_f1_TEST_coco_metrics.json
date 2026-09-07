@@ -1,0 +1,45 @@
+{
+    "model_variant": "yolo12s_triple_dino3_vitb16_seed_100_best.pt",
+    "run_name": "yolo12s_triple_dino3_vitb16_seed_100_opt_f1_TEST",
+    "split": "test",
+    "operating_point": {
+        "optimal_confidence_threshold": 0.273,
+        "validation_max_f1": 0.605,
+        "validation_precision_at_opt": 0.667,
+        "validation_recall_at_opt": 0.553
+    },
+    "test_point_metrics_iou50": {
+        "true_positives": 212,
+        "false_positives": 144,
+        "false_negatives": 364,
+        "ground_truth_count": 576,
+        "predictions_count": 356,
+        "point_precision": 0.5955056179775281,
+        "point_recall": 0.3680555555555556,
+        "point_f1_score": 0.4549356223175966
+    },
+    "coco_metrics": {
+        "AP": 0.1577290903992008,
+        "AP50": 0.303070352406412,
+        "AP75": 0.1474355584614118,
+        "AP30": 0.3983818568391034,
+        "AP40": 0.3499716874030801,
+        "AP_small": 0.0,
+        "AP_medium": 0.059618361972688105,
+        "AP_large": 0.21035767172633235,
+        "AR_max1": 0.15677083333333333,
+        "AR_max10": 0.21718749999999995,
+        "AR_max100": 0.21718749999999995,
+        "AR_small": 0.0,
+        "AR_medium": 0.094,
+        "AR_large": 0.28422459893048124
+    },
+    "ultralytics_metrics_at_conf": {
+        "precision": 0.5955056179775281,
+        "recall": 0.3680555555555556,
+        "f1": 0.4549356223175966,
+        "mAP50": 0.49107650969019956,
+        "mAP75": 0.2883603240065482,
+        "mAP50-95": 0.2804004074357665
+    }
+}

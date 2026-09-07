@@ -1,0 +1,6 @@
+{
+    "run_id": "h9h0frsv",
+    "run_name": "run-20260827_232529-h9h0frsv",
+    "state": "aborted",
+    "note": "Early test run aborted at epoch 1 batch 4 (batch_size=4, workers=8)"
+}
