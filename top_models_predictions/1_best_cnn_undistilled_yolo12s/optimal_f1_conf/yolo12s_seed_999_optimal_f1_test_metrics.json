@@ -1,0 +1,58 @@
+{
+  "model_name": "yolo12s_seed_999",
+  "study_group": "baseline",
+  "is_distilled": false,
+  "model_family": "YOLO12S (Baseline)",
+  "architecture": "yolo12s",
+  "teacher_model": "none (supervised baseline)",
+  "seed": 999,
+  "optimal_confidence": 0.3013,
+  "run_metadata": {
+    "task": "detect",
+    "dataset": "_dataset_ail (Ailanthus altissima UAV canopy imagery, 1024x1024)",
+    "dataset_split_test_counts": {
+      "total_test_scenes": 510,
+      "positive_tree_scenes": 315,
+      "negative_background_scenes": 195,
+      "total_gt_tree_instances": 576
+    },
+    "training_epochs": 100,
+    "input_resolution": 1024,
+    "batch_size": 16,
+    "framework": "Ultralytics (YOLO PyTorch backend)",
+    "backbone_status": "Unfrozen (end-to-end fine-tuning of backbone and detection head)",
+    "distillation": {
+      "is_distilled": false,
+      "teacher_model": "none (supervised baseline)",
+      "teacher_domain": "None (Supervised training from standard COCO/ImageNet pretraining)",
+      "distillation_strategy": "Standard supervised baseline detector training with standard Ultralytics / LightlyTrain recipe."
+    },
+    "experiment_recipe_summary": "Supervised baseline benchmark run on _dataset_ail, 100 epochs, imgsz 1024, random seed 999."
+  },
+  "validation_metrics": {
+    "best_f1": 0.6431,
+    "precision": 0.6685,
+    "recall": 0.6196
+  },
+  "test_metrics": {
+    "test_f1": 0.5141,
+    "test_precision": 0.5854,
+    "test_recall": 0.4583,
+    "mAP_50_95": 0.1768,
+    "mAP_50": 0.3693,
+    "mAP_75": 0.1571,
+    "mAP_30": 0.485,
+    "mAP_40": 0.4371,
+    "AP_small": 0.0,
+    "AP_medium": 0.0959,
+    "AP_large": 0.2227,
+    "AR_max1": 0.1856,
+    "AR_max10": 0.2597,
+    "AR_max100": 0.2597,
+    "num_predictions": 451,
+    "mAP_50_standard": 0.4984,
+    "mAP_50_95_standard": 0.2294,
+    "mAP_50_fixed_conf_at_c_star": 0.3693,
+    "mAP_50_95_fixed_conf_at_c_star": 0.1768
+  }
+}

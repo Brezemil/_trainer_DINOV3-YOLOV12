@@ -1,0 +1,115 @@
+{
+  "pareto_models": [
+    {"name": "YOLO26n", "true_lat": 2.4, "plot_lat": 2.40, "map50": 46.22, "std": 0.42, "params": 2.40, "trainable_params": 2.40, "marker": "o", "color": "#2b8a3e", "paradigm": "Pure CNN"},
+    {"name": "YOLO11n", "true_lat": 2.8, "plot_lat": 2.80, "map50": 48.59, "std": 0.38, "params": 2.60, "trainable_params": 2.60, "marker": "s", "color": "#15aabf", "paradigm": "Pure CNN"},
+    {"name": "YOLO12n", "true_lat": 2.9, "plot_lat": 2.90, "map50": 49.16, "std": 0.35, "params": 2.80, "trainable_params": 2.80, "marker": "^", "color": "#1971c2", "paradigm": "Pure CNN"},
+    {"name": "YOLO26s", "true_lat": 4.7, "plot_lat": 4.45, "map50": 47.70, "std": 1.32, "params": 9.80, "trainable_params": 9.80, "marker": "v", "color": "#4263eb", "paradigm": "Pure CNN"},
+    {"name": "YOLO11s", "true_lat": 4.8, "plot_lat": 4.68, "map50": 48.41, "std": 2.53, "params": 9.40, "trainable_params": 9.40, "marker": "<", "color": "#7048e8", "paradigm": "Pure CNN"},
+    {"name": "YOLO12s (Stock)", "true_lat": 4.9, "plot_lat": 4.90, "map50": 49.91, "std": 0.75, "params": 9.30, "trainable_params": 9.30, "marker": "*", "color": "#0ca678", "paradigm": "Pure CNN"},
+    {"name": "YOLO12s (SAT-493M)", "true_lat": 4.9, "plot_lat": 5.12, "map50": 48.01, "std": 0.41, "params": 9.30, "trainable_params": 9.30, "marker": ">", "color": "#f59f00", "paradigm": "Distilled CNN"},
+    {"name": "YOLO12s (LVD-1689M)", "true_lat": 4.9, "plot_lat": 5.35, "map50": 46.49, "std": 0.67, "params": 9.30, "trainable_params": 9.30, "marker": "p", "color": "#e8590c", "paradigm": "Distilled CNN"},
+    {"name": "DINOv3 ViT-T + D-FINE", "true_lat": 11.5, "plot_lat": 11.10, "map50": 48.84, "std": 0.99, "params": 10.80, "trainable_params": 10.80, "marker": "D", "color": "#2f9e44", "paradigm": "Vision Transformer"},
+    {"name": "DINOv3 ViT-T (LVD-1689M)", "true_lat": 11.5, "plot_lat": 11.50, "map50": 48.38, "std": 2.09, "params": 10.80, "trainable_params": 10.80, "marker": "h", "color": "#d6336c", "paradigm": "Distilled ViT"},
+    {"name": "DINOv3 ViT-T (SAT-493M)", "true_lat": 11.5, "plot_lat": 11.90, "map50": 47.52, "std": 0.59, "params": 10.80, "trainable_params": 10.80, "marker": "P", "color": "#ae3ec9", "paradigm": "Distilled ViT"},
+    {"name": "YOLO12s (DINOv3)", "true_lat": 14.8, "plot_lat": 14.80, "map50": 46.10, "std": 0.17, "params": 274.94, "trainable_params": 17.96, "marker": "X", "color": "#7950f2", "paradigm": "Multi-Scale Fused"},
+    {"name": "RT-DETR-L", "true_lat": 18.6, "plot_lat": 18.60, "map50": 40.63, "std": 0.85, "params": 32.00, "trainable_params": 32.00, "marker": "8", "color": "#c92a2a", "paradigm": "Vision Transformer"}
+  ],
+  "dense_stand_recall_all": [
+    {"name": "DINOv3 ViT-T + D-FINE", "ar_mean": 55.31, "ar_std": 0.92, "color": "#2ca02c"},
+    {"name": "YOLO12s (DINOv3)", "ar_mean": 52.04, "ar_std": 0.38, "color": "#7950f2"},
+    {"name": "YOLO11s", "ar_mean": 51.59, "ar_std": 1.30, "color": "#1f77b4"},
+    {"name": "YOLO12s (Stock)", "ar_mean": 51.55, "ar_std": 1.12, "color": "#1f77b4"},
+    {"name": "DINOv3 ViT-T (LVD-1689M)", "ar_mean": 51.20, "ar_std": 1.40, "color": "#ff7f0e"},
+    {"name": "YOLO12s (SAT-493M)", "ar_mean": 49.80, "ar_std": 1.25, "color": "#ff7f0e"},
+    {"name": "YOLO26s", "ar_mean": 48.50, "ar_std": 1.45, "color": "#1f77b4"}
+  ],
+  "dense_stand_recall_top": [
+    {"name": "DINOv3 ViT-T + D-FINE\n(Non-distilled ViT)", "ar_mean": 55.31, "ar_std": 0.92, "color": "#2ca02c"},
+    {"name": "YOLO12s (DINOv3)\n(Multi-Scale Fused)", "ar_mean": 52.04, "ar_std": 0.38, "color": "#9467bd"},
+    {"name": "YOLO12s (Stock)\n(Non-distilled CNN)", "ar_mean": 51.55, "ar_std": 1.12, "color": "#1f77b4"},
+    {"name": "DINOv3 ViT-T (LVD-1689M)\n(Distilled ViT)", "ar_mean": 51.20, "ar_std": 1.40, "color": "#d62728"},
+    {"name": "YOLO12s (SAT-493M)\n(Distilled CNN)", "ar_mean": 49.80, "ar_std": 1.25, "color": "#ff7f0e"}
+  ],
+  "photogrammetric_error": [
+    {"name": "YOLO12s (Stock)\n(DBSCAN)", "mean": 0.457, "std": 0.343, "median": 0.354, "rmse": 0.571, "sub_meter_compliance": 94.8},
+    {"name": "YOLO26s\n(DBSCAN)", "mean": 0.489, "std": 0.498, "median": 0.380, "rmse": 0.698, "sub_meter_compliance": 91.2},
+    {"name": "DINOv3 ViT-T (Stock)\n(DBSCAN)", "mean": 0.539, "std": 0.668, "median": 0.384, "rmse": 0.858, "sub_meter_compliance": 88.5},
+    {"name": "YOLO12s (SAT-493M)\n(DBSCAN)", "mean": 0.592, "std": 0.580, "median": 0.420, "rmse": 0.829, "sub_meter_compliance": 86.1},
+    {"name": "DINOv3 ViT-T (LVD-1689M)\n(DBSCAN)", "mean": 0.671, "std": 0.667, "median": 0.492, "rmse": 0.946, "sub_meter_compliance": 81.7},
+    {"name": "YOLO12s (Stock)\n(Raw Direct)", "mean": 0.895, "std": 0.812, "median": 0.680, "rmse": 1.208, "sub_meter_compliance": 64.3}
+  ],
+  "cross_seed_stability": {
+    "seeds": ["Seed 42", "Seed 100", "Seed 999"],
+    "yolo11s_map50": [51.04, 48.20, 45.99],
+    "yolo12s_map50": [50.69, 49.83, 49.20],
+    "yolo11s_strict": [25.20, 23.50, 21.92],
+    "yolo12s_strict": [23.65, 23.15, 22.74]
+  },
+  "distillation_domain": {
+    "categories": ["YOLO12s Student (9.3M CNN)", "DINOv3 ViT-T Student (10.8M Transformer)"],
+    "native_means": [49.91, 48.84],
+    "native_stds": [0.75, 0.99],
+    "sat_means": [48.01, 47.52],
+    "sat_stds": [0.41, 0.59],
+    "lvd_means": [46.49, 48.38],
+    "lvd_stds": [0.67, 2.09]
+  },
+  "scale_sensitivity_all": {
+    "models": ["YOLO12s (Stock)", "DINOv3 ViT-T\n+ D-FINE", "YOLO12s\n(SAT-493M)", "DINOv3 ViT-T\n(LVD-1689M)", "YOLO12s\n(DINOv3)", "YOLO11s"],
+    "ap_s_mean": [28.40, 31.85, 27.10, 29.50, 24.20, 26.90],
+    "ap_s_std": [0.65, 0.72, 0.52, 1.35, 0.35, 1.85],
+    "ap_m_mean": [53.15, 51.40, 51.20, 50.80, 48.90, 51.60],
+    "ap_m_std": [0.82, 0.90, 0.48, 1.80, 0.28, 2.40],
+    "ap_l_mean": [58.70, 62.10, 56.40, 59.20, 57.30, 57.10],
+    "ap_l_std": [0.95, 1.10, 0.75, 2.20, 0.42, 2.80]
+  },
+  "scale_sensitivity_top": {
+    "models": ["YOLO12s (Stock)\n[Non-dist. CNN]", "DINOv3 ViT-T + D-FINE\n[Non-dist. ViT]", "YOLO12s (SAT)\n[Distilled CNN]", "DINOv3 ViT-T (LVD)\n[Distilled ViT]", "YOLO12s (DINOv3)\n[Fused]"],
+    "ap_s_mean": [28.40, 31.85, 27.10, 29.50, 24.20],
+    "ap_s_std": [0.65, 0.72, 0.52, 1.35, 0.35],
+    "ap_m_mean": [53.15, 51.40, 51.20, 50.80, 48.90],
+    "ap_m_std": [0.82, 0.90, 0.48, 1.80, 0.28],
+    "ap_l_mean": [58.70, 62.10, 56.40, 59.20, 57.30],
+    "ap_l_std": [0.95, 1.10, 0.75, 2.20, 0.42]
+  },
+  "hardware_batch_scaling": {
+    "batches": [1, 4, 8, 16],
+    "lat_y12s": [4.9, 3.55, 3.20, 3.05],
+    "std_y12s": [0.10, 0.08, 0.06, 0.05],
+    "lat_y11s": [4.8, 3.45, 3.10, 2.95],
+    "std_y11s": [0.10, 0.07, 0.06, 0.05],
+    "lat_y12n": [2.9, 1.95, 1.70, 1.55],
+    "std_y12n": [0.08, 0.05, 0.04, 0.03],
+    "lat_dino": [11.5, 9.60, 9.10, 8.85],
+    "std_dino": [0.20, 0.18, 0.15, 0.15],
+    "lat_rtd": [8.8, 7.30, 6.90, 6.65],
+    "std_rtd": [0.18, 0.13, 0.11, 0.11]
+  },
+  "error_breakdown": {
+    "models": ["YOLO12s (Stock)", "DINOv3 ViT-T\n+ D-FINE", "YOLO12s\n(SAT-493M)", "DINOv3 ViT-T\n(LVD-1689M)", "YOLO11s", "YOLO26s"],
+    "tp": [62.8, 64.5, 60.5, 61.2, 60.8, 57.2],
+    "tp_std": [1.2, 1.0, 0.8, 1.9, 2.4, 1.8],
+    "fp_bg": [6.4, 4.8, 7.8, 5.9, 7.9, 10.5],
+    "fp_bg_std": [0.5, 0.4, 0.6, 0.7, 1.1, 1.0],
+    "fp_nat": [12.3, 14.2, 13.5, 15.1, 13.4, 14.8],
+    "fp_nat_std": [0.8, 0.7, 0.7, 1.1, 1.2, 1.1],
+    "fn": [18.5, 16.5, 18.2, 17.8, 17.9, 17.5],
+    "fn_std": [1.1, 0.9, 1.0, 1.4, 1.6, 1.3]
+  },
+  "radar_models": [
+    {"name": "YOLO12s (Stock)", "short": "YOLO12s\n(Stock)", "cat": "CNN", "map50": 49.91, "map50_std": 0.75, "mapstrict": 23.18, "mapstrict_std": 0.45},
+    {"name": "YOLO12n", "short": "YOLO12n", "cat": "CNN", "map50": 49.16, "map50_std": 0.35, "mapstrict": 22.95, "mapstrict_std": 0.30},
+    {"name": "YOLO11n", "short": "YOLO11n", "cat": "CNN", "map50": 48.59, "map50_std": 0.38, "mapstrict": 22.84, "mapstrict_std": 0.31},
+    {"name": "YOLO11s", "short": "YOLO11s", "cat": "CNN", "map50": 48.41, "map50_std": 2.53, "mapstrict": 23.54, "mapstrict_std": 1.65},
+    {"name": "YOLO26s", "short": "YOLO26s", "cat": "CNN", "map50": 47.70, "map50_std": 1.32, "mapstrict": 21.48, "mapstrict_std": 1.32},
+    {"name": "YOLO26n", "short": "YOLO26n", "cat": "CNN", "map50": 46.22, "map50_std": 0.42, "mapstrict": 21.15, "mapstrict_std": 0.28},
+    {"name": "DINOv3 ViT-T + D-FINE", "short": "DINOv3 ViT-T\n+ D-FINE", "cat": "ViT", "map50": 48.84, "map50_std": 0.99, "mapstrict": 23.38, "mapstrict_std": 0.64},
+    {"name": "RT-DETRv2-S", "short": "RT-DETRv2-S", "cat": "ViT", "map50": 46.50, "map50_std": 0.60, "mapstrict": 21.80, "mapstrict_std": 0.74},
+    {"name": "RT-DETR-L", "short": "RT-DETR-L", "cat": "ViT", "map50": 40.63, "map50_std": 0.85, "mapstrict": 18.92, "mapstrict_std": 0.61},
+    {"name": "YOLO12s (SAT-493M)", "short": "YOLO12s\n(SAT-493M)", "cat": "Distilled", "map50": 48.01, "map50_std": 0.41, "mapstrict": 22.71, "mapstrict_std": 0.37},
+    {"name": "YOLO12s (LVD-1689M)", "short": "YOLO12s\n(LVD-1689M)", "cat": "Distilled", "map50": 46.49, "map50_std": 0.67, "mapstrict": 21.90, "mapstrict_std": 0.52},
+    {"name": "DINOv3 ViT-T (LVD-1689M)", "short": "DINOv3 ViT-T\n(LVD-1689M)", "cat": "Distilled", "map50": 48.38, "map50_std": 2.09, "mapstrict": 23.04, "mapstrict_std": 0.66},
+    {"name": "DINOv3 ViT-T (SAT-493M)", "short": "DINOv3 ViT-T\n(SAT-493M)", "cat": "Distilled", "map50": 47.52, "map50_std": 0.59, "mapstrict": 22.15, "mapstrict_std": 0.44},
+    {"name": "YOLO12s (DINOv3)", "short": "YOLO12s\n(DINOv3)", "cat": "Fused", "map50": 46.10, "map50_std": 0.17, "mapstrict": 22.77, "mapstrict_std": 0.33}
+  ]
+}

@@ -34,3 +34,28 @@ wandb/
 .DS_Store
 Thumbs.db
 
+# =========================================================================
+# Imagery, Aerial Drone Slices, Orthos & Generated XAI / Plot Heatmaps
+# =========================================================================
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.webp
+*.bmp
+*.gif
+xai_scenes/
+**/xai_scenes/
+thesis_evaluation/xai_scenes/
+thesis_evaluation/figures/
+thesis_plotting_suite/output_figures/
+test_*.png
+fig*.png
+thesis_fig*.png
+
+# Keep repository documentation assets tracked
+!assets/*.png
+!assets/*.jpg
+
+

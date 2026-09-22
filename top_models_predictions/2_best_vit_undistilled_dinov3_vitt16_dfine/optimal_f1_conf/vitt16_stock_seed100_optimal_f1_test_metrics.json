@@ -1,0 +1,58 @@
+{
+  "model_name": "vitt16_stock_seed100",
+  "study_group": "distillation",
+  "is_distilled": false,
+  "model_family": "ViT-T (Stock Distilled)",
+  "architecture": "dinov3_vitt16",
+  "teacher_model": "none (stock teacher/control)",
+  "seed": 100,
+  "optimal_confidence": 0.52,
+  "run_metadata": {
+    "task": "detect",
+    "dataset": "_dataset_ail (Ailanthus altissima UAV canopy imagery, 1024x1024)",
+    "dataset_split_test_counts": {
+      "total_test_scenes": 510,
+      "positive_tree_scenes": 315,
+      "negative_background_scenes": 195,
+      "total_gt_tree_instances": 576
+    },
+    "training_epochs": 100,
+    "input_resolution": 1024,
+    "batch_size": 8,
+    "framework": "LightlyTrain (PyTorch + D-Fine / RT-DETRv2 head)",
+    "backbone_status": "Unfrozen (end-to-end fine-tuning of backbone and detection head)",
+    "distillation": {
+      "is_distilled": false,
+      "teacher_model": "none (stock teacher/control)",
+      "teacher_domain": "General foundation vision model (Stock DINOv3 ViT-L/16 or ViT-T control)",
+      "distillation_strategy": "Undistilled experimental control trained with identical training recipe and hyperparameters to provide a rigorous baseline for distillation comparison."
+    },
+    "experiment_recipe_summary": "Identical control training for distillation study without external foundation teacher features, 100 epochs, imgsz 1024."
+  },
+  "validation_metrics": {
+    "best_f1": 0.635,
+    "precision": 0.682,
+    "recall": 0.594
+  },
+  "test_metrics": {
+    "test_f1": 0.5123,
+    "test_precision": 0.5923,
+    "test_recall": 0.4514,
+    "mAP_50_95": 0.1818,
+    "mAP_50": 0.3766,
+    "mAP_75": 0.1641,
+    "mAP_30": 0.5054,
+    "mAP_40": 0.4421,
+    "AP_small": 0.0,
+    "AP_medium": 0.1004,
+    "AP_large": 0.2271,
+    "AR_max1": 0.1974,
+    "AR_max10": 0.2554,
+    "AR_max100": 0.2554,
+    "num_predictions": 439,
+    "mAP_50_standard": 0.4824,
+    "mAP_50_95_standard": 0.2276,
+    "mAP_50_fixed_conf_at_c_star": 0.3766,
+    "mAP_50_95_fixed_conf_at_c_star": 0.1818
+  }
+}

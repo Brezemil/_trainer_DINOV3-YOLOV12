@@ -1,0 +1,58 @@
+{
+  "model_name": "yolo12s_sat493m_seed100",
+  "study_group": "distillation",
+  "is_distilled": true,
+  "model_family": "YOLO12s (Distilled SAT-493M)",
+  "architecture": "yolo12s",
+  "teacher_model": "dinov3/vitl16-sat493m",
+  "seed": 100,
+  "optimal_confidence": 0.3493,
+  "run_metadata": {
+    "task": "detect",
+    "dataset": "_dataset_ail (Ailanthus altissima UAV canopy imagery, 1024x1024)",
+    "dataset_split_test_counts": {
+      "total_test_scenes": 510,
+      "positive_tree_scenes": 315,
+      "negative_background_scenes": 195,
+      "total_gt_tree_instances": 576
+    },
+    "training_epochs": 100,
+    "input_resolution": 1024,
+    "batch_size": 16,
+    "framework": "Ultralytics (YOLO PyTorch backend)",
+    "backbone_status": "Unfrozen (end-to-end fine-tuning of backbone and detection head)",
+    "distillation": {
+      "is_distilled": true,
+      "teacher_model": "dinov3/vitl16-sat493m",
+      "teacher_domain": "Earth observation & satellite remote sensing (SAT-493M, 493M tiles)",
+      "distillation_strategy": "Knowledge distillation using Meta DINOv3 ViT-L/16 pretrained on Earth observation data as teacher. Feature distillation on backbone followed by fine-tuning."
+    },
+    "experiment_recipe_summary": "Distilled from dinov3/vitl16-sat493m (Earth observation & satellite remote sensing (SAT-493M, 493M tiles)) into yolo12s student, 100 epochs, imgsz 1024."
+  },
+  "validation_metrics": {
+    "best_f1": 0.6678,
+    "precision": 0.7125,
+    "recall": 0.6283
+  },
+  "test_metrics": {
+    "test_f1": 0.4985,
+    "test_precision": 0.6127,
+    "test_recall": 0.4201,
+    "mAP_50_95": 0.1705,
+    "mAP_50": 0.3467,
+    "mAP_75": 0.1438,
+    "mAP_30": 0.4772,
+    "mAP_40": 0.421,
+    "AP_small": 0.0,
+    "AP_medium": 0.0781,
+    "AP_large": 0.2203,
+    "AR_max1": 0.1799,
+    "AR_max10": 0.2382,
+    "AR_max100": 0.2382,
+    "num_predictions": 395,
+    "mAP_50_standard": 0.4812,
+    "mAP_50_95_standard": 0.2268,
+    "mAP_50_fixed_conf_at_c_star": 0.3467,
+    "mAP_50_95_fixed_conf_at_c_star": 0.1705
+  }
+}

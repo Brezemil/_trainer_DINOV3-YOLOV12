@@ -1,0 +1,58 @@
+{
+  "model_name": "vitt16_lvd1689m_seed100",
+  "study_group": "distillation",
+  "is_distilled": true,
+  "model_family": "ViT-T (Distilled LVD-1689M)",
+  "architecture": "dinov3_vitt16",
+  "teacher_model": "dinov3/vitl16",
+  "seed": 100,
+  "optimal_confidence": 0.56,
+  "run_metadata": {
+    "task": "detect",
+    "dataset": "_dataset_ail (Ailanthus altissima UAV canopy imagery, 1024x1024)",
+    "dataset_split_test_counts": {
+      "total_test_scenes": 510,
+      "positive_tree_scenes": 315,
+      "negative_background_scenes": 195,
+      "total_gt_tree_instances": 576
+    },
+    "training_epochs": 100,
+    "input_resolution": 1024,
+    "batch_size": 8,
+    "framework": "LightlyTrain (PyTorch + D-Fine / RT-DETRv2 head)",
+    "backbone_status": "Unfrozen (end-to-end fine-tuning of backbone and detection head)",
+    "distillation": {
+      "is_distilled": true,
+      "teacher_model": "dinov3/vitl16",
+      "teacher_domain": "General web & natural imagery (LVD-1689M, 1.689B images)",
+      "distillation_strategy": "Knowledge distillation using Meta DINOv3 ViT-L/16 pretrained on natural imagery as teacher. Feature distillation on backbone followed by fine-tuning."
+    },
+    "experiment_recipe_summary": "Distilled from dinov3/vitl16 (General web & natural imagery (LVD-1689M, 1.689B images)) into dinov3_vitt16 student, 100 epochs, imgsz 1024."
+  },
+  "validation_metrics": {
+    "best_f1": 0.631,
+    "precision": 0.7184,
+    "recall": 0.5625
+  },
+  "test_metrics": {
+    "test_f1": 0.4779,
+    "test_precision": 0.551,
+    "test_recall": 0.4219,
+    "mAP_50_95": 0.175,
+    "mAP_50": 0.3569,
+    "mAP_75": 0.1516,
+    "mAP_30": 0.4774,
+    "mAP_40": 0.4267,
+    "AP_small": 0.0,
+    "AP_medium": 0.0994,
+    "AP_large": 0.2181,
+    "AR_max1": 0.1821,
+    "AR_max10": 0.2444,
+    "AR_max100": 0.2444,
+    "num_predictions": 441,
+    "mAP_50_standard": 0.4762,
+    "mAP_50_95_standard": 0.2253,
+    "mAP_50_fixed_conf_at_c_star": 0.3569,
+    "mAP_50_95_fixed_conf_at_c_star": 0.175
+  }
+}

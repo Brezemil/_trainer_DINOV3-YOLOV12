@@ -1,0 +1,26 @@
+[project]
+name = "thesis-plotting-suite"
+version = "1.0.0"
+description = "Publication Plotting Suite & Interactive Jupyter Workspace for Master Thesis: High-Resolution UAV Canopy Detection, Localization, and Distillation"
+authors = ["Emil Brezovsky"]
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64", "osx-arm64"]
+
+[dependencies]
+python = ">=3.10,<3.12"
+numpy = ">=1.24"
+pandas = ">=2.0"
+matplotlib = ">=3.8"
+seaborn = ">=0.13"
+scipy = ">=1.11"
+pillow = ">=10.0"
+jupyterlab = ">=4.0"
+notebook = ">=7.0"
+ipykernel = ">=6.25"
+pyyaml = ">=6.0"
+opencv = ">=4.8"
+
+[tasks]
+jupyter = "jupyter lab --no-browser"
+notebook = "jupyter notebook"
+plot-all = "python generate_all_figures.py"

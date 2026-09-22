@@ -1,0 +1,16 @@
+id,paradigm,arch,seed,conf_mode,conf_threshold,total_detections,images_with_detections,mean_confidence,true_positives,false_positives_fg,false_positives_bg,false_negatives,total_gt_trees,recall,precision_overall,precision_fg_only,f1_overall,f1_fg_only,false_alarm_rate_per_bg_tile,bg_images_with_fp,bg_tiles_fp_pct,total_bg_images,total_fg_images
+1_yolo12s_undistilled_seed42,Pure CNN (Undistilled),YOLO12s,42,standard,0.25,748,535,0.4202,97,54,597,146,243,0.3992,0.1297,0.6424,0.1958,0.4924,0.1305,434,9.48,4576,145
+1_yolo12s_undistilled_seed100,Pure CNN (Undistilled),YOLO12s,100,standard,0.25,1100,690,0.4657,121,89,890,122,243,0.4979,0.11,0.5762,0.1802,0.5342,0.1945,564,12.33,4576,145
+1_yolo12s_undistilled_seed999,Pure CNN (Undistilled),YOLO12s,999,standard,0.25,1248,672,0.4788,136,126,986,107,243,0.5597,0.109,0.5191,0.1824,0.5386,0.2155,552,12.06,4576,145
+2_vitt16_dfine_undistilled_seed42,Vision Transformer,ViT-T16 + D-FINE,42,standard,0.25,4258,898,0.4177,184,745,3329,59,243,0.7572,0.0432,0.1981,0.0818,0.314,0.7275,758,16.56,4576,145
+2_vitt16_dfine_undistilled_seed100,Vision Transformer,ViT-T16 + D-FINE,100,standard,0.25,4047,907,0.428,184,794,3069,59,243,0.7572,0.0455,0.1881,0.0858,0.3014,0.6707,765,16.72,4576,145
+2_vitt16_dfine_undistilled_seed999,Vision Transformer,ViT-T16 + D-FINE,999,standard,0.25,4312,925,0.4317,189,805,3318,54,243,0.7778,0.0438,0.1901,0.083,0.3056,0.7251,781,17.07,4576,145
+3_yolo12s_distilled_sat493m_seed42,Distilled CNN,YOLO12s (SAT-493M),42,standard,0.25,1219,681,0.4904,132,115,972,111,243,0.5432,0.1083,0.5344,0.1806,0.5388,0.2124,555,12.13,4576,145
+3_yolo12s_distilled_sat493m_seed100,Distilled CNN,YOLO12s (SAT-493M),100,standard,0.25,1117,672,0.4874,143,94,880,100,243,0.5885,0.128,0.6034,0.2103,0.5958,0.1923,539,11.78,4576,145
+3_yolo12s_distilled_sat493m_seed999,Distilled CNN,YOLO12s (SAT-493M),999,standard,0.25,1218,720,0.5147,141,97,980,102,243,0.5802,0.1158,0.5924,0.193,0.5863,0.2142,587,12.83,4576,145
+4_vitt16_distilled_lvd1689m_seed42,Distilled ViT,ViT-T16 (LVD-1689M),42,standard,0.25,5745,1326,0.4077,204,963,4578,39,243,0.8395,0.0355,0.1748,0.0681,0.2894,1.0004,1183,25.85,4576,145
+4_vitt16_distilled_lvd1689m_seed100,Distilled ViT,ViT-T16 (LVD-1689M),100,standard,0.25,5550,1272,0.4219,194,976,4380,49,243,0.7984,0.035,0.1658,0.067,0.2746,0.9572,1130,24.69,4576,145
+4_vitt16_distilled_lvd1689m_seed999,Distilled ViT,ViT-T16 (LVD-1689M),999,standard,0.25,4104,890,0.4434,179,768,3157,64,243,0.7366,0.0436,0.189,0.0824,0.3008,0.6899,748,16.35,4576,145
+5_yolo12s_triple_dino3_seed42,Multi-Scale Fused,YOLO12s Triple DINOv3,42,standard,0.25,929,579,0.4822,120,65,744,123,243,0.4938,0.1292,0.6486,0.2048,0.5607,0.1626,467,10.21,4576,145
+5_yolo12s_triple_dino3_seed100,Multi-Scale Fused,YOLO12s Triple DINOv3,100,standard,0.25,905,564,0.4804,121,62,722,122,243,0.4979,0.1337,0.6612,0.2108,0.5681,0.1578,454,9.92,4576,145
+5_yolo12s_triple_dino3_seed999,Multi-Scale Fused,YOLO12s Triple DINOv3,999,standard,0.25,932,573,0.4876,126,73,733,117,243,0.5185,0.1352,0.6332,0.2145,0.5701,0.1602,456,9.97,4576,145
