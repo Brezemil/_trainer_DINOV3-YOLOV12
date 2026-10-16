@@ -1,4 +1,4 @@
-﻿# Master Pipeline Orchestrator for testset_unlabeled_combined Evaluation
+# Master Pipeline Orchestrator for testset_unlabeled_combined Evaluation
 # Automatically coordinates lightly models, triple DINO models, evaluation metrics compilation, overlay plotting, and catalog generation
 
 import os
@@ -19,7 +19,7 @@ SCRIPT_COMPILE = os.path.join(DIR_REPO, "thesis_evaluation", "compile_inference_
 SCRIPT_OVERLAYS = os.path.join(DIR_REPO, "thesis_evaluation", "generate_sample_overlays.py")
 SCRIPT_README = os.path.join(DIR_REPO, "thesis_evaluation", "build_testset_predictions_readme.py")
 
-PREDICTIONS_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined_predictions"
+from data_paths import PREDICTIONS_DIR
 
 def check_lightly_completed():
     json_dir = os.path.join(PREDICTIONS_DIR, "predictions_json")

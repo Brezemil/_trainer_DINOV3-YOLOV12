@@ -8,8 +8,7 @@ import glob
 
 sys.stdout.reconfigure(line_buffering=True)
 
-PREDICTIONS_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined_predictions"
-IMAGES_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined\images"
+from data_paths import IMAGES_DIR, PREDICTIONS_DIR
 OPT_DIR = os.path.join(PREDICTIONS_DIR, "optimal_f1_conf")
 
 OPTIMAL_CONFS = {

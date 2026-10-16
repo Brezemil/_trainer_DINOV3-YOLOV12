@@ -46,7 +46,7 @@ def build_readme():
     md = []
     md.append("# High-Resolution UAV Canopy Benchmark: Comprehensive Combined Testset Evaluation")
     md.append("")
-    md.append("**Target Dataset:** `E:\\Götterbaum\\_export_data\\testset_unlabeled_combined`  ")
+    md.append("**Target Dataset:** `_data/testset_unlabeled_combined` (located in unified `_data` folder)  ")
     md.append("**Dataset Profile:** Strict Zero-Leakage Cohort ($N_{\\text{total}} = 4,721$ tiles at $1024 \\times 1024$ px, $2.1\\text{ cm/px}$ GSD)  ")
     md.append("**Foreground / Background Balance:** 145 positive slices ($243$ ground truth *Ailanthus altissima* crowns) + $4,576$ negative background slices  ")
     md.append("**Cohort:** 15 Models across 5 Paradigms evaluated across $n=3$ random seeds (`42`, `100`, `999`) across two operational regimes: Standard Confidence ($c = 0.25$) and Calibrated Optimal F1 Confidence ($c = c^*$)")
@@ -122,7 +122,7 @@ def build_readme():
     md.append("")
     md.append("## 6. Directory Structure & Prediction File Specifications")
     md.append("")
-    md.append("All predictions are stored symmetrically under `E:\\Götterbaum\\_export_data\\testset_unlabeled_combined_predictions\\`:")
+    md.append("All predictions are stored symmetrically under `_data/testset_unlabeled_combined_predictions/`:")
     md.append("```text")
     md.append("testset_unlabeled_combined_predictions/")
     md.append("├── README.md                                       # Master evaluation monograph")

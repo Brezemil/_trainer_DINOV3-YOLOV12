@@ -13,9 +13,8 @@ from PIL import Image
 
 sys.stdout.reconfigure(line_buffering=True)
 
-PREDICTIONS_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined_predictions"
-IMAGES_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined\images"
-LABELS_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined\labels"
+from data_paths import IMAGES_DIR, LABELS_DIR, PREDICTIONS_DIR
+
 OUTPUT_DIR = os.path.join(PREDICTIONS_DIR, "figures")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

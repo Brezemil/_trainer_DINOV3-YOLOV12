@@ -1,4 +1,4 @@
-﻿# Master Batch Inference for Triple DINO YOLO12s Models (Seeds 42, 100, 999)
+# Master Batch Inference for Triple DINO YOLO12s Models (Seeds 42, 100, 999)
 # Target Dataset: E:\Götterbaum\_export_data\testset_unlabeled_combined
 # Output Destination: E:\Götterbaum\_export_data\testset_unlabeled_combined_predictions
 
@@ -13,8 +13,7 @@ import torch
 sys.stdout.reconfigure(line_buffering=True)
 from ultralytics import YOLO
 
-IMAGES_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined\images"
-OUTPUT_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined_predictions"
+from data_paths import IMAGES_DIR, PREDICTIONS_DIR as OUTPUT_DIR, resolve_weight
 CONF_THRESHOLD = 0.25
 
 MODELS = [
@@ -41,7 +40,7 @@ MODELS = [
 def run_triple_dino(cfg, image_paths, yolo_dir, json_path):
     print(f"\n[START] Processing Triple DINO model: {cfg['name']} ({cfg['id']})", flush=True)
     t_start = time.time()
-    model = YOLO(cfg['path'])
+    model = YOLO(resolve_weight(cfg['path']))
     all_preds = []
     total_detections = 0
     imgs_with_detections = 0

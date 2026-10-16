@@ -52,6 +52,11 @@ thesis_plotting_suite/                               # Self-Contained Interactiv
 └── output_figures/                                  # Rendered 300 DPI publication figures (Figures 1-11)
 ```
 
+### Unified Input Architecture (`_data/`) & Fast Machine Transfer
+All external training datasets, test cohorts, checkpoints, and predictions are centralized in the sibling `_data/` directory (`../_data/`):
+- `thesis_evaluation/data_paths.py` dynamically resolves all image directories (`_data/testset_unlabeled_combined/images`), labels (`_data/testset_unlabeled_combined/labels`), predictions (`_data/testset_unlabeled_combined_predictions`), and checkpoint weights (`_data/weights/`).
+- To transfer the workspace to a new computer, simply clone/pull the four repositories and copy `_data/` alongside them. All functions work out of the box with zero external drive dependencies (`E:\Götterbaum`).
+
 ---
 
 ## 3. End-to-End Execution Pipeline
@@ -214,3 +219,24 @@ Key canonical references:
 * **Architecture:** Tian et al. (2025) [YOLOv12 Area Attention], Peng et al. (2024) [D-FINE FDR], Simeoni et al. (2025) [DINOv3], Redmon et al. (2016) [YOLO].
 * **Remote Sensing & Ecology:** Kowarik & Säumel (2007) [*Ailanthus* biology], Naharki et al. (2023, 2024) [Drone detection of *Ailanthus*], Burkholder et al. (2011) [Leaf reflectance separability], Turner et al. (2014) [UAV direct georeferencing].
 * **Field Robotics:** Zachariah et al. (2026) [MapForest], Soler et al. (2024) [Chemical eradication and spray drift], Ester et al. (1996) [DBSCAN spatial clustering].
+
+---
+
+## 9. Unified Input Architecture (`_data/`) & Fast Machine Transfer
+
+All dataset inputs, images, labels, predictions, weights, and ground truth annotations across the four thesis repositories (`_trainer_dataset_prep`, `_trainer_DINOV3-YOLOV12`, `_trainer_lightly`, and `_trainer_pred_plotter`) are centralized in the sibling `_data/` directory (`../_data`).
+
+### A. Centralized Path Resolution (`thesis_evaluation/data_paths.py`)
+All evaluation and inference scripts dynamically resolve data directories and model weights using `thesis_evaluation/data_paths.py`:
+- `DATA_DIR`: Resolves `../_data`, `os.environ.get("DATA_DIR")`, or local fallback.
+- `IMAGES_DIR`: Resolves `_data/testset_unlabeled_combined/images` (or `_data/sliced_split_dataset/test/images`).
+- `LABELS_DIR`: Resolves `_data/testset_unlabeled_combined/labels` (or `_data/sliced_split_dataset/test/labels`).
+- `PREDICTIONS_DIR`: Resolves `_data/testset_unlabeled_combined_predictions` (or `_data/model_predictions/top_models_predictions`).
+- `resolve_weight(name)`: Automatically scans `_data/weights/checkpoints/`, `_data/weights/pretrained_base/`, `weights/`, and local directories.
+
+### B. Fast Machine Transfer Guide
+To transfer the entire thesis workspace to a new PC or storage drive:
+1. Copy or clone the four repositories (`_trainer_dataset_prep`, `_trainer_DINOV3-YOLOV12`, `_trainer_lightly`, `_trainer_pred_plotter`) as sibling folders.
+2. Copy the `_data/` folder into the same parent folder alongside the four repositories.
+3. No path adjustments or external drive paths (`E:\Götterbaum`) are required. All scripts locate inputs relatively.
+

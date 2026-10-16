@@ -1,4 +1,4 @@
-﻿# Master Batch Inference for Lightly Models Cohort using OPTIMAL F1 CONFIDENCE THRESHOLDS (c*)
+# Master Batch Inference for Lightly Models Cohort using OPTIMAL F1 CONFIDENCE THRESHOLDS (c*)
 # Target Dataset: E:\Götterbaum\_export_data\testset_unlabeled_combined
 # Output Destination: E:\Götterbaum\_export_data\testset_unlabeled_combined_predictions\optimal_f1_conf
 
@@ -19,9 +19,9 @@ if LIGHTLY_REPO not in sys.path:
 
 from eval_utils import safe_load_model
 from ultralytics import YOLO
+from data_paths import IMAGES_DIR, PREDICTIONS_DIR, resolve_weight
 
-IMAGES_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined\images"
-OUTPUT_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined_predictions\optimal_f1_conf"
+OUTPUT_DIR = os.path.join(PREDICTIONS_DIR, "optimal_f1_conf")
 
 MODELS = [
     # 1. Undistilled YOLO12s (Optimal Conf: 0.3283, 0.2482, 0.3013)
@@ -130,7 +130,7 @@ def run_yolo(cfg, image_paths, yolo_dir, json_path):
     conf_th = cfg["opt_conf"]
     print(f"\n[START OPTIMAL F1] YOLO model: {cfg['name']} (Conf Threshold: {conf_th})", flush=True)
     t_start = time.time()
-    model = YOLO(cfg['path'])
+    model = YOLO(resolve_weight(cfg['path']))
     all_preds = []
     total_detections = 0
     imgs_with_detections = 0
@@ -193,7 +193,7 @@ def run_vit(cfg, image_paths, yolo_dir, json_path):
     conf_th = cfg["opt_conf"]
     print(f"\n[START OPTIMAL F1] ViT model: {cfg['name']} (Conf Threshold: {conf_th})", flush=True)
     t_start = time.time()
-    model = safe_load_model(cfg['path'], device=0)
+    model = safe_load_model(resolve_weight(cfg['path']), device=0)
     if model.training or not model.postprocessor.deploy_mode:
         model.deploy()
 

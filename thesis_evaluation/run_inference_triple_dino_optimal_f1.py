@@ -1,4 +1,4 @@
-﻿# Master Batch Inference for Triple DINO YOLO12s Models using OPTIMAL F1 CONFIDENCE THRESHOLDS (c*)
+# Master Batch Inference for Triple DINO YOLO12s Models using OPTIMAL F1 CONFIDENCE THRESHOLDS (c*)
 # Target Dataset: E:\Götterbaum\_export_data\testset_unlabeled_combined
 # Output Destination: E:\Götterbaum\_export_data\testset_unlabeled_combined_predictions\optimal_f1_conf
 
@@ -13,8 +13,10 @@ import torch
 sys.stdout.reconfigure(line_buffering=True)
 from ultralytics import YOLO
 
-IMAGES_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined\images"
-OUTPUT_DIR = r"E:\Götterbaum\_export_data\testset_unlabeled_combined_predictions\optimal_f1_conf"
+from data_paths import IMAGES_DIR, PREDICTIONS_DIR, resolve_weight
+import os
+
+OUTPUT_DIR = os.path.join(PREDICTIONS_DIR, "optimal_f1_conf")
 
 MODELS = [
     {
@@ -44,7 +46,7 @@ def run_triple_dino(cfg, image_paths, yolo_dir, json_path):
     conf_th = cfg["opt_conf"]
     print(f"\n[START OPTIMAL F1] Triple DINO model: {cfg['name']} (Conf Threshold: {conf_th})", flush=True)
     t_start = time.time()
-    model = YOLO(cfg['path'])
+    model = YOLO(resolve_weight(cfg['path']))
     all_preds = []
     total_detections = 0
     imgs_with_detections = 0
